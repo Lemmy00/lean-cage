@@ -6,8 +6,9 @@ Read [README](README.md), [§RM-roadmap](docs/roadmap.md#rm-roadmap-leancage-spe
 [§REQ-proof-integrity](docs/requirements/REQ-proof-integrity.md#req-proof-integrity-never-substitute-a-weaker-claim-for-an-unfinished-proof) before changing code. M1.1 fixes the source and launch contract
 boundary in [§AR-filter-slice.contracts](docs/architecture/AR-filter-slice.md#contracts-lean-declarations-and-downstream-ownership); M1.2 supplies the decoder, proofs, and
 audit in [§AR-filter-decoder](docs/architecture/AR-filter-decoder.md#ar-filter-decoder-byte-decoder-proofs-and-executable-evidence-audit). M1.3–M1.5 add launch proofs, the VM-only native driver,
-and reviewed evidence under [§AR-m1-launch](docs/architecture/AR-m1-launch.md#ar-m1-launch-launch-model-linux-driver-and-isolated-demonstration). The next milestone is M2 in
-[§RM-roadmap.next](docs/roadmap.md#next-m1-work-packages-and-next-scope). Follow the assigned work package rather than treating
+and reviewed evidence under [§AR-m1-launch](docs/architecture/AR-m1-launch.md#ar-m1-launch-launch-model-linux-driver-and-isolated-demonstration). The next assignment is M2.1 in
+[§RM-roadmap.m2.packages](docs/roadmap.md#m2packages-bounded-work-packages); read the [M1 readiness review](docs/reviews/M1-readiness.md)
+first. Follow the assigned work package rather than treating
 the entire roadmap as one implementation task.
 
 All `grund` commands in the managed instructions below mean the repository-local

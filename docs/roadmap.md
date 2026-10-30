@@ -11,7 +11,8 @@ native Linux driver, and 13-case isolated VM demonstration are recorded under
 [§AR-filter-slice](architecture/AR-filter-slice.md#ar-filter-slice-m11-source-map-and-typed-contract-boundary), [§AR-filter-decoder](architecture/AR-filter-decoder.md#ar-filter-decoder-byte-decoder-proofs-and-executable-evidence-audit), and [§AR-m1-launch](architecture/AR-m1-launch.md#ar-m1-launch-launch-model-linux-driver-and-isolated-demonstration). The claim register
 [§FS-assurance.status](functional-spec/FS-assurance.md#status-initial-claim-register) separates model proofs, VM tests, and remaining
 native/Linux correspondence assumptions. Full confinement and hardware-channel
-security remain later milestones.
+security remain later milestones. The [independent M1 readiness review](reviews/M1-readiness.md)
+accepts this limited scope and defines the M2/M3 planning changes below.
 
 ## decisions: Accepted direction
 
@@ -73,32 +74,107 @@ state invariant, first concrete implementation/proof linkage, and evidence recor
 
 ## m2: Verified launcher lifecycle
 
-Expand [§FS-launch](functional-spec/FS-launch.md#fs-launch-establish-containment-before-executing-the-guest) into privilege reduction, descriptor handling, namespace/process
-setup, enforcement installation, execution, signals, cancellation, and cleanup.
-Cover partial setup and adversarial inheritance under [§FS-isolation.process](functional-spec/FS-isolation.md#process-memory-and-process-boundaries).
+**Status: planned; next assignment is M2.1.** Extend the real launch path under
+[§FS-launch](functional-spec/FS-launch.md#fs-launch-establish-containment-before-executing-the-guest) and [§FS-isolation.process](functional-spec/FS-isolation.md#process-memory-and-process-boundaries). M1 starts inside a trusted child; M2 must
+establish the supported entry conditions and supervise the resulting process tree.
+The [M1 readiness review](reviews/M1-readiness.md) records the evidence and gaps.
 
-**Exit criteria:** establish the supported launch invariant across all specified
-transitions and errors; connect abstract effects to OS bindings; document remaining
-assumptions; test failures, leaked descriptors, privilege changes, and fork/exec.
-Useful allowed execution must still be possible.
+### m2.boundary: Preserve the useful M1 result and expose the new obligations
 
-**Reusable output:** a launcher with compositional contracts, not a collection of
-independent lemmas lacking an argument about the execution path.
+Keep the fixed M1 decoder, exact-order proofs, and VM evidence as a regression
+baseline. Define a richer state with owned resources, process identities,
+credentials, signal state, and effect results. Relate its relevant successful
+segment to M1's contract; a list of caller-supplied success events alone does not
+establish that the executable performed those operations.
+
+Select one concrete Linux x86-64 deployment profile before implementation:
+launcher privileges, user/group and namespace setup, available kernel features,
+trusted helper/runtime boundary, inherited resources, and supported cancellation
+semantics. An unsupported environment fails preflight. Host administration and
+hardware trust remain explicit; do not promise to defend against a malicious host
+administrator merely by renaming M1's trusted entry assumptions.
+
+The post-fork child currently executes C, outside the proved Lean transition
+function. Decide how an executable controller or validated launch plan governs
+that code, while keeping the child safe from inherited runtime/allocator state.
+Record any manual native mapping as an open M4 correspondence obligation.
+
+### m2.packages: Bounded work packages
+
+| Package | Depends on | Required output and acceptance gate |
+|---|---|---|
+| M2.1 Lifecycle contract and execution design | Reviewed M1 | Map every M1 entry premise to establish, validate, reject, or retain-with-reason; define owned state, outcomes, and observations; select the supported privilege/helper profile; review the actual controller-to-native boundary before implementation |
+| M2.2 Capable isolated test profile | M2.1 | A separately named, pinned kernel/configuration and guest image with the selected namespace, process, IPC and resource features; positive controls show the mechanisms exist; preserve the original M1 profile |
+| M2.3 Owned resources and safe bootstrap | M2.1, M2.2 | Explicit descriptor allowlist/ownership, closed inherited authority, stable input/executable handles, argv/environment/cwd rules, and signal/thread bootstrap; cover short I/O and failures without guest entry |
+| M2.4 Privilege and namespace transitions | M2.3 | Credential/group/capability and selected namespace setup with ordering, failure and inheritance contracts; prove the chosen launch invariant and test each boundary; setting no-new-privileges alone is insufficient |
+| M2.5 Supervision, descendants and teardown | M2.3, M2.4 | Process ownership through fork/exec, reaping, parent death, signals, cancellation races and cleanup; typed results distinguish guest exit, setup failure and unknown supervision outcome; test pipe/report failure and descendant escape attempts |
+| M2.6 Composition and filter semantics | M2.4, M2.5 | Compose the executable lifecycle with its effect contracts, preserve/refine the M1 theorem, and prove the fixed filter's action for arbitrary architecture/syscall inputs in a stated bytecode semantics; Linux correspondence stays separate |
+| M2.7 Reviewed handoff | M2.2–M2.6 | Full statement/axiom audit, useful allowed workloads, adversarial failure/descendant fixtures, fresh VM evidence and exact artifact records; account for every remaining entry premise and M4 obligation |
+
+M2.1 is a specification/design assignment, not permission to implement every row
+at once. It must produce concrete initial/post/failure-state contracts and a
+source-to-effect map, including the point where guest execution becomes possible.
+Do not move namespace contents or broad filesystem confinement into an informal
+precondition; M2 owns setup/lifetime, and M3 owns the workspace authority policy.
+
+### m2.gates: Exit criteria
+
+A supported launch has a composed invariant across the real setup sequence and
+all modeled failures. Inherited descriptors, credentials, signals, and descendants
+must be dealt with explicitly. Cancellation is not considered complete until its
+specified effect is observed; a missing error-pipe message is not proof of exec
+success or of no guest entry. Termination/liveness claims state their scheduling
+and OS premises separately from safety.
+
+Tests must exercise supported mechanisms in an isolated VM, including inherited
+handles, privileges, signal windows, existing-filter rejection/composition,
+failed reporting, fork/exec, parent death, and cleanup of owned resources only.
+A static native workload is sufficient for M2; general shell/Python runtime
+support is an M3 gate. Publish the executable-to-model relationship honestly,
+without importing M4's unproved native/Linux correspondence into a completion label.
+
+**Reusable output:** owned-resource and lifecycle contracts, a compositional
+launcher, an expanded test profile, and a precise M4 proof-obligation ledger.
 
 ## m3: Useful offline workspace sandbox
 
-Deliver the first useful [§FS-compatibility.matrix](functional-spec/FS-compatibility.md#matrix-initial-compatibility-matrix) profile: read-only runtime,
-private writable workspace, controlled I/O, confined descendants, native shell and
-Python, and explicitly supported resource limits. Network/device access remains
-denied unless introduced through a new supported contract.
+**Status: planned; implementation enters after M2.7.** Deliver
+[§FS-compatibility.matrix](functional-spec/FS-compatibility.md#matrix-initial-compatibility-matrix) for a real offline shell/Python workspace:
+read-only runtime, private writable workspace, controlled I/O, confined
+descendants, and explicitly supported resource limits.
 
-**Exit criteria:** a usable library/CLI for that profile; object/handle/alias/race
-reasoning for filesystem confinement; process and I/O confinement; defined limits
-and teardown; adversarial regression tests; evidence report naming all remaining
-kernel, compiler/runtime, and hardware assumptions.
+### m3.packages: Build the profile in reviewable slices
 
-**Reusable output:** a useful Linux workload profile and stable policy/backend
-contracts. This is the earliest entry point for the optional M6 backend.
+| Package | Depends on | Required output and acceptance gate |
+|---|---|---|
+| M3.1 Authority and workload contract | M2.7 | Name runtime/workspace objects, allowed operations, protected host/sibling resources, public inputs, output disclosures, and descendant scope; pin one shell/Python runtime closure and policy format |
+| M3.2 Filesystem realization | M3.1 | Root/mount/handle rules for read-only runtime and writable workspace; account for symlinks, hard links, rename/mount aliases, open handles, procfs and devices; no textual-prefix confinement argument |
+| M3.3 Executable/runtime and filter policy | M3.1, M3.2, M2.6 | Support the selected dynamic loader/libraries/interpreters and fork/exec paths; version the filter interface instead of weakening M1's exact nine-instruction acceptance; prove the supported policy-to-filter relation, with explicit Linux assumptions |
+| M3.4 Offline and cross-process boundaries | M3.2, M3.3 | Constrain networking, IPC, tracing/signals and descriptor transfer; use isolated in-VM peers and positive controls so denial is caused by the chosen boundary, not absent kernel functionality |
+| M3.5 Resource budgets and cancellation | M3.3, M2.5 | Precise memory/process/CPU/deadline semantics over descendants; selected cgroup/accounting/delegation and cleanup contracts; specified overshoot/failure behavior and no hidden fallback when mechanisms are unavailable |
+| M3.6 Reusable interface and assurance report | M3.2–M3.5 | Library plus real check/run/report behavior, versioned policy and claim records, exact source/binary/platform identities, and truthful distinction between supported guarantees and remaining assumptions |
+| M3.7 Acceptance and adversarial regression | M3.6 | Useful shell/Python workflows and confinement/limit/teardown tests, composed model proofs, fresh supported-profile evidence, and review of every residual Linux/runtime/hardware obligation |
+
+### m3.gates: Acceptance is more than a successful Python invocation
+
+Exercise filesystem races/aliases, inherited authority, fork/exec and orphaned
+descendants, output/report failures, denied network/IPC, limits and cancellation.
+Test useful permitted behavior alongside denial. The specification must state
+which host interference is allowed; cooperating guest behavior is never a premise.
+
+The current M1 static-ELF guard and deny-getppid filter are demonstration-specific.
+Neither supplies the shell/Python runtime closure or workspace policy. The M1
+kernel also disables namespaces, cgroups, Unix sockets and IPv4, so its tests
+cannot be reused as evidence of those boundaries without a new capable profile.
+
+Keep resource mechanisms and scheduling premises explicit; a test timeout alone
+does not establish a workload limit. Once implemented, the M3 profile may claim
+its reviewed conditional model properties and tested native behavior. Full
+executable/Linux correspondence and hardware-aware confidentiality remain M4/M5.
+
+**Reusable output:** the first useful Linux workspace profile, stable authority
+and backend contracts, and an evidence report. This remains the entry gate for
+the optional M6 backend.
 
 ## m4: Linux and executable correspondence
 
@@ -106,6 +182,12 @@ Close the gap from Lean semantics to the actual executable and Linux enforcement
 under [§AR-linux.correspondence](architecture/AR-linux.md#correspondence-reduce-the-linux-assumption) and [§AR-verification.artifacts](architecture/AR-verification.md#artifacts-bind-proofs-to-releases). Cover compilation,
 native runtime, loader, foreign bindings, ABI, relevant Linux code and its transitive
 dependencies, for a fixed kernel configuration.
+
+Start the correspondence work during M2: inventory the C/FFI/runtime operations,
+choose the semantics and first concrete boundary to connect, and record which
+launch invariant each obligation supports. Each new M2/M3 feature must extend
+that ledger. Do not wait for a large launcher to accumulate before testing
+whether its implementation can be related to the model.
 
 **Exit criteria:** an explicit refinement chain for the advertised properties;
 identified executable and kernel artifacts; all relevant obligations either
@@ -121,6 +203,9 @@ evidence that can support more features and maintained Linux profiles.
 Fulfill [§FS-observations.hardware](functional-spec/FS-observations.md#hardware-software-observable-channels) for a named CPU/kernel/configuration profile.
 Develop the observer model from M0 onward; investigate mechanisms such as resource
 partitioning, scheduling controls, and restrictions only as justified by that model.
+M2 must identify public launch/failure observations; M3 must identify workspace
+secrets and authorized output. These are inputs to the later hardware-aware
+argument, not early timing-confidentiality claims.
 
 **Exit criteria:** explicit timing/cache/contention/speculation observations and
 attacker powers; security theorem for the stated leakage property; connection to
@@ -182,11 +267,13 @@ rejects custom/unfinished/compiler-trust axioms; the audited union remains only
 the three declared logical foundations. [§FS-assurance.launch](functional-spec/FS-assurance.md#launch-m13-launch-order-claim-record) and
 [§FS-assurance.demo](functional-spec/FS-assurance.md#demo-m14-isolated-linux-test-record) record the proof/test boundary and remaining assumptions.
 
-The next milestone is **M2**, [§RM-roadmap.m2](roadmap.md#m2-verified-launcher-lifecycle). Select and specify its first bounded
-lifecycle work package before implementation, retaining the M1 gate. M1's trusted
-entry conditions must become explicit adversarial-inheritance/descriptor/privilege
-obligations rather than quietly broadening the current model's claim. No M2
-implementation or production workload is authorized merely by this roadmap.
+The next assignment is **M2.1: lifecycle contract and execution design** in
+[§RM-roadmap.m2.packages](roadmap.md#m2packages-bounded-work-packages). Read the [M1 review](reviews/M1-readiness.md) and
+[§FS-filter-loading.installation.entry](functional-spec/FS-filter-loading.md#installationentry-entry-conditions-and-interference), inventory every trusted entry condition,
+then propose the concrete state/effect/ownership and native execution boundary.
+Its acceptance gate is a reviewed contract and test-profile plan. M2 remains
+unimplemented; subsequent work packages are assigned separately. Preserve the
+M1 proofs and raw evidence while developing the new profile.
 
 Each assignment must state the spec IDs, owned files, intended theorem or behavior,
 assumptions, validation commands, and completion evidence. Shared-interface changes

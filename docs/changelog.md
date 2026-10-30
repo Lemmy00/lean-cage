@@ -17,3 +17,8 @@
   native driver, and 13 passing isolated Linux VM cases. Preserve all M1.2
   decoder statements/axioms and extend the source-bound audit and claim register.
   Native/Linux correspondence and full sandbox isolation remain open.
+
+- Independently review the M1 statements, native boundary, evidence and VM replay;
+  preserve raw serial bytes in Git and record the [readiness review](reviews/M1-readiness.md).
+  Expand [§RM-roadmap.m2](roadmap.md#m2-verified-launcher-lifecycle) and [§RM-roadmap.m3](roadmap.md#m3-useful-offline-workspace-sandbox) into bounded packages, beginning with
+  lifecycle contracts and a capable isolated profile; retain M4/M5 obligations.

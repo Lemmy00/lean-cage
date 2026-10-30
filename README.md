@@ -17,6 +17,7 @@ experimental filter-loading slice; full confinement and production security
 remain later milestones.
 
 - [Plan and milestones](docs/roadmap.md)
+- [M1 review and M2/M3 readiness](docs/reviews/M1-readiness.md)
 - [Functional specification](docs/functional-spec/README.md)
 - [Architecture](docs/architecture/README.md)
 - [First filter and launch boundary](docs/architecture/AR-filter-slice.md)
