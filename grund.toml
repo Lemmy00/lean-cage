@@ -1,0 +1,91 @@
+# Only what differs from grund's defaults; `grund config show` prints every setting.
+grund_config_version = 2
+project_name = "LeanCage"
+
+[schema.sources]
+languages = ["markdown", "lean", "shell", "python"]
+exclude = [".git/", ".lake/", ".tools/", "**/__pycache__/"]
+
+[schema.sources.extensions]
+lean = "lean"
+sh = "shell"
+
+[schema.sources.definitions.lean]
+class = "source"
+comment_prefixes = ["--"]
+doc_comments = "none"
+
+[schema.kinds.GRUND]
+files = ["docs/grund.md"]
+[schema.kinds.GOAL]
+files = ["docs/goals.md"]
+[schema.kinds.FS]
+folders = ["docs/functional-spec"]
+[schema.kinds.REQ]
+folders = ["docs/requirements"]
+[schema.kinds.AR]
+folders = ["docs/architecture"]
+[schema.kinds.DF]
+folders = ["docs/decisions/functional"]
+[schema.kinds.DA]
+folders = ["docs/decisions/architectural"]
+[schema.kinds.e2e]
+citable = false
+folders = ["tests/e2e"]
+[schema.kinds.integration]
+citable = false
+folders = ["tests/integration"]
+[schema.kinds.RM]
+files = ["docs/roadmap.md"]
+
+[rules.citations.GOAL]
+must = ["GRUND|GOAL"]
+[rules.citations.FS]
+must = ["GOAL|FS"]
+must-not = ["AR"]
+[rules.citations.REQ]
+must = ["GRUND|GOAL"]
+must-not = ["AR"]
+[rules.citations.AR]
+must = ["FS|GOAL"]
+[rules.citations.DF]
+must = ["FS|GOAL"]
+[rules.citations.DA]
+must = ["AR", "FS"]
+[rules.citations.e2e]
+must = ["FS"]
+must-not = ["AR"]
+[rules.citations.e2e.grounding]
+must = "file"
+[rules.citations.integration]
+must = ["AR"]
+[rules.citations.integration.grounding]
+must = "file"
+[rules.citations.code]
+should = ["FS|AR"]
+
+[presentation]
+description = "Reusable AI-agent isolation with a staged Lean 4 verification plan"
+rules = "root"
+conversation = "link"
+
+[presentation.kinds.GRUND]
+title = "Why: project motivation"
+[presentation.kinds.GOAL]
+title = "Where: project direction and outcomes"
+[presentation.kinds.FS]
+title = "What: behavior, requirements, and constraints"
+[presentation.kinds.REQ]
+title = "Hard requirements: what the project must never break"
+[presentation.kinds.AR]
+title = "How: high-level implementation, structure, and design"
+[presentation.kinds.DF]
+title = "Product behavior decisions and tradeoffs"
+[presentation.kinds.DA]
+title = "Architecture decisions and tradeoffs"
+[presentation.kinds.e2e]
+title = "User scenarios: behavioral test evidence"
+[presentation.kinds.integration]
+title = "Integration tests: evidence at component boundaries"
+[presentation.kinds.RM]
+title = "Planned milestones and sequencing"

@@ -1,0 +1,12 @@
+name = "leanCage"
+version = "0.0.0"
+defaultTargets = ["LeanCage"]
+leanOptions = { autoImplicit = false, warningAsError = true }
+
+[[require]]
+name = "velvet"
+git = "https://github.com/verse-lab/velvet"
+rev = "836ed5a163b36c09081ed1d8aeecd3cec040f87e"
+
+[[lean_lib]]
+name = "LeanCage"

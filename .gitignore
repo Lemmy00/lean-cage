@@ -1,2 +1,7 @@
 # cache and other artifacts produced by Lean's Lake build tool
 .lake/
+
+# Repository-local tools, scratch fixtures, and Python caches
+.tools/
+__pycache__/
+*.pyc
