@@ -35,6 +35,7 @@ These counts identify coverage and evidence, not a measure of security strength.
 | Validated authority | [§FS-policy](FS-policy.md#fs-policy-grant-only-explicit-supported-authority) | Planned | Specification | Implementation and theorem |
 | Canonical filter decoding | [§FS-filter-loading.input.correctness](FS-filter-loading.md#inputcorrectness-decoder-proof-boundary) | Model-proved; pure executable checks | [§FS-assurance.decoder](FS-assurance.md#decoder-m12-decoder-claim-record); exact acceptance, bounds, rejection and nonvacuity proofs; axiom gate | Native executable and FFI field-copy correspondence |
 | M1 fail-closed launch order | [§FS-filter-loading.installation.model](FS-filter-loading.md#installationmodel-executable-launch-semantics-and-proof-obligations) | Model-proved; VM-tested native slice | [§FS-assurance.launch](FS-assurance.md#launch-m13-launch-order-claim-record) and [§FS-assurance.demo](FS-assurance.md#demo-m14-isolated-linux-test-record); actual-decoder linkage, exact successful order, terminal failures, native call map and 13 VM cases | Native/source/compiler/runtime/FFI and Linux correspondence; broader M2 lifecycle |
+| M2 owned lifecycle and filter action | [§FS-lifecycle.model](FS-lifecycle.md#model-executable-controller-and-effect-contracts) and [§FS-lifecycle.filter](FS-lifecycle.md#filter-general-action-of-the-preserved-m1-program) | Model-proved; VM-tested; handoff gate passed | [§FS-assurance.lifecycle](FS-assurance.md#lifecycle-m2-lifecycle-and-filter-semantics-claim-record); exact plan, ownership/inheritance and general bytecode action; source-bound VM evidence | Native/Linux correspondence; M3 authority; M5 hardware channels |
 | Native workload confinement | [§FS-isolation](FS-isolation.md#fs-isolation-confine-all-supported-guest-effects) | Planned | Specification | Launcher, filesystem/process model, enforcement proof |
 | Bounded resources | [§FS-resources](FS-resources.md#fs-resources-define-and-enforce-supported-resource-limits) | Planned | Specification | Precise supported limits and enforcement |
 | Functional confidentiality | [§FS-observations.logical](FS-observations.md#logical-functional-observations) | Planned | Observation requirements | Noninterference theorem and correspondence |
@@ -227,11 +228,97 @@ ELF loading, native buffer/call mapping, Linux seccomp, trusted entry and stable
 files, firmware/emulator correctness, and physical hardware remain unproved.
 The C source and VM fixture are original Apache-2.0 code; the pinned Bubblewrap
 source is reference material, not copied code. Linux and locally extracted tools
-retain upstream licensing; their binaries are not committed. Full M2 lifecycle,
-descriptor/alias/adversarial interference reasoning, BPF/kernel refinement, and
-all isolation/confidentiality guarantees remain open. Timing/cache/contention/
+retain upstream licensing; their binaries are not committed. This M1 record does
+not establish the separate M2 lifecycle in [§FS-assurance.lifecycle](FS-assurance.md#lifecycle-m2-lifecycle-and-filter-semantics-claim-record). Native
+descriptor/alias/adversarial interference and BPF/kernel refinement, and full
+isolation/confidentiality guarantees remain open. Timing/cache/contention/
 speculation observations in [§FS-observations.hardware](FS-observations.md#hardware-software-observable-channels) are outside this test;
 even virtual clock stability is not asserted by these functional results.
+
+## lifecycle: M2 lifecycle and filter-semantics claim record
+
+**Scope:** [§FS-lifecycle.model](FS-lifecycle.md#model-executable-controller-and-effect-contracts), [§FS-lifecycle.filter](FS-lifecycle.md#filter-general-action-of-the-preserved-m1-program), [§FS-lifecycle.resources](FS-lifecycle.md#resources-identity-ownership-and-bootstrap),
+[§FS-lifecycle.supervision](FS-lifecycle.md#supervision-stable-ownership-and-typed-results) and [§FS-lifecycle.cancellation](FS-lifecycle.md#cancellation-requests-races-and-teardown). For every reachable
+finite modeled lifecycle, entry requires the exact eight-operation plan and all
+modeled bootstrap, namespace, handle, credential, decoder, NNP and filter receipts.
+Invalid bytes cannot enter. Every live descendant retains its scope, every UID/GID form set to 65534, empty supplementary groups, all five
+capability sets zero, NNP and filter. Setup failure has no successful setup continuation. Release may
+target only owned handles after namespace death. Cancellation requests retain the
+live scope and may race with exec; lost reports preserve history while changing
+knowledge to unknown. The successful segment refines the unchanged M1 event trace.
+
+For every pair of UInt32 architecture/syscall words, a separate bytecode machine
+running the canonical nine instructions returns kill for another architecture or
+an unsigned syscall word at least 0x40000000, EPERM for lower native getppid, and
+allow for other lower native words. Executing unsupported instructions/loads/targets or
+exhausting fuel cannot produce an allow result. The decoded-tag corollary links the
+original decoder to this semantics; it does not prove Linux's interpreter/JIT.
+
+Full types and exact per-theorem transitive axioms for **31 named authored claims**
+and **274 total M2 theorem declarations** are reviewed in `assurance/m2-claims.json`.
+The names below are in `LeanCageM2`, except the explicitly named bytecode namespace.
+
+| Declarations | Reviewed proposition |
+|---|---|
+| `initial_safe`, `establish_safe`, `step_safe`, `reachable_safe` | Empty initial state; receipt effects preserve safety; every reachable state has the conditional launch and descendant invariant |
+| `descendant_secure`, `failed_no_setup`, `release_owned_only` | Inheritance including full normalized credentials for every live member; no successful setup after failure; cleanup releases only a member of the owned handle set |
+| `request_preserves_members`, `death_empties_scope`, `lost_report_unknown` | Request differs from observed completion; namespace death empties scope; reporting loss does not erase actual historical entry |
+| `success_was_requested`, `preparePlan_iff` | Responses correspond to the pending controller operation; Main's actual preparation succeeds exactly for M1 ValidInput and the fixed plan |
+| `initial_ordered`, `establish_ordered`, `step_ordered`, `reachable_ordered`, `entry_requires_plan` | Exact prefixes and complete required order for every reachable entered state |
+| `step_decoded`, `reachable_decoded`, `invalid_input_never_enters` | Decoder receipts are tied to actual decoding for arbitrary ABI/snapshot; invalid input never enters |
+| `plan_refines_m1`, `projected_m1_replay`, `reachable_m1_refinement`, `replay_extends_reaches` | All reachable entered lifecycles compose with M1; executable finite replay preserves inductive reachability |
+| `success_witness`, `cancellation_exec_race`, `request_can_precede_exec`, `descendant_teardown_witness` | Concrete accepted input and useful success/fork/re-exec/escape/cancel/death executions; no universal syscall-success premise |
+| `Bytecode.canonical_action`, `Bytecode.decoded_action`, `Bytecode.zero_fuel` | General unsigned action, decoder-tag linkage and fail-closed fuel boundary |
+
+**Proof premises and foundations:** reachability is generated from the empty initial
+state by the executable transition function, including errors, interruption,
+contract violations, reporting loss and hostile fork/exec/exit/escape/signal events.
+Backend success/death observations are truthful OS-effect contracts when this
+model is applied to Linux; no new Lean axiom asserts them. The per-claim axiom union
+is only `propext`, `Classical.choice`, `Quot.sound`. The gate rejects custom,
+unfinished and compiler-trust axioms. These are partial-correctness results;
+scheduling, SIGKILL delivery and terminating kernel operations remain additional
+liveness premises. Outside victim state, workspace/network/IPC authority and
+hardware observations are not proved by this model.
+
+**Implementation and test evidence:** a separate dependent Lake package under
+`m2/` preserves root dependencies. Main validates actual bounded input before
+emitting a fixed plan to a fresh static helper. The native source/effect and M1
+premise maps, selected ABI, concrete syscall/ownership/error interfaces and eight
+open M4 obligations are recorded in the lifecycle architecture and handoff review.
+`assurance/m2-vm-evidence.json` records **43 passing cases** plus capable-kernel
+positive controls, a fresh pinned Linux source/configuration build, all guest
+image entries, actual binaries/runtime/compiler/kernel/QEMU/firmware identities,
+exact VM command/environment and raw `assurance/m2-vm-transcript.log` identity.
+Guest exit 125, repeated exec, double-fork/setsid, failed reporting, interrupted
+setup, actual cancellation/death, inherited aliases and preservation of an
+unrelated sentinel are checked explicitly. Injected error/death/report/rename
+fixtures are labeled; neither their counts nor theorem counts measure security.
+
+**Identities and validation:** the M2 manifest binds source, contracts, dependency
+locks, audit/tests and VM evidence by SHA-256. `python3 scripts/audit_m2.py` builds,
+checks every theorem/module and preserves all **445 original M1 theorem types and
+axiom sets** against the byte-for-byte copied original manifest
+`assurance/m1-reviewed-baseline.json`. It writes checked `.olean` identities to
+`.tools/assurance/m2-report.json`. The original 43 M1 named claims, 18-claim decoder
+baseline, M1 native driver, kernel profile and raw VM evidence remain unchanged.
+These are local source/artifact records, not a published release.
+
+Run `./scripts/check.sh` for the full handoff gate, including 33 additional Lean
+guards and M2 audit/evidence rejection tests. `python3 scripts/run_m2_vm.py --prepare`
+builds and replays the separate VM; `--check-evidence` checks historical structure
+and source identities; `--check-artifacts` additionally compares recorded current
+artifacts. The normal gate compiles native code without running guest workloads
+on the development host. The handoff verdict is in `docs/reviews/M2-handoff.md`.
+
+**Residual trust and absence of stronger claims:** A-logic, A-model, A-entry,
+A-linux, A-executable, A-platform, A-hardware, A-observer and liveness aspects of
+A-resources remain applicable. Sealed objects and normalized inheritance replace
+specific M1 entry premises, while root administration and trusted images remain
+explicit. Native C/Lean/libc/process/loader/ABI refinement, Linux enforcement and
+hardware fidelity remain open M4/M5 obligations. The public fixture root and broad
+filter are not an M3 workspace policy, functional confidentiality proof or
+production sandbox. The destination [§FS-observations.hardware](FS-observations.md#hardware-software-observable-channels) remains unchanged.
 
 ## assumptions: Initial assumption and obligation register
 

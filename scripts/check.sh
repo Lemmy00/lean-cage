@@ -16,3 +16,10 @@ python3 -m unittest discover -s tests/integration -p 'test_*.py' -v
 lake env lean tests/integration/FilterContract.lean
 lake env lean tests/integration/FilterDecoder.lean
 lake env lean tests/integration/Launch.lean
+# §AR-lifecycle.audit: Compile the VM-only helper without running workloads on the host.
+mkdir -p .tools/assurance
+cc -std=c11 -O2 -Wall -Wextra -Werror -static -no-pie native/leancage_m2.c \
+  -o .tools/assurance/leancage-m2-helper
+python3 scripts/audit_m2.py
+python3 -m unittest discover -s m2/tests/integration -p 'test_*.py' -v
+(cd m2 && lake env lean tests/integration/Lifecycle.lean)

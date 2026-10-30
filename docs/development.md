@@ -1,9 +1,10 @@
 # Development
 
 Start with the [roadmap](roadmap.md), [agent rules](../AGENTS.md), and the contract
-for the assigned task. The current boundary is [§AR-m1-launch](architecture/AR-m1-launch.md#ar-m1-launch-launch-model-linux-driver-and-isolated-demonstration) (M1), using
+for the assigned task. The preserved M1 boundary is [§AR-m1-launch](architecture/AR-m1-launch.md#ar-m1-launch-launch-model-linux-driver-and-isolated-demonstration) (M1), using
 the source/launch contract in [§AR-filter-slice.contracts](architecture/AR-filter-slice.md#contracts-lean-declarations-and-downstream-ownership).
-The next milestone is M2; [§RM-roadmap.next](roadmap.md#next-m1-work-packages-and-next-scope) requires selecting a bounded work package.
+M2 is complete for the stated lifecycle profile under [§AR-lifecycle](architecture/AR-lifecycle.md#ar-lifecycle-m2-controller-native-helper-and-evidence).
+The next package is M3.1 under [§RM-roadmap.m3.packages](roadmap.md#m3packages-build-the-profile-in-reviewable-slices).
 The workflow is specified in [§AR-tooling](architecture/AR-tooling.md#ar-tooling-keep-development-reproducible-and-project-local).
 
 ## Setup and checks
@@ -147,3 +148,58 @@ the native/Linux/hardware assumptions.
 Use [§REQ-proof-integrity](requirements/REQ-proof-integrity.md#req-proof-integrity-never-substitute-a-weaker-claim-for-an-unfinished-proof) and [§FS-assurance.evidence](functional-spec/FS-assurance.md#evidence-required-claim-record) for the proof review. A future
 agent handoff includes task scope, touched contracts/files, checks, proof statements,
 assumptions, and remaining obligations. Claim only evidence actually obtained.
+
+## M2 proof package and capable VM
+
+[§AR-lifecycle](architecture/AR-lifecycle.md#ar-lifecycle-m2-controller-native-helper-and-evidence) defines the fresh-helper execution design and the complete M1
+premise/source/effect maps. The dependent `m2/` Lake package uses the unchanged
+root pins; its own manifest/toolchain files are committed. Main's actual decoder
+emits only the fixed plan, then invokes the static helper in the designated VM.
+There is no shared-host root helper installation or setuid deployment.
+
+```sh
+(cd m2 && lake build LeanCageM2 leancage-m2)
+(cd m2 && lake env lean tests/integration/Lifecycle.lean)
+python3 scripts/audit_m2.py
+python3 -m unittest discover -s m2/tests/integration -p 'test_*.py' -v
+```
+
+The full top-level `./scripts/check.sh` includes these checks and a compile-only
+static helper check. It requires the native static libc development files as well
+as the C compiler and Linux headers. It does not launch guest workloads on the
+host. The M2 proof auditor checks complete types/transitive axioms, every M2
+module including Main, all 445 original M1 theorem statements/axioms, exact source
+and test/evidence fingerprints, and `.olean` identities. The original full M1
+manifest is retained in `assurance/m1-reviewed-baseline.json`; the current M1
+manifest has only reviewed shared-source fingerprint updates.
+
+```sh
+python3 scripts/run_m2_vm.py --prepare
+python3 scripts/run_m2_vm.py --check-evidence
+python3 scripts/run_m2_vm.py --check-artifacts
+```
+
+M2 preparation extracts checksum-pinned tools locally and builds a fresh kernel
+from the original pinned Linux archive using `tests/m2/linux-6.18.59.config` in
+`.tools/m2vm`, with two low-priority jobs. It leaves `.tools/m1vm` and the M1 source,
+configuration and raw evidence alone. The M2 initramfs enables positive controls
+for namespace, Unix/IPv4, SysV IPC and cgroup CPU/memory/pids features. Guest
+workloads use UID/GID 65534; the controller/helper/init are trusted root inside
+the VM. All kernel and native results remain conditional on the explicit Linux,
+compiler/runtime, administrative and hardware assumptions in [§FS-assurance.lifecycle](functional-spec/FS-assurance.md#lifecycle-m2-lifecycle-and-filter-semantics-claim-record).
+
+Replay without `--prepare` rebuilds the guest image using the existing recorded
+kernel. `--check-evidence` checks archived source/schema/transcript identities;
+`--check-artifacts` additionally compares the available recorded native binaries,
+kernel/configuration, image, emulator and runtime identities. A new compile is not
+certified by an old transcript. After a deliberate source change, rerun the VM,
+review the actual full theorem types/axioms and artifact record, then update
+`assurance/m2-claims.json` explicitly; no ordinary check regenerates expectations.
+See [the handoff review](reviews/M2-handoff.md) for per-package acceptance and M4
+obligations. M3 must supply actual workspace/runtime/network/IPC/resource policy.
+
+Archived validation works from another checkout without the original `.tools/`
+cache: recorded absolute paths describe the recording host and are checked for
+one consistent layout. Current-artifact checking maps project-local paths to this
+checkout and still requires recorded external compiler/runtime files. Both Lake
+toolchain files are hashed, and the M2 pin must equal the preserved root pin.

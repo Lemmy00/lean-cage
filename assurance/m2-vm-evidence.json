@@ -1,0 +1,994 @@
+{
+  "artifacts_sha256": {
+    "/lib/x86_64-linux-gnu/libaio.so.1t64": "9dbba7441fe096f6654bfd31bfdbba52f41a209bd4a560468293c226ff63c998",
+    "/lib/x86_64-linux-gnu/libblkid.so.1": "9c3860ffab5422410ff9e073d3e82267f00bc68ff1248cbb191640ee2ff045bc",
+    "/lib/x86_64-linux-gnu/libbpf.so.1": "0e9998e17e38d78e5ce953f89a5e6a7c8b457d3e1bfe71e3ec5a1cfb05bbd1c3",
+    "/lib/x86_64-linux-gnu/libc.so.6": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf",
+    "/lib/x86_64-linux-gnu/libcap.so.2": "6ac6abc86ac891c6e13486470e26f1d939f47fda9e6b5d5508a7f5ec881adc84",
+    "/lib/x86_64-linux-gnu/libcrypto.so.3": "6866ed711dab8927e1bf82bf1cd30e828bdfc34f3cc1e83b1c9eb01ce6c37d9a",
+    "/lib/x86_64-linux-gnu/libffi.so.8": "00f593fe192f2851b8ce23b25cec2488d769beb5a8f63e8c9e563071e1075153",
+    "/lib/x86_64-linux-gnu/libfuse3.so.3": "f1e75247f42d414df611ee554c8399bfe74565f89eed7c4501e2d97c48f21eab",
+    "/lib/x86_64-linux-gnu/libgio-2.0.so.0": "d72a56593ae024d868cb7b494f7e48c76e90e4ced9498ab4da2eb3bece85bda3",
+    "/lib/x86_64-linux-gnu/libglib-2.0.so.0": "96ef9163aee942bdc09e6f4a1acd2fd6b178c03af824c569741440d63ac9f4f4",
+    "/lib/x86_64-linux-gnu/libgmodule-2.0.so.0": "556b3e8f3c18dbb0255971b1792a076dbd07338482927fe7f9f6c597b1801833",
+    "/lib/x86_64-linux-gnu/libgmp.so.10": "0ccdfb6d6f5c039465f6d002cf7e4c072d48ac6a2cffc8dd6c748dec31592804",
+    "/lib/x86_64-linux-gnu/libgnutls.so.30": "ddbae2995750875c07bc218d12a062d73f8250678f54dedda7e9be5068781c98",
+    "/lib/x86_64-linux-gnu/libgobject-2.0.so.0": "7a8981c2df678797438cc92f246402b81d185604623d12ab71c1ff1c2840e9fc",
+    "/lib/x86_64-linux-gnu/libhogweed.so.6": "c3c606139d4f7776efa4dbd4a6b62e30c916b07a0cafd8c3ef173d6f093607e3",
+    "/lib/x86_64-linux-gnu/libidn2.so.0": "6e632fd9a3125db60bbc623719bbc17b0470330321c5b1c57f1ff7190e5551ad",
+    "/lib/x86_64-linux-gnu/libjpeg.so.8": "ac09f2cd6f8a3b8e3cb123999ce275f9bcbe31c6cf9e20212c8f297772591d15",
+    "/lib/x86_64-linux-gnu/libkmod.so.2": "6108903e15200313fd0bb71bb7e17d8fb8d01a01fa7f3dd1649d4f0c6187c8d3",
+    "/lib/x86_64-linux-gnu/liblzma.so.5": "26b37d25f7ca2a2d348de8ecabacda12e921cd933b21fa069a179760db77219d",
+    "/lib/x86_64-linux-gnu/libm.so.6": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0",
+    "/lib/x86_64-linux-gnu/libmount.so.1": "7472255ae5799059b37ddd544788f5665dbd3e1cb78259f52180293039efc2a5",
+    "/lib/x86_64-linux-gnu/libnettle.so.8": "a245ed916229583d6fe0b07657b3ed945bc148c28cc08b5266295f620d2b91cc",
+    "/lib/x86_64-linux-gnu/libnl-3.so.200": "afcb69e2ef0b46c2ce7b7483848332fa9462776d33163f64209acf01f86eddd7",
+    "/lib/x86_64-linux-gnu/libnl-route-3.so.200": "088b0021d638306f5541e7baab06a0182b07db0a280e19b3b40c746f729b3773",
+    "/lib/x86_64-linux-gnu/libnuma.so.1": "02d7582c5d391e460e56aa67a414360e3183b968206645b9123f9dc7bff5d009",
+    "/lib/x86_64-linux-gnu/libp11-kit.so.0": "a59efd4792d3343dedea1d26a28f5597abfe3369082deb504c4802a31b014897",
+    "/lib/x86_64-linux-gnu/libpcre2-8.so.0": "e00576d71d81d3ba0cfa4903c835a44a8723aac96f72f79ff75200b4cff9071b",
+    "/lib/x86_64-linux-gnu/libpixman-1.so.0": "73aa0daeedb7228754d798b194e2ff69c8b82a689b9aa4f1d8ab32a8763b0cc5",
+    "/lib/x86_64-linux-gnu/libpng16.so.16": "89c0c6569a8c00480d451401ad4c0a74942e62dc57f229a970592fdc5adb29e8",
+    "/lib/x86_64-linux-gnu/libsasl2.so.2": "a0f410ad093236856eee59c4ff2838dc04d932ea0993400f23ed77d67d85af34",
+    "/lib/x86_64-linux-gnu/libseccomp.so.2": "b4d9140a7797ccf3ac14f5d9d579b64f157111662940cb8330c632b11a8cea8e",
+    "/lib/x86_64-linux-gnu/libselinux.so.1": "0ec0843463f90e227b0e138e1f379774f50b5514bd7f5dbd4c8a87aca0aa6670",
+    "/lib/x86_64-linux-gnu/libslirp.so.0": "1f71a24af59f3aa76c1e0bcf7852de08c1c21c40524479b9d5df404d903b2280",
+    "/lib/x86_64-linux-gnu/libtasn1.so.6": "59994414d0cdec4f678ef91eaaafc44b26b00bca507e4cc7978caaf79f584173",
+    "/lib/x86_64-linux-gnu/libudev.so.1": "0d6934adafb2ef3c640382440c14d6bd60f391e688c000796ffcea0c72849269",
+    "/lib/x86_64-linux-gnu/libunistring.so.5": "7bcf825cd449892db5105ad2aed91dcf94a27b796426600c765720c584c54dd1",
+    "/lib/x86_64-linux-gnu/libuuid.so.1": "78d7f4d6f27b7dffc1c84dfe2f83e84aefa6f6ceeffc6ac4bc41f9fbc61cb84e",
+    "/lib/x86_64-linux-gnu/libz.so.1": "f61677c7bdb7c2aa2a243ea781bfd16afcb361cede7b4ef76127a9d8eb9a5242",
+    "/lib/x86_64-linux-gnu/libzstd.so.1": "0a2128bc10841fb29e76d08d945864dfb0b6a66da5df6df5d8299197439e54bb",
+    "/lib64/ld-linux-x86-64.so.2": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da",
+    "/localhome/milikic/.elan/toolchains/leanprover--lean4---v4.35.0/bin/clang": "df2e7d9b9e23822587cf04ac28f206a1ddaac5053312a4c875acf5608701b9d2",
+    "/localhome/milikic/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+    "/localhome/milikic/.elan/toolchains/leanprover--lean4---v4.35.0/lib/lean/libleanrt.a": "5f33785947b6e0338457f5cc7cd72c0da0082192a1265c013b3ab217b5c98c2e",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/guest": "a06a4bd35549fa216383217b7402bd9a55004f82d4f7d4de57100f871572991d",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/init": "c2f2f98991479e68e4e05b1b3e6053cd1c653ad34b2736bb3590691d7c7c7042",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/initramfs.cpio.gz": "35097378ea9098740d55320664f247e57e165f87ea2b8ec4163602258f5303f3",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/leancage-m2-helper": "d6e06d848bc8004d8fbd178325491823af40a99a71c56ff683d772d3f028b4d1",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/linux-6.18.59/.config": "6bd2519702fdeb2378b4638bf1bd347baf3a3b1ba2799b6e714843f0cde42242",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/linux-6.18.59/arch/x86/boot/bzImage": "ad7e3c7c93e1093dc164609f6b7663ec0df32540757bd9892a0cb29319d8ad86",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/root/usr/bin/qemu-system-x86_64": "8a35ccba41582fc6c38b9df85fc9e35fa1d42f414d2d7d8090ee9b2f5e7c0854",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/root/usr/lib/x86_64-linux-gnu/libdaxctl.so.1": "9b81e8d837bc49013099d5dc8b5263772d645dfcb205d9566e91e7d414839b59",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/root/usr/lib/x86_64-linux-gnu/libelf.so.1": "248c989360783cdc52f3659921de852c2efcc2097253ce58e34443f856412814",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/root/usr/lib/x86_64-linux-gnu/libfdt.so.1": "66c111808e61c7f6be6715b4b03d0fe75beb5bc5b3a8809608d58d99a6bc9828",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/root/usr/lib/x86_64-linux-gnu/libibverbs.so.1": "249242c3ba29d72b7a9be560b768bf43fc5924c8a166f4e3bbb224bd81ade3ab",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/root/usr/lib/x86_64-linux-gnu/libndctl.so.6": "97859d906e55e67786f6c3d2f568553f8638d9c717880cf1295cc53e6b0d433c",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/root/usr/lib/x86_64-linux-gnu/libpmem.so.1": "52f14a3f2a80464be81a56ac7098ba1a457309cd353e05a319ce55a915def9c0",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/root/usr/lib/x86_64-linux-gnu/librdmacm.so.1": "18609553ba84c9206739d0a6d62ae5371d4713058ed4b68c665e627d967df648",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/root/usr/lib/x86_64-linux-gnu/liburing.so.2": "51594b92ac35f96595d3fcec9c3ec5d190637d9b426d5f8a8f4207875d2962f6",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/root/usr/lib/x86_64-linux-gnu/qemu/accel-tcg-x86_64.so": "bbaaf2a24df5546d87a4973e4c02e93eea4347b015db029ef6749e1a00fcf013",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/root/usr/share/qemu/kvmvapic.bin": "8bbe341af0ab06c3008d65b29fb961f21f63a1419297dd4db80632261046cd98",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/root/usr/share/qemu/linuxboot_dma.bin": "d2f20622ebfea0a0222005452fd6a7747e1634395ed682272b38e17ad2334512",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/root/usr/share/seabios/bios-256k.bin": "1a9ea4f17bcfb27bda5728e2c21d9fa074cf7947b9b4910bb28213a735c96735",
+    "/localhome/milikic/sandbox-formalization/m2/.lake/build/bin/leancage-m2": "ea8fbb3c546c5969062f14a9697c45547dbd457b1d5f757bed4adcb97fbc8185",
+    "/usr/bin/x86_64-linux-gnu-gcc-13": "1b99826121ae6682a634e5efe09bd3e3df58ce58e0b28f849114ab5b89139c26"
+  },
+  "assumptions": [
+    "Trusted root controller/helper/namespace init and public fixture root tree",
+    "C/Lean compiler, libc, runtime and process/ELF correspondence",
+    "Linux namespace, ptrace, credential, pidfd, signal, seal and seccomp contracts",
+    "Fair scheduling and terminating kernel calls for liveness",
+    "QEMU/firmware/hardware fidelity; no hardware confidentiality claim"
+  ],
+  "cases": [
+    {
+      "exit_code": 0,
+      "guest_markers": 1,
+      "name": "allowed",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 0,
+        "entry": 1,
+        "kind": 0,
+        "phase": 0
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 0,
+      "guest_markers": 1,
+      "name": "inherited_aliases",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 0,
+        "entry": 1,
+        "kind": 0,
+        "phase": 0
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 125,
+      "guest_markers": 1,
+      "name": "exit125",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 125,
+        "entry": 1,
+        "kind": 0,
+        "phase": 0
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 0,
+      "guest_markers": 2,
+      "name": "fork_exec",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 0,
+        "entry": 1,
+        "kind": 0,
+        "phase": 0
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 0,
+      "guest_markers": 2,
+      "name": "leader_reexec",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 0,
+        "entry": 1,
+        "kind": 0,
+        "phase": 0
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 0,
+      "guest_markers": 1,
+      "name": "daemon_escape",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 0,
+        "entry": 1,
+        "kind": 0,
+        "phase": 0
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 143,
+      "guest_markers": 1,
+      "name": "guest_signal",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 15,
+        "entry": 1,
+        "kind": 2,
+        "phase": 0
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 159,
+      "guest_markers": 1,
+      "name": "x32_rejected",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 31,
+        "entry": 1,
+        "kind": 2,
+        "phase": 0
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 159,
+      "guest_markers": 1,
+      "name": "i386_rejected",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 31,
+        "entry": 1,
+        "kind": 2,
+        "phase": 0
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 64,
+      "guest_markers": 0,
+      "name": "empty",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": null,
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 64,
+      "guest_markers": 0,
+      "name": "permissive",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": null,
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 125,
+      "guest_markers": 0,
+      "name": "missing_profile",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 0,
+        "detail": 95,
+        "entry": 0,
+        "kind": 1,
+        "phase": 1
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 125,
+      "guest_markers": 0,
+      "name": "unprivileged_caller",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 0,
+        "detail": 1,
+        "entry": 0,
+        "kind": 1,
+        "phase": 1
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 125,
+      "guest_markers": 0,
+      "name": "bad_elf",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 0,
+        "detail": 8,
+        "entry": 0,
+        "kind": 1,
+        "phase": 1
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 125,
+      "guest_markers": 0,
+      "name": "symlink",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 0,
+        "detail": 40,
+        "entry": 0,
+        "kind": 1,
+        "phase": 1
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 125,
+      "guest_markers": 0,
+      "name": "noexec",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 0,
+        "detail": 13,
+        "entry": 0,
+        "kind": 1,
+        "phase": 1
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 125,
+      "guest_markers": 0,
+      "name": "existing_filter",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 0,
+        "detail": 95,
+        "entry": 0,
+        "kind": 1,
+        "phase": 1
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 125,
+      "guest_markers": 0,
+      "name": "masked_filter",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 0,
+        "detail": 95,
+        "entry": 0,
+        "kind": 1,
+        "phase": 1
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 125,
+      "guest_markers": 0,
+      "name": "changed_plan",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 0,
+        "detail": 22,
+        "entry": 0,
+        "kind": 1,
+        "phase": 1
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 125,
+      "guest_markers": 0,
+      "name": "external_tracer",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 0,
+        "detail": 95,
+        "entry": 0,
+        "kind": 1,
+        "phase": 1
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 125,
+      "guest_markers": 0,
+      "name": "namespace_failure",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 0,
+        "detail": 22,
+        "entry": 0,
+        "kind": 1,
+        "phase": 2
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 125,
+      "guest_markers": 0,
+      "name": "mount_failure",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 19,
+        "entry": 0,
+        "kind": 1,
+        "phase": 2
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 125,
+      "guest_markers": 0,
+      "name": "handles_failure",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 9,
+        "entry": 0,
+        "kind": 1,
+        "phase": 3
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 125,
+      "guest_markers": 0,
+      "name": "credentials_failure",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 22,
+        "entry": 0,
+        "kind": 1,
+        "phase": 4
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 125,
+      "guest_markers": 0,
+      "name": "nnp_failure",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 22,
+        "entry": 0,
+        "kind": 1,
+        "phase": 6
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 125,
+      "guest_markers": 0,
+      "name": "filter_failure",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 22,
+        "entry": 0,
+        "kind": 1,
+        "phase": 7
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 125,
+      "guest_markers": 0,
+      "name": "exec_failure",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 9,
+        "entry": 0,
+        "kind": 1,
+        "phase": 8
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 125,
+      "guest_markers": 0,
+      "name": "short_io",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 22,
+        "entry": 0,
+        "kind": 1,
+        "phase": 6
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 126,
+      "guest_markers": 0,
+      "name": "error_drop",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 71,
+        "entry": 2,
+        "kind": 4,
+        "phase": 9
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 126,
+      "guest_markers": 0,
+      "name": "error_short",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 71,
+        "entry": 2,
+        "kind": 4,
+        "phase": 9
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 126,
+      "guest_markers": 1,
+      "name": "final_drop",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 71,
+        "entry": 1,
+        "kind": 4,
+        "phase": 9
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 126,
+      "guest_markers": 1,
+      "name": "final_short",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 71,
+        "entry": 1,
+        "kind": 4,
+        "phase": 9
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 126,
+      "guest_markers": 0,
+      "name": "signal_setup",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 71,
+        "entry": 2,
+        "kind": 4,
+        "phase": 9
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 124,
+      "guest_markers": 0,
+      "name": "cancel_before",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 0,
+        "entry": 2,
+        "kind": 3,
+        "phase": 0
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 124,
+      "guest_markers": 0,
+      "name": "cancel_exec_race",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 0,
+        "entry": 1,
+        "kind": 3,
+        "phase": 0
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 124,
+      "guest_markers": 1,
+      "name": "deadline",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 0,
+        "entry": 1,
+        "kind": 3,
+        "phase": 0
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 124,
+      "guest_markers": 1,
+      "name": "stopped_guest",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 0,
+        "entry": 1,
+        "kind": 3,
+        "phase": 0
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 137,
+      "guest_markers": 0,
+      "name": "early_controller_death",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 0,
+        "detail": 10,
+        "entry": 0,
+        "kind": 1,
+        "phase": 1
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 137,
+      "guest_markers": 0,
+      "name": "early_helper_death",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": null,
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 137,
+      "guest_markers": 0,
+      "name": "helper_death",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": null,
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 137,
+      "guest_markers": 0,
+      "name": "controller_death",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": null,
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 126,
+      "guest_markers": 0,
+      "name": "init_death",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 71,
+        "entry": 1,
+        "kind": 4,
+        "phase": 9
+      },
+      "unrelated_sentinel_alive": true
+    },
+    {
+      "exit_code": 0,
+      "guest_markers": 1,
+      "name": "snapshot_rename",
+      "owned_scope_gone": true,
+      "passed": true,
+      "result": {
+        "clean": 1,
+        "detail": 0,
+        "entry": 1,
+        "kind": 0,
+        "phase": 0
+      },
+      "unrelated_sentinel_alive": true
+    }
+  ],
+  "command": [
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/root/usr/bin/qemu-system-x86_64",
+    "-L",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/root/usr/share/qemu",
+    "-no-user-config",
+    "-nodefaults",
+    "-machine",
+    "pc,accel=tcg",
+    "-cpu",
+    "max",
+    "-smp",
+    "1",
+    "-m",
+    "2048M",
+    "-bios",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/root/usr/share/seabios/bios-256k.bin",
+    "-display",
+    "none",
+    "-serial",
+    "stdio",
+    "-monitor",
+    "none",
+    "-nic",
+    "none",
+    "-no-reboot",
+    "-device",
+    "isa-debug-exit,iobase=0xf4,iosize=0x04",
+    "-kernel",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/linux-6.18.59/arch/x86/boot/bzImage",
+    "-initrd",
+    "/localhome/milikic/sandbox-formalization/.tools/m2vm/initramfs.cpio.gz",
+    "-append",
+    "console=ttyS0,115200 rdinit=/init panic=1 oops=panic loglevel=5"
+  ],
+  "environment": {
+    "LD_LIBRARY_PATH": "/localhome/milikic/sandbox-formalization/.tools/m2vm/root/usr/lib/x86_64-linux-gnu",
+    "QEMU_MODULE_DIR": "/localhome/milikic/sandbox-formalization/.tools/m2vm/root/usr/lib/x86_64-linux-gnu/qemu"
+  },
+  "guest_files": {
+    "/bad-elf": {
+      "major": 0,
+      "minor": 0,
+      "mode": 33133,
+      "sha256": "0c78a87a7feb7212ca0919456cb4633cb7caf6bf7959c8d291529799e2bbf0e6"
+    },
+    "/dev": {
+      "major": 0,
+      "minor": 0,
+      "mode": 16877,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/dev/console": {
+      "major": 5,
+      "minor": 1,
+      "mode": 8576,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/dev/null": {
+      "major": 1,
+      "minor": 3,
+      "mode": 8630,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/dev/urandom": {
+      "major": 1,
+      "minor": 9,
+      "mode": 8484,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/empty.bin": {
+      "major": 0,
+      "minor": 0,
+      "mode": 33060,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/filter.bin": {
+      "major": 0,
+      "minor": 0,
+      "mode": 33060,
+      "sha256": "9b8a06c2862fb62adff0597df223b0f19e082ae0e071ed97d4b13eff327677e5"
+    },
+    "/guest": {
+      "major": 0,
+      "minor": 0,
+      "mode": 33133,
+      "sha256": "a06a4bd35549fa216383217b7402bd9a55004f82d4f7d4de57100f871572991d"
+    },
+    "/guest-link": {
+      "major": 0,
+      "minor": 0,
+      "mode": 41471,
+      "sha256": "20997de3a890db4c76c2733d3b7370133f28615a9e6ae41b325e468cd1c39549"
+    },
+    "/guest-noexec": {
+      "major": 0,
+      "minor": 0,
+      "mode": 33060,
+      "sha256": "a06a4bd35549fa216383217b7402bd9a55004f82d4f7d4de57100f871572991d"
+    },
+    "/init": {
+      "major": 0,
+      "minor": 0,
+      "mode": 33133,
+      "sha256": "c2f2f98991479e68e4e05b1b3e6053cd1c653ad34b2736bb3590691d7c7c7042"
+    },
+    "/leancage-m2": {
+      "major": 0,
+      "minor": 0,
+      "mode": 33133,
+      "sha256": "ea8fbb3c546c5969062f14a9697c45547dbd457b1d5f757bed4adcb97fbc8185"
+    },
+    "/leancage-m2-disposable-vm": {
+      "major": 0,
+      "minor": 0,
+      "mode": 33060,
+      "sha256": "bb8aca1a57dabd875bcefd5c4b8abbaec537fcb8057c6ecae51558ea85fdc9a5"
+    },
+    "/leancage-m2-helper": {
+      "major": 0,
+      "minor": 0,
+      "mode": 33133,
+      "sha256": "d6e06d848bc8004d8fbd178325491823af40a99a71c56ff683d772d3f028b4d1"
+    },
+    "/lib": {
+      "major": 0,
+      "minor": 0,
+      "mode": 16877,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/lib/x86_64-linux-gnu": {
+      "major": 0,
+      "minor": 0,
+      "mode": 16877,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/lib/x86_64-linux-gnu/libc.so.6": {
+      "major": 0,
+      "minor": 0,
+      "mode": 33133,
+      "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf"
+    },
+    "/lib/x86_64-linux-gnu/libdl.so.2": {
+      "major": 0,
+      "minor": 0,
+      "mode": 33133,
+      "sha256": "c2994527172cc23b7fb0f7d611b71e00a37da27af12c2e5e9e0dc1a742886c96"
+    },
+    "/lib/x86_64-linux-gnu/libm.so.6": {
+      "major": 0,
+      "minor": 0,
+      "mode": 33133,
+      "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0"
+    },
+    "/lib/x86_64-linux-gnu/libpthread.so.0": {
+      "major": 0,
+      "minor": 0,
+      "mode": 33133,
+      "sha256": "90491a21ce44efcf3bd4b65ec82501c091d7ebe7f8d9b341dd01d721001d9ecd"
+    },
+    "/lib/x86_64-linux-gnu/librt.so.1": {
+      "major": 0,
+      "minor": 0,
+      "mode": 33133,
+      "sha256": "6d072187d88e092e81561a44c03a4a41397319022c6d43519757cc051c576d82"
+    },
+    "/lib64": {
+      "major": 0,
+      "minor": 0,
+      "mode": 16877,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/lib64/ld-linux-x86-64.so.2": {
+      "major": 0,
+      "minor": 0,
+      "mode": 33133,
+      "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da"
+    },
+    "/permissive.bin": {
+      "major": 0,
+      "minor": 0,
+      "mode": 33060,
+      "sha256": "5998a04222d3d1a3d61240b9c13bb6b4e91664f0d51746aca355b1d842bc366d"
+    },
+    "/proc": {
+      "major": 0,
+      "minor": 0,
+      "mode": 16877,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/replacement": {
+      "major": 0,
+      "minor": 0,
+      "mode": 33133,
+      "sha256": "15c6779ed45ed31ad0b4a2d5cbfa2f39751d28cff5da4d673c45c7b3fc27ca96"
+    },
+    "/sentinel-data": {
+      "major": 0,
+      "minor": 0,
+      "mode": 33060,
+      "sha256": "f159a985845a27721288de19cee008b0facfd33decd61f3117fae7cead6edcbe"
+    },
+    "/snapshot-guest": {
+      "major": 0,
+      "minor": 0,
+      "mode": 33133,
+      "sha256": "a06a4bd35549fa216383217b7402bd9a55004f82d4f7d4de57100f871572991d"
+    },
+    "/sys": {
+      "major": 0,
+      "minor": 0,
+      "mode": 16877,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/tmp": {
+      "major": 0,
+      "minor": 0,
+      "mode": 17407,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "kernel": {
+    "archive_sha256": "53a55ac9863a5547e292b8e381d4e4c2240dd1127d5428a7c44dbc550be23963",
+    "commit": "1253a6aa5d104312bf0992afacc15220ae35bdf9",
+    "config_sha256": "6bd2519702fdeb2378b4638bf1bd347baf3a3b1ba2799b6e714843f0cde42242",
+    "version": "6.18.59"
+  },
+  "machine": {
+    "acceleration": "tcg",
+    "cpu": "max",
+    "host_mounts": [],
+    "memory_mib": 2048,
+    "network_devices": [],
+    "persistent_disks": [],
+    "vcpus": 1
+  },
+  "profile": "leancage-m2-linux-6.18.59-root-v1",
+  "return_code": 33,
+  "schema_version": 1,
+  "source_sha256": {
+    "LeanCage.lean": "fba8dcfc1ec544b4f7de73037e4786949023ed568e5b1594dbda5955a98472c9",
+    "LeanCage/Launch/Contract.lean": "caf279c2b18e0044504c7fe6c834b1e8a104afa39592ac19732f981a29f60c23",
+    "LeanCage/Launch/Model.lean": "b94e10cb509869ca51d96a8a1b73cf1034770569d825881f8c315d523e71f408",
+    "LeanCage/Linux/FilterContract.lean": "8fc35b0c1c3574853842b645907aed21c3661660fabf5856bb0f89c73f60592d",
+    "LeanCage/Linux/FilterDecoder.lean": "182af477b8b19855242c478ae65ec3dc90fbd225a2b2620fcf20fd18d230bb0a",
+    "LeanCage/Linux/Launch.lean": "c935a0c7336a4b6ff8ddec59acb92bd5d9f0717086c1bc086e5e4ce38be1af0c",
+    "LeanCage/Proofs/FilterDecoder.lean": "13f019e1037e493b3f2c8a2a9b8c15c2701b7e5551738a496011becb964378a1",
+    "LeanCage/Proofs/Launch.lean": "8c1f9fce1478bad6b54bc300bc1c742799cbe587bdcf97173ce12582105537a5",
+    "LeanCage/Proofs/LaunchInput.lean": "d151376c8c726370a96ace7419e0ec34be325eb0d62f454c0c681384c7cb9de9",
+    "lake-manifest.json": "a1dc0359a14712b9c7a399c3b4dec9bec6e12d162712272265271f10282f3ae9",
+    "lakefile.lean": "2addd6d9060c1622dec4572d5bb2f31db6bfc6f882b0e6cf00df868980ab4cdd",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "m2/LeanCageM2.lean": "78feb2bfb8a12bbe0f8a99e4ad70482ab1bb2496f75365fabb06253cf107ec5b",
+    "m2/LeanCageM2/Filter.lean": "a9a3955657b84f93584401f30e6b51146370968da75e55f6b9a8cc3144ac06e3",
+    "m2/LeanCageM2/Model.lean": "090dcca202cf482a6cb30cb8a1588ad0fb1162597b764aff32e69e5f2cd0eb05",
+    "m2/LeanCageM2/Proofs.lean": "b58d7632f36826eb229544f3e84736585583dba2763adc0390a63b8c955313e4",
+    "m2/Main.lean": "c2b251518a1d9f409296159e5dbea634ef411671cc9c8c69db5c9e78ed39ffe3",
+    "m2/lake-manifest.json": "493cd46b8d397cf5edf7c510dddadbed9a1ec4747a3af372f34c49f6dcdc0597",
+    "m2/lakefile.lean": "9300a70f039cf8fc68f852df1184713f40f68044c8479024ebf78ba977e8c86a",
+    "m2/lean-toolchain": "ead308ab4fc749eb2389819903fd7baa11bf06e490827f6896a8cbfe622fa703",
+    "m2/tests/integration/Lifecycle.lean": "f20fb146c3e782557322cb1a642288b49d3660e69d362f30fa11184f79699e65",
+    "m2/tests/integration/test_audit.py": "7b797b437aa497c8eccb70ffb5535aa913eef54d1062a0faa8cea1d0a0f2d62c",
+    "m2/tests/integration/test_evidence.py": "b7f58e06254335caddffd376d239e418ef664cf43bbaf1105c0988e502613ce1",
+    "native/leancage_m1.c": "cc4cee5d3b92764ff3f8645051947cdcfcc8de63c57a950b94dc5e4e2716f77c",
+    "native/leancage_m2.c": "ec3c25a39a49ea6ee3a4c8aa288f0a9682e070fd3da7d756131db842d1f0654b",
+    "scripts/audit_m2.py": "a10d2a957bebe376f5f05575be26cb9e213b98e7ced2c63b2f41b0172cc08c46",
+    "scripts/m2_axiom_query.lean": "ea4d223c44cdb96a7a32d59fe5e17fc38bbf85cf86065fb2063745cd06b05f3a",
+    "scripts/run_m1_vm.py": "9d092518750dd197febeac21a95061ec8f03de877d5091e38a2011931006687b",
+    "scripts/run_m2_vm.py": "dbcb6854eab1157c7ff26aa11cb5fdc05dc44ffad45747f0f42bd11ec4adc40d",
+    "tests/m2/guest.c": "296c6ea28d54e7bb7bb8de2988b9ee4f517528584e641f84c640c1248edfd054",
+    "tests/m2/init.c": "3923125cda39e33e773753d9f6a14b21388d288df65ce74a95fe9eac48219a2c",
+    "tests/m2/linux-6.18.59.config": "6bd2519702fdeb2378b4638bf1bd347baf3a3b1ba2799b6e714843f0cde42242",
+    "tests/vm/bootstrap-pins.json": "87576f43b1fd6358852af9a1dd7bad4e0eb75966b47b7b271441e23529b1a1ac"
+  },
+  "status": "passed",
+  "timeout_seconds": 240,
+  "tools": {
+    "cc": "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "host_distribution": {
+      "BUG_REPORT_URL": "https://bugs.launchpad.net/ubuntu/",
+      "HOME_URL": "https://www.ubuntu.com/",
+      "ID": "ubuntu",
+      "ID_LIKE": "debian",
+      "LOGO": "ubuntu-logo",
+      "NAME": "Ubuntu",
+      "PRETTY_NAME": "Ubuntu 24.04.4 LTS",
+      "PRIVACY_POLICY_URL": "https://www.ubuntu.com/legal/terms-and-policies/privacy-policy",
+      "SUPPORT_URL": "https://help.ubuntu.com/",
+      "UBUNTU_CODENAME": "noble",
+      "VERSION": "24.04.4 LTS (Noble Numbat)",
+      "VERSION_CODENAME": "noble",
+      "VERSION_ID": "24.04"
+    },
+    "lean": "Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+    "libc": "glibc 2.39",
+    "qemu": "QEMU emulator version 8.2.2 (Debian 1:8.2.2+ds-0ubuntu1.18)\nCopyright (c) 2003-2023 Fabrice Bellard and the QEMU Project developers"
+  },
+  "transcript_sha256": "2b26e32214fd8f93ab75cfbe13daad500a9967dc6bbdd00b3ab8790dcebe06c3",
+  "virtual_cpu": [
+    "M2_CPU vendor_id\t: AuthenticAMD",
+    "M2_CPU model name\t: QEMU TCG CPU version 2.5+",
+    "M2_CPU microcode\t: 0x1000065"
+  ]
+}

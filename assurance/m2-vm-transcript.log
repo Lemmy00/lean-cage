@@ -1,0 +1,187 @@
+M2_PROFILE name=leancage-m2-linux-6.18.59-root-v1 kernel=6.18.59 uid=0
+M2_CPU vendor_id	: AuthenticAMD
+M2_CPU model name	: QEMU TCG CPU version 2.5+
+M2_CPU microcode	: 0x1000065
+M2_CONTROL namespaces=present unix=present inet=present sysvipc=present cgroup_cpu_memory_pids=present
+M2_CASE_BEGIN name=allowed
+M2_SCOPE init=29 helper=28
+M2_GUEST check=ok uid=65534 nnp=1 filter=2 handles=closed signals=reset
+M2_RESULT kind=0 phase=0 detail=0 entry=1 clean=1
+M2_CASE_END name=allowed exit=0 expected=0 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=inherited_aliases
+M2_SCOPE init=35 helper=34
+M2_GUEST check=ok uid=65534 nnp=1 filter=2 handles=closed signals=reset
+M2_RESULT kind=0 phase=0 detail=0 entry=1 clean=1
+M2_CASE_END name=inherited_aliases exit=0 expected=0 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=exit125
+M2_SCOPE init=41 helper=40
+M2_GUEST check=ok uid=65534 nnp=1 filter=2 handles=closed signals=reset
+M2_RESULT kind=0 phase=0 detail=125 entry=1 clean=1
+M2_CASE_END name=exit125 exit=125 expected=125 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=fork_exec
+M2_SCOPE init=47 helper=46
+M2_GUEST check=ok uid=65534 nnp=1 filter=2 handles=closed signals=reset
+M2_GUEST check=ok uid=65534 nnp=1 filter=2 handles=closed signals=reset
+M2_DESCENDANT fork_exec=ok
+M2_RESULT kind=0 phase=0 detail=0 entry=1 clean=1
+M2_CASE_END name=fork_exec exit=0 expected=0 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=leader_reexec
+M2_SCOPE init=54 helper=53
+M2_GUEST check=ok uid=65534 nnp=1 filter=2 handles=closed signals=reset
+M2_GUEST check=ok uid=65534 nnp=1 filter=2 handles=closed signals=reset
+M2_RESULT kind=0 phase=0 detail=0 entry=1 clean=1
+M2_CASE_END name=leader_reexec exit=0 expected=0 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=daemon_escape
+M2_SCOPE init=60 helper=59
+M2_GUEST check=ok uid=65534 nnp=1 filter=2 handles=closed signals=reset
+M2_DESCENDANT daemon=ready
+M2_RESULT kind=0 phase=0 detail=0 entry=1 clean=1
+M2_CASE_END name=daemon_escape exit=0 expected=0 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=guest_signal
+M2_SCOPE init=68 helper=67
+M2_GUEST check=ok uid=65534 nnp=1 filter=2 handles=closed signals=reset
+M2_RESULT kind=2 phase=0 detail=15 entry=1 clean=1
+M2_CASE_END name=guest_signal exit=143 expected=143 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=x32_rejected
+M2_SCOPE init=74 helper=73
+M2_GUEST check=ok uid=65534 nnp=1 filter=2 handles=closed signals=reset
+M2_RESULT kind=2 phase=0 detail=31 entry=1 clean=1
+M2_CASE_END name=x32_rejected exit=159 expected=159 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=i386_rejected
+M2_SCOPE init=80 helper=79
+M2_GUEST check=ok uid=65534 nnp=1 filter=2 handles=closed signals=reset
+M2_RESULT kind=2 phase=0 detail=31 entry=1 clean=1
+M2_CASE_END name=i386_rejected exit=159 expected=159 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=empty
+M2_VALIDATION error=LeanCage.Linux.Filter.DecodeError.emptyInput
+M2_CASE_END name=empty exit=64 expected=64 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=permissive
+M2_VALIDATION error=LeanCage.Linux.Filter.DecodeError.unsupportedInstruction 7
+M2_CASE_END name=permissive exit=64 expected=64 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=missing_profile
+M2_RESULT kind=1 phase=1 detail=95 entry=0 clean=0
+M2_CASE_END name=missing_profile exit=125 expected=125 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=unprivileged_caller
+M2_RESULT kind=1 phase=1 detail=1 entry=0 clean=0
+M2_CASE_END name=unprivileged_caller exit=125 expected=125 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=bad_elf
+M2_RESULT kind=1 phase=1 detail=8 entry=0 clean=0
+M2_CASE_END name=bad_elf exit=125 expected=125 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=symlink
+M2_RESULT kind=1 phase=1 detail=40 entry=0 clean=0
+M2_CASE_END name=symlink exit=125 expected=125 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=noexec
+M2_RESULT kind=1 phase=1 detail=13 entry=0 clean=0
+M2_CASE_END name=noexec exit=125 expected=125 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=existing_filter
+M2_RESULT kind=1 phase=1 detail=95 entry=0 clean=0
+M2_CASE_END name=existing_filter exit=125 expected=125 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=masked_filter
+M2_FILTER_CONTROL query_masked=1
+M2_RESULT kind=1 phase=1 detail=95 entry=0 clean=0
+M2_CASE_END name=masked_filter exit=125 expected=125 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=changed_plan
+M2_RESULT kind=1 phase=1 detail=22 entry=0 clean=0
+M2_CASE_END name=changed_plan exit=125 expected=125 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=external_tracer
+M2_RESULT kind=1 phase=1 detail=95 entry=0 clean=0
+M2_CASE_END name=external_tracer exit=125 expected=125 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=namespace_failure
+M2_RESULT kind=1 phase=2 detail=22 entry=0 clean=0
+M2_CASE_END name=namespace_failure exit=125 expected=125 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=mount_failure
+M2_SCOPE init=126 helper=125
+M2_RESULT kind=1 phase=2 detail=19 entry=0 clean=1
+M2_CASE_END name=mount_failure exit=125 expected=125 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=handles_failure
+M2_SCOPE init=131 helper=130
+M2_RESULT kind=1 phase=3 detail=9 entry=0 clean=1
+M2_CASE_END name=handles_failure exit=125 expected=125 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=credentials_failure
+M2_SCOPE init=137 helper=136
+M2_RESULT kind=1 phase=4 detail=22 entry=0 clean=1
+M2_CASE_END name=credentials_failure exit=125 expected=125 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=nnp_failure
+M2_SCOPE init=143 helper=142
+M2_RESULT kind=1 phase=6 detail=22 entry=0 clean=1
+M2_CASE_END name=nnp_failure exit=125 expected=125 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=filter_failure
+clocksource: timekeeping watchdog on CPU0: Marking clocksource 'tsc' as unstable because the skew is too large:
+clocksource:                       'refined-jiffies' wd_nsec: 512032000 wd_now: fffee1e8 wd_last: fffee168 mask: ffffffff
+clocksource:                       'tsc' cs_nsec: 616204430 cs_now: 60bb4bda4 cs_last: 58e2f676f mask: ffffffffffffffff
+clocksource:                       Clocksource 'tsc' skewed 104172430 ns (104 ms) over watchdog 'refined-jiffies' interval of 512032000 ns (512 ms)
+clocksource:                       'tsc' is current clocksource.
+TSC found unstable after boot, most likely due to broken BIOS. Use 'tsc=unstable'.
+clocksource: Not enough CPUs to check clocksource 'tsc'.
+M2_SCOPE init=150 helper=149
+M2_RESULT kind=1 phase=7 detail=22 entry=0 clean=1
+M2_CASE_END name=filter_failure exit=125 expected=125 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=exec_failure
+M2_SCOPE init=156 helper=155
+M2_RESULT kind=1 phase=8 detail=9 entry=0 clean=1
+M2_CASE_END name=exec_failure exit=125 expected=125 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=short_io
+M2_SCOPE init=162 helper=161
+M2_RESULT kind=1 phase=6 detail=22 entry=0 clean=1
+M2_CASE_END name=short_io exit=125 expected=125 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=error_drop
+M2_SCOPE init=168 helper=167
+M2_RESULT kind=4 phase=9 detail=71 entry=2 clean=1
+M2_CASE_END name=error_drop exit=126 expected=126 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=error_short
+M2_SCOPE init=174 helper=173
+M2_RESULT kind=4 phase=9 detail=71 entry=2 clean=1
+M2_CASE_END name=error_short exit=126 expected=126 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=final_drop
+M2_SCOPE init=180 helper=179
+M2_GUEST check=ok uid=65534 nnp=1 filter=2 handles=closed signals=reset
+M2_RESULT kind=4 phase=9 detail=71 entry=1 clean=1
+M2_CASE_END name=final_drop exit=126 expected=126 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=final_short
+M2_SCOPE init=186 helper=185
+M2_GUEST check=ok uid=65534 nnp=1 filter=2 handles=closed signals=reset
+M2_RESULT kind=4 phase=9 detail=71 entry=1 clean=1
+M2_CASE_END name=final_short exit=126 expected=126 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=signal_setup
+M2_SCOPE init=192 helper=191
+M2_RESULT kind=4 phase=9 detail=71 entry=2 clean=1
+M2_CASE_END name=signal_setup exit=126 expected=126 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=cancel_before
+M2_SCOPE init=198 helper=197
+M2_RESULT kind=3 phase=0 detail=0 entry=2 clean=1
+M2_CASE_END name=cancel_before exit=124 expected=124 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=cancel_exec_race
+M2_SCOPE init=204 helper=203
+M2_RESULT kind=3 phase=0 detail=0 entry=1 clean=1
+M2_CASE_END name=cancel_exec_race exit=124 expected=124 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=deadline
+M2_SCOPE init=210 helper=209
+M2_GUEST check=ok uid=65534 nnp=1 filter=2 handles=closed signals=reset
+M2_RESULT kind=3 phase=0 detail=0 entry=1 clean=1
+M2_CASE_END name=deadline exit=124 expected=124 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=stopped_guest
+M2_SCOPE init=216 helper=215
+M2_GUEST check=ok uid=65534 nnp=1 filter=2 handles=closed signals=reset
+M2_RESULT kind=3 phase=0 detail=0 entry=1 clean=1
+M2_CASE_END name=stopped_guest exit=124 expected=124 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=early_controller_death
+M2_RESULT kind=1 phase=1 detail=10 entry=0 clean=0
+M2_CASE_END name=early_controller_death exit=137 expected=137 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=early_helper_death
+M2_CASE_END name=early_helper_death exit=137 expected=137 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=helper_death
+M2_SCOPE init=231 helper=230
+M2_CASE_END name=helper_death exit=137 expected=137 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=controller_death
+M2_SCOPE init=237 helper=236
+M2_CASE_END name=controller_death exit=137 expected=137 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=init_death
+M2_SCOPE init=243 helper=242
+M2_RESULT kind=4 phase=9 detail=71 entry=1 clean=1
+M2_CASE_END name=init_death exit=126 expected=126 owned_gone=1 sentinel_alive=1
+M2_CASE_BEGIN name=snapshot_rename
+M2_SCOPE init=249 helper=248
+M2_GUEST check=ok uid=65534 nnp=1 filter=2 handles=closed signals=reset
+M2_RESULT kind=0 phase=0 detail=0 entry=1 clean=1
+M2_CASE_END name=snapshot_rename exit=0 expected=0 owned_gone=1 sentinel_alive=1
+M2_COMPLETE cases=43 failures=0
