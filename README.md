@@ -9,15 +9,18 @@ grow a verified Lean implementation, using Velvet where it helps with imperative
 proofs. The roadmap extends through Linux enforcement, executable correspondence,
 and software-observable hardware side channels.
 
-**Status: M1 filter/launch proof slice complete.** The selected x86-64 filter
-has kernel-checked decoder/bounds and launch-order proofs, an audited theorem
-manifest, and a Lean/native driver demonstrated in an isolated Linux VM. All 13
-VM cases pass, including allowed/denied syscalls and setup failures. This is an
-experimental filter-loading slice; full confinement and production security
-remain later milestones.
+**Status: M1 and M2 lifecycle proof slices complete for their stated profiles.**
+M2 adds a decoder-controlled Lean launcher, a fresh VM-only native helper, sealed
+executable handles, namespace/credential setup, descendant supervision and
+cancellation, plus general fixed-filter semantics. Its conditional model proofs
+and source-bound VM evidence are recorded in the [M2 review](docs/reviews/M2-handoff.md).
+Full workspace confinement, native/Linux correspondence and hardware-channel
+security remain later milestones.
+The next assignment is the [M3.1 authority and workload contract](docs/roadmap.md#m3entry-next-assignment-m31-authority-and-workload-contract).
 
 - [Plan and milestones](docs/roadmap.md)
-- [M1 review and M2/M3 readiness](docs/reviews/M1-readiness.md)
+- [Preserved M1 readiness review](docs/reviews/M1-readiness.md)
+- [M2 lifecycle and handoff](docs/reviews/M2-handoff.md)
 - [Functional specification](docs/functional-spec/README.md)
 - [Architecture](docs/architecture/README.md)
 - [First filter and launch boundary](docs/architecture/AR-filter-slice.md)
@@ -27,7 +30,8 @@ remain later milestones.
 - [Development guide](docs/development.md) and [agent rules](AGENTS.md)
 
 With [elan](https://github.com/leanprover/elan), Python 3, Bash, Git, curl, tar,
-GNU coreutils, and a C compiler/Linux headers available on Linux x86-64:
+GNU coreutils, and a C compiler/Linux headers/static libc development files
+available on Linux x86-64:
 
 ```sh
 ./scripts/check.sh
@@ -38,10 +42,12 @@ ignored `.tools/` directory and fetches the pinned Lean dependencies. No global
 Grund installation or agent settings are changed. The wrapper supports GNU/Linux
 on x86_64 and aarch64; the initial setup is validated on x86_64.
 
-The gate checks proofs, compiles the native driver, and validates the archived
-VM evidence against current source identities. For a fresh VM replay on the
+The gate checks both proof packages, compiles the native drivers, and validates
+archived VM evidence against current source identities. For a fresh VM replay on the
 recorded Ubuntu 24.04 host, use `python3 scripts/run_m1_vm.py --prepare`; local
-downloads/builds stay under `.tools/`. See the [development guide](docs/development.md).
+downloads/builds stay under `.tools/`. For M2 use `python3 scripts/run_m2_vm.py --prepare`; this builds its separate
+capable kernel and executes workloads only in the disposable VM. See the
+[development guide](docs/development.md).
 
 The development workflow follows [§AR-tooling](docs/architecture/AR-tooling.md#ar-tooling-keep-development-reproducible-and-project-local). Linux enforcement and native
 compiler/runtime/FFI correspondence remain assumptions. Passing Grund checks

@@ -22,3 +22,18 @@
   preserve raw serial bytes in Git and record the [readiness review](reviews/M1-readiness.md).
   Expand [§RM-roadmap.m2](roadmap.md#m2-verified-launcher-lifecycle) and [§RM-roadmap.m3](roadmap.md#m3-useful-offline-workspace-sandbox) into bounded packages, beginning with
   lifecycle contracts and a capable isolated profile; retain M4/M5 obligations.
+
+- Implement M2.1–M2.7 under [§FS-lifecycle](functional-spec/FS-lifecycle.md#fs-lifecycle-m2-owned-launcher-lifecycle) and [§AR-lifecycle](architecture/AR-lifecycle.md#ar-lifecycle-m2-controller-native-helper-and-evidence): a decoded fixed plan,
+  sealed static executable, fresh root helper, owned PID/mount/net/IPC/UTS setup,
+  full credential/capability reduction, trusted exec observation, pidfd
+  supervision, descendant teardown, cancellation races and explicit unknown
+  reports. Add general bytecode semantics, conditional lifecycle proofs, a
+  capable separate kernel and 43 VM cases; preserve all M1 proofs and original
+  evidence. The full handoff gate and artifact comparison pass. Native/Linux correspondence,
+  M3 authority and M5 hardware channels remain open.
+
+- Review M2 with a fresh 43-case replay; make archived evidence checks portable
+  across checkout paths, bind the dependent toolchain pin, and add four regression
+  tests under [§AR-lifecycle.audit](architecture/AR-lifecycle.md#audit-evidence-schema-and-replay-gates).
+  Define [§RM-roadmap.m3.entry](roadmap.md#m3entry-next-assignment-m31-authority-and-workload-contract) as the next bounded contract assignment, including
+  workspace authority, runtime closure, private reports and correspondence research.
