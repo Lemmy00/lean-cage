@@ -1,0 +1,55 @@
+VM_PROFILE kernel=6.18.59 machine=x86_64 pid1_uid=0
+VM_CPU vendor_id	: AuthenticAMD
+VM_CPU cpu family	: 6
+VM_CPU model name	: QEMU TCG CPU version 2.5+
+VM_CPU microcode	: 0x1000065
+CASE_BEGIN name=allowed_and_denied
+GUEST_RESULT getpid_positive=1 getppid_raw=-1 nnp=1 seccomp=2 uid=65534
+M1_RESULT kind=0 phase=0 detail=0 receipts=0
+CASE_END name=allowed_and_denied exit=0 expected=0
+CASE_BEGIN name=empty
+M1_RESULT kind=validation error=LeanCage.Linux.Filter.DecodeError.emptyInput
+CASE_END name=empty exit=64 expected=64
+CASE_BEGIN name=truncated
+M1_RESULT kind=validation error=LeanCage.Linux.Filter.DecodeError.misalignedInput 71
+CASE_END name=truncated exit=64 expected=64
+CASE_BEGIN name=permissive
+M1_RESULT kind=validation error=LeanCage.Linux.Filter.DecodeError.unsupportedInstruction 7
+CASE_END name=permissive exit=64 expected=64
+CASE_BEGIN name=oversized
+M1_RESULT kind=validation error=LeanCage.Linux.Filter.DecodeError.oversizedInput 32769
+CASE_END name=oversized exit=64 expected=64
+CASE_BEGIN name=byte_order
+M1_RESULT kind=validation error=LeanCage.Linux.Filter.DecodeError.unsupportedInstruction 0
+CASE_END name=byte_order exit=64 expected=64
+CASE_BEGIN name=bad_elf
+M1_RESULT kind=1 phase=1 detail=8 receipts=0
+CASE_END name=bad_elf exit=125 expected=125
+CASE_BEGIN name=nnp_failure
+M1_RESULT kind=1 phase=2 detail=22 receipts=1
+CASE_END name=nnp_failure exit=125 expected=125
+CASE_BEGIN name=install_failure
+clocksource: timekeeping watchdog on CPU0: Marking clocksource 'tsc' as unstable because the skew is too large:
+clocksource:                       'refined-jiffies' wd_nsec: 480030000 wd_now: fffedd80 wd_last: fffedd08 mask: ffffffff
+clocksource:                       'tsc' cs_nsec: 540010386 cs_now: 257d774a8 cs_last: 1e9d77a0a mask: ffffffffffffffff
+clocksource:                       Clocksource 'tsc' skewed 59980386 ns (59 ms) over watchdog 'refined-jiffies' interval of 480030000 ns (480 ms)
+clocksource:                       'tsc' is current clocksource.
+TSC found unstable after boot, most likely due to broken BIOS. Use 'tsc=unstable'.
+clocksource: Not enough CPUs to check clocksource 'tsc'.
+M1_RESULT kind=1 phase=3 detail=22 receipts=3
+CASE_END name=install_failure exit=125 expected=125
+CASE_BEGIN name=exec_failure
+M1_RESULT kind=1 phase=4 detail=13 receipts=15
+CASE_END name=exec_failure exit=125 expected=125
+CASE_BEGIN name=terminated_setup
+M1_RESULT kind=2 phase=0 detail=15 receipts=0
+CASE_END name=terminated_setup exit=143 expected=143
+CASE_BEGIN name=x32_rejected
+GUEST_RESULT getpid_positive=1 getppid_raw=-1 nnp=1 seccomp=2 uid=65534
+M1_RESULT kind=2 phase=0 detail=31 receipts=0
+CASE_END name=x32_rejected exit=159 expected=159
+CASE_BEGIN name=i386_rejected
+GUEST_RESULT getpid_positive=1 getppid_raw=-1 nnp=1 seccomp=2 uid=65534
+M1_RESULT kind=2 phase=0 detail=31 receipts=0
+CASE_END name=i386_rejected exit=159 expected=159
+VM_COMPLETE cases=13 failures=0

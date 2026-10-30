@@ -1,0 +1,3241 @@
+{
+  "claims": [
+    "LeanCage.Linux.Filter.decodeU16LE_toNat",
+    "LeanCage.Linux.Filter.decodeU32LE_toNat",
+    "LeanCage.Linux.Filter.readInstruction_eq_iff",
+    "LeanCage.Linux.Filter.firstMismatch_eq_none_iff",
+    "LeanCage.Linux.Filter.firstMismatch_eq_some_iff",
+    "LeanCage.Linux.Filter.decode_success",
+    "LeanCage.Linux.Filter.decode_complete",
+    "LeanCage.Linux.Filter.decode_ok_iff",
+    "LeanCage.Linux.Filter.decode_bounds",
+    "LeanCage.Linux.Filter.decode_unsupported_abi",
+    "LeanCage.Linux.Filter.decode_empty",
+    "LeanCage.Linux.Filter.decode_oversized",
+    "LeanCage.Linux.Filter.decode_misaligned",
+    "LeanCage.Linux.Filter.decode_unsupported_length",
+    "LeanCage.Linux.Filter.decode_rejects_invalid",
+    "LeanCage.Linux.Filter.decode_at_valid_size",
+    "LeanCage.Linux.Filter.decode_mismatch_iff",
+    "LeanCage.Linux.Filter.decode_canonical",
+    "LeanCage.Launch.failed_terminal",
+    "LeanCage.Launch.terminated_terminal",
+    "LeanCage.Launch.step_receipts",
+    "LeanCage.Launch.step_validation_guard",
+    "LeanCage.Launch.reaches_receipts",
+    "LeanCage.Launch.reaches_validation_guard",
+    "LeanCage.Launch.validation_before_no_new_privileges",
+    "LeanCage.Launch.no_new_privileges_before_install",
+    "LeanCage.Launch.install_before_exec",
+    "LeanCage.Launch.install_before_guest",
+    "LeanCage.Launch.step_successful_history",
+    "LeanCage.Launch.reaches_successful_history",
+    "LeanCage.Launch.executed_trace_exact",
+    "LeanCage.Launch.replay_append",
+    "LeanCage.Launch.reaches_replay",
+    "LeanCage.Launch.replay_extends_reaches",
+    "LeanCage.Launch.replay_iff_reaches",
+    "LeanCage.Launch.rejected_never_executes",
+    "LeanCage.Launch.success_witness",
+    "LeanCage.Launch.failed_install_witness",
+    "LeanCage.Launch.interrupted_install_witness",
+    "LeanCage.Linux.validationVerdict_iff",
+    "LeanCage.Linux.invalid_input_never_executes",
+    "LeanCage.Linux.prepared_filter_valid",
+    "LeanCage.Linux.decoded_success_witness"
+  ],
+  "declarations": [
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Effect.exec.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.Effect.exec) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Effect.installFilter.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.Effect.installFilter) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Effect.ofNat_ctorIdx",
+      "type": "\u2200 (x : LeanCage.Launch.Effect), Eq.{1} (LeanCage.Launch.Effect.ofNat x.ctorIdx) x"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Effect.setNoNewPrivileges.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.Effect.setNoNewPrivileges) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Effect.validate.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.Effect.validate) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Event.execAttempted.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.Event.execAttempted) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Event.execSucceeded.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.Event.execSucceeded) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Event.failed.inj",
+      "type": "\u2200 {reason reason_1 : LeanCage.Launch.Failure},\n  Eq.{1} (LeanCage.Launch.Event.failed reason) (LeanCage.Launch.Event.failed reason_1) \u2192 Eq.{1} reason reason_1"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Event.failed.injEq",
+      "type": "\u2200 (reason reason_1 : LeanCage.Launch.Failure),\n  Eq.{1} (Eq.{1} (LeanCage.Launch.Event.failed reason) (LeanCage.Launch.Event.failed reason_1)) (Eq.{1} reason reason_1)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Event.failed.sizeOf_spec",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} (SizeOf.sizeOf.{1} (LeanCage.Launch.Event.failed reason)) (HAdd.hAdd.{0, 0, 0} 1 (SizeOf.sizeOf.{1} reason))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Event.filterInstalled.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.Event.filterInstalled) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Event.noNewPrivilegesSet.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.Event.noNewPrivilegesSet) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Event.terminated.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.Event.terminated) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Event.validationAccepted.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.Event.validationAccepted) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Failure.cancelled.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.Failure.cancelled) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Failure.contractViolation.inj",
+      "type": "\u2200 {operation operation_1 : LeanCage.Launch.OsCall},\n  Eq.{1} (LeanCage.Launch.Failure.contractViolation operation) (LeanCage.Launch.Failure.contractViolation operation_1) \u2192\n    Eq.{1} operation operation_1"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Failure.contractViolation.injEq",
+      "type": "\u2200 (operation operation_1 : LeanCage.Launch.OsCall),\n  Eq.{1}\n    (Eq.{1} (LeanCage.Launch.Failure.contractViolation operation)\n      (LeanCage.Launch.Failure.contractViolation operation_1))\n    (Eq.{1} operation operation_1)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Failure.contractViolation.sizeOf_spec",
+      "type": "\u2200 (operation : LeanCage.Launch.OsCall),\n  Eq.{1} (SizeOf.sizeOf.{1} (LeanCage.Launch.Failure.contractViolation operation))\n    (HAdd.hAdd.{0, 0, 0} 1 (SizeOf.sizeOf.{1} operation))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Failure.interrupted.inj",
+      "type": "\u2200 {operation operation_1 : LeanCage.Launch.OsCall},\n  Eq.{1} (LeanCage.Launch.Failure.interrupted operation) (LeanCage.Launch.Failure.interrupted operation_1) \u2192\n    Eq.{1} operation operation_1"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Failure.interrupted.injEq",
+      "type": "\u2200 (operation operation_1 : LeanCage.Launch.OsCall),\n  Eq.{1} (Eq.{1} (LeanCage.Launch.Failure.interrupted operation) (LeanCage.Launch.Failure.interrupted operation_1))\n    (Eq.{1} operation operation_1)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Failure.interrupted.sizeOf_spec",
+      "type": "\u2200 (operation : LeanCage.Launch.OsCall),\n  Eq.{1} (SizeOf.sizeOf.{1} (LeanCage.Launch.Failure.interrupted operation))\n    (HAdd.hAdd.{0, 0, 0} 1 (SizeOf.sizeOf.{1} operation))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Failure.osError.inj",
+      "type": "\u2200 {operation : LeanCage.Launch.OsCall} {errno : LeanCage.Launch.Errno} {operation_1 : LeanCage.Launch.OsCall}\n  {errno_1 : LeanCage.Launch.Errno},\n  Eq.{1} (LeanCage.Launch.Failure.osError operation errno) (LeanCage.Launch.Failure.osError operation_1 errno_1) \u2192\n    Eq.{1} operation operation_1 \u2227 Eq.{1} errno errno_1"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Failure.osError.injEq",
+      "type": "\u2200 (operation : LeanCage.Launch.OsCall) (errno : LeanCage.Launch.Errno) (operation_1 : LeanCage.Launch.OsCall)\n  (errno_1 : LeanCage.Launch.Errno),\n  Eq.{1}\n    (Eq.{1} (LeanCage.Launch.Failure.osError operation errno) (LeanCage.Launch.Failure.osError operation_1 errno_1))\n    (Eq.{1} operation operation_1 \u2227 Eq.{1} errno errno_1)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Failure.osError.sizeOf_spec",
+      "type": "\u2200 (operation : LeanCage.Launch.OsCall) (errno : LeanCage.Launch.Errno),\n  Eq.{1} (SizeOf.sizeOf.{1} (LeanCage.Launch.Failure.osError operation errno))\n    (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 (SizeOf.sizeOf.{1} operation)) (SizeOf.sizeOf.{1} errno))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Failure.validationRejected.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.Failure.validationRejected) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.OsCall.exec.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.OsCall.exec) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.OsCall.installFilter.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.OsCall.installFilter) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.OsCall.ofNat_ctorIdx",
+      "type": "\u2200 (x : LeanCage.Launch.OsCall), Eq.{1} (LeanCage.Launch.OsCall.ofNat x.ctorIdx) x"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.OsCall.setNoNewPrivileges.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.OsCall.setNoNewPrivileges) 1"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Reaches.brecOn",
+      "type": "\u2200 {validated : Bool}\n  {motive :\n    (a : LeanCage.Launch.Trace) \u2192 (a_1 : LeanCage.Launch.Stage) \u2192 LeanCage.Launch.Reaches validated a a_1 \u2192 Prop}\n  {a : LeanCage.Launch.Trace} {a_1 : LeanCage.Launch.Stage} (t : LeanCage.Launch.Reaches validated a a_1),\n  (\u2200 (a : LeanCage.Launch.Trace) (a_2 : LeanCage.Launch.Stage) (t : LeanCage.Launch.Reaches validated a a_2),\n      LeanCage.Launch.Reaches.below t \u2192 motive a a_2 t) \u2192\n    motive a a_1 t"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Receipts._sparseCasesOn_1.else_eq",
+      "type": "\u2200 {motive : LeanCage.Launch.Stage \u2192 Sort u} (t : LeanCage.Launch.Stage) (ready : motive LeanCage.Launch.Stage.ready)\n  (privilegesRestricted : motive LeanCage.Launch.Stage.privilegesRestricted)\n  (filterInstalled : motive LeanCage.Launch.Stage.filterInstalled) (executing : motive LeanCage.Launch.Stage.executing)\n  (executed : motive LeanCage.Launch.Stage.executed) (\u00abelse\u00bb : Nat.hasNotBit 62 t.ctorIdx \u2192 motive t)\n  (h : Nat.hasNotBit 62 t.ctorIdx),\n  Eq.{u}\n    (LeanCage.Launch.Receipts._sparseCasesOn_1.{u} t ready privilegesRestricted filterInstalled executing executed\n      \u00abelse\u00bb)\n    (\u00abelse\u00bb h)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Receipts.eq_1",
+      "type": "\u2200 (trace : LeanCage.Launch.Trace),\n  Eq.{1} (LeanCage.Launch.Receipts LeanCage.Launch.Stage.ready trace)\n    (Membership.mem.{0, 0} trace LeanCage.Launch.Event.validationAccepted)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Receipts.eq_2",
+      "type": "\u2200 (trace : LeanCage.Launch.Trace),\n  Eq.{1} (LeanCage.Launch.Receipts LeanCage.Launch.Stage.privilegesRestricted trace)\n    (Membership.mem.{0, 0} trace LeanCage.Launch.Event.validationAccepted \u2227\n      Membership.mem.{0, 0} trace LeanCage.Launch.Event.noNewPrivilegesSet)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Receipts.eq_3",
+      "type": "\u2200 (trace : LeanCage.Launch.Trace),\n  Eq.{1} (LeanCage.Launch.Receipts LeanCage.Launch.Stage.filterInstalled trace)\n    (Membership.mem.{0, 0} trace LeanCage.Launch.Event.validationAccepted \u2227\n      Membership.mem.{0, 0} trace LeanCage.Launch.Event.noNewPrivilegesSet \u2227\n        Membership.mem.{0, 0} trace LeanCage.Launch.Event.filterInstalled)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Receipts.eq_4",
+      "type": "\u2200 (trace : LeanCage.Launch.Trace),\n  Eq.{1} (LeanCage.Launch.Receipts LeanCage.Launch.Stage.executing trace)\n    (Membership.mem.{0, 0} trace LeanCage.Launch.Event.validationAccepted \u2227\n      Membership.mem.{0, 0} trace LeanCage.Launch.Event.noNewPrivilegesSet \u2227\n        Membership.mem.{0, 0} trace LeanCage.Launch.Event.filterInstalled \u2227\n          Membership.mem.{0, 0} trace LeanCage.Launch.Event.execAttempted)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Receipts.eq_5",
+      "type": "\u2200 (trace : LeanCage.Launch.Trace),\n  Eq.{1} (LeanCage.Launch.Receipts LeanCage.Launch.Stage.executed trace)\n    (Membership.mem.{0, 0} trace LeanCage.Launch.Event.validationAccepted \u2227\n      Membership.mem.{0, 0} trace LeanCage.Launch.Event.noNewPrivilegesSet \u2227\n        Membership.mem.{0, 0} trace LeanCage.Launch.Event.filterInstalled \u2227\n          Membership.mem.{0, 0} trace LeanCage.Launch.Event.execAttempted)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Receipts.eq_6",
+      "type": "\u2200 (state : LeanCage.Launch.Stage) (trace : LeanCage.Launch.Trace),\n  (Eq.{1} state LeanCage.Launch.Stage.ready \u2192 False) \u2192\n    (Eq.{1} state LeanCage.Launch.Stage.privilegesRestricted \u2192 False) \u2192\n      (Eq.{1} state LeanCage.Launch.Stage.filterInstalled \u2192 False) \u2192\n        (Eq.{1} state LeanCage.Launch.Stage.executing \u2192 False) \u2192\n          (Eq.{1} state LeanCage.Launch.Stage.executed \u2192 False) \u2192 Eq.{1} (LeanCage.Launch.Receipts state trace) True"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Stage.executed.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.Stage.executed) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Stage.executing.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.Stage.executing) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Stage.failed.inj",
+      "type": "\u2200 {reason reason_1 : LeanCage.Launch.Failure},\n  Eq.{1} (LeanCage.Launch.Stage.failed reason) (LeanCage.Launch.Stage.failed reason_1) \u2192 Eq.{1} reason reason_1"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Stage.failed.injEq",
+      "type": "\u2200 (reason reason_1 : LeanCage.Launch.Failure),\n  Eq.{1} (Eq.{1} (LeanCage.Launch.Stage.failed reason) (LeanCage.Launch.Stage.failed reason_1)) (Eq.{1} reason reason_1)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Stage.failed.sizeOf_spec",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} (SizeOf.sizeOf.{1} (LeanCage.Launch.Stage.failed reason)) (HAdd.hAdd.{0, 0, 0} 1 (SizeOf.sizeOf.{1} reason))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Stage.filterInstalled.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.Stage.filterInstalled) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Stage.privilegesRestricted.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.Stage.privilegesRestricted) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Stage.ready.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.Stage.ready) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Stage.terminated.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.Stage.terminated) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.Stage.unvalidated.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Launch.Stage.unvalidated) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.SuccessfulHistory.eq_1",
+      "type": "\u2200 (trace : LeanCage.Launch.Trace),\n  Eq.{1} (LeanCage.Launch.SuccessfulHistory LeanCage.Launch.Stage.unvalidated trace) (Eq.{1} trace List.nil.{0})"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.SuccessfulHistory.eq_2",
+      "type": "\u2200 (trace : LeanCage.Launch.Trace),\n  Eq.{1} (LeanCage.Launch.SuccessfulHistory LeanCage.Launch.Stage.ready trace)\n    (Eq.{1} trace (List.cons.{0} LeanCage.Launch.Event.validationAccepted List.nil.{0}))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.SuccessfulHistory.eq_3",
+      "type": "\u2200 (trace : LeanCage.Launch.Trace),\n  Eq.{1} (LeanCage.Launch.SuccessfulHistory LeanCage.Launch.Stage.privilegesRestricted trace)\n    (Eq.{1} trace\n      (List.cons.{0} LeanCage.Launch.Event.validationAccepted\n        (List.cons.{0} LeanCage.Launch.Event.noNewPrivilegesSet List.nil.{0})))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.SuccessfulHistory.eq_4",
+      "type": "\u2200 (trace : LeanCage.Launch.Trace),\n  Eq.{1} (LeanCage.Launch.SuccessfulHistory LeanCage.Launch.Stage.filterInstalled trace)\n    (Eq.{1} trace\n      (List.cons.{0} LeanCage.Launch.Event.validationAccepted\n        (List.cons.{0} LeanCage.Launch.Event.noNewPrivilegesSet\n          (List.cons.{0} LeanCage.Launch.Event.filterInstalled List.nil.{0}))))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.SuccessfulHistory.eq_5",
+      "type": "\u2200 (trace : LeanCage.Launch.Trace),\n  Eq.{1} (LeanCage.Launch.SuccessfulHistory LeanCage.Launch.Stage.executing trace)\n    (Eq.{1} trace\n      (List.cons.{0} LeanCage.Launch.Event.validationAccepted\n        (List.cons.{0} LeanCage.Launch.Event.noNewPrivilegesSet\n          (List.cons.{0} LeanCage.Launch.Event.filterInstalled\n            (List.cons.{0} LeanCage.Launch.Event.execAttempted List.nil.{0})))))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.SuccessfulHistory.eq_6",
+      "type": "\u2200 (trace : LeanCage.Launch.Trace),\n  Eq.{1} (LeanCage.Launch.SuccessfulHistory LeanCage.Launch.Stage.executed trace)\n    (Eq.{1} trace LeanCage.Launch.successTrace)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.SuccessfulHistory.eq_7",
+      "type": "\u2200 (trace : LeanCage.Launch.Trace) (reason : LeanCage.Launch.Failure),\n  Eq.{1} (LeanCage.Launch.SuccessfulHistory (LeanCage.Launch.Stage.failed reason) trace) True"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.SuccessfulHistory.eq_8",
+      "type": "\u2200 (trace : LeanCage.Launch.Trace),\n  Eq.{1} (LeanCage.Launch.SuccessfulHistory LeanCage.Launch.Stage.terminated trace) True"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.ValidationGuard._sparseCasesOn_1.else_eq",
+      "type": "\u2200 {motive : LeanCage.Launch.Stage \u2192 Sort u} (t : LeanCage.Launch.Stage)\n  (unvalidated : motive LeanCage.Launch.Stage.unvalidated)\n  (failed : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Stage.failed reason))\n  (terminated : motive LeanCage.Launch.Stage.terminated) (\u00abelse\u00bb : Nat.hasNotBit 193 t.ctorIdx \u2192 motive t)\n  (h : Nat.hasNotBit 193 t.ctorIdx),\n  Eq.{u} (LeanCage.Launch.ValidationGuard._sparseCasesOn_1.{u} t unvalidated failed terminated \u00abelse\u00bb) (\u00abelse\u00bb h)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.ValidationGuard.eq_1",
+      "type": "\u2200 (validated : Bool), Eq.{1} (LeanCage.Launch.ValidationGuard validated LeanCage.Launch.Stage.unvalidated) True"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.ValidationGuard.eq_2",
+      "type": "\u2200 (validated : Bool) (reason : LeanCage.Launch.Failure),\n  Eq.{1} (LeanCage.Launch.ValidationGuard validated (LeanCage.Launch.Stage.failed reason)) True"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.ValidationGuard.eq_3",
+      "type": "\u2200 (validated : Bool), Eq.{1} (LeanCage.Launch.ValidationGuard validated LeanCage.Launch.Stage.terminated) True"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.ValidationGuard.eq_4",
+      "type": "\u2200 (validated : Bool) (x : LeanCage.Launch.Stage),\n  (Eq.{1} x LeanCage.Launch.Stage.unvalidated \u2192 False) \u2192\n    (\u2200 (reason : LeanCage.Launch.Failure), Eq.{1} x (LeanCage.Launch.Stage.failed reason) \u2192 False) \u2192\n      (Eq.{1} x LeanCage.Launch.Stage.terminated \u2192 False) \u2192\n        Eq.{1} (LeanCage.Launch.ValidationGuard validated x) (Eq.{1} validated Bool.true)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.executed_trace_exact",
+      "type": "\u2200 {validated : Bool} {trace : LeanCage.Launch.Trace},\n  LeanCage.Launch.Reaches validated trace LeanCage.Launch.Stage.executed \u2192 Eq.{1} trace LeanCage.Launch.successTrace"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.failed_install_witness",
+      "type": "Eq.{1}\n  (LeanCage.Launch.replay Bool.true LeanCage.Launch.Stage.unvalidated\n    (List.cons.{0} LeanCage.Launch.Event.validationAccepted\n      (List.cons.{0} LeanCage.Launch.Event.noNewPrivilegesSet\n        (List.cons.{0}\n          (LeanCage.Launch.Event.failed\n            (LeanCage.Launch.Failure.osError LeanCage.Launch.OsCall.installFilter (Subtype.mk.{1} 22 \u22ef)))\n          List.nil.{0}))))\n  (Option.some.{0}\n    (LeanCage.Launch.Stage.failed\n      (LeanCage.Launch.Failure.osError LeanCage.Launch.OsCall.installFilter (Subtype.mk.{1} 22 \u22ef))))"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.failed_terminal",
+      "type": "\u2200 (validated : Bool) (reason : LeanCage.Launch.Failure) (event : LeanCage.Launch.Event),\n  Eq.{1} (LeanCage.Launch.step validated (LeanCage.Launch.Stage.failed reason) event) Option.none.{0}"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEffect._proof_1",
+      "type": "\u2200 (x y : LeanCage.Launch.Effect), Eq.{1} x.ctorIdx y.ctorIdx \u2192 Eq.{1} x y"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEffect._proof_2",
+      "type": "\u2200 (x y : LeanCage.Launch.Effect), \u00acEq.{1} x.ctorIdx y.ctorIdx \u2192 Eq.{1} x y \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_1",
+      "type": "Eq.{1} LeanCage.Launch.Event.validationAccepted LeanCage.Launch.Event.noNewPrivilegesSet \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_10",
+      "type": "Eq.{1} LeanCage.Launch.Event.noNewPrivilegesSet LeanCage.Launch.Event.execSucceeded \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_11",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} LeanCage.Launch.Event.noNewPrivilegesSet (LeanCage.Launch.Event.failed reason) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_12",
+      "type": "Eq.{1} LeanCage.Launch.Event.noNewPrivilegesSet LeanCage.Launch.Event.terminated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_13",
+      "type": "Eq.{1} LeanCage.Launch.Event.filterInstalled LeanCage.Launch.Event.validationAccepted \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_14",
+      "type": "Eq.{1} LeanCage.Launch.Event.filterInstalled LeanCage.Launch.Event.noNewPrivilegesSet \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_15",
+      "type": "Eq.{1} LeanCage.Launch.Event.filterInstalled LeanCage.Launch.Event.execAttempted \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_16",
+      "type": "Eq.{1} LeanCage.Launch.Event.filterInstalled LeanCage.Launch.Event.execSucceeded \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_17",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} LeanCage.Launch.Event.filterInstalled (LeanCage.Launch.Event.failed reason) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_18",
+      "type": "Eq.{1} LeanCage.Launch.Event.filterInstalled LeanCage.Launch.Event.terminated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_19",
+      "type": "Eq.{1} LeanCage.Launch.Event.execAttempted LeanCage.Launch.Event.validationAccepted \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_2",
+      "type": "Eq.{1} LeanCage.Launch.Event.validationAccepted LeanCage.Launch.Event.filterInstalled \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_20",
+      "type": "Eq.{1} LeanCage.Launch.Event.execAttempted LeanCage.Launch.Event.noNewPrivilegesSet \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_21",
+      "type": "Eq.{1} LeanCage.Launch.Event.execAttempted LeanCage.Launch.Event.filterInstalled \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_22",
+      "type": "Eq.{1} LeanCage.Launch.Event.execAttempted LeanCage.Launch.Event.execSucceeded \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_23",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} LeanCage.Launch.Event.execAttempted (LeanCage.Launch.Event.failed reason) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_24",
+      "type": "Eq.{1} LeanCage.Launch.Event.execAttempted LeanCage.Launch.Event.terminated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_25",
+      "type": "Eq.{1} LeanCage.Launch.Event.execSucceeded LeanCage.Launch.Event.validationAccepted \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_26",
+      "type": "Eq.{1} LeanCage.Launch.Event.execSucceeded LeanCage.Launch.Event.noNewPrivilegesSet \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_27",
+      "type": "Eq.{1} LeanCage.Launch.Event.execSucceeded LeanCage.Launch.Event.filterInstalled \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_28",
+      "type": "Eq.{1} LeanCage.Launch.Event.execSucceeded LeanCage.Launch.Event.execAttempted \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_29",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} LeanCage.Launch.Event.execSucceeded (LeanCage.Launch.Event.failed reason) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_3",
+      "type": "Eq.{1} LeanCage.Launch.Event.validationAccepted LeanCage.Launch.Event.execAttempted \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_30",
+      "type": "Eq.{1} LeanCage.Launch.Event.execSucceeded LeanCage.Launch.Event.terminated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_31",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} (LeanCage.Launch.Event.failed reason) LeanCage.Launch.Event.validationAccepted \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_32",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} (LeanCage.Launch.Event.failed reason) LeanCage.Launch.Event.noNewPrivilegesSet \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_33",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} (LeanCage.Launch.Event.failed reason) LeanCage.Launch.Event.filterInstalled \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_34",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} (LeanCage.Launch.Event.failed reason) LeanCage.Launch.Event.execAttempted \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_35",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} (LeanCage.Launch.Event.failed reason) LeanCage.Launch.Event.execSucceeded \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_36",
+      "type": "\u2200 (a : LeanCage.Launch.Failure), Eq.{1} (LeanCage.Launch.Event.failed a) (LeanCage.Launch.Event.failed a)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_37",
+      "type": "\u2200 (a b : LeanCage.Launch.Failure),\n  \u00acEq.{1} a b \u2192 Eq.{1} (LeanCage.Launch.Event.failed a) (LeanCage.Launch.Event.failed b) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_38",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} (LeanCage.Launch.Event.failed reason) LeanCage.Launch.Event.terminated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_39",
+      "type": "Eq.{1} LeanCage.Launch.Event.terminated LeanCage.Launch.Event.validationAccepted \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_4",
+      "type": "Eq.{1} LeanCage.Launch.Event.validationAccepted LeanCage.Launch.Event.execSucceeded \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_40",
+      "type": "Eq.{1} LeanCage.Launch.Event.terminated LeanCage.Launch.Event.noNewPrivilegesSet \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_41",
+      "type": "Eq.{1} LeanCage.Launch.Event.terminated LeanCage.Launch.Event.filterInstalled \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_42",
+      "type": "Eq.{1} LeanCage.Launch.Event.terminated LeanCage.Launch.Event.execAttempted \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_43",
+      "type": "Eq.{1} LeanCage.Launch.Event.terminated LeanCage.Launch.Event.execSucceeded \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_44",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} LeanCage.Launch.Event.terminated (LeanCage.Launch.Event.failed reason) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_5",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} LeanCage.Launch.Event.validationAccepted (LeanCage.Launch.Event.failed reason) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_6",
+      "type": "Eq.{1} LeanCage.Launch.Event.validationAccepted LeanCage.Launch.Event.terminated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_7",
+      "type": "Eq.{1} LeanCage.Launch.Event.noNewPrivilegesSet LeanCage.Launch.Event.validationAccepted \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_8",
+      "type": "Eq.{1} LeanCage.Launch.Event.noNewPrivilegesSet LeanCage.Launch.Event.filterInstalled \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqEvent.decEq._proof_9",
+      "type": "Eq.{1} LeanCage.Launch.Event.noNewPrivilegesSet LeanCage.Launch.Event.execAttempted \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_1",
+      "type": "\u2200 (operation : LeanCage.Launch.OsCall) (errno : LeanCage.Launch.Errno),\n  Eq.{1} LeanCage.Launch.Failure.validationRejected (LeanCage.Launch.Failure.osError operation errno) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_10",
+      "type": "\u2200 (operation : LeanCage.Launch.OsCall) (errno : LeanCage.Launch.Errno),\n  Eq.{1} (LeanCage.Launch.Failure.osError operation errno) LeanCage.Launch.Failure.cancelled \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_11",
+      "type": "\u2200 (operation : LeanCage.Launch.OsCall) (errno : LeanCage.Launch.Errno) (operation_1 : LeanCage.Launch.OsCall),\n  Eq.{1} (LeanCage.Launch.Failure.osError operation errno) (LeanCage.Launch.Failure.contractViolation operation_1) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_12",
+      "type": "\u2200 (operation : LeanCage.Launch.OsCall),\n  Eq.{1} (LeanCage.Launch.Failure.interrupted operation) LeanCage.Launch.Failure.validationRejected \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_13",
+      "type": "\u2200 (operation operation_1 : LeanCage.Launch.OsCall) (errno : LeanCage.Launch.Errno),\n  Eq.{1} (LeanCage.Launch.Failure.interrupted operation) (LeanCage.Launch.Failure.osError operation_1 errno) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_14",
+      "type": "\u2200 (a : LeanCage.Launch.OsCall), Eq.{1} (LeanCage.Launch.Failure.interrupted a) (LeanCage.Launch.Failure.interrupted a)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_15",
+      "type": "\u2200 (a b : LeanCage.Launch.OsCall),\n  \u00acEq.{1} a b \u2192 Eq.{1} (LeanCage.Launch.Failure.interrupted a) (LeanCage.Launch.Failure.interrupted b) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_16",
+      "type": "\u2200 (operation : LeanCage.Launch.OsCall),\n  Eq.{1} (LeanCage.Launch.Failure.interrupted operation) LeanCage.Launch.Failure.cancelled \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_17",
+      "type": "\u2200 (operation operation_1 : LeanCage.Launch.OsCall),\n  Eq.{1} (LeanCage.Launch.Failure.interrupted operation) (LeanCage.Launch.Failure.contractViolation operation_1) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_18",
+      "type": "Eq.{1} LeanCage.Launch.Failure.cancelled LeanCage.Launch.Failure.validationRejected \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_19",
+      "type": "\u2200 (operation : LeanCage.Launch.OsCall) (errno : LeanCage.Launch.Errno),\n  Eq.{1} LeanCage.Launch.Failure.cancelled (LeanCage.Launch.Failure.osError operation errno) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_2",
+      "type": "\u2200 (operation : LeanCage.Launch.OsCall),\n  Eq.{1} LeanCage.Launch.Failure.validationRejected (LeanCage.Launch.Failure.interrupted operation) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_20",
+      "type": "\u2200 (operation : LeanCage.Launch.OsCall),\n  Eq.{1} LeanCage.Launch.Failure.cancelled (LeanCage.Launch.Failure.interrupted operation) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_21",
+      "type": "\u2200 (operation : LeanCage.Launch.OsCall),\n  Eq.{1} LeanCage.Launch.Failure.cancelled (LeanCage.Launch.Failure.contractViolation operation) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_22",
+      "type": "\u2200 (operation : LeanCage.Launch.OsCall),\n  Eq.{1} (LeanCage.Launch.Failure.contractViolation operation) LeanCage.Launch.Failure.validationRejected \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_23",
+      "type": "\u2200 (operation operation_1 : LeanCage.Launch.OsCall) (errno : LeanCage.Launch.Errno),\n  Eq.{1} (LeanCage.Launch.Failure.contractViolation operation) (LeanCage.Launch.Failure.osError operation_1 errno) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_24",
+      "type": "\u2200 (operation operation_1 : LeanCage.Launch.OsCall),\n  Eq.{1} (LeanCage.Launch.Failure.contractViolation operation) (LeanCage.Launch.Failure.interrupted operation_1) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_25",
+      "type": "\u2200 (operation : LeanCage.Launch.OsCall),\n  Eq.{1} (LeanCage.Launch.Failure.contractViolation operation) LeanCage.Launch.Failure.cancelled \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_26",
+      "type": "\u2200 (a : LeanCage.Launch.OsCall),\n  Eq.{1} (LeanCage.Launch.Failure.contractViolation a) (LeanCage.Launch.Failure.contractViolation a)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_27",
+      "type": "\u2200 (a b : LeanCage.Launch.OsCall),\n  \u00acEq.{1} a b \u2192\n    Eq.{1} (LeanCage.Launch.Failure.contractViolation a) (LeanCage.Launch.Failure.contractViolation b) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_3",
+      "type": "Eq.{1} LeanCage.Launch.Failure.validationRejected LeanCage.Launch.Failure.cancelled \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_4",
+      "type": "\u2200 (operation : LeanCage.Launch.OsCall),\n  Eq.{1} LeanCage.Launch.Failure.validationRejected (LeanCage.Launch.Failure.contractViolation operation) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_5",
+      "type": "\u2200 (operation : LeanCage.Launch.OsCall) (errno : LeanCage.Launch.Errno),\n  Eq.{1} (LeanCage.Launch.Failure.osError operation errno) LeanCage.Launch.Failure.validationRejected \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_6",
+      "type": "\u2200 (a : LeanCage.Launch.OsCall) (a_1 : LeanCage.Launch.Errno),\n  Eq.{1} (LeanCage.Launch.Failure.osError a a_1) (LeanCage.Launch.Failure.osError a a_1)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_7",
+      "type": "\u2200 (a : LeanCage.Launch.OsCall) (a_1 b : LeanCage.Launch.Errno),\n  \u00acEq.{1} a_1 b \u2192 Eq.{1} (LeanCage.Launch.Failure.osError a a_1) (LeanCage.Launch.Failure.osError a b) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_8",
+      "type": "\u2200 (a : LeanCage.Launch.OsCall) (a_1 : LeanCage.Launch.Errno) (b : LeanCage.Launch.OsCall) (b_1 : LeanCage.Launch.Errno),\n  \u00acEq.{1} a b \u2192 Eq.{1} (LeanCage.Launch.Failure.osError a a_1) (LeanCage.Launch.Failure.osError b b_1) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqFailure.decEq._proof_9",
+      "type": "\u2200 (operation : LeanCage.Launch.OsCall) (errno : LeanCage.Launch.Errno) (operation_1 : LeanCage.Launch.OsCall),\n  Eq.{1} (LeanCage.Launch.Failure.osError operation errno) (LeanCage.Launch.Failure.interrupted operation_1) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqOsCall._proof_1",
+      "type": "\u2200 (x y : LeanCage.Launch.OsCall), Eq.{1} x.ctorIdx y.ctorIdx \u2192 Eq.{1} x y"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqOsCall._proof_2",
+      "type": "\u2200 (x y : LeanCage.Launch.OsCall), \u00acEq.{1} x.ctorIdx y.ctorIdx \u2192 Eq.{1} x y \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_1",
+      "type": "Eq.{1} LeanCage.Launch.Stage.unvalidated LeanCage.Launch.Stage.ready \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_10",
+      "type": "Eq.{1} LeanCage.Launch.Stage.ready LeanCage.Launch.Stage.filterInstalled \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_11",
+      "type": "Eq.{1} LeanCage.Launch.Stage.ready LeanCage.Launch.Stage.executing \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_12",
+      "type": "Eq.{1} LeanCage.Launch.Stage.ready LeanCage.Launch.Stage.executed \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_13",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure), Eq.{1} LeanCage.Launch.Stage.ready (LeanCage.Launch.Stage.failed reason) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_14",
+      "type": "Eq.{1} LeanCage.Launch.Stage.ready LeanCage.Launch.Stage.terminated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_15",
+      "type": "Eq.{1} LeanCage.Launch.Stage.privilegesRestricted LeanCage.Launch.Stage.unvalidated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_16",
+      "type": "Eq.{1} LeanCage.Launch.Stage.privilegesRestricted LeanCage.Launch.Stage.ready \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_17",
+      "type": "Eq.{1} LeanCage.Launch.Stage.privilegesRestricted LeanCage.Launch.Stage.filterInstalled \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_18",
+      "type": "Eq.{1} LeanCage.Launch.Stage.privilegesRestricted LeanCage.Launch.Stage.executing \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_19",
+      "type": "Eq.{1} LeanCage.Launch.Stage.privilegesRestricted LeanCage.Launch.Stage.executed \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_2",
+      "type": "Eq.{1} LeanCage.Launch.Stage.unvalidated LeanCage.Launch.Stage.privilegesRestricted \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_20",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} LeanCage.Launch.Stage.privilegesRestricted (LeanCage.Launch.Stage.failed reason) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_21",
+      "type": "Eq.{1} LeanCage.Launch.Stage.privilegesRestricted LeanCage.Launch.Stage.terminated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_22",
+      "type": "Eq.{1} LeanCage.Launch.Stage.filterInstalled LeanCage.Launch.Stage.unvalidated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_23",
+      "type": "Eq.{1} LeanCage.Launch.Stage.filterInstalled LeanCage.Launch.Stage.ready \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_24",
+      "type": "Eq.{1} LeanCage.Launch.Stage.filterInstalled LeanCage.Launch.Stage.privilegesRestricted \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_25",
+      "type": "Eq.{1} LeanCage.Launch.Stage.filterInstalled LeanCage.Launch.Stage.executing \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_26",
+      "type": "Eq.{1} LeanCage.Launch.Stage.filterInstalled LeanCage.Launch.Stage.executed \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_27",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} LeanCage.Launch.Stage.filterInstalled (LeanCage.Launch.Stage.failed reason) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_28",
+      "type": "Eq.{1} LeanCage.Launch.Stage.filterInstalled LeanCage.Launch.Stage.terminated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_29",
+      "type": "Eq.{1} LeanCage.Launch.Stage.executing LeanCage.Launch.Stage.unvalidated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_3",
+      "type": "Eq.{1} LeanCage.Launch.Stage.unvalidated LeanCage.Launch.Stage.filterInstalled \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_30",
+      "type": "Eq.{1} LeanCage.Launch.Stage.executing LeanCage.Launch.Stage.ready \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_31",
+      "type": "Eq.{1} LeanCage.Launch.Stage.executing LeanCage.Launch.Stage.privilegesRestricted \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_32",
+      "type": "Eq.{1} LeanCage.Launch.Stage.executing LeanCage.Launch.Stage.filterInstalled \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_33",
+      "type": "Eq.{1} LeanCage.Launch.Stage.executing LeanCage.Launch.Stage.executed \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_34",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} LeanCage.Launch.Stage.executing (LeanCage.Launch.Stage.failed reason) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_35",
+      "type": "Eq.{1} LeanCage.Launch.Stage.executing LeanCage.Launch.Stage.terminated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_36",
+      "type": "Eq.{1} LeanCage.Launch.Stage.executed LeanCage.Launch.Stage.unvalidated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_37",
+      "type": "Eq.{1} LeanCage.Launch.Stage.executed LeanCage.Launch.Stage.ready \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_38",
+      "type": "Eq.{1} LeanCage.Launch.Stage.executed LeanCage.Launch.Stage.privilegesRestricted \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_39",
+      "type": "Eq.{1} LeanCage.Launch.Stage.executed LeanCage.Launch.Stage.filterInstalled \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_4",
+      "type": "Eq.{1} LeanCage.Launch.Stage.unvalidated LeanCage.Launch.Stage.executing \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_40",
+      "type": "Eq.{1} LeanCage.Launch.Stage.executed LeanCage.Launch.Stage.executing \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_41",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} LeanCage.Launch.Stage.executed (LeanCage.Launch.Stage.failed reason) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_42",
+      "type": "Eq.{1} LeanCage.Launch.Stage.executed LeanCage.Launch.Stage.terminated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_43",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} (LeanCage.Launch.Stage.failed reason) LeanCage.Launch.Stage.unvalidated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_44",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure), Eq.{1} (LeanCage.Launch.Stage.failed reason) LeanCage.Launch.Stage.ready \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_45",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} (LeanCage.Launch.Stage.failed reason) LeanCage.Launch.Stage.privilegesRestricted \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_46",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} (LeanCage.Launch.Stage.failed reason) LeanCage.Launch.Stage.filterInstalled \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_47",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} (LeanCage.Launch.Stage.failed reason) LeanCage.Launch.Stage.executing \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_48",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} (LeanCage.Launch.Stage.failed reason) LeanCage.Launch.Stage.executed \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_49",
+      "type": "\u2200 (a : LeanCage.Launch.Failure), Eq.{1} (LeanCage.Launch.Stage.failed a) (LeanCage.Launch.Stage.failed a)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_5",
+      "type": "Eq.{1} LeanCage.Launch.Stage.unvalidated LeanCage.Launch.Stage.executed \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_50",
+      "type": "\u2200 (a b : LeanCage.Launch.Failure),\n  \u00acEq.{1} a b \u2192 Eq.{1} (LeanCage.Launch.Stage.failed a) (LeanCage.Launch.Stage.failed b) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_51",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} (LeanCage.Launch.Stage.failed reason) LeanCage.Launch.Stage.terminated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_52",
+      "type": "Eq.{1} LeanCage.Launch.Stage.terminated LeanCage.Launch.Stage.unvalidated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_53",
+      "type": "Eq.{1} LeanCage.Launch.Stage.terminated LeanCage.Launch.Stage.ready \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_54",
+      "type": "Eq.{1} LeanCage.Launch.Stage.terminated LeanCage.Launch.Stage.privilegesRestricted \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_55",
+      "type": "Eq.{1} LeanCage.Launch.Stage.terminated LeanCage.Launch.Stage.filterInstalled \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_56",
+      "type": "Eq.{1} LeanCage.Launch.Stage.terminated LeanCage.Launch.Stage.executing \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_57",
+      "type": "Eq.{1} LeanCage.Launch.Stage.terminated LeanCage.Launch.Stage.executed \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_58",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} LeanCage.Launch.Stage.terminated (LeanCage.Launch.Stage.failed reason) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_6",
+      "type": "\u2200 (reason : LeanCage.Launch.Failure),\n  Eq.{1} LeanCage.Launch.Stage.unvalidated (LeanCage.Launch.Stage.failed reason) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_7",
+      "type": "Eq.{1} LeanCage.Launch.Stage.unvalidated LeanCage.Launch.Stage.terminated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_8",
+      "type": "Eq.{1} LeanCage.Launch.Stage.ready LeanCage.Launch.Stage.unvalidated \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.instDecidableEqStage.decEq._proof_9",
+      "type": "Eq.{1} LeanCage.Launch.Stage.ready LeanCage.Launch.Stage.privilegesRestricted \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.install_before_exec",
+      "type": "\u2200 {validated : Bool} {trace : LeanCage.Launch.Trace} {before after : LeanCage.Launch.Stage},\n  LeanCage.Launch.Reaches validated trace before \u2192\n    Eq.{1} (LeanCage.Launch.step validated before LeanCage.Launch.Event.execAttempted) (Option.some.{0} after) \u2192\n      Membership.mem.{0, 0} trace LeanCage.Launch.Event.validationAccepted \u2227\n        Membership.mem.{0, 0} trace LeanCage.Launch.Event.noNewPrivilegesSet \u2227\n          Membership.mem.{0, 0} trace LeanCage.Launch.Event.filterInstalled"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.install_before_guest",
+      "type": "\u2200 {validated : Bool} {trace : LeanCage.Launch.Trace} {before after : LeanCage.Launch.Stage},\n  LeanCage.Launch.Reaches validated trace before \u2192\n    Eq.{1} (LeanCage.Launch.step validated before LeanCage.Launch.Event.execSucceeded) (Option.some.{0} after) \u2192\n      Membership.mem.{0, 0} trace LeanCage.Launch.Event.validationAccepted \u2227\n        Membership.mem.{0, 0} trace LeanCage.Launch.Event.noNewPrivilegesSet \u2227\n          Membership.mem.{0, 0} trace LeanCage.Launch.Event.filterInstalled \u2227\n            Membership.mem.{0, 0} trace LeanCage.Launch.Event.execAttempted"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.interrupted_install_witness",
+      "type": "Eq.{1}\n  (LeanCage.Launch.replay Bool.true LeanCage.Launch.Stage.unvalidated\n    (List.cons.{0} LeanCage.Launch.Event.validationAccepted\n      (List.cons.{0} LeanCage.Launch.Event.noNewPrivilegesSet\n        (List.cons.{0}\n          (LeanCage.Launch.Event.failed (LeanCage.Launch.Failure.interrupted LeanCage.Launch.OsCall.installFilter))\n          List.nil.{0}))))\n  (Option.some.{0}\n    (LeanCage.Launch.Stage.failed (LeanCage.Launch.Failure.interrupted LeanCage.Launch.OsCall.installFilter)))"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.no_new_privileges_before_install",
+      "type": "\u2200 {validated : Bool} {trace : LeanCage.Launch.Trace} {before after : LeanCage.Launch.Stage},\n  LeanCage.Launch.Reaches validated trace before \u2192\n    Eq.{1} (LeanCage.Launch.step validated before LeanCage.Launch.Event.filterInstalled) (Option.some.{0} after) \u2192\n      Membership.mem.{0, 0} trace LeanCage.Launch.Event.validationAccepted \u2227\n        Membership.mem.{0, 0} trace LeanCage.Launch.Event.noNewPrivilegesSet"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.reaches_receipts",
+      "type": "\u2200 {validated : Bool} {trace : LeanCage.Launch.Trace} {state : LeanCage.Launch.Stage},\n  LeanCage.Launch.Reaches validated trace state \u2192 LeanCage.Launch.Receipts state trace"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.reaches_replay",
+      "type": "\u2200 {validated : Bool} {trace : LeanCage.Launch.Trace} {state : LeanCage.Launch.Stage},\n  LeanCage.Launch.Reaches validated trace state \u2192\n    Eq.{1} (LeanCage.Launch.replay validated LeanCage.Launch.Stage.unvalidated trace) (Option.some.{0} state)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.reaches_successful_history",
+      "type": "\u2200 {validated : Bool} {trace : LeanCage.Launch.Trace} {state : LeanCage.Launch.Stage},\n  LeanCage.Launch.Reaches validated trace state \u2192 LeanCage.Launch.SuccessfulHistory state trace"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.reaches_validation_guard",
+      "type": "\u2200 {validated : Bool} {trace : LeanCage.Launch.Trace} {state : LeanCage.Launch.Stage},\n  LeanCage.Launch.Reaches validated trace state \u2192 LeanCage.Launch.ValidationGuard validated state"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.rejected_never_executes",
+      "type": "\u2200 (trace : LeanCage.Launch.Trace),\n  Ne.{1} (LeanCage.Launch.replay Bool.false LeanCage.Launch.Stage.unvalidated trace)\n    (Option.some.{0} LeanCage.Launch.Stage.executed)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.replay.eq_1",
+      "type": "\u2200 (validated : Bool) (x : LeanCage.Launch.Stage),\n  Eq.{1} (LeanCage.Launch.replay validated x List.nil.{0}) (Option.some.{0} x)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.replay.eq_2",
+      "type": "\u2200 (validated : Bool) (x : LeanCage.Launch.Stage) (event : LeanCage.Launch.Event)\n  (rest : List.{0} LeanCage.Launch.Event),\n  Eq.{1} (LeanCage.Launch.replay validated x (List.cons.{0} event rest))\n    (Option.bind.{0, 0} (LeanCage.Launch.step validated x event) fun next => LeanCage.Launch.replay validated next rest)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.replay.eq_def",
+      "type": "\u2200 (validated : Bool) (x : LeanCage.Launch.Stage) (x_1 : LeanCage.Launch.Trace),\n  Eq.{1} (LeanCage.Launch.replay validated x x_1)\n    (match x, x_1 with\n    | state, List.nil.{0} => Option.some.{0} state\n    | state, List.cons.{0} event rest =>\n      Option.bind.{0, 0} (LeanCage.Launch.step validated state event) fun next =>\n        LeanCage.Launch.replay validated next rest)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.replay_append",
+      "type": "\u2200 (validated : Bool) (state : LeanCage.Launch.Stage) (left right : LeanCage.Launch.Trace),\n  Eq.{1} (LeanCage.Launch.replay validated state (HAppend.hAppend.{0, 0, 0} left right))\n    (Option.bind.{0, 0} (LeanCage.Launch.replay validated state left) fun middle =>\n      LeanCage.Launch.replay validated middle right)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.replay_extends_reaches",
+      "type": "\u2200 {validated : Bool} {history trace : LeanCage.Launch.Trace} {before after : LeanCage.Launch.Stage},\n  LeanCage.Launch.Reaches validated history before \u2192\n    Eq.{1} (LeanCage.Launch.replay validated before trace) (Option.some.{0} after) \u2192\n      LeanCage.Launch.Reaches validated (HAppend.hAppend.{0, 0, 0} history trace) after"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.replay_iff_reaches",
+      "type": "\u2200 (validated : Bool) (trace : LeanCage.Launch.Trace) (state : LeanCage.Launch.Stage),\n  Eq.{1} (LeanCage.Launch.replay validated LeanCage.Launch.Stage.unvalidated trace) (Option.some.{0} state) \u2194\n    LeanCage.Launch.Reaches validated trace state"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step._sparseCasesOn_1.else_eq",
+      "type": "\u2200 {motive : LeanCage.Launch.Stage \u2192 Sort u} (t : LeanCage.Launch.Stage)\n  (unvalidated : motive LeanCage.Launch.Stage.unvalidated) (\u00abelse\u00bb : Nat.hasNotBit 1 t.ctorIdx \u2192 motive t)\n  (h : Nat.hasNotBit 1 t.ctorIdx), Eq.{u} (LeanCage.Launch.step._sparseCasesOn_1.{u} t unvalidated \u00abelse\u00bb) (\u00abelse\u00bb h)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step._sparseCasesOn_10.else_eq",
+      "type": "\u2200 {motive : LeanCage.Launch.Stage \u2192 Sort u} (t : LeanCage.Launch.Stage)\n  (filterInstalled : motive LeanCage.Launch.Stage.filterInstalled) (\u00abelse\u00bb : Nat.hasNotBit 8 t.ctorIdx \u2192 motive t)\n  (h : Nat.hasNotBit 8 t.ctorIdx),\n  Eq.{u} (LeanCage.Launch.step._sparseCasesOn_10.{u} t filterInstalled \u00abelse\u00bb) (\u00abelse\u00bb h)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step._sparseCasesOn_13.else_eq",
+      "type": "\u2200 {motive : LeanCage.Launch.Stage \u2192 Sort u} (t : LeanCage.Launch.Stage)\n  (executing : motive LeanCage.Launch.Stage.executing) (\u00abelse\u00bb : Nat.hasNotBit 16 t.ctorIdx \u2192 motive t)\n  (h : Nat.hasNotBit 16 t.ctorIdx), Eq.{u} (LeanCage.Launch.step._sparseCasesOn_13.{u} t executing \u00abelse\u00bb) (\u00abelse\u00bb h)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step._sparseCasesOn_4.else_eq",
+      "type": "\u2200 {motive : LeanCage.Launch.Stage \u2192 Sort u} (t : LeanCage.Launch.Stage) (ready : motive LeanCage.Launch.Stage.ready)\n  (\u00abelse\u00bb : Nat.hasNotBit 2 t.ctorIdx \u2192 motive t) (h : Nat.hasNotBit 2 t.ctorIdx),\n  Eq.{u} (LeanCage.Launch.step._sparseCasesOn_4.{u} t ready \u00abelse\u00bb) (\u00abelse\u00bb h)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step._sparseCasesOn_7.else_eq",
+      "type": "\u2200 {motive : LeanCage.Launch.Stage \u2192 Sort u} (t : LeanCage.Launch.Stage)\n  (privilegesRestricted : motive LeanCage.Launch.Stage.privilegesRestricted)\n  (\u00abelse\u00bb : Nat.hasNotBit 4 t.ctorIdx \u2192 motive t) (h : Nat.hasNotBit 4 t.ctorIdx),\n  Eq.{u} (LeanCage.Launch.step._sparseCasesOn_7.{u} t privilegesRestricted \u00abelse\u00bb) (\u00abelse\u00bb h)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step.eq_1",
+      "type": "\u2200 (validated : Bool) (state : LeanCage.Launch.Stage) (reason : LeanCage.Launch.Failure),\n  Eq.{1} (LeanCage.Launch.step validated state (LeanCage.Launch.Event.failed reason))\n    (ite.{1} (Eq.{1} (LeanCage.Launch.allowedFailure validated state reason) Bool.true)\n      (Option.some.{0} (LeanCage.Launch.Stage.failed reason)) Option.none.{0})"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step.eq_10",
+      "type": "\u2200 (validated : Bool) (state : LeanCage.Launch.Stage),\n  (Eq.{1} state LeanCage.Launch.Stage.filterInstalled \u2192 False) \u2192\n    Eq.{1} (LeanCage.Launch.step validated state LeanCage.Launch.Event.execAttempted) Option.none.{0}"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step.eq_11",
+      "type": "\u2200 (validated : Bool),\n  Eq.{1} (LeanCage.Launch.step validated LeanCage.Launch.Stage.executing LeanCage.Launch.Event.execSucceeded)\n    (Option.some.{0} LeanCage.Launch.Stage.executed)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step.eq_12",
+      "type": "\u2200 (validated : Bool) (state : LeanCage.Launch.Stage),\n  (Eq.{1} state LeanCage.Launch.Stage.executing \u2192 False) \u2192\n    Eq.{1} (LeanCage.Launch.step validated state LeanCage.Launch.Event.execSucceeded) Option.none.{0}"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step.eq_2",
+      "type": "\u2200 (validated : Bool) (state : LeanCage.Launch.Stage),\n  Eq.{1} (LeanCage.Launch.step validated state LeanCage.Launch.Event.terminated)\n    (ite.{1} (Eq.{1} (LeanCage.Launch.active state) Bool.true) (Option.some.{0} LeanCage.Launch.Stage.terminated)\n      Option.none.{0})"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step.eq_3",
+      "type": "\u2200 (validated : Bool),\n  Eq.{1} (LeanCage.Launch.step validated LeanCage.Launch.Stage.unvalidated LeanCage.Launch.Event.validationAccepted)\n    (ite.{1} (Eq.{1} validated Bool.true) (Option.some.{0} LeanCage.Launch.Stage.ready) Option.none.{0})"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step.eq_4",
+      "type": "\u2200 (validated : Bool) (state : LeanCage.Launch.Stage),\n  (Eq.{1} state LeanCage.Launch.Stage.unvalidated \u2192 False) \u2192\n    Eq.{1} (LeanCage.Launch.step validated state LeanCage.Launch.Event.validationAccepted) Option.none.{0}"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step.eq_5",
+      "type": "\u2200 (validated : Bool),\n  Eq.{1} (LeanCage.Launch.step validated LeanCage.Launch.Stage.ready LeanCage.Launch.Event.noNewPrivilegesSet)\n    (Option.some.{0} LeanCage.Launch.Stage.privilegesRestricted)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step.eq_6",
+      "type": "\u2200 (validated : Bool) (state : LeanCage.Launch.Stage),\n  (Eq.{1} state LeanCage.Launch.Stage.ready \u2192 False) \u2192\n    Eq.{1} (LeanCage.Launch.step validated state LeanCage.Launch.Event.noNewPrivilegesSet) Option.none.{0}"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step.eq_7",
+      "type": "\u2200 (validated : Bool),\n  Eq.{1}\n    (LeanCage.Launch.step validated LeanCage.Launch.Stage.privilegesRestricted LeanCage.Launch.Event.filterInstalled)\n    (Option.some.{0} LeanCage.Launch.Stage.filterInstalled)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step.eq_8",
+      "type": "\u2200 (validated : Bool) (state : LeanCage.Launch.Stage),\n  (Eq.{1} state LeanCage.Launch.Stage.privilegesRestricted \u2192 False) \u2192\n    Eq.{1} (LeanCage.Launch.step validated state LeanCage.Launch.Event.filterInstalled) Option.none.{0}"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step.eq_9",
+      "type": "\u2200 (validated : Bool),\n  Eq.{1} (LeanCage.Launch.step validated LeanCage.Launch.Stage.filterInstalled LeanCage.Launch.Event.execAttempted)\n    (Option.some.{0} LeanCage.Launch.Stage.executing)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step_receipts",
+      "type": "\u2200 {validated : Bool} {before after : LeanCage.Launch.Stage} {trace : LeanCage.Launch.Trace}\n  {event : LeanCage.Launch.Event},\n  LeanCage.Launch.Receipts before trace \u2192\n    Eq.{1} (LeanCage.Launch.step validated before event) (Option.some.{0} after) \u2192\n      LeanCage.Launch.Receipts after (HAppend.hAppend.{0, 0, 0} trace (List.cons.{0} event List.nil.{0}))"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step_successful_history",
+      "type": "\u2200 {validated : Bool} {before after : LeanCage.Launch.Stage} {trace : LeanCage.Launch.Trace}\n  {event : LeanCage.Launch.Event},\n  LeanCage.Launch.SuccessfulHistory before trace \u2192\n    Eq.{1} (LeanCage.Launch.step validated before event) (Option.some.{0} after) \u2192\n      LeanCage.Launch.SuccessfulHistory after (HAppend.hAppend.{0, 0, 0} trace (List.cons.{0} event List.nil.{0}))"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.step_validation_guard",
+      "type": "\u2200 {validated : Bool} {before after : LeanCage.Launch.Stage} {event : LeanCage.Launch.Event},\n  LeanCage.Launch.ValidationGuard validated before \u2192\n    Eq.{1} (LeanCage.Launch.step validated before event) (Option.some.{0} after) \u2192\n      LeanCage.Launch.ValidationGuard validated after"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.successTrace.eq_1",
+      "type": "Eq.{1} LeanCage.Launch.successTrace\n  (List.cons.{0} LeanCage.Launch.Event.validationAccepted\n    (List.cons.{0} LeanCage.Launch.Event.noNewPrivilegesSet\n      (List.cons.{0} LeanCage.Launch.Event.filterInstalled\n        (List.cons.{0} LeanCage.Launch.Event.execAttempted\n          (List.cons.{0} LeanCage.Launch.Event.execSucceeded List.nil.{0})))))"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.success_witness",
+      "type": "Eq.{1} (LeanCage.Launch.replay Bool.true LeanCage.Launch.Stage.unvalidated LeanCage.Launch.successTrace)\n  (Option.some.{0} LeanCage.Launch.Stage.executed)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.terminated_terminal",
+      "type": "\u2200 (validated : Bool) (event : LeanCage.Launch.Event),\n  Eq.{1} (LeanCage.Launch.step validated LeanCage.Launch.Stage.terminated event) Option.none.{0}"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Launch.validation_before_no_new_privileges",
+      "type": "\u2200 {validated : Bool} {trace : LeanCage.Launch.Trace} {before after : LeanCage.Launch.Stage},\n  LeanCage.Launch.Reaches validated trace before \u2192\n    Eq.{1} (LeanCage.Launch.step validated before LeanCage.Launch.Event.noNewPrivilegesSet) (Option.some.{0} after) \u2192\n      Membership.mem.{0, 0} trace LeanCage.Launch.Event.validationAccepted"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.Abi.mk.inj",
+      "type": "\u2200 {auditArch : UInt32} {pointerBits longBits : UInt8} {byteOrder : LeanCage.Linux.Filter.ByteOrder}\n  {auditArch_1 : UInt32} {pointerBits_1 longBits_1 : UInt8} {byteOrder_1 : LeanCage.Linux.Filter.ByteOrder},\n  Eq.{1} { auditArch := auditArch, pointerBits := pointerBits, longBits := longBits, byteOrder := byteOrder }\n      { auditArch := auditArch_1, pointerBits := pointerBits_1, longBits := longBits_1, byteOrder := byteOrder_1 } \u2192\n    Eq.{1} auditArch auditArch_1 \u2227\n      Eq.{1} pointerBits pointerBits_1 \u2227 Eq.{1} longBits longBits_1 \u2227 Eq.{1} byteOrder byteOrder_1"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.Abi.mk.injEq",
+      "type": "\u2200 (auditArch : UInt32) (pointerBits longBits : UInt8) (byteOrder : LeanCage.Linux.Filter.ByteOrder)\n  (auditArch_1 : UInt32) (pointerBits_1 longBits_1 : UInt8) (byteOrder_1 : LeanCage.Linux.Filter.ByteOrder),\n  Eq.{1}\n    (Eq.{1} { auditArch := auditArch, pointerBits := pointerBits, longBits := longBits, byteOrder := byteOrder }\n      { auditArch := auditArch_1, pointerBits := pointerBits_1, longBits := longBits_1, byteOrder := byteOrder_1 })\n    (Eq.{1} auditArch auditArch_1 \u2227\n      Eq.{1} pointerBits pointerBits_1 \u2227 Eq.{1} longBits longBits_1 \u2227 Eq.{1} byteOrder byteOrder_1)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.Abi.mk.sizeOf_spec",
+      "type": "\u2200 (auditArch : UInt32) (pointerBits longBits : UInt8) (byteOrder : LeanCage.Linux.Filter.ByteOrder),\n  Eq.{1}\n    (SizeOf.sizeOf.{1}\n      { auditArch := auditArch, pointerBits := pointerBits, longBits := longBits, byteOrder := byteOrder })\n    (HAdd.hAdd.{0, 0, 0}\n      (HAdd.hAdd.{0, 0, 0}\n        (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 (SizeOf.sizeOf.{1} auditArch)) (SizeOf.sizeOf.{1} pointerBits))\n        (SizeOf.sizeOf.{1} longBits))\n      (SizeOf.sizeOf.{1} byteOrder))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.ByteOrder.bigEndian.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Linux.Filter.ByteOrder.bigEndian) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.ByteOrder.littleEndian.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Linux.Filter.ByteOrder.littleEndian) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.ByteOrder.ofNat_ctorIdx",
+      "type": "\u2200 (x : LeanCage.Linux.Filter.ByteOrder), Eq.{1} (LeanCage.Linux.Filter.ByteOrder.ofNat x.ctorIdx) x"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.DecodeError.emptyInput.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Linux.Filter.DecodeError.emptyInput) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.DecodeError.misalignedInput.inj",
+      "type": "\u2200 {byteCount byteCount_1 : Nat},\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.misalignedInput byteCount)\n      (LeanCage.Linux.Filter.DecodeError.misalignedInput byteCount_1) \u2192\n    Eq.{1} byteCount byteCount_1"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.DecodeError.misalignedInput.injEq",
+      "type": "\u2200 (byteCount byteCount_1 : Nat),\n  Eq.{1}\n    (Eq.{1} (LeanCage.Linux.Filter.DecodeError.misalignedInput byteCount)\n      (LeanCage.Linux.Filter.DecodeError.misalignedInput byteCount_1))\n    (Eq.{1} byteCount byteCount_1)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.DecodeError.misalignedInput.sizeOf_spec",
+      "type": "\u2200 (byteCount : Nat),\n  Eq.{1} (SizeOf.sizeOf.{1} (LeanCage.Linux.Filter.DecodeError.misalignedInput byteCount))\n    (HAdd.hAdd.{0, 0, 0} 1 (SizeOf.sizeOf.{1} byteCount))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.DecodeError.oversizedInput.inj",
+      "type": "\u2200 {byteCount byteCount_1 : Nat},\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.oversizedInput byteCount)\n      (LeanCage.Linux.Filter.DecodeError.oversizedInput byteCount_1) \u2192\n    Eq.{1} byteCount byteCount_1"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.DecodeError.oversizedInput.injEq",
+      "type": "\u2200 (byteCount byteCount_1 : Nat),\n  Eq.{1}\n    (Eq.{1} (LeanCage.Linux.Filter.DecodeError.oversizedInput byteCount)\n      (LeanCage.Linux.Filter.DecodeError.oversizedInput byteCount_1))\n    (Eq.{1} byteCount byteCount_1)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.DecodeError.oversizedInput.sizeOf_spec",
+      "type": "\u2200 (byteCount : Nat),\n  Eq.{1} (SizeOf.sizeOf.{1} (LeanCage.Linux.Filter.DecodeError.oversizedInput byteCount))\n    (HAdd.hAdd.{0, 0, 0} 1 (SizeOf.sizeOf.{1} byteCount))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.DecodeError.unsupportedAbi.inj",
+      "type": "\u2200 {abi abi_1 : LeanCage.Linux.Filter.Abi},\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedAbi abi)\n      (LeanCage.Linux.Filter.DecodeError.unsupportedAbi abi_1) \u2192\n    Eq.{1} abi abi_1"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.DecodeError.unsupportedAbi.injEq",
+      "type": "\u2200 (abi abi_1 : LeanCage.Linux.Filter.Abi),\n  Eq.{1}\n    (Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedAbi abi)\n      (LeanCage.Linux.Filter.DecodeError.unsupportedAbi abi_1))\n    (Eq.{1} abi abi_1)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.DecodeError.unsupportedAbi.sizeOf_spec",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi),\n  Eq.{1} (SizeOf.sizeOf.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedAbi abi))\n    (HAdd.hAdd.{0, 0, 0} 1 (SizeOf.sizeOf.{1} abi))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.DecodeError.unsupportedInstruction.inj",
+      "type": "\u2200 {index index_1 : Nat},\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction index)\n      (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction index_1) \u2192\n    Eq.{1} index index_1"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.DecodeError.unsupportedInstruction.injEq",
+      "type": "\u2200 (index index_1 : Nat),\n  Eq.{1}\n    (Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction index)\n      (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction index_1))\n    (Eq.{1} index index_1)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.DecodeError.unsupportedInstruction.sizeOf_spec",
+      "type": "\u2200 (index : Nat),\n  Eq.{1} (SizeOf.sizeOf.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction index))\n    (HAdd.hAdd.{0, 0, 0} 1 (SizeOf.sizeOf.{1} index))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.DecodeError.unsupportedLength.inj",
+      "type": "\u2200 {instructionCount instructionCount_1 : Nat},\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedLength instructionCount)\n      (LeanCage.Linux.Filter.DecodeError.unsupportedLength instructionCount_1) \u2192\n    Eq.{1} instructionCount instructionCount_1"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.DecodeError.unsupportedLength.injEq",
+      "type": "\u2200 (instructionCount instructionCount_1 : Nat),\n  Eq.{1}\n    (Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedLength instructionCount)\n      (LeanCage.Linux.Filter.DecodeError.unsupportedLength instructionCount_1))\n    (Eq.{1} instructionCount instructionCount_1)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.DecodeError.unsupportedLength.sizeOf_spec",
+      "type": "\u2200 (instructionCount : Nat),\n  Eq.{1} (SizeOf.sizeOf.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedLength instructionCount))\n    (HAdd.hAdd.{0, 0, 0} 1 (SizeOf.sizeOf.{1} instructionCount))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.Instruction.mk.inj",
+      "type": "\u2200 {code : UInt16} {jt jf : UInt8} {k : UInt32} {code_1 : UInt16} {jt_1 jf_1 : UInt8} {k_1 : UInt32},\n  Eq.{1} { code := code, jt := jt, jf := jf, k := k } { code := code_1, jt := jt_1, jf := jf_1, k := k_1 } \u2192\n    Eq.{1} code code_1 \u2227 Eq.{1} jt jt_1 \u2227 Eq.{1} jf jf_1 \u2227 Eq.{1} k k_1"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.Instruction.mk.injEq",
+      "type": "\u2200 (code : UInt16) (jt jf : UInt8) (k : UInt32) (code_1 : UInt16) (jt_1 jf_1 : UInt8) (k_1 : UInt32),\n  Eq.{1} (Eq.{1} { code := code, jt := jt, jf := jf, k := k } { code := code_1, jt := jt_1, jf := jf_1, k := k_1 })\n    (Eq.{1} code code_1 \u2227 Eq.{1} jt jt_1 \u2227 Eq.{1} jf jf_1 \u2227 Eq.{1} k k_1)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.Instruction.mk.sizeOf_spec",
+      "type": "\u2200 (code : UInt16) (jt jf : UInt8) (k : UInt32),\n  Eq.{1} (SizeOf.sizeOf.{1} { code := code, jt := jt, jf := jf, k := k })\n    (HAdd.hAdd.{0, 0, 0}\n      (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 (SizeOf.sizeOf.{1} code)) (SizeOf.sizeOf.{1} jt))\n        (SizeOf.sizeOf.{1} jf))\n      (SizeOf.sizeOf.{1} k))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.InstructionLayout._proof_1",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 \u00acLT.lt.{0} base bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.InstructionLayout._proof_10",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 LT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 1) bytes.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.InstructionLayout._proof_11",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 LT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 2) bytes.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.InstructionLayout._proof_12",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 LT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 3) bytes.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.InstructionLayout._proof_13",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 LT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 4) bytes.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.InstructionLayout._proof_14",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 LT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 5) bytes.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.InstructionLayout._proof_15",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 LT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 6) bytes.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.InstructionLayout._proof_16",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 LT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 7) bytes.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.InstructionLayout._proof_2",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 \u00acLT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 1) bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.InstructionLayout._proof_3",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 \u00acLT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 2) bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.InstructionLayout._proof_4",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 \u00acLT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 3) bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.InstructionLayout._proof_5",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 \u00acLT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 4) bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.InstructionLayout._proof_6",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 \u00acLT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 5) bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.InstructionLayout._proof_7",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 \u00acLT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 6) bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.InstructionLayout._proof_8",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 \u00acLT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 7) bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.InstructionLayout._proof_9",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat), LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 LT.lt.{0} base bytes.size"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.Program.denyGetppid.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCage.Linux.Filter.Program.denyGetppid) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.Program.ofNat_ctorIdx",
+      "type": "\u2200 (x : LeanCage.Linux.Filter.Program), Eq.{1} (LeanCage.Linux.Filter.Program.ofNat x.ctorIdx) x"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode._proof_1",
+      "type": "\u2200 (bytes : ByteArray),\n  \u00acNe.{1} (HMod.hMod.{0, 0, 0} bytes.size LeanCage.Linux.Filter.instructionBytes) 0 \u2192\n    \u00acNe.{1} (HDiv.hDiv.{0, 0, 0} bytes.size LeanCage.Linux.Filter.instructionBytes)\n          LeanCage.Linux.Filter.profileInstructionCount \u2192\n      Eq.{1} bytes.size LeanCage.Linux.Filter.profileByteCount"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode._proof_3",
+      "type": "\u2200 (bytes : ByteArray),\n  \u00acNe.{1} (HMod.hMod.{0, 0, 0} bytes.size 8) 0 \u2192\n    \u00acNe.{1} (HDiv.hDiv.{0, 0, 0} bytes.size 8) 9 \u2192 \u00acEq.{1} bytes.size 72 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode.eq_1",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray),\n  Eq.{1} (LeanCage.Linux.Filter.decode abi bytes)\n    (ite.{1} (Eq.{1} abi LeanCage.Linux.Filter.nativeAbi)\n      (ite.{1} (Eq.{1} bytes.size 0) (Except.error.{0, 0} LeanCage.Linux.Filter.DecodeError.emptyInput)\n        (ite.{1} (LT.lt.{0} LeanCage.Linux.Filter.maxInputBytes bytes.size)\n          (Except.error.{0, 0} (LeanCage.Linux.Filter.DecodeError.oversizedInput bytes.size))\n          (if hmod : Ne.{1} (HMod.hMod.{0, 0, 0} bytes.size LeanCage.Linux.Filter.instructionBytes) 0 then\n            Except.error.{0, 0} (LeanCage.Linux.Filter.DecodeError.misalignedInput bytes.size)\n          else\n            if hcount :\n                Ne.{1} (HDiv.hDiv.{0, 0, 0} bytes.size LeanCage.Linux.Filter.instructionBytes)\n                  LeanCage.Linux.Filter.profileInstructionCount then\n              Except.error.{0, 0}\n                (LeanCage.Linux.Filter.DecodeError.unsupportedLength\n                  (HDiv.hDiv.{0, 0, 0} bytes.size LeanCage.Linux.Filter.instructionBytes))\n            else LeanCage.Linux.Filter.decodeValidatedSize bytes \u22ef)))\n      (Except.error.{0, 0} (LeanCage.Linux.Filter.DecodeError.unsupportedAbi abi)))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decodeU16LE._proof_1",
+      "type": "\u2200 (b0 b1 : UInt8),\n  LT.lt.{0} b0.toNat 256 \u2192\n    LT.lt.{0} b1.toNat 256 \u2192 \u00acLT.lt.{0} (HAdd.hAdd.{0, 0, 0} b0.toNat (HMul.hMul.{0, 0, 0} 256 b1.toNat)) 65536 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decodeU16LE._proof_2",
+      "type": "\u2200 (b0 b1 : UInt8), LT.lt.{0} (HAdd.hAdd.{0, 0, 0} b0.toNat (HMul.hMul.{0, 0, 0} 256 b1.toNat)) UInt16.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decodeU16LE.eq_1",
+      "type": "\u2200 (b0 b1 : UInt8),\n  Eq.{1} (LeanCage.Linux.Filter.decodeU16LE b0 b1)\n    (UInt16.ofNatLT (HAdd.hAdd.{0, 0, 0} b0.toNat (HMul.hMul.{0, 0, 0} 256 b1.toNat)) \u22ef)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decodeU16LE_toNat",
+      "type": "\u2200 (b0 b1 : UInt8),\n  Eq.{1} (LeanCage.Linux.Filter.decodeU16LE b0 b1).toNat\n    (HAdd.hAdd.{0, 0, 0} b0.toNat (HMul.hMul.{0, 0, 0} 256 b1.toNat))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decodeU32LE._proof_1",
+      "type": "\u2200 (b0 b1 b2 b3 : UInt8),\n  LT.lt.{0} b0.toNat 256 \u2192\n    LT.lt.{0} b1.toNat 256 \u2192\n      LT.lt.{0} b2.toNat 256 \u2192\n        LT.lt.{0} b3.toNat 256 \u2192\n          \u00acLT.lt.{0}\n                (HAdd.hAdd.{0, 0, 0}\n                  (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} b0.toNat (HMul.hMul.{0, 0, 0} 256 b1.toNat))\n                    (HMul.hMul.{0, 0, 0} 65536 b2.toNat))\n                  (HMul.hMul.{0, 0, 0} 16777216 b3.toNat))\n                4294967296 \u2192\n            False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decodeU32LE._proof_2",
+      "type": "\u2200 (b0 b1 b2 b3 : UInt8),\n  LT.lt.{0}\n    (HAdd.hAdd.{0, 0, 0}\n      (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} b0.toNat (HMul.hMul.{0, 0, 0} 256 b1.toNat))\n        (HMul.hMul.{0, 0, 0} 65536 b2.toNat))\n      (HMul.hMul.{0, 0, 0} 16777216 b3.toNat))\n    UInt32.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decodeU32LE.eq_1",
+      "type": "\u2200 (b0 b1 b2 b3 : UInt8),\n  Eq.{1} (LeanCage.Linux.Filter.decodeU32LE b0 b1 b2 b3)\n    (UInt32.ofNatLT\n      (HAdd.hAdd.{0, 0, 0}\n        (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} b0.toNat (HMul.hMul.{0, 0, 0} 256 b1.toNat))\n          (HMul.hMul.{0, 0, 0} 65536 b2.toNat))\n        (HMul.hMul.{0, 0, 0} 16777216 b3.toNat))\n      \u22ef)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decodeU32LE_toNat",
+      "type": "\u2200 (b0 b1 b2 b3 : UInt8),\n  Eq.{1} (LeanCage.Linux.Filter.decodeU32LE b0 b1 b2 b3).toNat\n    (HAdd.hAdd.{0, 0, 0}\n      (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} b0.toNat (HMul.hMul.{0, 0, 0} 256 b1.toNat))\n        (HMul.hMul.{0, 0, 0} 65536 b2.toNat))\n      (HMul.hMul.{0, 0, 0} 16777216 b3.toNat))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decodeValidatedSize.congr_simp",
+      "type": "\u2200 (bytes bytes_1 : ByteArray) (e_bytes : Eq.{1} bytes bytes_1)\n  (hsize : Eq.{1} bytes.size LeanCage.Linux.Filter.profileByteCount),\n  Eq.{1} (LeanCage.Linux.Filter.decodeValidatedSize bytes hsize) (LeanCage.Linux.Filter.decodeValidatedSize bytes_1 \u22ef)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decodeValidatedSize.eq_1",
+      "type": "\u2200 (bytes : ByteArray) (hsize : Eq.{1} bytes.size LeanCage.Linux.Filter.profileByteCount),\n  Eq.{1} (LeanCage.Linux.Filter.decodeValidatedSize bytes hsize)\n    (match LeanCage.Linux.Filter.firstMismatch bytes hsize with\n    | Option.none.{0} => Except.ok.{0, 0} LeanCage.Linux.Filter.Program.denyGetppid\n    | Option.some.{0} i => Except.error.{0, 0} (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction \u2191i))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_at_valid_size",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray),\n  Eq.{1} abi LeanCage.Linux.Filter.nativeAbi \u2192\n    \u2200 (hsize : Eq.{1} bytes.size LeanCage.Linux.Filter.profileByteCount),\n      Eq.{1} (LeanCage.Linux.Filter.decode abi bytes) (LeanCage.Linux.Filter.decodeValidatedSize bytes hsize)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_bounds",
+      "type": "\u2200 {abi : LeanCage.Linux.Filter.Abi} {bytes : ByteArray} {program : LeanCage.Linux.Filter.Program},\n  Eq.{1} (LeanCage.Linux.Filter.decode abi bytes) (Except.ok.{0, 0} program) \u2192\n    Eq.{1} bytes.size 72 \u2227\n      LE.le.{0} (HDiv.hDiv.{0, 0, 0} bytes.size 8) LeanCage.Linux.Filter.maxInstructions \u2227\n        LE.le.{0} (HDiv.hDiv.{0, 0, 0} bytes.size 8) LeanCage.Linux.Filter.sockFprogMaxLength \u2227\n          Eq.{1} (UInt16.ofNat (HDiv.hDiv.{0, 0, 0} bytes.size 8)).toNat (HDiv.hDiv.{0, 0, 0} bytes.size 8) \u2227\n            \u2200 (index field : Nat),\n              LT.lt.{0} index (HDiv.hDiv.{0, 0, 0} bytes.size 8) \u2192\n                LT.lt.{0} field 8 \u2192 LT.lt.{0} (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 8 index) field) bytes.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_bounds._proof_1_3",
+      "type": "\u2200 {bytes : ByteArray},\n  Eq.{1} bytes.size 72 \u2192\n    \u2200 (index field : Nat),\n      LT.lt.{0} index (HDiv.hDiv.{0, 0, 0} bytes.size 8) \u2192\n        LT.lt.{0} field 8 \u2192 \u00acLT.lt.{0} (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 8 index) field) bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_canonical",
+      "type": "Eq.{1} (LeanCage.Linux.Filter.decode LeanCage.Linux.Filter.nativeAbi LeanCage.Linux.Filter.canonicalBytes)\n  (Except.ok.{0, 0} LeanCage.Linux.Filter.Program.denyGetppid)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_complete",
+      "type": "\u2200 {abi : LeanCage.Linux.Filter.Abi} {bytes : ByteArray},\n  LeanCage.Linux.Filter.ValidInput abi bytes \u2192\n    Eq.{1} (LeanCage.Linux.Filter.decode abi bytes) (Except.ok.{0, 0} LeanCage.Linux.Filter.Program.denyGetppid)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_empty",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray),\n  Eq.{1} abi LeanCage.Linux.Filter.nativeAbi \u2192\n    Eq.{1} bytes.size 0 \u2192\n      Eq.{1} (LeanCage.Linux.Filter.decode abi bytes) (Except.error.{0, 0} LeanCage.Linux.Filter.DecodeError.emptyInput)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_misaligned",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray),\n  Eq.{1} abi LeanCage.Linux.Filter.nativeAbi \u2192\n    Ne.{1} bytes.size 0 \u2192\n      LE.le.{0} bytes.size LeanCage.Linux.Filter.maxInputBytes \u2192\n        Ne.{1} (HMod.hMod.{0, 0, 0} bytes.size LeanCage.Linux.Filter.instructionBytes) 0 \u2192\n          Eq.{1} (LeanCage.Linux.Filter.decode abi bytes)\n            (Except.error.{0, 0} (LeanCage.Linux.Filter.DecodeError.misalignedInput bytes.size))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_misaligned._proof_1_1",
+      "type": "\u2200 (bytes : ByteArray),\n  LE.le.{0} bytes.size LeanCage.Linux.Filter.maxInputBytes \u2192\n    LT.lt.{0} LeanCage.Linux.Filter.maxInputBytes bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_mismatch_iff",
+      "type": "\u2200 (bytes : ByteArray),\n  Eq.{1} bytes.size LeanCage.Linux.Filter.profileByteCount \u2192\n    \u2200 (i : Fin LeanCage.Linux.Filter.profileInstructionCount),\n      Eq.{1} (LeanCage.Linux.Filter.decode LeanCage.Linux.Filter.nativeAbi bytes)\n          (Except.error.{0, 0} (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction \u2191i)) \u2194\n        \u00acLeanCage.Linux.Filter.InstructionLayout bytes (HMul.hMul.{0, 0, 0} 8 \u2191i)\n              (LeanCage.Linux.Filter.referenceInstruction i) \u2227\n          \u2200 (j : Fin LeanCage.Linux.Filter.profileInstructionCount),\n            LT.lt.{0} \u2191j \u2191i \u2192\n              LeanCage.Linux.Filter.InstructionLayout bytes (HMul.hMul.{0, 0, 0} 8 \u2191j)\n                (LeanCage.Linux.Filter.referenceInstruction j)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_mismatch_iff._simp_1_1",
+      "type": "\u2200 {n : Nat} {a b : Fin n}, Eq.{1} (Eq.{1} a b) (Eq.{1} \u2191a \u2191b)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_ok_iff",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray) (program : LeanCage.Linux.Filter.Program),\n  Eq.{1} (LeanCage.Linux.Filter.decode abi bytes) (Except.ok.{0, 0} program) \u2194\n    LeanCage.Linux.Filter.ValidInput abi bytes"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_oversized",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray),\n  Eq.{1} abi LeanCage.Linux.Filter.nativeAbi \u2192\n    LT.lt.{0} LeanCage.Linux.Filter.maxInputBytes bytes.size \u2192\n      Eq.{1} (LeanCage.Linux.Filter.decode abi bytes)\n        (Except.error.{0, 0} (LeanCage.Linux.Filter.DecodeError.oversizedInput bytes.size))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_oversized._proof_1_3",
+      "type": "\u2200 (bytes : ByteArray), LT.lt.{0} (HMul.hMul.{0, 0, 0} 4096 8) bytes.size \u2192 Eq.{1} bytes.size 0 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_rejects_invalid",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray),\n  \u00acLeanCage.Linux.Filter.ValidInput abi bytes \u2192\n    Exists.{1} fun error => Eq.{1} (LeanCage.Linux.Filter.decode abi bytes) (Except.error.{0, 0} error)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_success",
+      "type": "\u2200 {abi : LeanCage.Linux.Filter.Abi} {bytes : ByteArray} {program : LeanCage.Linux.Filter.Program},\n  Eq.{1} (LeanCage.Linux.Filter.decode abi bytes) (Except.ok.{0, 0} program) \u2192\n    LeanCage.Linux.Filter.ValidInput abi bytes"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_success._proof_1_2",
+      "type": "\u2200 {bytes : ByteArray},\n  \u00acNe.{1} (HMod.hMod.{0, 0, 0} bytes.size 8) 0 \u2192\n    \u00acNe.{1} (HDiv.hDiv.{0, 0, 0} bytes.size 8) 9 \u2192 \u00acEq.{1} bytes.size 72 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_unsupported_abi",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray),\n  Ne.{1} abi LeanCage.Linux.Filter.nativeAbi \u2192\n    Eq.{1} (LeanCage.Linux.Filter.decode abi bytes)\n      (Except.error.{0, 0} (LeanCage.Linux.Filter.DecodeError.unsupportedAbi abi))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_unsupported_length",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray),\n  Eq.{1} abi LeanCage.Linux.Filter.nativeAbi \u2192\n    Ne.{1} bytes.size 0 \u2192\n      LE.le.{0} bytes.size LeanCage.Linux.Filter.maxInputBytes \u2192\n        Eq.{1} (HMod.hMod.{0, 0, 0} bytes.size LeanCage.Linux.Filter.instructionBytes) 0 \u2192\n          Ne.{1} (HDiv.hDiv.{0, 0, 0} bytes.size LeanCage.Linux.Filter.instructionBytes)\n              LeanCage.Linux.Filter.profileInstructionCount \u2192\n            Eq.{1} (LeanCage.Linux.Filter.decode abi bytes)\n              (Except.error.{0, 0}\n                (LeanCage.Linux.Filter.DecodeError.unsupportedLength\n                  (HDiv.hDiv.{0, 0, 0} bytes.size LeanCage.Linux.Filter.instructionBytes)))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_unsupported_length._proof_1_1",
+      "type": "\u2200 (bytes : ByteArray),\n  LE.le.{0} bytes.size LeanCage.Linux.Filter.maxInputBytes \u2192\n    LT.lt.{0} LeanCage.Linux.Filter.maxInputBytes bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.firstMismatch.congr_simp",
+      "type": "\u2200 (bytes bytes_1 : ByteArray) (e_bytes : Eq.{1} bytes bytes_1)\n  (hsize : Eq.{1} bytes.size LeanCage.Linux.Filter.profileByteCount),\n  Eq.{1} (LeanCage.Linux.Filter.firstMismatch bytes hsize) (LeanCage.Linux.Filter.firstMismatch bytes_1 \u22ef)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.firstMismatch.eq_1",
+      "type": "\u2200 (bytes : ByteArray) (hsize : Eq.{1} bytes.size LeanCage.Linux.Filter.profileByteCount),\n  Eq.{1} (LeanCage.Linux.Filter.firstMismatch bytes hsize)\n    (List.find?.{0}\n      (fun i =>\n        Decidable.decide\n          (Ne.{1} (LeanCage.Linux.Filter.instructionAt bytes hsize i) (LeanCage.Linux.Filter.referenceInstruction i)))\n      (List.finRange LeanCage.Linux.Filter.profileInstructionCount))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.firstMismatch_eq_none_iff",
+      "type": "\u2200 (bytes : ByteArray) (hsize : Eq.{1} bytes.size LeanCage.Linux.Filter.profileByteCount),\n  Eq.{1} (LeanCage.Linux.Filter.firstMismatch bytes hsize) Option.none.{0} \u2194\n    \u2200 (i : Fin LeanCage.Linux.Filter.profileInstructionCount),\n      LeanCage.Linux.Filter.InstructionLayout bytes (HMul.hMul.{0, 0, 0} 8 \u2191i)\n        (LeanCage.Linux.Filter.referenceInstruction i)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.firstMismatch_eq_none_iff._simp_1_2",
+      "type": "\u2200 {\u03b1 : Type u_1} {p : \u03b1 \u2192 Bool} {l : List.{u_1} \u03b1},\n  Eq.{1} (Eq.{u_1 + 1} (List.find?.{u_1} p l) Option.none.{u_1})\n    (\u2200 (x : \u03b1), Membership.mem.{u_1, u_1} l x \u2192 \u00acEq.{1} (p x) Bool.true)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.firstMismatch_eq_none_iff._simp_1_3",
+      "type": "\u2200 {n : Nat} (x : Fin n), Eq.{1} (Membership.mem.{0, 0} (List.finRange n) x) True"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.firstMismatch_eq_none_iff._simp_1_4",
+      "type": "\u2200 {b : Prop} (\u03b1 : Sort u_1) [i : Nonempty.{u_1} \u03b1], Eq.{1} (\u2200 (a : \u03b1), b) b"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.firstMismatch_eq_none_iff._simp_1_5",
+      "type": "\u2200 {p : Prop} [Decidable p], Eq.{1} (\u00ac\u00acp) p"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.firstMismatch_eq_some_iff",
+      "type": "\u2200 (bytes : ByteArray) (hsize : Eq.{1} bytes.size LeanCage.Linux.Filter.profileByteCount)\n  (i : Fin LeanCage.Linux.Filter.profileInstructionCount),\n  Eq.{1} (LeanCage.Linux.Filter.firstMismatch bytes hsize) (Option.some.{0} i) \u2194\n    \u00acLeanCage.Linux.Filter.InstructionLayout bytes (HMul.hMul.{0, 0, 0} 8 \u2191i)\n          (LeanCage.Linux.Filter.referenceInstruction i) \u2227\n      \u2200 (j : Fin LeanCage.Linux.Filter.profileInstructionCount),\n        LT.lt.{0} \u2191j \u2191i \u2192\n          LeanCage.Linux.Filter.InstructionLayout bytes (HMul.hMul.{0, 0, 0} 8 \u2191j)\n            (LeanCage.Linux.Filter.referenceInstruction j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.firstMismatch_eq_some_iff._proof_1_1",
+      "type": "\u2200 (bytes : ByteArray) (i : Fin LeanCage.Linux.Filter.profileInstructionCount) (index : Nat),\n  LT.lt.{0} index (List.length.{0} (List.finRange LeanCage.Linux.Filter.profileInstructionCount)) \u2192\n    Eq.{1} index \u2191i \u2192\n      \u2200 (j : Fin LeanCage.Linux.Filter.profileInstructionCount), LT.lt.{0} \u2191j \u2191i \u2192 \u00acLT.lt.{0} (\u2191j) index \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqAbi.decEq._proof_1",
+      "type": "\u2200 (a : UInt32) (a_1 a_2 : UInt8) (a_3 : LeanCage.Linux.Filter.ByteOrder),\n  Eq.{1} { auditArch := a, pointerBits := a_1, longBits := a_2, byteOrder := a_3 }\n    { auditArch := a, pointerBits := a_1, longBits := a_2, byteOrder := a_3 }"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqAbi.decEq._proof_2",
+      "type": "\u2200 (a : UInt32) (a_1 a_2 : UInt8) (a_3 b : LeanCage.Linux.Filter.ByteOrder),\n  \u00acEq.{1} a_3 b \u2192\n    Eq.{1} { auditArch := a, pointerBits := a_1, longBits := a_2, byteOrder := a_3 }\n        { auditArch := a, pointerBits := a_1, longBits := a_2, byteOrder := b } \u2192\n      False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqAbi.decEq._proof_3",
+      "type": "\u2200 (a : UInt32) (a_1 a_2 : UInt8) (a_3 : LeanCage.Linux.Filter.ByteOrder) (b : UInt8)\n  (b_1 : LeanCage.Linux.Filter.ByteOrder),\n  \u00acEq.{1} a_2 b \u2192\n    Eq.{1} { auditArch := a, pointerBits := a_1, longBits := a_2, byteOrder := a_3 }\n        { auditArch := a, pointerBits := a_1, longBits := b, byteOrder := b_1 } \u2192\n      False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqAbi.decEq._proof_4",
+      "type": "\u2200 (a : UInt32) (a_1 a_2 : UInt8) (a_3 : LeanCage.Linux.Filter.ByteOrder) (b b_1 : UInt8)\n  (b_2 : LeanCage.Linux.Filter.ByteOrder),\n  \u00acEq.{1} a_1 b \u2192\n    Eq.{1} { auditArch := a, pointerBits := a_1, longBits := a_2, byteOrder := a_3 }\n        { auditArch := a, pointerBits := b, longBits := b_1, byteOrder := b_2 } \u2192\n      False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqAbi.decEq._proof_5",
+      "type": "\u2200 (a : UInt32) (a_1 a_2 : UInt8) (a_3 : LeanCage.Linux.Filter.ByteOrder) (b : UInt32) (b_1 b_2 : UInt8)\n  (b_3 : LeanCage.Linux.Filter.ByteOrder),\n  \u00acEq.{1} a b \u2192\n    Eq.{1} { auditArch := a, pointerBits := a_1, longBits := a_2, byteOrder := a_3 }\n        { auditArch := b, pointerBits := b_1, longBits := b_2, byteOrder := b_3 } \u2192\n      False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqByteOrder._proof_1",
+      "type": "\u2200 (x y : LeanCage.Linux.Filter.ByteOrder), Eq.{1} x.ctorIdx y.ctorIdx \u2192 Eq.{1} x y"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqByteOrder._proof_2",
+      "type": "\u2200 (x y : LeanCage.Linux.Filter.ByteOrder), \u00acEq.{1} x.ctorIdx y.ctorIdx \u2192 Eq.{1} x y \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_1",
+      "type": "\u2200 (a : LeanCage.Linux.Filter.Abi),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedAbi a) (LeanCage.Linux.Filter.DecodeError.unsupportedAbi a)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_10",
+      "type": "\u2200 (byteCount : Nat),\n  Eq.{1} LeanCage.Linux.Filter.DecodeError.emptyInput (LeanCage.Linux.Filter.DecodeError.misalignedInput byteCount) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_11",
+      "type": "\u2200 (instructionCount : Nat),\n  Eq.{1} LeanCage.Linux.Filter.DecodeError.emptyInput\n      (LeanCage.Linux.Filter.DecodeError.unsupportedLength instructionCount) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_12",
+      "type": "\u2200 (index : Nat),\n  Eq.{1} LeanCage.Linux.Filter.DecodeError.emptyInput (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction index) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_13",
+      "type": "\u2200 (byteCount : Nat) (abi : LeanCage.Linux.Filter.Abi),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.oversizedInput byteCount)\n      (LeanCage.Linux.Filter.DecodeError.unsupportedAbi abi) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_14",
+      "type": "\u2200 (byteCount : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.oversizedInput byteCount) LeanCage.Linux.Filter.DecodeError.emptyInput \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_15",
+      "type": "\u2200 (a : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.oversizedInput a) (LeanCage.Linux.Filter.DecodeError.oversizedInput a)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_16",
+      "type": "\u2200 (a b : Nat),\n  \u00acEq.{1} a b \u2192\n    Eq.{1} (LeanCage.Linux.Filter.DecodeError.oversizedInput a) (LeanCage.Linux.Filter.DecodeError.oversizedInput b) \u2192\n      False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_17",
+      "type": "\u2200 (byteCount byteCount_1 : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.oversizedInput byteCount)\n      (LeanCage.Linux.Filter.DecodeError.misalignedInput byteCount_1) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_18",
+      "type": "\u2200 (byteCount instructionCount : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.oversizedInput byteCount)\n      (LeanCage.Linux.Filter.DecodeError.unsupportedLength instructionCount) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_19",
+      "type": "\u2200 (byteCount index : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.oversizedInput byteCount)\n      (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction index) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_2",
+      "type": "\u2200 (a b : LeanCage.Linux.Filter.Abi),\n  \u00acEq.{1} a b \u2192\n    Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedAbi a) (LeanCage.Linux.Filter.DecodeError.unsupportedAbi b) \u2192\n      False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_20",
+      "type": "\u2200 (byteCount : Nat) (abi : LeanCage.Linux.Filter.Abi),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.misalignedInput byteCount)\n      (LeanCage.Linux.Filter.DecodeError.unsupportedAbi abi) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_21",
+      "type": "\u2200 (byteCount : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.misalignedInput byteCount) LeanCage.Linux.Filter.DecodeError.emptyInput \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_22",
+      "type": "\u2200 (byteCount byteCount_1 : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.misalignedInput byteCount)\n      (LeanCage.Linux.Filter.DecodeError.oversizedInput byteCount_1) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_23",
+      "type": "\u2200 (a : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.misalignedInput a) (LeanCage.Linux.Filter.DecodeError.misalignedInput a)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_24",
+      "type": "\u2200 (a b : Nat),\n  \u00acEq.{1} a b \u2192\n    Eq.{1} (LeanCage.Linux.Filter.DecodeError.misalignedInput a) (LeanCage.Linux.Filter.DecodeError.misalignedInput b) \u2192\n      False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_25",
+      "type": "\u2200 (byteCount instructionCount : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.misalignedInput byteCount)\n      (LeanCage.Linux.Filter.DecodeError.unsupportedLength instructionCount) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_26",
+      "type": "\u2200 (byteCount index : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.misalignedInput byteCount)\n      (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction index) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_27",
+      "type": "\u2200 (instructionCount : Nat) (abi : LeanCage.Linux.Filter.Abi),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedLength instructionCount)\n      (LeanCage.Linux.Filter.DecodeError.unsupportedAbi abi) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_28",
+      "type": "\u2200 (instructionCount : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedLength instructionCount)\n      LeanCage.Linux.Filter.DecodeError.emptyInput \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_29",
+      "type": "\u2200 (instructionCount byteCount : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedLength instructionCount)\n      (LeanCage.Linux.Filter.DecodeError.oversizedInput byteCount) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_3",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedAbi abi) LeanCage.Linux.Filter.DecodeError.emptyInput \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_30",
+      "type": "\u2200 (instructionCount byteCount : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedLength instructionCount)\n      (LeanCage.Linux.Filter.DecodeError.misalignedInput byteCount) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_31",
+      "type": "\u2200 (a : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedLength a) (LeanCage.Linux.Filter.DecodeError.unsupportedLength a)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_32",
+      "type": "\u2200 (a b : Nat),\n  \u00acEq.{1} a b \u2192\n    Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedLength a)\n        (LeanCage.Linux.Filter.DecodeError.unsupportedLength b) \u2192\n      False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_33",
+      "type": "\u2200 (instructionCount index : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedLength instructionCount)\n      (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction index) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_34",
+      "type": "\u2200 (index : Nat) (abi : LeanCage.Linux.Filter.Abi),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction index)\n      (LeanCage.Linux.Filter.DecodeError.unsupportedAbi abi) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_35",
+      "type": "\u2200 (index : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction index) LeanCage.Linux.Filter.DecodeError.emptyInput \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_36",
+      "type": "\u2200 (index byteCount : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction index)\n      (LeanCage.Linux.Filter.DecodeError.oversizedInput byteCount) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_37",
+      "type": "\u2200 (index byteCount : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction index)\n      (LeanCage.Linux.Filter.DecodeError.misalignedInput byteCount) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_38",
+      "type": "\u2200 (index instructionCount : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction index)\n      (LeanCage.Linux.Filter.DecodeError.unsupportedLength instructionCount) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_39",
+      "type": "\u2200 (a : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction a)\n    (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction a)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_4",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (byteCount : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedAbi abi)\n      (LeanCage.Linux.Filter.DecodeError.oversizedInput byteCount) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_40",
+      "type": "\u2200 (a b : Nat),\n  \u00acEq.{1} a b \u2192\n    Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction a)\n        (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction b) \u2192\n      False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_5",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (byteCount : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedAbi abi)\n      (LeanCage.Linux.Filter.DecodeError.misalignedInput byteCount) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_6",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (instructionCount : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedAbi abi)\n      (LeanCage.Linux.Filter.DecodeError.unsupportedLength instructionCount) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_7",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (index : Nat),\n  Eq.{1} (LeanCage.Linux.Filter.DecodeError.unsupportedAbi abi)\n      (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction index) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_8",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi),\n  Eq.{1} LeanCage.Linux.Filter.DecodeError.emptyInput (LeanCage.Linux.Filter.DecodeError.unsupportedAbi abi) \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqDecodeError.decEq._proof_9",
+      "type": "\u2200 (byteCount : Nat),\n  Eq.{1} LeanCage.Linux.Filter.DecodeError.emptyInput (LeanCage.Linux.Filter.DecodeError.oversizedInput byteCount) \u2192\n    False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqInstruction.decEq._proof_1",
+      "type": "\u2200 (a : UInt16) (a_1 a_2 : UInt8) (a_3 : UInt32),\n  Eq.{1} { code := a, jt := a_1, jf := a_2, k := a_3 } { code := a, jt := a_1, jf := a_2, k := a_3 }"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqInstruction.decEq._proof_2",
+      "type": "\u2200 (a : UInt16) (a_1 a_2 : UInt8) (a_3 b : UInt32),\n  \u00acEq.{1} a_3 b \u2192\n    Eq.{1} { code := a, jt := a_1, jf := a_2, k := a_3 } { code := a, jt := a_1, jf := a_2, k := b } \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqInstruction.decEq._proof_3",
+      "type": "\u2200 (a : UInt16) (a_1 a_2 : UInt8) (a_3 : UInt32) (b : UInt8) (b_1 : UInt32),\n  \u00acEq.{1} a_2 b \u2192\n    Eq.{1} { code := a, jt := a_1, jf := a_2, k := a_3 } { code := a, jt := a_1, jf := b, k := b_1 } \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqInstruction.decEq._proof_4",
+      "type": "\u2200 (a : UInt16) (a_1 a_2 : UInt8) (a_3 : UInt32) (b b_1 : UInt8) (b_2 : UInt32),\n  \u00acEq.{1} a_1 b \u2192\n    Eq.{1} { code := a, jt := a_1, jf := a_2, k := a_3 } { code := a, jt := b, jf := b_1, k := b_2 } \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqInstruction.decEq._proof_5",
+      "type": "\u2200 (a : UInt16) (a_1 a_2 : UInt8) (a_3 : UInt32) (b : UInt16) (b_1 b_2 : UInt8) (b_3 : UInt32),\n  \u00acEq.{1} a b \u2192\n    Eq.{1} { code := a, jt := a_1, jf := a_2, k := a_3 } { code := b, jt := b_1, jf := b_2, k := b_3 } \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instDecidableEqProgram._proof_1",
+      "type": "\u2200 (x y : LeanCage.Linux.Filter.Program), \u00acEq.{1} x.ctorIdx y.ctorIdx \u2192 Eq.{1} x y \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instructionAt._proof_1",
+      "type": "\u2200 (bytes : ByteArray) (i : Fin LeanCage.Linux.Filter.profileInstructionCount),\n  LT.lt.{0} (\u2191i) 9 \u2192\n    Eq.{1} bytes.size 72 \u2192 \u00acLE.le.{0} (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 8 \u2191i) 8) bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instructionAt._proof_2",
+      "type": "\u2200 (bytes : ByteArray),\n  Eq.{1} bytes.size LeanCage.Linux.Filter.profileByteCount \u2192\n    \u2200 (i : Fin LeanCage.Linux.Filter.profileInstructionCount),\n      LE.le.{0} (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 8 \u2191i) 8) bytes.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instructionAt.congr_simp",
+      "type": "\u2200 (bytes bytes_1 : ByteArray) (e_bytes : Eq.{1} bytes bytes_1)\n  (hsize : Eq.{1} bytes.size LeanCage.Linux.Filter.profileByteCount)\n  (i i_1 : Fin LeanCage.Linux.Filter.profileInstructionCount),\n  Eq.{1} i i_1 \u2192\n    Eq.{1} (LeanCage.Linux.Filter.instructionAt bytes hsize i) (LeanCage.Linux.Filter.instructionAt bytes_1 \u22ef i_1)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.instructionBytes.eq_1",
+      "type": "Eq.{1} LeanCage.Linux.Filter.instructionBytes 8"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.maxInputBytes.eq_1",
+      "type": "Eq.{1} LeanCage.Linux.Filter.maxInputBytes\n  (HMul.hMul.{0, 0, 0} LeanCage.Linux.Filter.maxInstructions LeanCage.Linux.Filter.instructionBytes)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.maxInstructions.eq_1",
+      "type": "Eq.{1} LeanCage.Linux.Filter.maxInstructions 4096"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.profileByteCount.eq_1",
+      "type": "Eq.{1} LeanCage.Linux.Filter.profileByteCount\n  (HMul.hMul.{0, 0, 0} LeanCage.Linux.Filter.profileInstructionCount LeanCage.Linux.Filter.instructionBytes)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.profileInstructionCount.eq_1",
+      "type": "Eq.{1} LeanCage.Linux.Filter.profileInstructionCount 9"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.readInstruction._proof_1",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 \u00acLT.lt.{0} base bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.readInstruction._proof_10",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 LT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 1) bytes.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.readInstruction._proof_11",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 LT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 2) bytes.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.readInstruction._proof_12",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 LT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 3) bytes.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.readInstruction._proof_13",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 LT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 4) bytes.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.readInstruction._proof_14",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 LT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 5) bytes.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.readInstruction._proof_15",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 LT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 6) bytes.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.readInstruction._proof_16",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 LT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 7) bytes.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.readInstruction._proof_2",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 \u00acLT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 1) bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.readInstruction._proof_3",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 \u00acLT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 2) bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.readInstruction._proof_4",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 \u00acLT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 3) bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.readInstruction._proof_5",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 \u00acLT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 4) bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.readInstruction._proof_6",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 \u00acLT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 5) bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.readInstruction._proof_7",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 \u00acLT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 6) bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.readInstruction._proof_8",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat),\n  LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 \u00acLT.lt.{0} (HAdd.hAdd.{0, 0, 0} base 7) bytes.size \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.readInstruction._proof_9",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat), LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size \u2192 LT.lt.{0} base bytes.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.readInstruction.eq_1",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat) (h : LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size),\n  Eq.{1} (LeanCage.Linux.Filter.readInstruction bytes base h)\n    {\n      code :=\n        LeanCage.Linux.Filter.decodeU16LE (GetElem.getElem.{0, 0, 0} bytes base \u22ef)\n          (GetElem.getElem.{0, 0, 0} bytes (HAdd.hAdd.{0, 0, 0} base 1) \u22ef),\n      jt := GetElem.getElem.{0, 0, 0} bytes (HAdd.hAdd.{0, 0, 0} base 2) \u22ef,\n      jf := GetElem.getElem.{0, 0, 0} bytes (HAdd.hAdd.{0, 0, 0} base 3) \u22ef,\n      k :=\n        LeanCage.Linux.Filter.decodeU32LE (GetElem.getElem.{0, 0, 0} bytes (HAdd.hAdd.{0, 0, 0} base 4) \u22ef)\n          (GetElem.getElem.{0, 0, 0} bytes (HAdd.hAdd.{0, 0, 0} base 5) \u22ef)\n          (GetElem.getElem.{0, 0, 0} bytes (HAdd.hAdd.{0, 0, 0} base 6) \u22ef)\n          (GetElem.getElem.{0, 0, 0} bytes (HAdd.hAdd.{0, 0, 0} base 7) \u22ef) }"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.readInstruction_eq_iff",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat) (h : LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size)\n  (instruction : LeanCage.Linux.Filter.Instruction),\n  Eq.{1} (LeanCage.Linux.Filter.readInstruction bytes base h) instruction \u2194\n    LeanCage.Linux.Filter.InstructionLayout bytes base instruction"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.sockFprogMaxLength.eq_1",
+      "type": "Eq.{1} LeanCage.Linux.Filter.sockFprogMaxLength 65535"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.PreparedFilter.accepted",
+      "type": "\u2200 (self : LeanCage.Linux.PreparedFilter),\n  Eq.{1} (LeanCage.Linux.Filter.decode LeanCage.Linux.Filter.nativeAbi self.bytes) (Except.ok.{0, 0} self.program)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.PreparedFilter.mk.inj",
+      "type": "\u2200 {bytes : ByteArray} {program : LeanCage.Linux.Filter.Program}\n  {accepted : Eq.{1} (LeanCage.Linux.Filter.decode LeanCage.Linux.Filter.nativeAbi bytes) (Except.ok.{0, 0} program)}\n  {bytes_1 : ByteArray} {program_1 : LeanCage.Linux.Filter.Program}\n  {accepted_1 :\n    Eq.{1} (LeanCage.Linux.Filter.decode LeanCage.Linux.Filter.nativeAbi bytes_1) (Except.ok.{0, 0} program_1)},\n  Eq.{1} { bytes := bytes, program := program, accepted := accepted }\n      { bytes := bytes_1, program := program_1, accepted := accepted_1 } \u2192\n    Eq.{1} bytes bytes_1 \u2227 Eq.{1} program program_1"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.PreparedFilter.mk.injEq",
+      "type": "\u2200 (bytes : ByteArray) (program : LeanCage.Linux.Filter.Program)\n  (accepted : Eq.{1} (LeanCage.Linux.Filter.decode LeanCage.Linux.Filter.nativeAbi bytes) (Except.ok.{0, 0} program))\n  (bytes_1 : ByteArray) (program_1 : LeanCage.Linux.Filter.Program)\n  (accepted_1 :\n    Eq.{1} (LeanCage.Linux.Filter.decode LeanCage.Linux.Filter.nativeAbi bytes_1) (Except.ok.{0, 0} program_1)),\n  Eq.{1}\n    (Eq.{1} { bytes := bytes, program := program, accepted := accepted }\n      { bytes := bytes_1, program := program_1, accepted := accepted_1 })\n    (Eq.{1} bytes bytes_1 \u2227 Eq.{1} program program_1)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.PreparedFilter.mk.sizeOf_spec",
+      "type": "\u2200 (bytes : ByteArray) (program : LeanCage.Linux.Filter.Program)\n  (accepted : Eq.{1} (LeanCage.Linux.Filter.decode LeanCage.Linux.Filter.nativeAbi bytes) (Except.ok.{0, 0} program)),\n  Eq.{1} (SizeOf.sizeOf.{1} { bytes := bytes, program := program, accepted := accepted })\n    (HAdd.hAdd.{0, 0, 0}\n      (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 1 (SizeOf.sizeOf.{1} bytes)) (SizeOf.sizeOf.{1} program))\n      (SizeOf.sizeOf.{0} accepted))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.decoded_success_witness",
+      "type": "Eq.{1}\n  (LeanCage.Launch.replay\n    (LeanCage.Linux.validationVerdict LeanCage.Linux.Filter.nativeAbi LeanCage.Linux.Filter.canonicalBytes Bool.true)\n    LeanCage.Launch.Stage.unvalidated LeanCage.Launch.successTrace)\n  (Option.some.{0} LeanCage.Launch.Stage.executed)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.invalid_input_never_executes",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray) (entryAccepted : Bool) (trace : LeanCage.Launch.Trace),\n  \u00acLeanCage.Linux.Filter.ValidInput abi bytes \u2192\n    Ne.{1}\n      (LeanCage.Launch.replay (LeanCage.Linux.validationVerdict abi bytes entryAccepted)\n        LeanCage.Launch.Stage.unvalidated trace)\n      (Option.some.{0} LeanCage.Launch.Stage.executed)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.prepared_filter_valid",
+      "type": "\u2200 (prepared : LeanCage.Linux.PreparedFilter),\n  LeanCage.Linux.Filter.ValidInput LeanCage.Linux.Filter.nativeAbi prepared.bytes"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.validationVerdict.eq_1",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray) (entryAccepted : Bool),\n  Eq.{1} (LeanCage.Linux.validationVerdict abi bytes entryAccepted)\n    (match LeanCage.Linux.Filter.decode abi bytes with\n    | Except.error.{0, 0} a => Bool.false\n    | Except.ok.{0, 0} a => entryAccepted)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.validationVerdict_iff",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray) (entryAccepted : Bool),\n  Eq.{1} (LeanCage.Linux.validationVerdict abi bytes entryAccepted) Bool.true \u2194\n    LeanCage.Linux.Filter.ValidInput abi bytes \u2227 Eq.{1} entryAccepted Bool.true"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.Receipts.match_1.eq_1",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.ready)\n  (h_2 : Unit \u2192 motive LeanCage.Launch.Stage.privilegesRestricted)\n  (h_3 : Unit \u2192 motive LeanCage.Launch.Stage.filterInstalled) (h_4 : Unit \u2192 motive LeanCage.Launch.Stage.executing)\n  (h_5 : Unit \u2192 motive LeanCage.Launch.Stage.executed) (h_6 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.ready with\n    | LeanCage.Launch.Stage.ready => h_1 ()\n    | LeanCage.Launch.Stage.privilegesRestricted => h_2 ()\n    | LeanCage.Launch.Stage.filterInstalled => h_3 ()\n    | LeanCage.Launch.Stage.executing => h_4 ()\n    | LeanCage.Launch.Stage.executed => h_5 ()\n    | x => h_6 x)\n    (h_1 ())"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.Receipts.match_1.eq_2",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.ready)\n  (h_2 : Unit \u2192 motive LeanCage.Launch.Stage.privilegesRestricted)\n  (h_3 : Unit \u2192 motive LeanCage.Launch.Stage.filterInstalled) (h_4 : Unit \u2192 motive LeanCage.Launch.Stage.executing)\n  (h_5 : Unit \u2192 motive LeanCage.Launch.Stage.executed) (h_6 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.privilegesRestricted with\n    | LeanCage.Launch.Stage.ready => h_1 ()\n    | LeanCage.Launch.Stage.privilegesRestricted => h_2 ()\n    | LeanCage.Launch.Stage.filterInstalled => h_3 ()\n    | LeanCage.Launch.Stage.executing => h_4 ()\n    | LeanCage.Launch.Stage.executed => h_5 ()\n    | x => h_6 x)\n    (h_2 ())"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.Receipts.match_1.eq_3",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.ready)\n  (h_2 : Unit \u2192 motive LeanCage.Launch.Stage.privilegesRestricted)\n  (h_3 : Unit \u2192 motive LeanCage.Launch.Stage.filterInstalled) (h_4 : Unit \u2192 motive LeanCage.Launch.Stage.executing)\n  (h_5 : Unit \u2192 motive LeanCage.Launch.Stage.executed) (h_6 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.filterInstalled with\n    | LeanCage.Launch.Stage.ready => h_1 ()\n    | LeanCage.Launch.Stage.privilegesRestricted => h_2 ()\n    | LeanCage.Launch.Stage.filterInstalled => h_3 ()\n    | LeanCage.Launch.Stage.executing => h_4 ()\n    | LeanCage.Launch.Stage.executed => h_5 ()\n    | x => h_6 x)\n    (h_3 ())"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.Receipts.match_1.eq_4",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.ready)\n  (h_2 : Unit \u2192 motive LeanCage.Launch.Stage.privilegesRestricted)\n  (h_3 : Unit \u2192 motive LeanCage.Launch.Stage.filterInstalled) (h_4 : Unit \u2192 motive LeanCage.Launch.Stage.executing)\n  (h_5 : Unit \u2192 motive LeanCage.Launch.Stage.executed) (h_6 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.executing with\n    | LeanCage.Launch.Stage.ready => h_1 ()\n    | LeanCage.Launch.Stage.privilegesRestricted => h_2 ()\n    | LeanCage.Launch.Stage.filterInstalled => h_3 ()\n    | LeanCage.Launch.Stage.executing => h_4 ()\n    | LeanCage.Launch.Stage.executed => h_5 ()\n    | x => h_6 x)\n    (h_4 ())"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.Receipts.match_1.eq_5",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.ready)\n  (h_2 : Unit \u2192 motive LeanCage.Launch.Stage.privilegesRestricted)\n  (h_3 : Unit \u2192 motive LeanCage.Launch.Stage.filterInstalled) (h_4 : Unit \u2192 motive LeanCage.Launch.Stage.executing)\n  (h_5 : Unit \u2192 motive LeanCage.Launch.Stage.executed) (h_6 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.executed with\n    | LeanCage.Launch.Stage.ready => h_1 ()\n    | LeanCage.Launch.Stage.privilegesRestricted => h_2 ()\n    | LeanCage.Launch.Stage.filterInstalled => h_3 ()\n    | LeanCage.Launch.Stage.executing => h_4 ()\n    | LeanCage.Launch.Stage.executed => h_5 ()\n    | x => h_6 x)\n    (h_5 ())"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.Receipts.match_1.eq_6",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (x : LeanCage.Launch.Stage)\n  (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.ready) (h_2 : Unit \u2192 motive LeanCage.Launch.Stage.privilegesRestricted)\n  (h_3 : Unit \u2192 motive LeanCage.Launch.Stage.filterInstalled) (h_4 : Unit \u2192 motive LeanCage.Launch.Stage.executing)\n  (h_5 : Unit \u2192 motive LeanCage.Launch.Stage.executed) (h_6 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  (Eq.{1} x LeanCage.Launch.Stage.ready \u2192 False) \u2192\n    (Eq.{1} x LeanCage.Launch.Stage.privilegesRestricted \u2192 False) \u2192\n      (Eq.{1} x LeanCage.Launch.Stage.filterInstalled \u2192 False) \u2192\n        (Eq.{1} x LeanCage.Launch.Stage.executing \u2192 False) \u2192\n          (Eq.{1} x LeanCage.Launch.Stage.executed \u2192 False) \u2192\n            Eq.{u_1}\n              (match x with\n              | LeanCage.Launch.Stage.ready => h_1 ()\n              | LeanCage.Launch.Stage.privilegesRestricted => h_2 ()\n              | LeanCage.Launch.Stage.filterInstalled => h_3 ()\n              | LeanCage.Launch.Stage.executing => h_4 ()\n              | LeanCage.Launch.Stage.executed => h_5 ()\n              | x => h_6 x)\n              (h_6 x)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.SuccessfulHistory.match_1.eq_1",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.unvalidated)\n  (h_2 : Unit \u2192 motive LeanCage.Launch.Stage.ready) (h_3 : Unit \u2192 motive LeanCage.Launch.Stage.privilegesRestricted)\n  (h_4 : Unit \u2192 motive LeanCage.Launch.Stage.filterInstalled) (h_5 : Unit \u2192 motive LeanCage.Launch.Stage.executing)\n  (h_6 : Unit \u2192 motive LeanCage.Launch.Stage.executed)\n  (h_7 : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Stage.failed reason))\n  (h_8 : Unit \u2192 motive LeanCage.Launch.Stage.terminated),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.unvalidated with\n    | LeanCage.Launch.Stage.unvalidated => h_1 ()\n    | LeanCage.Launch.Stage.ready => h_2 ()\n    | LeanCage.Launch.Stage.privilegesRestricted => h_3 ()\n    | LeanCage.Launch.Stage.filterInstalled => h_4 ()\n    | LeanCage.Launch.Stage.executing => h_5 ()\n    | LeanCage.Launch.Stage.executed => h_6 ()\n    | LeanCage.Launch.Stage.failed reason => h_7 reason\n    | LeanCage.Launch.Stage.terminated => h_8 ())\n    (h_1 ())"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.SuccessfulHistory.match_1.eq_2",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.unvalidated)\n  (h_2 : Unit \u2192 motive LeanCage.Launch.Stage.ready) (h_3 : Unit \u2192 motive LeanCage.Launch.Stage.privilegesRestricted)\n  (h_4 : Unit \u2192 motive LeanCage.Launch.Stage.filterInstalled) (h_5 : Unit \u2192 motive LeanCage.Launch.Stage.executing)\n  (h_6 : Unit \u2192 motive LeanCage.Launch.Stage.executed)\n  (h_7 : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Stage.failed reason))\n  (h_8 : Unit \u2192 motive LeanCage.Launch.Stage.terminated),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.ready with\n    | LeanCage.Launch.Stage.unvalidated => h_1 ()\n    | LeanCage.Launch.Stage.ready => h_2 ()\n    | LeanCage.Launch.Stage.privilegesRestricted => h_3 ()\n    | LeanCage.Launch.Stage.filterInstalled => h_4 ()\n    | LeanCage.Launch.Stage.executing => h_5 ()\n    | LeanCage.Launch.Stage.executed => h_6 ()\n    | LeanCage.Launch.Stage.failed reason => h_7 reason\n    | LeanCage.Launch.Stage.terminated => h_8 ())\n    (h_2 ())"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.SuccessfulHistory.match_1.eq_3",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.unvalidated)\n  (h_2 : Unit \u2192 motive LeanCage.Launch.Stage.ready) (h_3 : Unit \u2192 motive LeanCage.Launch.Stage.privilegesRestricted)\n  (h_4 : Unit \u2192 motive LeanCage.Launch.Stage.filterInstalled) (h_5 : Unit \u2192 motive LeanCage.Launch.Stage.executing)\n  (h_6 : Unit \u2192 motive LeanCage.Launch.Stage.executed)\n  (h_7 : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Stage.failed reason))\n  (h_8 : Unit \u2192 motive LeanCage.Launch.Stage.terminated),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.privilegesRestricted with\n    | LeanCage.Launch.Stage.unvalidated => h_1 ()\n    | LeanCage.Launch.Stage.ready => h_2 ()\n    | LeanCage.Launch.Stage.privilegesRestricted => h_3 ()\n    | LeanCage.Launch.Stage.filterInstalled => h_4 ()\n    | LeanCage.Launch.Stage.executing => h_5 ()\n    | LeanCage.Launch.Stage.executed => h_6 ()\n    | LeanCage.Launch.Stage.failed reason => h_7 reason\n    | LeanCage.Launch.Stage.terminated => h_8 ())\n    (h_3 ())"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.SuccessfulHistory.match_1.eq_4",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.unvalidated)\n  (h_2 : Unit \u2192 motive LeanCage.Launch.Stage.ready) (h_3 : Unit \u2192 motive LeanCage.Launch.Stage.privilegesRestricted)\n  (h_4 : Unit \u2192 motive LeanCage.Launch.Stage.filterInstalled) (h_5 : Unit \u2192 motive LeanCage.Launch.Stage.executing)\n  (h_6 : Unit \u2192 motive LeanCage.Launch.Stage.executed)\n  (h_7 : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Stage.failed reason))\n  (h_8 : Unit \u2192 motive LeanCage.Launch.Stage.terminated),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.filterInstalled with\n    | LeanCage.Launch.Stage.unvalidated => h_1 ()\n    | LeanCage.Launch.Stage.ready => h_2 ()\n    | LeanCage.Launch.Stage.privilegesRestricted => h_3 ()\n    | LeanCage.Launch.Stage.filterInstalled => h_4 ()\n    | LeanCage.Launch.Stage.executing => h_5 ()\n    | LeanCage.Launch.Stage.executed => h_6 ()\n    | LeanCage.Launch.Stage.failed reason => h_7 reason\n    | LeanCage.Launch.Stage.terminated => h_8 ())\n    (h_4 ())"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.SuccessfulHistory.match_1.eq_5",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.unvalidated)\n  (h_2 : Unit \u2192 motive LeanCage.Launch.Stage.ready) (h_3 : Unit \u2192 motive LeanCage.Launch.Stage.privilegesRestricted)\n  (h_4 : Unit \u2192 motive LeanCage.Launch.Stage.filterInstalled) (h_5 : Unit \u2192 motive LeanCage.Launch.Stage.executing)\n  (h_6 : Unit \u2192 motive LeanCage.Launch.Stage.executed)\n  (h_7 : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Stage.failed reason))\n  (h_8 : Unit \u2192 motive LeanCage.Launch.Stage.terminated),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.executing with\n    | LeanCage.Launch.Stage.unvalidated => h_1 ()\n    | LeanCage.Launch.Stage.ready => h_2 ()\n    | LeanCage.Launch.Stage.privilegesRestricted => h_3 ()\n    | LeanCage.Launch.Stage.filterInstalled => h_4 ()\n    | LeanCage.Launch.Stage.executing => h_5 ()\n    | LeanCage.Launch.Stage.executed => h_6 ()\n    | LeanCage.Launch.Stage.failed reason => h_7 reason\n    | LeanCage.Launch.Stage.terminated => h_8 ())\n    (h_5 ())"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.SuccessfulHistory.match_1.eq_6",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.unvalidated)\n  (h_2 : Unit \u2192 motive LeanCage.Launch.Stage.ready) (h_3 : Unit \u2192 motive LeanCage.Launch.Stage.privilegesRestricted)\n  (h_4 : Unit \u2192 motive LeanCage.Launch.Stage.filterInstalled) (h_5 : Unit \u2192 motive LeanCage.Launch.Stage.executing)\n  (h_6 : Unit \u2192 motive LeanCage.Launch.Stage.executed)\n  (h_7 : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Stage.failed reason))\n  (h_8 : Unit \u2192 motive LeanCage.Launch.Stage.terminated),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.executed with\n    | LeanCage.Launch.Stage.unvalidated => h_1 ()\n    | LeanCage.Launch.Stage.ready => h_2 ()\n    | LeanCage.Launch.Stage.privilegesRestricted => h_3 ()\n    | LeanCage.Launch.Stage.filterInstalled => h_4 ()\n    | LeanCage.Launch.Stage.executing => h_5 ()\n    | LeanCage.Launch.Stage.executed => h_6 ()\n    | LeanCage.Launch.Stage.failed reason => h_7 reason\n    | LeanCage.Launch.Stage.terminated => h_8 ())\n    (h_6 ())"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.SuccessfulHistory.match_1.eq_7",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (reason : LeanCage.Launch.Failure)\n  (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.unvalidated) (h_2 : Unit \u2192 motive LeanCage.Launch.Stage.ready)\n  (h_3 : Unit \u2192 motive LeanCage.Launch.Stage.privilegesRestricted)\n  (h_4 : Unit \u2192 motive LeanCage.Launch.Stage.filterInstalled) (h_5 : Unit \u2192 motive LeanCage.Launch.Stage.executing)\n  (h_6 : Unit \u2192 motive LeanCage.Launch.Stage.executed)\n  (h_7 : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Stage.failed reason))\n  (h_8 : Unit \u2192 motive LeanCage.Launch.Stage.terminated),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.failed reason with\n    | LeanCage.Launch.Stage.unvalidated => h_1 ()\n    | LeanCage.Launch.Stage.ready => h_2 ()\n    | LeanCage.Launch.Stage.privilegesRestricted => h_3 ()\n    | LeanCage.Launch.Stage.filterInstalled => h_4 ()\n    | LeanCage.Launch.Stage.executing => h_5 ()\n    | LeanCage.Launch.Stage.executed => h_6 ()\n    | LeanCage.Launch.Stage.failed reason => h_7 reason\n    | LeanCage.Launch.Stage.terminated => h_8 ())\n    (h_7 reason)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.SuccessfulHistory.match_1.eq_8",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.unvalidated)\n  (h_2 : Unit \u2192 motive LeanCage.Launch.Stage.ready) (h_3 : Unit \u2192 motive LeanCage.Launch.Stage.privilegesRestricted)\n  (h_4 : Unit \u2192 motive LeanCage.Launch.Stage.filterInstalled) (h_5 : Unit \u2192 motive LeanCage.Launch.Stage.executing)\n  (h_6 : Unit \u2192 motive LeanCage.Launch.Stage.executed)\n  (h_7 : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Stage.failed reason))\n  (h_8 : Unit \u2192 motive LeanCage.Launch.Stage.terminated),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.terminated with\n    | LeanCage.Launch.Stage.unvalidated => h_1 ()\n    | LeanCage.Launch.Stage.ready => h_2 ()\n    | LeanCage.Launch.Stage.privilegesRestricted => h_3 ()\n    | LeanCage.Launch.Stage.filterInstalled => h_4 ()\n    | LeanCage.Launch.Stage.executing => h_5 ()\n    | LeanCage.Launch.Stage.executed => h_6 ()\n    | LeanCage.Launch.Stage.failed reason => h_7 reason\n    | LeanCage.Launch.Stage.terminated => h_8 ())\n    (h_8 ())"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.ValidationGuard.match_1.eq_1",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.unvalidated)\n  (h_2 : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Stage.failed reason))\n  (h_3 : Unit \u2192 motive LeanCage.Launch.Stage.terminated) (h_4 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.unvalidated with\n    | LeanCage.Launch.Stage.unvalidated => h_1 ()\n    | LeanCage.Launch.Stage.failed reason => h_2 reason\n    | LeanCage.Launch.Stage.terminated => h_3 ()\n    | x => h_4 x)\n    (h_1 ())"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.ValidationGuard.match_1.eq_2",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (reason : LeanCage.Launch.Failure)\n  (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.unvalidated)\n  (h_2 : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Stage.failed reason))\n  (h_3 : Unit \u2192 motive LeanCage.Launch.Stage.terminated) (h_4 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.failed reason with\n    | LeanCage.Launch.Stage.unvalidated => h_1 ()\n    | LeanCage.Launch.Stage.failed reason => h_2 reason\n    | LeanCage.Launch.Stage.terminated => h_3 ()\n    | x => h_4 x)\n    (h_2 reason)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.ValidationGuard.match_1.eq_3",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.unvalidated)\n  (h_2 : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Stage.failed reason))\n  (h_3 : Unit \u2192 motive LeanCage.Launch.Stage.terminated) (h_4 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.terminated with\n    | LeanCage.Launch.Stage.unvalidated => h_1 ()\n    | LeanCage.Launch.Stage.failed reason => h_2 reason\n    | LeanCage.Launch.Stage.terminated => h_3 ()\n    | x => h_4 x)\n    (h_3 ())"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.ValidationGuard.match_1.eq_4",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (x : LeanCage.Launch.Stage)\n  (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.unvalidated)\n  (h_2 : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Stage.failed reason))\n  (h_3 : Unit \u2192 motive LeanCage.Launch.Stage.terminated) (h_4 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  (Eq.{1} x LeanCage.Launch.Stage.unvalidated \u2192 False) \u2192\n    (\u2200 (reason : LeanCage.Launch.Failure), Eq.{1} x (LeanCage.Launch.Stage.failed reason) \u2192 False) \u2192\n      (Eq.{1} x LeanCage.Launch.Stage.terminated \u2192 False) \u2192\n        Eq.{u_1}\n          (match x with\n          | LeanCage.Launch.Stage.unvalidated => h_1 ()\n          | LeanCage.Launch.Stage.failed reason => h_2 reason\n          | LeanCage.Launch.Stage.terminated => h_3 ()\n          | x => h_4 x)\n          (h_4 x)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.replay.match_1.eq_1",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 LeanCage.Launch.Trace \u2192 Sort u_1) (state : LeanCage.Launch.Stage)\n  (h_1 : (state : LeanCage.Launch.Stage) \u2192 motive state List.nil.{0})\n  (h_2 :\n    (state : LeanCage.Launch.Stage) \u2192\n      (event : LeanCage.Launch.Event) \u2192\n        (rest : List.{0} LeanCage.Launch.Event) \u2192 motive state (List.cons.{0} event rest)),\n  Eq.{u_1}\n    (match state, List.nil.{0} with\n    | state, List.nil.{0} => h_1 state\n    | state, List.cons.{0} event rest => h_2 state event rest)\n    (h_1 state)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.replay.match_1.eq_2",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 LeanCage.Launch.Trace \u2192 Sort u_1) (state : LeanCage.Launch.Stage)\n  (event : LeanCage.Launch.Event) (rest : List.{0} LeanCage.Launch.Event)\n  (h_1 : (state : LeanCage.Launch.Stage) \u2192 motive state List.nil.{0})\n  (h_2 :\n    (state : LeanCage.Launch.Stage) \u2192\n      (event : LeanCage.Launch.Event) \u2192\n        (rest : List.{0} LeanCage.Launch.Event) \u2192 motive state (List.cons.{0} event rest)),\n  Eq.{u_1}\n    (match state, List.cons.{0} event rest with\n    | state, List.nil.{0} => h_1 state\n    | state, List.cons.{0} event rest => h_2 state event rest)\n    (h_2 state event rest)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.step.match_1.eq_1",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.unvalidated)\n  (h_2 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.unvalidated with\n    | LeanCage.Launch.Stage.unvalidated => h_1 ()\n    | x => h_2 x)\n    (h_1 ())"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.step.match_1.eq_2",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (x : LeanCage.Launch.Stage)\n  (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.unvalidated) (h_2 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  (Eq.{1} x LeanCage.Launch.Stage.unvalidated \u2192 False) \u2192\n    Eq.{u_1}\n      (match x with\n      | LeanCage.Launch.Stage.unvalidated => h_1 ()\n      | x => h_2 x)\n      (h_2 x)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.step.match_10.eq_1",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.filterInstalled)\n  (h_2 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.filterInstalled with\n    | LeanCage.Launch.Stage.filterInstalled => h_1 ()\n    | x => h_2 x)\n    (h_1 ())"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.step.match_10.eq_2",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (x : LeanCage.Launch.Stage)\n  (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.filterInstalled) (h_2 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  (Eq.{1} x LeanCage.Launch.Stage.filterInstalled \u2192 False) \u2192\n    Eq.{u_1}\n      (match x with\n      | LeanCage.Launch.Stage.filterInstalled => h_1 ()\n      | x => h_2 x)\n      (h_2 x)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.step.match_13.eq_1",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.executing)\n  (h_2 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.executing with\n    | LeanCage.Launch.Stage.executing => h_1 ()\n    | x => h_2 x)\n    (h_1 ())"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.step.match_13.eq_2",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (x : LeanCage.Launch.Stage)\n  (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.executing) (h_2 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  (Eq.{1} x LeanCage.Launch.Stage.executing \u2192 False) \u2192\n    Eq.{u_1}\n      (match x with\n      | LeanCage.Launch.Stage.executing => h_1 ()\n      | x => h_2 x)\n      (h_2 x)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.step.match_16.eq_1",
+      "type": "\u2200 (motive : LeanCage.Launch.Event \u2192 Sort u_1) (reason : LeanCage.Launch.Failure)\n  (h_1 : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Event.failed reason))\n  (h_2 : Unit \u2192 motive LeanCage.Launch.Event.terminated) (h_3 : Unit \u2192 motive LeanCage.Launch.Event.validationAccepted)\n  (h_4 : Unit \u2192 motive LeanCage.Launch.Event.noNewPrivilegesSet)\n  (h_5 : Unit \u2192 motive LeanCage.Launch.Event.filterInstalled) (h_6 : Unit \u2192 motive LeanCage.Launch.Event.execAttempted)\n  (h_7 : Unit \u2192 motive LeanCage.Launch.Event.execSucceeded),\n  Eq.{u_1}\n    (match LeanCage.Launch.Event.failed reason with\n    | LeanCage.Launch.Event.failed reason => h_1 reason\n    | LeanCage.Launch.Event.terminated => h_2 ()\n    | LeanCage.Launch.Event.validationAccepted => h_3 ()\n    | LeanCage.Launch.Event.noNewPrivilegesSet => h_4 ()\n    | LeanCage.Launch.Event.filterInstalled => h_5 ()\n    | LeanCage.Launch.Event.execAttempted => h_6 ()\n    | LeanCage.Launch.Event.execSucceeded => h_7 ())\n    (h_1 reason)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.step.match_16.eq_2",
+      "type": "\u2200 (motive : LeanCage.Launch.Event \u2192 Sort u_1)\n  (h_1 : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Event.failed reason))\n  (h_2 : Unit \u2192 motive LeanCage.Launch.Event.terminated) (h_3 : Unit \u2192 motive LeanCage.Launch.Event.validationAccepted)\n  (h_4 : Unit \u2192 motive LeanCage.Launch.Event.noNewPrivilegesSet)\n  (h_5 : Unit \u2192 motive LeanCage.Launch.Event.filterInstalled) (h_6 : Unit \u2192 motive LeanCage.Launch.Event.execAttempted)\n  (h_7 : Unit \u2192 motive LeanCage.Launch.Event.execSucceeded),\n  Eq.{u_1}\n    (match LeanCage.Launch.Event.terminated with\n    | LeanCage.Launch.Event.failed reason => h_1 reason\n    | LeanCage.Launch.Event.terminated => h_2 ()\n    | LeanCage.Launch.Event.validationAccepted => h_3 ()\n    | LeanCage.Launch.Event.noNewPrivilegesSet => h_4 ()\n    | LeanCage.Launch.Event.filterInstalled => h_5 ()\n    | LeanCage.Launch.Event.execAttempted => h_6 ()\n    | LeanCage.Launch.Event.execSucceeded => h_7 ())\n    (h_2 ())"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.step.match_16.eq_3",
+      "type": "\u2200 (motive : LeanCage.Launch.Event \u2192 Sort u_1)\n  (h_1 : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Event.failed reason))\n  (h_2 : Unit \u2192 motive LeanCage.Launch.Event.terminated) (h_3 : Unit \u2192 motive LeanCage.Launch.Event.validationAccepted)\n  (h_4 : Unit \u2192 motive LeanCage.Launch.Event.noNewPrivilegesSet)\n  (h_5 : Unit \u2192 motive LeanCage.Launch.Event.filterInstalled) (h_6 : Unit \u2192 motive LeanCage.Launch.Event.execAttempted)\n  (h_7 : Unit \u2192 motive LeanCage.Launch.Event.execSucceeded),\n  Eq.{u_1}\n    (match LeanCage.Launch.Event.validationAccepted with\n    | LeanCage.Launch.Event.failed reason => h_1 reason\n    | LeanCage.Launch.Event.terminated => h_2 ()\n    | LeanCage.Launch.Event.validationAccepted => h_3 ()\n    | LeanCage.Launch.Event.noNewPrivilegesSet => h_4 ()\n    | LeanCage.Launch.Event.filterInstalled => h_5 ()\n    | LeanCage.Launch.Event.execAttempted => h_6 ()\n    | LeanCage.Launch.Event.execSucceeded => h_7 ())\n    (h_3 ())"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.step.match_16.eq_4",
+      "type": "\u2200 (motive : LeanCage.Launch.Event \u2192 Sort u_1)\n  (h_1 : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Event.failed reason))\n  (h_2 : Unit \u2192 motive LeanCage.Launch.Event.terminated) (h_3 : Unit \u2192 motive LeanCage.Launch.Event.validationAccepted)\n  (h_4 : Unit \u2192 motive LeanCage.Launch.Event.noNewPrivilegesSet)\n  (h_5 : Unit \u2192 motive LeanCage.Launch.Event.filterInstalled) (h_6 : Unit \u2192 motive LeanCage.Launch.Event.execAttempted)\n  (h_7 : Unit \u2192 motive LeanCage.Launch.Event.execSucceeded),\n  Eq.{u_1}\n    (match LeanCage.Launch.Event.noNewPrivilegesSet with\n    | LeanCage.Launch.Event.failed reason => h_1 reason\n    | LeanCage.Launch.Event.terminated => h_2 ()\n    | LeanCage.Launch.Event.validationAccepted => h_3 ()\n    | LeanCage.Launch.Event.noNewPrivilegesSet => h_4 ()\n    | LeanCage.Launch.Event.filterInstalled => h_5 ()\n    | LeanCage.Launch.Event.execAttempted => h_6 ()\n    | LeanCage.Launch.Event.execSucceeded => h_7 ())\n    (h_4 ())"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.step.match_16.eq_5",
+      "type": "\u2200 (motive : LeanCage.Launch.Event \u2192 Sort u_1)\n  (h_1 : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Event.failed reason))\n  (h_2 : Unit \u2192 motive LeanCage.Launch.Event.terminated) (h_3 : Unit \u2192 motive LeanCage.Launch.Event.validationAccepted)\n  (h_4 : Unit \u2192 motive LeanCage.Launch.Event.noNewPrivilegesSet)\n  (h_5 : Unit \u2192 motive LeanCage.Launch.Event.filterInstalled) (h_6 : Unit \u2192 motive LeanCage.Launch.Event.execAttempted)\n  (h_7 : Unit \u2192 motive LeanCage.Launch.Event.execSucceeded),\n  Eq.{u_1}\n    (match LeanCage.Launch.Event.filterInstalled with\n    | LeanCage.Launch.Event.failed reason => h_1 reason\n    | LeanCage.Launch.Event.terminated => h_2 ()\n    | LeanCage.Launch.Event.validationAccepted => h_3 ()\n    | LeanCage.Launch.Event.noNewPrivilegesSet => h_4 ()\n    | LeanCage.Launch.Event.filterInstalled => h_5 ()\n    | LeanCage.Launch.Event.execAttempted => h_6 ()\n    | LeanCage.Launch.Event.execSucceeded => h_7 ())\n    (h_5 ())"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.step.match_16.eq_6",
+      "type": "\u2200 (motive : LeanCage.Launch.Event \u2192 Sort u_1)\n  (h_1 : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Event.failed reason))\n  (h_2 : Unit \u2192 motive LeanCage.Launch.Event.terminated) (h_3 : Unit \u2192 motive LeanCage.Launch.Event.validationAccepted)\n  (h_4 : Unit \u2192 motive LeanCage.Launch.Event.noNewPrivilegesSet)\n  (h_5 : Unit \u2192 motive LeanCage.Launch.Event.filterInstalled) (h_6 : Unit \u2192 motive LeanCage.Launch.Event.execAttempted)\n  (h_7 : Unit \u2192 motive LeanCage.Launch.Event.execSucceeded),\n  Eq.{u_1}\n    (match LeanCage.Launch.Event.execAttempted with\n    | LeanCage.Launch.Event.failed reason => h_1 reason\n    | LeanCage.Launch.Event.terminated => h_2 ()\n    | LeanCage.Launch.Event.validationAccepted => h_3 ()\n    | LeanCage.Launch.Event.noNewPrivilegesSet => h_4 ()\n    | LeanCage.Launch.Event.filterInstalled => h_5 ()\n    | LeanCage.Launch.Event.execAttempted => h_6 ()\n    | LeanCage.Launch.Event.execSucceeded => h_7 ())\n    (h_6 ())"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.step.match_16.eq_7",
+      "type": "\u2200 (motive : LeanCage.Launch.Event \u2192 Sort u_1)\n  (h_1 : (reason : LeanCage.Launch.Failure) \u2192 motive (LeanCage.Launch.Event.failed reason))\n  (h_2 : Unit \u2192 motive LeanCage.Launch.Event.terminated) (h_3 : Unit \u2192 motive LeanCage.Launch.Event.validationAccepted)\n  (h_4 : Unit \u2192 motive LeanCage.Launch.Event.noNewPrivilegesSet)\n  (h_5 : Unit \u2192 motive LeanCage.Launch.Event.filterInstalled) (h_6 : Unit \u2192 motive LeanCage.Launch.Event.execAttempted)\n  (h_7 : Unit \u2192 motive LeanCage.Launch.Event.execSucceeded),\n  Eq.{u_1}\n    (match LeanCage.Launch.Event.execSucceeded with\n    | LeanCage.Launch.Event.failed reason => h_1 reason\n    | LeanCage.Launch.Event.terminated => h_2 ()\n    | LeanCage.Launch.Event.validationAccepted => h_3 ()\n    | LeanCage.Launch.Event.noNewPrivilegesSet => h_4 ()\n    | LeanCage.Launch.Event.filterInstalled => h_5 ()\n    | LeanCage.Launch.Event.execAttempted => h_6 ()\n    | LeanCage.Launch.Event.execSucceeded => h_7 ())\n    (h_7 ())"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.step.match_4.eq_1",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.ready)\n  (h_2 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.ready with\n    | LeanCage.Launch.Stage.ready => h_1 ()\n    | x => h_2 x)\n    (h_1 ())"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.step.match_4.eq_2",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (x : LeanCage.Launch.Stage)\n  (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.ready) (h_2 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  (Eq.{1} x LeanCage.Launch.Stage.ready \u2192 False) \u2192\n    Eq.{u_1}\n      (match x with\n      | LeanCage.Launch.Stage.ready => h_1 ()\n      | x => h_2 x)\n      (h_2 x)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.step.match_7.eq_1",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.privilegesRestricted)\n  (h_2 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  Eq.{u_1}\n    (match LeanCage.Launch.Stage.privilegesRestricted with\n    | LeanCage.Launch.Stage.privilegesRestricted => h_1 ()\n    | x => h_2 x)\n    (h_1 ())"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCage.Proofs.Launch.0.LeanCage.Launch.step.match_7.eq_2",
+      "type": "\u2200 (motive : LeanCage.Launch.Stage \u2192 Sort u_1) (x : LeanCage.Launch.Stage)\n  (h_1 : Unit \u2192 motive LeanCage.Launch.Stage.privilegesRestricted) (h_2 : (x : LeanCage.Launch.Stage) \u2192 motive x),\n  (Eq.{1} x LeanCage.Launch.Stage.privilegesRestricted \u2192 False) \u2192\n    Eq.{u_1}\n      (match x with\n      | LeanCage.Launch.Stage.privilegesRestricted => h_1 ()\n      | x => h_2 x)\n      (h_2 x)"
+    }
+  ],
+  "decoder_baseline_manifest_sha256": "06e90e186f68a42271fdb03079398976fa0365f1137d444b7f49635a8c397010",
+  "modules": [
+    "LeanCage",
+    "LeanCage.Launch.Contract",
+    "LeanCage.Launch.Model",
+    "LeanCage.Linux.FilterContract",
+    "LeanCage.Linux.FilterDecoder",
+    "LeanCage.Linux.Launch",
+    "LeanCage.Proofs.FilterDecoder",
+    "LeanCage.Proofs.Launch",
+    "LeanCage.Proofs.LaunchInput"
+  ],
+  "review_notes": [
+    "All 18 M1.2 authored decoder theorem types and axiom sets match the independently preserved baseline.",
+    "25 new authored launch theorems reviewed against FS-filter-loading.installation.model and FS-assurance.launch.",
+    "All generated project theorem declarations audited; only propext, Classical.choice and Quot.sound are permitted.",
+    "The native call map, C/runtime/Linux assumptions, and 13 VM observations are recorded separately; no native correspondence or isolation theorem is claimed.",
+    "lakefile.toml migrated to lakefile.lean for native compilation; the exact dependency lock and upstream source pins are preserved."
+  ],
+  "schema_version": 1,
+  "scope": "M1 pure decoder and fail-closed launch-order model proofs; native/Linux VM results are separate tests, not executable or isolation certification",
+  "source_sha256": {
+    "LeanCage.lean": "fba8dcfc1ec544b4f7de73037e4786949023ed568e5b1594dbda5955a98472c9",
+    "LeanCage/Launch/Contract.lean": "caf279c2b18e0044504c7fe6c834b1e8a104afa39592ac19732f981a29f60c23",
+    "LeanCage/Launch/Model.lean": "b94e10cb509869ca51d96a8a1b73cf1034770569d825881f8c315d523e71f408",
+    "LeanCage/Linux/FilterContract.lean": "8fc35b0c1c3574853842b645907aed21c3661660fabf5856bb0f89c73f60592d",
+    "LeanCage/Linux/FilterDecoder.lean": "182af477b8b19855242c478ae65ec3dc90fbd225a2b2620fcf20fd18d230bb0a",
+    "LeanCage/Linux/Launch.lean": "c935a0c7336a4b6ff8ddec59acb92bd5d9f0717086c1bc086e5e4ce38be1af0c",
+    "LeanCage/Proofs/FilterDecoder.lean": "13f019e1037e493b3f2c8a2a9b8c15c2701b7e5551738a496011becb964378a1",
+    "LeanCage/Proofs/Launch.lean": "8c1f9fce1478bad6b54bc300bc1c742799cbe587bdcf97173ce12582105537a5",
+    "LeanCage/Proofs/LaunchInput.lean": "d151376c8c726370a96ace7419e0ec34be325eb0d62f454c0c681384c7cb9de9",
+    "M1Main.lean": "bd9ac8f78df625efb350bf83503244d8fe4a1e2c419eeabee4639a27784c18f8",
+    "assurance/m1-vm-evidence.json": "4d918dfb9f0af095c5dd55de5db5d1b6d04112b847ecc45cb94396104af1669d",
+    "assurance/m1-vm-transcript.log": "13b51c51b79cc639dd01d03634f8bfce46d407a9f2bd29c867fcda706161ad90",
+    "assurance/m1.2-decoder-claims.json": "f2fe789172e7db532c2aa74ad3aa3133ab0797b45386b983669fd4f8b4e928e7",
+    "docs/architecture/AR-filter-decoder.md": "e11661e2cd5e7aca87a05d9a144ed812a6b2f5c7a995bc7f9f7a8ba324099056",
+    "docs/architecture/AR-filter-slice.md": "1742d9018a0c9e8559dc4e7078f613585689cc878cff7a769fc7baa99140a19d",
+    "docs/architecture/AR-m1-launch.md": "97ac3491dfe4444ab781e5dcbec44ba77a84c2a3495d18e66999ecf443f68e58",
+    "docs/decisions/architectural/DA-m1-filter-profile.md": "700910cb91df66381070145e64be25d6cd3a9f43c0634ee40ebbd74bc000b0e4",
+    "docs/functional-spec/FS-assurance.md": "376b9f25a0c45ab0dfb855c75edc99fe7cd7fd1434502f18006c406c0e43b0f5",
+    "docs/functional-spec/FS-filter-loading.md": "59da9347e65ef82fb411df595c199ab8b93707a448261b7f2983714412040ee8",
+    "docs/requirements/REQ-proof-integrity.md": "04d01ac0d8ecd9a06759c0faf0c7a9b28f359230a0d8980500ccc55fc6de0e00",
+    "lake-manifest.json": "a1dc0359a14712b9c7a399c3b4dec9bec6e12d162712272265271f10282f3ae9",
+    "lakefile.lean": "2addd6d9060c1622dec4572d5bb2f31db6bfc6f882b0e6cf00df868980ab4cdd",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "native/leancage_m1.c": "cc4cee5d3b92764ff3f8645051947cdcfcc8de63c57a950b94dc5e4e2716f77c",
+    "scripts/audit_axioms.py": "982322553bee3310c5fe3e2857559bbb1ef856a1b18f9483af9c5e717f0b312b",
+    "scripts/axiom_query.lean": "6fe53a28efdb342c2827338906c570e9d2e659891003354453778d4036a3b3c7",
+    "scripts/check.sh": "9ff105fb7ae2331d684a2fd8a45c26b68931ecf78ca4defb86b2b7822e279987",
+    "scripts/run_m1_vm.py": "9d092518750dd197febeac21a95061ec8f03de877d5091e38a2011931006687b",
+    "tests/integration/FilterContract.lean": "aabfc9c239db70d77d1c058e1e5194de9f25790709c9f0515866bd6f46e9a016",
+    "tests/integration/FilterDecoder.lean": "cd7a2fe5ab3ec3c2ac1984a063ffd59e1647949a36cca9f8a456d57b2f267421",
+    "tests/integration/Launch.lean": "e66170751b9ef920081fcadf66d5c0187398c23f6ca9037fc4f81a2350aabf5a",
+    "tests/integration/test_axiom_audit.py": "a1ce0f27ec0b12ff4bf7fb705969df9dd4e391a53a5d0bfc5b5b4379ff2359ba",
+    "tests/integration/test_grund.py": "9995d0442a522cae998b29f646aee4e548f6ada1acb56e26bd1ababc80f85d77",
+    "tests/integration/test_m1_vm_evidence.py": "7ea87481aa0d043e195737a465d449cc321d9b0687585d456e2f8697dab9b369",
+    "tests/vm/bootstrap-pins.json": "87576f43b1fd6358852af9a1dd7bad4e0eb75966b47b7b271441e23529b1a1ac",
+    "tests/vm/guest.c": "dcb60ba804e4404bb18ae116fb8b229cd7eb933b55a606224c268478ab908e52",
+    "tests/vm/init.c": "f00f5302ab20f86806264f69dd0c977962e8cb67f96f8c384fb1ad6cf9698bfe",
+    "tests/vm/kernel.fragment": "08644b18145956a85455b1968bfa97a818b091a8e28c80cb7067e056f0c04743",
+    "tests/vm/linux-6.18.59.config": "ef99a32f33973eb8138882f644c5534645908fd00fe8da382f4573c2177ab22d"
+  },
+  "toolchain": "leanprover/lean4:v4.35.0"
+}

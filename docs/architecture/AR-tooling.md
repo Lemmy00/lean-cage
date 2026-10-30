@@ -13,7 +13,8 @@ This tool trial applies only to LeanCage.
 | Plausible | `dfa4f38190d07c37e315953e08b90fe2d95b3c24` | Transitive dependency locked in `lake-manifest.json` |
 | Grund | `0.20.0` | Project-local documentation checker |
 | Bubblewrap | `v0.13.1 / 362936aea0d5c6e70f7af75d2d44b5a914cb4ba2` | Behavioral reference; not installed by M0 |
-| Linux | `6.18.59` | Initial integration reference; not installed by M0 |
+| Linux | `6.18.59 / 1253a6aa5d104312bf0992afacc15220ae35bdf9` | Disposable VM reference; never installed as the host kernel |
+| QEMU / SeaBIOS | `8.2.2 / 1.16.3` | Checksum-pinned local Ubuntu packages in `tests/vm/bootstrap-pins.json` |
 
 Commit `lake-manifest.json` so transitive dependencies remain fixed. Pin changes
 are deliberate reviewed changes, not an incidental consequence of development.
@@ -36,15 +37,37 @@ The wrapper pins the GNU/Linux archive checksums:
 Use readable slug IDs, marked citations, named sections, and GitHub links.
 Custom Lean support scans `--` comments. Put citations on ordinary standalone
 line comments; do not rely on nested block comments or string parsing. Markdown,
-Lean, shell, and Python are in scope; dependency/cache directories are excluded.
+Lean, shell, Python, and C are in scope; dependency/cache directories are excluded.
 Extend and validate this configuration when adding a language.
 
 ## checks: One development gate
 
 `./scripts/check.sh` runs configuration validation, managed-guidance consistency,
-ordinary and full Grund checks, formatting checks, the citation-integration tests,
-and `lake build`. Tests verify that Lean citations are actually discovered, a
-dangling citation fails, and excluded dependency sources do not pollute the scan.
+ordinary and full Grund checks, formatting checks, then
+`python3 scripts/audit_axioms.py` (including `lake build`), Python integration
+tests, `lake env lean tests/integration/FilterContract.lean`, and
+`lake env lean tests/integration/FilterDecoder.lean`.
+The gate also compiles `lake build leancage-m1`, validates the archived
+source-bound VM transcript via `python3 scripts/run_m1_vm.py --check-evidence`,
+and runs `lake env lean tests/integration/Launch.lean`.
+Documentation tests verify that Lean citations are actually discovered, a
+dangling citation fails, C citations are discovered/rejected, and excluded
+dependency sources do not pollute the scan.
+The reference check interprets the filter on 14 architecture/syscall inputs under
+[§AR-filter-slice.contracts](AR-filter-slice.md#contracts-lean-declarations-and-downstream-ownership). The decoder's 21 guard commands cover canonical, malformed,
+ABI, boundary, and exhaustive single-byte substitution cases. Audit regressions
+exercise actual forbidden transitive axioms under [§AR-filter-decoder.checks](AR-filter-decoder.md#checks-malformed-inputs-and-audit-failures).
+The evidence report remains in ignored `.tools/`; nothing installs a guest filter.
+
+The native target requires Linux x86-64, a C compiler and Linux headers. Lake uses
+`lakefile.lean` for the explicit native static-library/executable build; Lean
+options and dependency pins from the previous TOML build remain unchanged.
+Native compilation executes no guest workload. The VM bootstrap is a separate
+focused check: `python3 scripts/run_m1_vm.py --prepare` on Ubuntu 24.04 x86-64,
+then `python3 scripts/run_m1_vm.py` for later replays. It uses cached,
+checksum-pinned downloads without host package installation, privileged host
+commands, KVM, host mounts, networking, or host seccomp experiments.
+[§AR-m1-launch.vm](AR-m1-launch.md#vm-disposable-linux-profile-and-evidence) defines the recorded test profile.
 
 The library treats Lean warnings as errors. Security proofs additionally require
 the statement/axiom review in [§AR-verification.audit](AR-verification.md#audit-statements-axioms-and-nonvacuity). These checks do not run hostile

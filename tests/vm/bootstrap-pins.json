@@ -1,0 +1,108 @@
+{
+  "host_arch": "x86_64",
+  "host_distribution": "ubuntu",
+  "host_version": "24.04",
+  "kernel_archive_sha256": "53a55ac9863a5547e292b8e381d4e4c2240dd1127d5428a7c44dbc550be23963",
+  "kernel_archive_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.59.tar.xz",
+  "kernel_commit": "1253a6aa5d104312bf0992afacc15220ae35bdf9",
+  "kernel_version": "6.18.59",
+  "packages": [
+    {
+      "filename": "bison_2%3a3.8.2+dfsg-1ubuntu0.24.04.1_amd64.deb",
+      "name": "bison",
+      "sha256": "9d75084d1293f68f3c1a2ee677dea5baa4e010bac2d4c455d8e23177e97aa353",
+      "version": "2:3.8.2+dfsg-1ubuntu0.24.04.1"
+    },
+    {
+      "filename": "flex_2.6.4-8.2build1_amd64.deb",
+      "name": "flex",
+      "sha256": "c5604f55827b50e3f568b4731b7799f86b147454c867be02bc141d9d8ce561ff",
+      "version": "2.6.4-8.2build1"
+    },
+    {
+      "filename": "libdaxctl1_77-2ubuntu2_amd64.deb",
+      "name": "libdaxctl1",
+      "sha256": "c6629b49c79343fb11ae404aeaa3156f051168da6c6d3d9d8d516acd94705061",
+      "version": "77-2ubuntu2"
+    },
+    {
+      "filename": "libelf-dev_0.190-1.1ubuntu0.1_amd64.deb",
+      "name": "libelf-dev",
+      "sha256": "81affb95c29f7323f2ae24386aaa1f61d311578e3e27c5f78ef7b7d55cd3cf49",
+      "version": "0.190-1.1ubuntu0.1"
+    },
+    {
+      "filename": "libelf1t64_0.190-1.1ubuntu0.1_amd64.deb",
+      "name": "libelf1t64",
+      "sha256": "b4aee123a37472d213647594b4f7d4a0d13615b0ca2a6fd33926b768d6b232c2",
+      "version": "0.190-1.1ubuntu0.1"
+    },
+    {
+      "filename": "libfdt1_1.7.0-2build1_amd64.deb",
+      "name": "libfdt1",
+      "sha256": "274d20dfab9d6b216b5de85446a93f6ce5b2cd82c847b8dfdc508577f76eb96a",
+      "version": "1.7.0-2build1"
+    },
+    {
+      "filename": "libibverbs1_50.0-2ubuntu0.2_amd64.deb",
+      "name": "libibverbs1",
+      "sha256": "8489558105ee1d1c65ae6e0f1bac0e9b15f314a68f106ee9a63c89821242bd8e",
+      "version": "50.0-2ubuntu0.2"
+    },
+    {
+      "filename": "libndctl6_77-2ubuntu2_amd64.deb",
+      "name": "libndctl6",
+      "sha256": "4eab53588a8fa9e3192635e118c2d91bc069cde46a4a3785c77a0bb1ae001d02",
+      "version": "77-2ubuntu2"
+    },
+    {
+      "filename": "libpmem1_1.13.1-1.1ubuntu2_amd64.deb",
+      "name": "libpmem1",
+      "sha256": "8f1be1cc834a98f0cf5c0950153f7f939a0c2c92095e98cd7bb40c752c545c1b",
+      "version": "1.13.1-1.1ubuntu2"
+    },
+    {
+      "filename": "librdmacm1t64_50.0-2ubuntu0.2_amd64.deb",
+      "name": "librdmacm1t64",
+      "sha256": "7b7cc2fa16564bf301751b43d05d16f0846288b080d9a25a92a691d0df33fc68",
+      "version": "50.0-2ubuntu0.2"
+    },
+    {
+      "filename": "liburing2_2.5-1build1_amd64.deb",
+      "name": "liburing2",
+      "sha256": "c2aef62accee92a06263c3ad4ef46132c13e409b54296c44792a20491830a7b0",
+      "version": "2.5-1build1"
+    },
+    {
+      "filename": "m4_1.4.19-4build1_amd64.deb",
+      "name": "m4",
+      "sha256": "30ea715845a1863abd55d11e47ab91513130bf347852d4cdeae69e9d98fa795c",
+      "version": "1.4.19-4build1"
+    },
+    {
+      "filename": "qemu-system-common_1%3a8.2.2+ds-0ubuntu1.18_amd64.deb",
+      "name": "qemu-system-common",
+      "sha256": "0a0b744f31e87d72dd0465436b8dfbb1ef9f574ecd0d5a2e9dd8c5cb7d0fef1f",
+      "version": "1:8.2.2+ds-0ubuntu1.18"
+    },
+    {
+      "filename": "qemu-system-data_1%3a8.2.2+ds-0ubuntu1.18_all.deb",
+      "name": "qemu-system-data",
+      "sha256": "a14b88d864859bd61c8a3274971da4ecb7da6cec15be6c265d0d411f783d5f2e",
+      "version": "1:8.2.2+ds-0ubuntu1.18"
+    },
+    {
+      "filename": "qemu-system-x86_1%3a8.2.2+ds-0ubuntu1.18_amd64.deb",
+      "name": "qemu-system-x86",
+      "sha256": "14602e262627adac030329d2cecfee5f6c0938b34566ff2ea2d4c9a9eb02430d",
+      "version": "1:8.2.2+ds-0ubuntu1.18"
+    },
+    {
+      "filename": "seabios_1.16.3-2_all.deb",
+      "name": "seabios",
+      "sha256": "cac4e59a66c834d19cae751c22ab3a0391c22f78010fd11aa2e3fe630e6bc0e0",
+      "version": "1.16.3-2"
+    }
+  ],
+  "schema_version": 1
+}

@@ -3,9 +3,12 @@
 ## Start here
 
 Read [README](README.md), [§RM-roadmap](docs/roadmap.md#rm-roadmap-leancage-specification-and-staged-verification-plan), the assigned specification points, and
-[§REQ-proof-integrity](docs/requirements/REQ-proof-integrity.md#req-proof-integrity-never-substitute-a-weaker-claim-for-an-unfinished-proof) before changing code. M0 contains the foundation only; the
-next scoped task is M1.1 in [§RM-roadmap.next](docs/roadmap.md#next-ready-work-for-a-future-m1-assignment). Follow the assigned milestone rather
-than treating the entire roadmap as one implementation task.
+[§REQ-proof-integrity](docs/requirements/REQ-proof-integrity.md#req-proof-integrity-never-substitute-a-weaker-claim-for-an-unfinished-proof) before changing code. M1.1 fixes the source and launch contract
+boundary in [§AR-filter-slice.contracts](docs/architecture/AR-filter-slice.md#contracts-lean-declarations-and-downstream-ownership); M1.2 supplies the decoder, proofs, and
+audit in [§AR-filter-decoder](docs/architecture/AR-filter-decoder.md#ar-filter-decoder-byte-decoder-proofs-and-executable-evidence-audit). M1.3–M1.5 add launch proofs, the VM-only native driver,
+and reviewed evidence under [§AR-m1-launch](docs/architecture/AR-m1-launch.md#ar-m1-launch-launch-model-linux-driver-and-isolated-demonstration). The next milestone is M2 in
+[§RM-roadmap.next](docs/roadmap.md#next-m1-work-packages-and-next-scope). Follow the assigned work package rather than treating
+the entire roadmap as one implementation task.
 
 All `grund` commands in the managed instructions below mean the repository-local
 `./scripts/grund.sh` wrapper, run from the project root. Never substitute the older
@@ -39,8 +42,9 @@ and [§AR-tooling](docs/architecture/AR-tooling.md#ar-tooling-keep-development-r
   transitions, use inconsistent premises, or weaken the statement to get a proof.
   Show nonvacuity and distinguish partial correctness from termination.
 - Add a declaration/assumption/evidence record under [§FS-assurance.evidence](docs/functional-spec/FS-assurance.md#evidence-required-claim-record) for
-  every security result. Introduce an executable axiom-audit gate with the first
-  security theorem. Until then the build checks dependencies, not isolation.
+  every security result. Preserve and extend the executable declaration/type/axiom
+  gate in [§AR-filter-decoder.audit](docs/architecture/AR-filter-decoder.md#audit-declaration-type-and-axiom-gate) and its reviewed manifest; never refresh
+  expectations merely to suppress a failure. The decoder proofs do not prove isolation.
 - Keep model proofs, tests, source mappings, and deployed guarantees distinct.
   Hand translation and differential tests do not certify the original Bubblewrap
   binary. Kernel/compiler/runtime/FFI and hardware gaps remain visible obligations.

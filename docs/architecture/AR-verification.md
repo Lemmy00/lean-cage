@@ -29,9 +29,12 @@ and unapproved compiler-trust axioms, including ones introduced through imported
 automation. Require inhabited assumptions and a useful success execution as well
 as denied executions. Check liveness separately where it is claimed.
 
-The M0 build only checks that the pinned verification foundation compiles. The
-first security theorem must add an explicit axiom audit and claim record; an
-empty theorem set does not count as verification.
+M1.2 introduced the gate in [§AR-filter-decoder.audit](AR-filter-decoder.md#audit-declaration-type-and-axiom-gate); [§AR-m1-launch.audit](AR-m1-launch.md#audit-preserve-decoder-claims-and-extend-the-assurance-gate) extends it
+with the launch claims under [§FS-assurance.launch](../functional-spec/FS-assurance.md#launch-m13-launch-order-claim-record) while preserving all 18 decoder
+statements and axiom sets. It checks the actual project theorem inventory,
+types, and transitive axioms against reviewed source-bound evidence; it does not
+certify a native executable. New security results must extend this evidence rather
+than silently escaping its inventory. An empty theorem set is never verification.
 
 ## artifacts: Bind proofs to releases
 

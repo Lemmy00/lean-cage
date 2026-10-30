@@ -1,4 +1,4 @@
-"""Exercise the project's Lean citation profile with the actual pinned tool."""
+"""Exercise the project's source citation profiles with the actual pinned tool."""
 
 # §AR-tooling.checks: Test discovery, failed resolution, and dependency exclusions.
 
@@ -62,6 +62,20 @@ class GrundLeanIntegration(unittest.TestCase):
         self.assertEqual(check.returncode, 1, check.stdout + check.stderr)
         self.assertIn("FS-missing-fixture-contract", check.stdout + check.stderr)
         self.assertIn("Probe.lean", check.stdout + check.stderr)
+
+    def test_c_citations_are_discovered_and_dangling_citations_fail(self):
+        probe = self.fixture / "Probe.c"
+        probe.write_text(f"// {MARKER}AR-m1-launch.binding: Native boundary.\n")
+        check = self.check_fixture()
+        self.assertEqual(check.returncode, 0, check.stdout + check.stderr)
+        refs = self.grund("refs", "AR-m1-launch.binding", str(self.fixture), "--format", "json")
+        self.assertEqual(refs.returncode, 0, refs.stderr)
+        self.assertTrue(any(json.loads(line)["path"] == "Probe.c"
+                            for line in refs.stdout.splitlines() if line.strip()), refs.stdout)
+        probe.write_text(f"// {MARKER}AR-missing-native-fixture: Must fail.\n")
+        check = self.check_fixture()
+        self.assertEqual(check.returncode, 1, check.stdout + check.stderr)
+        self.assertIn("AR-missing-native-fixture", check.stdout + check.stderr)
 
     def test_dependency_sources_are_excluded(self):
         for directory in (".lake/packages/vendor", ".tools/vendor"):

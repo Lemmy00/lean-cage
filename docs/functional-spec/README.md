@@ -1,8 +1,9 @@
 # Functional specification
 
-These are target contracts. At M0 none of the runtime contracts below has been
-implemented or proved. Use the claim register to judge evidence, not the presence
-of a specification or a citation.
+These are target contracts. M1 proves the pure filter decoder and launch order,
+and tests a native filter driver in a disposable Linux VM. Use the claim register
+to distinguish those model/test results from native/Linux correspondence and
+the broader sandbox isolation guarantees that remain future work.
 
 | Contract | Subject |
 |---|---|

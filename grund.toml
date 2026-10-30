@@ -3,7 +3,7 @@ grund_config_version = 2
 project_name = "LeanCage"
 
 [schema.sources]
-languages = ["markdown", "lean", "shell", "python"]
+languages = ["markdown", "lean", "shell", "python", "c"]
 exclude = [".git/", ".lake/", ".tools/", "**/__pycache__/"]
 
 [schema.sources.extensions]

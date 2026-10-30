@@ -18,16 +18,28 @@ Begin at [§FS-filter-loading.reference](../functional-spec/FS-filter-loading.md
 differential tests for the supported subset; neither establishes formal equivalence
 to the original C binary. Stricter input validation must be documented.
 
+[§AR-filter-slice.source](AR-filter-slice.md#source-pinned-bubblewrap-path) maps the first filter/exec segment and records source
+hashes, ABI definitions, ownership and concurrency boundaries, and intentional
+departures. M1's original native binding and call map are in [§AR-m1-launch.binding](AR-m1-launch.md#binding-small-native-boundary);
+the Bubblewrap map remains reference evidence, not source equivalence.
+
 ## platform: Isolated integration profile
 
-The initial upstream Linux reference is 6.18.59. Before runtime integration,
-record the exact kernel source/image hash, build configuration, userspace/ABI,
-privileges, CPU model, microcode, and relevant firmware/boot assumptions.
+The M1 integration reference is Linux 6.18.59, commit
+`1253a6aa5d104312bf0992afacc15220ae35bdf9`, built from the SHA-256-pinned upstream
+archive in `tests/vm/bootstrap-pins.json`. `tests/vm/linux-6.18.59.config` is the
+resolved build configuration; `kernel.fragment` explains the principal choices.
+`assurance/m1-vm-evidence.json` records exact kernel/image/configuration,
+initramfs/userspace, QEMU/TCG, firmware, compiler/runtime, commands, and virtual
+CPU/microcode identities. [§FS-assurance.demo](../functional-spec/FS-assurance.md#demo-m14-isolated-linux-test-record) records the result and its limits.
 Run guest experiments in a disposable VM or explicitly designated test machine.
 Do not replace or reconfigure the shared development host's kernel.
 
-The host's installed kernel or Bubblewrap is not automatically this reference.
-M0 installs neither. A version label alone is insufficient artifact evidence.
+The VM uses one emulated vCPU, 2048 MiB RAM, no NIC, persistent disk, or host
+mount, root PID 1, and an unprivileged UID/GID 65534 launcher/guest. Its virtual
+microcode value is emulator metadata, not a measurement of physical microcode.
+There is no hardware leakage claim. The host's installed kernel or Bubblewrap
+is not this reference; no host filter or kernel replacement is part of this work.
 
 ## correspondence: Reduce the Linux assumption
 

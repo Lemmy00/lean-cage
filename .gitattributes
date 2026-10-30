@@ -1,0 +1,2 @@
+# Preserve raw VM serial evidence, including CRLF, for its recorded SHA-256.
+assurance/**/*.log -text whitespace=cr-at-eol

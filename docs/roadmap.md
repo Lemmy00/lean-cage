@@ -5,9 +5,13 @@ isolation, and software-observable side-channel guarantees for named deployment
 profiles: [§GOAL-end-to-end](goals.md#goal-end-to-end-connect-the-policy-to-the-deployed-artifact), [§GOAL-native-isolation](goals.md#goal-native-isolation-contain-arbitrary-native-workloads), and [§GOAL-confidentiality](goals.md#goal-confidentiality-account-for-software-observable-leakage).
 Each milestone must leave reusable contracts and evidence for the next one.
 
-**Current stage: M0 foundation.** Runtime implementation begins at M1. All runtime
-security claims remain planned in [§FS-assurance.status](functional-spec/FS-assurance.md#status-initial-claim-register). This document prepares
-future work; it does not start or deploy development agents.
+**Current stage: M1 complete; M2 not started.**
+The source/ABI slice, pure decoder/bounds proofs, exact launch-order proofs,
+native Linux driver, and 13-case isolated VM demonstration are recorded under
+[§AR-filter-slice](architecture/AR-filter-slice.md#ar-filter-slice-m11-source-map-and-typed-contract-boundary), [§AR-filter-decoder](architecture/AR-filter-decoder.md#ar-filter-decoder-byte-decoder-proofs-and-executable-evidence-audit), and [§AR-m1-launch](architecture/AR-m1-launch.md#ar-m1-launch-launch-model-linux-driver-and-isolated-demonstration). The claim register
+[§FS-assurance.status](functional-spec/FS-assurance.md#status-initial-claim-register) separates model proofs, VM tests, and remaining
+native/Linux correspondence assumptions. Full confinement and hardware-channel
+security remain later milestones.
 
 ## decisions: Accepted direction
 
@@ -148,18 +152,41 @@ deployment procedure and regression process. Broaden platforms/features only wit
 new or preserved contracts and evidence. M6 is required only for a claimed seLe4n
 release, not for a Linux release.
 
-## next: Ready work for a future M1 assignment
+## next: M1 work packages and next scope
 
-Start with **M1.1**, then review its contracts before dependent implementation.
-These are scoped work packages, not automatically launched agents.
+**M1.1–M1.5 are complete for the stated M1 scope.** M1.1's evidence is the pinned source map,
+ABI/filter table, launch/failure contracts, and 14 reference-fixture checks in
+[§AR-filter-slice](architecture/AR-filter-slice.md#ar-filter-slice-m11-source-map-and-typed-contract-boundary). M1.2 adds the executable pure decoder, exact acceptance,
+bounds/first-error proofs, a successful snapshot witness, malformed-input tests,
+and the auditable claim record [§FS-assurance.decoder](functional-spec/FS-assurance.md#decoder-m12-decoder-claim-record). The full `./scripts/check.sh`
+gate is required at handoff. These prove the stated decoder property only.
+
+M1.3 adds all specified success/failure/interference transitions, exact ordered
+launch histories, terminal failures, actual decoder linkage, and inhabited
+success/failure traces under [§FS-assurance.launch](functional-spec/FS-assurance.md#launch-m13-launch-order-claim-record). M1.4 supplies the original
+native driver and isolated Linux demonstration in [§FS-assurance.demo](functional-spec/FS-assurance.md#demo-m14-isolated-linux-test-record). M1.5
+preserves the original decoder theorem types/axioms, extends the audit, and
+records assumptions and validation. These establish M1's limited functional
+proof slice, not full isolation or certified native/Linux correspondence.
 
 | Work package | Depends on | Concrete output and review gate |
 |---|---|---|
-| M1.1 Source and contract slice | M0 | Source map for the pinned filter/exec path; selected ABI and filter subset; exact state/effect/failure contract; deviations and assumptions |
-| M1.2 Decoder and bounds | M1.1 | Executable Lean decoder, machine-width proofs, malformed/boundary inputs, statement and axiom audit |
-| M1.3 Launch transition proof | M1.1 | Success/failure model, install-before-exec theorem, nonvacuity witness, explicit OS premises |
-| M1.4 Linux binding and demonstration | M1.2, M1.3 | Minimal binding, isolated integration profile, allowed/denied demo and injected setup failures |
-| M1.5 Claim review and handoff | M1.4 | Full checks, declaration/artifact evidence record, reviewed remaining gaps, updated compatibility/status |
+| M1.1 Source and contract slice | M0 | Implemented: [§AR-filter-slice](architecture/AR-filter-slice.md#ar-filter-slice-m11-source-map-and-typed-contract-boundary); reviewed pinned source and typed contracts; no security theorem |
+| M1.2 Decoder and bounds | M1.1 | Implemented: [§AR-filter-decoder](architecture/AR-filter-decoder.md#ar-filter-decoder-byte-decoder-proofs-and-executable-evidence-audit), with evidence under [§FS-assurance.decoder](functional-spec/FS-assurance.md#decoder-m12-decoder-claim-record); pure decoder claim only |
+| M1.3 Launch transition proof | M1.1 | Implemented: [§AR-m1-launch.model](architecture/AR-m1-launch.md#model-total-transitions-and-trace-evidence); 25 added authored theorems, exact order, nonvacuity and decoder linkage |
+| M1.4 Linux binding and demonstration | M1.2, M1.3 | Implemented: [§AR-m1-launch.binding](architecture/AR-m1-launch.md#binding-small-native-boundary) and [§AR-m1-launch.vm](architecture/AR-m1-launch.md#vm-disposable-linux-profile-and-evidence); all 13 VM cases pass, including a fresh source/kernel build |
+| M1.5 Claim review and handoff | M1.4 | Passed `./scripts/check.sh`: 21 Python tests, 58 Lean guards, native build, full type/axiom audit; 43 authored claims and 445 total theorem declarations, 39 source/dependency/evidence hashes; original decoder baseline preserved |
+
+The handoff gate and explicit VM replay both passed on 2026-10-30. The proof gate
+rejects custom/unfinished/compiler-trust axioms; the audited union remains only
+the three declared logical foundations. [§FS-assurance.launch](functional-spec/FS-assurance.md#launch-m13-launch-order-claim-record) and
+[§FS-assurance.demo](functional-spec/FS-assurance.md#demo-m14-isolated-linux-test-record) record the proof/test boundary and remaining assumptions.
+
+The next milestone is **M2**, [§RM-roadmap.m2](roadmap.md#m2-verified-launcher-lifecycle). Select and specify its first bounded
+lifecycle work package before implementation, retaining the M1 gate. M1's trusted
+entry conditions must become explicit adversarial-inheritance/descriptor/privilege
+obligations rather than quietly broadening the current model's claim. No M2
+implementation or production workload is authorized merely by this roadmap.
 
 Each assignment must state the spec IDs, owned files, intended theorem or behavior,
 assumptions, validation commands, and completion evidence. Shared-interface changes

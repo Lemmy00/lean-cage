@@ -7,11 +7,13 @@ its options or every Linux program.
 
 ## matrix: Initial compatibility matrix
 
-All rows are planned; M0 supplies documentation and tooling only.
+M1 implements pure decoding and launch-order proofs for the fixed ABI/filter,
+plus a VM-only native demonstration. Broader sandbox runtime rows remain planned.
 
 | Feature | First target | Current runtime support | Acceptance boundary |
 |---|---|---|---|
-| Filter input and install-before-exec | M1 | None | One explicit ABI and supported filter form |
+| Filter input decoding | M1.2 | Pure decoder and model proofs; used by VM driver | [§FS-filter-loading.input.correctness](FS-filter-loading.md#inputcorrectness-decoder-proof-boundary) |
+| Filter installation and install-before-exec | M1.3–M1.4 | Model-proved; 13-case native VM demonstration | [§FS-filter-loading.installation.model](FS-filter-loading.md#installationmodel-executable-launch-semantics-and-proof-obligations) and [§FS-assurance.demo](FS-assurance.md#demo-m14-isolated-linux-test-record); trusted single child, static x86-64 workload; Linux/native correspondence assumed |
 | Privileges, descriptors, fork/exec, cleanup | M2 | None | Published launch-state and OS contracts |
 | Read-only runtime and private workspace | M3 | None | Object/handle/race-aware confinement |
 | Native shell and Python, offline I/O | M3 | None | Named workloads, controlled streams, confined descendants |
@@ -24,7 +26,9 @@ All rows are planned; M0 supplies documentation and tooling only.
 
 The planned interfaces are `leancage check` for policy/profile preflight,
 `leancage run` for execution, and `leancage report` for assurance evidence. These
-commands do not exist in M0. Version policy and report formats when the first
+commands do not exist at M1. The experimental `leancage-m1` executable accepts
+only the recorded VM test profile and is not a general sandbox CLI.
+Version policy and report formats when the first
 implementation needs them; keep core policy independent of CLI syntax.
 
 ## reference: Compare without overstating equivalence

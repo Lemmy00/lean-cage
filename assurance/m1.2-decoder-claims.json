@@ -1,0 +1,182 @@
+{
+  "declarations": [
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decodeU16LE_toNat",
+      "type": "\u2200 (b0 b1 : UInt8),\n  Eq.{1} (LeanCage.Linux.Filter.decodeU16LE b0 b1).toNat\n    (HAdd.hAdd.{0, 0, 0} b0.toNat (HMul.hMul.{0, 0, 0} 256 b1.toNat))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decodeU32LE_toNat",
+      "type": "\u2200 (b0 b1 b2 b3 : UInt8),\n  Eq.{1} (LeanCage.Linux.Filter.decodeU32LE b0 b1 b2 b3).toNat\n    (HAdd.hAdd.{0, 0, 0}\n      (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} b0.toNat (HMul.hMul.{0, 0, 0} 256 b1.toNat))\n        (HMul.hMul.{0, 0, 0} 65536 b2.toNat))\n      (HMul.hMul.{0, 0, 0} 16777216 b3.toNat))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_at_valid_size",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray),\n  Eq.{1} abi LeanCage.Linux.Filter.nativeAbi \u2192\n    \u2200 (hsize : Eq.{1} bytes.size LeanCage.Linux.Filter.profileByteCount),\n      Eq.{1} (LeanCage.Linux.Filter.decode abi bytes) (LeanCage.Linux.Filter.decodeValidatedSize bytes hsize)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_bounds",
+      "type": "\u2200 {abi : LeanCage.Linux.Filter.Abi} {bytes : ByteArray} {program : LeanCage.Linux.Filter.Program},\n  Eq.{1} (LeanCage.Linux.Filter.decode abi bytes) (Except.ok.{0, 0} program) \u2192\n    Eq.{1} bytes.size 72 \u2227\n      LE.le.{0} (HDiv.hDiv.{0, 0, 0} bytes.size 8) LeanCage.Linux.Filter.maxInstructions \u2227\n        LE.le.{0} (HDiv.hDiv.{0, 0, 0} bytes.size 8) LeanCage.Linux.Filter.sockFprogMaxLength \u2227\n          Eq.{1} (UInt16.ofNat (HDiv.hDiv.{0, 0, 0} bytes.size 8)).toNat (HDiv.hDiv.{0, 0, 0} bytes.size 8) \u2227\n            \u2200 (index field : Nat),\n              LT.lt.{0} index (HDiv.hDiv.{0, 0, 0} bytes.size 8) \u2192\n                LT.lt.{0} field 8 \u2192 LT.lt.{0} (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} 8 index) field) bytes.size"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_canonical",
+      "type": "Eq.{1} (LeanCage.Linux.Filter.decode LeanCage.Linux.Filter.nativeAbi LeanCage.Linux.Filter.canonicalBytes)\n  (Except.ok.{0, 0} LeanCage.Linux.Filter.Program.denyGetppid)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_complete",
+      "type": "\u2200 {abi : LeanCage.Linux.Filter.Abi} {bytes : ByteArray},\n  LeanCage.Linux.Filter.ValidInput abi bytes \u2192\n    Eq.{1} (LeanCage.Linux.Filter.decode abi bytes) (Except.ok.{0, 0} LeanCage.Linux.Filter.Program.denyGetppid)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_empty",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray),\n  Eq.{1} abi LeanCage.Linux.Filter.nativeAbi \u2192\n    Eq.{1} bytes.size 0 \u2192\n      Eq.{1} (LeanCage.Linux.Filter.decode abi bytes) (Except.error.{0, 0} LeanCage.Linux.Filter.DecodeError.emptyInput)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_misaligned",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray),\n  Eq.{1} abi LeanCage.Linux.Filter.nativeAbi \u2192\n    Ne.{1} bytes.size 0 \u2192\n      LE.le.{0} bytes.size LeanCage.Linux.Filter.maxInputBytes \u2192\n        Ne.{1} (HMod.hMod.{0, 0, 0} bytes.size LeanCage.Linux.Filter.instructionBytes) 0 \u2192\n          Eq.{1} (LeanCage.Linux.Filter.decode abi bytes)\n            (Except.error.{0, 0} (LeanCage.Linux.Filter.DecodeError.misalignedInput bytes.size))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_mismatch_iff",
+      "type": "\u2200 (bytes : ByteArray),\n  Eq.{1} bytes.size LeanCage.Linux.Filter.profileByteCount \u2192\n    \u2200 (i : Fin LeanCage.Linux.Filter.profileInstructionCount),\n      Eq.{1} (LeanCage.Linux.Filter.decode LeanCage.Linux.Filter.nativeAbi bytes)\n          (Except.error.{0, 0} (LeanCage.Linux.Filter.DecodeError.unsupportedInstruction \u2191i)) \u2194\n        \u00acLeanCage.Linux.Filter.InstructionLayout bytes (HMul.hMul.{0, 0, 0} 8 \u2191i)\n              (LeanCage.Linux.Filter.referenceInstruction i) \u2227\n          \u2200 (j : Fin LeanCage.Linux.Filter.profileInstructionCount),\n            LT.lt.{0} \u2191j \u2191i \u2192\n              LeanCage.Linux.Filter.InstructionLayout bytes (HMul.hMul.{0, 0, 0} 8 \u2191j)\n                (LeanCage.Linux.Filter.referenceInstruction j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_ok_iff",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray) (program : LeanCage.Linux.Filter.Program),\n  Eq.{1} (LeanCage.Linux.Filter.decode abi bytes) (Except.ok.{0, 0} program) \u2194\n    LeanCage.Linux.Filter.ValidInput abi bytes"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_oversized",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray),\n  Eq.{1} abi LeanCage.Linux.Filter.nativeAbi \u2192\n    LT.lt.{0} LeanCage.Linux.Filter.maxInputBytes bytes.size \u2192\n      Eq.{1} (LeanCage.Linux.Filter.decode abi bytes)\n        (Except.error.{0, 0} (LeanCage.Linux.Filter.DecodeError.oversizedInput bytes.size))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_rejects_invalid",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray),\n  \u00acLeanCage.Linux.Filter.ValidInput abi bytes \u2192\n    Exists.{1} fun error => Eq.{1} (LeanCage.Linux.Filter.decode abi bytes) (Except.error.{0, 0} error)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_success",
+      "type": "\u2200 {abi : LeanCage.Linux.Filter.Abi} {bytes : ByteArray} {program : LeanCage.Linux.Filter.Program},\n  Eq.{1} (LeanCage.Linux.Filter.decode abi bytes) (Except.ok.{0, 0} program) \u2192\n    LeanCage.Linux.Filter.ValidInput abi bytes"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_unsupported_abi",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray),\n  Ne.{1} abi LeanCage.Linux.Filter.nativeAbi \u2192\n    Eq.{1} (LeanCage.Linux.Filter.decode abi bytes)\n      (Except.error.{0, 0} (LeanCage.Linux.Filter.DecodeError.unsupportedAbi abi))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.decode_unsupported_length",
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray),\n  Eq.{1} abi LeanCage.Linux.Filter.nativeAbi \u2192\n    Ne.{1} bytes.size 0 \u2192\n      LE.le.{0} bytes.size LeanCage.Linux.Filter.maxInputBytes \u2192\n        Eq.{1} (HMod.hMod.{0, 0, 0} bytes.size LeanCage.Linux.Filter.instructionBytes) 0 \u2192\n          Ne.{1} (HDiv.hDiv.{0, 0, 0} bytes.size LeanCage.Linux.Filter.instructionBytes)\n              LeanCage.Linux.Filter.profileInstructionCount \u2192\n            Eq.{1} (LeanCage.Linux.Filter.decode abi bytes)\n              (Except.error.{0, 0}\n                (LeanCage.Linux.Filter.DecodeError.unsupportedLength\n                  (HDiv.hDiv.{0, 0, 0} bytes.size LeanCage.Linux.Filter.instructionBytes)))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.firstMismatch_eq_none_iff",
+      "type": "\u2200 (bytes : ByteArray) (hsize : Eq.{1} bytes.size LeanCage.Linux.Filter.profileByteCount),\n  Eq.{1} (LeanCage.Linux.Filter.firstMismatch bytes hsize) Option.none.{0} \u2194\n    \u2200 (i : Fin LeanCage.Linux.Filter.profileInstructionCount),\n      LeanCage.Linux.Filter.InstructionLayout bytes (HMul.hMul.{0, 0, 0} 8 \u2191i)\n        (LeanCage.Linux.Filter.referenceInstruction i)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.firstMismatch_eq_some_iff",
+      "type": "\u2200 (bytes : ByteArray) (hsize : Eq.{1} bytes.size LeanCage.Linux.Filter.profileByteCount)\n  (i : Fin LeanCage.Linux.Filter.profileInstructionCount),\n  Eq.{1} (LeanCage.Linux.Filter.firstMismatch bytes hsize) (Option.some.{0} i) \u2194\n    \u00acLeanCage.Linux.Filter.InstructionLayout bytes (HMul.hMul.{0, 0, 0} 8 \u2191i)\n          (LeanCage.Linux.Filter.referenceInstruction i) \u2227\n      \u2200 (j : Fin LeanCage.Linux.Filter.profileInstructionCount),\n        LT.lt.{0} \u2191j \u2191i \u2192\n          LeanCage.Linux.Filter.InstructionLayout bytes (HMul.hMul.{0, 0, 0} 8 \u2191j)\n            (LeanCage.Linux.Filter.referenceInstruction j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Linux.Filter.readInstruction_eq_iff",
+      "type": "\u2200 (bytes : ByteArray) (base : Nat) (h : LE.le.{0} (HAdd.hAdd.{0, 0, 0} base 8) bytes.size)\n  (instruction : LeanCage.Linux.Filter.Instruction),\n  Eq.{1} (LeanCage.Linux.Filter.readInstruction bytes base h) instruction \u2194\n    LeanCage.Linux.Filter.InstructionLayout bytes base instruction"
+    }
+  ],
+  "original_manifest_sha256": "06e90e186f68a42271fdb03079398976fa0365f1137d444b7f49635a8c397010",
+  "schema_version": 1,
+  "scope": "Preserved M1.2 authored decoder theorem types and transitive axiom sets; independent of the extended M1 inventory"
+}
