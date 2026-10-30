@@ -51,7 +51,8 @@ def query_environment(names=(),declarations=(),extra_source=''):
     cache=PROJECT/'.tools/assurance';cache.mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='m2-query-',dir=cache) as directory:
         probe=Path(directory)/'Query.lean';probe.write_text(source)
-        result=subprocess.run(['lake','env','lean',str(probe)],cwd=PACKAGE,capture_output=True,text=True,timeout=90)
+        result=subprocess.run(['lake','env','lean',str(probe)],cwd=PACKAGE,capture_output=True,text=True,
+                              timeout=M1.QUERY_TIMEOUT_SECONDS)
     if result.returncode:raise M1.AuditError('M2 Lean query failed:\n'+result.stdout+result.stderr)
     records=[json.loads(line.split('LEANCAGE_AUDIT ',1)[1]) for line in result.stdout.splitlines() if 'LEANCAGE_AUDIT ' in line]
     if not records:raise M1.AuditError('Empty M2 theorem evidence')

@@ -953,7 +953,7 @@
     "m2/tests/integration/test_evidence.py": "b7f58e06254335caddffd376d239e418ef664cf43bbaf1105c0988e502613ce1",
     "native/leancage_m1.c": "cc4cee5d3b92764ff3f8645051947cdcfcc8de63c57a950b94dc5e4e2716f77c",
     "native/leancage_m2.c": "ec3c25a39a49ea6ee3a4c8aa288f0a9682e070fd3da7d756131db842d1f0654b",
-    "scripts/audit_m2.py": "a10d2a957bebe376f5f05575be26cb9e213b98e7ced2c63b2f41b0172cc08c46",
+    "scripts/audit_m2.py": "5de910efc57ec29646c80fe9330cb56436c5ea41834a45e480cd512efde530ef",
     "scripts/m2_axiom_query.lean": "ea4d223c44cdb96a7a32d59fe5e17fc38bbf85cf86065fb2063745cd06b05f3a",
     "scripts/run_m1_vm.py": "9d092518750dd197febeac21a95061ec8f03de877d5091e38a2011931006687b",
     "scripts/run_m2_vm.py": "dbcb6854eab1157c7ff26aa11cb5fdc05dc44ffad45747f0f42bd11ec4adc40d",
@@ -985,7 +985,7 @@
     "libc": "glibc 2.39",
     "qemu": "QEMU emulator version 8.2.2 (Debian 1:8.2.2+ds-0ubuntu1.18)\nCopyright (c) 2003-2023 Fabrice Bellard and the QEMU Project developers"
   },
-  "transcript_sha256": "2b26e32214fd8f93ab75cfbe13daad500a9967dc6bbdd00b3ab8790dcebe06c3",
+  "transcript_sha256": "cb25f2f42f01eed63cf9b385d43bb672cfcdf432e3940357c97f1a1ad0269082",
   "virtual_cpu": [
     "M2_CPU vendor_id\t: AuthenticAMD",
     "M2_CPU model name\t: QEMU TCG CPU version 2.5+",

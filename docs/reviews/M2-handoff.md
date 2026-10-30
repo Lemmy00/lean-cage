@@ -139,6 +139,13 @@ these changes and rerunning the VM; theorem types and axiom sets remain unchange
 The readiness replay uses the existing hash-checked M2 kernel, not a new kernel
 build. The implementation's original source/kernel build is historical evidence.
 
+The first pushed clean-checkout run reached the M1 audit but exceeded its existing
+60-second query deadline. A prior CI run of the same M1 inventory took about 34
+seconds, so the deadline did not accommodate the observed runner variation.
+Both auditors now allow 180 seconds per query and still reject every timeout or
+incomplete result. The inventory, statements, axiom policy and VM behavior are
+unchanged; the fix does not turn infrastructure failure into proof evidence.
+
 ## Remaining obligations and next assignment
 
 All eight entries in [§AR-lifecycle.correspondence](../architecture/AR-lifecycle.md#correspondence-m4-obligation-ledger) remain open for M4; no manual

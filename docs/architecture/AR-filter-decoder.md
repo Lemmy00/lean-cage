@@ -63,6 +63,11 @@ identifies this machine's checked Lean artifacts. Regenerate evidence only after
 reviewing statement/source changes; the handoff gate never refreshes expectations
 automatically to make a mismatch pass.
 
+Allow up to 180 seconds for each complete Lean environment query on shared CI
+runners. A timeout fails the audit; it never permits an incomplete inventory or
+skips a theorem. The M2 auditor uses the same bounded query allowance. This is a
+verification-tool deadline, independent of guest runtime/resource guarantees.
+
 ## checks: Malformed inputs and audit failures
 
 Run pure decoder checks for the canonical bytes, all field categories and first

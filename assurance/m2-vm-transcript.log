@@ -68,6 +68,13 @@ M2_CASE_BEGIN name=bad_elf
 M2_RESULT kind=1 phase=1 detail=8 entry=0 clean=0
 M2_CASE_END name=bad_elf exit=125 expected=125 owned_gone=1 sentinel_alive=1
 M2_CASE_BEGIN name=symlink
+clocksource: timekeeping watchdog on CPU0: Marking clocksource 'tsc' as unstable because the skew is too large:
+clocksource:                       'refined-jiffies' wd_nsec: 512032000 wd_now: fffedf78 wd_last: fffedef8 mask: ffffffff
+clocksource:                       'tsc' cs_nsec: 548000168 cs_now: 3fc4bee4e cs_last: 38cab45e1 mask: ffffffffffffffff
+clocksource:                       Clocksource 'tsc' skewed 35968168 ns (35 ms) over watchdog 'refined-jiffies' interval of 512032000 ns (512 ms)
+clocksource:                       'tsc' is current clocksource.
+TSC found unstable after boot, most likely due to broken BIOS. Use 'tsc=unstable'.
+clocksource: Not enough CPUs to check clocksource 'tsc'.
 M2_RESULT kind=1 phase=1 detail=40 entry=0 clean=0
 M2_CASE_END name=symlink exit=125 expected=125 owned_gone=1 sentinel_alive=1
 M2_CASE_BEGIN name=noexec
@@ -90,29 +97,22 @@ M2_CASE_BEGIN name=namespace_failure
 M2_RESULT kind=1 phase=2 detail=22 entry=0 clean=0
 M2_CASE_END name=namespace_failure exit=125 expected=125 owned_gone=1 sentinel_alive=1
 M2_CASE_BEGIN name=mount_failure
-M2_SCOPE init=126 helper=125
+M2_SCOPE init=127 helper=126
 M2_RESULT kind=1 phase=2 detail=19 entry=0 clean=1
 M2_CASE_END name=mount_failure exit=125 expected=125 owned_gone=1 sentinel_alive=1
 M2_CASE_BEGIN name=handles_failure
-M2_SCOPE init=131 helper=130
+M2_SCOPE init=132 helper=131
 M2_RESULT kind=1 phase=3 detail=9 entry=0 clean=1
 M2_CASE_END name=handles_failure exit=125 expected=125 owned_gone=1 sentinel_alive=1
 M2_CASE_BEGIN name=credentials_failure
-M2_SCOPE init=137 helper=136
+M2_SCOPE init=138 helper=137
 M2_RESULT kind=1 phase=4 detail=22 entry=0 clean=1
 M2_CASE_END name=credentials_failure exit=125 expected=125 owned_gone=1 sentinel_alive=1
 M2_CASE_BEGIN name=nnp_failure
-M2_SCOPE init=143 helper=142
+M2_SCOPE init=144 helper=143
 M2_RESULT kind=1 phase=6 detail=22 entry=0 clean=1
 M2_CASE_END name=nnp_failure exit=125 expected=125 owned_gone=1 sentinel_alive=1
 M2_CASE_BEGIN name=filter_failure
-clocksource: timekeeping watchdog on CPU0: Marking clocksource 'tsc' as unstable because the skew is too large:
-clocksource:                       'refined-jiffies' wd_nsec: 512032000 wd_now: fffee1e8 wd_last: fffee168 mask: ffffffff
-clocksource:                       'tsc' cs_nsec: 616204430 cs_now: 60bb4bda4 cs_last: 58e2f676f mask: ffffffffffffffff
-clocksource:                       Clocksource 'tsc' skewed 104172430 ns (104 ms) over watchdog 'refined-jiffies' interval of 512032000 ns (512 ms)
-clocksource:                       'tsc' is current clocksource.
-TSC found unstable after boot, most likely due to broken BIOS. Use 'tsc=unstable'.
-clocksource: Not enough CPUs to check clocksource 'tsc'.
 M2_SCOPE init=150 helper=149
 M2_RESULT kind=1 phase=7 detail=22 entry=0 clean=1
 M2_CASE_END name=filter_failure exit=125 expected=125 owned_gone=1 sentinel_alive=1

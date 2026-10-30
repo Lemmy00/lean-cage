@@ -18,6 +18,8 @@ BASELINE = PROJECT / "assurance/m1.2-decoder-claims.json"
 QUERY = PROJECT / "scripts/axiom_query.lean"
 LOGICAL_AXIOMS = frozenset({"propext", "Classical.choice", "Quot.sound"})
 NAME = re.compile(r"[A-Za-z_][A-Za-z_0-9]*(?:\.[A-Za-z_][A-Za-z_0-9]*)*\Z")
+# §AR-filter-decoder.audit: Bound complete queries while accommodating shared CI runner speed.
+QUERY_TIMEOUT_SECONDS = 180
 
 
 class AuditError(ValueError):
@@ -71,7 +73,7 @@ def query_environment(modules=(), declarations=(), extra_source=""):
         probe.write_text(source)
         result = subprocess.run(
             ["lake", "env", "lean", str(probe)], cwd=PROJECT,
-            capture_output=True, text=True, timeout=60,
+            capture_output=True, text=True, timeout=QUERY_TIMEOUT_SECONDS,
         )
     if result.returncode:
         raise AuditError("Lean audit query failed:\n" + result.stdout + result.stderr)
