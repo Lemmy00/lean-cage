@@ -248,6 +248,33 @@ class EvidenceGate(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'changed or disappeared'):
             gate.validate_preserved_claims(previous, actual)
 
+    def test_callers_and_complete_failure_claims_present(self):
+        names = {r['name'] for r in self.claims['rocq_declarations']}
+        self.assertTrue({
+            'CallContexts.plug_clight_step', 'CallContexts.unplug_clight_step',
+            'CallContexts.plug_library_step', 'CallContexts.unplug_library_step',
+            'CallContexts.caller_run_decomposition', 'WriteCallers.write_caller_decomposition',
+            'FailureMemory.failure_prepare_execution', 'FailureMemory.failure_packet_write_owned',
+            'FailureSafety.failure_all_prefixes_defined', 'FailureSafety.failure_never_returns',
+            'FailureTrace.failure_reporting_prefix', 'FailureExit.failure_only_exit_125',
+            'FailureRuns.failure_successful_exit_exists', 'FailureError.failure_failed_report_exit_exists',
+            'FailureError.failure_partial_loss_exists', 'FailureWitnesses.failure_inputs_inhabited',
+            'FailureWitnesses.normal_failure_execution', 'FailureWitnesses.dropped_failure_execution',
+            'FailureWitnesses.short_failure_execution', 'FailureWitnesses.failed_failure_execution',
+            'FailureWitnesses.lost_failure_execution',
+        }.issubset(names))
+
+    def test_all_structure_claims_preserved(self):
+        previous = json.loads(gate.CALLERS_BASELINE.read_text())
+        self.assertEqual(len(previous['rocq_declarations']), 373)
+        self.assertEqual(len(previous['lean_declarations']), 12)
+        gate.validate_preserved_claims(previous, self.claims)
+        actual = copy.deepcopy(self.claims)
+        record = next(r for r in actual['rocq_declarations'] if r['name'] == 'ResultSafety.result_return_exact')
+        record['full_type'] = 'weakened result construction'
+        with self.assertRaisesRegex(ValueError, 'changed or disappeared'):
+            gate.validate_preserved_claims(previous, actual)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -38,7 +38,7 @@ These counts identify coverage and evidence, not a measure of security strength.
 | M2 owned lifecycle and filter action | [§FS-lifecycle.model](FS-lifecycle.md#model-executable-controller-and-effect-contracts) and [§FS-lifecycle.filter](FS-lifecycle.md#filter-general-action-of-the-preserved-m1-program) | Model-proved; VM-tested; handoff gate passed | [§FS-assurance.lifecycle](FS-assurance.md#lifecycle-m2-lifecycle-and-filter-semantics-claim-record); exact plan, ownership/inheritance and general bytecode action; source-bound VM evidence | Native/Linux correspondence; M3 authority; M5 hardware channels |
 | Native workload confinement | [§FS-workspace.authority](FS-workspace.md#authority-objects-and-rights) | M3 model proofs, implementation and source-bound VM evidence; gate passed | [§FS-assurance.workspace](FS-assurance.md#workspace-m3-workspace-model-and-vm-evidence); object/handle/alias model and workspace helper | Native/Linux correspondence |
 | Bounded resources | [§FS-workspace.resources](FS-workspace.md#resources-units-ownership-and-failure) | Conditional model proofs; native VM limit cases | Scope/capture/reservation/sample proofs; charged memory/task/CPU/deadline observations | Linux accounting and progress/overshoot premises |
-| Local reporting source behavior | [§FS-workspace.results](FS-workspace.md#results-entry-cancellation-and-bounded-transport) | Partial M4.2 source/effect proofs | [§FS-assurance.native](FS-assurance.md#native-partial-m4-reporting-source-evidence); maintained-source codecs, write loop, errno and fault selector with explicit byte/library effects | Whole-slice framing/caller safety, checked C-to-Lean bridge, Linux/compiler/executable correspondence |
+| Local reporting source behavior | [§FS-workspace.results](FS-workspace.md#results-entry-cancellation-and-bounded-transport) | Partial M4.2 source/effect proofs | [§FS-assurance.native](FS-assurance.md#native-partial-m4-reporting-source-evidence); maintained-source codecs, write loop, errno, selectors, result construction and child-failure reporting | Whole-slice framing/caller safety, checked C-to-Lean bridge, Linux/compiler/executable correspondence |
 | Functional confidentiality | [§FS-observations.logical](FS-observations.md#logical-functional-observations) | Planned | Observation requirements | Noninterference theorem and correspondence |
 | Hardware-aware confidentiality | [§FS-observations.hardware](FS-observations.md#hardware-software-observable-channels) | Planned | Scope and research obligations | Model, mechanisms, proof, deployed profile |
 | Deployed executable correctness | [§GOAL-end-to-end](../goals.md#goal-end-to-end-connect-the-policy-to-the-deployed-artifact) | Planned | Roadmap | Compiler/runtime/FFI and Linux correspondence |
@@ -411,8 +411,8 @@ Clight model plus explicit byte-aware effects and asynchronous loss. The maintai
 retains the 25 feasibility declarations and 12 Lean target records;
 `assurance/m4-connection-claims.json` inventories every additive Rocq declaration
 with its complete type and transitive assumptions and the unchanged 12 Lean
-endpoint claims. The structure checkpoint contains 373 Rocq declarations, preserving
-all 323 previous records and twenty-one compiled artifacts exactly. These counts
+endpoint claims. The caller checkpoint contains 494 Rocq declarations, preserving
+all 373 previous records and twenty-seven compiled artifacts exactly. These counts
 identify the audited inventory, not a security score.
 
 **Results:** universal finite-prefix safety and exact returns for `write_all`,
@@ -430,11 +430,21 @@ executes 161 source steps, including all 50 initialization stores, the whole
 input/global words; other fields/digest bytes are zero. Every finite prefix
 preserves caller memory outside the output, and loss retains current memory.
 The structure copy includes padding memory values, without claiming initialized
-padding or compiled-copy atomicity.
+padding or compiled-copy atomicity. Actual helper execution now composes with
+caller continuations in both directions, preserving all memory effects and events.
+The complete child-failure routine allocates and fills its eight-byte local in
+96 source steps before fault selection. Every finite live prefix has an ordinary
+enabled step; local execution never returns to its caller. Every trace sends a
+prefix of the source-selected zero-, three- or eight-byte report, including a
+transfer interrupted by loss. Every exit attempt uses code 125. Independent
+owned inputs and complete normal, dropped, short, failed and lost executions
+are constructed for arbitrary descriptor/stage/error words. This is partial
+correctness and progress availability, not termination, successful publication,
+whole-program initialization or Linux exit/resource-reclamation correspondence.
 
 **Evidence and assumptions:** `assurance/m4-library-evidence.json`,
-`assurance/m4-structures-evidence.json` and
-[the structure proposition review](../reviews/M4-structures.md) bind sources, terms, preservation
+`assurance/m4-structures-evidence.json`, `assurance/m4-callers-evidence.json` and
+[the caller proposition review](../reviews/M4-callers.md) bind sources, terms, preservation
 checks and raw command receipts. `./scripts/check_m4_connection.sh` replays the
 pinned tools, actual extracted source/AST, complete declarations and `coqchk`.
 The six Rocq foundation/semantic-parameter entries remain unchanged; the explicit

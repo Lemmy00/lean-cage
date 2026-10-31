@@ -28,12 +28,20 @@ LIBRARY_BASELINE = ROOT / 'assurance/m4-library-baseline-claims.json'
 LIBRARY_EVIDENCE = ROOT / 'assurance/m4-library-evidence.json'
 STRUCTURES_BASELINE = ROOT / 'assurance/m4-structures-baseline-claims.json'
 STRUCTURES_EVIDENCE = ROOT / 'assurance/m4-structures-evidence.json'
+CALLERS_BASELINE = ROOT / 'assurance/m4-callers-baseline-claims.json'
+CALLERS_EVIDENCE = ROOT / 'assurance/m4-callers-evidence.json'
 MODULES = ['IO', 'Machine', 'ClightSteps', 'WriteMemory', 'WriteAll', 'WriteWitnesses',
            'Deterministic', 'ErrorNumber', 'Readers',
            'StoreSteps', 'WriteBytes', 'Writers', 'CodecRoundtrip',
            'Library', 'ProcessEffects', 'LibraryMachine', 'LibraryPreservation',
            'LibraryControl', 'GlobalReads', 'Fault', 'LibraryWitnesses',
-           'LocalAccess', 'ScalarMemory', 'ResultLayout', 'ResultSource', 'ResultSafety', 'ResultWitnesses']
+           'LocalAccess', 'ScalarMemory', 'ResultLayout', 'ResultSource', 'ResultSafety', 'ResultWitnesses',
+           'CallContexts', 'CallAccess', 'CallPaths', 'WriteCallers',
+           'FreshMemory', 'CallProgress', 'ExitControl', 'HelperProgress',
+           'CallEvents', 'ReportingTrace', 'ExitEvents', 'FailureSource',
+           'FailureMemory', 'FailureBranches', 'FailureContract', 'FailureSafety',
+           'FailureTrace', 'FailureRuns', 'FailureError', 'FailureExit',
+           'FailureWitnesses']
 ALLOWED_COQ = {
     'ClassicalDedekindReals.sig_not_dec', 'ClassicalDedekindReals.sig_forall_dec',
     'FunctionalExtensionality.functional_extensionality_dep', 'Classical_Prop.classic',
@@ -54,7 +62,8 @@ def sources():
               ROOT / 'docs/reviews/M4-writers.md', ROOT / 'docs/reviews/M4-library.md',
               ROOT / 'docs/architecture/AR-m4-library.md',
               ROOT / 'docs/architecture/AR-m4-structures.md', ROOT / 'docs/reviews/M4-structures.md',
-              STRUCTURES_BASELINE,
+              ROOT / 'docs/architecture/AR-m4-callers.md', ROOT / 'docs/reviews/M4-callers.md',
+              CALLERS_BASELINE, STRUCTURES_BASELINE,
               ROOT / 'docs/functional-spec/FS-assurance.md', LIBRARY_BASELINE,
               BASELINE_CLAIMS, PRIMITIVES_BASELINE, WRITERS_BASELINE, OBLIGATIONS]
     return {str(p.relative_to(ROOT)): digest(p) for p in sorted(paths)}
@@ -87,15 +96,17 @@ def declaration_names():
 
 def rocq_inventory():
     names = declaration_names()
-    query = ['Require Import ' + ' '.join(MODULES) + '.',
-             'Set Printing All.', 'Set Printing Depth 1000000.', 'Set Printing Width 1000000.']
-    for i, name in enumerate(names):
-        query += [f'Redirect "connection-type-{i}" Check @{name}.',
-                  f'Redirect "connection-axioms-{i}" Print Assumptions {name}.']
-    (WORK / 'input/ConnectionAudit.v').write_text('\n'.join(query) + '\n')
-    result = compile_file('ConnectionAudit.v')
-    if result.returncode:
-        raise ValueError(result.stdout + result.stderr)
+    for batch, start in enumerate(range(0, len(names), 100)):
+        query = ['Require Import ' + ' '.join(MODULES) + '.',
+                 'Set Printing All.', 'Set Printing Depth 1000000.', 'Set Printing Width 1000000.']
+        for i, name in enumerate(names[start:start + 100], start):
+            query += [f'Redirect "connection-type-{i}" Check @{name}.',
+                      f'Redirect "connection-axioms-{i}" Print Assumptions {name}.']
+        filename = f'ConnectionAudit{batch}.v'
+        (WORK / 'input' / filename).write_text('\n'.join(query) + '\n')
+        result = compile_file(filename)
+        if result.returncode:
+            raise ValueError(result.stdout + result.stderr)
     records = []
     for i, name in enumerate(names):
         full_type = (WORK / f'input/connection-type-{i}.out').read_text().strip()
@@ -213,9 +224,16 @@ def check():
     writers = json.loads(WRITERS_EVIDENCE.read_text())
     library = json.loads(LIBRARY_EVIDENCE.read_text())
     structures = json.loads(STRUCTURES_EVIDENCE.read_text())
+    callers = json.loads(CALLERS_EVIDENCE.read_text())
+    if callers['status'] != 'caller composition and complete child-failure source submilestone complete; M4.2-M4.6 incomplete':
+        raise ValueError('child-failure source cannot complete M4 correspondence')
+    if digest(MANIFEST) != callers['claims_sha256']:
+        raise ValueError('caller reviewed claim manifest identity differs')
+    verify_hashes(callers['preserved_sha256'])
+    verify_hashes(callers['archived_receipts_sha256'])
     if structures['status'] != 'result constructor source submilestone complete; M4.2-M4.6 incomplete':
         raise ValueError('local result construction cannot complete M4 correspondence')
-    if digest(MANIFEST) != structures['claims_sha256']:
+    if digest(CALLERS_BASELINE) != structures['claims_sha256']:
         raise ValueError('structure reviewed claim manifest identity differs')
     verify_hashes(structures['preserved_sha256'])
     verify_hashes(structures['archived_receipts_sha256'])
@@ -286,7 +304,9 @@ def check():
     validate_artifacts(writers['artifact_sha256'], actual['artifact_sha256'], subset=True)
     validate_preserved_claims(json.loads(STRUCTURES_BASELINE.read_text()), actual)
     validate_artifacts(library['artifact_sha256'], actual['artifact_sha256'], subset=True)
-    validate_artifacts(structures['artifact_sha256'], actual['artifact_sha256'])
+    validate_preserved_claims(json.loads(CALLERS_BASELINE.read_text()), actual)
+    validate_artifacts(structures['artifact_sha256'], actual['artifact_sha256'], subset=True)
+    validate_artifacts(callers['artifact_sha256'], actual['artifact_sha256'])
     result = subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', str(DIRECTORY),
                              '-p', 'test_*.py', '-v'], cwd=ROOT,
                             capture_output=True, text=True, timeout=60)
@@ -296,7 +316,7 @@ def check():
     print(f'Connection checked: {len(actual["rocq_declarations"])} Rocq theorems, '
           f'{len(actual["lean_declarations"])} Lean theorems, coqchk passed; 16 original obligations OPEN')
     print('Universal write_all, errno, byte reader/writer source safety and codec round trips checked; '
-          'local library effects, old-source preservation, fault and complete result constructor checked; '
+          'local library effects, fault, result construction, actual caller composition and complete fail_child checked; '
           'whole-slice C/Lean simulation, Linux/compiler/runtime correspondence and full M4 remain UNPROVED')
 
 

@@ -74,3 +74,16 @@ contract cannot justify this structure assignment. A local source copy is one
 Clight transition; compiled interruption granularity remains an explicit compiler
 observation/refinement obligation. Track all finite source prefixes and free
 local storage at actual returns without inventing process-extinction receipts.
+
+## callers: Compose the real helper execution before resuming the caller
+
+For [§AR-m4-callers.continuation](../../architecture/AR-m4-callers.md#continuation-delimited-caller-execution) and [§FS-workspace.results](../../functional-spec/FS-workspace.md#results-entry-cancellation-and-bounded-transport), replace only the
+callee's bottom continuation and prove this transformation in both directions
+for Clight and the extended effect machine. A run either remains in the callee
+or reaches a genuine local return and then executes the caller. Preserve memory,
+arguments and every event, including unbounded waits/EINTR and partial loss.
+No callee postcondition is an external axiom. Apply this to the complete
+child-failure routine under [§AR-m4-callers.failure](../../architecture/AR-m4-callers.md#failure-complete-child-failure-reporting); leave the larger frame and
+terminal-receiver compositions open. Kernel inventory queries are grouped into
+batches of at most 100 declarations, retaining each complete type/assumption
+record and the same fail-closed checks and per-command limits.
