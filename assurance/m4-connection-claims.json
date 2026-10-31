@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "scope": "Partial M4.2: all preceding claims preserved; exact outgoing field/digest projections and private acceptance, actual sender/decoder observation connection including rejection mutation, actual child/receiver setup-field connection under explicit byte provenance, and allocated complete source pairs. Whole-program ordering, Linux transport/provenance, valid wait-status domain, checked Lean bridge and executable correspondence remain open.",
+  "scope": "Partial M4.2: all 1113 Rocq and twelve preceding Lean claims preserved; exact live public parser acceptance, field-width bounds, arbitrary-width byte encoding, independent complete public-frame round trip and ten ordinary-kernel acceptance/rejection witnesses. Checked cross-assistant bridge, Linux transport/provenance, whole-program ordering and executable correspondence remain open.",
   "m4_complete": false,
   "source_sha256": {
     "assurance/m4-callers-baseline-claims.json": "ef2d734da9c9d6689c097f59f29463a1e03f069cae2c6333abe5c014f9da7d3d",
@@ -8,6 +8,7 @@
     "assurance/m4-library-baseline-claims.json": "696f5a05ed0384e06006f3c8e0b34a421b9f935566df341da50af599ca347371",
     "assurance/m4-obligations.json": "77f760ca9447b8ee05ec0e24efc637b35ff6a62356657515ffc68f0999182064",
     "assurance/m4-primitives-baseline-claims.json": "6a87d4e91fd657fdadc18ffc6ae345d8dcf9d1033b1ed4b9c7454c749b2396af",
+    "assurance/m4-public-baseline-claims.json": "74eeea32c256604ee45957d583d8613b1a45b915e3de31c4499fc9104cf9d747",
     "assurance/m4-receiver-baseline-claims.json": "c3451cb30913704c9acbcf403a1ae8174bfa4b413f755e31a2a4e498263c00d5",
     "assurance/m4-sender-baseline-claims.json": "01acfe1ff33b3689bb1c0ecce0970a26acf1fffe2400f24c24856857a4788c1f",
     "assurance/m4-structures-baseline-claims.json": "6bb3267ee4212396cc14096f52bd1185a4f08f7adb7f42cc3e369819e5a04ca6",
@@ -18,26 +19,28 @@
     "docs/architecture/AR-m4-decoder.md": "d6f5d0ed5fd59fd51e4f219be8a6b9ab33a1a92f5a7b4bfd84666d14a4f27a87",
     "docs/architecture/AR-m4-effects.md": "70d9bc2c2badc74d9a9a39656d62d4829a69fc8412f3d025980c124dd8c47a24",
     "docs/architecture/AR-m4-library.md": "52d94044e71aaa129ac34a9ffa4edc7a2e99ac6dfd37a065e401891c18352e04",
+    "docs/architecture/AR-m4-public.md": "cf5facae34aef9f70091f5fafa0d2b1d4866162158be410c8119b8ee4ac648b0",
     "docs/architecture/AR-m4-receiver.md": "35c512ca14385f591208a109c133125b2daf5789439b275e0cc8836665055672",
     "docs/architecture/AR-m4-sender.md": "cff95bf58f9e6be89e4dfa21b9722293bda7d6f5141bda604b7b28de2d789a98",
     "docs/architecture/AR-m4-structures.md": "7290b4f00ccfb6a8608be457ceffbed7d85987ce298f09656f2d3723a8485629",
     "docs/architecture/AR-m4-wire.md": "5e559fa562dbd6848437d7c333e4f2b843ef9051c931c4efc9234ca8b31b8438",
-    "docs/architecture/README.md": "72966316869ee970ece687c3dbdc3cd5516bdf2ea554c78236576d927ace765d",
-    "docs/decisions/architectural/DA-m4-effects.md": "7e288e1aaf1fd142ffca5cc0c6da044f180e1332fbedb2fd92ed540b2fab8fdf",
+    "docs/architecture/README.md": "eb1d715983c96b8983e43f96476438e9d7be86e6c89ab7749ccc98f2636cbbcf",
+    "docs/decisions/architectural/DA-m4-effects.md": "d22ffcbf808b0f68573bea551c309917bf115f61e331e998ef8fa92d487b2ac4",
     "docs/decisions/architectural/README.md": "18097b2fb8a35a9f1bc47ea573fe29c6fddd0f06ccc83af597bf54edc0ecf1fb",
-    "docs/functional-spec/FS-assurance.md": "2597f9c9af6a251e2f7eec7710aedaee439dc9a9357a82bc187f5d16029c7a2e",
+    "docs/functional-spec/FS-assurance.md": "0efd52d5c73221ec81a28e44229593e3ba546e38869b7b010bed458e4e0bffd2",
     "docs/reviews/M4-callers.md": "e1022bb3148c34a3d5091f57d2d458e95f43737c142230fc3f7233a4b59e1a66",
     "docs/reviews/M4-decoder.md": "39f0e8f57fb0f13ef0069a43fd228b76941e76179404aa237bdcb9d5e3136d17",
     "docs/reviews/M4-library.md": "f9efa48d44f236767d0f431c648142b0b510468c2782841fc59ba88cb5a99b5d",
     "docs/reviews/M4-primitives.md": "8c175ede23eedcbfaad41ffd9b65bbf7870449827c7e794770f50933d62eb235",
     "docs/reviews/M4-progress.md": "2ba274b9783f17f729eb1dea34d2527a05ab6fbe17ad22256030bece9bdf16aa",
+    "docs/reviews/M4-public.md": "ca5fd19bd1a0603d5127f13f7685708062a7e7cb9c9a2381916d3a7845ecc28e",
     "docs/reviews/M4-receiver.md": "c08cdf4695885fd5d6ebb6da248bb793d044a3108d501b1a6c09685f43cfd76f",
     "docs/reviews/M4-sender.md": "c6f77198136f80851440f1a5c87bb06568acf5cb7c0659dd3b1137fa1d756490",
     "docs/reviews/M4-structures.md": "316de60ce605c76dbc1a0083fe0d1b2748fa16d1003c809dce1d2822bbf59419",
     "docs/reviews/M4-wire.md": "1db72822282294d8029c5a2fd753e412d6a98f9b91ff45ff97685c9a91255137",
     "docs/reviews/M4-writeall.md": "0c7dcca76621cdbc022ec4800708182d022e1c358bb3cd1304b163cc5b58c487",
     "docs/reviews/M4-writers.md": "0a828f10161f0ba3207485dfda63b4a7ea4ca8763123e8f75ec62f72c142a5c4",
-    "docs/roadmap.md": "6bf68747a5b26a1bb0397095776b625f3fe36999751f180b5133eb18ad5dd9d6",
+    "docs/roadmap.md": "9880f051172181e318e4e40dc226671ab73b25640b4fd5cf7ff94d3435d8ada1",
     "m4/connection/BytePatch.v": "567271d1f9018e477f9b48c18d7730125bff1ca6db68a5d3e2bae252bf63497b",
     "m4/connection/CallAccess.v": "0807ed76e554be700daae913836b25a822b38c81d7a4614bcc90e22a26627b19",
     "m4/connection/CallContexts.v": "e6955f4a6613963e778cf204445298f944acf53070cc681170ae87fe80210306",
@@ -116,6 +119,7 @@
     "m4/connection/PatchLayout.v": "6ecd1be3a044c328d3e7f2c0a262099d14de56357f41220b1815b634d3f233c4",
     "m4/connection/ProcedureCalls.v": "97667a273cc3588159d2d4f4ad9c6c1cdc3272806755ac2d193a8b6914f909da",
     "m4/connection/ProcessEffects.v": "6a1ae05b621da4b1cb6ae40f9601afabcbee745b5a4589f574f87bd3b0bbfa62",
+    "m4/connection/Public.lean": "78264116f6bb8ae1ad8797fa866581ba414b4242c3a7b90591ed1772516da933",
     "m4/connection/README.md": "3894e1cde8a222f2fe23bf66cf816ff0720fd10407f11a3e8a6e6e779614e7ef",
     "m4/connection/Readers.v": "28ed330d1fec632a2630c7d01f7af57c1957a6e5874db2b14b566456081636e4",
     "m4/connection/ReceiverAccepted.v": "661ac5ca1c2597b152e9633243f9b0078a8ce0a3a7125780263133077c6dfce4",
@@ -238,7 +242,7 @@
     "m4/connection/WriteMemory.v": "73c7561dc3730529a8f24caeb83eead5d5531fb696909073f65e9f0b5bfa9135",
     "m4/connection/WriteWitnesses.v": "d8304157bc7ae42d22aa67a642df402b4218d77d6b31b203d4a4745c826b5fdf",
     "m4/connection/Writers.v": "cfdafc7aaf973aac2e2fab0b216c04f4265f3b3a9535e1cb2ba43a26328e3fb5",
-    "m4/connection/check.py": "fc3f9c6c7ab3ca15310bc3c4c3172a12515b83a0cd0eb8e102454aa2ef67b21e",
+    "m4/connection/check.py": "5eb0b16b43248c89fe26b7e93e2322903175b8c158547749963c4ac560325e18",
     "m4/connection/compat/CallEventsDraft.v": "6e95f9cf899a25ad5d5974be9caab7124e229272d341a7df7395719de8e13aa8",
     "m4/connection/compat/CallProgressDraft.v": "eff32879e32de99e07b4f74cee627d28522f7b2e72ac584b319babb813de7f5e",
     "m4/connection/compat/ExitControlDraft.v": "20a0fdd0cd0a96fc9e540279ae96de7572d3ef61f55a211371446892ffe04dd6",
@@ -255,7 +259,7 @@
     "m4/connection/compat/HelperProgressDraft.v": "cabf4bc742425031135efa50c28e19ad38def467b103cbda5de531e55b308158",
     "m4/connection/compat/README.md": "cc376e072b452e255b1cf1d196be9224220ec37ae1590726ed726ada7d97ba79",
     "m4/connection/compat/ReportingTraceDraft.v": "f839a152a54c9cd311e7a59d9f41971f3aae3d47222d53f708a3a7f784645653",
-    "m4/connection/test_gate.py": "4995fe822df2552809e60672d6369fbbbe4c492741aa1d9d5b67f33c7c59ef93",
+    "m4/connection/test_gate.py": "30a404ced37c902a912f0313fa3261351ec8c75c23abad5704258a471de3f833",
     "scripts/check_m4.sh": "83c0165ee40e3584ba10cb1c98d300c3d8ff42307895e241005674c0c9e51b3c",
     "scripts/check_m4_connection.sh": "0cd2d317855c1ac841efae73afe8313e222239faf86e36cb7a4765c83c5ac3aa"
   },
@@ -11367,6 +11371,828 @@
     }
   ],
   "lean_declarations": [
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.base_power",
+      "type": "\u2200 (width : Nat), Eq.{1} (HPow.hPow.{0, 0, 0} 256 width) (HPow.hPow.{0, 0, 0} 2 (HMul.hMul.{0, 0, 0} 8 width))"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.bytes_get",
+      "type": "\u2200 (xs : List.{0} UInt8) (i : Nat),\n  Eq.{1} (GetElem?.getElem?.{0, 0, 0} { data := List.toArray.{0} xs } i) (GetElem?.getElem?.{0, 0, 0} xs i)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.bytes_window",
+      "type": "\u2200 (front payload suffix : List.{0} UInt8),\n  Eq.{1}\n    (LeanCageM3.little\n      { data := List.toArray.{0} (HAppend.hAppend.{0, 0, 0} (HAppend.hAppend.{0, 0, 0} front payload) suffix) }\n      (List.length.{0} front) (List.length.{0} payload))\n    (LeanCageM4.PublicCodec.value payload)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.bytes_window._proof_1_1",
+      "type": "\u2200 (front payload : List.{0} UInt8) (i : Nat),\n  \u00acLE.le.{0} (List.length.{0} front) (HAdd.hAdd.{0, 0, 0} (List.length.{0} front) i) \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.extract_window",
+      "type": "\u2200 (front payload suffix : List.{0} UInt8),\n  Eq.{1}\n    ({ data := List.toArray.{0} (HAppend.hAppend.{0, 0, 0} (HAppend.hAppend.{0, 0, 0} front payload) suffix) }.extract\n      (List.length.{0} front) (HAdd.hAdd.{0, 0, 0} (List.length.{0} front) (List.length.{0} payload)))\n    { data := List.toArray.{0} payload }"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.little_after",
+      "type": "\u2200 (front rest : List.{0} UInt8) (offset width : Nat),\n  LE.le.{0} (List.length.{0} front) offset \u2192\n    Eq.{1} (LeanCageM3.little { data := List.toArray.{0} (HAppend.hAppend.{0, 0, 0} front rest) } offset width)\n      (LeanCageM3.little { data := List.toArray.{0} rest } (HSub.hSub.{0, 0, 0} offset (List.length.{0} front)) width)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.little_after._proof_1_1",
+      "type": "\u2200 (front : List.{0} UInt8) (offset : Nat),\n  LE.le.{0} (List.length.{0} front) offset \u2192\n    \u2200 (i : Nat), \u00acLE.le.{0} (List.length.{0} front) (HAdd.hAdd.{0, 0, 0} offset i) \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.little_after._proof_1_2",
+      "type": "\u2200 (front : List.{0} UInt8) (offset : Nat),\n  LE.le.{0} (List.length.{0} front) offset \u2192\n    \u2200 (i : Nat),\n      \u00acEq.{1} (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} offset i) (List.length.{0} front))\n            (HAdd.hAdd.{0, 0, 0} (HSub.hSub.{0, 0, 0} offset (List.length.{0} front)) i) \u2192\n        False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.little_head_word",
+      "type": "\u2200 (width n : Nat) (rest : List.{0} UInt8),\n  Eq.{1}\n    (LeanCageM3.little\n      { data := List.toArray.{0} (HAppend.hAppend.{0, 0, 0} (LeanCageM4.PublicCodec.word width n) rest) } 0 width)\n    (HMod.hMod.{0, 0, 0} n (HPow.hPow.{0, 0, 0} 2 (HMul.hMul.{0, 0, 0} 8 width)))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.little_range",
+      "type": "\u2200 (bytes : ByteArray) (offset width : Nat),\n  Eq.{1} (LeanCageM3.little bytes offset width)\n    (LeanCageM4.PublicCodec.value\n      (List.map.{0, 0} (fun i => Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} bytes (HAdd.hAdd.{0, 0, 0} offset i)) 0)\n        (List.range width)))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.little_word",
+      "type": "\u2200 (front suffix : List.{0} UInt8) (width n : Nat),\n  Eq.{1}\n    (LeanCageM3.little\n      {\n        data :=\n          List.toArray.{0}\n            (HAppend.hAppend.{0, 0, 0} (HAppend.hAppend.{0, 0, 0} front (LeanCageM4.PublicCodec.word width n)) suffix) }\n      (List.length.{0} front) width)\n    (HMod.hMod.{0, 0, 0} n (HPow.hPow.{0, 0, 0} 2 (HMul.hMul.{0, 0, 0} 8 width)))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.range_lookup",
+      "type": "\u2200 (xs : List.{0} UInt8),\n  Eq.{1}\n    (List.map.{0, 0} (fun i => Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} xs i) 0) (List.range (List.length.{0} xs)))\n    xs"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.value.eq_1",
+      "type": "Eq.{1} (LeanCageM4.PublicCodec.value List.nil.{0}) 0"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.value.eq_2",
+      "type": "\u2200 (byte : UInt8) (rest : List.{0} UInt8),\n  Eq.{1} (LeanCageM4.PublicCodec.value (List.cons.{0} byte rest))\n    (HAdd.hAdd.{0, 0, 0} byte.toNat (HMul.hMul.{0, 0, 0} 256 (LeanCageM4.PublicCodec.value rest)))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.value.eq_def",
+      "type": "\u2200 (x : List.{0} UInt8),\n  Eq.{1} (LeanCageM4.PublicCodec.value x)\n    (match x with\n    | List.nil.{0} => 0\n    | List.cons.{0} byte rest =>\n      HAdd.hAdd.{0, 0, 0} byte.toNat (HMul.hMul.{0, 0, 0} 256 (LeanCageM4.PublicCodec.value rest)))"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.value_append",
+      "type": "\u2200 (left right : List.{0} UInt8),\n  Eq.{1} (LeanCageM4.PublicCodec.value (HAppend.hAppend.{0, 0, 0} left right))\n    (HAdd.hAdd.{0, 0, 0} (LeanCageM4.PublicCodec.value left)\n      (HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} 256 (List.length.{0} left)) (LeanCageM4.PublicCodec.value right)))"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.value_singleton",
+      "type": "\u2200 (byte : UInt8), Eq.{1} (LeanCageM4.PublicCodec.value (List.cons.{0} byte List.nil.{0})) byte.toNat"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.value_word",
+      "type": "\u2200 (width n : Nat),\n  Eq.{1} (LeanCageM4.PublicCodec.value (LeanCageM4.PublicCodec.word width n))\n    (HMod.hMod.{0, 0, 0} n (HPow.hPow.{0, 0, 0} 256 width))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.word.eq_1",
+      "type": "\u2200 (n : Nat), Eq.{1} (LeanCageM4.PublicCodec.word 0 n) List.nil.{0}"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.word.eq_2",
+      "type": "\u2200 (n width_2 : Nat),\n  Eq.{1} (LeanCageM4.PublicCodec.word width_2.succ n)\n    (List.cons.{0} (UInt8.ofNat n) (LeanCageM4.PublicCodec.word width_2 (HDiv.hDiv.{0, 0, 0} n 256)))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.word.eq_def",
+      "type": "\u2200 (width n : Nat),\n  Eq.{1} (LeanCageM4.PublicCodec.word width n)\n    (match width with\n    | 0 => List.nil.{0}\n    | width.succ => List.cons.{0} (UInt8.ofNat n) (LeanCageM4.PublicCodec.word width (HDiv.hDiv.{0, 0, 0} n 256)))"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicCodec.word_length",
+      "type": "\u2200 (width n : Nat), Eq.{1} (List.length.{0} (LeanCageM4.PublicCodec.word width n)) width"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.decode_encode",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  LeanCageM4.PublicWire.Widths r \u2192\n    Eq.{1} r.exportDigest.size 32 \u2192\n      Eq.{1} (LeanCageM3.decodeResult (LeanCageM4.PublicEncode.encodeResult r)) (LeanCageM3.validateResult r)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.decode_encode_iff",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  LeanCageM4.PublicWire.Widths r \u2192\n    Eq.{1} r.exportDigest.size 32 \u2192\n      (Eq.{1} (LeanCageM3.decodeResult (LeanCageM4.PublicEncode.encodeResult r)) (Except.ok.{0, 0} r) \u2194\n        Eq.{1} (LeanCageM3.resultValid r) Bool.true)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_cleanup",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 44 4)\n    (HMod.hMod.{0, 0, 0} (ite.{1} (Eq.{1} r.clean Bool.true) 1 0) (HPow.hPow.{0, 0, 0} 2 32))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_cleanup_exact",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 44 4) (ite.{1} (Eq.{1} r.clean Bool.true) 1 0)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_cpu",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 56 8)\n    (HMod.hMod.{0, 0, 0} r.cpu (HPow.hPow.{0, 0, 0} 2 64))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_detail",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 36 4)\n    (HMod.hMod.{0, 0, 0} r.detail (HPow.hPow.{0, 0, 0} 2 32))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_digest",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} r.exportDigest.size 32 \u2192 Eq.{1} ((LeanCageM4.PublicEncode.encodeResult r).extract 104 136) r.exportDigest"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_elapsed",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 88 8)\n    (HMod.hMod.{0, 0, 0} r.elapsed (HPow.hPow.{0, 0, 0} 2 64))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_entry",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 40 4)\n    (HMod.hMod.{0, 0, 0} (LeanCageM4.PublicWire.entryWord r.entry) (HPow.hPow.{0, 0, 0} 2 32))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_entry_exact",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 40 4) (LeanCageM4.PublicWire.entryWord r.entry)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_export_error",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} r.exportDigest.size 32 \u2192\n    Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 152 4)\n      (HMod.hMod.{0, 0, 0} r.exportError (HPow.hPow.{0, 0, 0} 2 32))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_export_error._proof_1_1",
+      "type": "\u2200 (exportDigest : ByteArray),\n  Eq.{1} (Array.size.{0} exportDigest.data) 32 \u2192\n    \u00acEq.{1}\n          (HAdd.hAdd.{0, 0, 0}\n            (HAdd.hAdd.{0, 0, 0}\n              (HAdd.hAdd.{0, 0, 0}\n                (HAdd.hAdd.{0, 0, 0}\n                  (HAdd.hAdd.{0, 0, 0}\n                    (HAdd.hAdd.{0, 0, 0}\n                      (HAdd.hAdd.{0, 0, 0}\n                        (HAdd.hAdd.{0, 0, 0}\n                          (HAdd.hAdd.{0, 0, 0}\n                            (HAdd.hAdd.{0, 0, 0}\n                              (HAdd.hAdd.{0, 0, 0}\n                                (HAdd.hAdd.{0, 0, 0}\n                                  (HAdd.hAdd.{0, 0, 0}\n                                    (HAdd.hAdd.{0, 0, 0}\n                                      (HAdd.hAdd.{0, 0, 0}\n                                        (HAdd.hAdd.{0, 0, 0}\n                                          (HAdd.hAdd.{0, 0, 0}\n                                            (HAdd.hAdd.{0, 0, 0}\n                                              (HAdd.hAdd.{0, 0, 0}\n                                                (HAdd.hAdd.{0, 0, 0}\n                                                  (HAdd.hAdd.{0, 0, 0}\n                                                    (HAdd.hAdd.{0, 0, 0}\n                                                      (HAdd.hAdd.{0, 0, 0}\n                                                        (HAdd.hAdd.{0, 0, 0}\n                                                          (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 0 1) 1) 1)\n                                                        1)\n                                                      2)\n                                                    2)\n                                                  8)\n                                                8)\n                                              4)\n                                            4)\n                                          4)\n                                        4)\n                                      4)\n                                    4)\n                                  4)\n                                4)\n                              8)\n                            8)\n                          8)\n                        8)\n                      8)\n                    4)\n                  4)\n                (Array.size.{0} exportDigest.data))\n              8)\n            8)\n          152 \u2192\n      False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_export_state",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 96 4)\n    (HMod.hMod.{0, 0, 0} r.exportState (HPow.hPow.{0, 0, 0} 2 32))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_fields",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  LeanCageM4.PublicWire.Widths r \u2192\n    Eq.{1} r.exportDigest.size 32 \u2192\n      Eq.{1} (LeanCageM4.PublicWire.fields (LeanCageM4.PublicEncode.encodeResult r) r.entry) r"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_header",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} r.exportDigest.size 32 \u2192\n    Eq.{1} (LeanCageM4.PublicWire.headerBad (LeanCageM4.PublicEncode.encodeResult r)) Bool.false"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_kind",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 6 2)\n    (HMod.hMod.{0, 0, 0} r.kind (HPow.hPow.{0, 0, 0} 2 16))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_length",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM4.PublicEncode.encodeResult r).size (HAdd.hAdd.{0, 0, 0} 128 r.exportDigest.size)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_length._proof_1_1",
+      "type": "\u2200 (exportDigest : ByteArray),\n  \u00acEq.{1}\n        (HAdd.hAdd.{0, 0, 0}\n          (HAdd.hAdd.{0, 0, 0}\n            (HAdd.hAdd.{0, 0, 0}\n              (HAdd.hAdd.{0, 0, 0}\n                (HAdd.hAdd.{0, 0, 0}\n                  (HAdd.hAdd.{0, 0, 0}\n                    (HAdd.hAdd.{0, 0, 0}\n                      (HAdd.hAdd.{0, 0, 0}\n                        (HAdd.hAdd.{0, 0, 0}\n                          (HAdd.hAdd.{0, 0, 0}\n                            (HAdd.hAdd.{0, 0, 0}\n                              (HAdd.hAdd.{0, 0, 0}\n                                (HAdd.hAdd.{0, 0, 0}\n                                  (HAdd.hAdd.{0, 0, 0}\n                                    (HAdd.hAdd.{0, 0, 0}\n                                      (HAdd.hAdd.{0, 0, 0}\n                                        (HAdd.hAdd.{0, 0, 0}\n                                          (HAdd.hAdd.{0, 0, 0}\n                                            (HAdd.hAdd.{0, 0, 0}\n                                              (HAdd.hAdd.{0, 0, 0}\n                                                (HAdd.hAdd.{0, 0, 0}\n                                                  (HAdd.hAdd.{0, 0, 0}\n                                                    (HAdd.hAdd.{0, 0, 0}\n                                                      (HAdd.hAdd.{0, 0, 0}\n                                                        (HAdd.hAdd.{0, 0, 0}\n                                                          (HAdd.hAdd.{0, 0, 0}\n                                                            (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 0 1) 1) 1)\n                                                          1)\n                                                        2)\n                                                      2)\n                                                    8)\n                                                  8)\n                                                4)\n                                              4)\n                                            4)\n                                          4)\n                                        4)\n                                      4)\n                                    4)\n                                  4)\n                                8)\n                              8)\n                            8)\n                          8)\n                        8)\n                      4)\n                    4)\n                  (Array.size.{0} exportDigest.data))\n                8)\n              8)\n            4)\n          4)\n        (HAdd.hAdd.{0, 0, 0} 128 (Array.size.{0} exportDigest.data)) \u2192\n    False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_magic",
+      "type": "\u2200 (r : LeanCageM3.Result), Eq.{1} ((LeanCageM4.PublicEncode.encodeResult r).extract 0 4) \"LC3R\".toUTF8"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_omitted",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 100 4)\n    (HMod.hMod.{0, 0, 0} r.omitted (HPow.hPow.{0, 0, 0} 2 32))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_oom",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} r.exportDigest.size 32 \u2192\n    Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 136 8)\n      (HMod.hMod.{0, 0, 0} r.oomKills (HPow.hPow.{0, 0, 0} 2 64))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_oom._proof_1_1",
+      "type": "\u2200 (exportDigest : ByteArray),\n  Eq.{1} (Array.size.{0} exportDigest.data) 32 \u2192\n    \u00acEq.{1}\n          (HAdd.hAdd.{0, 0, 0}\n            (HAdd.hAdd.{0, 0, 0}\n              (HAdd.hAdd.{0, 0, 0}\n                (HAdd.hAdd.{0, 0, 0}\n                  (HAdd.hAdd.{0, 0, 0}\n                    (HAdd.hAdd.{0, 0, 0}\n                      (HAdd.hAdd.{0, 0, 0}\n                        (HAdd.hAdd.{0, 0, 0}\n                          (HAdd.hAdd.{0, 0, 0}\n                            (HAdd.hAdd.{0, 0, 0}\n                              (HAdd.hAdd.{0, 0, 0}\n                                (HAdd.hAdd.{0, 0, 0}\n                                  (HAdd.hAdd.{0, 0, 0}\n                                    (HAdd.hAdd.{0, 0, 0}\n                                      (HAdd.hAdd.{0, 0, 0}\n                                        (HAdd.hAdd.{0, 0, 0}\n                                          (HAdd.hAdd.{0, 0, 0}\n                                            (HAdd.hAdd.{0, 0, 0}\n                                              (HAdd.hAdd.{0, 0, 0}\n                                                (HAdd.hAdd.{0, 0, 0}\n                                                  (HAdd.hAdd.{0, 0, 0}\n                                                    (HAdd.hAdd.{0, 0, 0}\n                                                      (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 0 1) 1) 1)\n                                                    1)\n                                                  2)\n                                                2)\n                                              8)\n                                            8)\n                                          4)\n                                        4)\n                                      4)\n                                    4)\n                                  4)\n                                4)\n                              4)\n                            4)\n                          8)\n                        8)\n                      8)\n                    8)\n                  8)\n                4)\n              4)\n            (Array.size.{0} exportDigest.data))\n          136 \u2192\n      False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_payload_length",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 24 4)\n    (HMod.hMod.{0, 0, 0} 128 (HPow.hPow.{0, 0, 0} 2 32))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_peak",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 64 8)\n    (HMod.hMod.{0, 0, 0} r.peak (HPow.hPow.{0, 0, 0} 2 64))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_reserved_header",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 28 4)\n    (HMod.hMod.{0, 0, 0} 0 (HPow.hPow.{0, 0, 0} 2 32))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_reserved_tail",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} r.exportDigest.size 32 \u2192\n    Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 156 4)\n      (HMod.hMod.{0, 0, 0} 0 (HPow.hPow.{0, 0, 0} 2 32))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_reserved_tail._proof_1_1",
+      "type": "\u2200 (exportDigest : ByteArray),\n  Eq.{1} (Array.size.{0} exportDigest.data) 32 \u2192\n    \u00acEq.{1}\n          (HAdd.hAdd.{0, 0, 0}\n            (HAdd.hAdd.{0, 0, 0}\n              (HAdd.hAdd.{0, 0, 0}\n                (HAdd.hAdd.{0, 0, 0}\n                  (HAdd.hAdd.{0, 0, 0}\n                    (HAdd.hAdd.{0, 0, 0}\n                      (HAdd.hAdd.{0, 0, 0}\n                        (HAdd.hAdd.{0, 0, 0}\n                          (HAdd.hAdd.{0, 0, 0}\n                            (HAdd.hAdd.{0, 0, 0}\n                              (HAdd.hAdd.{0, 0, 0}\n                                (HAdd.hAdd.{0, 0, 0}\n                                  (HAdd.hAdd.{0, 0, 0}\n                                    (HAdd.hAdd.{0, 0, 0}\n                                      (HAdd.hAdd.{0, 0, 0}\n                                        (HAdd.hAdd.{0, 0, 0}\n                                          (HAdd.hAdd.{0, 0, 0}\n                                            (HAdd.hAdd.{0, 0, 0}\n                                              (HAdd.hAdd.{0, 0, 0}\n                                                (HAdd.hAdd.{0, 0, 0}\n                                                  (HAdd.hAdd.{0, 0, 0}\n                                                    (HAdd.hAdd.{0, 0, 0}\n                                                      (HAdd.hAdd.{0, 0, 0}\n                                                        (HAdd.hAdd.{0, 0, 0}\n                                                          (HAdd.hAdd.{0, 0, 0}\n                                                            (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 0 1) 1) 1)\n                                                          1)\n                                                        2)\n                                                      2)\n                                                    8)\n                                                  8)\n                                                4)\n                                              4)\n                                            4)\n                                          4)\n                                        4)\n                                      4)\n                                    4)\n                                  4)\n                                8)\n                              8)\n                            8)\n                          8)\n                        8)\n                      4)\n                    4)\n                  (Array.size.{0} exportDigest.data))\n                8)\n              8)\n            4)\n          156 \u2192\n      False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_run",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 8 8)\n    (HMod.hMod.{0, 0, 0} r.run (HPow.hPow.{0, 0, 0} 2 64))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_sequence",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 16 8)\n    (HMod.hMod.{0, 0, 0} 0 (HPow.hPow.{0, 0, 0} 2 64))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_stage",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 32 4)\n    (HMod.hMod.{0, 0, 0} r.stage (HPow.hPow.{0, 0, 0} 2 32))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_stderr",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 80 8)\n    (HMod.hMod.{0, 0, 0} r.stderrBytes (HPow.hPow.{0, 0, 0} 2 64))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_stdout",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 72 8)\n    (HMod.hMod.{0, 0, 0} r.stdoutBytes (HPow.hPow.{0, 0, 0} 2 64))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_tasks",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} r.exportDigest.size 32 \u2192\n    Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 144 8)\n      (HMod.hMod.{0, 0, 0} r.taskDenials (HPow.hPow.{0, 0, 0} 2 64))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_tasks._proof_1_1",
+      "type": "\u2200 (exportDigest : ByteArray),\n  Eq.{1} (Array.size.{0} exportDigest.data) 32 \u2192\n    \u00acEq.{1}\n          (HAdd.hAdd.{0, 0, 0}\n            (HAdd.hAdd.{0, 0, 0}\n              (HAdd.hAdd.{0, 0, 0}\n                (HAdd.hAdd.{0, 0, 0}\n                  (HAdd.hAdd.{0, 0, 0}\n                    (HAdd.hAdd.{0, 0, 0}\n                      (HAdd.hAdd.{0, 0, 0}\n                        (HAdd.hAdd.{0, 0, 0}\n                          (HAdd.hAdd.{0, 0, 0}\n                            (HAdd.hAdd.{0, 0, 0}\n                              (HAdd.hAdd.{0, 0, 0}\n                                (HAdd.hAdd.{0, 0, 0}\n                                  (HAdd.hAdd.{0, 0, 0}\n                                    (HAdd.hAdd.{0, 0, 0}\n                                      (HAdd.hAdd.{0, 0, 0}\n                                        (HAdd.hAdd.{0, 0, 0}\n                                          (HAdd.hAdd.{0, 0, 0}\n                                            (HAdd.hAdd.{0, 0, 0}\n                                              (HAdd.hAdd.{0, 0, 0}\n                                                (HAdd.hAdd.{0, 0, 0}\n                                                  (HAdd.hAdd.{0, 0, 0}\n                                                    (HAdd.hAdd.{0, 0, 0}\n                                                      (HAdd.hAdd.{0, 0, 0}\n                                                        (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 0 1) 1) 1)\n                                                      1)\n                                                    2)\n                                                  2)\n                                                8)\n                                              8)\n                                            4)\n                                          4)\n                                        4)\n                                      4)\n                                    4)\n                                  4)\n                                4)\n                              4)\n                            8)\n                          8)\n                        8)\n                      8)\n                    8)\n                  4)\n                4)\n              (Array.size.{0} exportDigest.data))\n            8)\n          144 \u2192\n      False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_triggers",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 48 4)\n    (HMod.hMod.{0, 0, 0} r.triggers (HPow.hPow.{0, 0, 0} 2 32))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_uid",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 52 4)\n    (HMod.hMod.{0, 0, 0} r.uid (HPow.hPow.{0, 0, 0} 2 32))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicEncode.frame_version",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.little (LeanCageM4.PublicEncode.encodeResult r) 4 2)\n    (HMod.hMod.{0, 0, 0} 1 (HPow.hPow.{0, 0, 0} 2 16))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.Widths.eq_1",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM4.PublicWire.Widths r)\n    (LT.lt.{0} r.kind (HPow.hPow.{0, 0, 0} 2 16) \u2227\n      LT.lt.{0} r.stage (HPow.hPow.{0, 0, 0} 2 32) \u2227\n        LT.lt.{0} r.detail (HPow.hPow.{0, 0, 0} 2 32) \u2227\n          LT.lt.{0} r.triggers (HPow.hPow.{0, 0, 0} 2 32) \u2227\n            LT.lt.{0} r.uid (HPow.hPow.{0, 0, 0} 2 32) \u2227\n              LT.lt.{0} r.run (HPow.hPow.{0, 0, 0} 2 64) \u2227\n                LT.lt.{0} r.cpu (HPow.hPow.{0, 0, 0} 2 64) \u2227\n                  LT.lt.{0} r.peak (HPow.hPow.{0, 0, 0} 2 64) \u2227\n                    LT.lt.{0} r.stdoutBytes (HPow.hPow.{0, 0, 0} 2 64) \u2227\n                      LT.lt.{0} r.stderrBytes (HPow.hPow.{0, 0, 0} 2 64) \u2227\n                        LT.lt.{0} r.elapsed (HPow.hPow.{0, 0, 0} 2 64) \u2227\n                          LT.lt.{0} r.exportState (HPow.hPow.{0, 0, 0} 2 32) \u2227\n                            LT.lt.{0} r.omitted (HPow.hPow.{0, 0, 0} 2 32) \u2227\n                              LT.lt.{0} r.oomKills (HPow.hPow.{0, 0, 0} 2 64) \u2227\n                                LT.lt.{0} r.taskDenials (HPow.hPow.{0, 0, 0} 2 64) \u2227\n                                  LT.lt.{0} r.exportError (HPow.hPow.{0, 0, 0} 2 32))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.accepted_header",
+      "type": "\u2200 (bytes : ByteArray) (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.decodeResult bytes) (Except.ok.{0, 0} r) \u2192\n    Eq.{1} bytes.size 160 \u2227\n      Eq.{1} (bytes.extract 0 4) \"LC3R\".toUTF8 \u2227\n        Eq.{1} (LeanCageM3.little bytes 4 2) 1 \u2227\n          Eq.{1} (LeanCageM3.little bytes 16 8) 0 \u2227\n            Eq.{1} (LeanCageM3.little bytes 24 4) 128 \u2227\n              Eq.{1} (LeanCageM3.little bytes 28 4) 0 \u2227 Eq.{1} (LeanCageM3.little bytes 156 4) 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.accepted_widths",
+      "type": "\u2200 (bytes : ByteArray) (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.decodeResult bytes) (Except.ok.{0, 0} r) \u2192 LeanCageM4.PublicWire.Widths r"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.byteArray_bne_false",
+      "type": "\u2200 (a b : ByteArray), Eq.{1} (bne.{0} a b) Bool.false \u2194 Eq.{1} a b"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.byteArray_bne_false._simp_1_1",
+      "type": "\u2200 {x y : ByteArray}, Eq.{1} (Eq.{1} x y) (Eq.{1} x.data y.data)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.decodeResult_iff",
+      "type": "\u2200 (bytes : ByteArray) (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.decodeResult bytes) (Except.ok.{0, 0} r) \u2194\n    Eq.{1} (LeanCageM4.PublicWire.headerBad bytes) Bool.false \u2227\n      Exists.{1} fun entry =>\n        Eq.{1} (LeanCageM3.little bytes 40 4) (LeanCageM4.PublicWire.entryWord entry) \u2227\n          LE.le.{0} (LeanCageM3.little bytes 44 4) 1 \u2227\n            Eq.{1} r (LeanCageM4.PublicWire.fields bytes entry) \u2227 Eq.{1} (LeanCageM3.resultValid r) Bool.true"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.entryWord.eq_1",
+      "type": "Eq.{1} (LeanCageM4.PublicWire.entryWord LeanCageM3.Entry.no) 0"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.entryWord.eq_2",
+      "type": "Eq.{1} (LeanCageM4.PublicWire.entryWord LeanCageM3.Entry.yes) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.entryWord.eq_3",
+      "type": "Eq.{1} (LeanCageM4.PublicWire.entryWord LeanCageM3.Entry.unknown) 2"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.fields.eq_1",
+      "type": "\u2200 (bytes : ByteArray) (entry : LeanCageM3.Entry),\n  Eq.{1} (LeanCageM4.PublicWire.fields bytes entry)\n    { kind := LeanCageM3.little bytes 6 2, stage := LeanCageM3.little bytes 32 4,\n      detail := LeanCageM3.little bytes 36 4, entry := entry, clean := BEq.beq.{0} (LeanCageM3.little bytes 44 4) 1,\n      triggers := LeanCageM3.little bytes 48 4, uid := LeanCageM3.little bytes 52 4, run := LeanCageM3.little bytes 8 8,\n      cpu := LeanCageM3.little bytes 56 8, peak := LeanCageM3.little bytes 64 8,\n      stdoutBytes := LeanCageM3.little bytes 72 8, stderrBytes := LeanCageM3.little bytes 80 8,\n      elapsed := LeanCageM3.little bytes 88 8, exportState := LeanCageM3.little bytes 96 4,\n      omitted := LeanCageM3.little bytes 100 4, exportDigest := bytes.extract 104 136,\n      oomKills := LeanCageM3.little bytes 136 8, taskDenials := LeanCageM3.little bytes 144 8,\n      exportError := LeanCageM3.little bytes 152 4 }"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.fields_widths",
+      "type": "\u2200 (bytes : ByteArray) (entry : LeanCageM3.Entry),\n  LeanCageM4.PublicWire.Widths (LeanCageM4.PublicWire.fields bytes entry)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.headerBad.eq_1",
+      "type": "\u2200 (bytes : ByteArray),\n  Eq.{1} (LeanCageM4.PublicWire.headerBad bytes)\n    (bne.{0} bytes.size 160 || bne.{0} (bytes.extract 0 4) \"LC3R\".toUTF8 || bne.{0} (LeanCageM3.little bytes 4 2) 1 ||\n            bne.{0} (LeanCageM3.little bytes 16 8) 0 ||\n          bne.{0} (LeanCageM3.little bytes 24 4) 128 ||\n        bne.{0} (LeanCageM3.little bytes 28 4) 0 ||\n      bne.{0} (LeanCageM3.little bytes 156 4) 0)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.headerBad_iff",
+      "type": "\u2200 (bytes : ByteArray),\n  Eq.{1} (LeanCageM4.PublicWire.headerBad bytes) Bool.false \u2194\n    Eq.{1} bytes.size 160 \u2227\n      Eq.{1} (bytes.extract 0 4) \"LC3R\".toUTF8 \u2227\n        Eq.{1} (LeanCageM3.little bytes 4 2) 1 \u2227\n          Eq.{1} (LeanCageM3.little bytes 16 8) 0 \u2227\n            Eq.{1} (LeanCageM3.little bytes 24 4) 128 \u2227\n              Eq.{1} (LeanCageM3.little bytes 28 4) 0 \u2227 Eq.{1} (LeanCageM3.little bytes 156 4) 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.headerBad_iff._simp_1_2",
+      "type": "\u2200 (a b : ByteArray), Eq.{1} (Eq.{1} (bne.{0} a b) Bool.false) (Eq.{1} a b)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.headerBad_iff._simp_1_3",
+      "type": "\u2200 {a b c : Prop}, Eq.{1} ((a \u2227 b) \u2227 c) (a \u2227 b \u2227 c)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.little_bounded",
+      "type": "\u2200 (bytes : ByteArray) (offset width : Nat),\n  LT.lt.{0} (LeanCageM3.little bytes offset width) (HPow.hPow.{0, 0, 0} 2 (HMul.hMul.{0, 0, 0} 8 width))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.little_bounded._proof_1_2",
+      "type": "\u2200 (bytes : ByteArray) (offset width : Nat),\n  LT.lt.{0} (LeanCageM3.little bytes offset width) (HPow.hPow.{0, 0, 0} 2 (HMul.hMul.{0, 0, 0} 8 width)) \u2192\n    LE.le.{0}\n        (HMul.hMul.{0, 0, 0}\n          (Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} bytes (HAdd.hAdd.{0, 0, 0} offset width)) 0).toNat\n          (HPow.hPow.{0, 0, 0} 2 (HMul.hMul.{0, 0, 0} 8 width)))\n        (HMul.hMul.{0, 0, 0} 255 (HPow.hPow.{0, 0, 0} 2 (HMul.hMul.{0, 0, 0} 8 width))) \u2192\n      \u00acLT.lt.{0}\n            (HAdd.hAdd.{0, 0, 0} (LeanCageM3.little bytes offset width)\n              (HMul.hMul.{0, 0, 0}\n                (Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} bytes (HAdd.hAdd.{0, 0, 0} offset width)) 0).toNat\n                (HPow.hPow.{0, 0, 0} 2 (HMul.hMul.{0, 0, 0} 8 width))))\n            (HMul.hMul.{0, 0, 0} 256 (HPow.hPow.{0, 0, 0} 2 (HMul.hMul.{0, 0, 0} 8 width))) \u2192\n        False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.little_succ",
+      "type": "\u2200 (bytes : ByteArray) (offset width : Nat),\n  Eq.{1} (LeanCageM3.little bytes offset (HAdd.hAdd.{0, 0, 0} width 1))\n    (HAdd.hAdd.{0, 0, 0} (LeanCageM3.little bytes offset width)\n      (HMul.hMul.{0, 0, 0}\n        (Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} bytes (HAdd.hAdd.{0, 0, 0} offset width)) 0).toNat\n        (HPow.hPow.{0, 0, 0} 2 (HMul.hMul.{0, 0, 0} 8 width))))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.live_decode_view",
+      "type": "\u2200 (bytes : ByteArray),\n  Eq.{1} (LeanCageM3.decodeResult bytes)\n    (Except.bind.{0, 0, 0} (LeanCageM4.PublicWire.parserView bytes) LeanCageM3.validateResult)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.parserView_complete",
+      "type": "\u2200 (bytes : ByteArray) (entry : LeanCageM3.Entry),\n  Eq.{1} (LeanCageM4.PublicWire.headerBad bytes) Bool.false \u2192\n    Eq.{1} (LeanCageM3.little bytes 40 4) (LeanCageM4.PublicWire.entryWord entry) \u2192\n      LE.le.{0} (LeanCageM3.little bytes 44 4) 1 \u2192\n        Eq.{1} (LeanCageM4.PublicWire.parserView bytes) (Except.ok.{0, 0} (LeanCageM4.PublicWire.fields bytes entry))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.parserView_iff",
+      "type": "\u2200 (bytes : ByteArray) (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM4.PublicWire.parserView bytes) (Except.ok.{0, 0} r) \u2194\n    Eq.{1} (LeanCageM4.PublicWire.headerBad bytes) Bool.false \u2227\n      Exists.{1} fun entry =>\n        Eq.{1} (LeanCageM3.little bytes 40 4) (LeanCageM4.PublicWire.entryWord entry) \u2227\n          LE.le.{0} (LeanCageM3.little bytes 44 4) 1 \u2227 Eq.{1} r (LeanCageM4.PublicWire.fields bytes entry)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWire.parserView_sound",
+      "type": "\u2200 (bytes : ByteArray) (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM4.PublicWire.parserView bytes) (Except.ok.{0, 0} r) \u2192\n    Eq.{1} (LeanCageM4.PublicWire.headerBad bytes) Bool.false \u2227\n      Exists.{1} fun entry =>\n        Eq.{1} (LeanCageM3.little bytes 40 4) (LeanCageM4.PublicWire.entryWord entry) \u2227\n          LE.le.{0} (LeanCageM3.little bytes 44 4) 1 \u2227 Eq.{1} r (LeanCageM4.PublicWire.fields bytes entry)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWitnesses.admitted_rejected",
+      "type": "Eq.{1} (LeanCageM3.decodeResult (LeanCageM4.PublicEncode.encodeResult LeanCageM4.PublicWitnesses.admitted))\n  (Except.error.{0, 0} \"inconsistent private result\")"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWitnesses.cancelled_accepted",
+      "type": "Eq.{1} (LeanCageM3.decodeResult (LeanCageM4.PublicEncode.encodeResult LeanCageM4.PublicWitnesses.cancelled))\n  (Except.ok.{0, 0} LeanCageM4.PublicWitnesses.cancelled)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWitnesses.entered_rejected",
+      "type": "Eq.{1} (LeanCageM3.decodeResult (LeanCageM4.PublicEncode.encodeResult LeanCageM4.PublicWitnesses.entered))\n  (Except.error.{0, 0} \"inconsistent private result\")"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWitnesses.exited_accepted",
+      "type": "Eq.{1} (LeanCageM3.decodeResult (LeanCageM4.PublicEncode.encodeResult LeanCageM4.PublicWitnesses.exited))\n  (Except.ok.{0, 0} LeanCageM4.PublicWitnesses.exited)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWitnesses.highKind_rejected",
+      "type": "Eq.{1} (LeanCageM3.decodeResult (LeanCageM4.PublicEncode.encodeResult LeanCageM4.PublicWitnesses.highKind))\n  (Except.error.{0, 0} \"inconsistent private result\")"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWitnesses.preflight_accepted",
+      "type": "Eq.{1} (LeanCageM3.decodeResult (LeanCageM4.PublicEncode.encodeResult LeanCageM4.PublicWitnesses.preflight))\n  (Except.ok.{0, 0} LeanCageM4.PublicWitnesses.preflight)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWitnesses.setup_accepted",
+      "type": "Eq.{1} (LeanCageM3.decodeResult (LeanCageM4.PublicEncode.encodeResult LeanCageM4.PublicWitnesses.setup))\n  (Except.ok.{0, 0} LeanCageM4.PublicWitnesses.setup)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWitnesses.signal65_rejected",
+      "type": "Eq.{1} (LeanCageM3.decodeResult (LeanCageM4.PublicEncode.encodeResult LeanCageM4.PublicWitnesses.signal65))\n  (Except.error.{0, 0} \"inconsistent private result\")"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWitnesses.signaled_accepted",
+      "type": "Eq.{1} (LeanCageM3.decodeResult (LeanCageM4.PublicEncode.encodeResult LeanCageM4.PublicWitnesses.signaled))\n  (Except.ok.{0, 0} LeanCageM4.PublicWitnesses.signaled)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.PublicWitnesses.unknown_accepted",
+      "type": "Eq.{1} (LeanCageM3.decodeResult (LeanCageM4.PublicEncode.encodeResult LeanCageM4.PublicWitnesses.unknown))\n  (Except.ok.{0, 0} LeanCageM4.PublicWitnesses.unknown)"
+    },
     {
       "axioms": [
         "propext"

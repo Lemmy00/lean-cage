@@ -175,3 +175,23 @@ ownership, interference exclusion or whole-program call ordering. For
 1041 earlier Rocq records, twelve Lean records and 197 compiled identities. The
 expanded 212-module gate retains the existing 900-second allowance. The checked
 Lean bridge and every original correspondence obligation remain open.
+
+## public: Check the live Lean endpoint before bridging proof assistants
+
+For [§AR-m4-public.parser](../../architecture/AR-m4-public.md#parser-both-directions-for-the-live-parser) and [§FS-workspace.results](../../functional-spec/FS-workspace.md#results-entry-cancellation-and-bounded-transport), refer to the actual private
+M3 parser through a transparent constant alias. The elaborator constructs only
+that existing constant reference; the kernel checks the public decoder equality.
+No copied parser body, new axiom or trusted computation shortcut supports the
+endpoint claims. The original M3 source and public interface remain unchanged.
+
+For [§AR-m4-public.bytes](../../architecture/AR-m4-public.md#bytes-widths-and-independent-encoding), use an independent proof-side frame encoder, exact byte
+window lemmas and field-width premises. Prove that the live decoder returns
+exactly the live validator on the original record. A width-correct record can
+still be semantically rejected. The public kind occupies two bytes and the
+private sender narrows its kind to one byte; do not identify those encodings.
+
+For [§AR-m4-public.evidence](../../architecture/AR-m4-public.md#evidence-additive-claims-and-explicit-bridge-boundary), preserve every preceding record and Rocq artifact,
+audit the complete maintained Lean source list, and include all generated proof
+helpers in the theorem inventory. The public endpoint is a necessary part of a
+future checked cross-assistant connection. It does not certify that connection,
+Linux transport/provenance or the executable chain.

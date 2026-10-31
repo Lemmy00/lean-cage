@@ -411,11 +411,11 @@ Clight model plus explicit byte-aware effects and asynchronous loss. The maintai
 retains the 25 feasibility declarations and 12 Lean target records;
 `assurance/m4-connection-claims.json` inventories every additive Rocq declaration
 with its complete type and transitive assumptions and the unchanged 12 Lean
-endpoint claims. The report-byte connection checkpoint contains 1113 Rocq declarations:
-all 1041 preceding records and 72 field, acceptance, source-connection and owned
-execution declarations across fifteen new modules. All 197 preceding compiled
-artifacts and twelve Lean endpoint records are preserved. These counts identify
-the audited inventory, not a security score.
+endpoint claims. The public endpoint checkpoint preserves all 1113 Rocq records and 212 compiled
+Rocq module identities. It contains 103 Lean theorem records: twelve preceding
+records and 91 additions, comprising 67 authored proofs and 24 generated equation
+or proof helpers. These counts identify the audited inventory, not a security
+score.
 
 **Results:** universal finite-prefix safety and exact returns for `write_all`,
 `error_number`, `get32`, `get64`, `put32`, `put64`, `fault`, `result_of`, `decode_frame`, `send_frame` and `finish`; source codec round
@@ -507,7 +507,19 @@ exit request 125, arbitrary finite EINTR retries and close waits, and ignored cl
 failure. These are source observation connections with separate ownership
 premises; Linux transport provenance and whole-program ordering remain open.
 
-**Evidence and assumptions:** `assurance/m4-wire-evidence.json`,
+The live public Lean decoder now has an exact acceptance characterization over
+its header, entry, cleanup, all field offsets and the live validity predicate.
+Every accepted field fits its actual byte width. A separate proof-side public
+encoder has a complete round trip for width-correct records with 32 digest bytes:
+the live decoder returns exactly the live validator on the original record.
+Six useful public results are accepted and private controls, a two-byte kind 256
+and signal detail 65 are rejected in concrete ordinary-kernel witnesses. This
+public encoding of kind 256 is distinct from the private sender's low-byte
+narrowing. The proof-side encoder does not alter deployed behavior or establish
+cross-assistant, transport or observation provenance.
+
+**Evidence and assumptions:** `assurance/m4-public-evidence.json`,
+`assurance/m4-wire-evidence.json`,
 `assurance/m4-receiver-evidence.json`,
 `assurance/m4-sender-evidence.json`,
 `assurance/m4-decoder-evidence.json`,
@@ -516,7 +528,8 @@ premises; Linux transport provenance and whole-program ordering remain open.
 [the caller proposition review](../reviews/M4-callers.md) and [decoder proposition review](../reviews/M4-decoder.md) and
 [sender/finish proposition review](../reviews/M4-sender.md) and
 [receiver proposition review](../reviews/M4-receiver.md) and
-[report-byte proposition review](../reviews/M4-wire.md) bind sources, terms, preservation
+[report-byte proposition review](../reviews/M4-wire.md) and
+[public endpoint review](../reviews/M4-public.md) bind sources, terms, preservation
 checks and raw command receipts. `./scripts/check_m4_connection.sh` replays the
 pinned tools, actual extracted source/AST, complete declarations and `coqchk`.
 The six Rocq foundation/semantic-parameter entries remain unchanged; the explicit

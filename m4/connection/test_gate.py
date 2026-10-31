@@ -414,6 +414,41 @@ class EvidenceGate(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'changed or disappeared'):
             gate.validate_preserved_claims(previous, actual)
 
+    # §AR-m4-public.evidence: The live endpoint and every maintained source stay in the gate.
+    def test_public_endpoint_claims_present(self):
+        names = {r['name'] for r in self.claims['lean_declarations']}
+        self.assertTrue({
+            'LeanCageM4.PublicWire.live_decode_view',
+            'LeanCageM4.PublicWire.decodeResult_iff',
+            'LeanCageM4.PublicWire.accepted_header',
+            'LeanCageM4.PublicWire.accepted_widths',
+            'LeanCageM4.PublicCodec.little_word',
+            'LeanCageM4.PublicCodec.extract_window',
+            'LeanCageM4.PublicEncode.frame_fields',
+            'LeanCageM4.PublicEncode.decode_encode',
+            'LeanCageM4.PublicEncode.decode_encode_iff',
+            'LeanCageM4.PublicWitnesses.cancelled_accepted',
+            'LeanCageM4.PublicWitnesses.highKind_rejected',
+            'LeanCageM4.PublicWitnesses.signal65_rejected',
+        }.issubset(names))
+
+    def test_omitted_lean_source_rejected(self):
+        with patch.object(gate, 'LEAN_SOURCES', gate.LEAN_SOURCES[:-1]):
+            with self.assertRaisesRegex(ValueError, 'unlisted or missing maintained Lean'):
+                gate.lean_inventory()
+
+    def test_wire_checkpoint_is_preserved(self):
+        previous = json.loads(gate.PUBLIC_BASELINE.read_text())
+        self.assertEqual(len(previous['rocq_declarations']), 1113)
+        self.assertEqual(len(previous['lean_declarations']), 12)
+        gate.validate_preserved_claims(previous, self.claims)
+        actual = copy.deepcopy(self.claims)
+        record = next(r for r in actual['lean_declarations']
+                      if r['name'] == 'LeanCageM4.accepted_final_valid')
+        record['type'] = 'weakened live validity endpoint'
+        with self.assertRaisesRegex(ValueError, 'changed or disappeared'):
+            gate.validate_preserved_claims(previous, actual)
+
 
 if __name__ == '__main__':
     unittest.main()

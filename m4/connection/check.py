@@ -38,6 +38,9 @@ RECEIVER_BASELINE = ROOT / 'assurance/m4-receiver-baseline-claims.json'
 RECEIVER_EVIDENCE = ROOT / 'assurance/m4-receiver-evidence.json'
 WIRE_BASELINE = ROOT / 'assurance/m4-wire-baseline-claims.json'
 WIRE_EVIDENCE = ROOT / 'assurance/m4-wire-evidence.json'
+PUBLIC_BASELINE = ROOT / 'assurance/m4-public-baseline-claims.json'
+PUBLIC_EVIDENCE = ROOT / 'assurance/m4-public-evidence.json'
+LEAN_SOURCES = ['Endpoints.lean', 'Public.lean']
 RECEIVER_QUERY_MODULES = ['IO', 'Machine', 'ClightSteps', 'WriteMemory', 'WriteAll', 'WriteWitnesses', 'Deterministic', 'ErrorNumber', 'Readers', 'StoreSteps', 'WriteBytes', 'Writers', 'CodecRoundtrip', 'Library', 'ProcessEffects', 'LibraryMachine', 'LibraryPreservation', 'LibraryControl', 'GlobalReads', 'Fault', 'LibraryWitnesses', 'LocalAccess', 'ScalarMemory', 'ResultLayout', 'ResultSource', 'ResultSafety', 'ResultWitnesses', 'CallContexts', 'CallAccess', 'CallPaths', 'WriteCallers', 'FreshMemory', 'CallProgress', 'ExitControl', 'CallEvents', 'FailureSource', 'CallEventsDraft', 'CallProgressDraft', 'ExitControlDraft', 'HelperProgress', 'ReportingTrace', 'ExitEvents', 'ExitEventsDraft', 'FailureSourceDraft', 'FreshMemoryDraft', 'FailureMemory', 'FailureContract', 'FailureContractDraft', 'FailureMemoryDraft', 'FailureBranches', 'FailureBranchesDraft', 'HelperProgressDraft', 'FailureSafety', 'FailureSafetyDraft', 'FailureExit', 'ReportingTraceDraft', 'FailureTrace', 'FailureTraceDraft', 'FailureRuns', 'FailureRunsDraft', 'FailureError', 'FailureErrorDraft', 'FailureWitnesses', 'FrameBytes', 'ComparisonControl', 'SourcePaths', 'DecoderLayout', 'DecoderSource', 'DecoderMemory', 'SequencePaths', 'SourceReach', 'DecoderCompare', 'DecoderControl', 'DecoderHeader', 'DecoderZeros', 'DecoderFields', 'SwitchControl', 'DecoderCommon', 'DecoderTags', 'DecoderValidity', 'DecoderInput', 'DecoderPayload', 'SourceConsequences', 'DecoderAssembly', 'ComparisonRuns', 'SourceGuarantees', 'ComparisonGuarantees', 'DecoderProgram', 'DecoderRuns', 'DecoderAllocation', 'DecoderWitnesses', 'FrameRecord', 'WriteEffects', 'SenderSelectors', 'SenderGlobals', 'FrameAllocation', 'FrameCopy', 'SenderSource', 'BytePatch', 'SenderStorage', 'SenderAccess', 'SenderOperations', 'SenderEncodingPrefix', 'SenderZeros', 'SenderMemory', 'CopyControl', 'CopyPaths', 'SenderCopies', 'SenderEncodingTail', 'PatchLayout', 'SenderWire', 'SenderEncoding', 'SenderReportMemory', 'SenderReturn', 'ProcedureCalls', 'WriteGuarantees', 'ReportPaths', 'SenderGuards', 'SenderReportingSteps', 'SenderWriteReturn', 'SenderGuardStages', 'ReportConsequences', 'SenderLastReport', 'SenderShortReport', 'SenderOutcome', 'SenderDuplicate', 'SenderBadReserved', 'SenderReporting', 'CopyTrace', 'CopyComposition', 'ReportTrace', 'ReportRuns', 'ReportPrefixes', 'SenderProgram', 'SenderRuns', 'SenderWitnesses', 'ReportSuccessfulRuns', 'SenderSuccessfulRuns', 'ReportFailedRuns', 'SenderFailedRuns', 'ReportFirstWrite', 'SenderLossRuns', 'SenderSamples', 'SenderOutcomes', 'FinishSource', 'FinishControl', 'SourceQuietRuns', 'FinishMemory', 'FinishPreparation', 'FinishProgram', 'FinishPublication', 'FinishWitnesses', 'FinishDetails', 'FinishRuns', 'ReceiverSource', 'ReceiverReadSource', 'ReceiverReadMemory', 'ReceiverReadControl', 'ReceiverRouting', 'ReceiverReadReturns', 'ReceiverReadStep', 'ResultOwnership', 'ReceiverAllocation', 'ReceiverPreparation', 'ReceiverMemory', 'ReceiverInput', 'ReceiverChoice', 'ReceiverSelectionSource', 'ReceiverCopyMemory', 'ReceiverFree', 'ReceiverTailSource', 'ReceiverConstruction', 'ReceiverEntry', 'CloseControl', 'ReceiverTrace', 'ReceiverReadHistory', 'ReceiverSelection', 'ReceiverClassification', 'ReceiverCloseMemory', 'ReceiverCloseSource', 'ReceiverTerminal', 'ReceiverTerminalTrace', 'ReceiverLoopTrace', 'ReceiverOutcomes', 'ReceiverBounds', 'ReceiverAccepted', 'ReceiverReadRuns', 'ReceiverTerminalRuns', 'ReceiverWitnessInputs', 'ReceiverErrorRuns', 'ReceiverRetries', 'ReceiverRuns', 'ReceiverFaultRuns', 'ReceiverSamples', 'ReceiverReadGuarantee', 'ReceiverProgram', 'ReceiverLossRuns']
 SENDER_QUERY_MODULES = ['IO', 'Machine', 'ClightSteps', 'WriteMemory', 'WriteAll', 'WriteWitnesses', 'Deterministic', 'ErrorNumber', 'Readers', 'StoreSteps', 'WriteBytes', 'Writers', 'CodecRoundtrip', 'Library', 'ProcessEffects', 'LibraryMachine', 'LibraryPreservation', 'LibraryControl', 'GlobalReads', 'Fault', 'LibraryWitnesses', 'LocalAccess', 'ScalarMemory', 'ResultLayout', 'ResultSource', 'ResultSafety', 'ResultWitnesses', 'CallContexts', 'CallAccess', 'CallPaths', 'WriteCallers', 'FreshMemory', 'CallProgress', 'ExitControl', 'CallEvents', 'FailureSource', 'CallEventsDraft', 'CallProgressDraft', 'ExitControlDraft', 'HelperProgress', 'ReportingTrace', 'ExitEvents', 'ExitEventsDraft', 'FailureSourceDraft', 'FreshMemoryDraft', 'FailureMemory', 'FailureContract', 'FailureContractDraft', 'FailureMemoryDraft', 'FailureBranches', 'FailureBranchesDraft', 'HelperProgressDraft', 'FailureSafety', 'FailureSafetyDraft', 'FailureExit', 'ReportingTraceDraft', 'FailureTrace', 'FailureTraceDraft', 'FailureRuns', 'FailureRunsDraft', 'FailureError', 'FailureErrorDraft', 'FailureWitnesses', 'FrameBytes', 'ComparisonControl', 'SourcePaths', 'DecoderLayout', 'DecoderSource', 'DecoderMemory', 'SequencePaths', 'SourceReach', 'DecoderCompare', 'DecoderControl', 'DecoderHeader', 'DecoderZeros', 'DecoderFields', 'SwitchControl', 'DecoderCommon', 'DecoderTags', 'DecoderValidity', 'DecoderInput', 'DecoderPayload', 'SourceConsequences', 'DecoderAssembly', 'ComparisonRuns', 'SourceGuarantees', 'ComparisonGuarantees', 'DecoderProgram', 'DecoderRuns', 'DecoderAllocation', 'DecoderWitnesses', 'FrameRecord', 'WriteEffects', 'SenderSelectors', 'SenderGlobals', 'FrameAllocation', 'FrameCopy', 'SenderSource', 'BytePatch', 'SenderStorage', 'SenderAccess', 'SenderOperations', 'SenderEncodingPrefix', 'SenderZeros', 'SenderMemory', 'CopyControl', 'CopyPaths', 'SenderCopies', 'SenderEncodingTail', 'PatchLayout', 'SenderWire', 'SenderEncoding', 'SenderReportMemory', 'SenderReturn', 'ProcedureCalls', 'WriteGuarantees', 'ReportPaths', 'SenderGuards', 'SenderReportingSteps', 'SenderWriteReturn', 'SenderGuardStages', 'ReportConsequences', 'SenderLastReport', 'SenderShortReport', 'SenderOutcome', 'SenderDuplicate', 'SenderBadReserved', 'SenderReporting', 'CopyTrace', 'CopyComposition', 'ReportTrace', 'ReportRuns', 'ReportPrefixes', 'SenderProgram', 'SenderRuns', 'SenderWitnesses', 'ReportSuccessfulRuns', 'SenderSuccessfulRuns', 'ReportFailedRuns', 'SenderFailedRuns', 'ReportFirstWrite', 'SenderLossRuns', 'SenderSamples', 'SenderOutcomes', 'FinishSource', 'FinishControl', 'SourceQuietRuns', 'FinishMemory', 'FinishPreparation', 'FinishProgram', 'FinishPublication', 'FinishWitnesses', 'FinishDetails', 'FinishRuns']
 DECODER_QUERY_MODULES = ['IO', 'Machine', 'ClightSteps', 'WriteMemory', 'WriteAll', 'WriteWitnesses', 'Deterministic', 'ErrorNumber', 'Readers', 'StoreSteps', 'WriteBytes', 'Writers', 'CodecRoundtrip', 'Library', 'ProcessEffects', 'LibraryMachine', 'LibraryPreservation', 'LibraryControl', 'GlobalReads', 'Fault', 'LibraryWitnesses', 'LocalAccess', 'ScalarMemory', 'ResultLayout', 'ResultSource', 'ResultSafety', 'ResultWitnesses', 'CallContexts', 'CallAccess', 'CallPaths', 'WriteCallers', 'FreshMemory', 'CallProgress', 'ExitControl', 'CallEvents', 'FailureSource', 'CallEventsDraft', 'CallProgressDraft', 'ExitControlDraft', 'HelperProgress', 'ReportingTrace', 'ExitEvents', 'ExitEventsDraft', 'FailureSourceDraft', 'FreshMemoryDraft', 'FailureMemory', 'FailureContract', 'FailureContractDraft', 'FailureMemoryDraft', 'FailureBranches', 'FailureBranchesDraft', 'HelperProgressDraft', 'FailureSafety', 'FailureSafetyDraft', 'FailureExit', 'ReportingTraceDraft', 'FailureTrace', 'FailureTraceDraft', 'FailureRuns', 'FailureRunsDraft', 'FailureError', 'FailureErrorDraft', 'FailureWitnesses', 'FrameBytes', 'ComparisonControl', 'SourcePaths', 'DecoderLayout', 'DecoderSource', 'DecoderMemory', 'SequencePaths', 'SourceReach', 'DecoderCompare', 'DecoderControl', 'DecoderHeader', 'DecoderZeros', 'DecoderFields', 'SwitchControl', 'DecoderCommon', 'DecoderTags', 'DecoderValidity', 'DecoderInput', 'DecoderPayload', 'SourceConsequences', 'DecoderAssembly', 'ComparisonRuns', 'SourceGuarantees', 'ComparisonGuarantees', 'DecoderProgram', 'DecoderRuns', 'DecoderAllocation', 'DecoderWitnesses']
@@ -66,8 +69,9 @@ def sources():
               ROOT / 'docs/architecture/AR-m4-library.md',
               ROOT / 'docs/architecture/AR-m4-structures.md', ROOT / 'docs/reviews/M4-structures.md',
               ROOT / 'docs/architecture/AR-m4-callers.md', ROOT / 'docs/reviews/M4-callers.md',
-              CALLERS_BASELINE, STRUCTURES_BASELINE, DECODER_BASELINE, SENDER_BASELINE, RECEIVER_BASELINE, WIRE_BASELINE,
+              CALLERS_BASELINE, STRUCTURES_BASELINE, DECODER_BASELINE, SENDER_BASELINE, RECEIVER_BASELINE, WIRE_BASELINE, PUBLIC_BASELINE,
               ROOT / 'docs/architecture/AR-m4-wire.md', ROOT / 'docs/reviews/M4-wire.md',
+              ROOT / 'docs/architecture/AR-m4-public.md', ROOT / 'docs/reviews/M4-public.md',
               ROOT / 'docs/architecture/AR-m4-receiver.md', ROOT / 'docs/reviews/M4-receiver.md',
               ROOT / 'docs/architecture/AR-m4-sender.md', ROOT / 'docs/reviews/M4-sender.md',
               ROOT / 'docs/architecture/AR-m4-decoder.md', ROOT / 'docs/reviews/M4-decoder.md',
@@ -174,8 +178,11 @@ def lean_inventory():
     spec = importlib.util.spec_from_file_location('connection_m3_audit', ROOT / 'scripts/audit_m3.py')
     audit = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(audit)
-    source = (DIRECTORY / 'Endpoints.lean').read_text()
-    source = source.replace('import LeanCageM3\n', '', 1)
+    discovered = sorted(p.name for p in DIRECTORY.glob('*.lean'))
+    if discovered != sorted(LEAN_SOURCES):
+        raise ValueError('unlisted or missing maintained Lean proof source')
+    source = '\n'.join((DIRECTORY / name).read_text().replace('import LeanCageM3\n', '', 1)
+                       for name in LEAN_SOURCES)
     source += '''
 elab "#audit_connection" : command => do
   let env ← getEnv
@@ -278,9 +285,16 @@ def check():
     sender = json.loads(SENDER_EVIDENCE.read_text())
     receiver = json.loads(RECEIVER_EVIDENCE.read_text())
     wire = json.loads(WIRE_EVIDENCE.read_text())
+    public = json.loads(PUBLIC_EVIDENCE.read_text())
+    if public['status'] != 'exact public Lean endpoint complete; cross-assistant bridge and M4.2-M4.6 incomplete':
+        raise ValueError('public endpoint cannot complete cross-assistant or native correspondence')
+    if digest(MANIFEST) != public['claims_sha256']:
+        raise ValueError('public endpoint reviewed claim manifest identity differs')
+    verify_hashes(public['preserved_sha256'])
+    verify_hashes(public['archived_receipts_sha256'])
     if wire['status'] != 'source report-byte connections complete; M4.2-M4.6 incomplete':
         raise ValueError('source observation connections cannot complete M4 correspondence')
-    if digest(MANIFEST) != wire['claims_sha256']:
+    if digest(PUBLIC_BASELINE) != wire['claims_sha256']:
         raise ValueError('report-byte reviewed claim manifest identity differs')
     verify_hashes(wire['preserved_sha256'])
     verify_hashes(wire['archived_receipts_sha256'])
@@ -391,7 +405,9 @@ def check():
     validate_artifacts(sender['artifact_sha256'], actual['artifact_sha256'], subset=True)
     validate_preserved_claims(json.loads(WIRE_BASELINE.read_text()), actual)
     validate_artifacts(receiver['artifact_sha256'], actual['artifact_sha256'], subset=True)
+    validate_preserved_claims(json.loads(PUBLIC_BASELINE.read_text()), actual)
     validate_artifacts(wire['artifact_sha256'], actual['artifact_sha256'])
+    validate_artifacts(public['artifact_sha256'], actual['artifact_sha256'])
     result = subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', str(DIRECTORY),
                              '-p', 'test_*.py', '-v'], cwd=ROOT,
                             capture_output=True, text=True, timeout=60)
@@ -401,7 +417,7 @@ def check():
     print(f'Connection checked: {len(actual["rocq_declarations"])} Rocq theorems, '
           f'{len(actual["lean_declarations"])} Lean theorems, coqchk passed; 16 original obligations OPEN')
     print('Universal write_all, errno, byte reader/writer source safety and codec round trips checked; '
-          'local library effects, fault, result construction, actual caller composition, complete fail_child, private decode_frame, frame sending, finish publication/exit mapping and complete terminal receiver with exact read-trace classification, and exact sender/decoder and child/receiver source observation connections checked; '
+          'local library effects, fault, result construction, actual caller composition, complete fail_child, private decode_frame, frame sending, finish publication/exit mapping and complete terminal receiver with exact read-trace classification, exact sender/decoder and child/receiver source observation connections, and exact live public parser/byte widths/public encoder round trips checked; '
           'whole-slice C/Lean simulation, Linux/compiler/runtime correspondence and full M4 remain UNPROVED')
 
 
