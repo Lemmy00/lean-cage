@@ -411,10 +411,11 @@ Clight model plus explicit byte-aware effects and asynchronous loss. The maintai
 retains the 25 feasibility declarations and 12 Lean target records;
 `assurance/m4-connection-claims.json` inventories every additive Rocq declaration
 with its complete type and transitive assumptions and the unchanged 12 Lean
-endpoint claims. The receiver checkpoint contains 1041 Rocq declarations: all 875 preceding
-records and 166 receiver, trace, memory and execution declarations across 43 new
-modules. All 154 preceding compiled artifacts and twelve Lean endpoint records
-are preserved. These counts identify the audited inventory, not a security score.
+endpoint claims. The report-byte connection checkpoint contains 1113 Rocq declarations:
+all 1041 preceding records and 72 field, acceptance, source-connection and owned
+execution declarations across fifteen new modules. All 197 preceding compiled
+artifacts and twelve Lean endpoint records are preserved. These counts identify
+the audited inventory, not a security score.
 
 **Results:** universal finite-prefix safety and exact returns for `write_all`,
 `error_number`, `get32`, `get64`, `put32`, `put64`, `fault`, `result_of`, `decode_frame`, `send_frame` and `finish`; source codec round
@@ -488,14 +489,34 @@ prefixes, short/malformed/ninth-byte input, fatal errors after a prefix, close
 errors, exits and signals. A complete raw-status-65 run returns signal detail 65:
 valid Linux wait-status and intended signal-domain provenance remain obligations.
 
-**Evidence and assumptions:** `assurance/m4-receiver-evidence.json`,
+Actual outgoing frames recover every field and digest, with the kind narrowed
+to its low byte. The private decoder's exact acceptance is stated over those
+fields; its late rejection still writes narrowed fields and a cleared reserved
+tail. Run/sequence mismatch preserves old caller memory. Actual successful sender
+histories with fault selection disabled connect to actual decoder histories whose
+owned input contains the emitted bytes. Allocated complete pairs include accepted
+private controls, raw kind 256 narrowing to zero, rejected signal detail 65,
+CANCELLED and nonzero reserved fields. The private and final-public languages
+remain distinct.
+
+Under explicit equality between an actual child reporting trace and receiver
+read trace, an actually stored SETUP result contains the child's original stage
+and error words, with the specified bounds. Shorter child reports cannot supply
+that eight-byte result. An allocated complete child/receiver pair retains child
+exit request 125, arbitrary finite EINTR retries and close waits, and ignored close
+failure. These are source observation connections with separate ownership
+premises; Linux transport provenance and whole-program ordering remain open.
+
+**Evidence and assumptions:** `assurance/m4-wire-evidence.json`,
+`assurance/m4-receiver-evidence.json`,
 `assurance/m4-sender-evidence.json`,
 `assurance/m4-decoder-evidence.json`,
 `assurance/m4-library-evidence.json`,
 `assurance/m4-structures-evidence.json`, `assurance/m4-callers-evidence.json` and
 [the caller proposition review](../reviews/M4-callers.md) and [decoder proposition review](../reviews/M4-decoder.md) and
 [sender/finish proposition review](../reviews/M4-sender.md) and
-[receiver proposition review](../reviews/M4-receiver.md) bind sources, terms, preservation
+[receiver proposition review](../reviews/M4-receiver.md) and
+[report-byte proposition review](../reviews/M4-wire.md) bind sources, terms, preservation
 checks and raw command receipts. `./scripts/check_m4_connection.sh` replays the
 pinned tools, actual extracted source/AST, complete declarations and `coqchk`.
 The six Rocq foundation/semantic-parameter entries remain unchanged; the explicit

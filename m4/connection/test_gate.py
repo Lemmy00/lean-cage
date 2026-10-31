@@ -388,6 +388,32 @@ class EvidenceGate(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'changed or disappeared'):
             gate.validate_preserved_claims(previous, actual)
 
+    def test_report_byte_connections_present(self):
+        names = {r['name'] for r in self.claims['rocq_declarations']}
+        self.assertTrue({
+            'WireFields.wire_kind', 'WireLayout.wire_digest_exact',
+            'WireLayout.wire_reserved_check', 'WireValidity.wire_decoder_acceptance',
+            'WireDecoded.wire_decoded_contents', 'WireSource.wire_decoder_source_return',
+            'WireComposition.wire_source_observation_connection',
+            'WireRuns.wire_allocated_source_pair', 'WireSamples.wire_samples_complete_source_pairs',
+            'WireFailure.wire_eight_byte_prefix_exact',
+            'WireFailureReceiver.wire_failure_receiver_observation_connection',
+            'WireFailureRuns.wire_failure_receiver_owned_pair',
+        }.issubset(names))
+
+    def test_receiver_checkpoint_is_preserved(self):
+        previous = json.loads(gate.WIRE_BASELINE.read_text())
+        self.assertEqual(len(previous['rocq_declarations']), 1041)
+        self.assertEqual(len(previous['lean_declarations']), 12)
+        self.assertEqual(len(gate.RECEIVER_QUERY_MODULES), 197)
+        gate.validate_preserved_claims(previous, self.claims)
+        actual = copy.deepcopy(self.claims)
+        record = next(r for r in actual['rocq_declarations']
+                      if r['name'] == 'ReceiverOutcomes.receiver_return_trace_exact')
+        record['full_type'] = 'weakened receiver trace connection'
+        with self.assertRaisesRegex(ValueError, 'changed or disappeared'):
+            gate.validate_preserved_claims(previous, actual)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "scope": "Partial M4.2: all preceding claims preserved, complete terminal-error receiver from independent caller ownership, exact actual read-trace classification and nine-byte bound, all local frees and allocated complete retry/error/close-failure/loss executions. Cross-routine composition, valid wait-status provenance, checked Lean bridge and Linux/executable correspondence remain open.",
+  "scope": "Partial M4.2: all preceding claims preserved; exact outgoing field/digest projections and private acceptance, actual sender/decoder observation connection including rejection mutation, actual child/receiver setup-field connection under explicit byte provenance, and allocated complete source pairs. Whole-program ordering, Linux transport/provenance, valid wait-status domain, checked Lean bridge and executable correspondence remain open.",
   "m4_complete": false,
   "source_sha256": {
     "assurance/m4-callers-baseline-claims.json": "ef2d734da9c9d6689c097f59f29463a1e03f069cae2c6333abe5c014f9da7d3d",
@@ -11,6 +11,7 @@
     "assurance/m4-receiver-baseline-claims.json": "c3451cb30913704c9acbcf403a1ae8174bfa4b413f755e31a2a4e498263c00d5",
     "assurance/m4-sender-baseline-claims.json": "01acfe1ff33b3689bb1c0ecce0970a26acf1fffe2400f24c24856857a4788c1f",
     "assurance/m4-structures-baseline-claims.json": "6bb3267ee4212396cc14096f52bd1185a4f08f7adb7f42cc3e369819e5a04ca6",
+    "assurance/m4-wire-baseline-claims.json": "50b86e46f24b99285d17bdef4d6643d26d776fe77b743b26cca9727fadce680d",
     "assurance/m4-writeall-baseline-claims.json": "0219d263c97977e88fe3a013c40fa6f18a6daa0fd9b7f6fff4ac978718372bf6",
     "assurance/m4-writers-baseline-claims.json": "ef75db88ca4d6936b37f639952ba8733866e344c1dd34c4927e7578a30d34fa7",
     "docs/architecture/AR-m4-callers.md": "6f4e81e59219b602a081c2f7e7fa9f84fea0db618239723d8c35932e7ece9f49",
@@ -20,10 +21,11 @@
     "docs/architecture/AR-m4-receiver.md": "35c512ca14385f591208a109c133125b2daf5789439b275e0cc8836665055672",
     "docs/architecture/AR-m4-sender.md": "cff95bf58f9e6be89e4dfa21b9722293bda7d6f5141bda604b7b28de2d789a98",
     "docs/architecture/AR-m4-structures.md": "7290b4f00ccfb6a8608be457ceffbed7d85987ce298f09656f2d3723a8485629",
-    "docs/architecture/README.md": "50af696f5cf78ac7d260c35b3dee81da61c1ee9342b3c401f2a8c5e39956a785",
-    "docs/decisions/architectural/DA-m4-effects.md": "602c7a7088480ee7df6123110d04f3f6b6f95880c9fced0e380f993a5342d207",
+    "docs/architecture/AR-m4-wire.md": "5e559fa562dbd6848437d7c333e4f2b843ef9051c931c4efc9234ca8b31b8438",
+    "docs/architecture/README.md": "72966316869ee970ece687c3dbdc3cd5516bdf2ea554c78236576d927ace765d",
+    "docs/decisions/architectural/DA-m4-effects.md": "7e288e1aaf1fd142ffca5cc0c6da044f180e1332fbedb2fd92ed540b2fab8fdf",
     "docs/decisions/architectural/README.md": "18097b2fb8a35a9f1bc47ea573fe29c6fddd0f06ccc83af597bf54edc0ecf1fb",
-    "docs/functional-spec/FS-assurance.md": "abd6632fe17220ba8f1c50ad04f176cb2c8996740d76ddd421a01eb5c6612531",
+    "docs/functional-spec/FS-assurance.md": "2597f9c9af6a251e2f7eec7710aedaee439dc9a9357a82bc187f5d16029c7a2e",
     "docs/reviews/M4-callers.md": "e1022bb3148c34a3d5091f57d2d458e95f43737c142230fc3f7233a4b59e1a66",
     "docs/reviews/M4-decoder.md": "39f0e8f57fb0f13ef0069a43fd228b76941e76179404aa237bdcb9d5e3136d17",
     "docs/reviews/M4-library.md": "f9efa48d44f236767d0f431c648142b0b510468c2782841fc59ba88cb5a99b5d",
@@ -32,9 +34,10 @@
     "docs/reviews/M4-receiver.md": "c08cdf4695885fd5d6ebb6da248bb793d044a3108d501b1a6c09685f43cfd76f",
     "docs/reviews/M4-sender.md": "c6f77198136f80851440f1a5c87bb06568acf5cb7c0659dd3b1137fa1d756490",
     "docs/reviews/M4-structures.md": "316de60ce605c76dbc1a0083fe0d1b2748fa16d1003c809dce1d2822bbf59419",
+    "docs/reviews/M4-wire.md": "1db72822282294d8029c5a2fd753e412d6a98f9b91ff45ff97685c9a91255137",
     "docs/reviews/M4-writeall.md": "0c7dcca76621cdbc022ec4800708182d022e1c358bb3cd1304b163cc5b58c487",
     "docs/reviews/M4-writers.md": "0a828f10161f0ba3207485dfda63b4a7ea4ca8763123e8f75ec62f72c142a5c4",
-    "docs/roadmap.md": "a4f1ca06be76587160778d3c11bc29ca6a9cad285cc05ade75f1782b3730e264",
+    "docs/roadmap.md": "6bf68747a5b26a1bb0397095776b625f3fe36999751f180b5133eb18ad5dd9d6",
     "m4/connection/BytePatch.v": "567271d1f9018e477f9b48c18d7730125bff1ca6db68a5d3e2bae252bf63497b",
     "m4/connection/CallAccess.v": "0807ed76e554be700daae913836b25a822b38c81d7a4614bcc90e22a26627b19",
     "m4/connection/CallContexts.v": "e6955f4a6613963e778cf204445298f944acf53070cc681170ae87fe80210306",
@@ -212,6 +215,21 @@
     "m4/connection/SourceReach.v": "586fba4e611c6586a1a7ea674473edc9a6395589557c71ac6cc33bb41373e6d5",
     "m4/connection/StoreSteps.v": "fb5604ea1e123b239c667277d0fb4b14a062ff8797d03ec6ae84a4efc950d1a4",
     "m4/connection/SwitchControl.v": "4cf74c232917f3a978fd833304a81b34602c2aa7a266a11146401f30fa5ccf0d",
+    "m4/connection/WireComposition.v": "c8654da3763da3635be0180b5a2c3a39fe7096acbeab091a1d196a1ad30c6388",
+    "m4/connection/WireDecoded.v": "58f4441843987279bf290b3063dcf3e21fd6b11c683c36fea04b6c43840e81c8",
+    "m4/connection/WireFailure.v": "7189c24f37cb822af30d97ba1d270ebab67044ae7e56567dab9841a1a748338e",
+    "m4/connection/WireFailureReceiver.v": "9b886868de2788e5db0a11e5ece2f91957175b36e6eb1359c933d6d213ca5807",
+    "m4/connection/WireFailureRuns.v": "b872c62b5c231d2f9d86733a580181f83d8ba4d1feb563c4024721a9f41730e9",
+    "m4/connection/WireFields.v": "8494ae4168052a3eea2a2e0a31385ca3f5b8b5008c8b070a43dae3ea861d707a",
+    "m4/connection/WireLayout.v": "38780c502804ae54a444cd500530c7e68916e51d8319a98875693e3ff8f5e116",
+    "m4/connection/WireReceiverFields.v": "6891d10f079a8ecdf601ed4f68e246a378c3be82394f90494f6ca0f4436628f7",
+    "m4/connection/WireRuns.v": "107ea75b91f363397b85fe2117e843d20d00fcdd33ca2658df578cb239fecc3d",
+    "m4/connection/WireSamples.v": "d1143a583863a81e491612874094f3254f76f72c4a1d2aaaa54a68d0bb2fb339",
+    "m4/connection/WireSource.v": "04ec0b6dfb31bf7fd687ae534edc7f1e6bf1faf0209309c70414df49d43a0d16",
+    "m4/connection/WireSpans.v": "537e5a86b83d03a8f4e90d7e1b921553218b733190e55c00d91321e6f59863eb",
+    "m4/connection/WireValidity.v": "9c5a7d89e723e8d37658a6c0f42769355184c402054efc0e16d5179aa1550e2c",
+    "m4/connection/WireWords.v": "ae8ca887202471865e67137948657b7907feeae7da026e16fe75f9657c5a0457",
+    "m4/connection/WireZeros.v": "4dbd710d40a2c1d42d40c1ecd7312130c4b91261ffcbcc5bef58df4e0ee33814",
     "m4/connection/WriteAll.v": "2fce62dfc3b678a432451e784d404a3d21e29d9d0902c26719bd4e607c4fd6b0",
     "m4/connection/WriteBytes.v": "5798582f1bccbd7dc4e5e0d7cd3a704c436b41cdeef8b47ae97d4d06037c907c",
     "m4/connection/WriteCallers.v": "57dbda453357ab8d646aa8d4984ce9b7f5d899b3d4aacd52f1a6fcd6728a9818",
@@ -220,7 +238,7 @@
     "m4/connection/WriteMemory.v": "73c7561dc3730529a8f24caeb83eead5d5531fb696909073f65e9f0b5bfa9135",
     "m4/connection/WriteWitnesses.v": "d8304157bc7ae42d22aa67a642df402b4218d77d6b31b203d4a4745c826b5fdf",
     "m4/connection/Writers.v": "cfdafc7aaf973aac2e2fab0b216c04f4265f3b3a9535e1cb2ba43a26328e3fb5",
-    "m4/connection/check.py": "843fb26c7c495a0ab8fbf69873f4ff75c06f75867f149cf852434fcf958d7e34",
+    "m4/connection/check.py": "fc3f9c6c7ab3ca15310bc3c4c3172a12515b83a0cd0eb8e102454aa2ef67b21e",
     "m4/connection/compat/CallEventsDraft.v": "6e95f9cf899a25ad5d5974be9caab7124e229272d341a7df7395719de8e13aa8",
     "m4/connection/compat/CallProgressDraft.v": "eff32879e32de99e07b4f74cee627d28522f7b2e72ac584b319babb813de7f5e",
     "m4/connection/compat/ExitControlDraft.v": "20a0fdd0cd0a96fc9e540279ae96de7572d3ef61f55a211371446892ffe04dd6",
@@ -237,9 +255,9 @@
     "m4/connection/compat/HelperProgressDraft.v": "cabf4bc742425031135efa50c28e19ad38def467b103cbda5de531e55b308158",
     "m4/connection/compat/README.md": "cc376e072b452e255b1cf1d196be9224220ec37ae1590726ed726ada7d97ba79",
     "m4/connection/compat/ReportingTraceDraft.v": "f839a152a54c9cd311e7a59d9f41971f3aae3d47222d53f708a3a7f784645653",
-    "m4/connection/test_gate.py": "c9ec0c98ce89af2d80b198564de3fe7706aac614a75993efe8e64c5a894fd9fb",
+    "m4/connection/test_gate.py": "4995fe822df2552809e60672d6369fbbbe4c492741aa1d9d5b67f33c7c59ef93",
     "scripts/check_m4.sh": "83c0165ee40e3584ba10cb1c98d300c3d8ff42307895e241005674c0c9e51b3c",
-    "scripts/check_m4_connection.sh": "9dc52ffd5beb2589554e05fdc70a1773c323404aa70f2facf37e54567a8e777c"
+    "scripts/check_m4_connection.sh": "0cd2d317855c1ac841efae73afe8313e222239faf86e36cb7a4765c83c5ac3aa"
   },
   "rocq_declarations": [
     {
@@ -10851,6 +10869,492 @@
     {
       "name": "ReceiverLossRuns.receiver_partial_read_loss",
       "full_type": "receiver_partial_read_loss\n     : forall (cell : tls) (base : Memory.Mem.mem) (output : Values.block) (ofs : BinNums.Z) (fd bad entered done status : Integers.Int.int) (run : Integers.Int64.int) (uid : Integers.Int.int) (bytes : list Integers.Byte.int) (waits : nat) (_ : receiver_input cell base output ofs run uid) (_ : and (BinInt.Z.lt BinNums.Z0 (BinInt.Z.of_nat (@length Integers.Byte.int bytes))) (BinInt.Z.le (BinInt.Z.of_nat (@length Integers.Byte.int bytes)) (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO BinNums.xH)))))), @ex receiver_blocks (fun b : receiver_blocks => @ex (list library_event) (fun events : list library_event => @ex Memory.Mem.mem (fun after : Memory.Mem.mem => and (library_steps result_ge cell (live (receiver_initial output ofs fd bad entered done status Clight.Kstop base)) events (dead after)) (and (@eq (list library_event) events (@app library_event (@List.map event library_event original_event (@List.repeat event (source_step Events.E0) (Nat.sub (Nat.sub (@length library_event events) waits) (S O)))) (@app library_event (@List.repeat library_event (original_event wait_step) waits) (@cons library_event (original_event (partial_loss (receiver_request b cell fd BinNums.Z0) bytes (@None Integers.Int.int))) (@nil library_event))))) (and (@eq (list Integers.Byte.int) (receiver_read_trace events) bytes) (receiver_preserved cell base output ofs after))))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "WireWords.wire_byte_word",
+      "full_type": "wire_byte_word\n     : forall x : Integers.Int.int, @eq Integers.Int.int (byte_word (Integers.Byte.repr (Integers.Int.unsigned x))) (Integers.Int.zero_ext (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))) x)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireWords.wire_put32_byte",
+      "full_type": "wire_put32_byte\n     : forall (x : Integers.Int.int) (i : BinNums.Z), @eq Integers.Int.int (byte_word (Integers.Byte.repr (Integers.Int.unsigned (put32_byte x i)))) (put32_byte x i)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireWords.wire_put64_byte",
+      "full_type": "wire_put64_byte\n     : forall (x : Integers.Int64.int) (i : BinNums.Z), @eq Integers.Int.int (byte_word (Integers.Byte.repr (Integers.Int.unsigned (put64_byte x i)))) (put64_byte x i)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireWords.wire_word32_head",
+      "full_type": "wire_word32_head\n     : forall (x : Integers.Int.int) (tail : list Integers.Byte.int), @eq Integers.Int.int (word32_at (@app Integers.Byte.int (frame_word32 x) tail) O) x",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireWords.wire_word64_head",
+      "full_type": "wire_word64_head\n     : forall (x : Integers.Int64.int) (tail : list Integers.Byte.int), @eq Integers.Int64.int (word64_at (@app Integers.Byte.int (frame_word64 x) tail) O) x",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireWords.wire_byte_skip",
+      "full_type": "wire_byte_skip\n     : forall (bytes : list Integers.Byte.int) (start n : nat), @eq Integers.Int.int (byte_word_at (@List.skipn Integers.Byte.int start bytes) n) (byte_word_at bytes (Nat.add start n))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireWords.wire_word32_skip",
+      "full_type": "wire_word32_skip\n     : forall (bytes : list Integers.Byte.int) (start : nat), @eq Integers.Int.int (word32_at bytes start) (word32_at (@List.skipn Integers.Byte.int start bytes) O)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireWords.wire_word64_skip",
+      "full_type": "wire_word64_skip\n     : forall (bytes : list Integers.Byte.int) (start : nat), @eq Integers.Int64.int (word64_at bytes start) (word64_at (@List.skipn Integers.Byte.int start bytes) O)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireWords.wire_skip_past",
+      "full_type": "wire_skip_past\n     : forall (A : Type) (before after : list A) (n : nat) (_ : le (@length A before) n), @eq (list A) (@List.skipn A n (@app A before after)) (@List.skipn A (Nat.sub n (@length A before)) after)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_run",
+      "full_type": "wire_run\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq Integers.Int64.int (word64_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S O))))))))) (fr_run r)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_sequence",
+      "full_type": "wire_sequence\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq Integers.Int64.int (word64_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))) sequence",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_payload",
+      "full_type": "wire_payload\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq Integers.Int.int (word32_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))) (Integers.Int.repr (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_reserved",
+      "full_type": "wire_reserved\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq Integers.Int.int (word32_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))) Integers.Int.zero",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_stage",
+      "full_type": "wire_stage\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq Integers.Int.int (word32_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))) (fr_stage r)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_detail",
+      "full_type": "wire_detail\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq Integers.Int.int (word32_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))) (fr_detail r)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_entry",
+      "full_type": "wire_entry\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq Integers.Int.int (word32_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))) (fr_entry r)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_clean",
+      "full_type": "wire_clean\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq Integers.Int.int (word32_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))) (fr_clean r)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_triggers",
+      "full_type": "wire_triggers\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq Integers.Int.int (word32_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))) (fr_triggers r)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_uid",
+      "full_type": "wire_uid\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq Integers.Int.int (word32_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))) (fr_uid r)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_cpu",
+      "full_type": "wire_cpu\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq Integers.Int64.int (word64_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (fr_cpu r)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_peak",
+      "full_type": "wire_peak\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq Integers.Int64.int (word64_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (fr_peak r)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_out",
+      "full_type": "wire_out\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq Integers.Int64.int (word64_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (fr_out r)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_err",
+      "full_type": "wire_err\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq Integers.Int64.int (word64_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (fr_err r)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_elapsed",
+      "full_type": "wire_elapsed\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq Integers.Int64.int (word64_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (fr_elapsed r)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_export_state",
+      "full_type": "wire_export_state\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq Integers.Int.int (word32_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (fr_export_state r)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_omitted",
+      "full_type": "wire_omitted\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq Integers.Int.int (word32_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (fr_omitted r)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_kind",
+      "full_type": "wire_kind\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq Integers.Int.int (byte_word_at (outgoing_frame sequence r digest) (S (S (S (S (S (S O))))))) (Integers.Int.zero_ext (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))) (fr_kind r))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_first_four",
+      "full_type": "wire_first_four\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq (list Integers.Byte.int) (@List.firstn Integers.Byte.int (S (S (S (S O)))) (outgoing_frame sequence r digest)) frame_magic",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_fixed_bytes",
+      "full_type": "wire_fixed_bytes\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), and (@eq Integers.Int.int (byte_word_at (outgoing_frame sequence r digest) (S (S (S (S O))))) Integers.Int.one) (and (@eq Integers.Int.int (byte_word_at (outgoing_frame sequence r digest) (S (S (S (S (S O)))))) Integers.Int.zero) (@eq Integers.Int.int (byte_word_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S O)))))))) Integers.Int.zero))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFields.wire_after_digest",
+      "full_type": "wire_after_digest\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int) (_ : @eq nat (@length Integers.Byte.int digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))), @eq (list Integers.Byte.int) (@List.skipn Integers.Byte.int (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (outgoing_frame sequence r digest)) (@app Integers.Byte.int (frame_word64 (fr_oom r)) (@app Integers.Byte.int (frame_word64 (fr_pids r)) (@app Integers.Byte.int (frame_word32 (fr_export_error r)) (@List.repeat Integers.Byte.int Integers.Byte.zero (S (S (S (S O))))))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireSpans.wire_nth_seq_cons",
+      "full_type": "wire_nth_seq_cons\n     : forall (A : Type) (bytes : list A) (b default : A) (start count : nat), @eq (list A) (@List.map nat A (fun i : nat => @List.nth A i (@cons A b bytes) default) (List.seq (S start) count)) (@List.map nat A (fun i : nat => @List.nth A i bytes default) (List.seq start count))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireSpans.wire_nth_span",
+      "full_type": "wire_nth_span\n     : forall (A : Type) (bytes : list A) (default : A) (start count : nat) (_ : le (Nat.add start count) (@length A bytes)), @eq (list A) (@List.map nat A (fun i : nat => @List.nth A i bytes default) (List.seq start count)) (@List.firstn A count (@List.skipn A start bytes))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireSpans.wire_forallb_map",
+      "full_type": "wire_forallb_map\n     : forall (A B : Type) (f : forall _ : B, bool) (g : forall _ : A, B) (xs : list A), @eq bool (@List.forallb B f (@List.map A B g xs)) (@List.forallb A (fun x : A => f (g x)) xs)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireSpans.wire_zero_span",
+      "full_type": "wire_zero_span\n     : forall (bytes : list Integers.Byte.int) (start count : nat) (_ : le (Nat.add start count) (@length Integers.Byte.int bytes)), @eq bool (zero_test bytes start (Nat.add start count)) (wire_zero_bytes (@List.firstn Integers.Byte.int count (@List.skipn Integers.Byte.int start bytes)))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireSpans.wire_zero_repeat",
+      "full_type": "wire_zero_repeat\n     : forall count : nat, @eq bool (wire_zero_bytes (@List.repeat Integers.Byte.int Integers.Byte.zero count)) true",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireZeros.wire_bool_ext",
+      "full_type": "wire_bool_ext\n     : forall (a b : bool) (_ : iff (@eq bool a true) (@eq bool b true)), @eq bool a b",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireZeros.wire_byte_is_zero",
+      "full_type": "wire_byte_is_zero\n     : forall b : Integers.Byte.int, iff (@eq bool (Integers.Int.eq (byte_word b) Integers.Int.zero) true) (@eq Integers.Byte.int b Integers.Byte.zero)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireZeros.wire_zero_bytes_exact",
+      "full_type": "wire_zero_bytes_exact\n     : forall bytes : list Integers.Byte.int, iff (@eq bool (wire_zero_bytes bytes) true) (@eq (list Integers.Byte.int) bytes (@List.repeat Integers.Byte.int Integers.Byte.zero (@length Integers.Byte.int bytes)))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireZeros.wire_word32_zero",
+      "full_type": "wire_word32_zero\n     : forall x : Integers.Int.int, @eq bool (wire_zero_bytes (frame_word32 x)) (Integers.Int.eq x Integers.Int.zero)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireZeros.wire_word64_zero",
+      "full_type": "wire_word64_zero\n     : forall x : Integers.Int64.int, @eq bool (wire_zero_bytes (frame_word64 x)) (Integers.Int64.eq x Integers.Int64.zero)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireZeros.wire_zero_bytes_app",
+      "full_type": "wire_zero_bytes_app\n     : forall a b : list Integers.Byte.int, @eq bool (wire_zero_bytes (@app Integers.Byte.int a b)) (andb (wire_zero_bytes a) (wire_zero_bytes b))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireLayout.wire_reserved_fields_length",
+      "full_type": "wire_reserved_fields_length\n     : forall (r : frame_result) (digest : list Integers.Byte.int) (_ : @eq nat (@length Integers.Byte.int digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))), @eq nat (@length Integers.Byte.int (wire_reserved_fields r digest)) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireLayout.wire_reserved_suffix",
+      "full_type": "wire_reserved_suffix\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq (list Integers.Byte.int) (@List.skipn Integers.Byte.int (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (outgoing_frame sequence r digest)) (@app Integers.Byte.int (wire_reserved_fields r digest) (@List.repeat Integers.Byte.int Integers.Byte.zero (S (S (S (S O))))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireLayout.wire_terminal_suffix",
+      "full_type": "wire_terminal_suffix\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int) (_ : @eq nat (@length Integers.Byte.int digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))), @eq (list Integers.Byte.int) (@List.skipn Integers.Byte.int (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (outgoing_frame sequence r digest)) (@List.repeat Integers.Byte.int Integers.Byte.zero (S (S (S (S O)))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireLayout.wire_late_fields",
+      "full_type": "wire_late_fields\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int) (_ : @eq nat (@length Integers.Byte.int digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))), and (@eq Integers.Int64.int (word64_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (fr_oom r)) (and (@eq Integers.Int64.int (word64_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (fr_pids r)) (@eq Integers.Int.int (word32_at (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (fr_export_error r)))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireLayout.wire_reserved_check",
+      "full_type": "wire_reserved_check\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int) (_ : @eq nat (@length Integers.Byte.int digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))), @eq bool (zero_test (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (wire_tail_valid r digest)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireLayout.wire_terminal_check",
+      "full_type": "wire_terminal_check\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int) (_ : @eq nat (@length Integers.Byte.int digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))), @eq bool (zero_test (outgoing_frame sequence r digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) true",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireLayout.wire_digest_exact",
+      "full_type": "wire_digest_exact\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int) (_ : @eq nat (@length Integers.Byte.int digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))), @eq (list Integers.Byte.int) (@List.firstn Integers.Byte.int (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))) (@List.skipn Integers.Byte.int (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (outgoing_frame sequence r digest))) digest",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireValidity.wire_header_exact",
+      "full_type": "wire_header_exact\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int) (run expected_sequence : Integers.Int64.int) (_ : @eq nat (@length Integers.Byte.int digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))), @eq bool (header_valid (outgoing_frame sequence r digest) run expected_sequence) (andb (Integers.Int64.eq (fr_run r) run) (Integers.Int64.eq sequence expected_sequence))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireValidity.wire_common_exact",
+      "full_type": "wire_common_exact\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int) (uid : Integers.Int.int), @eq bool (common_valid (outgoing_frame sequence r digest) uid) (wire_common_valid r uid)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireValidity.wire_tag_exact",
+      "full_type": "wire_tag_exact\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int) (preflight : Integers.Int.int), @eq bool (tag_valid (outgoing_frame sequence r digest) preflight) (wire_tag_valid r preflight)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireValidity.wire_decoder_acceptance",
+      "full_type": "wire_decoder_acceptance\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int) (run : Integers.Int64.int) (uid preflight : Integers.Int.int) (expected_sequence : Integers.Int64.int) (_ : @eq nat (@length Integers.Byte.int digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))), @eq bool (decoder_accepts (outgoing_frame sequence r digest) run uid preflight expected_sequence) (wire_accepts sequence r digest run uid preflight expected_sequence)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireDecoded.wire_zero_nth",
+      "full_type": "wire_zero_nth\n     : forall count index : nat, @eq Integers.Byte.int (@List.nth Integers.Byte.int index (@List.repeat Integers.Byte.int Integers.Byte.zero count) Integers.Byte.zero) Integers.Byte.zero",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireDecoded.wire_decoded_cells",
+      "full_type": "wire_decoded_cells\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq (list scalar_cell) (decoded_cells (outgoing_frame sequence r digest)) (frame_result_cells (wire_decoded_record r) (@List.repeat Integers.Byte.int Integers.Byte.zero (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireDecoded.wire_decoded_contents",
+      "full_type": "wire_decoded_contents\n     : forall (m : Memory.Mem.mem) (b : Values.block) (ofs : BinNums.Z) (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), iff (decoded_contents m b ofs (outgoing_frame sequence r digest)) (frame_result_contents m b ofs (wire_decoded_record r) (@List.repeat Integers.Byte.int Integers.Byte.zero (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "WireDecoded.wire_kind_within_byte",
+      "full_type": "wire_kind_within_byte\n     : forall (kind : Integers.Int.int) (_ : BinInt.Z.lt (Integers.Int.unsigned kind) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))))))), @eq Integers.Int.int (Integers.Int.zero_ext (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))) kind) kind",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireSource.wire_frame_length_shape",
+      "full_type": "wire_frame_length_shape\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int), @eq nat (@length Integers.Byte.int (outgoing_frame sequence r digest)) (Nat.add (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (@length Integers.Byte.int digest))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireSource.wire_int64_eq",
+      "full_type": "wire_int64_eq\n     : forall x y : Integers.Int64.int, iff (@eq bool (Integers.Int64.eq x y) true) (@eq Integers.Int64.int x y)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireSource.wire_header_fields",
+      "full_type": "wire_header_fields\n     : forall (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int) (run expected_sequence : Integers.Int64.int) (_ : @eq nat (@length Integers.Byte.int digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))), iff (@eq bool (header_valid (outgoing_frame sequence r digest) run expected_sequence) true) (and (@eq Integers.Int64.int (fr_run r) run) (@eq Integers.Int64.int sequence expected_sequence))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireSource.wire_decoder_source_return",
+      "full_type": "wire_decoder_source_return\n     : forall (cell : tls) (base : Memory.Mem.mem) (p : address) (output : Values.block) (ofs : BinNums.Z) (sequence : Integers.Int64.int) (r : frame_result) (digest : list Integers.Byte.int) (run : Integers.Int64.int) (uid preflight : Integers.Int.int) (expected_sequence : Integers.Int64.int) (events : list library_event) (value : Values.val) (after : Memory.Mem.mem) (_ : decoder_input base p (outgoing_frame sequence r digest) output ofs run uid preflight) (_ : library_steps result_ge cell (live (decoder_initial p expected_sequence output ofs Clight.Kstop base)) events (live (Clight.Returnstate value Clight.Kstop after))), wire_decode_result base output ofs sequence r digest run uid preflight expected_sequence value after",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "WireComposition.wire_source_observation_connection",
+      "full_type": "wire_source_observation_connection\n     : forall (scell : tls) (sbase : Memory.Mem.mem) (fd : Integers.Int.int) (sequence : Integers.Int64.int) (input : Values.block) (input_ofs : BinNums.Z) (r : frame_result) (digest : list Integers.Byte.int) (mode : address) (mode_bytes : list Integers.Byte.int) (locations : forall _ : report_fault, Values.block) (sent : list library_event) (sender_after : Memory.Mem.mem) (dcell : tls) (dbase : Memory.Mem.mem) (p : address) (output : Values.block) (ofs : BinNums.Z) (run : Integers.Int64.int) (uid preflight : Integers.Int.int) (expected_sequence : Integers.Int64.int) (received : list library_event) (value : Values.val) (decoder_after : Memory.Mem.mem) (_ : sender_input scell sbase input input_ofs r digest mode mode_bytes locations) (_ : @eq bool (report_enabled fd r) false) (_ : library_steps result_ge scell (live (sender_initial fd sequence input input_ofs Clight.Kstop sbase)) sent (live (Clight.Returnstate (Values.Vint Integers.Int.zero) Clight.Kstop sender_after))) (_ : decoder_input dbase p (ReportingTrace.reporting_trace sent) output ofs run uid preflight) (_ : library_steps result_ge dcell (live (decoder_initial p expected_sequence output ofs Clight.Kstop dbase)) received (live (Clight.Returnstate value Clight.Kstop decoder_after))), wire_decode_result dbase output ofs sequence r digest run uid preflight expected_sequence value decoder_after",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "WireRuns.wire_allocated_source_pair",
+      "full_type": "wire_allocated_source_pair\n     : forall (r : frame_result) (digest : list Integers.Byte.int) (sequence run : Integers.Int64.int) (uid preflight : Integers.Int.int) (expected_sequence : Integers.Int64.int) (_ : @eq nat (@length Integers.Byte.int digest) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))), @ex tls (fun cell : tls => @ex Memory.Mem.mem (fun sbase : Memory.Mem.mem => @ex Values.block (fun input : Values.block => @ex address (fun mode : address => @ex (list library_event) (fun sent : list library_event => @ex Memory.Mem.mem (fun sender_after : Memory.Mem.mem => @ex Memory.Mem.mem (fun dbase : Memory.Mem.mem => @ex address (fun p : address => @ex Values.block (fun output : Values.block => @ex (list library_event) (fun received : list library_event => @ex Values.val (fun value : Values.val => @ex Memory.Mem.mem (fun decoder_after : Memory.Mem.mem => and (sender_input cell sbase input BinNums.Z0 r digest mode normal_bytes sender_literal_location) (and (library_steps result_ge cell (live (sender_initial Integers.Int.one sequence input BinNums.Z0 Clight.Kstop sbase)) sent (live (Clight.Returnstate (Values.Vint Integers.Int.zero) Clight.Kstop sender_after))) (and (@eq (list Integers.Byte.int) (ReportingTrace.reporting_trace sent) (outgoing_frame sequence r digest)) (and (decoder_input dbase p (ReportingTrace.reporting_trace sent) output BinNums.Z0 run uid preflight) (and (library_steps result_ge cell (live (decoder_initial p expected_sequence output BinNums.Z0 Clight.Kstop dbase)) received (live (Clight.Returnstate value Clight.Kstop decoder_after))) (wire_decode_result dbase output BinNums.Z0 sequence r digest run uid preflight expected_sequence value decoder_after)))))))))))))))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "WireSamples.wire_sample_field_checks",
+      "full_type": "wire_sample_field_checks\n     : @List.Forall (prod frame_result bool) (fun sample : prod frame_result bool => @eq bool (wire_accepts Integers.Int64.zero (@fst frame_result bool sample) (@List.repeat Integers.Byte.int Integers.Byte.zero (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))) Integers.Int64.one (Integers.Int.repr (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))))))))))))))) Integers.Int.zero Integers.Int64.zero) (@snd frame_result bool sample)) wire_samples",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireSamples.wire_samples_complete_source_pairs",
+      "full_type": "wire_samples_complete_source_pairs\n     : forall (r : frame_result) (accepted : bool) (_ : @List.In (prod frame_result bool) (@pair frame_result bool r accepted) wire_samples), wire_sample_source_pair r accepted",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "WireFailure.wire_failure_packet",
+      "full_type": "wire_failure_packet\n     : forall stage error : Integers.Int.int, @eq (list Integers.Byte.int) (failure_packet stage error) (@app Integers.Byte.int (frame_word32 stage) (frame_word32 error))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFailure.wire_failure_fields",
+      "full_type": "wire_failure_fields\n     : forall stage error : Integers.Int.int, and (@eq Integers.Int.int (word32_at (failure_packet stage error) O) stage) (@eq Integers.Int.int (word32_at (failure_packet stage error) (S (S (S (S O))))) error)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFailure.wire_selected_report_bound",
+      "full_type": "wire_selected_report_bound\n     : forall (mode_bytes : list Integers.Byte.int) (stage error : Integers.Int.int), le (@length Integers.Byte.int (FailureTrace.selected_report mode_bytes stage error)) (S (S (S (S (S (S (S (S O))))))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFailure.wire_selected_eight",
+      "full_type": "wire_selected_eight\n     : forall (mode_bytes : list Integers.Byte.int) (stage error : Integers.Int.int) (_ : @eq nat (@length Integers.Byte.int (FailureTrace.selected_report mode_bytes stage error)) (S (S (S (S (S (S (S (S O))))))))), @eq (list Integers.Byte.int) (FailureTrace.selected_report mode_bytes stage error) (failure_packet stage error)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireFailure.wire_eight_byte_prefix_exact",
+      "full_type": "wire_eight_byte_prefix_exact\n     : forall (mode_bytes : list Integers.Byte.int) (stage error : Integers.Int.int) (bytes rest : list Integers.Byte.int) (_ : @eq (list Integers.Byte.int) (FailureTrace.selected_report mode_bytes stage error) (@app Integers.Byte.int bytes rest)) (_ : @eq nat (@length Integers.Byte.int bytes) (S (S (S (S (S (S (S (S O))))))))), and (@eq (list Integers.Byte.int) bytes (failure_packet stage error)) (@eq (list Integers.Byte.int) rest (@nil Integers.Byte.int))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "WireReceiverFields.wire_receiver_setup_contents",
+      "full_type": "wire_receiver_setup_contents\n     : forall (cell : tls) (base : Memory.Mem.mem) (output : Values.block) (ofs : BinNums.Z) (fd bad entered done status : Integers.Int.int) (run : Integers.Int64.int) (uid : Integers.Int.int) (events : list library_event) (value : Values.val) (after : Memory.Mem.mem) (_ : receiver_input cell base output ofs run uid) (_ : library_steps result_ge cell (live (receiver_initial output ofs fd bad entered done status Clight.Kstop base)) events (live (Clight.Returnstate value Clight.Kstop after))) (_ : @eq (option Values.val) (Memory.Mem.load AST.Mint32 after output ofs) (@Some Values.val (Values.Vint Integers.Int.one))), result_contents after output ofs Integers.Int.one (word32_at (receiver_read_trace events) O) (word32_at (receiver_read_trace events) (S (S (S (S O))))) Integers.Int.zero uid run",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "WireFailureReceiver.wire_failure_receiver_observation_connection",
+      "full_type": "wire_failure_receiver_observation_connection\n     : forall (ccell : tls) (cbase : Memory.Mem.mem) (cfd stage error : Integers.Int.int) (mode : address) (mode_bytes : list Integers.Byte.int) (drop short : Values.block) (child_events : list library_event) (child_target : machine) (rcell : tls) (rbase : Memory.Mem.mem) (output : Values.block) (ofs : BinNums.Z) (rfd bad entered done status : Integers.Int.int) (run : Integers.Int64.int) (uid : Integers.Int.int) (receiver_events : list library_event) (value : Values.val) (after : Memory.Mem.mem) (_ : failure_input ccell cbase mode mode_bytes drop short) (_ : library_steps failure_ge ccell (live (failure_initial cfd stage error Clight.Kstop cbase)) child_events child_target) (_ : receiver_input rcell rbase output ofs run uid) (_ : library_steps result_ge rcell (live (receiver_initial output ofs rfd bad entered done status Clight.Kstop rbase)) receiver_events (live (Clight.Returnstate value Clight.Kstop after))) (_ : @eq (list Integers.Byte.int) (receiver_read_trace receiver_events) (ReportingTrace.reporting_trace child_events)) (_ : @eq (option Values.val) (Memory.Mem.load AST.Mint32 after output ofs) (@Some Values.val (Values.Vint Integers.Int.one))), and (@eq (list Integers.Byte.int) (receiver_read_trace receiver_events) (failure_packet stage error)) (and (result_contents after output ofs Integers.Int.one stage error Integers.Int.zero uid run) (and (@eq Integers.Int.int bad Integers.Int.zero) (and (@eq Integers.Int.int entered Integers.Int.zero) (and (and (BinInt.Z.le (BinNums.Zpos BinNums.xH) (Integers.Int.unsigned stage)) (BinInt.Z.le (Integers.Int.unsigned stage) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))) (and (BinInt.Z.le (BinNums.Zpos BinNums.xH) (Integers.Int.unsigned error)) (BinInt.Z.le (Integers.Int.unsigned error) (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI BinNums.xH))))))))))))))))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "WireFailureRuns.wire_failure_receiver_owned_pair",
+      "full_type": "wire_failure_receiver_owned_pair\n     : forall waits retries : nat, @ex tls (fun ccell : tls => @ex Memory.Mem.mem (fun cbase : Memory.Mem.mem => @ex address (fun mode : address => @ex (list library_event) (fun child_events : list library_event => @ex Memory.Mem.mem (fun child_after : Memory.Mem.mem => @ex tls (fun rcell : tls => @ex Memory.Mem.mem (fun rbase : Memory.Mem.mem => @ex Values.block (fun output : Values.block => @ex (list library_event) (fun receiver_events : list library_event => @ex Memory.Mem.mem (fun receiver_after : Memory.Mem.mem => and (failure_input ccell cbase mode normal_bytes (BinNums.xI (BinNums.xO (BinNums.xI (BinNums.xO BinNums.xH)))) (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xO BinNums.xH))))) (and (library_steps failure_ge ccell (live (failure_initial (Integers.Int.repr (BinNums.Zpos (BinNums.xI BinNums.xH))) Integers.Int.one (Integers.Int.repr (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH))))) Clight.Kstop cbase)) child_events (dead child_after)) (and (receiver_input rcell rbase output BinNums.Z0 (Integers.Int64.repr (BinNums.Zpos BinNums.xH)) (Integers.Int.repr (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI BinNums.xH)))))))))))) (and (library_steps result_ge rcell (live (receiver_initial output BinNums.Z0 (Integers.Int.repr (BinNums.Zpos (BinNums.xI BinNums.xH))) Integers.Int.zero Integers.Int.zero Integers.Int.one Integers.Int.zero Clight.Kstop rbase)) receiver_events (live (Clight.Returnstate Values.Vundef Clight.Kstop receiver_after))) (and (@eq (list Integers.Byte.int) (receiver_read_trace receiver_events) (ReportingTrace.reporting_trace child_events)) (and (receiver_retries_observed retries receiver_events) (and (receiver_close_observed (Integers.Int.repr (BinNums.Zpos (BinNums.xI BinNums.xH))) (close_error (Integers.Int.repr (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO BinNums.xH)))))) waits receiver_events) (result_contents receiver_after output BinNums.Z0 Integers.Int.one Integers.Int.one (Integers.Int.repr (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH))))) Integers.Int.zero (Integers.Int.repr (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI BinNums.xH))))))))))) (Integers.Int64.repr (BinNums.Zpos BinNums.xH)))))))))))))))))))",
       "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
       "assumption_names": [
         "ClassicalDedekindReals.sig_forall_dec",

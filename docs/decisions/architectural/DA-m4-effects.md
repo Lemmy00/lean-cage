@@ -152,3 +152,26 @@ and 154 compiled identities, with a separate frozen sender printing context.
 The complete 197-module audit receives a bounded 900-second allowance; no check
 or source dependency is omitted. Twelve Lean endpoints and every original
 native/Linux obligation retain their prior status.
+
+## wire: Compose source observations without assuming Linux provenance
+
+For [§AR-m4-wire.fields](../../architecture/AR-m4-wire.md#fields-recover-the-actual-outgoing-representation), [§AR-m4-wire.private](../../architecture/AR-m4-wire.md#private-exact-private-acceptance-and-rejection-mutation) and [§FS-workspace.results](../../functional-spec/FS-workspace.md#results-entry-cancellation-and-bounded-transport), prove
+exact field projections of the actual frame, including the source kind-byte
+narrowing and private reserved tail. State private acceptance over fields and
+retain early versus late rejection mutation. Private ADMITTED/ENTERED records
+and the final public Lean result language remain distinct.
+
+For [§AR-m4-wire.composition](../../architecture/AR-m4-wire.md#composition-relate-actual-source-histories-with-explicit-provenance) and [§AR-m4-wire.failure](../../architecture/AR-m4-wire.md#failure-child-failure-words-and-completed-setup-classification), connect actual histories
+through explicit observed-byte equality and independent ownership premises.
+Disabling the sender's publication fault selector is an input condition, not an
+assumption that the decoder accepts. A stored receiver SETUP result, coupled to
+an actual child report, implies a complete eight-byte packet and the child's
+original bounded stage/error words. Independent allocated executions establish
+nonvacuity, including rejected frames, retries and ignored close error.
+
+This source observation relation does not establish Linux delivery, pipe
+ownership, interference exclusion or whole-program call ordering. For
+[§AR-m4-wire.evidence](../../architecture/AR-m4-wire.md#evidence-additive-source-connections-and-open-bridge), freeze all four previous printing contexts and preserve
+1041 earlier Rocq records, twelve Lean records and 197 compiled identities. The
+expanded 212-module gate retains the existing 900-second allowance. The checked
+Lean bridge and every original correspondence obligation remain open.

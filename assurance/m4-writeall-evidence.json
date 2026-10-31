@@ -34,7 +34,7 @@
     "assurance/m4-slice.c": "f563cd6dc5163aad8d243ace10e95882cc3879bcf927ef765485886c07d43bb7",
     "assurance/m4-slice.i": "79dd344ee81ba37d15fbf1cc0fc0d8ceeec8f63d751251ece5b1049610556fc7",
     "assurance/m4-slice.v.gz": "0aa10f2e1ac62321990fb0b3ea41d87300c936ad4834fa80a8fad3a72afae28c",
-    "assurance/m4-connection-evidence.json": "d52ca4c82596747a209a484ded037624388b0c0f505d8b34c6d6bedfdb1a312b",
+    "assurance/m4-connection-evidence.json": "45f1bfa54b7e0480345a56dfbd40639d4257fd0446a4bce7647af9d9f5662020",
     "assurance/m4-obligations.json": "77f760ca9447b8ee05ec0e24efc637b35ff6a62356657515ffc68f0999182064"
   },
   "artifact_sha256": {
@@ -239,6 +239,18 @@
           "previous_sha256": "e559a34d1faea9580a73fe318099b27ba204507be266a7071a1ce58af05e3693",
           "current_sha256": "d52ca4c82596747a209a484ded037624388b0c0f505d8b34c6d6bedfdb1a312b",
           "reason": "Only named documentation, bounded wrapper allowance and transitive evidence manifests.",
+          "map": "preserved_sha256"
+        }
+      ]
+    },
+    {
+      "reason": "Wire checkpoint: only explicit documentation fingerprints, audit comment and evidence bookkeeping. All previous proof records, compiled artifacts and archived receipts retained.",
+      "changes": [
+        {
+          "path": "assurance/m4-connection-evidence.json",
+          "previous_sha256": "d52ca4c82596747a209a484ded037624388b0c0f505d8b34c6d6bedfdb1a312b",
+          "current_sha256": "45f1bfa54b7e0480345a56dfbd40639d4257fd0446a4bce7647af9d9f5662020",
+          "reason": "Only named documentation, audit comment and transitive evidence manifests.",
           "map": "preserved_sha256"
         }
       ]
