@@ -11,6 +11,7 @@ the broader sandbox isolation guarantees that remain future work.
 | [§FS-policy](FS-policy.md#fs-policy-grant-only-explicit-supported-authority) | Authority, validation, and default denial |
 | [§FS-launch](FS-launch.md#fs-launch-establish-containment-before-executing-the-guest) | Launch ordering, failure, and cleanup |
 | [§FS-lifecycle](FS-lifecycle.md#fs-lifecycle-m2-owned-launcher-lifecycle) | Versioned M2 owned-resource, namespace, privilege, supervision, cancellation and filter contracts |
+| [§FS-workspace](FS-workspace.md#fs-workspace-m3-offline-workspace-contract-version-1) | M3 offline runtime/workspace, authority, resource and result contracts |
 | [§FS-isolation](FS-isolation.md#fs-isolation-confine-all-supported-guest-effects) | Files, processes, memory, IPC, devices, and network |
 | [§FS-observations](FS-observations.md#fs-observations-state-exactly-what-an-attacker-may-observe) | Confidentiality and side channels |
 | [§FS-resources](FS-resources.md#fs-resources-define-and-enforce-supported-resource-limits) | Resource bounds and limit behavior |

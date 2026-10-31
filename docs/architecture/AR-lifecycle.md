@@ -122,6 +122,9 @@ before building or querying its theorem environment.
 | M4-supervisor | ptrace exec/signal/wait, pidfd, parent death, report framing | Entry knowledge and descendant teardown | Open race, kernel and C semantics refinement |
 | M4-artifacts | toolchain, static libc, ELF loader, kernel/QEMU/firmware | Artifact realizes reviewed sources | Hashes/tests only; executable correspondence open |
 
+M3 extends this ledger under [§AR-workspace.correspondence](AR-workspace.md#correspondence-additional-open-m4-boundaries); its concrete bounded
+Clight experiment is [§AR-workspace.experiment](AR-workspace.md#experiment-bounded-first-native-semantics-connection). These entries remain open.
+
 First proposed semantic connection: the bounded plan dispatcher and terminal
 failure branch over the eight operation IDs, followed by the descriptor/seal
 syscall interface. No existing C semantics proof is claimed. Trace tests and a

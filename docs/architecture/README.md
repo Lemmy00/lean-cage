@@ -14,5 +14,6 @@ proofs, a fresh helper, a capable VM and an explicit M4 obligation ledger.
 | [§AR-filter-decoder](AR-filter-decoder.md#ar-filter-decoder-byte-decoder-proofs-and-executable-evidence-audit) | M1.2 byte decoder, correctness/bounds proofs, and axiom/evidence gate |
 | [§AR-m1-launch](AR-m1-launch.md#ar-m1-launch-launch-model-linux-driver-and-isolated-demonstration) | M1.3–M1.5 launch proofs, native call map, isolated VM, and evidence review |
 | [§AR-lifecycle](AR-lifecycle.md#ar-lifecycle-m2-controller-native-helper-and-evidence) | M2 controller/helper, owned namespace lifecycle, capable VM, proof audit and M4 ledger |
+| [§AR-workspace](AR-workspace.md#ar-workspace-m3-authority-model-linux-realization-and-evidence-plan) | M3 runtime lock, object/effect model, native boundaries and acceptance plan |
 | [§AR-verification](AR-verification.md#ar-verification-compose-explicit-refinement-and-security-arguments) | Proof composition, audits, and executable correspondence |
 | [§AR-tooling](AR-tooling.md#ar-tooling-keep-development-reproducible-and-project-local) | Local tooling, pins, and development checks |

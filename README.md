@@ -16,7 +16,9 @@ cancellation, plus general fixed-filter semantics. Its conditional model proofs
 and source-bound VM evidence are recorded in the [M2 review](docs/reviews/M2-handoff.md).
 Full workspace confinement, native/Linux correspondence and hardware-channel
 security remain later milestones.
-The next assignment is the [M3.1 authority and workload contract](docs/roadmap.md#m3entry-next-assignment-m31-authority-and-workload-contract).
+M3 is in progress: the [workspace contract](docs/functional-spec/FS-workspace.md),
+[runtime/policy pins](profiles/m3/runtime-lock.json) and [implementation plan](docs/architecture/AR-workspace.md)
+are specified. Workspace confinement and resource enforcement remain unimplemented.
 
 - [Plan and milestones](docs/roadmap.md)
 - [Preserved M1 readiness review](docs/reviews/M1-readiness.md)

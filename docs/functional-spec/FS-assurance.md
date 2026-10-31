@@ -36,8 +36,8 @@ These counts identify coverage and evidence, not a measure of security strength.
 | Canonical filter decoding | [§FS-filter-loading.input.correctness](FS-filter-loading.md#inputcorrectness-decoder-proof-boundary) | Model-proved; pure executable checks | [§FS-assurance.decoder](FS-assurance.md#decoder-m12-decoder-claim-record); exact acceptance, bounds, rejection and nonvacuity proofs; axiom gate | Native executable and FFI field-copy correspondence |
 | M1 fail-closed launch order | [§FS-filter-loading.installation.model](FS-filter-loading.md#installationmodel-executable-launch-semantics-and-proof-obligations) | Model-proved; VM-tested native slice | [§FS-assurance.launch](FS-assurance.md#launch-m13-launch-order-claim-record) and [§FS-assurance.demo](FS-assurance.md#demo-m14-isolated-linux-test-record); actual-decoder linkage, exact successful order, terminal failures, native call map and 13 VM cases | Native/source/compiler/runtime/FFI and Linux correspondence; broader M2 lifecycle |
 | M2 owned lifecycle and filter action | [§FS-lifecycle.model](FS-lifecycle.md#model-executable-controller-and-effect-contracts) and [§FS-lifecycle.filter](FS-lifecycle.md#filter-general-action-of-the-preserved-m1-program) | Model-proved; VM-tested; handoff gate passed | [§FS-assurance.lifecycle](FS-assurance.md#lifecycle-m2-lifecycle-and-filter-semantics-claim-record); exact plan, ownership/inheritance and general bytecode action; source-bound VM evidence | Native/Linux correspondence; M3 authority; M5 hardware channels |
-| Native workload confinement | [§FS-isolation](FS-isolation.md#fs-isolation-confine-all-supported-guest-effects) | Planned | Specification | Launcher, filesystem/process model, enforcement proof |
-| Bounded resources | [§FS-resources](FS-resources.md#fs-resources-define-and-enforce-supported-resource-limits) | Planned | Specification | Precise supported limits and enforcement |
+| Native workload confinement | [§FS-workspace.authority](FS-workspace.md#authority-objects-and-rights) | M3 contract specified; implementation pending | [§FS-assurance.workspace](FS-assurance.md#workspace-m3-contract-and-pending-evidence) | Object/effect model, enforcement proof and VM acceptance |
+| Bounded resources | [§FS-workspace.resources](FS-workspace.md#resources-units-ownership-and-failure) | M3 contract specified; enforcement pending | Charged-memory, task, bandwidth, sampled-budget and deadline semantics | Model, native enforcement and overshoot evidence |
 | Functional confidentiality | [§FS-observations.logical](FS-observations.md#logical-functional-observations) | Planned | Observation requirements | Noninterference theorem and correspondence |
 | Hardware-aware confidentiality | [§FS-observations.hardware](FS-observations.md#hardware-software-observable-channels) | Planned | Scope and research obligations | Model, mechanisms, proof, deployed profile |
 | Deployed executable correctness | [§GOAL-end-to-end](../goals.md#goal-end-to-end-connect-the-policy-to-the-deployed-artifact) | Planned | Roadmap | Compiler/runtime/FFI and Linux correspondence |
@@ -319,6 +319,29 @@ explicit. Native C/Lean/libc/process/loader/ABI refinement, Linux enforcement an
 hardware fidelity remain open M4/M5 obligations. The public fixture root and broad
 filter are not an M3 workspace policy, functional confidentiality proof or
 production sandbox. The destination [§FS-observations.hardware](FS-observations.md#hardware-software-observable-channels) remains unchanged.
+
+## workspace: M3 contract and pending evidence
+
+**State: contract specified; no M3 security theorem or VM result yet.**
+[§FS-workspace](FS-workspace.md#fs-workspace-m3-offline-workspace-contract-version-1) names the supported runtime/workloads, object authority, interference,
+policy, private reporting, resource semantics, export and observations. The runtime
+lock pins four OCI layers and the exact loader/shell/Python bytes, 97 package
+versions and their license notices. Hash inspection establishes artifact identity,
+not compatibility, native correspondence or confinement.
+
+The planned proof obligations include authority preservation, inherited restrictions,
+entry ordering, policy-to-filter action, report knowledge, resource scope and
+lifecycle event projection. No Lean declaration/type/axiom record exists for these
+M3 targets yet; no helper/controller binary, M3 kernel/image identity, native
+workload transcript or production profile is accepted. These absent fields are
+implementation/evidence obligations, not inherited M2 guarantees.
+
+M2's fixed UID/static-image/decoder properties do not prove this versioned runtime,
+per-run identity or workspace contract. Native/Linux/loader/cgroup/FFI and artifact
+correspondence remain open, as do termination premises and all hardware channels.
+No confidentiality theorem follows from the specified output policy. Update this
+record only from checked declarations and source-bound executable evidence under
+[§FS-assurance.evidence](FS-assurance.md#evidence-required-claim-record) and [§FS-assurance.closure](FS-assurance.md#closure-rules-for-stronger-claims).
 
 ## assumptions: Initial assumption and obligation register
 

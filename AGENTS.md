@@ -7,9 +7,10 @@ Read [README](README.md), [§RM-roadmap](docs/roadmap.md#rm-roadmap-leancage-spe
 boundary in [§AR-filter-slice.contracts](docs/architecture/AR-filter-slice.md#contracts-lean-declarations-and-downstream-ownership); M1.2 supplies the decoder, proofs, and
 audit in [§AR-filter-decoder](docs/architecture/AR-filter-decoder.md#ar-filter-decoder-byte-decoder-proofs-and-executable-evidence-audit). M1.3–M1.5 add launch proofs, the VM-only native driver,
 and reviewed evidence under [§AR-m1-launch](docs/architecture/AR-m1-launch.md#ar-m1-launch-launch-model-linux-driver-and-isolated-demonstration). M2 extends that baseline with [§AR-lifecycle](docs/architecture/AR-lifecycle.md#ar-lifecycle-m2-controller-native-helper-and-evidence).
-The next assignment is the bounded M3.1 contract in [§RM-roadmap.m3.entry](docs/roadmap.md#m3entry-next-assignment-m31-authority-and-workload-contract);
-read the [M2 handoff review](docs/reviews/M2-handoff.md) first. Follow the assigned work package rather than treating
-the entire roadmap as one implementation task.
+M3 follows the contract [§FS-workspace](docs/functional-spec/FS-workspace.md#fs-workspace-m3-offline-workspace-contract-version-1) and architecture [§AR-workspace](docs/architecture/AR-workspace.md#ar-workspace-m3-authority-model-linux-realization-and-evidence-plan) in the
+package order [§RM-roadmap.m3.packages](docs/roadmap.md#m3packages-build-the-profile-in-reviewable-slices);
+read the [M2 handoff review](docs/reviews/M2-handoff.md) first. Follow the assigned M3 packages in dependency order; do not treat later M4/M5
+correspondence and hardware work as completed by the M3 implementation.
 
 All `grund` commands in the managed instructions below mean the repository-local
 `./scripts/grund.sh` wrapper, run from the project root. Never substitute the older

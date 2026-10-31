@@ -35,7 +35,7 @@
 - Review M2 with a fresh 43-case replay; make archived evidence checks portable
   across checkout paths, bind the dependent toolchain pin, and add four regression
   tests under [§AR-lifecycle.audit](architecture/AR-lifecycle.md#audit-evidence-schema-and-replay-gates).
-  Define [§RM-roadmap.m3.entry](roadmap.md#m3entry-next-assignment-m31-authority-and-workload-contract) as the next bounded contract assignment, including
+  Define [§RM-roadmap.m3.entry](roadmap.md#m3entry-m31-authority-and-workload-contract) as the next bounded contract assignment, including
   workspace authority, runtime closure, private reports and correspondence research.
 - Give complete theorem-environment queries a shared 180-second deadline after
   observing a CI timeout at the former 60-second M1 limit. Preserve every theorem,

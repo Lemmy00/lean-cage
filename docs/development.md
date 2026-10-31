@@ -4,7 +4,8 @@ Start with the [roadmap](roadmap.md), [agent rules](../AGENTS.md), and the contr
 for the assigned task. The preserved M1 boundary is [§AR-m1-launch](architecture/AR-m1-launch.md#ar-m1-launch-launch-model-linux-driver-and-isolated-demonstration) (M1), using
 the source/launch contract in [§AR-filter-slice.contracts](architecture/AR-filter-slice.md#contracts-lean-declarations-and-downstream-ownership).
 M2 is complete for the stated lifecycle profile under [§AR-lifecycle](architecture/AR-lifecycle.md#ar-lifecycle-m2-controller-native-helper-and-evidence).
-The next package is M3.1 under [§RM-roadmap.m3.packages](roadmap.md#m3packages-build-the-profile-in-reviewable-slices).
+M3 implementation follows [§FS-workspace](functional-spec/FS-workspace.md#fs-workspace-m3-offline-workspace-contract-version-1) and [§AR-workspace](architecture/AR-workspace.md#ar-workspace-m3-authority-model-linux-realization-and-evidence-plan) in
+[§RM-roadmap.m3.packages](roadmap.md#m3packages-build-the-profile-in-reviewable-slices) order.
 The workflow is specified in [§AR-tooling](architecture/AR-tooling.md#ar-tooling-keep-development-reproducible-and-project-local).
 
 ## Setup and checks

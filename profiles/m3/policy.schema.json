@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:leancage:policy:m3:v1",
+  "$comment": "FS-workspace.policy: also reject duplicate keys, non-integer JSON lexical forms, encoded-byte overflow, unavailable objects and unsupported platforms. This schema is not a policy implementation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "profile",
+    "runtime_manifest_digest",
+    "workspace_input",
+    "stdin_input",
+    "argv",
+    "export",
+    "limits"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "profile": {
+      "const": "linux-x86_64-offline-workspace-m3-v1"
+    },
+    "runtime_manifest_digest": {
+      "const": "sha256:70bda1e795ded2a684ef9815955e05829b14ee5bb5c3eb2a940648e88f10fce9"
+    },
+    "workspace_input": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "stdin_input": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "argv": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096,
+        "pattern": "^[^\\u0000]*$"
+      },
+      "prefixItems": [
+        {
+          "enum": [
+            "/bin/sh",
+            "/usr/local/bin/python3"
+          ]
+        }
+      ]
+    },
+    "export": {
+      "enum": [
+        "discard",
+        "regular-files"
+      ]
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "memory_max_bytes",
+        "tasks_max",
+        "cpu_quota_us",
+        "cpu_period_us",
+        "cpu_budget_us",
+        "wall_time_ms",
+        "workspace_max_bytes",
+        "workspace_max_inodes",
+        "stdin_max_bytes",
+        "stdout_max_bytes",
+        "stderr_max_bytes"
+      ],
+      "properties": {
+        "memory_max_bytes": {
+          "type": "integer",
+          "minimum": 16777216,
+          "maximum": 1073741824,
+          "multipleOf": 4096
+        },
+        "tasks_max": {
+          "type": "integer",
+          "minimum": 4,
+          "maximum": 256
+        },
+        "cpu_quota_us": {
+          "type": "integer",
+          "minimum": 1000,
+          "maximum": 100000
+        },
+        "cpu_period_us": {
+          "const": 100000
+        },
+        "cpu_budget_us": {
+          "type": "integer",
+          "minimum": 10000,
+          "maximum": 3600000000
+        },
+        "wall_time_ms": {
+          "type": "integer",
+          "minimum": 10,
+          "maximum": 3600000
+        },
+        "workspace_max_bytes": {
+          "type": "integer",
+          "minimum": 1048576,
+          "maximum": 268435456,
+          "multipleOf": 4096
+        },
+        "workspace_max_inodes": {
+          "type": "integer",
+          "minimum": 64,
+          "maximum": 65536
+        },
+        "stdin_max_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 67108864
+        },
+        "stdout_max_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 16777216
+        },
+        "stderr_max_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 16777216
+        }
+      }
+    }
+  }
+}
