@@ -411,14 +411,13 @@ Clight model plus explicit byte-aware effects and asynchronous loss. The maintai
 retains the 25 feasibility declarations and 12 Lean target records;
 `assurance/m4-connection-claims.json` inventories every additive Rocq declaration
 with its complete type and transitive assumptions and the unchanged 12 Lean
-endpoint claims. The decoder checkpoint contains 680 Rocq declarations: all 494 previous records,
-113 decoder/composition declarations and 73 declarations in historical import
-modules now included in the maintained audit. All 48 previous compiled artifacts
-are preserved. These counts
-identify the audited inventory, not a security score.
+endpoint claims. The sender/finish checkpoint contains 875 Rocq declarations: all 680 preceding
+records and 195 sender, publication and composition declarations across 63 new
+modules. All 91 preceding compiled artifacts and twelve Lean endpoint records
+are preserved. These counts identify the audited inventory, not a security score.
 
 **Results:** universal finite-prefix safety and exact returns for `write_all`,
-`error_number`, `get32`, `get64`, `put32`, `put64`, `fault`, `result_of` and `decode_frame`; source codec round
+`error_number`, `get32`, `get64`, `put32`, `put64`, `fault`, `result_of`, `decode_frame`, `send_frame` and `finish`; source codec round
 trips for all 32/64-bit words; defined ordinary progress rather than loss/wait
 witnesses. The extended machine retains old transitions and earlier universal
 source safety. Explicit comparison/copy/close/exit contracts have owned-memory
@@ -455,10 +454,32 @@ and every return frees the actual local structure. Allocated inputs inhabit all
 seven accepted tags and early/late rejection. Finite successful runs coexist
 with arbitrary comparison waits and loss; no termination claim follows.
 
-**Evidence and assumptions:** `assurance/m4-decoder-evidence.json`,
+The complete sender starts from independent readable 144-byte result ownership,
+arbitrary 32/64-bit fields and all 32 digest bytes. It derives the by-value copy,
+160 zero stores, both library copies, every byte writer and all five ordered
+fault checks. Every returned trace is exactly the selected report on zero or a
+proper prefix on -1. A zero return can report zero, seventeen, 160 or 320 bytes;
+it does not by itself establish one complete frame. Every finite trace is a
+prefix of the selected bytes, and old memory outside the TLS error cell is
+preserved even after loss. Both local allocations are actually freed on return.
+Stable selector strings survive duplicate-report I/O. `finish` executes the
+complete sender and then returns the source exit mapping regardless of
+publication failure, freeing its own copy. EXITED/SIGNALLED detail bounds are
+explicit when claiming the intended small exit-status domain.
+
+Allocated inputs and complete successful source runs inhabit normal, drop,
+short, duplicate, wrapped wrong-sequence and bad-reserved-byte reports. Failed
+writes emit no bytes and return -1; a one-byte transfer can be followed by loss
+after any finite number of waits. Whole `finish` executions inhabit both full
+publication and ignored publication failure. The restricted certificate used to
+construct successful witnesses is not used by universal source guarantees.
+
+**Evidence and assumptions:** `assurance/m4-sender-evidence.json`,
+`assurance/m4-decoder-evidence.json`,
 `assurance/m4-library-evidence.json`,
 `assurance/m4-structures-evidence.json`, `assurance/m4-callers-evidence.json` and
-[the caller proposition review](../reviews/M4-callers.md) and [decoder proposition review](../reviews/M4-decoder.md) bind sources, terms, preservation
+[the caller proposition review](../reviews/M4-callers.md) and [decoder proposition review](../reviews/M4-decoder.md) and
+[sender/finish proposition review](../reviews/M4-sender.md) bind sources, terms, preservation
 checks and raw command receipts. `./scripts/check_m4_connection.sh` replays the
 pinned tools, actual extracted source/AST, complete declarations and `coqchk`.
 The six Rocq foundation/semantic-parameter entries remain unchanged; the explicit
@@ -474,8 +495,8 @@ maintains and audits those exact dependencies, preserving previous statements
 and artifacts, and rejects undeclared imports. The earlier receipt did not by
 itself establish replay from only maintained proof inputs.
 
-**Open:** frame sending, `finish`, terminal receipt/publication, local allocation and structure-copy/caller
-composition for the complete selected slice, checked C/Rocq-to-Lean translation,
+**Open:** terminal receipt, remaining caller/storage composition for the complete
+selected slice, checked C/Rocq-to-Lean translation,
 all sixteen original M2/M3 Linux/native ledger entries, libc/Linux interference,
 compiler/runtime/linker/loader correspondence and independent composed-profile
 review. M4 remains incomplete. Hardware channels remain [§FS-observations.hardware](FS-observations.md#hardware-software-observable-channels).

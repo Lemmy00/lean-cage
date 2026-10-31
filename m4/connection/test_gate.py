@@ -328,6 +328,36 @@ class EvidenceGate(unittest.TestCase):
             with self.assertRaises(ValueError):
                 gate.project_imports(source)
 
+    def test_complete_sender_and_finish_claims_present(self):
+        names = {r['name'] for r in self.claims['rocq_declarations']}
+        self.assertTrue({
+            'SenderEncoding.sender_encoding_connection', 'SenderReporting.sender_reporting_source',
+            'SenderProgram.sender_whole_source_guarantee', 'SenderProgram.sender_all_returns',
+            'SenderProgram.sender_all_prefixes', 'SenderProgram.sender_defined_prefix',
+            'SenderProgram.sender_returned_locals_have_no_permissions',
+            'SenderSuccessfulRuns.sender_complete_report_exists', 'SenderFailedRuns.sender_failed_report_exists',
+            'SenderLossRuns.sender_one_byte_loss_exists', 'SenderWitnesses.arbitrary_sender_input',
+            'SenderSamples.sender_sample_successful_executions', 'SenderSamples.sender_sample_failed_execution',
+            'SenderSamples.sender_sample_partial_loss', 'SenderOutcomes.sender_zero_return_counts',
+            'FinishProgram.finish_whole_source_guarantee', 'FinishProgram.finish_all_returns',
+            'FinishProgram.finish_all_prefixes', 'FinishProgram.finish_defined_prefix',
+            'FinishDetails.finish_returned_exit_status', 'FinishPublication.finish_publication_outcome_exists',
+            'FinishWitnesses.allocated_finish_publication_outcomes',
+        }.issubset(names))
+
+    def test_decoder_checkpoint_is_preserved(self):
+        previous = json.loads(gate.SENDER_BASELINE.read_text())
+        self.assertEqual(len(previous['rocq_declarations']), 680)
+        self.assertEqual(len(previous['lean_declarations']), 12)
+        self.assertEqual(len(gate.DECODER_QUERY_MODULES), 91)
+        gate.validate_preserved_claims(previous, self.claims)
+        actual = copy.deepcopy(self.claims)
+        record = next(r for r in actual['rocq_declarations']
+                      if r['name'] == 'DecoderProgram.decoder_all_returns')
+        record['full_type'] = 'weakened decoder acceptance and mutation'
+        with self.assertRaisesRegex(ValueError, 'changed or disappeared'):
+            gate.validate_preserved_claims(previous, actual)
+
 
 if __name__ == '__main__':
     unittest.main()

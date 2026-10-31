@@ -106,3 +106,27 @@ reproducibility without replacing the previous propositions or compiled terms.
 The additional inventory requires a larger bounded connection replay budget;
 per-file compilation, kernel checking, full statements and foundation checks
 remain enforced.
+
+## sender: Separate universal source coverage from constructive publication choices
+
+For [§AR-m4-sender.encoding](../../architecture/AR-m4-sender.md#encoding-actual-initialization-copying-and-writer-calls), [§AR-m4-sender.reporting](../../architecture/AR-m4-sender.md#reporting-source-fault-checks-and-complete-writes) and [§FS-workspace.results](../../functional-spec/FS-workspace.md#results-entry-cancellation-and-bounded-transport),
+compose actual local allocation, typed structure copying, every zero store,
+byte writers, both library copies, ordered fault selectors and complete writes.
+Preserve original unsigned kind guards separately from the narrowed wire kind.
+Keep selector data outside the TLS error cell because a duplicate report can
+perform I/O before later selector reads. Every returning path frees both locals.
+
+The source certificates expose an explicit write-choice parameter. Universal
+prefix, progress and exact-return theorems use the unrestricted instance, which
+admits all errors and partial transfers. A restricted instance constructs actual
+successful histories in the same unrestricted machine; it supports nonvacuity
+only. Separate unrestricted certificates construct failed writes and partial
+loss. This prevents an existential successful path from replacing hostile-path
+coverage. `finish` composes the sender's real execution and preserves its copied
+record across all sender effects before the exit mapping, including failed
+publication.
+
+For [§AR-m4-effects.gate](../../architecture/AR-m4-effects.md#gate-additive-evidence-and-completion-boundary), retain both preceding theorem-printing contexts, all
+680 earlier Rocq records, twelve Lean records and 91 compiled module identities.
+Add sender/finish statements and their complete maintained import closure; no
+native, extraction, toolchain, Linux or hardware obligation is reclassified.

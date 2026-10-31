@@ -1,0 +1,3 @@
+PASS: final correction removes only four trailing whitespace runs in SenderGuards.v.
+PASS: all 875 full Rocq statements/foundations and 12 Lean records unchanged from pre-format audit; all preceding 91 artifacts unchanged.
+PASS: rebuilt 154 modules and coqchk; changed new-module artifact fingerprints recorded explicitly.

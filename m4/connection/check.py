@@ -32,9 +32,12 @@ CALLERS_BASELINE = ROOT / 'assurance/m4-callers-baseline-claims.json'
 CALLERS_EVIDENCE = ROOT / 'assurance/m4-callers-evidence.json'
 DECODER_BASELINE = ROOT / 'assurance/m4-decoder-baseline-claims.json'
 DECODER_EVIDENCE = ROOT / 'assurance/m4-decoder-evidence.json'
+SENDER_BASELINE = ROOT / 'assurance/m4-sender-baseline-claims.json'
+SENDER_EVIDENCE = ROOT / 'assurance/m4-sender-evidence.json'
+DECODER_QUERY_MODULES = ['IO', 'Machine', 'ClightSteps', 'WriteMemory', 'WriteAll', 'WriteWitnesses', 'Deterministic', 'ErrorNumber', 'Readers', 'StoreSteps', 'WriteBytes', 'Writers', 'CodecRoundtrip', 'Library', 'ProcessEffects', 'LibraryMachine', 'LibraryPreservation', 'LibraryControl', 'GlobalReads', 'Fault', 'LibraryWitnesses', 'LocalAccess', 'ScalarMemory', 'ResultLayout', 'ResultSource', 'ResultSafety', 'ResultWitnesses', 'CallContexts', 'CallAccess', 'CallPaths', 'WriteCallers', 'FreshMemory', 'CallProgress', 'ExitControl', 'CallEvents', 'FailureSource', 'CallEventsDraft', 'CallProgressDraft', 'ExitControlDraft', 'HelperProgress', 'ReportingTrace', 'ExitEvents', 'ExitEventsDraft', 'FailureSourceDraft', 'FreshMemoryDraft', 'FailureMemory', 'FailureContract', 'FailureContractDraft', 'FailureMemoryDraft', 'FailureBranches', 'FailureBranchesDraft', 'HelperProgressDraft', 'FailureSafety', 'FailureSafetyDraft', 'FailureExit', 'ReportingTraceDraft', 'FailureTrace', 'FailureTraceDraft', 'FailureRuns', 'FailureRunsDraft', 'FailureError', 'FailureErrorDraft', 'FailureWitnesses', 'FrameBytes', 'ComparisonControl', 'SourcePaths', 'DecoderLayout', 'DecoderSource', 'DecoderMemory', 'SequencePaths', 'SourceReach', 'DecoderCompare', 'DecoderControl', 'DecoderHeader', 'DecoderZeros', 'DecoderFields', 'SwitchControl', 'DecoderCommon', 'DecoderTags', 'DecoderValidity', 'DecoderInput', 'DecoderPayload', 'SourceConsequences', 'DecoderAssembly', 'ComparisonRuns', 'SourceGuarantees', 'ComparisonGuarantees', 'DecoderProgram', 'DecoderRuns', 'DecoderAllocation', 'DecoderWitnesses']
 BASELINE_QUERY_MODULES = ['IO', 'Machine', 'ClightSteps', 'WriteMemory', 'WriteAll', 'WriteWitnesses', 'Deterministic', 'ErrorNumber', 'Readers', 'StoreSteps', 'WriteBytes', 'Writers', 'CodecRoundtrip', 'Library', 'ProcessEffects', 'LibraryMachine', 'LibraryPreservation', 'LibraryControl', 'GlobalReads', 'Fault', 'LibraryWitnesses', 'LocalAccess', 'ScalarMemory', 'ResultLayout', 'ResultSource', 'ResultSafety', 'ResultWitnesses', 'CallContexts', 'CallAccess', 'CallPaths', 'WriteCallers', 'FreshMemory', 'CallProgress', 'ExitControl', 'HelperProgress', 'CallEvents', 'ReportingTrace', 'ExitEvents', 'FailureSource', 'FailureMemory', 'FailureBranches', 'FailureContract', 'FailureSafety', 'FailureTrace', 'FailureRuns', 'FailureError', 'FailureExit', 'FailureWitnesses']
 COMPAT_MODULES = ['CallEventsDraft', 'CallProgressDraft', 'ExitControlDraft', 'ExitEventsDraft', 'FailureBranchesDraft', 'FailureContractDraft', 'FailureErrorDraft', 'FailureMemoryDraft', 'FailureRunsDraft', 'FailureSafetyDraft', 'FailureSourceDraft', 'FailureTraceDraft', 'FreshMemoryDraft', 'HelperProgressDraft', 'ReportingTraceDraft']
-MODULES = ['IO', 'Machine', 'ClightSteps', 'WriteMemory', 'WriteAll', 'WriteWitnesses', 'Deterministic', 'ErrorNumber', 'Readers', 'StoreSteps', 'WriteBytes', 'Writers', 'CodecRoundtrip', 'Library', 'ProcessEffects', 'LibraryMachine', 'LibraryPreservation', 'LibraryControl', 'GlobalReads', 'Fault', 'LibraryWitnesses', 'LocalAccess', 'ScalarMemory', 'ResultLayout', 'ResultSource', 'ResultSafety', 'ResultWitnesses', 'CallContexts', 'CallAccess', 'CallPaths', 'WriteCallers', 'FreshMemory', 'CallProgress', 'ExitControl', 'CallEvents', 'FailureSource', 'CallEventsDraft', 'CallProgressDraft', 'ExitControlDraft', 'HelperProgress', 'ReportingTrace', 'ExitEvents', 'ExitEventsDraft', 'FailureSourceDraft', 'FreshMemoryDraft', 'FailureMemory', 'FailureContract', 'FailureContractDraft', 'FailureMemoryDraft', 'FailureBranches', 'FailureBranchesDraft', 'HelperProgressDraft', 'FailureSafety', 'FailureSafetyDraft', 'FailureExit', 'ReportingTraceDraft', 'FailureTrace', 'FailureTraceDraft', 'FailureRuns', 'FailureRunsDraft', 'FailureError', 'FailureErrorDraft', 'FailureWitnesses', 'FrameBytes', 'ComparisonControl', 'SourcePaths', 'DecoderLayout', 'DecoderSource', 'DecoderMemory', 'SequencePaths', 'SourceReach', 'DecoderCompare', 'DecoderControl', 'DecoderHeader', 'DecoderZeros', 'DecoderFields', 'SwitchControl', 'DecoderCommon', 'DecoderTags', 'DecoderValidity', 'DecoderInput', 'DecoderPayload', 'SourceConsequences', 'DecoderAssembly', 'ComparisonRuns', 'SourceGuarantees', 'ComparisonGuarantees', 'DecoderProgram', 'DecoderRuns', 'DecoderAllocation', 'DecoderWitnesses']
+MODULES = ['IO', 'Machine', 'ClightSteps', 'WriteMemory', 'WriteAll', 'WriteWitnesses', 'Deterministic', 'ErrorNumber', 'Readers', 'StoreSteps', 'WriteBytes', 'Writers', 'CodecRoundtrip', 'Library', 'ProcessEffects', 'LibraryMachine', 'LibraryPreservation', 'LibraryControl', 'GlobalReads', 'Fault', 'LibraryWitnesses', 'LocalAccess', 'ScalarMemory', 'ResultLayout', 'ResultSource', 'ResultSafety', 'ResultWitnesses', 'CallContexts', 'CallAccess', 'CallPaths', 'WriteCallers', 'FreshMemory', 'CallProgress', 'ExitControl', 'CallEvents', 'FailureSource', 'CallEventsDraft', 'CallProgressDraft', 'ExitControlDraft', 'HelperProgress', 'ReportingTrace', 'ExitEvents', 'ExitEventsDraft', 'FailureSourceDraft', 'FreshMemoryDraft', 'FailureMemory', 'FailureContract', 'FailureContractDraft', 'FailureMemoryDraft', 'FailureBranches', 'FailureBranchesDraft', 'HelperProgressDraft', 'FailureSafety', 'FailureSafetyDraft', 'FailureExit', 'ReportingTraceDraft', 'FailureTrace', 'FailureTraceDraft', 'FailureRuns', 'FailureRunsDraft', 'FailureError', 'FailureErrorDraft', 'FailureWitnesses', 'FrameBytes', 'ComparisonControl', 'SourcePaths', 'DecoderLayout', 'DecoderSource', 'DecoderMemory', 'SequencePaths', 'SourceReach', 'DecoderCompare', 'DecoderControl', 'DecoderHeader', 'DecoderZeros', 'DecoderFields', 'SwitchControl', 'DecoderCommon', 'DecoderTags', 'DecoderValidity', 'DecoderInput', 'DecoderPayload', 'SourceConsequences', 'DecoderAssembly', 'ComparisonRuns', 'SourceGuarantees', 'ComparisonGuarantees', 'DecoderProgram', 'DecoderRuns', 'DecoderAllocation', 'DecoderWitnesses', 'FrameRecord', 'WriteEffects', 'SenderSelectors', 'SenderGlobals', 'FrameAllocation', 'FrameCopy', 'SenderSource', 'BytePatch', 'SenderStorage', 'SenderAccess', 'SenderOperations', 'SenderEncodingPrefix', 'SenderZeros', 'SenderMemory', 'CopyControl', 'CopyPaths', 'SenderCopies', 'SenderEncodingTail', 'PatchLayout', 'SenderWire', 'SenderEncoding', 'SenderReportMemory', 'SenderReturn', 'ProcedureCalls', 'WriteGuarantees', 'ReportPaths', 'SenderGuards', 'SenderReportingSteps', 'SenderWriteReturn', 'SenderGuardStages', 'ReportConsequences', 'SenderLastReport', 'SenderShortReport', 'SenderOutcome', 'SenderDuplicate', 'SenderBadReserved', 'SenderReporting', 'CopyTrace', 'CopyComposition', 'ReportTrace', 'ReportRuns', 'ReportPrefixes', 'SenderProgram', 'SenderRuns', 'SenderWitnesses', 'ReportSuccessfulRuns', 'SenderSuccessfulRuns', 'ReportFailedRuns', 'SenderFailedRuns', 'ReportFirstWrite', 'SenderLossRuns', 'SenderSamples', 'SenderOutcomes', 'FinishSource', 'FinishControl', 'SourceQuietRuns', 'FinishMemory', 'FinishPreparation', 'FinishProgram', 'FinishPublication', 'FinishWitnesses', 'FinishDetails', 'FinishRuns']
 ALLOWED_COQ = {
     'ClassicalDedekindReals.sig_not_dec', 'ClassicalDedekindReals.sig_forall_dec',
     'FunctionalExtensionality.functional_extensionality_dep', 'Classical_Prop.classic',
@@ -57,7 +60,8 @@ def sources():
               ROOT / 'docs/architecture/AR-m4-library.md',
               ROOT / 'docs/architecture/AR-m4-structures.md', ROOT / 'docs/reviews/M4-structures.md',
               ROOT / 'docs/architecture/AR-m4-callers.md', ROOT / 'docs/reviews/M4-callers.md',
-              CALLERS_BASELINE, STRUCTURES_BASELINE, DECODER_BASELINE,
+              CALLERS_BASELINE, STRUCTURES_BASELINE, DECODER_BASELINE, SENDER_BASELINE,
+              ROOT / 'docs/architecture/AR-m4-sender.md', ROOT / 'docs/reviews/M4-sender.md',
               ROOT / 'docs/architecture/AR-m4-decoder.md', ROOT / 'docs/reviews/M4-decoder.md',
               ROOT / 'docs/functional-spec/FS-assurance.md', LIBRARY_BASELINE,
               BASELINE_CLAIMS, PRIMITIVES_BASELINE, WRITERS_BASELINE, OBLIGATIONS]
@@ -123,8 +127,10 @@ def rocq_inventory():
     groups = [
         (BASELINE_QUERY_MODULES, [(i, n) for i, n in enumerate(names)
                                  if n.split('.')[0] in BASELINE_QUERY_MODULES]),
+        (DECODER_QUERY_MODULES, [(i, n) for i, n in enumerate(names)
+                   if n.split('.')[0] in DECODER_QUERY_MODULES and n.split('.')[0] not in BASELINE_QUERY_MODULES]),
         (MODULES, [(i, n) for i, n in enumerate(names)
-                   if n.split('.')[0] not in BASELINE_QUERY_MODULES]),
+                   if n.split('.')[0] not in DECODER_QUERY_MODULES]),
     ]
     for group, (modules, selected) in enumerate(groups):
         for batch, start in enumerate(range(0, len(selected), 100)):
@@ -257,9 +263,16 @@ def check():
     structures = json.loads(STRUCTURES_EVIDENCE.read_text())
     callers = json.loads(CALLERS_EVIDENCE.read_text())
     decoder = json.loads(DECODER_EVIDENCE.read_text())
+    sender = json.loads(SENDER_EVIDENCE.read_text())
+    if sender['status'] != 'complete frame sender and finish source submilestone; M4.2-M4.6 incomplete':
+        raise ValueError('local sender and finish source cannot complete M4 correspondence')
+    if digest(MANIFEST) != sender['claims_sha256']:
+        raise ValueError('sender reviewed claim manifest identity differs')
+    verify_hashes(sender['preserved_sha256'])
+    verify_hashes(sender['archived_receipts_sha256'])
     if decoder['status'] != 'complete private-frame decoder source submilestone; M4.2-M4.6 incomplete':
         raise ValueError('local decoder source cannot complete M4 correspondence')
-    if digest(MANIFEST) != decoder['claims_sha256']:
+    if digest(SENDER_BASELINE) != decoder['claims_sha256']:
         raise ValueError('decoder reviewed claim manifest identity differs')
     verify_hashes(decoder['preserved_sha256'])
     verify_hashes(decoder['archived_receipts_sha256'])
@@ -346,7 +359,9 @@ def check():
     validate_artifacts(structures['artifact_sha256'], actual['artifact_sha256'], subset=True)
     validate_preserved_claims(json.loads(DECODER_BASELINE.read_text()), actual)
     validate_artifacts(callers['artifact_sha256'], actual['artifact_sha256'], subset=True)
-    validate_artifacts(decoder['artifact_sha256'], actual['artifact_sha256'])
+    validate_preserved_claims(json.loads(SENDER_BASELINE.read_text()), actual)
+    validate_artifacts(decoder['artifact_sha256'], actual['artifact_sha256'], subset=True)
+    validate_artifacts(sender['artifact_sha256'], actual['artifact_sha256'])
     result = subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', str(DIRECTORY),
                              '-p', 'test_*.py', '-v'], cwd=ROOT,
                             capture_output=True, text=True, timeout=60)
@@ -356,7 +371,7 @@ def check():
     print(f'Connection checked: {len(actual["rocq_declarations"])} Rocq theorems, '
           f'{len(actual["lean_declarations"])} Lean theorems, coqchk passed; 16 original obligations OPEN')
     print('Universal write_all, errno, byte reader/writer source safety and codec round trips checked; '
-          'local library effects, fault, result construction, actual caller composition, complete fail_child and complete private decode_frame checked; '
+          'local library effects, fault, result construction, actual caller composition, complete fail_child, private decode_frame, frame sending and finish publication/exit mapping checked; '
           'whole-slice C/Lean simulation, Linux/compiler/runtime correspondence and full M4 remain UNPROVED')
 
 
