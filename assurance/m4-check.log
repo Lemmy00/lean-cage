@@ -1,0 +1,2 @@
+M4 checked: 25 Rocq declarations, 12 Lean target types/axioms; 260 C lines; 11 witness tests; coqchk passed
+Outcome: pure codec feasibility checked; count-only effect route rejected; full native simulation, whole-slice memory safety and Lean bridge UNPROVED

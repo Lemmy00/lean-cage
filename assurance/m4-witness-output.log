@@ -1,0 +1,16 @@
+test_arbitrary_byte_codecs (__main__.Witness.test_arbitrary_byte_codecs) ... ok
+test_authored_proof_drift_rejected_before_tools (__main__.Witness.test_authored_proof_drift_rejected_before_tools) ... ok
+test_decoder_samples_and_invalid_tags (__main__.Witness.test_decoder_samples_and_invalid_tags) ... ok
+test_frame_faults (__main__.Witness.test_frame_faults) ... ok
+test_short_interrupted_write (__main__.Witness.test_short_interrupted_write) ... ok
+test_source_and_stale_input (__main__.Witness.test_source_and_stale_input) ... ok
+test_success_setup_admission_and_rejection (__main__.Witness.test_success_setup_admission_and_rejection) ... ok
+test_tampered_ast_and_preprocessor_input (__main__.Witness.test_tampered_ast_and_preprocessor_input) ... ok
+test_terminal_error_reporting_can_fail (__main__.Witness.test_terminal_error_reporting_can_fail) ... ok
+test_terminal_receiver_short_eintr_eof_errors_loss (__main__.Witness.test_terminal_receiver_short_eintr_eof_errors_loss) ... ok
+test_zero_error_and_loss (__main__.Witness.test_zero_error_and_loss) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.024s
+
+OK

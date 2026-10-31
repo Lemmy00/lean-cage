@@ -7,7 +7,9 @@ Each milestone must leave reusable contracts and evidence for the next one.
 
 **Current stage: M1–M3 accepted for their stated conditional profiles.**
 The [M3 handoff](reviews/M3-handoff.md) records the useful offline workspace,
-checked model claims and fresh VM evidence; the bounded M4 experiment is next.
+checked model claims and fresh VM evidence. The bounded M4.1 experiment now
+records checked pure-codec executions and a rejected direct I/O-effect adapter;
+its full native simulation remains unproved (see [the M4.1 handoff](reviews/M4.1-handoff.md)).
 The source/ABI slice, pure decoder/bounds proofs, exact launch-order proofs,
 native Linux driver, and 13-case isolated VM demonstration are recorded under
 [§AR-filter-slice](architecture/AR-filter-slice.md#ar-filter-slice-m11-source-map-and-typed-contract-boundary), [§AR-filter-decoder](architecture/AR-filter-decoder.md#ar-filter-decoder-byte-decoder-proofs-and-executable-evidence-audit), and [§AR-m1-launch](architecture/AR-m1-launch.md#ar-m1-launch-launch-model-linux-driver-and-isolated-demonstration). The claim register
@@ -271,24 +273,33 @@ evidence that can support more features and maintained Linux profiles.
 
 ### m4.packages: Correspondence work after the reviewed M3 baseline
 
-M4 is a research program, not one agent-sized implementation task. The next
-assignment is M4.1 below. Subsequent packages remain planned and must be refined
-using its actual results; completing the experiment does not complete M4.
+M4 is a research program, not one agent-sized implementation task. M4.1's
+bounded feasibility result is recorded in [the handoff](reviews/M4.1-handoff.md)
+and [§AR-m4-native.outcome](architecture/AR-m4-native.md#outcome-checked-pure-core-and-rejected-direct-effect-adapter). The direct silent/count-only effect route is rejected;
+the full simulation, whole-slice memory safety and checked Lean bridge are
+unproved. Subsequent packages remain planned; this result does not complete M4.
 
 | Package | Dependency | Deliverable and gate |
 |---|---|---|
-| M4.1 Native-semantics feasibility | Reviewed M3 on `main` | Source-connected bounded Clight experiment, checked proof or precise reproducible blocker, and a decision on the semantics route |
-| M4.2 Checked connection to Lean | Viable M4.1 route | Machine-checked relation from the chosen native semantics to the relevant Lean definitions; full types, assumptions and nonvacuity audited; a manual Rocq-to-Lean map remains an open obligation |
-| M4.3 Controller and helper composition | M4.1–2 | Expand through parser/plan, memory/ABI, operation ordering, errors, asynchronous reports, supervision and cleanup; every local external effect gets an explicit contract and source connection |
-| M4.4 Pinned Linux enforcement | Effect contracts from M4.3; research may overlap | Discharge the relevant VFS/mount/descriptor, process/credential, seccomp and cgroup obligations against the pinned kernel and transitive dependencies; track each original M2/M3 ledger entry separately |
-| M4.5 Executable and runtime chain | M4.2–4 interfaces; artifact work may overlap | Connect compiler output, linking, Lean/native runtimes, loaders, runtime closure, kernel and deployed artifacts; hashes and reproducible builds identify bytes but do not prove correctness |
-| M4.6 Composed profile review | M4.3–5 | Compose the advertised functional properties for a named deployment profile, replay independently, and account for every remaining assumption; open correspondence gaps prevent a full M4 completion claim |
+| M4.1 Native-semantics feasibility | Reviewed M3 on `main` | Feasibility result recorded: 260-line maintained-source extraction, checked pure-reader executions, and refuted direct effect adapters; full reporting simulation unproved |
+| M4.2 Checked connection to Lean | M4.1 revised effect route | First supply byte-aware read/write/errno contracts and a loss-at-every-boundary environment, reattempt the whole selected slice, then check its relation to the exact Lean definitions. Audit the distinct Rocq foundations; a manual map remains open |
+| M4.3 Controller and helper composition | M4.1–2 | Expand through parser/plan, memory/ABI, operation ordering, errors, asynchronous reports, supervision and cleanup; every local external effect gets a byte/memory/error contract and source connection; preserve partial decoder mutation and failed publication facts |
+| M4.4 Pinned Linux enforcement | Effect contracts from M4.3; research may overlap | Discharge the relevant VFS/mount/descriptor, process/credential, seccomp and cgroup obligations against the pinned kernel and transitive dependencies; track each original M2/M3 ledger entry separately, including the byte-aware I/O/errno contract and loss/progress premises exposed by M4.1 |
+| M4.5 Executable and runtime chain | M4.2–4 interfaces; artifact work may overlap | Connect compiler output, linking, Lean/native runtimes, loaders, runtime closure, kernel and deployed artifacts; review the actual assigned CompCert commit (VERSION 3.17 despite the earlier 3.18 label), licensing and any altered event semantics before applying compiler theorems; hashes alone do not prove correctness |
+| M4.6 Composed profile review | M4.3–5 | Compose the advertised functional properties for a named deployment profile, replay independently, and account for every remaining assumption; the M4.1 negative adapter result discharges no native security obligation; open correspondence gaps prevent a full M4 completion claim |
 
 M5 retains timing/cache/contention/speculation work. M6 remains optional. Neither
 is a shortcut around the Linux/executable obligations or a reason to expand the
 VM profile while its correspondence is still unproved.
 
 ### m4.entry: Next assignment — M4.1 native-semantics feasibility
+
+**Recorded feasibility outcome:** [M4.1 handoff](reviews/M4.1-handoff.md),
+[§AR-m4-native.outcome](architecture/AR-m4-native.md#outcome-checked-pure-core-and-rejected-direct-effect-adapter) and the additive `assurance/m4-*` register.
+The experiment is concluded with a negative direct-effect-route result and
+checked codec subproofs; the unfinished universal native simulation is not marked
+proved. [§AR-m4-native.revision](architecture/AR-m4-native.md#revision-byte-aware-effects-and-loss-before-the-lean-bridge) specifies the next route. The original assignment
+below is retained as the acceptance contract.
 
 **Entry:** M3 implementation `77a05d3` plus the reviewed report-storage correction
 and plan on `main`, recorded in [the M3 main review](reviews/M3-main-review.md).
