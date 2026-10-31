@@ -1,9 +1,10 @@
 # M3 acceptance matrix
 
-This is the executable-test plan for [§FS-workspace](../functional-spec/FS-workspace.md#fs-workspace-m3-offline-workspace-contract-version-1) and [§AR-workspace.acceptance](../architecture/AR-workspace.md#acceptance-coverage-and-handoff-gate),
-not a record of passing M3 workloads. Names below are stable case/obligation targets.
-The contract baseline is M3.1; fill in actual results only after each package's gate.
-All hostile workloads run in the designated disposable VM.
+This maps [§FS-workspace](../functional-spec/FS-workspace.md#fs-workspace-m3-offline-workspace-contract-version-1) and [§AR-workspace.acceptance](../architecture/AR-workspace.md#acceptance-coverage-and-handoff-gate) to the implemented regression
+suite. The accepted artifact record and final verdict are in [the handoff](M3-handoff.md).
+All guest programs, hostile attempts, peer controls and process-death experiments
+run only in the designated disposable VM. The original obligation names below
+remain design targets; exact declarations and limits are reviewed in the handoff.
 
 | Case group | Allowed/control execution | Denied, failure or race execution | Proof obligation / owner |
 |---|---|---|---|
@@ -13,7 +14,7 @@ All hostile workloads run in the designated disposable VM.
 | workspace | Read/write/create/remove, executable script/native file | Traversal to host/sibling; concurrent external source rename/write; outside inherited aliases | `reachable_authority`; M3.2 |
 | aliases | Internal symlink/hard-link, held fd after unlink | Cross-root links, dirfd/cwd/proc magic link, rename-vs-open, runtime write alias | `guest_preserves_protected`; M3.2 |
 | mounts | Correct private root and workspace | Failed pivot/mount/remount, shared propagation, old-root handle, mount/setns/unshare attempt | `entry_requires_receipts`; M3.2–3 |
-| proc_devices | Own PID view, null/zero/urandom, own fd links | Host/global proc, init memory/fds, raw devices, mknod, sysfs/cgroupfs | `reachable_authority`; M3.2–4 |
+| proc_devices | Own PID view, null/zero/urandom, own fd links | Host/global proc, init memory/fds, raw devices, device mknod, sysfs/cgroupfs | `reachable_authority`; M3.2–4 |
 | shell | Pipeline, redirection, cwd/env, exit 125, child status | Pipeline child failure, SIGPIPE/output cap; guest prints forged result | `descendant_inherits`, `private_report_knowledge`; M3.3 |
 | python | JSON/hash/files/imports; subprocess; thread join | Missing required module/loader, arbitrary workspace extension; unsupported GUI/network | `descendant_inherits`; M3.3 |
 | filter | Every allowed syscall family and libc fallback | Wrong ABI/x32, unlisted syscall, clone flags, malformed program, failed NNP/install | `policy_filter_action`; M3.3 |
@@ -34,13 +35,37 @@ All hostile workloads run in the designated disposable VM.
 | failures | Successful complete setup | Failure at every root/handle/credential/cgroup/NNP/filter/exec/report boundary | `entry_requires_receipts`; M3.2–6 |
 | evidence | Full statement/axiom/source/artifact gate; moved checkout | Stale/mixed identities, missing/reordered cases, missing control/sentinel, timeout/harness failure | [§FS-assurance.evidence](../functional-spec/FS-assurance.md#evidence-required-claim-record); M3.7 |
 
-Each row can expand into multiple cases. A denied attempt must name its expected
-errno/signal/result and demonstrate that the equivalent mechanism works in a
-trusted isolated peer where appropriate. A failed workload or unavailable feature
-does not satisfy denial. Injected faults are labeled separately from observed
-ordinary behavior. Tests/source maps do not discharge [§AR-workspace.correspondence](../architecture/AR-workspace.md#correspondence-additional-open-m4-boundaries).
+## Concrete coverage
 
-The final review must state theorem types and assumptions, exact counters and
-artifact hashes, useful witnesses, all unimplemented/unchecked rows, and whether
-the reusable check/run/report interface actually exercises the same helper. The
-M2 handoff, 445 M1 declarations and 274 M2 declarations remain regression baselines.
+| Contract groups | Implemented evidence |
+|---|---|
+| policy | Real Lean decoder tested by `test_policy.py`; exact typed bounds/decode decomposition proofs; malformed/duplicate keys, bad UTF-8/NUL, unknown schema/profile/digest, overflow and argument/resource boundaries |
+| snapshot | `snapshot_stdin_export`, `snapshot_bad_hash`, `snapshot_duplicate`, `snapshot_traversal`, `snapshot_link_record`, `stdin_oversize`; repeated input blobs become independent copied files. External source paths are absent from the launch interface. |
+| runtime / mounts | Passive layer/hash/license/ELF closure checks; tampered graph, traversal/alias/whiteout/link tests; `filesystem_denials`, `runtime_aliases`, `fault_mount_fail`, `fault_namespace_fail`; immutable runtime dependency identity is checked while building the image. |
+| workspace / aliases | `aliases`, `rename_open_race`, `workspace_exec`, `workspace_native_exec`, `inherited_handles`; arbitrary model aliases and external object writes, including unguarded held-handle authority theorems |
+| proc / devices | `proc_devices`, `filesystem_denials`, `runtime_aliases`; private proc/root/fd visibility, working null/zero/urandom; privileged device creation remains a Linux capability/nodev obligation |
+| shell / Python | `shell`, `python`, `snapshot_stdin_export`, script/native execution; pipeline/status, JSON/UTF-8/hash/files, module import, subprocess and joined threads; GUI/Tk deliberately unsupported |
+| filter / process | Universal action theorem and full emitted-byte comparison; `clone_flags`, `x32`, `i386`, `network_ipc_process_denials`, `signal`, `exit125`, `descendant_cleanup`; inherited credential/root/filter/scope trace proof |
+| siblings / network / IPC | Concurrent useful `concurrent_a`/`concurrent_b` with measured overlap and distinct UIDs; inaccessible sibling roots, denied external calls and init signal; working trusted IPv4/IPv6/Unix/SysV/POSIX/tracing controls in init |
+| memory / tasks / CPU | `oom` with actual OOM counter, `task_limit` and `thread_limit` with task-denial counters, `cpu_budget`, `fault_accounting`; native readback and model scope/sampling statements |
+| deadline / workspace / admission | `deadline`, `stopped_guest`, `workspace_bytes`, `workspace_inodes`, `reservation_rejected`; reservation, task/capture bounds and run-ID exhaustion/reuse lemmas |
+| streams / reports | `stdout_cap`, `stderr_cap`, `both_streams`, `output_boundary`, `forged_report`, `fault_output_storage`, `fault_output_close`; every truncated public-frame prefix and malformed tags/widths/reserved fields; short/dropped/duplicate/wrong-sequence internal reports and error pipe failures |
+| cancellation / death | `exit_cancel_race`, orphan cleanup, plus `cancel_after_entry`, `helper_death`, `controller_death`, `init_death`, `helper_before_fork`, `controller_before_arm`; extinction, quarantine and live sentinel checked with pidfds |
+| export | `snapshot_stdin_export` checks raw filename encoding, omitted symlink/FIFO and flattened hard links; `export_hardlink_bound` returns explicit failed export while retaining the real guest exit |
+| setup / API | Namespace/mount/handle/credential/cgroup/NNP/filter/exec injected failures; successful `preflight` enters no guest; actual check/run/report validates snapshots, captures, export and the same persisted result |
+| evidence | `test_audit.py` and `test_evidence.py`: full types/axioms, source/profile/artifact/schema/counter/control/sentinel tampering, missing/duplicate/reordered/timeout records, concurrent overlap, omitted API/death checks and a moved checkout without the original cache |
+
+Fault names explicitly label test injection. Positive controls prove that the
+selected mechanisms work in a trusted VM peer; an infrastructure timeout or
+missing mechanism fails the suite and is never counted as a denied attack.
+Every ordinary case checks the private result, expected output/artifact state,
+owned-scope extinction and unrelated sentinel survival.
+
+The suite is a finite regression set, not a claim to test every allowed syscall,
+VFS/mmap/interference path, PID reuse, allocator exhaustion sequence, scheduler
+delay, kernel error or repeated cancellation. General model quantification and
+filter action cover their stated interfaces; the native mapping for unenumerated
+interleavings remains in [§AR-workspace.correspondence](../architecture/AR-workspace.md#correspondence-additional-open-m4-boundaries). In particular, ELF dependency
+presence is not a proof of every dlopen path; no parser/RFC, native syscall,
+noninterference or hardware theorem is inferred from a row or its count.
+The full M1/M2 theorem and VM baselines remain regression evidence.

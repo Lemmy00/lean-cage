@@ -1,8 +1,8 @@
 # DA-m3-profile: Frozen runtime, copied workspace and distinct run authority
 
 Implement [§FS-workspace.profile](../../functional-spec/FS-workspace.md#profile-supported-environment-and-useful-workloads) and [§FS-workspace.authority](../../functional-spec/FS-workspace.md#authority-objects-and-rights) through
-[§AR-workspace.runtime](../../architecture/AR-workspace.md#runtime-frozen-input-and-provenance) and [§AR-workspace.filesystem](../../architecture/AR-workspace.md#filesystem-linux-construction-and-handle-discipline). This is the M3.1 design
-decision; implementation and profile acceptance belong to M3.2–M3.7.
+[§AR-workspace.runtime](../../architecture/AR-workspace.md#runtime-frozen-input-and-provenance) and [§AR-workspace.filesystem](../../architecture/AR-workspace.md#filesystem-linux-construction-and-handle-discipline). This records the M3.1 design and consequential implementation choices.
+Acceptance evidence is in `docs/reviews/M3-handoff.md`.
 
 ## runtime: One complete pinned distribution closure
 
@@ -46,11 +46,30 @@ cannot supply. This is a specified restriction, not permission to relabel a time
 as a resource proof. Require a new decision if these semantics cannot meet a later
 consumer's requirements.
 
+## admission: Bounded VM capacity and durable quarantine
+
+Reserve active capacity under the same exclusive allocator lock as UID assignment.
+The 2048 MiB VM admits at most 1536 MiB of declared guest memory, workspace,
+possible flattened export, stdin and per-run supervisor allowance. Missing or
+malformed reservation records reject admission. Release follows observed cgroup
+extinction and owned resource cleanup; helper death leaves its lease and
+reservation quarantined. This is an admission ledger, not a physical peak-memory
+proof. Retained output/export artifacts and Linux accounting exclusions remain
+operator provisioning obligations under [§FS-workspace.resources](../../functional-spec/FS-workspace.md#resources-units-ownership-and-failure).
+
+Use chroot only after private mount construction and descriptor closure, then
+drop all credential forms/capabilities and install NNP/filter before exec. This
+choice depends on the explicit Linux VFS/credential contracts, not chroot alone.
+Enable file locking and shebang execution in the separate M3 kernel configuration;
+retain the M2 configuration unchanged. Use the recorded ACPI-PM clocksource to
+avoid TCG TSC watchdog changes interleaving trusted evidence records. No timing
+accuracy or confidentiality guarantee follows from this functional profile.
+
 ## correspondence: Test the native proof route before expansion
 
 Select CompCert Clight small-step semantics for the first bounded native dispatcher
 experiment in [§AR-workspace.experiment](../../architecture/AR-workspace.md#experiment-bounded-first-native-semantics-connection). It can express C memory/integer behavior
 with explicit external-effect boundaries; it does not supply Linux concurrency or
 a Lean-to-Rocq proof bridge automatically. Keep the existing compiler and Lean pins.
-The experiment must expose those gaps or trigger replanning before a larger helper
-is advertised as verified. No CompCert dependency or proof claim is added by M3.1.
+The M4 experiment must expose those gaps or trigger replanning before the helper
+is advertised as natively verified. No CompCert dependency or proof claim is added by M3.1.

@@ -2,7 +2,8 @@
 
 These are target contracts. M1 proves the pure filter decoder and launch order,
 and tests a native filter driver in a disposable Linux VM. M2 adds owned lifecycle
-and general filter-action proofs plus capable-VM tests. Use the claim register
+and general filter-action proofs plus capable-VM tests. M3 adds workspace/handle/
+descendant/filter model results and a useful shell/Python VM profile. Use the claim register
 to distinguish those model/test results from native/Linux correspondence and
 the broader sandbox isolation guarantees that remain future work.
 

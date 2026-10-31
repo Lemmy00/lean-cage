@@ -1,0 +1,4 @@
+# §AR-workspace.filesystem: M3 adds real filesystem advisory locking to the M2 baseline.
+CONFIG_FILE_LOCKING=y
+# §AR-workspace.runtime: Executable workspace scripts require the kernel shebang handler.
+CONFIG_BINFMT_SCRIPT=y

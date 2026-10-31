@@ -23,3 +23,10 @@ cc -std=c11 -O2 -Wall -Wextra -Werror -static -no-pie native/leancage_m2.c \
 python3 scripts/audit_m2.py
 python3 -m unittest discover -s m2/tests/integration -p 'test_*.py' -v
 (cd m2 && lake env lean tests/integration/Lifecycle.lean)
+# §AR-workspace.acceptance: Pure/audit checks and compile-only native validation preserve VM
+# isolation.
+cc -std=c11 -O2 -Wall -Wextra -Werror -static -no-pie native/leancage_m3.c \
+  -o .tools/assurance/leancage-m3-helper
+python3 scripts/audit_m3.py
+python3 -m unittest discover -s m3/tests/integration -p 'test_*.py' -v
+(cd m3 && lake env lean tests/integration/Workspace.lean)

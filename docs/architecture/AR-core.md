@@ -40,5 +40,5 @@ preserving the actual claimed observation property.
 
 Grow the library as needed into policy/state, launch/filter, backend contracts,
 Linux bindings, proofs, and assurance reporting. Implement the future library and
-CLI of [§FS-compatibility.interface](../functional-spec/FS-compatibility.md#interface-future-commands) only when their first behavior is specified;
+CLI of [§FS-compatibility.interface](../functional-spec/FS-compatibility.md#interface-versioned-commands) only when their first behavior is specified;
 do not create commands that imply unsupported containment.

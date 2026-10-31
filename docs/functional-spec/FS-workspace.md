@@ -2,16 +2,18 @@
 
 This contract specializes [§FS-policy.authority](FS-policy.md#authority-resources-and-permitted-operations), [§FS-isolation.filesystem](FS-isolation.md#filesystem-object-level-confinement),
 [§FS-isolation.interference](FS-isolation.md#interference-concurrency-and-environment), [§FS-resources.limits](FS-resources.md#limits-precise-semantics) and [§FS-observations.logical](FS-observations.md#logical-functional-observations).
-It defines `linux-x86_64-offline-workspace-m3-v1`. **Status: M3.1 design only.**
-There is no M3 launcher, confinement theorem, limit result or workload replay yet.
+It defines `linux-x86_64-offline-workspace-m3-v1`. The implementation is in `m3/`
+and `native/leancage_m3.c`; checked claim and acceptance status are recorded in
+[§FS-assurance.workspace](FS-assurance.md#workspace-m3-workspace-model-and-vm-evidence). Model proofs and VM tests do not establish native/Linux
+correspondence.
 The M2 lifecycle evidence remains [§FS-assurance.lifecycle](FS-assurance.md#lifecycle-m2-lifecycle-and-filter-semantics-claim-record).
 
 ## profile: Supported environment and useful workloads
 
 Use the M2 fresh root controller/helper and initial user namespace, inside a
 disposable x86-64 Linux VM. No setuid installation, host bind mounts or host guest
-execution is supported. The named kernel baseline is Linux 6.18.59 with the M2
-configuration; M3 must record any required configuration change separately.
+execution is supported. The named kernel baseline is Linux 6.18.59 with a separately recorded M3 configuration adding file locking and shebang
+execution.
 Kernel features must be checked, not inferred from the version string.
 
 The runtime is the exact Linux/amd64 root filesystem identified by
@@ -34,7 +36,7 @@ compatibility for every operation it offers.
 ## policy: Bounded typed request
 
 `profiles/m3/policy.schema.json` and `example-policy.json` fix the request shape.
-The eventual parser accepts at most 65536 UTF-8 bytes, rejects duplicate keys,
+The parser accepts at most 65536 UTF-8 bytes, rejects duplicate keys,
 unknown fields, floats/exponents for integer fields, malformed UTF-8, embedded
 NUL, overflow and trailing input. All fields are required; there are no silent
 defaults. Schema validation is necessary but not sufficient for admission.
@@ -95,6 +97,16 @@ The caller's conversion of live files to this snapshot is outside the launch;
 the snapshot identity, rather than an asserted atomic view of a changing source
 directory, is the accepted input. The helper validates all content before entry.
 
+The exact manifest bytes begin with `LCTREE1\n`, followed by newline-terminated
+records `D HEXPATH` or `F EXEC HEXPATH SIZE SHA256`. Fields use single spaces;
+`EXEC` is `0` or `1`, size is canonical decimal, and hex uses lowercase. Paths
+decode to UTF-8, at most 4095 bytes, at most 64 components of at most 255 bytes;
+parents precede children. `.tmp` and its descendants are reserved. The manifest
+is at most 4 MiB; its SHA-256 is the request's tree identity. The root-owned input
+store contains `trees/DIGEST` and `blobs/DIGEST`, with regular files only. Blob
+contents are checked while copying to new objects; no source handle reaches the
+guest. Stdin is likewise copied, hashed and sealed before entry.
+
 Materialize runtime and workspace on separate private filesystems. Runtime remains
 read-only, root owned and `nosuid`; workspace remains guest owned and `nosuid,nodev`,
 with executable files allowed. The guest root contains no host root alias.
@@ -131,6 +143,15 @@ hard links are flattened. Raw guest filename bytes are encoded in the result, no
 interpreted as destination paths. Bounds or read errors produce `export_failed`,
 never a silently complete partial export. Runtime and workspace mounts are then
 released; a missing cleanup observation prevents a completed result.
+
+Export uses `LCEXPORT1\n` and the same directory/file records, plus `O HEXPATH`
+for omitted objects. Export paths encode raw bytes, without the input UTF-8
+restriction. Each regular-file name gets a separate copied blob, including hard
+links; the manifest records the digest. Total copied bytes are bounded by the
+workspace capacity, entries by its inode limit and manifest bytes by 16 MiB.
+Flattened hard links can exceed those bounds and fail export. A failed export
+keeps any partial artifacts explicitly incomplete. Neither export failure nor
+an omitted object rewrites the observed guest termination.
 
 ## execution: Dynamic code and channel restrictions
 
@@ -171,20 +192,30 @@ No later inward migration, limit reduction or scheduler-class escape is supporte
 | `tasks_max` | Maximum guest tasks, including threads, via `pids.max` | Further creation fails; trusted init excluded. No extra task is admitted through migration |
 | `cpu_quota_us` / `cpu_period_us` | Aggregate fair-scheduler CPU bandwidth via `cpu.max`; burst set to zero | Throttling, not a cumulative runtime budget or minimum progress guarantee |
 | `cpu_budget_us` | Cumulative `cpu.stat usage_usec` since guest admission | Trusted sampling requests cancellation at/above threshold; report final usage and observed overshoot |
-| `wall_time_ms` | Monotonic duration from release of the stopped first guest | Deadline requests cancellation; it does not itself prove extinction |
+| `wall_time_ms` | Monotonic duration from the recorded release attempt for the stopped first guest | Deadline requests cancellation; it does not itself prove extinction |
 | `workspace_max_bytes` / `workspace_max_inodes` | Private tmpfs capacity/inode bounds including imported files and `.tmp` | ENOSPC is a permitted guest result; separate from charged memory and bounded export |
 | `stdin_max_bytes` / `stdout_max_bytes` / `stderr_max_bytes` | Total input/captured output bytes | Oversized input rejects; first output byte beyond a cap triggers cancellation and a truncation flag |
 
 Memory excludes charges retained by other cgroups, including preloaded runtime or
 imported pages. Supervisor admission reserves those separately using the locked
-runtime size and workspace capacity. No aggregate host-memory guarantee follows.
+runtime size and workspace capacity. The VM allocator serializes a 1536 MiB active reservation ledger. Each run
+reserves its requested charged-memory limit, workspace capacity (twice for
+export), stdin cap and 16 MiB of supervisor working allowance. The remaining
+512 MiB is the fixed runtime/kernel/supervision allowance in the 2048 MiB VM.
+Insufficient reservation or an unreadable/quarantined reservation rejects new
+admission. Release occurs only with the UID lease after observed extinction and
+teardown. This is admission accounting, not a hard physical memory guarantee;
+retained result artifacts belong to the caller and require separate provisioning.
+No aggregate host-memory guarantee follows.
 The selected accounting semantics and any transient overshoot must appear in the
 report. Requests for strict zero-overshoot memory, cumulative CPU or deadline
 ceilings are unsupported. Clock/scheduling/accounting/delivery delays have no
 finite unconditional bound; conditional bounds require named, measured premises.
 
 The target CPU/deadline polling interval is 10 ms; lateness is reported, never
-assumed absent. Setup has a separate 30000 ms supervisor watchdog with the same
+assumed absent. Setup has a separate 30000 ms watchdog. A fatal alarm covers preparation before
+the collector exists; that loss yields unknown outcome/cleanup and quarantine.
+The collector then uses monotonic polling with the same
 cancellation/unknown semantics. Cancellation kills the owned cgroup and PID scope,
 then observes both extinction and reaping. OOM evidence requires a private sampled
 counter increase, not just SIGKILL. Pids or workspace denial does not force failure
@@ -229,6 +260,10 @@ An unavailable result channel never fabricates success, failure-before-entry or
 cleanup completion. Public result framing has a 65536-byte cap; export data and
 guest bytes use separate bounded artifacts/streams.
 
+Accounting failures produce null usage/peak/event/elapsed/overshoot fields in the
+public report. Output-storage failure produces null observed/captured byte and
+truncation fields; a partial file is not reported as a complete capture.
+
 ## observations: Public information, secrets and proof boundary
 
 Public inputs are the profile/runtime/policy shape and declared limits, provided
@@ -247,5 +282,5 @@ It must show non-expansion of object authority, inherited descendant restriction
 and preservation of protected object contents, with useful allowed witnesses.
 Such a theorem is not noninterference: Linux global observations and allocation,
 timing, cache, scheduling and speculation channels remain explicit obligations.
-No M3.1 confidentiality or native correspondence result is asserted. The destination
+No functional confidentiality or native correspondence result is asserted. The destination
 [§FS-observations.hardware](FS-observations.md#hardware-software-observable-channels) and the stronger-claim rules [§FS-assurance.closure](FS-assurance.md#closure-rules-for-stronger-claims) remain.

@@ -2,9 +2,10 @@
 
 These are design contracts for the staged implementation. M1 supplies a pure
 decoder, checked decoder/bounds and launch-order proofs, an axiom audit, a native
-Linux driver, and an isolated VM demonstration. Native/Linux correspondence and
-full workspace isolation remain later obligations. M2 adds conditional lifecycle
-proofs, a fresh helper, a capable VM and an explicit M4 obligation ledger.
+Linux driver, and an isolated VM demonstration. M2 adds conditional lifecycle
+proofs and a capable VM. M3 adds the useful offline workspace, authority/filter/
+resource models and source-bound native tests. Native/Linux correspondence and
+end-to-end isolation remain explicit M4/M5 obligations.
 
 | Contract | Subject |
 |---|---|

@@ -1,8 +1,8 @@
 # AR-workspace: M3 authority model, Linux realization and evidence plan
 
 Realize [§FS-workspace](../functional-spec/FS-workspace.md#fs-workspace-m3-offline-workspace-contract-version-1) with a separate `m3/` package dependent on the preserved M2
-package. This architecture begins as M3.1; subsequent packages must record actual
-implementation and evidence without upgrading planned claims by implication.
+package. The implementation and evidence live in separate M3 files; the claim register
+is [§FS-assurance.workspace](../functional-spec/FS-assurance.md#workspace-m3-workspace-model-and-vm-evidence) and the handoff is `docs/reviews/M3-handoff.md`.
 [§DA-m3-profile](../decisions/architectural/DA-m3-profile.md#da-m3-profile-frozen-runtime-copied-workspace-and-distinct-run-authority) records the runtime, identity and snapshot decisions.
 
 ## runtime: Frozen input and provenance
@@ -26,15 +26,20 @@ Layer composition uses [OCI image-spec v1.1.1](https://github.com/opencontainers
 Verify size/hash before parsing, apply whiteouts to previous-layer entries, reject
 escaping/duplicate/conflicting archive names, preserve reviewed symlinks and
 resolve hard links within the artifact. Never extract through host symlinks, run
-maintainer scripts, or use `ldd` on guest binaries. Before M3.3 acceptance, inspect
-ELF PT_INTERP/DT_NEEDED passively and validate the required workload paths in the VM.
+maintainer scripts, or use `ldd` on guest binaries. `scripts/m3_elf.py` inspects ELF PT_INTERP/DT_NEEDED without loading code.
+`profiles/m3/elf-closure.json` records 792 ELF objects (including one relocatable
+link input), resolved libraries and hashes. Only the explicitly unsupported
+Tk module lacks its Tcl/Tk libraries. This is a presence/hash audit, not a proof
+of the dynamic linker search, symbol resolution or ABI; the VM exercises the
+required workload paths.
 Optional GUI extensions are outside the supported subset, not silent additions
 to the closure. Missing required dependencies fail admission/workload acceptance.
 
 ## interfaces: Portable objects, state and effect results
 
-The planned modules are `m3/LeanCageM3/Policy.lean`, `Authority.lean`,
-`Lifecycle.lean`, `Filter.lean`, `Resources.lean`, `Results.lean` and `Proofs.lean`.
+The modules are `m3/LeanCageM3/Policy.lean`, `Authority.lean`,
+`AuthorityProofs.lean`, `Lifecycle.lean`, `ProcessProofs.lean`, `Filter.lean`,
+`Resources.lean`, `Results.lean`, `API.lean` and `Proofs.lean`.
 Use [§AR-core.state](AR-core.md#state-extensible-state-and-effects) and [§AR-core.adversary](AR-core.md#adversary-quantify-over-hostile-execution): policy is independent of syscall flags,
 while the Linux layer gives explicit ABI/effect interpretations.
 
@@ -81,8 +86,12 @@ Separate stdout/stderr pipes, frozen stdin, owned cgroup and private reports are
 created by the supervisor. Close every inherited alias before exec. UID allocation
 and quarantine are supervisor state, outside the guest namespaces. Same-run
 signals/fork/thread/exec retain scope; foreign operations require explicit denial.
-The exact allowed syscall table and argument guards are owned by M3.3, including
-the clone mask, architecture rejection and explicit ENOSYS fallback.
+`profiles/m3/syscalls.json` enumerates every allowed syscall and the clone/ABI/
+ENOSYS guards. The filter header is byte-compared with the universally proved Lean
+program. Ordinary mknod/mknodat permit same-workspace FIFOs; device creation still
+requires the absent kernel capability, and workspace mounts are nodev. ioctl/prctl
+and path syscalls retain explicit object/credential contracts; cBPF cannot inspect
+pointer contents. Unknown calls return EPERM; wrong ABI/x32 kills the process.
 
 ## transport: Private events and public result
 
@@ -95,10 +104,33 @@ error pipe is not the public result API and its EOF is not exec evidence.
 Freeze a little-endian 32-byte frame header: magic `LC3R`, UInt16 version, UInt16
 kind, UInt64 run identity, UInt64 sequence, UInt32 payload length, UInt32 zero
 reserved field. Maximum total frame size is 65536. Kind-specific payloads encode
-typed setup, entry, final status and cancellation events; M3.3 must enumerate them
-before implementing the decoder. Check exact lengths, ownership/run/sequence,
+typed setup, entry, final status and cancellation events as enumerated below. Check exact lengths, ownership/run/sequence,
 reserved fields, EOF and duplicate final messages. Never deserialize a native C
 struct as the protocol without explicit byte and padding handling.
+
+Version 1 currently uses exactly 160 bytes (128-byte payload). Public sequence is
+zero. Internal sequence starts at zero and increases across admitted (kind 5),
+exec-observed (6) and one final frame. Public kinds are exit (0), setup error (1),
+signal (2), cancellation (3), unknown (4) and successful preflight (7). Payload
+offsets from frame start are: stage/detail/entry/cleanup/triggers/UID as UInt32 at
+32/36/40/44/48/52; CPU/peak/stdout/stderr/elapsed as UInt64 at 56/64/72/80/88;
+export state/omission count at 96/100; raw 32-byte export digest at 104; UInt64
+OOM and pids-denial counts at 136/144; export errno at 152; zero reserved at 156.
+Export states are discarded/complete/failed/unavailable (0/1/2/3). Cancellation
+bits are request/deadline/CPU/output/accounting/setup-watchdog (1/2/4/8/16/32).
+A malformed internal frame makes termination unknown while retaining an already
+observed exec. A valid final leader result racing a requested kill retains that
+result and the cancellation bits. Guest streams are separate files, never frames.
+
+`check` validates a real policy, input snapshots, resource setup, namespaces, root,
+credentials, NNP and the filter, then tears down without executing guest code.
+`run` uses the same helper and persists the typed report; `report` retrieves that
+report by bounded decimal run ID. `identity.json` hashes the normalized native
+argument plan (NUL-separated fields excluding the transient parent PID) and actual
+filter bytes. `/m3-assurance.json` in the VM binds source and compiled binaries.
+Policy syntax recognition and artifact hash implementation remain in the explicit
+compiler/parser/crypto correspondence boundary; the audited Lean theorems state
+the precise decoder-validation implications and equivalence they establish.
 
 The collector multiplexes trusted events, output and cancellation without waiting
 for a caller to consume guest bytes. Bounded spool buffers and capture prefixes
@@ -114,6 +146,13 @@ and the controller remain outside it. No guest cgroupfs mount or writable handle
 exists. Reject missing controllers, delegation conflicts, failed readback, counter
 overflow and inability to attach the guest before entry.
 
+The resolved `tests/m3/linux-6.18.59.config` adds `CONFIG_FILE_LOCKING=y` and `CONFIG_BINFMT_SCRIPT=y` to M2.
+Its newly visible NFS and SMB server options remain disabled. `CONFIG_BLOCK=n`
+means the swap subsystem is absent; require this named configuration and reject
+a present `/proc/swaps`. Do not silently fall back from a failed swap-controller
+write on a swap-capable kernel. The initial allocator probe correctly failed with
+ENOSYS before the file-locking change; that failure is not denial evidence.
+
 The selected Linux semantics are in the
 [pinned kernel's cgroup v2 contract](https://raw.githubusercontent.com/torvalds/linux/1253a6aa5d104312bf0992afacc15220ae35bdf9/Documentation/admin-guide/cgroup-v2.rst).
 `memory.max` may be transiently exceeded; `pids.max` counts threads as tasks;
@@ -121,13 +160,27 @@ The selected Linux semantics are in the
 The contract separately records sampled usage, cancellation and final observations.
 M3.5 must establish controller ownership, inherited placement, no escape/migration,
 and extinction observations, and test lower-bound positive workloads as well as
-actual limit failures. Scheduler/kernel/kill progress remain liveness premises.
+actual limit failures. The active reservation ledger and quarantine are specified
+in [§FS-workspace.resources](../functional-spec/FS-workspace.md#resources-units-ownership-and-failure). The guest clock uses the recorded ACPI-PM clocksource;
+no physical-clock accuracy claim follows. Scheduler/kernel/kill progress remain
+liveness premises.
 
-## proofs: Planned declarations and nonvacuity
+## proofs: Declarations, local contracts and nonvacuity
 
-The following are obligations, not existing theorem names. Each requires a full
-type, exact hypotheses, transitive axioms and executable source identity in the
-eventual M3 assurance manifest. Preserve the complete M1 and M2 theorem baselines.
+The table gives the original obligation names. The exact implemented declarations,
+full types and transitive axioms are in `assurance/m3-claims.json`; the mapping and
+limits are reviewed in `docs/reviews/M3-handoff.md`. Preserve the complete M1 and M2
+theorem baselines. `Authority` specifies local object operations: permission checks
+are part of those operation contracts, not proved facts about Linux. Its names are
+guest aliases, not a full VFS parser. `Processes` copies actual credential/root/
+namespace/handle/filter fields at birth. Proving that native descriptors, VFS lookup,
+process creation and Linux enforcement implement these operations is M4. No
+model theorem is advertised as a proof of the C helper or the Linux VFS.
+The issued-handle invariant starts with closed inherited handles and preserves
+read/write authority and live object generations over arbitrary request traces.
+A separate unguarded-read corollary shows that these reachable handles need no
+additional permission check at read time. Process traces similarly start empty
+and establish actual credential/root/filter/scope inheritance on admission.
 
 | Target declaration | Required quantification and useful witness |
 |---|---|
@@ -176,7 +229,7 @@ integer model and external calls are the reason for selection; see the upstream
 Rocq/frontend tooling separately before running it; do not change Lean/Lake pins.
 Review upstream licensing before vendoring or redistributing tooling.
 
-Before expanding the native helper, isolate the actual bounded operation dispatcher
+As the first M4 correspondence experiment, isolate the actual bounded operation dispatcher
 and terminal-failure/report-framing slice, at most 300 authored C lines, with
 explicit syscall/effect stubs. Include short reads/writes, EINTR, invalid operation
 bytes, signed errno conversion, pointer bounds and overflow. Retain the real branch
@@ -190,12 +243,13 @@ A Rocq proof is not a Lean theorem: either check a bridge or retain that connect
 as open. External stubs cannot assert successful containment or hide errors.
 This experiment does not certify the existing GCC executable or Linux effects.
 
-Replan before native expansion if the actual slice cannot be represented without
+Replan the correspondence route before claiming native verification if the actual slice cannot be represented without
 assuming its conclusion, erasing asynchronous failure, treating pointer-based
 effects as arbitrary success, or replacing production code with an unconnected
 toy. Record unsupported C/FFI/concurrency constructs and a revised semantics or
 smaller maintainable native boundary. The finite experiment is an M4 feasibility
-gate, not a commitment to prove an entire kernel/compiler during M3.
+gate. M3 records the candidate route and preserves this extraction boundary; an
+unrun or unsuccessful experiment remains open and cannot support native verification.
 
 ## ownership: Package files and shared interfaces
 

@@ -9,20 +9,18 @@ grow a verified Lean implementation, using Velvet where it helps with imperative
 proofs. The roadmap extends through Linux enforcement, executable correspondence,
 and software-observable hardware side channels.
 
-**Status: M1 and M2 lifecycle proof slices complete for their stated profiles.**
-M2 adds a decoder-controlled Lean launcher, a fresh VM-only native helper, sealed
-executable handles, namespace/credential setup, descendant supervision and
-cancellation, plus general fixed-filter semantics. Its conditional model proofs
-and source-bound VM evidence are recorded in the [M2 review](docs/reviews/M2-handoff.md).
-Full workspace confinement, native/Linux correspondence and hardware-channel
-security remain later milestones.
-M3 is in progress: the [workspace contract](docs/functional-spec/FS-workspace.md),
-[runtime/policy pins](profiles/m3/runtime-lock.json) and [implementation plan](docs/architecture/AR-workspace.md)
-are specified. Workspace confinement and resource enforcement remain unimplemented.
+**Status: M1–M3 accepted for their stated conditional profiles.** M3 adds an offline Dash/Python workspace,
+immutable runtime, private copied inputs, controlled I/O/export, confined
+descendants, cgroup limits and real check/run/report commands. Its model proofs
+and source-bound VM evidence are documented in the [M3 review](docs/reviews/M3-handoff.md).
+Native/Linux/compiler/loader correspondence remains M4; confidentiality and
+hardware-channel security remain later obligations. No production profile is
+certified by these conditional model results and tests.
 
 - [Plan and milestones](docs/roadmap.md)
 - [Preserved M1 readiness review](docs/reviews/M1-readiness.md)
 - [M2 lifecycle and handoff](docs/reviews/M2-handoff.md)
+- [M3 workspace and handoff](docs/reviews/M3-handoff.md)
 - [Functional specification](docs/functional-spec/README.md)
 - [Architecture](docs/architecture/README.md)
 - [First filter and launch boundary](docs/architecture/AR-filter-slice.md)
@@ -44,11 +42,13 @@ ignored `.tools/` directory and fetches the pinned Lean dependencies. No global
 Grund installation or agent settings are changed. The wrapper supports GNU/Linux
 on x86_64 and aarch64; the initial setup is validated on x86_64.
 
-The gate checks both proof packages, compiles the native drivers, and validates
+The gate checks all three proof packages, compiles the native drivers, and validates
 archived VM evidence against current source identities. For a fresh VM replay on the
 recorded Ubuntu 24.04 host, use `python3 scripts/run_m1_vm.py --prepare`; local
 downloads/builds stay under `.tools/`. For M2 use `python3 scripts/run_m2_vm.py --prepare`; this builds its separate
-capable kernel and executes workloads only in the disposable VM. See the
+capable kernel and executes workloads only in the disposable VM. For M3 run
+`python3 scripts/run_m3_vm.py --prepare`, then `python3 scripts/run_m3_vm.py` to
+build and replay its separate runtime/workspace profile. See the
 [development guide](docs/development.md).
 
 The development workflow follows [§AR-tooling](docs/architecture/AR-tooling.md#ar-tooling-keep-development-reproducible-and-project-local). Linux enforcement and native

@@ -9,8 +9,11 @@ audit in [§AR-filter-decoder](docs/architecture/AR-filter-decoder.md#ar-filter-
 and reviewed evidence under [§AR-m1-launch](docs/architecture/AR-m1-launch.md#ar-m1-launch-launch-model-linux-driver-and-isolated-demonstration). M2 extends that baseline with [§AR-lifecycle](docs/architecture/AR-lifecycle.md#ar-lifecycle-m2-controller-native-helper-and-evidence).
 M3 follows the contract [§FS-workspace](docs/functional-spec/FS-workspace.md#fs-workspace-m3-offline-workspace-contract-version-1) and architecture [§AR-workspace](docs/architecture/AR-workspace.md#ar-workspace-m3-authority-model-linux-realization-and-evidence-plan) in the
 package order [§RM-roadmap.m3.packages](docs/roadmap.md#m3packages-build-the-profile-in-reviewable-slices);
-read the [M2 handoff review](docs/reviews/M2-handoff.md) first. Follow the assigned M3 packages in dependency order; do not treat later M4/M5
-correspondence and hardware work as completed by the M3 implementation.
+read the [M2 handoff review](docs/reviews/M2-handoff.md) and accepted
+[M3 handoff review](docs/reviews/M3-handoff.md) first. The next assignment is the
+bounded M4 experiment in [§AR-workspace.experiment](docs/architecture/AR-workspace.md#experiment-bounded-first-native-semantics-connection); its tooling and semantics
+connection remain unimplemented. Follow the assigned package; M3 does not complete
+native/Linux correspondence or hardware confidentiality.
 
 All `grund` commands in the managed instructions below mean the repository-local
 `./scripts/grund.sh` wrapper, run from the project root. Never substitute the older

@@ -32,12 +32,12 @@ These counts identify coverage and evidence, not a measure of security strength.
 
 | Claim | Contract | State | Present evidence | Missing connection |
 |---|---|---|---|---|
-| Validated authority | [§FS-policy](FS-policy.md#fs-policy-grant-only-explicit-supported-authority) | Planned | Specification | Implementation and theorem |
+| Validated authority | [§FS-workspace.authority](FS-workspace.md#authority-objects-and-rights) | Conditional model proofs; VM implementation | [§FS-assurance.workspace](FS-assurance.md#workspace-m3-workspace-model-and-vm-evidence); reachable issued handles and process inheritance | Native/VFS/loader correspondence and broader policies |
 | Canonical filter decoding | [§FS-filter-loading.input.correctness](FS-filter-loading.md#inputcorrectness-decoder-proof-boundary) | Model-proved; pure executable checks | [§FS-assurance.decoder](FS-assurance.md#decoder-m12-decoder-claim-record); exact acceptance, bounds, rejection and nonvacuity proofs; axiom gate | Native executable and FFI field-copy correspondence |
 | M1 fail-closed launch order | [§FS-filter-loading.installation.model](FS-filter-loading.md#installationmodel-executable-launch-semantics-and-proof-obligations) | Model-proved; VM-tested native slice | [§FS-assurance.launch](FS-assurance.md#launch-m13-launch-order-claim-record) and [§FS-assurance.demo](FS-assurance.md#demo-m14-isolated-linux-test-record); actual-decoder linkage, exact successful order, terminal failures, native call map and 13 VM cases | Native/source/compiler/runtime/FFI and Linux correspondence; broader M2 lifecycle |
 | M2 owned lifecycle and filter action | [§FS-lifecycle.model](FS-lifecycle.md#model-executable-controller-and-effect-contracts) and [§FS-lifecycle.filter](FS-lifecycle.md#filter-general-action-of-the-preserved-m1-program) | Model-proved; VM-tested; handoff gate passed | [§FS-assurance.lifecycle](FS-assurance.md#lifecycle-m2-lifecycle-and-filter-semantics-claim-record); exact plan, ownership/inheritance and general bytecode action; source-bound VM evidence | Native/Linux correspondence; M3 authority; M5 hardware channels |
-| Native workload confinement | [§FS-workspace.authority](FS-workspace.md#authority-objects-and-rights) | M3 contract specified; implementation pending | [§FS-assurance.workspace](FS-assurance.md#workspace-m3-contract-and-pending-evidence) | Object/effect model, enforcement proof and VM acceptance |
-| Bounded resources | [§FS-workspace.resources](FS-workspace.md#resources-units-ownership-and-failure) | M3 contract specified; enforcement pending | Charged-memory, task, bandwidth, sampled-budget and deadline semantics | Model, native enforcement and overshoot evidence |
+| Native workload confinement | [§FS-workspace.authority](FS-workspace.md#authority-objects-and-rights) | M3 model proofs, implementation and source-bound VM evidence; gate passed | [§FS-assurance.workspace](FS-assurance.md#workspace-m3-workspace-model-and-vm-evidence); object/handle/alias model and workspace helper | Native/Linux correspondence |
+| Bounded resources | [§FS-workspace.resources](FS-workspace.md#resources-units-ownership-and-failure) | Conditional model proofs; native VM limit cases | Scope/capture/reservation/sample proofs; charged memory/task/CPU/deadline observations | Linux accounting and progress/overshoot premises |
 | Functional confidentiality | [§FS-observations.logical](FS-observations.md#logical-functional-observations) | Planned | Observation requirements | Noninterference theorem and correspondence |
 | Hardware-aware confidentiality | [§FS-observations.hardware](FS-observations.md#hardware-software-observable-channels) | Planned | Scope and research obligations | Model, mechanisms, proof, deployed profile |
 | Deployed executable correctness | [§GOAL-end-to-end](../goals.md#goal-end-to-end-connect-the-policy-to-the-deployed-artifact) | Planned | Roadmap | Compiler/runtime/FFI and Linux correspondence |
@@ -320,28 +320,82 @@ hardware fidelity remain open M4/M5 obligations. The public fixture root and bro
 filter are not an M3 workspace policy, functional confidentiality proof or
 production sandbox. The destination [§FS-observations.hardware](FS-observations.md#hardware-software-observable-channels) remains unchanged.
 
-## workspace: M3 contract and pending evidence
+## workspace: M3 workspace model and VM evidence
 
-**State: contract specified; no M3 security theorem or VM result yet.**
-[§FS-workspace](FS-workspace.md#fs-workspace-m3-offline-workspace-contract-version-1) names the supported runtime/workloads, object authority, interference,
-policy, private reporting, resource semantics, export and observations. The runtime
-lock pins four OCI layers and the exact loader/shell/Python bytes, 97 package
-versions and their license notices. Hash inspection establishes artifact identity,
-not compatibility, native correspondence or confinement.
+**State: M3.1–M3.7 accepted for the conditional model and tested VM profile;
+full handoff gate passed on 2026-10-31.** [§FS-workspace](FS-workspace.md#fs-workspace-m3-offline-workspace-contract-version-1) fixes the supported offline
+shell/Python runtime, object authority, interference, disclosure, resource and
+private-report contracts. It is a VM-only conditional profile; no production
+sandbox or end-to-end executable correctness is asserted.
 
-The planned proof obligations include authority preservation, inherited restrictions,
-entry ordering, policy-to-filter action, report knowledge, resource scope and
-lifecycle event projection. No Lean declaration/type/axiom record exists for these
-M3 targets yet; no helper/controller binary, M3 kernel/image identity, native
-workload transcript or production profile is accepted. These absent fields are
-implementation/evidence obligations, not inherited M2 guarantees.
+**Propositions:** `assurance/m3-claims.json` records full types, hypotheses and
+transitive axioms for all 419 M3 theorem declarations across 12 modules, with
+60 named authored claims. The
+plain-language mapping is `docs/reviews/M3-handoff.md`:
 
-M2's fixed UID/static-image/decoder properties do not prove this versioned runtime,
-per-run identity or workspace contract. Native/Linux/loader/cgroup/FFI and artifact
-correspondence remain open, as do termination premises and all hardware channels.
-No confidentiality theorem follows from the specified output policy. Update this
-record only from checked declarations and source-bound executable evidence under
-[§FS-assurance.evidence](FS-assurance.md#evidence-required-claim-record) and [§FS-assurance.closure](FS-assurance.md#closure-rules-for-stronger-claims).
+| Declarations in `LeanCageM3` | Security scope and premises |
+|---|---|
+| `reachable_issued_handles`, `reachable_unguarded_read`, `issued_write_preserves_protected` | Starting with closed inherited handles and arbitrary object/name maps, every finite request trace preserves live authorized handles. Held-handle reads/writes need no new ownership check; guest name tricks do not grant outside/sibling authority. |
+| `guest_preserves_protected`, `guest_trace_preserves_protected`, `runtime_trace_preserved` | Every guest step/guest-only trace preserves existing nonwritable objects; runtime bytes also persist under permitted ordinary external writes. Host/sibling writes to their own objects remain explicit. |
+| `descendant_inherits`, `reachable_processes_safe` | Admission establishes full run credentials/root/namespace/grants/NNP/filter/scope; arbitrary modeled fork/exec/exit traces retain them. |
+| `validatePolicy_iff`, `decodePolicy_iff`, `decodePolicy_bounds`, `accepted_policy_filter_action` | Exact typed bound checks, byte-decoder decomposition into structural recognition plus checks, and actual accepted-policy linkage to universal filter semantics. No separate external JSON grammar or native parser refinement theorem. |
+| `Filter.program_action`, `Filter.policy_filter_action` | Every UInt32 architecture/syscall/argument-word input produces the specified allow/EPERM/ENOSYS/kill action for the generated instruction list. No sampled-input premise. |
+| `entry_requires_receipts`, `reachable_entry_ordered`, `lifecycle_projection` | Entry needs the complete ordered setup receipts; successful histories erase to M2's operation plan without borrowing its fixed-UID/image/filter invariant. |
+| `private_report_knowledge`, `decodeResult_valid`, `cancel_not_completion`, `release_requires_extinction` | Guest byte streams cannot establish trusted knowledge; decoded results satisfy the explicit checks; cancellation/report loss cannot invent completion or cleanup. Native transport ownership remains an effect contract. |
+| `resource_scope`, sampling/OOM/capture/task/lease/reservation lemmas | Members retain the run scope; delivered monotone samples trigger requests; OOM evidence needs an increase; explicit task/capture/admission bounds and no reuse before extinction/release. Linux accounting and scheduling remain assumptions. |
+| `reachable_model_safety`, useful execution witnesses | Composition of those local model properties over arbitrary component traces, with inhabited read/write, entry and descendant executions; not a native concurrent simulation. |
+
+**Foundations and limits:** the transitive logical axiom union is only `propext`,
+`Classical.choice`, `Quot.sound`. The auditor rejects custom, unfinished and
+compiler-trust axioms and compares the complete declaration inventory. Models
+use UInt32/UInt64 identities/words plus bounded values; concrete ABI conversions,
+VFS/mount/mmap effects, loader/runtime, private pipe authenticity and Linux resource
+behavior remain explicit correspondence obligations. These are partial-correctness
+results, not termination, functional noninterference or hardware-channel proofs.
+
+**Native and test evidence:** 60 fresh VM workload cases, three API checks and
+six death/cancellation boundaries pass. The separate `m3/` package and original static helper
+implement copied input/stdin, frozen runtime, private workspace, per-run IDs,
+namespace/capability/handle restriction, generated cBPF, cgroups, private framed
+results, bounded output and post-extinction export. Actual `check`, `run` and
+`report` use the same helper. The [acceptance matrix](../reviews/M3-acceptance.md)
+maps useful workloads, denial/failure/race cases and finite coverage limits.
+`assurance/m3-vm-evidence.json`, `m3-vm-transcript.log` and
+`m3-image-inventory.json` hold source-bound outcomes, exact executable/kernel/image/
+emulator/firmware/library hashes, versions, command, explicit environment overrides
+(with other host variables inherited) and the complete image inventory. The theorem audit adds checked `.olean` identities in
+`.tools/assurance/m3-audit.json`. These are local evidence artifacts, not a release.
+
+**Runtime/provenance:** `profiles/m3/runtime-lock.json` binds four OCI layers/diff
+IDs, Python 3.13.18, Dash 0.5.12-2, glibc 2.36, exact entrypoint/loader bytes and
+97 package notices. Passive ELF inspection covers 792 objects; only unsupported
+Tk lacks dependencies. Upstream artifact/build identity is not a reproduced build
+attestation. Linux 6.18.59 has a separate reviewed M3 configuration. The functional
+VM uses QEMU TCG, one `max` vCPU, 2048 MiB and ACPI-PM, with no external NIC, disk,
+KVM or host mount. Physical CPU/microcode verification is absent because M3 makes
+no physical-hardware claim.
+
+**Validation:** the full `./scripts/check.sh` passed: 71 Python tests, 168 Lean
+guards, all three theorem audits, native compilation and archived evidence.
+M3 adds 29 Python tests and 77 guards, with 82 reviewed source/evidence identities.
+Run `./scripts/check.sh` for full proof, specification, pure fixture,
+compile-only and archived evidence checks. Explicit `python3 scripts/run_m3_vm.py`
+replays the VM; `--check-artifacts` additionally compares current artifacts.
+The archive checker works from a moved checkout and rejects stale/mixed identities
+or incomplete/tampered observations. Preserve all 445 M1 and 274 M2 declarations,
+dependency/toolchain pins, native sources and raw evidence; only reviewed shared
+source fingerprints change in their current manifests.
+
+**Residual assumptions:** A-logic, A-policy, A-model, A-entry, A-linux, A-executable,
+A-platform, A-hardware, A-observer and the named liveness/accounting aspects of
+A-resources. Root-owned immutable artifacts and reserved UID/cgroup allocation
+remain trusted. Unknown cleanup quarantines identities and active reservations;
+retained results require operator capacity. All native/parser/loader/VFS/FFI/
+compiler/Linux/crypto and artifact connections stay open under M4. The selected
+Clight feasibility experiment is unrun; neither source mapping nor VM testing
+substitutes for it. All timing/cache/contention/speculation observations in
+[§FS-observations.hardware](FS-observations.md#hardware-software-observable-channels) remain M5. No secrecy guarantee follows from output
+being explicitly authorized.
 
 ## assumptions: Initial assumption and obligation register
 

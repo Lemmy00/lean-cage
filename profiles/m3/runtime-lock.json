@@ -2,7 +2,7 @@
   "schema_version": 1,
   "profile": "linux-x86_64-offline-workspace-m3-v1",
   "runtime_id": "python-3.13.18-dash-bookworm-amd64-v1",
-  "status": "artifact-inspected; workload-validation-pending",
+  "status": "artifact-inspected; VM acceptance recorded in assurance/m3-vm-evidence.json",
   "registry": "https://registry-1.docker.io",
   "repository": "library/python",
   "discovery_tag": "3.13-slim-bookworm",
@@ -55,8 +55,9 @@
   "rootfs": {
     "semantics": "OCI image-spec v1.1.1 ordered layers with whiteouts",
     "scope": "entire merged filesystem; profile overlays specified in FS-workspace.filesystem",
-    "entries": 6573,
-    "regular_file_bytes": 117576825
+    "entries": 6572,
+    "regular_file_bytes": 117576825,
+    "entry_count_convention": "merged non-root entries; archive root directory excluded"
   },
   "entrypoints": {
     "shell": {
@@ -974,7 +975,8 @@
     "entrypoint_bytes_hashed": true,
     "package_notices_resolved": true,
     "executed": false,
-    "native_loader_and_workload_compatibility": "pending M3.3 VM validation",
-    "provenance_boundary": "registry content identity and upstream metadata, not reproducible-build or signature attestation"
+    "native_loader_and_workload_compatibility": "supported subset exercised in the M3 disposable VM; see assurance/m3-vm-evidence.json",
+    "provenance_boundary": "registry content identity and upstream metadata, not reproducible-build or signature attestation",
+    "executed_scope": "passive host inspection only; separate VM workloads are recorded by the acceptance harness"
   }
 }

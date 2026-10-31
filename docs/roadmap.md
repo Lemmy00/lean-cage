@@ -5,7 +5,9 @@ isolation, and software-observable side-channel guarantees for named deployment
 profiles: [§GOAL-end-to-end](goals.md#goal-end-to-end-connect-the-policy-to-the-deployed-artifact), [§GOAL-native-isolation](goals.md#goal-native-isolation-contain-arbitrary-native-workloads), and [§GOAL-confidentiality](goals.md#goal-confidentiality-account-for-software-observable-leakage).
 Each milestone must leave reusable contracts and evidence for the next one.
 
-**Current stage: M1/M2 preserved; M3 authority contract specified, implementation in progress.**
+**Current stage: M1–M3 accepted for their stated conditional profiles.**
+The [M3 handoff](reviews/M3-handoff.md) records the useful offline workspace,
+checked model claims and fresh VM evidence; the bounded M4 experiment is next.
 The source/ABI slice, pure decoder/bounds proofs, exact launch-order proofs,
 native Linux driver, and 13-case isolated VM demonstration are recorded under
 [§AR-filter-slice](architecture/AR-filter-slice.md#ar-filter-slice-m11-source-map-and-typed-contract-boundary), [§AR-filter-decoder](architecture/AR-filter-decoder.md#ar-filter-decoder-byte-decoder-proofs-and-executable-evidence-audit), and [§AR-m1-launch](architecture/AR-m1-launch.md#ar-m1-launch-launch-model-linux-driver-and-isolated-demonstration). The claim register
@@ -140,7 +142,10 @@ launcher, an expanded test profile, and a precise M4 proof-obligation ledger.
 
 ## m3: Useful offline workspace sandbox
 
-**Status: M3.1 contract specified; M3.2–M3.7 implementation/evidence pending.** Deliver
+**Status: M3.1–M3.7 accepted for the conditional offline workspace profile.**
+The full gate and fresh 60-case VM replay passed on 2026-10-31, including three
+API checks and six death/cancellation boundaries. The [M3 review](reviews/M3-handoff.md) records delivery
+and remaining assumptions. The profile supplies
 [§FS-compatibility.matrix](functional-spec/FS-compatibility.md#matrix-initial-compatibility-matrix) for a real offline shell/Python workspace:
 read-only runtime, private writable workspace, controlled I/O, confined
 descendants, and explicitly supported resource limits.
@@ -231,14 +236,16 @@ records implementing [§FS-policy.authority](functional-spec/FS-policy.md#author
 
 The M3.1 artifacts are [§FS-workspace](functional-spec/FS-workspace.md#fs-workspace-m3-offline-workspace-contract-version-1), [§AR-workspace](architecture/AR-workspace.md#ar-workspace-m3-authority-model-linux-realization-and-evidence-plan), [§DA-m3-profile](decisions/architectural/DA-m3-profile.md#da-m3-profile-frozen-runtime-copied-workspace-and-distinct-run-authority), the
 `profiles/m3/` runtime lock/policy schema/example and [acceptance matrix](reviews/M3-acceptance.md).
-M3.2 owns the next implementation: object/effect model, frozen runtime/workspace
-construction, handle/alias rules and failure cases. No workspace result is yet
-claimed by this contract package.
+M3.2–M3.7 now supply the object/effect model, frozen runtime/workspace
+construction, handle/alias rules, resource supervision, public interface and
+evidence. Their precise model/test claims are [§FS-assurance.workspace](functional-spec/FS-assurance.md#workspace-m3-workspace-model-and-vm-evidence); this
+original entry assignment is retained to explain the dependency boundary.
 
 **Exit:** reviewed contract, decision record, runtime manifest, proof/assumption
 ledger and executable-test plan; Grund formatting and the full repository gate
 pass. Update the assurance register to distinguish these planned claims from the
-completed M2 result. Then assign M3.2; do not mark workspace confinement complete.
+completed M2 result. M3.2–M3.7 have separate implementation and acceptance gates;
+the M3.1 contract alone does not complete workspace confinement.
 
 ## m4: Linux and executable correspondence
 
@@ -333,8 +340,9 @@ the three declared logical foundations. [§FS-assurance.launch](functional-spec/
 
 M2 extends this preserved baseline with [§FS-lifecycle](functional-spec/FS-lifecycle.md#fs-lifecycle-m2-owned-launcher-lifecycle) and [§AR-lifecycle](architecture/AR-lifecycle.md#ar-lifecycle-m2-controller-native-helper-and-evidence). The
 full M2 implementation is reviewed in [the M2 handoff](reviews/M2-handoff.md).
-The next implementation assignment after its full gate is **M3.1**, beginning
-with [§RM-roadmap.m3.packages](roadmap.md#m3packages-build-the-profile-in-reviewable-slices). The earlier M2 entry assignment was
+The subsequent M3 packages are documented in [§RM-roadmap.m3.packages](roadmap.md#m3packages-build-the-profile-in-reviewable-slices) and the
+[M3 handoff](reviews/M3-handoff.md). After that gate, start the bounded first M4
+experiment in [§AR-workspace.experiment](architecture/AR-workspace.md#experiment-bounded-first-native-semantics-connection). The earlier M2 entry assignment was
 **M2.1: lifecycle contract and execution design** in
 [§RM-roadmap.m2.packages](roadmap.md#m2packages-bounded-work-packages). Read the [M1 review](reviews/M1-readiness.md) and
 [§FS-filter-loading.installation.entry](functional-spec/FS-filter-loading.md#installationentry-entry-conditions-and-interference), inventory every trusted entry condition,

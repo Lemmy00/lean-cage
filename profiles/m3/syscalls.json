@@ -1,0 +1,994 @@
+{
+  "schema": "m3-offline-v1",
+  "kernel_commit": "1253a6aa5d104312bf0992afacc15220ae35bdf9",
+  "allow": [
+    {
+      "number": 0,
+      "name": "read",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 1,
+      "name": "write",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 2,
+      "name": "open",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 3,
+      "name": "close",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 4,
+      "name": "stat",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 5,
+      "name": "fstat",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 6,
+      "name": "lstat",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 7,
+      "name": "poll",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 8,
+      "name": "lseek",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 9,
+      "name": "mmap",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 10,
+      "name": "mprotect",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 11,
+      "name": "munmap",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 12,
+      "name": "brk",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 13,
+      "name": "rt_sigaction",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 14,
+      "name": "rt_sigprocmask",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 15,
+      "name": "rt_sigreturn",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 16,
+      "name": "ioctl",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 17,
+      "name": "pread64",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 18,
+      "name": "pwrite64",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 19,
+      "name": "readv",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 20,
+      "name": "writev",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 21,
+      "name": "access",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 22,
+      "name": "pipe",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 23,
+      "name": "select",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 24,
+      "name": "sched_yield",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 25,
+      "name": "mremap",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 26,
+      "name": "msync",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 27,
+      "name": "mincore",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 28,
+      "name": "madvise",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 32,
+      "name": "dup",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 33,
+      "name": "dup2",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 34,
+      "name": "pause",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 35,
+      "name": "nanosleep",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 36,
+      "name": "getitimer",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 37,
+      "name": "alarm",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 38,
+      "name": "setitimer",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 39,
+      "name": "getpid",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 57,
+      "name": "fork",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 58,
+      "name": "vfork",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 59,
+      "name": "execve",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 60,
+      "name": "exit",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 61,
+      "name": "wait4",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 62,
+      "name": "kill",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 63,
+      "name": "uname",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 72,
+      "name": "fcntl",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 73,
+      "name": "flock",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 74,
+      "name": "fsync",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 75,
+      "name": "fdatasync",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 76,
+      "name": "truncate",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 77,
+      "name": "ftruncate",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 78,
+      "name": "getdents",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 79,
+      "name": "getcwd",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 80,
+      "name": "chdir",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 81,
+      "name": "fchdir",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 82,
+      "name": "rename",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 83,
+      "name": "mkdir",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 84,
+      "name": "rmdir",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 85,
+      "name": "creat",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 86,
+      "name": "link",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 87,
+      "name": "unlink",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 88,
+      "name": "symlink",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 89,
+      "name": "readlink",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 90,
+      "name": "chmod",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 91,
+      "name": "fchmod",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 92,
+      "name": "chown",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 93,
+      "name": "fchown",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 94,
+      "name": "lchown",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 95,
+      "name": "umask",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 96,
+      "name": "gettimeofday",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 97,
+      "name": "getrlimit",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 98,
+      "name": "getrusage",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 99,
+      "name": "sysinfo",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 100,
+      "name": "times",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 102,
+      "name": "getuid",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 104,
+      "name": "getgid",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 107,
+      "name": "geteuid",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 108,
+      "name": "getegid",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 110,
+      "name": "getppid",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 111,
+      "name": "getpgrp",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 112,
+      "name": "setsid",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 113,
+      "name": "setreuid",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 115,
+      "name": "getgroups",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 118,
+      "name": "getresuid",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 120,
+      "name": "getresgid",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 121,
+      "name": "getpgid",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 124,
+      "name": "getsid",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 125,
+      "name": "capget",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 127,
+      "name": "rt_sigpending",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 128,
+      "name": "rt_sigtimedwait",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 129,
+      "name": "rt_sigqueueinfo",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 130,
+      "name": "rt_sigsuspend",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 131,
+      "name": "sigaltstack",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 132,
+      "name": "utime",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 133,
+      "name": "mknod",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 137,
+      "name": "statfs",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 138,
+      "name": "fstatfs",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 140,
+      "name": "getpriority",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 143,
+      "name": "sched_getparam",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 145,
+      "name": "sched_getscheduler",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 146,
+      "name": "sched_get_priority_max",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 147,
+      "name": "sched_get_priority_min",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 148,
+      "name": "sched_rr_get_interval",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 149,
+      "name": "mlock",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 150,
+      "name": "munlock",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 151,
+      "name": "mlockall",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 152,
+      "name": "munlockall",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 157,
+      "name": "prctl",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 158,
+      "name": "arch_prctl",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 160,
+      "name": "setrlimit",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 186,
+      "name": "gettid",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 187,
+      "name": "readahead",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 191,
+      "name": "getxattr",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 192,
+      "name": "lgetxattr",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 193,
+      "name": "fgetxattr",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 194,
+      "name": "listxattr",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 195,
+      "name": "llistxattr",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 196,
+      "name": "flistxattr",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 197,
+      "name": "removexattr",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 198,
+      "name": "lremovexattr",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 199,
+      "name": "fremovexattr",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 200,
+      "name": "tkill",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 201,
+      "name": "time",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 202,
+      "name": "futex",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 203,
+      "name": "sched_setaffinity",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 204,
+      "name": "sched_getaffinity",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 217,
+      "name": "getdents64",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 218,
+      "name": "set_tid_address",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 219,
+      "name": "restart_syscall",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 221,
+      "name": "fadvise64",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 222,
+      "name": "timer_create",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 223,
+      "name": "timer_settime",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 224,
+      "name": "timer_gettime",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 225,
+      "name": "timer_getoverrun",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 226,
+      "name": "timer_delete",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 228,
+      "name": "clock_gettime",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 229,
+      "name": "clock_getres",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 230,
+      "name": "clock_nanosleep",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 231,
+      "name": "exit_group",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 232,
+      "name": "epoll_wait",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 233,
+      "name": "epoll_ctl",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 234,
+      "name": "tgkill",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 235,
+      "name": "utimes",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 253,
+      "name": "inotify_init",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 254,
+      "name": "inotify_add_watch",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 255,
+      "name": "inotify_rm_watch",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 257,
+      "name": "openat",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 258,
+      "name": "mkdirat",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 259,
+      "name": "mknodat",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 260,
+      "name": "fchownat",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 261,
+      "name": "futimesat",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 262,
+      "name": "newfstatat",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 263,
+      "name": "unlinkat",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 264,
+      "name": "renameat",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 265,
+      "name": "linkat",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 266,
+      "name": "symlinkat",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 267,
+      "name": "readlinkat",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 268,
+      "name": "fchmodat",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 269,
+      "name": "faccessat",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 270,
+      "name": "pselect6",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 271,
+      "name": "ppoll",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 273,
+      "name": "set_robust_list",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 275,
+      "name": "splice",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 276,
+      "name": "tee",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 277,
+      "name": "sync_file_range",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 278,
+      "name": "vmsplice",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 280,
+      "name": "utimensat",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 281,
+      "name": "epoll_pwait",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 282,
+      "name": "signalfd",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 283,
+      "name": "timerfd_create",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 284,
+      "name": "eventfd",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 285,
+      "name": "fallocate",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 286,
+      "name": "timerfd_settime",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 287,
+      "name": "timerfd_gettime",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 289,
+      "name": "signalfd4",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 290,
+      "name": "eventfd2",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 291,
+      "name": "epoll_create1",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 292,
+      "name": "dup3",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 293,
+      "name": "pipe2",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 295,
+      "name": "preadv",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 296,
+      "name": "pwritev",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 302,
+      "name": "prlimit64",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 309,
+      "name": "getcpu",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 318,
+      "name": "getrandom",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 322,
+      "name": "execveat",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 324,
+      "name": "membarrier",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 325,
+      "name": "mlock2",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 326,
+      "name": "copy_file_range",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 327,
+      "name": "preadv2",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 328,
+      "name": "pwritev2",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 332,
+      "name": "statx",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 334,
+      "name": "rseq",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 436,
+      "name": "close_range",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 439,
+      "name": "faccessat2",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 441,
+      "name": "epoll_pwait2",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    },
+    {
+      "number": 449,
+      "name": "futex_waitv",
+      "argument_contract": "Linux object, credential and scope checks; no pointer inspection by cBPF"
+    }
+  ],
+  "special": {
+    "clone": {
+      "number": 56,
+      "low_flag_mask": "0x013d4fff",
+      "high_flags": 0
+    },
+    "clone3": {
+      "number": 435,
+      "action": "ENOSYS"
+    },
+    "wrong_arch_or_x32": "KILL_PROCESS",
+    "unlisted": "EPERM"
+  }
+}
