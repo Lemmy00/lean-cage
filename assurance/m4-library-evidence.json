@@ -116,8 +116,8 @@
   "claims_sha256": "6bb3267ee4212396cc14096f52bd1185a4f08f7adb7f42cc3e369819e5a04ca6",
   "preserved_sha256": {
     "assurance/m4-primitives-baseline-claims.json": "6a87d4e91fd657fdadc18ffc6ae345d8dcf9d1033b1ed4b9c7454c749b2396af",
-    "assurance/m4-writeall-evidence.json": "f9bfcd184806c9b2cae833ecd1f2e0869770585f26b4f23763f261ba1a9046d3",
-    "assurance/m4-connection-evidence.json": "e559a34d1faea9580a73fe318099b27ba204507be266a7071a1ce58af05e3693",
+    "assurance/m4-writeall-evidence.json": "bf1e9a4972664e4e2b1ae12b1f0f20670e36ebbf6c5210d2af9e3df6a36b03fd",
+    "assurance/m4-connection-evidence.json": "d52ca4c82596747a209a484ded037624388b0c0f505d8b34c6d6bedfdb1a312b",
     "assurance/m4-obligations.json": "77f760ca9447b8ee05ec0e24efc637b35ff6a62356657515ffc68f0999182064",
     "m4/connection/IO.v": "1e0d7a736ddda75467ec2882663d8a02aeb4b65eea0af0f0f04c3b6d7e01e1df",
     "m4/connection/Machine.v": "1469b64799d43d06cd3f8f1ae4430c19bf83947aff230d2de2188b8ad0b44e7d",
@@ -133,12 +133,12 @@
     "assurance/m4-slice.i": "79dd344ee81ba37d15fbf1cc0fc0d8ceeec8f63d751251ece5b1049610556fc7",
     "assurance/m4-slice.v.gz": "0aa10f2e1ac62321990fb0b3ea41d87300c936ad4834fa80a8fad3a72afae28c",
     "assurance/m4-writers-baseline-claims.json": "ef75db88ca4d6936b37f639952ba8733866e344c1dd34c4927e7578a30d34fa7",
-    "assurance/m4-primitives-evidence.json": "eefe16aa2b07311c6d3f318ded9ecfffba40fa321b95c2daf85e7452e3ae6457",
+    "assurance/m4-primitives-evidence.json": "dcce415519f36f035744b3e7272a528e560c4e0ae7d57c03460cf8c6b158f276",
     "m4/connection/Deterministic.v": "5f8e022b5bd52d7d73368fa6d565c282adfa957cc6a96279d6a490af54489ee8",
     "m4/connection/ErrorNumber.v": "a69c020ef146a8fb315ed1c56d4877afa13195dd23306e13e9001b2995dca938",
     "m4/connection/Readers.v": "28ed330d1fec632a2630c7d01f7af57c1957a6e5874db2b14b566456081636e4",
     "assurance/m4-library-baseline-claims.json": "696f5a05ed0384e06006f3c8e0b34a421b9f935566df341da50af599ca347371",
-    "assurance/m4-writers-evidence.json": "857ee1d2a5ea4aaf872c167c1b09c45c1b51918ef80b395dca96391437f216bd",
+    "assurance/m4-writers-evidence.json": "4aa6406a2e034a4dba110f6a1c420eeeef4b282553e0e27b7c907ef9a639c6d6",
     "m4/connection/StoreSteps.v": "fb5604ea1e123b239c667277d0fb4b14a062ff8797d03ec6ae84a4efc950d1a4",
     "m4/connection/WriteBytes.v": "5798582f1bccbd7dc4e5e0d7cd3a704c436b41cdeef8b47ae97d4d06037c907c",
     "m4/connection/Writers.v": "cfdafc7aaf973aac2e2fab0b216c04f4265f3b3a9535e1cb2ba43a26328e3fb5",
@@ -417,6 +417,39 @@
           "previous_sha256": "2b8a2bcb54e5a6389be5fc9391952cb057869dec8385cc351af21cd3118c5f2c",
           "current_sha256": "857ee1d2a5ea4aaf872c167c1b09c45c1b51918ef80b395dca96391437f216bd",
           "reason": "Only named documentation fingerprints and transitive evidence manifests.",
+          "map": "preserved_sha256"
+        }
+      ]
+    },
+    {
+      "reason": "Receiver checkpoint: only explicit documentation fingerprints, bounded wrapper allowance and evidence bookkeeping. All previous proof records, compiled artifacts and archived receipts retained.",
+      "changes": [
+        {
+          "path": "assurance/m4-connection-evidence.json",
+          "previous_sha256": "e559a34d1faea9580a73fe318099b27ba204507be266a7071a1ce58af05e3693",
+          "current_sha256": "d52ca4c82596747a209a484ded037624388b0c0f505d8b34c6d6bedfdb1a312b",
+          "reason": "Only named documentation, bounded wrapper allowance and transitive evidence manifests.",
+          "map": "preserved_sha256"
+        },
+        {
+          "path": "assurance/m4-writeall-evidence.json",
+          "previous_sha256": "f9bfcd184806c9b2cae833ecd1f2e0869770585f26b4f23763f261ba1a9046d3",
+          "current_sha256": "bf1e9a4972664e4e2b1ae12b1f0f20670e36ebbf6c5210d2af9e3df6a36b03fd",
+          "reason": "Only named documentation, bounded wrapper allowance and transitive evidence manifests.",
+          "map": "preserved_sha256"
+        },
+        {
+          "path": "assurance/m4-primitives-evidence.json",
+          "previous_sha256": "eefe16aa2b07311c6d3f318ded9ecfffba40fa321b95c2daf85e7452e3ae6457",
+          "current_sha256": "dcce415519f36f035744b3e7272a528e560c4e0ae7d57c03460cf8c6b158f276",
+          "reason": "Only named documentation, bounded wrapper allowance and transitive evidence manifests.",
+          "map": "preserved_sha256"
+        },
+        {
+          "path": "assurance/m4-writers-evidence.json",
+          "previous_sha256": "857ee1d2a5ea4aaf872c167c1b09c45c1b51918ef80b395dca96391437f216bd",
+          "current_sha256": "4aa6406a2e034a4dba110f6a1c420eeeef4b282553e0e27b7c907ef9a639c6d6",
+          "reason": "Only named documentation, bounded wrapper allowance and transitive evidence manifests.",
           "map": "preserved_sha256"
         }
       ]

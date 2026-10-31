@@ -358,6 +358,36 @@ class EvidenceGate(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'changed or disappeared'):
             gate.validate_preserved_claims(previous, actual)
 
+    def test_complete_receiver_claims_present(self):
+        names = {r['name'] for r in self.claims['rocq_declarations']}
+        self.assertTrue({
+            'ReceiverEntry.receiver_entry_prepared', 'ReceiverSelection.receiver_selection_source',
+            'ReceiverConstruction.receiver_construction_source', 'ReceiverFree.receiver_free_permissions',
+            'ReceiverProgram.receiver_program_guarantee', 'ReceiverProgram.receiver_all_prefixes',
+            'ReceiverProgram.receiver_defined_prefix', 'ReceiverOutcomes.receiver_return_trace_exact',
+            'ReceiverOutcomes.receiver_read_nine_byte_bound', 'ReceiverAccepted.receiver_actual_setup_bounds',
+            'ReceiverRuns.receiver_complete_run', 'ReceiverFaultRuns.receiver_complete_retry_run',
+            'ReceiverFaultRuns.receiver_complete_error_run', 'ReceiverLossRuns.receiver_partial_read_loss',
+            'ReceiverWitnessInputs.receiver_inputs_inhabited',
+            'ReceiverSamples.receiver_setup_actual_run', 'ReceiverSamples.receiver_short_actual_run',
+            'ReceiverSamples.receiver_ninth_byte_actual_run', 'ReceiverSamples.receiver_exit_actual_run',
+            'ReceiverSamples.receiver_signal_actual_run', 'ReceiverSamples.receiver_stopped_status_actual_run',
+            'ReceiverSamples.receiver_arbitrary_signal_domain_actual_run',
+        }.issubset(names))
+
+    def test_sender_checkpoint_is_preserved(self):
+        previous = json.loads(gate.RECEIVER_BASELINE.read_text())
+        self.assertEqual(len(previous['rocq_declarations']), 875)
+        self.assertEqual(len(previous['lean_declarations']), 12)
+        self.assertEqual(len(gate.SENDER_QUERY_MODULES), 154)
+        gate.validate_preserved_claims(previous, self.claims)
+        actual = copy.deepcopy(self.claims)
+        record = next(r for r in actual['rocq_declarations']
+                      if r['name'] == 'SenderProgram.sender_all_returns')
+        record['full_type'] = 'weakened sender publication result'
+        with self.assertRaisesRegex(ValueError, 'changed or disappeared'):
+            gate.validate_preserved_claims(previous, actual)
+
 
 if __name__ == '__main__':
     unittest.main()

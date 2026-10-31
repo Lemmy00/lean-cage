@@ -411,9 +411,9 @@ Clight model plus explicit byte-aware effects and asynchronous loss. The maintai
 retains the 25 feasibility declarations and 12 Lean target records;
 `assurance/m4-connection-claims.json` inventories every additive Rocq declaration
 with its complete type and transitive assumptions and the unchanged 12 Lean
-endpoint claims. The sender/finish checkpoint contains 875 Rocq declarations: all 680 preceding
-records and 195 sender, publication and composition declarations across 63 new
-modules. All 91 preceding compiled artifacts and twelve Lean endpoint records
+endpoint claims. The receiver checkpoint contains 1041 Rocq declarations: all 875 preceding
+records and 166 receiver, trace, memory and execution declarations across 43 new
+modules. All 154 preceding compiled artifacts and twelve Lean endpoint records
 are preserved. These counts identify the audited inventory, not a security score.
 
 **Results:** universal finite-prefix safety and exact returns for `write_all`,
@@ -474,12 +474,28 @@ after any finite number of waits. Whole `finish` executions inhabit both full
 publication and ignored publication failure. The restricted certificate used to
 construct successful witnesses is not used by universal source guarantees.
 
-**Evidence and assumptions:** `assurance/m4-sender-evidence.json`,
+The complete terminal-error receiver starts from caller output ownership, stable
+run/UID globals, a writable TLS cell and arbitrary wrapper control words. It
+derives all seven local allocations, the descriptor store and each bounded read.
+Every finite execution reads at most nine bytes, including partial-transfer loss.
+Every completed return classifies its own read trace, executes the selected result
+constructor, both typed copies and all seven frees. A SETUP output implies exactly
+eight bytes, initial bad and entered flags zero, stage 1..8 and error 1..4095.
+Close errors are ignored exactly as in the source; they provide no cleanup receipt.
+Every finite prefix preserves old memory outside output and TLS and has ordinary
+progress or an exact return. Allocated complete runs include arbitrary finite EINTR
+prefixes, short/malformed/ninth-byte input, fatal errors after a prefix, close
+errors, exits and signals. A complete raw-status-65 run returns signal detail 65:
+valid Linux wait-status and intended signal-domain provenance remain obligations.
+
+**Evidence and assumptions:** `assurance/m4-receiver-evidence.json`,
+`assurance/m4-sender-evidence.json`,
 `assurance/m4-decoder-evidence.json`,
 `assurance/m4-library-evidence.json`,
 `assurance/m4-structures-evidence.json`, `assurance/m4-callers-evidence.json` and
 [the caller proposition review](../reviews/M4-callers.md) and [decoder proposition review](../reviews/M4-decoder.md) and
-[sender/finish proposition review](../reviews/M4-sender.md) bind sources, terms, preservation
+[sender/finish proposition review](../reviews/M4-sender.md) and
+[receiver proposition review](../reviews/M4-receiver.md) bind sources, terms, preservation
 checks and raw command receipts. `./scripts/check_m4_connection.sh` replays the
 pinned tools, actual extracted source/AST, complete declarations and `coqchk`.
 The six Rocq foundation/semantic-parameter entries remain unchanged; the explicit
@@ -495,8 +511,8 @@ maintains and audits those exact dependencies, preserving previous statements
 and artifacts, and rejects undeclared imports. The earlier receipt did not by
 itself establish replay from only maintained proof inputs.
 
-**Open:** terminal receipt, remaining caller/storage composition for the complete
-selected slice, checked C/Rocq-to-Lean translation,
+**Open:** cross-routine and surrounding controller/storage composition, valid
+Linux wait-status provenance, checked C/Rocq-to-Lean translation,
 all sixteen original M2/M3 Linux/native ledger entries, libc/Linux interference,
 compiler/runtime/linker/loader correspondence and independent composed-profile
 review. M4 remains incomplete. Hardware channels remain [§FS-observations.hardware](FS-observations.md#hardware-software-observable-channels).

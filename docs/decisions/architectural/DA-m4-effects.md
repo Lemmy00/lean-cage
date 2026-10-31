@@ -130,3 +130,25 @@ For [§AR-m4-effects.gate](../../architecture/AR-m4-effects.md#gate-additive-evi
 680 earlier Rocq records, twelve Lean records and 91 compiled module identities.
 Add sender/finish statements and their complete maintained import closure; no
 native, extraction, toolchain, Linux or hardware obligation is reclassified.
+
+## receiver: Preserve raw wait status and trace-linked terminal classification
+
+For [§AR-m4-receiver.input](../../architecture/AR-m4-receiver.md#input-independent-caller-memory-and-wrapper-arguments), [§AR-m4-receiver.reads](../../architecture/AR-m4-receiver.md#reads-every-source-read-and-interruption-boundary) and [§FS-workspace.results](../../functional-spec/FS-workspace.md#results-entry-cancellation-and-bounded-transport),
+construct the actual seven local allocations from caller ownership and stable
+globals. Carry initialized byte prefixes through every read, errno retry and
+partial-read loss. The full result is classified from the actual read trace;
+finite progress does not assume loop termination. Execute the selected result
+constructor, both structure copies and every source free. Close success and
+failure both resume the same source continuation.
+
+For [§AR-m4-receiver.classification](../../architecture/AR-m4-receiver.md#classification-exact-raw-wait-and-setup-classification), keep arbitrary wrapper wait words in the
+universal theorem. Raw status 65 produces SIGNALLED/detail 65 in a complete
+allocated source execution. Adding a 1..64 signal premise here would hide the
+upstream provenance obligation. The intended `finish` domain remains explicit;
+Linux wait-status correspondence must justify it at composition time.
+
+For [§AR-m4-receiver.evidence](../../architecture/AR-m4-receiver.md#evidence-complete-source-propositions-and-preserved-history), preserve all 875 preceding statements, foundations
+and 154 compiled identities, with a separate frozen sender printing context.
+The complete 197-module audit receives a bounded 900-second allowance; no check
+or source dependency is omitted. Twelve Lean endpoints and every original
+native/Linux obligation retain their prior status.

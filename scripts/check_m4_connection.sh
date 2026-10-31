@@ -4,4 +4,5 @@ set -euo pipefail
 project_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 cd -- "$project_root"
 timeout 300 python3 m4/check.py
-timeout 600 python3 m4/connection/check.py
+# §AR-m4-receiver.evidence: Bound the expanded complete 197-module audit.
+timeout 900 python3 m4/connection/check.py
