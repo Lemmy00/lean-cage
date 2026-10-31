@@ -1,0 +1,7 @@
+Base revision: 37b3a3a7d439c3c0508b70ea31bba1649a6ff4f2
+Original M4.1 Rocq theorem statements/assumptions: 25 unchanged
+Original M4.1 Lean endpoint targets: 12 unchanged
+Baseline file identities preserved: 155 of 156
+Sole baseline documentation amendment: docs/decisions/architectural/README.md
+M4.1 authored-source fingerprints amended only for: docs/architecture/README.md, docs/roadmap.md
+All original native code, Lean declarations, dependency pins and raw VM evidence preserved.

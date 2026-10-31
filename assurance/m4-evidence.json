@@ -50,7 +50,7 @@
     "docs/decisions/architectural/DA-m2-profile.md": "500cc8c10ac68699b92163aaa28a1c472591654a576cabd592fc0ea543798eb1",
     "docs/decisions/architectural/DA-m3-profile.md": "e89726873f435b97d5555637efe677c26c7afc90d31fbda8ffca865a5bb24a9f",
     "docs/decisions/architectural/DA-secondary-backend.md": "168ba918aa66a7c86bc9b1d0d09483fbf77bd64832b570bc6eb7edfd507eeff2",
-    "docs/decisions/architectural/README.md": "0970a26ee96302e35e79f2e5682175d1f31bbe798bc1cc5fa3d65781b9a55900",
+    "docs/decisions/architectural/README.md": "18097b2fb8a35a9f1bc47ea573fe29c6fddd0f06ccc83af597bf54edc0ecf1fb",
     "docs/decisions/functional/DF-security-scope.md": "bd4c0bf848531195f409c7911ca4573b3aeaea16ea4a0cc0f31a8fdcd7884757",
     "docs/decisions/functional/README.md": "bcfeaa4eee1d2115913f388b75aab6a34a6358b135f87af20b7d50bf800521b5",
     "docs/development.md": "d173006c3d3f57210d794371c45f5f50d00dc7e1f69e21ed1da226a28aefd791",
@@ -320,5 +320,13 @@
   "uncompressed_sha256": {
     "assurance/m4-slice.v.gz": "51c62efaca386a4c8d795c1d78fdac3a9efb8a71aa3cad1e961c96c7797f5f5a",
     "assurance/m4-proof-output.log.gz": "1d977ff905c3876ef63b65f5a1092e8a3c7148668c627a1cd0c8859d0cf00348"
-  }
+  },
+  "baseline_documentation_amendments": [
+    {
+      "path": "docs/decisions/architectural/README.md",
+      "original_sha256": "0970a26ee96302e35e79f2e5682175d1f31bbe798bc1cc5fa3d65781b9a55900",
+      "current_sha256": "18097b2fb8a35a9f1bc47ea573fe29c6fddd0f06ccc83af597bf54edc0ecf1fb",
+      "reason": "Register DA-m4-effects in the Grund-required decision index; no contract, theorem, code, pin or VM evidence change."
+    }
+  ]
 }

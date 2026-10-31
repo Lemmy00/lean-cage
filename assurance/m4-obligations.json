@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "profile": "linux-x86_64-offline-workspace-m3-v1",
+  "m4_complete": false,
+  "scope": "Original M2/M3 correspondence obligations; local model proofs and hashes do not close these edges.",
+  "obligations": [
+    {
+      "key": "M4-controller",
+      "status": "open",
+      "source_boundary": "Lean IO/process exec, plan serialization, helper dispatch",
+      "original_contract": "docs/architecture/AR-lifecycle.md#correspondence",
+      "dependent_property": "Only decoded fixed plans run",
+      "required_proof": "Open native/runtime refinement",
+      "partial_evidence": [],
+      "closure_evidence": []
+    },
+    {
+      "key": "M4-snapshot",
+      "status": "open",
+      "source_boundary": "pread/write/memfd/seals/ELF arithmetic/execveat",
+      "original_contract": "docs/architecture/AR-lifecycle.md#correspondence",
+      "dependent_property": "Stable checked executable and bounded input",
+      "required_proof": "Open C memory/ABI and Linux refinement",
+      "partial_evidence": [],
+      "closure_evidence": []
+    },
+    {
+      "key": "M4-bootstrap",
+      "status": "open",
+      "source_boundary": "signal mask/actions, fork/clone, descriptor duplication/close_range",
+      "original_contract": "docs/architecture/AR-lifecycle.md#correspondence",
+      "dependent_property": "No inherited handler or authority",
+      "required_proof": "Open C/runtime and syscall refinement",
+      "partial_evidence": [],
+      "closure_evidence": []
+    },
+    {
+      "key": "M4-credentials",
+      "status": "open",
+      "source_boundary": "cap/group/UID/GID/NNP transitions and inheritance",
+      "original_contract": "docs/architecture/AR-lifecycle.md#correspondence",
+      "dependent_property": "No guest privilege recovery in initial user namespace",
+      "required_proof": "Open Linux credential semantics",
+      "partial_evidence": [],
+      "closure_evidence": []
+    },
+    {
+      "key": "M4-namespaces",
+      "status": "open",
+      "source_boundary": "clone/mount/procfs, no user namespaces",
+      "original_contract": "docs/architecture/AR-lifecycle.md#correspondence",
+      "dependent_property": "Owned process scope and observations",
+      "required_proof": "Open Linux namespace refinement",
+      "partial_evidence": [],
+      "closure_evidence": []
+    },
+    {
+      "key": "M4-filter",
+      "status": "open",
+      "source_boundary": "byte copy, sock_fprog layout, seccomp interpreter/JIT",
+      "original_contract": "docs/architecture/AR-lifecycle.md#correspondence",
+      "dependent_property": "Canonical bytecode action persists",
+      "required_proof": "Model semantics proved; native/Linux mapping open",
+      "partial_evidence": [],
+      "closure_evidence": []
+    },
+    {
+      "key": "M4-supervisor",
+      "status": "open",
+      "source_boundary": "ptrace exec/signal/wait, pidfd, parent death, report framing",
+      "original_contract": "docs/architecture/AR-lifecycle.md#correspondence",
+      "dependent_property": "Entry knowledge and descendant teardown",
+      "required_proof": "Open race, kernel and C semantics refinement",
+      "partial_evidence": [
+        "m4/connection/IO.v",
+        "m4/connection/Machine.v",
+        "m4/connection/Endpoints.lean"
+      ],
+      "closure_evidence": []
+    },
+    {
+      "key": "M4-artifacts",
+      "status": "open",
+      "source_boundary": "toolchain, static libc, ELF loader, kernel/QEMU/firmware",
+      "original_contract": "docs/architecture/AR-lifecycle.md#correspondence",
+      "dependent_property": "Artifact realizes reviewed sources",
+      "required_proof": "Hashes/tests only; executable correspondence open",
+      "partial_evidence": [],
+      "closure_evidence": []
+    },
+    {
+      "key": "M4-m3-policy",
+      "status": "open",
+      "source_boundary": "JSON/UTF-8/integer parsing, input store and native plan",
+      "original_contract": "docs/architecture/AR-workspace.md#correspondence",
+      "dependent_property": "Accepted requests match proved values",
+      "required_proof": "Parser/serialization and C/Lean runtime relation",
+      "partial_evidence": [],
+      "closure_evidence": []
+    },
+    {
+      "key": "M4-m3-filesystem",
+      "status": "open",
+      "source_boundary": "archive/tree materialization, mount/pivot, VFS lookup, open/link/rename/mmap/proc/devices",
+      "original_contract": "docs/architecture/AR-workspace.md#correspondence",
+      "dependent_property": "Actual object authority and race/alias behavior",
+      "required_proof": "C memory and pinned Linux VFS/mount/descriptor effects",
+      "partial_evidence": [],
+      "closure_evidence": []
+    },
+    {
+      "key": "M4-m3-loader",
+      "status": "open",
+      "source_boundary": "initial ELF, PT_INTERP, ld.so, dlopen, shebang/Python import, later exec",
+      "original_contract": "docs/architecture/AR-workspace.md#correspondence",
+      "dependent_property": "Code loading adds no ambient authority",
+      "required_proof": "Loader/runtime/FFI and executable correspondence",
+      "partial_evidence": [],
+      "closure_evidence": []
+    },
+    {
+      "key": "M4-m3-identities",
+      "status": "open",
+      "source_boundary": "UID leases, PID reuse, ptrace/proc/signal and inherited handles",
+      "original_contract": "docs/architecture/AR-workspace.md#correspondence",
+      "dependent_property": "Sibling and supervisor separation",
+      "required_proof": "Concurrent kernel credential/process/handle relation",
+      "partial_evidence": [],
+      "closure_evidence": []
+    },
+    {
+      "key": "M4-m3-filter",
+      "status": "open",
+      "source_boundary": "emitted instruction bytes, arg widths, clone flags, kernel BPF",
+      "original_contract": "docs/architecture/AR-workspace.md#correspondence",
+      "dependent_property": "Reviewed policy-to-filter action",
+      "required_proof": "Bytecode compiler, ABI and interpreter/JIT correspondence",
+      "partial_evidence": [],
+      "closure_evidence": []
+    },
+    {
+      "key": "M4-m3-resources",
+      "status": "open",
+      "source_boundary": "cgroup writes/readback/attach/accounting/kill, tmpfs",
+      "original_contract": "docs/architecture/AR-workspace.md#correspondence",
+      "dependent_property": "Scope, limits and cleanup",
+      "required_proof": "Kernel accounting with delays/overshoot and scheduling premises",
+      "partial_evidence": [],
+      "closure_evidence": []
+    },
+    {
+      "key": "M4-m3-results",
+      "status": "open",
+      "source_boundary": "event pipes, framing, output buffers and exporter",
+      "original_contract": "docs/architecture/AR-workspace.md#correspondence",
+      "dependent_property": "Entry knowledge and authorized disclosures",
+      "required_proof": "Concurrent native protocol/parser and filesystem relation",
+      "partial_evidence": [
+        "m4/connection/IO.v",
+        "m4/connection/Machine.v",
+        "m4/connection/Endpoints.lean"
+      ],
+      "closure_evidence": []
+    },
+    {
+      "key": "M4-m3-artifacts",
+      "status": "open",
+      "source_boundary": "runtime layers, overlays, helper/controller/compiler and guest image",
+      "original_contract": "docs/architecture/AR-workspace.md#correspondence",
+      "dependent_property": "Deployed bytes implement reviewed sources",
+      "required_proof": "Reproducible identity chain plus executable proof, not hashes alone",
+      "partial_evidence": [],
+      "closure_evidence": []
+    }
+  ]
+}
