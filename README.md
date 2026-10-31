@@ -17,6 +17,8 @@ Native/Linux/compiler/loader correspondence remains M4; confidentiality and
 hardware-channel security remain later obligations. No production profile is
 certified by these conditional model results and tests.
 
+- [Run LeanCage: build, VM replay, and CLI commands](docs/running.md)
+- [How the milestones compose into one product](docs/architecture/AR-product.md)
 - [Plan and milestones](docs/roadmap.md)
 - [Preserved M1 readiness review](docs/reviews/M1-readiness.md)
 - [M2 lifecycle and handoff](docs/reviews/M2-handoff.md)
@@ -34,6 +36,19 @@ certified by these conditional model results and tests.
 With [elan](https://github.com/leanprover/elan), Python 3, Bash, Git, curl, tar,
 GNU coreutils, and a C compiler/Linux headers/static libc development files
 available on Linux x86-64:
+
+```sh
+(cd m3 && lake build leancage)
+m3/.lake/build/bin/leancage validate-policy profiles/m3/example-policy.json
+```
+
+This builds the current CLI and checks a sample policy without executing guest
+code. On a prepared checkout, `python3 scripts/run_m3_vm.py --development` runs
+the assembled controller/helper and real shell/Python workloads in the disposable
+VM. The [running guide](docs/running.md) gives preparation and result paths.
+The supported `check`, `run` and `report` commands currently operate inside that VM.
+
+Run the proof/build gate separately:
 
 ```sh
 ./scripts/check.sh

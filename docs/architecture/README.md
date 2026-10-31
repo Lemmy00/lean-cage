@@ -9,6 +9,7 @@ end-to-end isolation remain explicit M4/M5 obligations.
 
 | Contract | Subject |
 |---|---|
+| [§AR-product](AR-product.md#ar-product-one-runnable-product-and-a-composed-assurance-chain) | One maintained executable path, current CLI/VM entry point, integration tasks and release composition |
 | [§AR-core](AR-core.md#ar-core-separate-portable-security-contracts-from-platform-mechanisms) | Portable policy, state, effects, and observations |
 | [§AR-linux](AR-linux.md#ar-linux-connect-a-lean-launcher-to-real-linux-enforcement) | Linux enforcement, OS bindings, and pinned reference |
 | [§AR-filter-slice](AR-filter-slice.md#ar-filter-slice-m11-source-map-and-typed-contract-boundary) | M1.1 source map, ABI, typed contracts, and open binding obligations |
