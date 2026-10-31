@@ -1,0 +1,6 @@
+Baseline: 6510041ff6aa64113995ce4416cd179c091cefe3
+182 previously frozen source/evidence files match their reviewed SHA-256 identities.
+Only assurance/m4-claims.json advances for the reviewed roadmap-only source fingerprint; all its types/assumptions and other source identities are identical.
+IO.v, Machine.v and Endpoints.lean remain byte-identical.
+All previous 31 Rocq declaration/type/assumption records and 12 Lean records are unchanged.
+No original M2/M3 correspondence obligation has been discharged or removed.

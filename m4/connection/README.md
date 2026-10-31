@@ -13,7 +13,7 @@ Run from the project root, with the existing project-local M4 research tools:
 ```
 
 The first command runs the original maintained-source/frontend/ABI/tool gate,
-then compiles `IO.v` and `Machine.v`, checks their kernel terms with `coqchk`,
+then compiles all six Rocq modules, checks their kernel terms with `coqchk`,
 queries every new theorem's full type and assumptions, checks all Lean endpoint
 theorems and runs the evidence regressions. Both phases have five-minute bounds.
 It performs no downloads or expectation refresh and executes no guest/OS workload.
@@ -31,10 +31,21 @@ read/write/errno external signatures and adds blocking and loss at every source
 boundary. Loss during transfer retains the bytes/memory effect without returning
 to C. Loss after a return remains possible. Dead states have no successor. Exact
 AST equations identify the source calls and signatures; they do not establish
-the complete C-loop/framer/terminal-receiver simulation or universal memory safety.
+the complete framer/terminal-receiver simulation or whole-slice memory safety.
 Unsupported external functions remain unmodeled and cannot silently return through
 stock Clight. The system has separate events and **does not inherit CompCert's
 compiler correctness theorems**.
+
+`ClightSteps.v`, `WriteMemory.v` and `WriteAll.v` prove the complete local
+`write_all` invocation against the actual generated program. Every finite run
+emits an exact input prefix and preserves the owned buffer. A live nonterminal
+state has a defined source/effect step without using loss to mask undefined
+behavior. Zero return requires full transfer; minus one requires a zero or
+non-EINTR reply and incomplete transfer. This is partial correctness, not a
+termination guarantee. `WriteWitnesses.v` constructs bounded arbitrary input,
+success, short writes, arbitrary EINTR retries, errors, waits and partial loss.
+See [§AR-m4-effects.writeall](../../docs/architecture/AR-m4-effects.md#writeall-universal-source-loop-connection) and [the source-proof review](../../docs/reviews/M4-writeall.md).
+The framer, receiver, caller composition and checked Lean connection remain open.
 
 `Endpoints.lean` proves observation-trace entry origin/persistence and release
 requirements, rejection of private intermediate tags by the actual final decoder,
@@ -47,6 +58,9 @@ unproved C-to-Lean connection.
 `assurance/m4-obligations.json` retains all sixteen original M2/M3 correspondence
 entries as open. The new gate rejects statement/axiom drift, missing claims,
 tampered bytes, disappearing obligations and unsupported completion claims.
+`assurance/m4-writeall-baseline-claims.json` preserves the preceding 31 Rocq and
+12 Lean records. The active manifest adds 95 checked source-proof declarations,
+and `assurance/m4-writeall-evidence.json` binds their artifacts and review receipts.
 
 The source helper, Lean model/theorems, dependency pins and VM evidence remain
 unchanged. The original M4.1 proof types/assumptions remain unchanged. Only its

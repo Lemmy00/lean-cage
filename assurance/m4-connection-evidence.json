@@ -35,7 +35,7 @@
     "assurance/m3-vm-transcript.log": "7f9c8d92c09690244207ffb5b62202536ae11303a7cce49fad865f8296282183",
     "assurance/m4-baseline-ci.json": "2402627a9a3ba02cba77beb3ca3a8b2b95501894a783f5d1e47e407050a2f61f",
     "assurance/m4-check.log": "cbbfc65c649a62120a095c0de2db69692aed1247bb4604f43a9613eafa977629",
-    "assurance/m4-claims.json": "6707d5138c03b21274be8b210cf836e5c6ecc16debf97fd066c1eb5dd334393c",
+    "assurance/m4-claims.json": "017c6c108a1a4cccfdfd6fe4ea8571a5abf51f03e741e7afd598039b70063b4c",
     "assurance/m4-evidence.json": "a4fcfbd19b51e256d881499729b559b89f8aa72e61d62cfb701eb004c0eaf67b",
     "assurance/m4-proof-output.log.gz": "b27786634ddb2a5ca1de6a928f17cef0fca463cd9e6a305896bd13ae987e4881",
     "assurance/m4-repository-check.log": "40db57a5f3523a3e7678dbfe3e5cc969198afd9e825bb6df78a0bb9d5802fa7d",
@@ -493,5 +493,11 @@
     "assurance/m4-connection-artifact-check.log": "8b731c23cf3c4b804f820095476a429731d7ad6831adeb8740133785aa46f4b9",
     "assurance/m4-connection-preservation-check.log": "5708e9d313f60010ac29bc913635da1434063b61ebb62c532090be0807bd5d0c",
     "assurance/m4-connection-receipt-check.log": "f7609c2a8803c717419530bdb76a3085011a6bbd859a26b4b0a9e2c63a6b0055"
+  },
+  "writeall_documentation_amendment": {
+    "changed_path": "assurance/m4-claims.json",
+    "previous_sha256": "6707d5138c03b21274be8b210cf836e5c6ecc16debf97fd066c1eb5dd334393c",
+    "current_sha256": "017c6c108a1a4cccfdfd6fe4ea8571a5abf51f03e741e7afd598039b70063b4c",
+    "reason": "Only the roadmap source fingerprint advances for the reviewed write_all milestone link. All 25 original Rocq records and 12 Lean targets and every other source hash remain identical."
   }
 }

@@ -6,6 +6,14 @@ It advances [§AR-m4-effects.memory](../architecture/AR-m4-effects.md#memory-loc
 and [§FS-assurance.closure](../functional-spec/FS-assurance.md#closure-rules-for-stronger-claims). The implementation does not supply full native
 simulation, kernel verification, executable correctness or production isolation.
 
+The subsequent [write-loop source review](M4-writeall.md) completes the local
+[§AR-m4-effects.writeall](../architecture/AR-m4-effects.md#writeall-universal-source-loop-connection) submilestone: every finite actual `write_all` execution
+has prefix safety, defined execution and exact returns under the byte-aware
+effect contracts. It adds 95 checked Rocq declarations and source-connected
+nonvacuity witnesses. The original effect-layer snapshot below is retained as
+historical evidence; its missing `write_all` connection is now supplied, while
+whole-slice simulation and the checked Lean bridge remain open.
+
 ## Delivered evidence
 
 The additive `m4/connection/` package defines byte-aware effects with actual
@@ -87,9 +95,10 @@ workload execution.
 
 1. Complete the selected actual C slice's universal simulation and memory safety,
    including errno evaluation, partial result mutation on rejected frames,
-   local allocations, complete `write_all`, framing, terminal receive and failed
-   publication. The local return-bound obstruction is resolved only at the new
-   external boundary, not as a theorem about the stock Clight/compiler semantics.
+   local allocations, framing, terminal receive and failed publication. The local
+   `write_all` theorem now covers all its finite source executions under the new
+   effect semantics; composing it with callers remains open. The stock
+   Clight/compiler semantics is not certified by that extension.
 2. Check the connection from C executions and private-event assembly to the exact
    Lean final decoder and lifecycle observations. Existing endpoint lemmas are
    useful targets; they do not assume or prove this missing relation.

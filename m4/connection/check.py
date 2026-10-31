@@ -18,7 +18,9 @@ DIRECTORY = ROOT / 'm4/connection'
 MANIFEST = ROOT / 'assurance/m4-connection-claims.json'
 EVIDENCE = ROOT / 'assurance/m4-connection-evidence.json'
 OBLIGATIONS = ROOT / 'assurance/m4-obligations.json'
-MODULES = ['IO', 'Machine']
+WRITEALL_EVIDENCE = ROOT / 'assurance/m4-writeall-evidence.json'
+BASELINE_CLAIMS = ROOT / 'assurance/m4-writeall-baseline-claims.json'
+MODULES = ['IO', 'Machine', 'ClightSteps', 'WriteMemory', 'WriteAll', 'WriteWitnesses']
 ALLOWED_COQ = {
     'ClassicalDedekindReals.sig_not_dec', 'ClassicalDedekindReals.sig_forall_dec',
     'FunctionalExtensionality.functional_extensionality_dep', 'Classical_Prop.classic',
@@ -34,7 +36,8 @@ def sources():
               ROOT / 'docs/decisions/architectural/DA-m4-effects.md',
               ROOT / 'docs/decisions/architectural/README.md',
               ROOT / 'docs/roadmap.md', ROOT / 'docs/architecture/README.md',
-              ROOT / 'docs/reviews/M4-progress.md', OBLIGATIONS]
+              ROOT / 'docs/reviews/M4-progress.md',
+              ROOT / 'docs/reviews/M4-writeall.md', BASELINE_CLAIMS, OBLIGATIONS]
     return {str(p.relative_to(ROOT)): digest(p) for p in sorted(paths)}
 
 
@@ -48,6 +51,8 @@ def verify_hashes(expected, root=ROOT):
 
 
 def declaration_names():
+    if {p.stem for p in DIRECTORY.glob('*.v')} != set(MODULES):
+        raise ValueError('Rocq module inventory does not cover every authored proof file')
     records = []
     for module in MODULES:
         source = (DIRECTORY / (module + '.v')).read_text()
@@ -63,7 +68,8 @@ def declaration_names():
 
 def rocq_inventory():
     names = declaration_names()
-    query = ['Require Import IO Machine.', 'Set Printing All.', 'Set Printing Width 1000000.']
+    query = ['Require Import ' + ' '.join(MODULES) + '.',
+             'Set Printing All.', 'Set Printing Width 1000000.']
     for i, name in enumerate(names):
         query += [f'Redirect "connection-type-{i}" Check @{name}.',
                   f'Redirect "connection-axioms-{i}" Print Assumptions {name}.']
@@ -134,6 +140,14 @@ def validate_claims(expected, actual):
             raise ValueError(f'reviewed connection statement/assumption inventory differs: {key}')
 
 
+def validate_preserved_claims(previous, actual):
+    for key in ['rocq_declarations', 'lean_declarations']:
+        old = previous[key]
+        current = {record['name']: record for record in actual[key]}
+        if not old or any(current.get(record['name']) != record for record in old):
+            raise ValueError(f'previous connection proof changed or disappeared: {key}')
+
+
 def collect():
     before = sources()
     logs = {}
@@ -164,6 +178,13 @@ def collect():
 def check():
     expected = json.loads(MANIFEST.read_text())
     evidence = json.loads(EVIDENCE.read_text())
+    writeall = json.loads(WRITEALL_EVIDENCE.read_text())
+    if writeall['status'] != 'write_all source submilestone complete; M4.2-M4.6 incomplete':
+        raise ValueError('write_all alone cannot complete whole-slice or M4 correspondence')
+    if digest(MANIFEST) != writeall['claims_sha256']:
+        raise ValueError('write_all reviewed claim manifest identity differs')
+    verify_hashes(writeall['preserved_sha256'])
+    verify_hashes(writeall['archived_receipts_sha256'])
     if expected.get('m4_complete') is not False or evidence.get('status') != 'partial-M4.2; M4.2-M4.6 incomplete':
         raise ValueError('this partial effect/endpoint package cannot claim M4 completion')
     if sources() != expected['source_sha256']:
@@ -198,6 +219,9 @@ def check():
     verify_hashes(evidence['preserved_sha256'])
     verify_hashes(evidence['compiled_dependencies_sha256'])
     validate_claims(expected, actual)
+    validate_preserved_claims(json.loads(BASELINE_CLAIMS.read_text()), actual)
+    if actual['artifact_sha256'] != writeall['artifact_sha256']:
+        raise ValueError('write_all checked proof artifact identity differs')
     result = subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', str(DIRECTORY),
                              '-p', 'test_*.py', '-v'], cwd=ROOT,
                             capture_output=True, text=True, timeout=60)
@@ -206,7 +230,7 @@ def check():
     print(result.stdout + result.stderr, end='')
     print(f'Connection checked: {len(actual["rocq_declarations"])} Rocq theorems, '
           f'{len(actual["lean_declarations"])} Lean theorems, coqchk passed; 16 original obligations OPEN')
-    print('Local effect contracts and M3 endpoints checked; whole-slice C/Lean simulation, '
+    print('Universal write_all source safety, effects and M3 endpoints checked; whole-slice C/Lean simulation, '
           'Linux/compiler/runtime correspondence and full M4 remain UNPROVED')
 
 

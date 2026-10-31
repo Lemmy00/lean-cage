@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "base_revision": "6510041ff6aa64113995ce4416cd179c091cefe3",
+  "recorded_utc": "2026-10-31T13:22:40.418817+00:00",
+  "status": "write_all source submilestone complete; M4.2-M4.6 incomplete",
+  "specification": [
+    "AR-m4-effects.writeall",
+    "FS-workspace.results",
+    "FS-assurance.evidence",
+    "REQ-proof-integrity.statement"
+  ],
+  "scope": "Every finite execution of the maintained generated write_all at the local Kstop boundary, in the unchanged byte-aware Clight/loss machine. No full M4 completion.",
+  "primary_claims": [
+    "WriteAll.source_write_all_body",
+    "WriteAll.actual_program_symbols",
+    "WriteAll.write_all_prefix_safety",
+    "WriteAll.write_all_defined_prefix",
+    "WriteAll.write_all_return_exact",
+    "WriteAll.write_all_success_exists",
+    "WriteWitnesses.arbitrary_write_ownership",
+    "WriteWitnesses.source_retries_then_success",
+    "WriteWitnesses.source_short_write_then_success",
+    "WriteWitnesses.source_error_return",
+    "WriteWitnesses.source_zero_return",
+    "WriteWitnesses.source_wait_then_partial_loss"
+  ],
+  "claims_sha256": "6a87d4e91fd657fdadc18ffc6ae345d8dcf9d1033b1ed4b9c7454c749b2396af",
+  "preserved_sha256": {
+    "assurance/m4-writeall-baseline-claims.json": "0219d263c97977e88fe3a013c40fa6f18a6daa0fd9b7f6fff4ac978718372bf6",
+    "m4/connection/IO.v": "1e0d7a736ddda75467ec2882663d8a02aeb4b65eea0af0f0f04c3b6d7e01e1df",
+    "m4/connection/Machine.v": "1469b64799d43d06cd3f8f1ae4430c19bf83947aff230d2de2188b8ad0b44e7d",
+    "m4/connection/Endpoints.lean": "39c562cf55df0a062791fee4f65a66b08066f04dac0b3ebfe1885c0369732468",
+    "native/leancage_m3.c": "fe20ad61706bb8e8463d32e5c9a1a9f3bf038ff52cc9f2ac40ba14c1a010d82c",
+    "assurance/m4-slice.c": "f563cd6dc5163aad8d243ace10e95882cc3879bcf927ef765485886c07d43bb7",
+    "assurance/m4-slice.i": "79dd344ee81ba37d15fbf1cc0fc0d8ceeec8f63d751251ece5b1049610556fc7",
+    "assurance/m4-slice.v.gz": "0aa10f2e1ac62321990fb0b3ea41d87300c936ad4834fa80a8fad3a72afae28c",
+    "assurance/m4-connection-evidence.json": "a1d76ae5863d58d420ec23e8c53d6b60e82506d1b8b7b64b409ef97f14ce88f8",
+    "assurance/m4-obligations.json": "77f760ca9447b8ee05ec0e24efc637b35ff6a62356657515ffc68f0999182064"
+  },
+  "artifact_sha256": {
+    "IO.vo": "0c55b3533871640d15bc91b004509815d0870e1f3ce9dfbca329274918d0bc85",
+    "Machine.vo": "c8d8e2a6a8dd09a5163bf9b831e44d895b875b892ba8243c9247401bebe50597",
+    "ClightSteps.vo": "d34659acfd8e5e1e54647814fa0648774803135b2b36f0f263219ed567476fb7",
+    "WriteMemory.vo": "0a38f41c5be2d95e779544cd6abf20058b66f1a765edc0fb2ded269da252b8bf",
+    "WriteAll.vo": "1e73897b2a30b8f1380b636661c57faf7fc80a3e49739ffd3bfcd5c65afd58a8",
+    "WriteWitnesses.vo": "91afe21c5b9e6dae638079d416412e827a60e9d605e1a5d7032d95f69ba4be80"
+  },
+  "legacy_manifest_update": {
+    "path": "assurance/m4-claims.json",
+    "previous_sha256": "6707d5138c03b21274be8b210cf836e5c6ecc16debf97fd066c1eb5dd334393c",
+    "current_sha256": "017c6c108a1a4cccfdfd6fe4ea8571a5abf51f03e741e7afd598039b70063b4c",
+    "changed_source": "docs/roadmap.md",
+    "previous_source_sha256": "c715f3a8bcb48e50b8eaa5c7d0320a10c2e031e286e16edf8f7de97df16232d7",
+    "current_source_sha256": "d5a83d2f501584c7ddea0f048883e99f112cd50ff5311463ecb1952e1c947d31",
+    "reason": "Reviewed progress link and M4.2 package status only; every legacy theorem/type/assumption and all other source hashes unchanged."
+  },
+  "declarations": {
+    "rocq_total": 126,
+    "rocq_previous_preserved": 31,
+    "rocq_added": 95,
+    "lean_preserved": 12
+  },
+  "observation_model": "Ordered byte-aware write replies, exact prefix bytes, signed errno, silent actual source steps, waiting, asynchronous loss at every boundary and partial transfer without a return.",
+  "ownership": "0..160 initialized bytes, representable accessed addresses, aligned writable errno cell separated from the entire buffer; same-block disjoint regions and end-at-pointer-modulus allowed.",
+  "foundations": [
+    "ClassicalDedekindReals.sig_forall_dec",
+    "ClassicalDedekindReals.sig_not_dec",
+    "Classical_Prop.classic",
+    "Events.external_functions_sem",
+    "Events.inline_assembly_sem",
+    "FunctionalExtensionality.functional_extensionality_dep"
+  ],
+  "tool_profile": "Unchanged m4/toolchain-lock.json and assurance/m4-evidence.json: CompCert pinned commit (VERSION 3.17), Coq 8.18.0, OCaml 4.14.1. Source/frontend/extraction correctness remains trusted.",
+  "kernel_replay": [
+    "coqchk",
+    "-silent",
+    "<pinned local load paths>",
+    "IO",
+    "Machine",
+    "ClightSteps",
+    "WriteMemory",
+    "WriteAll",
+    "WriteWitnesses"
+  ],
+  "deployment": "No changed executable, runtime, kernel, VM or hardware profile; original M3 artifact identities remain test evidence. New artifacts are checked proof terms only.",
+  "open_obligations": [
+    "Remaining selected-slice framing, decoder rejection mutation, errno normalization, terminal receiver, allocations and caller composition",
+    "Checked C/Rocq-to-Lean bridge",
+    "All 16 original M2/M3 native/Linux ledger entries",
+    "Linux/libc realization of byte-aware effect/TLS contracts",
+    "Extended event semantics/compiler observation relation",
+    "GCC/Lean runtimes, linker, loader, kernel and executable correspondence",
+    "M4.6 independently reviewed composed profile",
+    "M5 hardware confidentiality"
+  ],
+  "validation": [
+    {
+      "command": "./scripts/check.sh",
+      "exit_code": 0,
+      "elapsed_seconds": 95.436,
+      "evidence": "assurance/m4-writeall-repository-check.log"
+    },
+    {
+      "command": "python3 scripts/run_m3_vm.py --check-artifacts",
+      "exit_code": 0,
+      "elapsed_seconds": 0.717,
+      "evidence": "assurance/m4-writeall-artifact-check.log"
+    },
+    {
+      "command": "./scripts/check_m4_connection.sh",
+      "exit_code": 0,
+      "elapsed_seconds": 128.875,
+      "evidence": "assurance/m4-writeall-connection-check.log"
+    },
+    {
+      "command": "./scripts/grund.sh fmt --check",
+      "exit_code": 0,
+      "elapsed_seconds": 0.115,
+      "evidence": "assurance/m4-writeall-format-check.log"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "elapsed_seconds": 0.017,
+      "evidence": "assurance/m4-writeall-diff-check.log"
+    },
+    {
+      "command": "Baseline source/theorem preservation audit against 6510041ff6aa64113995ce4416cd179c091cefe3",
+      "exit_code": 0,
+      "evidence": "assurance/m4-writeall-preservation-check.log",
+      "summary": "182 frozen files byte-identical; only the explicitly reviewed roadmap identity changes in the old M4.1 manifest. All previous 31 Rocq and 12 Lean records preserved."
+    },
+    {
+      "command": "./scripts/grund.sh fmt --write",
+      "exit_code": 0,
+      "summary": "Ran before the repository gate; final formatter check also passed."
+    }
+  ],
+  "archived_receipts_sha256": {
+    "assurance/m4-writeall-repository-check.log": "dd49ae6e7132ded4f8616af4677ea54e6317dc521aaa966aa0a7fe4a57c76e54",
+    "assurance/m4-writeall-artifact-check.log": "8b731c23cf3c4b804f820095476a429731d7ad6831adeb8740133785aa46f4b9",
+    "assurance/m4-writeall-connection-check.log": "9264fac45cb5301631180442718a18150a5295c8123d22343bc4eb4c1f728bd4",
+    "assurance/m4-writeall-format-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "assurance/m4-writeall-diff-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "assurance/m4-writeall-preservation-check.log": "b73fd958df325fc684ff2bc04b828ea1652acb08d9688f85a3f50ee6989fc33b",
+    "assurance/m4-writeall-initial-gate-failure.log": "61a2968e4fcaf0690c0fe621793e76b8e814374badfa87a99024d1fa2009e40e"
+  },
+  "previous_evidence_amendment": {
+    "path": "assurance/m4-connection-evidence.json",
+    "reason": "Recorded the reviewed roadmap-only legacy manifest fingerprint amendment; historical checks, types, assumptions and artifacts remain unchanged."
+  },
+  "initial_gate_rejection": {
+    "evidence": "assurance/m4-writeall-initial-gate-failure.log",
+    "reason": "The audit rejected a stale test source. The two intended preservation regressions were restored to their exact already-reviewed SHA-256; no theorem/type/assumption expectation changed. The separate roadmap-only legacy preservation amendment is explicitly recorded."
+  }
+}

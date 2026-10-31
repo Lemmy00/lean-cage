@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 spec = importlib.util.spec_from_file_location('connection_gate', Path(__file__).with_name('check.py'))
 gate = importlib.util.module_from_spec(spec)
@@ -22,6 +23,45 @@ class EvidenceGate(unittest.TestCase):
     def test_reviewed_inventory(self):
         gate.validate_claims(self.claims, self.claims)
         self.assertEqual([r['name'] for r in self.claims['rocq_declarations']], gate.declaration_names())
+
+    def test_universal_source_claims_present(self):
+        names = {r['name'] for r in self.claims['rocq_declarations']}
+        self.assertTrue({
+            'WriteAll.source_write_all_body', 'WriteAll.actual_program_symbols',
+            'WriteAll.write_all_prefix_safety', 'WriteAll.write_all_defined_prefix',
+            'WriteAll.write_all_return_exact', 'WriteAll.write_all_success_exists',
+            'WriteWitnesses.arbitrary_write_ownership',
+            'WriteWitnesses.source_retries_then_success',
+            'WriteWitnesses.source_short_write_then_success',
+            'WriteWitnesses.source_error_return', 'WriteWitnesses.source_zero_return',
+            'WriteWitnesses.source_wait_then_partial_loss',
+        }.issubset(names))
+
+    def test_omitted_proof_module_rejected(self):
+        with patch.object(gate, 'MODULES', gate.MODULES[:-1]):
+            with self.assertRaisesRegex(ValueError, 'every authored proof file'):
+                gate.declaration_names()
+
+    def test_preserved_claim_cannot_disappear(self):
+        previous = json.loads(gate.BASELINE_CLAIMS.read_text())
+        gate.validate_preserved_claims(previous, self.claims)
+        for key in ['rocq_declarations', 'lean_declarations']:
+            actual = copy.deepcopy(self.claims)
+            old_name = previous[key][0]['name']
+            actual[key] = [record for record in actual[key] if record['name'] != old_name]
+            with self.assertRaisesRegex(ValueError, 'changed or disappeared'):
+                gate.validate_preserved_claims(previous, actual)
+
+    def test_preserved_claim_cannot_change(self):
+        previous = json.loads(gate.BASELINE_CLAIMS.read_text())
+        for key, field in [('rocq_declarations', 'transitive_assumptions'),
+                           ('lean_declarations', 'axioms')]:
+            actual = copy.deepcopy(self.claims)
+            old_name = previous[key][0]['name']
+            record = next(record for record in actual[key] if record['name'] == old_name)
+            record[field] = 'changed foundation'
+            with self.assertRaisesRegex(ValueError, 'changed or disappeared'):
+                gate.validate_preserved_claims(previous, actual)
 
     def test_stale_source_and_path_escape(self):
         with tempfile.TemporaryDirectory() as directory:
