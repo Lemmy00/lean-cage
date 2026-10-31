@@ -1,0 +1,83 @@
+diff --git a/src/lean.ml b/src/lean.ml
+index 7d808b6..672f229 100644
+--- a/src/lean.ml
++++ b/src/lean.ml
+@@ -220,11 +220,4 @@ let lean_scheme env ~dep mind u s =
+-let with_unsafe_univs f () =
+-  let flags = Global.typing_flags () in
+-  Global.set_typing_flags { flags with check_eliminations = false };
+-  try
+-    let v = f () in
+-    Global.set_typing_flags flags;
+-    v
+-  with e ->
+-    let e = Exninfo.capture e in
+-    Global.set_typing_flags flags;
+-    Exninfo.iraise e
++(* LeanCage bounded bridge trial: refuse the upstream unchecked elimination path.
++   The original LGPL-2.1-only source and license remain in this isolated checkout. *)
++let with_unsafe_univs _f () =
++  CErrors.user_err Pp.(str "M4 strict bridge refuses disabled elimination checking")
+@@ -305 +298 @@ let to_universe map u =
+-let sets : Level.t Int.Map.t Summary.Ref.t =
++let sets : Level.t Int.Map.t ref =
+@@ -377 +369,0 @@ let rec level_of_sets uconv n =
+-  let open Summary.Ref in
+@@ -434,2 +426 @@ let rec height = function
+-    let open Summary.Ref in
+-    (try N.Map.find c !height_cache + 1
++      (try N.Map.find c !height_cache + 1
+@@ -446 +436,0 @@ let height n body =
+-  let open Summary.Ref in
+@@ -815 +805 @@ let nat_double = "Nat_double"
+-let declared : instantiation Int.Map.t N.Map.t Summary.Ref.t =
++let declared : instantiation Int.Map.t N.Map.t ref =
+@@ -818 +808 @@ let declared : instantiation Int.Map.t N.Map.t Summary.Ref.t =
+-let entries : entry N.Map.t Summary.Ref.t = Summary.ref ~name:"lean-entries" N.Map.empty
++let entries : entry N.Map.t ref = Summary.ref ~name:"lean-entries" N.Map.empty
+@@ -820 +810 @@ let entries : entry N.Map.t Summary.Ref.t = Summary.ref ~name:"lean-entries" N.M
+-let squash_info : squashy N.Map.t Summary.Ref.t =
++let squash_info : squashy N.Map.t ref =
+@@ -824 +813,0 @@ let add_declared n i inst =
+-  let open Summary.Ref in
+@@ -1256 +1244,0 @@ and ensure_exists n i =
+-  let open Summary.Ref in
+@@ -1309 +1297 @@ and declare_def { name = n; ty; body; univs; hint; kernel_opaque } i =
+-          Summary.Ref.(height_cache := N.Map.add n h !height_cache);
++          (height_cache := N.Map.add n h !height_cache);
+@@ -1414 +1402 @@ and declare_ind { name = n; params; ty; ctors; univs } i =
+-      let squashy = N.Map.get n Summary.Ref.(!squash_info) in
++      let squashy = N.Map.get n !squash_info in
+@@ -1517,3 +1504,0 @@ and declare_ind { name = n; params; ty; ctors; univs } i =
+-      let uinst, auctx = abstract_universes univs in
+-      let usubst = make_instance_subst uinst in
+-      let nf_univs c = Vars.subst_univs_level_constr usubst c in
+@@ -1522 +1507 @@ and declare_ind { name = n; params; ty; ctors; univs } i =
+-          Entries.mind_entry_params = Vars.subst_univs_level_context usubst params;
++          Entries.mind_entry_params = params;
+@@ -1529 +1514 @@ and declare_ind { name = n; params; ty; ctors; univs } i =
+-                mind_entry_arity = nf_univs ty;
++                mind_entry_arity = ty;
+@@ -1531 +1516 @@ and declare_ind { name = n; params; ty; ctors; univs } i =
+-                mind_entry_lc = List.map nf_univs ctys;
++                mind_entry_lc = ctys;
+@@ -1535 +1520 @@ and declare_ind { name = n; params; ty; ctors; univs } i =
+-          mind_entry_universes = Polymorphic_ind_entry auctx;
++          mind_entry_universes = Polymorphic_ind_entry univs;
+@@ -1539 +1524 @@ and declare_ind { name = n; params; ty; ctors; univs } i =
+-      let squashy = N.Map.get n Summary.Ref.(!squash_info) in
++      let squashy = N.Map.get n !squash_info in
+@@ -1761 +1745,0 @@ let squashify ind =
+-  let open Summary.Ref in
+@@ -1838 +1822,4 @@ let add_entry entry =
+-  let open Summary.Ref in
++  let flags = Global.typing_flags () in
++  if not (flags.check_guarded && flags.check_positive && flags.check_universes
++          && flags.check_eliminations) then
++    CErrors.user_err Pp.(str "M4 strict bridge requires all kernel typing checks");
+@@ -1872 +1858,0 @@ let finish state =
+-  let open Summary.Ref in
+@@ -2075 +2060,0 @@ let lean_obj =
+-  let open Summary.Ref in
+@@ -2095 +2079,0 @@ let import ~from ~until f =
+-  let open Summary.Ref in

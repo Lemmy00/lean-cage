@@ -1,0 +1,67 @@
+{
+  "exporter": {
+    "revision": "5a9a355dc6c5fd82b69058d433e2ae2e8dfbf8fe",
+    "url": "https://codeload.github.com/leanprover/lean4export/tar.gz/5a9a355dc6c5fd82b69058d433e2ae2e8dfbf8fe",
+    "sha256": "97d0b6cadce061d9de322d3f080262492fe6bffdf7559dc0ca0495240dfcb18c",
+    "license": "Apache-2.0"
+  },
+  "importer": {
+    "revision": "2d28bbe80e7361bf3ac54f5ef099207fc61ce837",
+    "url": "https://codeload.github.com/rocq-community/rocq-lean-import/tar.gz/2d28bbe80e7361bf3ac54f5ef099207fc61ce837",
+    "sha256": "e569abd13f1764fb497d454dfdee949be732cfa8efe8da2c47ca07e325e51c88",
+    "license": "LGPL-2.1-only"
+  },
+  "schema_version": 1,
+  "profile": "strict-9.3",
+  "host": "Ubuntu 24.04 x86_64",
+  "lean_toolchain": "leanprover/lean4:v4.35.0",
+  "opam": {
+    "version": "2.6.1",
+    "url": "https://github.com/ocaml/opam/releases/download/2.6.1/opam-2.6.1-x86_64-linux",
+    "sha256": "b533d393a6967150d6ef41cb3d71e147e93ecbabeb59e921aa412c0ae79ebe3d"
+  },
+  "compcert": {
+    "revision": "14d616046360a0b2611ebdfc2f98368af402e1f7",
+    "url": "https://codeload.github.com/AbsInt/CompCert/tar.gz/14d616046360a0b2611ebdfc2f98368af402e1f7",
+    "sha256": "8150fe0f3afb88527a4f99dd4e44132e3d92567870f4cfb4952915eb932ced32"
+  },
+  "switch_export_sha256": "9aa7fab426dfab230488406686c78488822c8df14194193585ea6e2373cb7012",
+  "importer_patch_sha256": "3db685bdb29d9c5927940c0f46b675795e8b9db59dc2a4f0cfba269573529c0a",
+  "patched_importer_source_sha256": "0d9bffa94f917a61c9d7471bd40ed407f1c4f8c44878dbab7b4552e58ce6d7fc",
+  "packages": [
+    {
+      "name": "libgmp-dev_2%3a6.3.0+dfsg-2ubuntu6.1_amd64.deb",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/libgmp-dev_6.3.0%2bdfsg-2ubuntu6.1_amd64.deb",
+      "sha256": "a9847b5ecfff791a46cb198f29a06d9d23a20afdfdd434812f2b44ccfb61d46a"
+    },
+    {
+      "name": "libgmp10_2%3a6.3.0+dfsg-2ubuntu6.1_amd64.deb",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gmp/libgmp10_6.3.0%2bdfsg-2ubuntu6.1_amd64.deb",
+      "sha256": "285f8a505dfa8e1b33f357a9d8d3477ad35bf18c0b34771a6df4c25923f3ae0d"
+    }
+  ],
+  "installed": {
+    "base-bigarray": "base",
+    "base-threads": "base",
+    "base-unix": "base",
+    "conf-gmp": "5",
+    "conf-linux-libc-dev": "0",
+    "conf-pkg-config": "5",
+    "dune": "3.24.2",
+    "menhir": "20260209",
+    "menhirCST": "20260209",
+    "menhirGLR": "20260209",
+    "menhirLib": "20260209",
+    "menhirSdk": "20260209",
+    "ocaml": "4.14.2",
+    "ocaml-base-compiler": "4.14.2",
+    "ocaml-config": "2",
+    "ocaml-options-vanilla": "1",
+    "ocamlfind": "1.9.8",
+    "rocq-core": "9.3.0",
+    "rocq-runtime": "9.3.0",
+    "rocq-stdlib": "9.2.0",
+    "yojson": "3.0.0",
+    "zarith": "1.14"
+  }
+}

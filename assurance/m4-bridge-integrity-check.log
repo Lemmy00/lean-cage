@@ -1,0 +1,5 @@
+PASS: final 42 Rocq/33 Lean full types and all transitive foundations match reviewed claims.
+PASS: all 214 replayed source identities, 221 proof artifacts, 85 tool artifacts and exact exported term closure match.
+PASS: final maintained bridge replay includes seven integrity regressions, actual disabled-guard refusal and independent kernel replay.
+PASS: preserved original 1113 Rocq/103 Lean records and 212 original compiled identities match the separate complete original-profile gate.
+PASS: all archived receipts and preservation maps match; all sixteen original native/Linux obligations remain open.

@@ -1,0 +1,3 @@
+Rebuilt exact archived AST, Codec and all 212 preceding proof modules.
+Bridge replay: 42 Rocq and 33 Lean theorem records; strict import and kernel replay passed.
+Primitive source/imported-reader correspondence checked; translation review, full-frame and Linux/executable composition remain OPEN.

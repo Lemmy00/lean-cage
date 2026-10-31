@@ -518,6 +518,18 @@ public encoding of kind 256 is distinct from the private sender's low-byte
 narrowing. The proof-side encoder does not alter deployed behavior or establish
 cross-assistant, transport or observation provenance.
 
+The separate strict bridge experiment proves an exact decoder normalization and
+imports its complete computational closure into an isolated Rocq 9.3 profile.
+Explicit byte and arithmetic adapters connect the imported 32-bit and 64-bit
+reader values to actual C executions, with unchanged memory, exact 59/103-step
+successful traces, progress, every-prefix loss and allocated nonvacuity. It adds
+42 Rocq and 33 Lean theorem records while preserving the earlier 1113/103 records
+and established proof profile. The imported logical model uses SProp and five
+declared instances of definitional UIP; the new Lean proofs use quotient
+soundness and propositional extensionality. Translation-faithfulness review and
+complete public-frame/controller composition remain open. This is not a completed
+cross-assistant or Linux/executable correspondence claim.
+
 **Evidence and assumptions:** `assurance/m4-public-evidence.json`,
 `assurance/m4-wire-evidence.json`,
 `assurance/m4-receiver-evidence.json`,
@@ -532,7 +544,10 @@ cross-assistant, transport or observation provenance.
 [public endpoint review](../reviews/M4-public.md) bind sources, terms, preservation
 checks and raw command receipts. `./scripts/check_m4_connection.sh` replays the
 pinned tools, actual extracted source/AST, complete declarations and `coqchk`.
-The six Rocq foundation/semantic-parameter entries remain unchanged; the explicit
+The isolated profile has its own [bridge review](../reviews/M4-bridge.md),
+`assurance/m4-bridge-claims.json`, `assurance/m4-bridge-evidence.json` and
+`python3 m4/bridge/check.py` replay. Its additional logical model is kept explicit.
+The established Coq 8.18 profile's six foundation/semantic-parameter entries remain unchanged; the explicit
 machine excludes stock external/builtin execution. No new Lean axiom is added.
 The owned witnesses allocate cells for the actual source symbol mapping; they do
 not assert initialized whole-program execution. Native/compiler/kernel/runtime

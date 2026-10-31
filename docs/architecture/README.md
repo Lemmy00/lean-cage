@@ -27,5 +27,6 @@ end-to-end isolation remain explicit M4/M5 obligations.
 | [§AR-m4-receiver](AR-m4-receiver.md#ar-m4-receiver-complete-terminal-error-receiver-from-owned-inputs) | Complete terminal-error read loop, raw classification, copies/frees and actual trace bounds |
 | [§AR-m4-wire](AR-m4-wire.md#ar-m4-wire-source-connections-through-exact-report-bytes) | Exact report bytes, private field acceptance and connected source histories |
 | [§AR-m4-public](AR-m4-public.md#ar-m4-public-exact-live-public-result-endpoint) | Exact live public parser, byte widths and public frame round trips |
+| [§AR-m4-bridge](AR-m4-bridge.md#ar-m4-bridge-strict-imported-endpoint-and-source-byte-correspondence) | Strict imported decoder, exact normalization and primitive source-reader correspondence |
 | [§AR-verification](AR-verification.md#ar-verification-compose-explicit-refinement-and-security-arguments) | Proof composition, audits, and executable correspondence |
 | [§AR-tooling](AR-tooling.md#ar-tooling-keep-development-reproducible-and-project-local) | Local tooling, pins, and development checks |

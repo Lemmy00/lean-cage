@@ -195,3 +195,27 @@ audit the complete maintained Lean source list, and include all generated proof
 helpers in the theorem inventory. The public endpoint is a necessary part of a
 future checked cross-assistant connection. It does not certify that connection,
 Linux transport/provenance or the executable chain.
+
+## bridge: Isolate the strict imported endpoint and prove byte adapters
+
+For [§AR-m4-bridge.normalization](../../architecture/AR-m4-bridge.md#normalization-exact-computational-endpoint) and [§FS-workspace.results](../../functional-spec/FS-workspace.md#results-entry-cancellation-and-bounded-transport), remove incidental
+string/diagnostic dependencies from the computational decoder without changing
+its behavior. Preserve all success fields and exact error messages through an
+ordinary Lean equality theorem for every byte array. Import only the computational
+root; do not describe its import as an import of that equality proof.
+
+For [§AR-m4-bridge.import](../../architecture/AR-m4-bridge.md#import-checked-terms-and-explicit-logical-model), use a separate Rocq 9.3 profile and a pinned importer
+patch that rejects disabled kernel checks. Keep missing-quotient skipping and
+parsing-only mode disabled. The imported model uses SProp and definitional UIP;
+make its precise foundations visible. Direct import of the original string
+closure is currently rejected because the importer's predeclared UInt32 model
+is incompatible with Lean 4.35. No unchecked cast or representation assumption
+may bypass that rejection.
+
+For [§AR-m4-bridge.bytes](../../architecture/AR-m4-bridge.md#bytes-relate-actual-source-bytes-to-the-imported-reader), prove explicit byte/list/arithmetic conversion and
+connect the imported 32-bit and 64-bit reads to the actual C source executions,
+including exact unsigned values, unchanged memory, progress and every-prefix
+loss. The separate profile rebuilds the original pinned CompCert and all earlier
+source modules. Its unsupported-version configuration flag does not disable a
+kernel proof check. Translation faithfulness review and complete frame/controller
+composition remain separate obligations; this experiment does not close M4.
