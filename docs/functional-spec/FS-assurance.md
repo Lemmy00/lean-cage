@@ -375,9 +375,14 @@ VM uses QEMU TCG, one `max` vCPU, 2048 MiB and ACPI-PM, with no external NIC, di
 KVM or host mount. Physical CPU/microcode verification is absent because M3 makes
 no physical-hardware claim.
 
-**Validation:** the full `./scripts/check.sh` passed: 71 Python tests, 168 Lean
+**Validation:** the full `./scripts/check.sh` gate includes 74 Python tests, 168 Lean
 guards, all three theorem audits, native compilation and archived evidence.
-M3 adds 29 Python tests and 77 guards, with 82 reviewed source/evidence identities.
+M3 adds 32 Python tests and 77 guards, with 84 reviewed source/evidence identities.
+The [main review](../reviews/M3-main-review.md) records rerun results after the
+report-storage correction. Failed report publication retains known execution,
+cleanup and cancellation observations under [§FS-workspace.results](FS-workspace.md#results-entry-cancellation-and-bounded-transport);
+three disposable filesystem tests cover successful publication and both write
+and rename failures. These tests execute no guest workload on the host.
 Run `./scripts/check.sh` for full proof, specification, pure fixture,
 compile-only and archived evidence checks. Explicit `python3 scripts/run_m3_vm.py`
 replays the VM; `--check-artifacts` additionally compares current artifacts.

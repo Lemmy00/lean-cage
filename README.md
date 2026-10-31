@@ -21,6 +21,8 @@ certified by these conditional model results and tests.
 - [Preserved M1 readiness review](docs/reviews/M1-readiness.md)
 - [M2 lifecycle and handoff](docs/reviews/M2-handoff.md)
 - [M3 workspace and handoff](docs/reviews/M3-handoff.md)
+- [M3 main review and correction](docs/reviews/M3-main-review.md)
+- [Next assignment: M4.1 native-semantics feasibility](docs/roadmap.md#m4entry-next-assignment--m41-native-semantics-feasibility)
 - [Functional specification](docs/functional-spec/README.md)
 - [Architecture](docs/architecture/README.md)
 - [First filter and launch boundary](docs/architecture/AR-filter-slice.md)

@@ -132,6 +132,14 @@ Policy syntax recognition and artifact hash implementation remain in the explici
 compiler/parser/crypto correspondence boundary; the audited Lean theorems state
 the precise decoder-validation implications and equivalence they establish.
 
+`API.persistReport` catches report-storage errors after decoding. It writes a
+temporary file in the trusted result directory and renames it to `report.json`
+only after a complete write. Publication failure adds a separate diagnostic and
+leaves the decoded observations intact; `Main` returns 126 for this failure.
+This is atomic visibility within the live VM, not crash-durable storage. Pure
+filesystem fixtures exercise missing directories and failed publication without
+running a guest on the host.
+
 The collector multiplexes trusted events, output and cancellation without waiting
 for a caller to consume guest bytes. Bounded spool buffers and capture prefixes
 must be outside the guest's memory limit with separate admission reservations.

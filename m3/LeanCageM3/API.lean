@@ -40,6 +40,24 @@ def detailedReport (r : Result) (p : Policy) (identity : Json) : Json :=
     ("memory_semantics", toJson "Linux cgroup charged memory; transient excess and preloaded charges excluded"),
     ("poll_target_ms", toJson (10 : Nat))])
 
+-- §FS-workspace.results: Storage failure must not erase facts from an authenticated result.
+def reportStorage (report : Json) (status : String) (error : Option String := none) : Json :=
+  Json.mkObj ((report.getObj?.toOption.map (·.toList)).getD [] ++ [
+    ("report_storage", toJson status),
+    ("report_storage_error", error.map toJson |>.getD Json.null)])
+
+-- §AR-workspace.transport: Only a complete report is published in the trusted result directory.
+def persistReport (path : System.FilePath) (report : Json) : IO Json := do
+  let stored := reportStorage report "stored"
+  let temporary : System.FilePath := path.toString ++ ".tmp"
+  try
+    IO.FS.writeFile temporary stored.compress
+    IO.FS.rename temporary path
+    return stored
+  catch error =>
+    try IO.FS.removeFile temporary catch _ => pure ()
+    return reportStorage report "failed" (some error.toString)
+
 -- §AR-workspace.transport: Only the helper's private stdout is decoded; guest bytes are separate
 -- artifacts.
 def invoke (policy : Policy) (preflight : Bool) : IO (Except String (Result × Json)) := do
@@ -69,9 +87,10 @@ def invoke (policy : Policy) (preflight : Bool) : IO (Except String (Result × J
           ((String.fromUTF8? identityBytes).bind (fun text => (Json.parse text).toOption)).getD Json.null)
       catch _ => pure Json.null
       else pure Json.null
-    let report := detailedReport result policy identity
-    if !preflight && result.run > 0 then
-      IO.FS.writeFile s!"/m3-results/{result.run}/report.json" report.compress
+    let observed := detailedReport result policy identity
+    let report ← if !preflight && result.run > 0 then
+      persistReport s!"/m3-results/{result.run}/report.json" observed
+      else pure (reportStorage observed "not_applicable")
     return .ok (result, report)
 
 end LeanCageM3

@@ -260,6 +260,15 @@ An unavailable result channel never fabricates success, failure-before-entry or
 cleanup completion. Public result framing has a 65536-byte cap; export data and
 guest bytes use separate bounded artifacts/streams.
 
+Saving an already decoded public report is a separate operation. Its failure
+must retain the observed entry, termination, cancellation and cleanup fields.
+The public JSON adds `report_storage = stored | failed | not_applicable` and
+`report_storage_error` (null or a diagnostic). Publish stored reports by atomic
+rename after a complete write; never expose a partial report as the saved result.
+A storage failure makes the command exit 126 while preserving the actual guest
+outcome in its JSON. Preflight and results without an allocated run use
+`not_applicable`. Retrieval is available only after successful publication.
+
 Accounting failures produce null usage/peak/event/elapsed/overshoot fields in the
 public report. Output-storage failure produces null observed/captured byte and
 truncation fields; a partial file is not reported as a complete capture.

@@ -5,6 +5,12 @@ This review covers [§RM-roadmap.m3](../roadmap.md#m3-useful-offline-workspace-s
 native implementation, passive artifact inspection and disposable-VM evidence.
 It is not an independent security review or production certification.
 
+This is the original implementation handoff at `77a05d3`. The subsequent
+[main integration review](M3-main-review.md) records the report-storage correction,
+new replay and next assignment. Counts and example measurements below describe
+that original snapshot; the current claim register and evidence files reflect
+the later reviewed revision.
+
 **Verdict: M3.1–M3.7 accepted for the stated conditional offline workspace
 profile.** The full repository gate and fresh source-bound VM replay passed on
 2026-10-31. Native/Linux/executable correspondence and hardware confidentiality

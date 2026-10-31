@@ -269,6 +269,92 @@ proof. Avoid claiming the entire kernel has been verified.
 **Reusable output:** semantics, proof connections, and reproducible artifact
 evidence that can support more features and maintained Linux profiles.
 
+### m4.packages: Correspondence work after the reviewed M3 baseline
+
+M4 is a research program, not one agent-sized implementation task. The next
+assignment is M4.1 below. Subsequent packages remain planned and must be refined
+using its actual results; completing the experiment does not complete M4.
+
+| Package | Dependency | Deliverable and gate |
+|---|---|---|
+| M4.1 Native-semantics feasibility | Reviewed M3 on `main` | Source-connected bounded Clight experiment, checked proof or precise reproducible blocker, and a decision on the semantics route |
+| M4.2 Checked connection to Lean | Viable M4.1 route | Machine-checked relation from the chosen native semantics to the relevant Lean definitions; full types, assumptions and nonvacuity audited; a manual Rocq-to-Lean map remains an open obligation |
+| M4.3 Controller and helper composition | M4.1–2 | Expand through parser/plan, memory/ABI, operation ordering, errors, asynchronous reports, supervision and cleanup; every local external effect gets an explicit contract and source connection |
+| M4.4 Pinned Linux enforcement | Effect contracts from M4.3; research may overlap | Discharge the relevant VFS/mount/descriptor, process/credential, seccomp and cgroup obligations against the pinned kernel and transitive dependencies; track each original M2/M3 ledger entry separately |
+| M4.5 Executable and runtime chain | M4.2–4 interfaces; artifact work may overlap | Connect compiler output, linking, Lean/native runtimes, loaders, runtime closure, kernel and deployed artifacts; hashes and reproducible builds identify bytes but do not prove correctness |
+| M4.6 Composed profile review | M4.3–5 | Compose the advertised functional properties for a named deployment profile, replay independently, and account for every remaining assumption; open correspondence gaps prevent a full M4 completion claim |
+
+M5 retains timing/cache/contention/speculation work. M6 remains optional. Neither
+is a shortcut around the Linux/executable obligations or a reason to expand the
+VM profile while its correspondence is still unproved.
+
+### m4.entry: Next assignment — M4.1 native-semantics feasibility
+
+**Entry:** M3 implementation `77a05d3` plus the reviewed report-storage correction
+and plan on `main`, recorded in [the M3 main review](reviews/M3-main-review.md).
+Read [§REQ-proof-integrity](requirements/REQ-proof-integrity.md#req-proof-integrity-never-substitute-a-weaker-claim-for-an-unfinished-proof), [§AR-workspace.experiment](architecture/AR-workspace.md#experiment-bounded-first-native-semantics-connection),
+[§AR-workspace.correspondence](architecture/AR-workspace.md#correspondence-additional-open-m4-boundaries) and [§AR-lifecycle.correspondence](architecture/AR-lifecycle.md#correspondence-m4-obligation-ledger).
+The existing CompCert 3.18 commit is the candidate semantics pin; exact compatible
+Rocq/frontend/build pins and licensing must be recorded before use. Keep tools
+project-local and retain the existing Lean/Velvet/Grund pins.
+
+**Scope and ownership:** one worker owns `m4/`, `scripts/check_m4.sh`,
+`assurance/m4-*`, a specific M4 architecture/decision record and
+`docs/reviews/M4.1-handoff.md`. The roadmap and assurance register are shared
+handoff files. Native extraction may touch `native/leancage_m3.c` and a small
+shared header only when required to keep the experiment connected to the actual
+helper; review that refactor and replay M3 before accepting it. No unrelated
+workspace, global tool installation or production deployment is authorized.
+
+Deliver the following in order:
+
+1. **Exact slice and contract.** Select the live dispatcher/error/report-framing
+   boundary promised in [§AR-workspace.experiment](architecture/AR-workspace.md#experiment-bounded-first-native-semantics-connection).
+   Start from the actual `write_all`, little-endian codec, `send_frame`,
+   `decode_frame` and terminal-error paths; identify precisely which functions
+   and branches belong to the experiment and which remain outside it. Keep the
+   300-authored-C-line bound using ordinary readable formatting. Include the
+   real short-I/O/EINTR/error and invalid-tag paths; do not replace the helper
+   with an unrelated idealized implementation. Record any necessary narrower
+   extraction as a design decision with the excluded obligations still open.
+2. **Reproducible semantics input.** Record source and preprocessed-source hashes,
+   header/ABI definitions, exact extraction command, identified Clight AST and
+   tool/source/license pins. Check mechanically that the proof input still
+   comes from the maintained helper. Parser/frontend and extraction trust stay
+   explicit unless independently discharged.
+3. **Actual semantics proof attempt.** State and attempt the universal simulation
+   from Clight execution to the selected operation/error/frame trace. Quantify
+   over arbitrary input bytes and permitted effect outcomes; model owned buffer
+   bounds, pointer arithmetic, machine widths and errno conversion. External
+   call contracts may expose short transfers, interruption, EOF, failure and
+   process loss; they must not assume containment or successful reporting.
+   Prove memory safety/absence of undefined behavior for the claimed slice under
+   explicit, inhabited ownership premises. Separate partial correctness from
+   termination under repeated interruption or blocked external effects.
+4. **Lean connection and claim ledger.** Identify the exact target declarations
+   in M2/M3, especially result decoding and lifecycle knowledge. Record full
+   proposition types and transitive assumptions in every proof assistant used.
+   A Rocq proof plus a written mapping does not discharge the Lean connection;
+   either check a bridge or leave that edge open for M4.2. The GCC binary,
+   kernel effects and hardware remain open unless separately proved.
+5. **Replay and decision.** Supply success, rejection, short-I/O/interruption and
+   terminal-error witnesses plus tamper/stale-input checks. Add a bounded local
+   `scripts/check_m4.sh`, then run Grund formatting, the full existing gate and
+   the new gate. Run fresh VM/artifact checks if M3 source/evidence identities
+   change. Publish commands, proof outputs, artifact hashes and residual gaps
+   in the handoff, and update M4.2–6 based on evidence.
+
+**Exit:** a reviewed feasibility result with an auditable connection to actual
+source. If the candidate cannot model the slice faithfully, record the exact
+reproducible obstruction and revised route instead of weakening the theorem or
+marking native correspondence proved. An incomplete proof is explicitly
+incomplete; a negative feasibility result can settle the tooling decision but
+cannot count as a discharged security obligation. Full M4 remains open.
+
+Keep completed work on `main`: start from its reviewed head, use a temporary
+branch/worktree only if isolation is needed, then integrate passing, reviewed
+commits back into `main` and push. Preserve other active work and never force-push.
+
 ## m5: Hardware-aware isolation
 
 Fulfill [§FS-observations.hardware](functional-spec/FS-observations.md#hardware-software-observable-channels) for a named CPU/kernel/configuration profile.

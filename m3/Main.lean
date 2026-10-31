@@ -29,6 +29,7 @@ def main (args : List String) : IO UInt32 := do
           return 126
         | .ok (result, report) =>
           IO.println report.compress
+          if (report.getObjValAs? String "report_storage").toOption == some "failed" then return 126
           return if result.kind == 0 then result.detail.toUInt32 else if result.kind == 7 then 0
             else if result.kind == 2 then (128 + result.detail).toUInt32 else if result.kind == 3 then 124
             else if result.kind == 4 then 126 else 125

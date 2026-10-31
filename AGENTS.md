@@ -10,8 +10,9 @@ and reviewed evidence under [§AR-m1-launch](docs/architecture/AR-m1-launch.md#a
 M3 follows the contract [§FS-workspace](docs/functional-spec/FS-workspace.md#fs-workspace-m3-offline-workspace-contract-version-1) and architecture [§AR-workspace](docs/architecture/AR-workspace.md#ar-workspace-m3-authority-model-linux-realization-and-evidence-plan) in the
 package order [§RM-roadmap.m3.packages](docs/roadmap.md#m3packages-build-the-profile-in-reviewable-slices);
 read the [M2 handoff review](docs/reviews/M2-handoff.md) and accepted
-[M3 handoff review](docs/reviews/M3-handoff.md) first. The next assignment is the
-bounded M4 experiment in [§AR-workspace.experiment](docs/architecture/AR-workspace.md#experiment-bounded-first-native-semantics-connection); its tooling and semantics
+[M3 handoff review](docs/reviews/M3-handoff.md) and [main review](docs/reviews/M3-main-review.md)
+first. The next assignment is [§RM-roadmap.m4.entry](docs/roadmap.md#m4entry-next-assignment--m41-native-semantics-feasibility), the bounded M4.1
+experiment extending [§AR-workspace.experiment](docs/architecture/AR-workspace.md#experiment-bounded-first-native-semantics-connection); its tooling and semantics
 connection remain unimplemented. Follow the assigned package; M3 does not complete
 native/Linux correspondence or hardware confidentiality.
 
@@ -65,6 +66,9 @@ and [§AR-tooling](docs/architecture/AR-tooling.md#ar-tooling-keep-development-r
   environment with recorded configuration. Do not change the shared host kernel,
   stop unrelated processes, or disturb active runs.
 - Inspect the working tree first. Preserve others' edits and keep changes scoped.
+  Keep completed, validated work on `main`; use a temporary branch only when
+  isolation is needed and integrate it after review. Never force-push or overwrite
+  concurrent changes.
   If collaboration is assigned, define owned files and shared interfaces before
   parallel edits. This preparation does not itself authorize spawning agents,
   sending tasks, publishing releases, or deploying workloads.

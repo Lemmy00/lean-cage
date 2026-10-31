@@ -53,6 +53,7 @@ remain design targets; exact declarations and limits are reviewed in the handoff
 | cancellation / death | `exit_cancel_race`, orphan cleanup, plus `cancel_after_entry`, `helper_death`, `controller_death`, `init_death`, `helper_before_fork`, `controller_before_arm`; extinction, quarantine and live sentinel checked with pidfds |
 | export | `snapshot_stdin_export` checks raw filename encoding, omitted symlink/FIFO and flattened hard links; `export_hardlink_bound` returns explicit failed export while retaining the real guest exit |
 | setup / API | Namespace/mount/handle/credential/cgroup/NNP/filter/exec injected failures; successful `preflight` enters no guest; actual check/run/report validates snapshots, captures, export and the same persisted result |
+| report publication | `test_report_storage.py` exercises actual temporary-file writes and rename failures with synthetic observations: successful retrieval, missing directory before publication, and failure after a complete temporary write. Entry/termination/cleanup/cancellation facts survive either error; no partial public report remains. These are host-side file tests, not guest execution. |
 | evidence | `test_audit.py` and `test_evidence.py`: full types/axioms, source/profile/artifact/schema/counter/control/sentinel tampering, missing/duplicate/reordered/timeout records, concurrent overlap, omitted API/death checks and a moved checkout without the original cache |
 
 Fault names explicitly label test injection. Positive controls prove that the
