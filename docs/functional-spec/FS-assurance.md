@@ -411,12 +411,12 @@ Clight model plus explicit byte-aware effects and asynchronous loss. The maintai
 retains the 25 feasibility declarations and 12 Lean target records;
 `assurance/m4-connection-claims.json` inventories every additive Rocq declaration
 with its complete type and transitive assumptions and the unchanged 12 Lean
-endpoint claims. The library checkpoint contains 323 Rocq declarations, preserving
-all 227 previous records and thirteen compiled artifacts exactly. These counts
+endpoint claims. The structure checkpoint contains 373 Rocq declarations, preserving
+all 323 previous records and twenty-one compiled artifacts exactly. These counts
 identify the audited inventory, not a security score.
 
 **Results:** universal finite-prefix safety and exact returns for `write_all`,
-`error_number`, `get32`, `get64`, `put32`, `put64` and `fault`; source codec round
+`error_number`, `get32`, `get64`, `put32`, `put64`, `fault` and `result_of`; source codec round
 trips for all 32/64-bit words; defined ordinary progress rather than loss/wait
 witnesses. The extended machine retains old transitions and earlier universal
 source safety. Explicit comparison/copy/close/exit contracts have owned-memory
@@ -424,10 +424,17 @@ progress, exact comparison equality, non-prefix partial-copy loss, unchanged
 outside memory and terminal nonreturning exit properties. `fault` compares actual
 owned strings through the maintained global pointer and supports arbitrary signed
 comparison magnitudes. Constructed source runs allow arbitrary caller
-continuations and finite waits. Universal local return claims end at `Kstop`.
+continuations and finite waits. Universal local return claims end at `Kstop`. The complete result constructor
+executes 161 source steps, including all 50 initialization stores, the whole
+144-byte structure copy and actual local free. Completed fields match arbitrary
+input/global words; other fields/digest bytes are zero. Every finite prefix
+preserves caller memory outside the output, and loss retains current memory.
+The structure copy includes padding memory values, without claiming initialized
+padding or compiled-copy atomicity.
 
-**Evidence and assumptions:** `assurance/m4-library-evidence.json` and
-[the proposition review](../reviews/M4-library.md) bind sources, terms, preservation
+**Evidence and assumptions:** `assurance/m4-library-evidence.json`,
+`assurance/m4-structures-evidence.json` and
+[the structure proposition review](../reviews/M4-structures.md) bind sources, terms, preservation
 checks and raw command receipts. `./scripts/check_m4_connection.sh` replays the
 pinned tools, actual extracted source/AST, complete declarations and `coqchk`.
 The six Rocq foundation/semantic-parameter entries remain unchanged; the explicit

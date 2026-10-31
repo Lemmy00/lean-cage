@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/localhome/milikic/sandbox-formalization/m4/check.py", line 282, in <module>
+    check()
+    ~~~~~^^
+  File "/localhome/milikic/sandbox-formalization/m4/check.py", line 248, in check
+    raise ValueError(f'preserved baseline changed: {name}')
+ValueError: preserved baseline changed: README.md

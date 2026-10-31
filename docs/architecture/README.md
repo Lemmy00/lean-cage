@@ -20,5 +20,6 @@ end-to-end isolation remain explicit M4/M5 obligations.
 | [§AR-m4-native](AR-m4-native.md#ar-m4-native-bounded-native-semantics-feasibility-experiment) | M4.1 source-connected feasibility, checked codec executions and rejected direct effect adapters |
 | [§AR-m4-effects](AR-m4-effects.md#ar-m4-effects-byte-aware-native-effects-and-asynchronous-loss) | M4.2 partial byte-aware effects, internal Clight/loss product and exact Lean endpoint lemmas; C/Lean/Linux/compiler correspondence remains open |
 | [§AR-m4-library](AR-m4-library.md#ar-m4-library-local-library-effects-for-the-reporting-slice) | Local comparison/copy/close/exit effects, preserved earlier source safety and complete fault-selector source connection |
+| [§AR-m4-structures](AR-m4-structures.md#ar-m4-structures-local-storage-and-result-construction-in-the-maintained-source) | Actual local/field/storage semantics and complete result constructor source, with loss and caller-memory preservation |
 | [§AR-verification](AR-verification.md#ar-verification-compose-explicit-refinement-and-security-arguments) | Proof composition, audits, and executable correspondence |
 | [§AR-tooling](AR-tooling.md#ar-tooling-keep-development-reproducible-and-project-local) | Local tooling, pins, and development checks |

@@ -62,3 +62,15 @@ because a sequential prefix would exclude common implementation strategies.
 Close and exit events describe local calls and source continuation, not OS cleanup
 or process-extinction evidence. The new boundary remains a local assumption until
 libc/Linux/executable correspondence is independently supplied.
+
+## structures: Keep typed structure copying distinct from initialized byte copying
+
+For [§AR-m4-structures.stores](../../architecture/AR-m4-structures.md#stores-allocation-scalar-stores-copying-and-freeing) and [§FS-workspace.results](../../functional-spec/FS-workspace.md#results-entry-cancellation-and-bounded-transport), use Clight's typed
+allocation, scalar assignment, complete-object assignment and local freeing.
+The result constructor's local structure is 144 bytes; its wire frame is a separate
+160-byte layout. Copy actual memory values, including unconstrained padding,
+under source alignment and alias rules. The initialized-byte libc `memcpy`
+contract cannot justify this structure assignment. A local source copy is one
+Clight transition; compiled interruption granularity remains an explicit compiler
+observation/refinement obligation. Track all finite source prefixes and free
+local storage at actual returns without inventing process-extinction receipts.

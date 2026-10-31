@@ -1,0 +1,396 @@
+{
+  "schema_version": 1,
+  "base_revision": "7bfcdd38b277d2891177c872bb2fd2bda8730cee",
+  "concurrent_documentation_revision": "605e89d8382dd09f10fafffc583da55b44087364",
+  "recorded_utc": "2026-10-31T16:38:28.958164+00:00",
+  "status": "result constructor source submilestone complete; M4.2-M4.6 incomplete",
+  "specification": [
+    "AR-m4-structures.access",
+    "AR-m4-structures.stores",
+    "AR-m4-structures.result",
+    "AR-m4-structures.evidence",
+    "DA-m4-effects.structures",
+    "FS-assurance.native",
+    "FS-workspace.results",
+    "REQ-proof-integrity.statement"
+  ],
+  "scope": "Complete maintained result_of with typed local allocation, fifty initialization stores, actual global loads, full structure assignment including padding memory values and local free. Every finite execution prefix/return in extended library semantics; independent permissions and arbitrary words.",
+  "primary_claims": [
+    "LocalAccess.old_expression_value",
+    "LocalAccess.local_location_value",
+    "LocalAccess.global_location_value",
+    "LocalAccess.pointer_location_value",
+    "LocalAccess.struct_location_value",
+    "LocalAccess.full_deref_unique",
+    "LocalAccess.location_read_value",
+    "LocalAccess.full_assignment_unique",
+    "LocalAccess.assignment_source_edge",
+    "LocalAccess.cast_expression_value",
+    "LocalAccess.binary_expression_value",
+    "LocalAccess.certified_set_edge",
+    "LocalAccess.allocation_unique",
+    "LocalAccess.function_entry_unique",
+    "LocalAccess.function_entry_source_edge",
+    "LocalAccess.local_void_return_edge",
+    "ScalarMemory.scalar_stores_permissions",
+    "ScalarMemory.scalar_stores_exist",
+    "ScalarMemory.scalar_stores_load_other",
+    "ScalarMemory.scalar_stores_fields",
+    "ScalarMemory.loadbytes_slice",
+    "ScalarMemory.copied_scalar_load",
+    "ScalarMemory.scalar_stores_outside",
+    "ScalarMemory.scalar_free_exists",
+    "ScalarMemory.scalar_validb_sound",
+    "ScalarMemory.scalar_list_validb_sound",
+    "ScalarMemory.scalar_orderedb_sound",
+    "ResultLayout.result_abi_layout",
+    "ResultLayout.result_cells_valid",
+    "ResultLayout.result_cells_separate",
+    "ResultLayout.result_cells_destination_alignment",
+    "ResultLayout.result_cells_complete",
+    "ResultLayout.result_struct_copy_fields",
+    "ResultSource.result_source_entry",
+    "ResultSource.result_source_free",
+    "ResultSource.result_globals_after_store",
+    "ResultSource.result_construction_source_path",
+    "ResultSafety.result_local_store_preserves",
+    "ResultSafety.result_local_stores_preserves",
+    "ResultSafety.result_source_execution",
+    "ResultSafety.result_return_exact",
+    "ResultSafety.result_all_prefixes",
+    "ResultSafety.result_defined_prefix",
+    "ResultSafety.result_success_exists",
+    "ResultSafety.result_freed_local_has_no_permission",
+    "ResultSafety.result_loss_every_prefix",
+    "ResultWitnesses.source_result_global_symbols",
+    "ResultWitnesses.allocated_result_globals",
+    "ResultWitnesses.arbitrary_result_source_input",
+    "ResultWitnesses.arbitrary_result_source_witness"
+  ],
+  "claims_sha256": "ef2d734da9c9d6689c097f59f29463a1e03f069cae2c6333abe5c014f9da7d3d",
+  "preserved_sha256": {
+    "assurance/m4-primitives-baseline-claims.json": "6a87d4e91fd657fdadc18ffc6ae345d8dcf9d1033b1ed4b9c7454c749b2396af",
+    "assurance/m4-writeall-evidence.json": "c84b1d748828893e922d1707b65d9b4794b23f279460461cd51bedf1580cd439",
+    "assurance/m4-connection-evidence.json": "310c6ea701805fe46852b8e3de0092edd3f26c5ff51f21ed6bb7af89d0631f38",
+    "assurance/m4-obligations.json": "77f760ca9447b8ee05ec0e24efc637b35ff6a62356657515ffc68f0999182064",
+    "m4/connection/IO.v": "1e0d7a736ddda75467ec2882663d8a02aeb4b65eea0af0f0f04c3b6d7e01e1df",
+    "m4/connection/Machine.v": "1469b64799d43d06cd3f8f1ae4430c19bf83947aff230d2de2188b8ad0b44e7d",
+    "m4/connection/ClightSteps.v": "3908a68171f220df8c0b18f38969f4a02d71c9da217c627409dcdb4aea6fd87c",
+    "m4/connection/WriteMemory.v": "73c7561dc3730529a8f24caeb83eead5d5531fb696909073f65e9f0b5bfa9135",
+    "m4/connection/WriteAll.v": "2fce62dfc3b678a432451e784d404a3d21e29d9d0902c26719bd4e607c4fd6b0",
+    "m4/connection/WriteWitnesses.v": "d8304157bc7ae42d22aa67a642df402b4218d77d6b31b203d4a4745c826b5fdf",
+    "m4/connection/Endpoints.lean": "39c562cf55df0a062791fee4f65a66b08066f04dac0b3ebfe1885c0369732468",
+    "m4/Codec.v": "7211798ce82bc0a212b0ab2fe54fab7891d5bfd8df8d43c37f7c330026b08efd",
+    "m4/toolchain-lock.json": "37f7baabab8c5defe032c5499eda7ba6f319f7c508bed6ee9c11b696033b6640",
+    "native/leancage_m3.c": "fe20ad61706bb8e8463d32e5c9a1a9f3bf038ff52cc9f2ac40ba14c1a010d82c",
+    "assurance/m4-slice.c": "f563cd6dc5163aad8d243ace10e95882cc3879bcf927ef765485886c07d43bb7",
+    "assurance/m4-slice.i": "79dd344ee81ba37d15fbf1cc0fc0d8ceeec8f63d751251ece5b1049610556fc7",
+    "assurance/m4-slice.v.gz": "0aa10f2e1ac62321990fb0b3ea41d87300c936ad4834fa80a8fad3a72afae28c",
+    "assurance/m4-writers-baseline-claims.json": "ef75db88ca4d6936b37f639952ba8733866e344c1dd34c4927e7578a30d34fa7",
+    "assurance/m4-primitives-evidence.json": "6fca39b27b214e83bbf9a5bc25a562cf9e6c5cbf5164e7d3fcfd2e4b65a89a00",
+    "m4/connection/Deterministic.v": "5f8e022b5bd52d7d73368fa6d565c282adfa957cc6a96279d6a490af54489ee8",
+    "m4/connection/ErrorNumber.v": "a69c020ef146a8fb315ed1c56d4877afa13195dd23306e13e9001b2995dca938",
+    "m4/connection/Readers.v": "28ed330d1fec632a2630c7d01f7af57c1957a6e5874db2b14b566456081636e4",
+    "assurance/m4-library-baseline-claims.json": "696f5a05ed0384e06006f3c8e0b34a421b9f935566df341da50af599ca347371",
+    "assurance/m4-writers-evidence.json": "21fede1f91573336d9fb62ac01fe72c4bef3250ed767045986554c1e893e71bc",
+    "m4/connection/StoreSteps.v": "fb5604ea1e123b239c667277d0fb4b14a062ff8797d03ec6ae84a4efc950d1a4",
+    "m4/connection/WriteBytes.v": "5798582f1bccbd7dc4e5e0d7cd3a704c436b41cdeef8b47ae97d4d06037c907c",
+    "m4/connection/Writers.v": "cfdafc7aaf973aac2e2fab0b216c04f4265f3b3a9535e1cb2ba43a26328e3fb5",
+    "m4/connection/CodecRoundtrip.v": "4e9dc186c3769acc69d972b1d1361afaf64cb9113542e850f79acb083a810281",
+    "assurance/m4-structures-baseline-claims.json": "6bb3267ee4212396cc14096f52bd1185a4f08f7adb7f42cc3e369819e5a04ca6",
+    "assurance/m4-library-evidence.json": "a3fa5ab457acf4f006fc81960e46bb74833b414da6e73a5c6862258e823436c9",
+    "m4/connection/Library.v": "b353ab25fd1200f0bf3f6d269383f9f115badec5caef66aa506101348f2625b1",
+    "m4/connection/ProcessEffects.v": "6a1ae05b621da4b1cb6ae40f9601afabcbee745b5a4589f574f87bd3b0bbfa62",
+    "m4/connection/LibraryMachine.v": "17916f6744038a4cfd70bb0c70f0b4bb74bd2d2c5274b8fda0e82a839223d687",
+    "m4/connection/LibraryPreservation.v": "971785d388569701aafca7fe2c7bb8bee38dcedd4fc03d9044badebaebcd915e",
+    "m4/connection/LibraryControl.v": "d04df0d1e0b4640e6124c705d0a8663b8b2b052b812dc0f17abd5dc67881e68f",
+    "m4/connection/GlobalReads.v": "9b38929a93fef159c21bc0b3fa9889cd8a8b54721cf70caa56a73f7c28b9578f",
+    "m4/connection/Fault.v": "45ca4dceb30604a77e7139915b86268e6dfff765b59ba78fba3145f30f8609e6",
+    "m4/connection/LibraryWitnesses.v": "20741911310bfa0b4a2281e362696a7f58ead17cd45c84d0a71dfccfe583eb0a"
+  },
+  "artifact_sha256": {
+    "IO.vo": "0c55b3533871640d15bc91b004509815d0870e1f3ce9dfbca329274918d0bc85",
+    "Machine.vo": "c8d8e2a6a8dd09a5163bf9b831e44d895b875b892ba8243c9247401bebe50597",
+    "ClightSteps.vo": "d34659acfd8e5e1e54647814fa0648774803135b2b36f0f263219ed567476fb7",
+    "WriteMemory.vo": "0a38f41c5be2d95e779544cd6abf20058b66f1a765edc0fb2ded269da252b8bf",
+    "WriteAll.vo": "1e73897b2a30b8f1380b636661c57faf7fc80a3e49739ffd3bfcd5c65afd58a8",
+    "WriteWitnesses.vo": "91afe21c5b9e6dae638079d416412e827a60e9d605e1a5d7032d95f69ba4be80",
+    "Deterministic.vo": "d0d14a68168b2ef4ae554ec92240e91ef04809cb7f86856aaeaca5a0d028f05e",
+    "ErrorNumber.vo": "d3af1a4ebd495b7cbb0af7c192098bff87a93ea392af1130e1373238208995ad",
+    "Readers.vo": "94496385f6ad7be35d10422accfb960be66cb34e9196ac15cc5b4a53458eeb80",
+    "StoreSteps.vo": "a9224929656274bbcf3a72a06d7c69a8520b71b1fe62c39cecdc2d3eb42e8776",
+    "WriteBytes.vo": "b7578f679dab38e5dfa4e597703b2d7134ba3006eea11ca58cf13a7bcf2b0bc9",
+    "Writers.vo": "14d4845af222e18f811b649e73ee277fd1d79cccc137f2082a83e51f0c9998c3",
+    "CodecRoundtrip.vo": "cb06ef67f0303c4abb434c282e517a7575c3db67361496fe0bf28b846f963c71",
+    "Library.vo": "e5623edd7e2c387430e1b8a51c414602fad06c9b49bd6d62f7bba67c735a8be3",
+    "ProcessEffects.vo": "185ee2a3b2757a556460b1b50c85f059ea898cbe7de3830c843b731d956e32c2",
+    "LibraryMachine.vo": "3f978857972b0f4bf4701c56f67eab1cc89e1c42082dfb113c46d05aacdc5dc3",
+    "LibraryPreservation.vo": "23a28ad57503d9e2337140d1d09aa654e55d9cc455e93f05e8e02e141ae0ae7c",
+    "LibraryControl.vo": "48ab8e1ebd5fc1771c3d4a7bdb389b9bb08d09b6a4f70abe332a95f7dc748165",
+    "GlobalReads.vo": "49a5616a9c79ef8065583ef0e094e06f538d9875b9f08ba5718de0845299404d",
+    "Fault.vo": "24a9dd8ded56b2132bc9f89bbacfdf14dd5e47debc27f3dfa9ffdbe2f1a09efd",
+    "LibraryWitnesses.vo": "6f7c66bafbcc3e383b9d1f61babeed22da4379a5cc9454fb53c05a7ae339dd0b",
+    "LocalAccess.vo": "32b704ea8be49497830340095d9239f2c3ee1fbe16246edf07c0462a13d3f42a",
+    "ScalarMemory.vo": "1af135da22cf3d6e230adc08d131103009628e116998775c2ae9b1f66cdef271",
+    "ResultLayout.vo": "f61b715f1f1b71c98fab2d4f3a7fb7552f713c68bf780c3ed83d5a3d5e15946d",
+    "ResultSource.vo": "ff991611eae6e215b14f0c83ac313e8b6568f4eb89eb92615b83b55d72271d00",
+    "ResultSafety.vo": "2beb4f6f6aebdd539d706e1247183c6eb8f3247545f7b49359fbf9397436aace",
+    "ResultWitnesses.vo": "13a32cddcd0a59187bcafefa3d78228dea208c3a153e90577caa6bb6702c0466"
+  },
+  "declarations": {
+    "rocq_total": 373,
+    "rocq_previous_preserved": 323,
+    "rocq_added": 50,
+    "lean_preserved": 12
+  },
+  "foundations": [
+    "ClassicalDedekindReals.sig_forall_dec",
+    "ClassicalDedekindReals.sig_not_dec",
+    "Classical_Prop.classic",
+    "Events.external_functions_sem",
+    "Events.inline_assembly_sem",
+    "FunctionalExtensionality.functional_extensionality_dep"
+  ],
+  "input": "Writable aligned nonwrapping 144-byte output; arbitrary 32-bit argument words and actual source-global run/UID loads. Output need not be initialized and may alias old global storage. Fresh local is independent.",
+  "result": "Exact declared field/digest values at every return, complete source trace, unchanged old memory outside output, and real freeing with no remaining local permissions. No initialized-padding claim.",
+  "bounds": {
+    "source_steps": 161,
+    "max_source_events_including_loss": 162,
+    "scalar_initialization_stores": 50,
+    "struct_size": 144,
+    "struct_alignment": 8,
+    "wire_frame_size_distinct": 160,
+    "digest_offset": 108,
+    "digest_length": 32
+  },
+  "nonvacuity": "Actual local memory allocation for source symbols, arbitrary run/UID and argument words, uninitialized output and useful successful executions. Not whole-program initialization.",
+  "observation_boundary": "A Clight structure assignment is one source step; compiled interruption granularity is an open compiler observation obligation. Loss retained at every source boundary.",
+  "tool_profile": "Unchanged pinned CompCert commit 14d616046360a0b2611ebdfc2f98368af402e1f7 (VERSION 3.17), Coq 8.18.0 and OCaml 4.14.1. Source/frontend/extraction correctness remains trusted; no compiler preservation theorem applied to the extended machine.",
+  "kernel_replay": [
+    "coqchk",
+    "-silent",
+    "<pinned project-local load paths>",
+    "IO",
+    "Machine",
+    "ClightSteps",
+    "WriteMemory",
+    "WriteAll",
+    "WriteWitnesses",
+    "Deterministic",
+    "ErrorNumber",
+    "Readers",
+    "StoreSteps",
+    "WriteBytes",
+    "Writers",
+    "CodecRoundtrip",
+    "Library",
+    "ProcessEffects",
+    "LibraryMachine",
+    "LibraryPreservation",
+    "LibraryControl",
+    "GlobalReads",
+    "Fault",
+    "LibraryWitnesses",
+    "LocalAccess",
+    "ScalarMemory",
+    "ResultLayout",
+    "ResultSource",
+    "ResultSafety",
+    "ResultWitnesses"
+  ],
+  "deployment": "No native, kernel, VM, runtime or hardware profile changed; preserved VM artifacts only.",
+  "documentation_amendments": [
+    {
+      "path": "README.md",
+      "previous_sha256": "a9226b40c7cc0624c515842605beb68825aa1d4c3b0b2b3d7546fe4a66539a1d",
+      "current_sha256": "88437bf7f4312803e17fbec6ac7ed0d03816e1652a18b4ad3760d3c94a59502c",
+      "reason": "Product documentation from committed 605e89d; no proof/native/tool/VM change."
+    },
+    {
+      "path": "docs/architecture/AR-core.md",
+      "previous_sha256": "9e6c5baa9d1483ce7e4878a3765566d64cc6c961f4316060face6c6d3c0fcb2d",
+      "current_sha256": "4777f47a3cc3aca6cad292c6352545ddf3e73f4b6130f9d4ab4040624a67b6f2",
+      "reason": "Product documentation from committed 605e89d; no proof/native/tool/VM change."
+    },
+    {
+      "path": "docs/functional-spec/FS-assurance.md",
+      "previous_sha256": "4b435a47ede3a44ba078fab4e2ad49dbdc1e56012ee9be36884e51486f9ee642",
+      "current_sha256": "7332be31a7a543a35284a214cbaef1526e375995bf7d1abe0044d80b313a580a",
+      "reason": "Result constructor progress and retained product index; documentation only."
+    },
+    {
+      "path": "docs/architecture/README.md",
+      "previous_sha256": "d9d45f62b6b974381d8c7269a53776136348157a54e5f98df458cf2de8af3ab0",
+      "current_sha256": "bf6a68547bf8086a13fdcb8e2d37ddef9f6181cf857e196f53baa6d2f6c88181",
+      "reason": "Result constructor progress and retained product index; documentation only."
+    },
+    {
+      "path": "docs/roadmap.md",
+      "previous_sha256": "8561d3d159c635b14a618444c48a8a4222d8dcf2ce15407d6f1d8a3c67abe29a",
+      "current_sha256": "525d5751dc7baad61bdf8c9754d1f8c4096f25604c3fda2fc7912992bf4a8b70",
+      "reason": "Result constructor progress and retained product index; documentation only."
+    },
+    {
+      "path": "assurance/filter-decoder.json",
+      "previous_sha256": "b1ecd2bb1c59f3d5ce1970e985061ab380852733e68c5849e3feba9d10c91c48",
+      "current_sha256": "1213d1dd049bffa63799cc64b9d9bacb19e3d2811302d4e4649e4b7155eb27f3",
+      "reason": "Only named documentation fingerprints and transitive evidence manifests."
+    },
+    {
+      "path": "assurance/m2-claims.json",
+      "previous_sha256": "53e9b13d0107e2088cb84fb8287e742bf77e241783718e9c451c360fb6816026",
+      "current_sha256": "e12cb78b365b3a74f6db70b286b8d891d5bb25aebc3e863cfef46c7348a2dd3f",
+      "reason": "Only named documentation fingerprints and transitive evidence manifests."
+    },
+    {
+      "path": "assurance/m3-claims.json",
+      "previous_sha256": "51ceaf422067b5d6543af0462732032c443d8385f36b9fcd7fedb8ce92dbf225",
+      "current_sha256": "ca48148cf0d87e752f1d722cc93371c7d6c07c67883ef1cb9896fec04a8fcdfb",
+      "reason": "Only named documentation fingerprints and transitive evidence manifests."
+    },
+    {
+      "path": "assurance/m4-claims.json",
+      "previous_sha256": "5694f581e8b305b346b0bf2ed8af566198b108a9a92055804ab8c5dec7c383ba",
+      "current_sha256": "01e0992c1611d0362cd68ba021f402016ef88202ab246131e6ffe74ceac326e9",
+      "reason": "Only named documentation fingerprints and transitive evidence manifests."
+    },
+    {
+      "path": "assurance/m4-evidence.json",
+      "previous_sha256": "6a560a55fdbe9ed5b8e56a792c4e1aed4dcd1be5a22920ef75ca80711d00a794",
+      "current_sha256": "a827907bdc1f0d7ea651a25e797e3d2331a801122ba8e05abbcdf9a89288a2cf",
+      "reason": "Only named documentation fingerprints and transitive evidence manifests."
+    },
+    {
+      "path": "assurance/m4-connection-evidence.json",
+      "previous_sha256": "7ef08603eaa6e58c9d0ffa44021e6b3ba6f0225956f601e7f986ba990eb2c98a",
+      "current_sha256": "310c6ea701805fe46852b8e3de0092edd3f26c5ff51f21ed6bb7af89d0631f38",
+      "reason": "Only named documentation fingerprints and transitive evidence manifests."
+    },
+    {
+      "path": "assurance/m4-writeall-evidence.json",
+      "previous_sha256": "5f24ab74ff56507c0a53d104f2cb25643d686c3ecdf1e7d63bfd8409931f3562",
+      "current_sha256": "c84b1d748828893e922d1707b65d9b4794b23f279460461cd51bedf1580cd439",
+      "reason": "Only named documentation fingerprints and transitive evidence manifests."
+    },
+    {
+      "path": "assurance/m4-primitives-evidence.json",
+      "previous_sha256": "58280b98553bae263ae04c639c6728a1fa2266475f21bf555c0a21369ed02e79",
+      "current_sha256": "6fca39b27b214e83bbf9a5bc25a562cf9e6c5cbf5164e7d3fcfd2e4b65a89a00",
+      "reason": "Only named documentation fingerprints and transitive evidence manifests."
+    },
+    {
+      "path": "assurance/m4-writers-evidence.json",
+      "previous_sha256": "69f09c00fa69caafa47adc37ebfb6d351fdeadbb96070f44774a55cfe36616b0",
+      "current_sha256": "21fede1f91573336d9fb62ac01fe72c4bef3250ed767045986554c1e893e71bc",
+      "reason": "Only named documentation fingerprints and transitive evidence manifests."
+    },
+    {
+      "path": "assurance/m4-library-evidence.json",
+      "previous_sha256": "2064156836e5631792bd0315a31389bb38c3fce3d7c54f6fde5f734100619a07",
+      "current_sha256": "a3fa5ab457acf4f006fc81960e46bb74833b414da6e73a5c6862258e823436c9",
+      "reason": "Only named documentation fingerprints and transitive evidence manifests."
+    }
+  ],
+  "review_amendment": {
+    "only_source_update": [
+      "docs/reviews/M4-structures.md"
+    ],
+    "reason": "Record the observed relocated-artifact rejection and canonical rerun; no proof source, theorem, foundation or compiled artifact changed."
+  },
+  "open_obligations": [
+    "Frame construction/acceptance and partial rejected-frame mutation",
+    "Terminal reception, failed publication and complete caller composition",
+    "Checked C/Rocq-to-Lean bridge",
+    "All sixteen original native/Linux ledger entries",
+    "Actual libc/Linux effects and concurrency/interference",
+    "Compiler observation and preservation, runtime/linker/loader/kernel/executable chain",
+    "Independent M4.6 review and M5 hardware confidentiality"
+  ],
+  "validation": [
+    {
+      "command": "Historical source/type/foundation/artifact preservation against 7bfcdd38b277d2891177c872bb2fd2bda8730cee",
+      "exit_code": 0,
+      "evidence": "assurance/m4-structures-preservation-check.log"
+    },
+    {
+      "command": "Initial isolated full collection plus archived artifact identity comparison",
+      "exit_code": 1,
+      "classification": "relocated compiled artifact rejection; canonical collection preserves original artifacts",
+      "evidence": "assurance/m4-structures-isolation-check.log"
+    },
+    {
+      "command": "Initial isolated checkout: ./scripts/check.sh",
+      "exit_code": 0,
+      "elapsed_seconds": 94.267,
+      "evidence": "assurance/m4-structures-isolated-repository-check.log"
+    },
+    {
+      "command": "Initial isolated checkout: python3 scripts/run_m3_vm.py --check-artifacts",
+      "exit_code": 0,
+      "elapsed_seconds": 0.523,
+      "evidence": "assurance/m4-structures-isolated-artifacts-check.log"
+    },
+    {
+      "command": "Initial isolated checkout: ./scripts/grund.sh fmt --check",
+      "exit_code": 0,
+      "elapsed_seconds": 0.051,
+      "evidence": "assurance/m4-structures-isolated-format-check.log"
+    },
+    {
+      "command": "Initial isolated checkout: git diff --check HEAD",
+      "exit_code": 0,
+      "elapsed_seconds": 0.016,
+      "evidence": "assurance/m4-structures-isolated-diff-check.log"
+    },
+    {
+      "command": "Initial canonical maintained-source gate before reconciling committed product documentation",
+      "exit_code": 1,
+      "classification": "stale README and AR-core documentation fingerprints from concurrent commit; explicitly amended without changing theorem/artifact/native expectations",
+      "evidence": "assurance/m4-structures-initial-documentation-rejection.log"
+    },
+    {
+      "command": "./scripts/check.sh",
+      "exit_code": 0,
+      "elapsed_seconds": 92.755,
+      "evidence": "assurance/m4-structures-repository-check.log"
+    },
+    {
+      "command": "python3 scripts/run_m3_vm.py --check-artifacts",
+      "exit_code": 0,
+      "elapsed_seconds": 0.519,
+      "evidence": "assurance/m4-structures-artifacts-check.log"
+    },
+    {
+      "command": "./scripts/grund.sh fmt --check",
+      "exit_code": 0,
+      "elapsed_seconds": 0.05,
+      "evidence": "assurance/m4-structures-format-check.log"
+    },
+    {
+      "command": "git diff --check HEAD",
+      "exit_code": 0,
+      "elapsed_seconds": 0.011,
+      "evidence": "assurance/m4-structures-diff-check.log"
+    },
+    {
+      "command": "./scripts/check_m4_connection.sh",
+      "exit_code": 0,
+      "elapsed_seconds": 241.999,
+      "evidence": "assurance/m4-structures-connection-check.log"
+    }
+  ],
+  "archived_receipts_sha256": {
+    "assurance/m4-structures-preservation-check.log": "00265df4b41609b0d387a0a8d692fc7c9c976fe87fd1fe61a89149a5179603f9",
+    "assurance/m4-structures-isolation-check.log": "98b6b365af8c6d373e025cabfe2635e401ffa386a9bb46dc64450ef91d44dfe4",
+    "assurance/m4-structures-isolated-repository-check.log": "17f4d877b2d99e25aa2d720c0f37d6dd792733c5e5d47946f98701bf738f6473",
+    "assurance/m4-structures-isolated-artifacts-check.log": "8b731c23cf3c4b804f820095476a429731d7ad6831adeb8740133785aa46f4b9",
+    "assurance/m4-structures-isolated-format-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "assurance/m4-structures-isolated-diff-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "assurance/m4-structures-initial-documentation-rejection.log": "effd21fc023ac32d7e029f47b8247092a48eb86ab08092321458ba64497ee702",
+    "assurance/m4-structures-repository-check.log": "9bf2befb911f27489e078d43dd3edec9a5756004d6597eb2e153da8a1bb1ffc8",
+    "assurance/m4-structures-artifacts-check.log": "8b731c23cf3c4b804f820095476a429731d7ad6831adeb8740133785aa46f4b9",
+    "assurance/m4-structures-format-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "assurance/m4-structures-diff-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "assurance/m4-structures-connection-check.log": "25269a3cd0e2eafc0cdcd168419b2d35165334ba5aa03fcd7eee16e1b12b861e"
+  }
+}

@@ -26,11 +26,14 @@ WRITERS_BASELINE = ROOT / 'assurance/m4-writers-baseline-claims.json'
 WRITERS_EVIDENCE = ROOT / 'assurance/m4-writers-evidence.json'
 LIBRARY_BASELINE = ROOT / 'assurance/m4-library-baseline-claims.json'
 LIBRARY_EVIDENCE = ROOT / 'assurance/m4-library-evidence.json'
+STRUCTURES_BASELINE = ROOT / 'assurance/m4-structures-baseline-claims.json'
+STRUCTURES_EVIDENCE = ROOT / 'assurance/m4-structures-evidence.json'
 MODULES = ['IO', 'Machine', 'ClightSteps', 'WriteMemory', 'WriteAll', 'WriteWitnesses',
            'Deterministic', 'ErrorNumber', 'Readers',
            'StoreSteps', 'WriteBytes', 'Writers', 'CodecRoundtrip',
            'Library', 'ProcessEffects', 'LibraryMachine', 'LibraryPreservation',
-           'LibraryControl', 'GlobalReads', 'Fault', 'LibraryWitnesses']
+           'LibraryControl', 'GlobalReads', 'Fault', 'LibraryWitnesses',
+           'LocalAccess', 'ScalarMemory', 'ResultLayout', 'ResultSource', 'ResultSafety', 'ResultWitnesses']
 ALLOWED_COQ = {
     'ClassicalDedekindReals.sig_not_dec', 'ClassicalDedekindReals.sig_forall_dec',
     'FunctionalExtensionality.functional_extensionality_dep', 'Classical_Prop.classic',
@@ -50,6 +53,8 @@ def sources():
               ROOT / 'docs/reviews/M4-writeall.md', ROOT / 'docs/reviews/M4-primitives.md',
               ROOT / 'docs/reviews/M4-writers.md', ROOT / 'docs/reviews/M4-library.md',
               ROOT / 'docs/architecture/AR-m4-library.md',
+              ROOT / 'docs/architecture/AR-m4-structures.md', ROOT / 'docs/reviews/M4-structures.md',
+              STRUCTURES_BASELINE,
               ROOT / 'docs/functional-spec/FS-assurance.md', LIBRARY_BASELINE,
               BASELINE_CLAIMS, PRIMITIVES_BASELINE, WRITERS_BASELINE, OBLIGATIONS]
     return {str(p.relative_to(ROOT)): digest(p) for p in sorted(paths)}
@@ -207,9 +212,16 @@ def check():
     primitives = json.loads(PRIMITIVES_EVIDENCE.read_text())
     writers = json.loads(WRITERS_EVIDENCE.read_text())
     library = json.loads(LIBRARY_EVIDENCE.read_text())
+    structures = json.loads(STRUCTURES_EVIDENCE.read_text())
+    if structures['status'] != 'result constructor source submilestone complete; M4.2-M4.6 incomplete':
+        raise ValueError('local result construction cannot complete M4 correspondence')
+    if digest(MANIFEST) != structures['claims_sha256']:
+        raise ValueError('structure reviewed claim manifest identity differs')
+    verify_hashes(structures['preserved_sha256'])
+    verify_hashes(structures['archived_receipts_sha256'])
     if library['status'] != 'local library effects and fault source submilestone complete; M4.2-M4.6 incomplete':
         raise ValueError('local library effects cannot complete M4 correspondence')
-    if digest(MANIFEST) != library['claims_sha256']:
+    if digest(STRUCTURES_BASELINE) != library['claims_sha256']:
         raise ValueError('library reviewed claim manifest identity differs')
     verify_hashes(library['preserved_sha256'])
     verify_hashes(library['archived_receipts_sha256'])
@@ -272,7 +284,9 @@ def check():
     validate_artifacts(primitives['artifact_sha256'], actual['artifact_sha256'], subset=True)
     validate_preserved_claims(json.loads(LIBRARY_BASELINE.read_text()), actual)
     validate_artifacts(writers['artifact_sha256'], actual['artifact_sha256'], subset=True)
-    validate_artifacts(library['artifact_sha256'], actual['artifact_sha256'])
+    validate_preserved_claims(json.loads(STRUCTURES_BASELINE.read_text()), actual)
+    validate_artifacts(library['artifact_sha256'], actual['artifact_sha256'], subset=True)
+    validate_artifacts(structures['artifact_sha256'], actual['artifact_sha256'])
     result = subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', str(DIRECTORY),
                              '-p', 'test_*.py', '-v'], cwd=ROOT,
                             capture_output=True, text=True, timeout=60)
@@ -282,7 +296,7 @@ def check():
     print(f'Connection checked: {len(actual["rocq_declarations"])} Rocq theorems, '
           f'{len(actual["lean_declarations"])} Lean theorems, coqchk passed; 16 original obligations OPEN')
     print('Universal write_all, errno, byte reader/writer source safety and codec round trips checked; '
-          'local library effects, old-source preservation and fault source checked; '
+          'local library effects, old-source preservation, fault and complete result constructor checked; '
           'whole-slice C/Lean simulation, Linux/compiler/runtime correspondence and full M4 remain UNPROVED')
 
 

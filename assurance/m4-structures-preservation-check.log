@@ -1,0 +1,5 @@
+PASS: all historical preservation maps and archived receipts match.
+PASS: all 323 previous Rocq and 12 Lean full types and foundations unchanged; snapshot byte-identical to 7bfcdd38b277d2891177c872bb2fd2bda8730cee.
+PASS: all twenty-one old compiled artifacts preserved at the canonical path.
+PASS: original M1-M3/25 Rocq/12 Lean records unchanged; only named documentation and transitive manifests amended.
+PASS: original native helper, extraction, Clight AST, tool pins and VM evidence unchanged.

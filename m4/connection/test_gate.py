@@ -223,6 +223,31 @@ class EvidenceGate(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'changed or disappeared'):
             gate.validate_preserved_claims(previous, actual)
 
+    def test_structures_source_and_memory_claims_present(self):
+        names = {r['name'] for r in self.claims['rocq_declarations']}
+        self.assertTrue({
+            'LocalAccess.assignment_source_edge', 'LocalAccess.function_entry_source_edge',
+            'LocalAccess.local_void_return_edge', 'ScalarMemory.scalar_stores_fields',
+            'ScalarMemory.copied_scalar_load', 'ResultLayout.result_abi_layout',
+            'ResultLayout.result_struct_copy_fields', 'ResultSource.result_construction_source_path',
+            'ResultSafety.result_source_execution', 'ResultSafety.result_return_exact',
+            'ResultSafety.result_all_prefixes', 'ResultSafety.result_defined_prefix',
+            'ResultSafety.result_loss_every_prefix', 'ResultSafety.result_freed_local_has_no_permission',
+            'ResultWitnesses.arbitrary_result_source_input',
+            'ResultWitnesses.arbitrary_result_source_witness',
+        }.issubset(names))
+
+    def test_all_library_claims_preserved(self):
+        previous = json.loads(gate.STRUCTURES_BASELINE.read_text())
+        self.assertEqual(len(previous['rocq_declarations']), 323)
+        self.assertEqual(len(previous['lean_declarations']), 12)
+        gate.validate_preserved_claims(previous, self.claims)
+        actual = copy.deepcopy(self.claims)
+        record = next(r for r in actual['rocq_declarations'] if r['name'] == 'Fault.fault_return_exact')
+        record['full_type'] = 'weakened previously checked fault source'
+        with self.assertRaisesRegex(ValueError, 'changed or disappeared'):
+            gate.validate_preserved_claims(previous, actual)
+
 
 if __name__ == '__main__':
     unittest.main()

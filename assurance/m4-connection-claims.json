@@ -1,25 +1,28 @@
 {
   "schema_version": 1,
-  "scope": "Partial M4.2: preserved write-loop/errno/codecs, explicit library effects, universal old-source preservation and complete fault source. Whole-slice/Lean/Linux/executable correspondence open.",
+  "scope": "Partial M4.2: preserved earlier effects/source claims plus complete result_of construction, local storage, typed field copying and freeing. Whole-slice/bridge/Linux/executable correspondence open.",
   "m4_complete": false,
   "source_sha256": {
     "assurance/m4-library-baseline-claims.json": "696f5a05ed0384e06006f3c8e0b34a421b9f935566df341da50af599ca347371",
     "assurance/m4-obligations.json": "77f760ca9447b8ee05ec0e24efc637b35ff6a62356657515ffc68f0999182064",
     "assurance/m4-primitives-baseline-claims.json": "6a87d4e91fd657fdadc18ffc6ae345d8dcf9d1033b1ed4b9c7454c749b2396af",
+    "assurance/m4-structures-baseline-claims.json": "6bb3267ee4212396cc14096f52bd1185a4f08f7adb7f42cc3e369819e5a04ca6",
     "assurance/m4-writeall-baseline-claims.json": "0219d263c97977e88fe3a013c40fa6f18a6daa0fd9b7f6fff4ac978718372bf6",
     "assurance/m4-writers-baseline-claims.json": "ef75db88ca4d6936b37f639952ba8733866e344c1dd34c4927e7578a30d34fa7",
     "docs/architecture/AR-m4-effects.md": "38fe3a9e5bbf84e6c91b2e9388d116a1c1df05a6dbd0ab61aa2c9989baeaeb63",
     "docs/architecture/AR-m4-library.md": "52d94044e71aaa129ac34a9ffa4edc7a2e99ac6dfd37a065e401891c18352e04",
-    "docs/architecture/README.md": "d9d45f62b6b974381d8c7269a53776136348157a54e5f98df458cf2de8af3ab0",
-    "docs/decisions/architectural/DA-m4-effects.md": "1120ddcc9612fdf52462fc7282308b35a99331106a7530358a822e667157b1c1",
+    "docs/architecture/AR-m4-structures.md": "7290b4f00ccfb6a8608be457ceffbed7d85987ce298f09656f2d3723a8485629",
+    "docs/architecture/README.md": "bf6a68547bf8086a13fdcb8e2d37ddef9f6181cf857e196f53baa6d2f6c88181",
+    "docs/decisions/architectural/DA-m4-effects.md": "06d614ce520dddb8583e03b5c5fbd901157fc8da884805d87bed1bf96be3e287",
     "docs/decisions/architectural/README.md": "18097b2fb8a35a9f1bc47ea573fe29c6fddd0f06ccc83af597bf54edc0ecf1fb",
-    "docs/functional-spec/FS-assurance.md": "4b435a47ede3a44ba078fab4e2ad49dbdc1e56012ee9be36884e51486f9ee642",
+    "docs/functional-spec/FS-assurance.md": "7332be31a7a543a35284a214cbaef1526e375995bf7d1abe0044d80b313a580a",
     "docs/reviews/M4-library.md": "f9efa48d44f236767d0f431c648142b0b510468c2782841fc59ba88cb5a99b5d",
     "docs/reviews/M4-primitives.md": "8c175ede23eedcbfaad41ffd9b65bbf7870449827c7e794770f50933d62eb235",
     "docs/reviews/M4-progress.md": "2ba274b9783f17f729eb1dea34d2527a05ab6fbe17ad22256030bece9bdf16aa",
+    "docs/reviews/M4-structures.md": "316de60ce605c76dbc1a0083fe0d1b2748fa16d1003c809dce1d2822bbf59419",
     "docs/reviews/M4-writeall.md": "0c7dcca76621cdbc022ec4800708182d022e1c358bb3cd1304b163cc5b58c487",
     "docs/reviews/M4-writers.md": "0a828f10161f0ba3207485dfda63b4a7ea4ca8763123e8f75ec62f72c142a5c4",
-    "docs/roadmap.md": "8561d3d159c635b14a618444c48a8a4222d8dcf2ce15407d6f1d8a3c67abe29a",
+    "docs/roadmap.md": "525d5751dc7baad61bdf8c9754d1f8c4096f25604c3fda2fc7912992bf4a8b70",
     "m4/connection/ClightSteps.v": "3908a68171f220df8c0b18f38969f4a02d71c9da217c627409dcdb4aea6fd87c",
     "m4/connection/CodecRoundtrip.v": "4e9dc186c3769acc69d972b1d1361afaf64cb9113542e850f79acb083a810281",
     "m4/connection/Deterministic.v": "5f8e022b5bd52d7d73368fa6d565c282adfa957cc6a96279d6a490af54489ee8",
@@ -34,18 +37,24 @@
     "m4/connection/LibraryMachine.v": "17916f6744038a4cfd70bb0c70f0b4bb74bd2d2c5274b8fda0e82a839223d687",
     "m4/connection/LibraryPreservation.v": "971785d388569701aafca7fe2c7bb8bee38dcedd4fc03d9044badebaebcd915e",
     "m4/connection/LibraryWitnesses.v": "20741911310bfa0b4a2281e362696a7f58ead17cd45c84d0a71dfccfe583eb0a",
+    "m4/connection/LocalAccess.v": "1e38c38a2e4d54fc8e1ad23e95c371f9c17444c03809c4d2d0a24bcd7d23414d",
     "m4/connection/Machine.v": "1469b64799d43d06cd3f8f1ae4430c19bf83947aff230d2de2188b8ad0b44e7d",
     "m4/connection/ProcessEffects.v": "6a1ae05b621da4b1cb6ae40f9601afabcbee745b5a4589f574f87bd3b0bbfa62",
     "m4/connection/README.md": "5a569624405d487240d0cdeee49c6176975dabf20b39320f16ee70fe1b16a1ce",
     "m4/connection/Readers.v": "28ed330d1fec632a2630c7d01f7af57c1957a6e5874db2b14b566456081636e4",
+    "m4/connection/ResultLayout.v": "0f30c83fabe8fdee1ad77f8ceb8d6f003a5c5b82f749e0a063ab38c0ef5357d6",
+    "m4/connection/ResultSafety.v": "7f625d4a653eb34f4a9d23944d3aee38098405ea337d2726076ada7b6bd60abb",
+    "m4/connection/ResultSource.v": "6b925bbcc33ca851a295551bfa3a815c0658494195f02648acbc79ca83a2a684",
+    "m4/connection/ResultWitnesses.v": "6178c95523be62961788b1535fe1228a201e310014599715f0e5f2b4f807690d",
+    "m4/connection/ScalarMemory.v": "11e21a1f969bace0cfa3b4e65544e49c94db74b33502ebf551078b9925e0ab2b",
     "m4/connection/StoreSteps.v": "fb5604ea1e123b239c667277d0fb4b14a062ff8797d03ec6ae84a4efc950d1a4",
     "m4/connection/WriteAll.v": "2fce62dfc3b678a432451e784d404a3d21e29d9d0902c26719bd4e607c4fd6b0",
     "m4/connection/WriteBytes.v": "5798582f1bccbd7dc4e5e0d7cd3a704c436b41cdeef8b47ae97d4d06037c907c",
     "m4/connection/WriteMemory.v": "73c7561dc3730529a8f24caeb83eead5d5531fb696909073f65e9f0b5bfa9135",
     "m4/connection/WriteWitnesses.v": "d8304157bc7ae42d22aa67a642df402b4218d77d6b31b203d4a4745c826b5fdf",
     "m4/connection/Writers.v": "cfdafc7aaf973aac2e2fab0b216c04f4265f3b3a9535e1cb2ba43a26328e3fb5",
-    "m4/connection/check.py": "c73a75cfd833396e4e295f3e904fc90b8b3dae8d97eab1ec8bd2b125c128300d",
-    "m4/connection/test_gate.py": "15a3a13482bcad0d4bf8d54384829b31696bec956abfbf7dbf265ba38dc99dbf",
+    "m4/connection/check.py": "8c9db9b0339b13043bf139989e38bb5dbaf5e46186441c621c16015e63fa4ef2",
+    "m4/connection/test_gate.py": "64ebd81ee59828094488cf42197f90c4cf598831308d229b96c63c40f502af5d",
     "scripts/check_m4.sh": "83c0165ee40e3584ba10cb1c98d300c3d8ff42307895e241005674c0c9e51b3c",
     "scripts/check_m4_connection.sh": "fb13017464e99a26d8d80b5644da59246dd4e4e27f511747f8b0dd600f8f825d"
   },
@@ -3337,6 +3346,501 @@
     {
       "name": "LibraryWitnesses.unequal_fault_source_witness",
       "full_type": "unequal_fault_source_witness\n     : forall (cell : tls) (waits : nat), @ex Memory.Mem.mem (fun m : Memory.Mem.mem => @ex address (fun mode : address => @ex address (fun name : address => @ex (list library_event) (fun events : list library_event => and (fault_input (Clight.globalenv Slice.prog) m mode name normal_bytes magic_bytes) (and (library_steps (Clight.globalenv Slice.prog) cell (live (fault_initial name Clight.Kstop m)) events (live (Clight.Returnstate (Values.Vint Integers.Int.zero) Clight.Kstop m))) (and (@eq nat (@length library_event events) (Nat.add waits (S (S (S (S (S (S (S (S (S (S O)))))))))))) (@eq nat (control_cost events) (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "LocalAccess.old_expression_value",
+      "full_type": "old_expression_value\n     : forall (ge : Clight.genv) (e : Clight.env) (le : Clight.temp_env) (m : Memory.Mem.mem) (a : Clight.expr) (v : Values.val) (_ : evaluated ge e le m a v), expression_value ge e le m a v",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "LocalAccess.local_location_value",
+      "full_type": "local_location_value\n     : forall (ge : Clight.genv) (e : Maps.PTree.tree (prod Values.block Ctypes.type)) (le : Clight.temp_env) (m : Memory.Mem.mem) (id : BinNums.positive) (ty : Ctypes.type) (b : Values.block) (_ : @eq (option (prod Values.block Ctypes.type)) (@Maps.PTree.get (prod Values.block Ctypes.type) id e) (@Some (prod Values.block Ctypes.type) (@pair Values.block Ctypes.type b ty))), location_value ge e le m (Clight.Evar id ty) b Integers.Ptrofs.zero",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "LocalAccess.global_location_value",
+      "full_type": "global_location_value\n     : forall (ge : Clight.genv) (e : Maps.PTree.tree (prod Values.block Ctypes.type)) (le : Clight.temp_env) (m : Memory.Mem.mem) (id : BinNums.positive) (ty : Ctypes.type) (b : Values.block) (_ : @eq (option (prod Values.block Ctypes.type)) (@Maps.PTree.get (prod Values.block Ctypes.type) id e) (@None (prod Values.block Ctypes.type))) (_ : @eq (option Values.block) (@Globalenvs.Genv.find_symbol Clight.fundef Ctypes.type (Clight.genv_genv ge) id) (@Some Values.block b)), location_value ge e le m (Clight.Evar id ty) b Integers.Ptrofs.zero",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "LocalAccess.pointer_location_value",
+      "full_type": "pointer_location_value\n     : forall (ge : Clight.genv) (e : Clight.env) (le : Clight.temp_env) (m : Memory.Mem.mem) (a : Clight.expr) (ty : Ctypes.type) (b : Values.block) (ofs : Integers.Ptrofs.int) (_ : expression_value ge e le m a (Values.Vptr b ofs)), location_value ge e le m (Clight.Ederef a ty) b ofs",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "LocalAccess.struct_location_value",
+      "full_type": "struct_location_value\n     : forall (ge : Clight.genv) (e : Clight.env) (le : Clight.temp_env) (m : Memory.Mem.mem) (a : Clight.expr) (field : AST.ident) (ty : Ctypes.type) (b : Values.block) (ofs : Integers.Ptrofs.int) (id : AST.ident) (co : Ctypes.composite) (att : Ctypes.attr) (delta : BinNums.Z) (_ : expression_value ge e le m a (Values.Vptr b ofs)) (_ : @eq Ctypes.type (Clight.typeof a) (Ctypes.Tstruct id att)) (_ : @eq (option Ctypes.composite) (@Maps.PTree.get Ctypes.composite id (Clight.genv_cenv ge)) (@Some Ctypes.composite co)) (_ : @eq (Errors.res (prod BinNums.Z Ctypes.bitfield)) (Ctypes.field_offset (Clight.genv_cenv ge) field (Ctypes.co_members co)) (@Errors.OK (prod BinNums.Z Ctypes.bitfield) (@pair BinNums.Z Ctypes.bitfield delta Ctypes.Full))), location_value ge e le m (Clight.Efield a field ty) b (Integers.Ptrofs.add ofs (Integers.Ptrofs.repr delta))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "LocalAccess.full_deref_unique",
+      "full_type": "full_deref_unique\n     : forall (ty : Ctypes.type) (m : Memory.Mem.mem) (b : Values.block) (ofs : Integers.Ptrofs.int) (v other : Values.val) (_ : Clight.deref_loc ty m b ofs Ctypes.Full v) (_ : Clight.deref_loc ty m b ofs Ctypes.Full other), @eq Values.val other v",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "LocalAccess.location_read_value",
+      "full_type": "location_read_value\n     : forall (ge : Clight.genv) (e : Clight.env) (le : Clight.temp_env) (m : Memory.Mem.mem) (a : Clight.expr) (b : Values.block) (ofs : Integers.Ptrofs.int) (v : Values.val) (_ : location_value ge e le m a b ofs) (_ : Clight.deref_loc (Clight.typeof a) m b ofs Ctypes.Full v), expression_value ge e le m a v",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "LocalAccess.full_assignment_unique",
+      "full_type": "full_assignment_unique\n     : forall (ge : Ctypes.composite_env) (ty : Ctypes.type) (m : Memory.Mem.mem) (b : Values.block) (ofs : Integers.Ptrofs.int) (v : Values.val) (a c : Memory.Mem.mem) (_ : Clight.assign_loc ge ty m b ofs Ctypes.Full v a) (_ : Clight.assign_loc ge ty m b ofs Ctypes.Full v c), @eq Memory.Mem.mem a c",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "LocalAccess.assignment_source_edge",
+      "full_type": "assignment_source_edge\n     : forall (ge : Clight.genv) (f : Clight.function) (a rhs : Clight.expr) (k : Clight.cont) (e : Clight.env) (le : Clight.temp_env) (m : Memory.Mem.mem) (b : Values.block) (ofs : Integers.Ptrofs.int) (v w : Values.val) (after : Memory.Mem.mem) (_ : location_value ge e le m a b ofs) (_ : expression_value ge e le m rhs v) (_ : @eq (option Values.val) (Cop.sem_cast v (Clight.typeof rhs) (Clight.typeof a) m) (@Some Values.val w)) (_ : Clight.assign_loc (Clight.genv_cenv ge) (Clight.typeof a) m b ofs Ctypes.Full w after), store_edge ge (Clight.State f (Clight.Sassign a rhs) k e le m) (Clight.State f Clight.Sskip k e le after)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "LocalAccess.cast_expression_value",
+      "full_type": "cast_expression_value\n     : forall (ge : Clight.genv) (e : Clight.env) (le : Clight.temp_env) (m : Memory.Mem.mem) (a : Clight.expr) (ty : Ctypes.type) (v w : Values.val) (_ : expression_value ge e le m a v) (_ : @eq (option Values.val) (Cop.sem_cast v (Clight.typeof a) ty m) (@Some Values.val w)), expression_value ge e le m (Clight.Ecast a ty) w",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "LocalAccess.binary_expression_value",
+      "full_type": "binary_expression_value\n     : forall (ge : Clight.genv) (e : Clight.env) (le : Clight.temp_env) (m : Memory.Mem.mem) (op : Cop.binary_operation) (a c : Clight.expr) (ty : Ctypes.type) (v w result : Values.val) (_ : expression_value ge e le m a v) (_ : expression_value ge e le m c w) (_ : @eq (option Values.val) (Cop.sem_binary_operation (Clight.genv_cenv ge) op v (Clight.typeof a) w (Clight.typeof c) m) (@Some Values.val result)), expression_value ge e le m (Clight.Ebinop op a c ty) result",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "LocalAccess.certified_set_edge",
+      "full_type": "certified_set_edge\n     : forall (ge : Clight.genv) (f : Clight.function) (id : AST.ident) (a : Clight.expr) (k : Clight.cont) (e : Clight.env) (le : Clight.temp_env) (m : Memory.Mem.mem) (v : Values.val) (_ : expression_value ge e le m a v), store_edge ge (Clight.State f (Clight.Sset id a) k e le m) (Clight.State f Clight.Sskip k e (@Maps.PTree.set Values.val id v le) m)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "LocalAccess.allocation_unique",
+      "full_type": "allocation_unique\n     : forall (ge : Clight.genv) (vars : list (prod AST.ident Ctypes.type)) (e : Clight.env) (m : Memory.Mem.mem) (e1 : Clight.env) (m1 : Memory.Mem.mem) (e2 : Clight.env) (m2 : Memory.Mem.mem) (_ : Clight.alloc_variables ge e m vars e1 m1) (_ : Clight.alloc_variables ge e m vars e2 m2), and (@eq Clight.env e1 e2) (@eq Memory.Mem.mem m1 m2)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "LocalAccess.function_entry_unique",
+      "full_type": "function_entry_unique\n     : forall (ge : Clight.genv) (f : Clight.function) (args : list Values.val) (m : Memory.Mem.mem) (e1 : Clight.env) (le1 : Clight.temp_env) (m1 : Memory.Mem.mem) (e2 : Clight.env) (le2 : Clight.temp_env) (m2 : Memory.Mem.mem) (_ : Clight.function_entry2 ge f args m e1 le1 m1) (_ : Clight.function_entry2 ge f args m e2 le2 m2), and (@eq Clight.env e1 e2) (and (@eq Clight.temp_env le1 le2) (@eq Memory.Mem.mem m1 m2))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "LocalAccess.function_entry_source_edge",
+      "full_type": "function_entry_source_edge\n     : forall (ge : Clight.genv) (f : Clight.function) (args : list Values.val) (k : Clight.cont) (m : Memory.Mem.mem) (e : Clight.env) (le : Clight.temp_env) (after : Memory.Mem.mem) (_ : Clight.function_entry2 ge f args m e le after), store_edge ge (Clight.Callstate (@Ctypes.Internal Clight.function f) args k m) (Clight.State f (Clight.fn_body f) k e le after)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "LocalAccess.local_void_return_edge",
+      "full_type": "local_void_return_edge\n     : forall (ge : Clight.genv) (f : Clight.function) (k : Clight.cont) (e : Clight.env) (le : Clight.temp_env) (m after : Memory.Mem.mem) (_ : @eq (option Memory.Mem.mem) (Memory.Mem.free_list m (Clight.blocks_of_env ge e)) (@Some Memory.Mem.mem after)), store_edge ge (Clight.State f (Clight.Sreturn (@None Clight.expr)) k e le m) (Clight.Returnstate Values.Vundef (Clight.call_cont k) after)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "ScalarMemory.scalar_stores_permissions",
+      "full_type": "scalar_stores_permissions\n     : forall (b : Values.block) (m : Memory.Mem.mem) (cells : list scalar_cell) (after : Memory.Mem.mem) (_ : scalar_stores b m cells after) (block : Values.block) (ofs : BinNums.Z) (kind : Memtype.perm_kind) (perm : Memtype.permission), iff (Memory.Mem.perm after block ofs kind perm) (Memory.Mem.perm m block ofs kind perm)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "ScalarMemory.scalar_stores_exist",
+      "full_type": "scalar_stores_exist\n     : forall (b : Values.block) (size : BinNums.Z) (cells : list scalar_cell) (m : Memory.Mem.mem) (_ : @List.Forall scalar_cell (scalar_valid size) cells) (_ : Memory.Mem.range_perm m b BinNums.Z0 size Memtype.Cur Memtype.Freeable), @ex Memory.Mem.mem (fun after : Memory.Mem.mem => scalar_stores b m cells after)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "ScalarMemory.scalar_stores_load_other",
+      "full_type": "scalar_stores_load_other\n     : forall (b : Values.block) (m : Memory.Mem.mem) (cells : list scalar_cell) (after : Memory.Mem.mem) (block : Values.block) (chunk : AST.memory_chunk) (ofs : BinNums.Z) (_ : scalar_stores b m cells after) (_ : or (not (@eq Values.block block b)) (@List.Forall scalar_cell (fun c : scalar_cell => or (BinInt.Z.le (BinInt.Z.add ofs (Memdata.size_chunk chunk)) (scalar_offset c)) (BinInt.Z.le (BinInt.Z.add (scalar_offset c) (Memdata.size_chunk (scalar_chunk c))) ofs)) cells)), @eq (option Values.val) (Memory.Mem.load chunk after block ofs) (Memory.Mem.load chunk m block ofs)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "ScalarMemory.scalar_stores_fields",
+      "full_type": "scalar_stores_fields\n     : forall (b : Values.block) (m : Memory.Mem.mem) (cells : list scalar_cell) (after : Memory.Mem.mem) (_ : scalar_stores b m cells after) (_ : forall (before : list scalar_cell) (cell : scalar_cell) (rest : list scalar_cell) (_ : @eq (list scalar_cell) cells (@app scalar_cell before (@cons scalar_cell cell rest))), @List.Forall scalar_cell (scalar_separate cell) rest) (cell : scalar_cell) (_ : @List.In scalar_cell cell cells), @eq (option Values.val) (Memory.Mem.load (scalar_chunk cell) after b (scalar_offset cell)) (@Some Values.val (Values.Val.load_result (scalar_chunk cell) (scalar_value cell)))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "ScalarMemory.loadbytes_slice",
+      "full_type": "loadbytes_slice\n     : forall (m : Memory.Mem.mem) (b : Values.block) (ofs : BinNums.Z) (bytes : list Memdata.memval) (start count : BinNums.Z) (_ : @eq (option (list Memdata.memval)) (Memory.Mem.loadbytes m b ofs (BinInt.Z.of_nat (@length Memdata.memval bytes))) (@Some (list Memdata.memval) bytes)) (_ : BinInt.Z.le BinNums.Z0 start) (_ : BinInt.Z.le BinNums.Z0 count) (_ : BinInt.Z.le (BinInt.Z.add start count) (BinInt.Z.of_nat (@length Memdata.memval bytes))), @eq (option (list Memdata.memval)) (Memory.Mem.loadbytes m b (BinInt.Z.add ofs start) count) (@Some (list Memdata.memval) (@List.firstn Memdata.memval (BinInt.Z.to_nat count) (@List.skipn Memdata.memval (BinInt.Z.to_nat start) bytes)))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "ScalarMemory.copied_scalar_load",
+      "full_type": "copied_scalar_load\n     : forall (before after : Memory.Mem.mem) (src dst : Values.block) (sofs dofs : BinNums.Z) (bytes : list Memdata.memval) (chunk : AST.memory_chunk) (offset : BinNums.Z) (v : Values.val) (_ : @eq (option (list Memdata.memval)) (Memory.Mem.loadbytes before src sofs (BinInt.Z.of_nat (@length Memdata.memval bytes))) (@Some (list Memdata.memval) bytes)) (_ : @eq (option Memory.Mem.mem) (Memory.Mem.storebytes before dst dofs bytes) (@Some Memory.Mem.mem after)) (_ : BinInt.Z.le BinNums.Z0 offset) (_ : BinInt.Z.le (BinInt.Z.add offset (Memdata.size_chunk chunk)) (BinInt.Z.of_nat (@length Memdata.memval bytes))) (_ : BinInt.Z.divide (Memdata.align_chunk chunk) (BinInt.Z.add dofs offset)) (_ : @eq (option Values.val) (Memory.Mem.load chunk before src (BinInt.Z.add sofs offset)) (@Some Values.val v)), @eq (option Values.val) (Memory.Mem.load chunk after dst (BinInt.Z.add dofs offset)) (@Some Values.val v)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "ScalarMemory.scalar_stores_outside",
+      "full_type": "scalar_stores_outside\n     : forall (b : Values.block) (size : BinNums.Z) (m : Memory.Mem.mem) (cells : list scalar_cell) (after : Memory.Mem.mem) (_ : scalar_stores b m cells after) (_ : @List.Forall scalar_cell (scalar_valid size) cells), Memory.Mem.unchanged_on (fun (block : Values.block) (pos : BinNums.Z) => or (not (@eq Values.block block b)) (or (BinInt.Z.lt pos BinNums.Z0) (BinInt.Z.le size pos))) m after",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "ScalarMemory.scalar_free_exists",
+      "full_type": "scalar_free_exists\n     : forall (b : Values.block) (size : BinNums.Z) (m : Memory.Mem.mem) (cells : list scalar_cell) (after : Memory.Mem.mem) (_ : scalar_stores b m cells after) (_ : Memory.Mem.range_perm m b BinNums.Z0 size Memtype.Cur Memtype.Freeable), @ex Memory.Mem.mem (fun freed : Memory.Mem.mem => @eq (option Memory.Mem.mem) (Memory.Mem.free after b BinNums.Z0 size) (@Some Memory.Mem.mem freed))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "ScalarMemory.scalar_validb_sound",
+      "full_type": "scalar_validb_sound\n     : forall (size : BinNums.Z) (c : scalar_cell) (_ : @eq bool (scalar_validb size c) true), scalar_valid size c",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "ScalarMemory.scalar_list_validb_sound",
+      "full_type": "scalar_list_validb_sound\n     : forall (size : BinNums.Z) (cells : list scalar_cell) (_ : @eq bool (@List.forallb scalar_cell (scalar_validb size) cells) true), @List.Forall scalar_cell (scalar_valid size) cells",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "ScalarMemory.scalar_orderedb_sound",
+      "full_type": "scalar_orderedb_sound\n     : forall (cells : list scalar_cell) (_ : @eq bool (scalar_orderedb cells) true) (before : list scalar_cell) (c : scalar_cell) (rest : list scalar_cell) (_ : @eq (list scalar_cell) cells (@app scalar_cell before (@cons scalar_cell c rest))), @List.Forall scalar_cell (scalar_separate c) rest",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "ResultLayout.result_abi_layout",
+      "full_type": "result_abi_layout\n     : and (@eq BinNums.Z (Ctypes.sizeof (Clight.genv_cenv result_ge) result_type) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xO BinNums.xH))))))))) (and (@eq BinNums.Z (Ctypes.alignof (Clight.genv_cenv result_ge) result_type) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))) (@eq (list (Errors.res (prod BinNums.Z Ctypes.bitfield))) (@List.map AST.ident (Errors.res (prod BinNums.Z Ctypes.bitfield)) (fun id : AST.ident => Ctypes.field_offset (Clight.genv_cenv result_ge) id result_members) (@cons AST.ident Slice._kind (@cons AST.ident Slice._stage (@cons AST.ident Slice._detail (@cons AST.ident Slice._entry (@cons AST.ident Slice._clean (@cons AST.ident Slice._triggers (@cons AST.ident Slice._uid (@cons AST.ident Slice._run (@cons AST.ident Slice._cpu (@cons AST.ident Slice._peak (@cons AST.ident Slice._out (@cons AST.ident Slice._err (@cons AST.ident Slice._elapsed (@cons AST.ident Slice._oom (@cons AST.ident Slice._pids (@cons AST.ident Slice._export_state (@cons AST.ident Slice._omitted (@cons AST.ident Slice._export_error (@cons AST.ident Slice._export_digest (@nil AST.ident))))))))))))))))))))) (@List.map BinNums.Z (Errors.res (prod BinNums.Z Ctypes.bitfield)) (fun ofs : BinNums.Z => @Errors.OK (prod BinNums.Z Ctypes.bitfield) (@pair BinNums.Z Ctypes.bitfield ofs Ctypes.Full)) (@cons BinNums.Z BinNums.Z0 (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO BinNums.xH))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO BinNums.xH))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xO BinNums.xH))))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO BinNums.xH))))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xI (BinNums.xO BinNums.xH))))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH))))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH))))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH))))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH))))))) (@nil BinNums.Z)))))))))))))))))))))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "ResultLayout.result_cells_valid",
+      "full_type": "result_cells_valid\n     : forall (kind stage detail entry uid : Integers.Int.int) (run : Integers.Int64.int), @List.Forall scalar_cell (scalar_valid (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xO BinNums.xH))))))))) (result_cells kind stage detail entry uid run)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "ResultLayout.result_cells_separate",
+      "full_type": "result_cells_separate\n     : forall (kind stage detail entry uid : Integers.Int.int) (run : Integers.Int64.int) (before : list scalar_cell) (cell : scalar_cell) (rest : list scalar_cell) (_ : @eq (list scalar_cell) (result_cells kind stage detail entry uid run) (@app scalar_cell before (@cons scalar_cell cell rest))), @List.Forall scalar_cell (scalar_separate cell) rest",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "ResultLayout.result_cells_destination_alignment",
+      "full_type": "result_cells_destination_alignment\n     : forall (kind stage detail entry uid : Integers.Int.int) (run : Integers.Int64.int) (ofs : BinNums.Z) (cell : scalar_cell) (_ : BinInt.Z.divide (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))) ofs) (_ : @List.In scalar_cell cell (result_cells kind stage detail entry uid run)), BinInt.Z.divide (Memdata.align_chunk (scalar_chunk cell)) (BinInt.Z.add ofs (scalar_offset cell))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "ResultLayout.result_cells_complete",
+      "full_type": "result_cells_complete\n     : forall (initial : Memory.Mem.mem) (local : Values.block) (kind stage detail entry uid : Integers.Int.int) (run : Integers.Int64.int) (after : Memory.Mem.mem) (_ : scalar_stores local initial (result_cells kind stage detail entry uid run) after), result_contents after local BinNums.Z0 kind stage detail entry uid run",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "ResultLayout.result_struct_copy_fields",
+      "full_type": "result_struct_copy_fields\n     : forall (m after : Memory.Mem.mem) (local output : Values.block) (ofs : BinNums.Z) (bytes : list Memdata.memval) (kind stage detail entry uid : Integers.Int.int) (run : Integers.Int64.int) (_ : result_contents m local BinNums.Z0 kind stage detail entry uid run) (_ : BinInt.Z.divide (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))) ofs) (_ : @eq (option (list Memdata.memval)) (Memory.Mem.loadbytes m local BinNums.Z0 (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xO BinNums.xH))))))))) (@Some (list Memdata.memval) bytes)) (_ : @eq (option Memory.Mem.mem) (Memory.Mem.storebytes m output ofs bytes) (@Some Memory.Mem.mem after)), result_contents after output ofs kind stage detail entry uid run",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "ResultSource.result_source_entry",
+      "full_type": "result_source_entry\n     : forall (m : Memory.Mem.mem) (allocated : Memory.Mem.mem') (local output : Values.block) (ofs : BinNums.Z) (kind stage detail entry : Integers.Int.int) (k : Clight.cont) (_ : @eq (prod Memory.Mem.mem' Values.block) (Memory.Mem.alloc m BinNums.Z0 (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xO BinNums.xH))))))))) (@pair Memory.Mem.mem' Values.block allocated local)), store_edge result_ge (result_initial output ofs kind stage detail entry k m) (Clight.State Slice.f_result_of (Clight.fn_body Slice.f_result_of) k (result_env local) (result_temps output ofs kind stage detail entry) allocated)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "ResultSource.result_source_free",
+      "full_type": "result_source_free\n     : forall (m after : Memory.Mem.mem) (local : Values.block) (k : Clight.cont) (le : Clight.temp_env) (_ : @eq (option Memory.Mem.mem) (Memory.Mem.free m local BinNums.Z0 (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xO BinNums.xH))))))))) (@Some Memory.Mem.mem after)), store_edge result_ge (Clight.State Slice.f_result_of (Clight.Sreturn (@None Clight.expr)) k (result_env local) le m) (Clight.Returnstate Values.Vundef (Clight.call_cont k) after)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "ResultSource.result_globals_after_store",
+      "full_type": "result_globals_after_store\n     : forall (m after : Memory.Mem.mem) (local rb ub : Values.block) (run : Integers.Int64.int) (uid : Integers.Int.int) (chunk : AST.memory_chunk) (ofs : BinNums.Z) (value : Values.val) (_ : result_globals m rb ub run uid) (_ : not (@eq Values.block rb local)) (_ : not (@eq Values.block ub local)) (_ : @eq (option Memory.Mem.mem) (Memory.Mem.store chunk m local ofs value) (@Some Memory.Mem.mem after)), result_globals after rb ub run uid",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "ResultSource.result_construction_source_path",
+      "full_type": "result_construction_source_path\n     : forall (P : forall _ : Memory.Mem.mem, Prop) (m : Memory.Mem.mem) (allocated : Memory.Mem.mem') (local : Values.block) (built copied freed : Memory.Mem.mem) (output : Values.block) (ofs : BinNums.Z) (kind stage detail entry uid : Integers.Int.int) (run : Integers.Int64.int) (rb ub : Values.block) (k : Clight.cont) (_ : @eq (option Values.block) (@Globalenvs.Genv.find_symbol Clight.fundef Ctypes.type (Clight.genv_genv result_ge) Slice._run_id) (@Some Values.block rb)) (_ : @eq (option Values.block) (@Globalenvs.Genv.find_symbol Clight.fundef Ctypes.type (Clight.genv_genv result_ge) Slice._run_uid) (@Some Values.block ub)) (_ : not (@eq Values.block rb local)) (_ : not (@eq Values.block ub local)) (_ : @eq (prod Memory.Mem.mem' Values.block) (Memory.Mem.alloc m BinNums.Z0 (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xO BinNums.xH))))))))) (@pair Memory.Mem.mem' Values.block allocated local)) (_ : scalar_stores local allocated (result_cells kind stage detail entry uid run) built) (_ : result_globals allocated rb ub run uid) (_ : Clight.assign_loc (Clight.genv_cenv result_ge) result_type built output (Integers.Ptrofs.repr ofs) Ctypes.Full (Values.Vptr local Integers.Ptrofs.zero) copied) (_ : @eq (option Memory.Mem.mem) (Memory.Mem.free copied local BinNums.Z0 (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xO BinNums.xH))))))))) (@Some Memory.Mem.mem freed)) (_ : P m) (_ : P allocated) (_ : P copied) (_ : P freed) (_ : forall (chunk : AST.memory_chunk) (offset : BinNums.Z) (value : Values.val) (before after : Memory.Mem.mem) (_ : P before) (_ : @eq (option Memory.Mem.mem) (Memory.Mem.store chunk before local offset value) (@Some Memory.Mem.mem after)), P after), store_path result_ge P (result_initial output ofs kind stage detail entry k m) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (Clight.Returnstate Values.Vundef (Clight.call_cont k) freed)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "ResultSafety.result_local_store_preserves",
+      "full_type": "result_local_store_preserves\n     : forall (base : Memory.Mem.mem) (output : Values.block) (ofs : BinNums.Z) (local : Values.block) (chunk : AST.memory_chunk) (pos : BinNums.Z) (value : Values.val) (m after : Memory.Mem.mem) (_ : not (Memory.Mem.valid_block base local)) (_ : result_preserved base output ofs m) (_ : @eq (option Memory.Mem.mem) (Memory.Mem.store chunk m local pos value) (@Some Memory.Mem.mem after)), result_preserved base output ofs after",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "ResultSafety.result_local_stores_preserves",
+      "full_type": "result_local_stores_preserves\n     : forall (base : Memory.Mem.mem) (output : Values.block) (ofs : BinNums.Z) (local : Values.block) (m : Memory.Mem.mem) (cells : list scalar_cell) (after : Memory.Mem.mem) (_ : not (Memory.Mem.valid_block base local)) (_ : scalar_stores local m cells after) (_ : result_preserved base output ofs m), result_preserved base output ofs after",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "ResultSafety.result_source_execution",
+      "full_type": "result_source_execution\n     : forall (base : Memory.Mem.mem) (output : Values.block) (ofs : BinNums.Z) (kind stage detail entry uid : Integers.Int.int) (run : Integers.Int64.int) (k : Clight.cont) (_ : result_input base output ofs run uid), @ex Memory.Mem.mem (fun final : Memory.Mem.mem => and (store_path result_ge (result_preserved base output ofs) (result_initial output ofs kind stage detail entry k base) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (Clight.Returnstate Values.Vundef (Clight.call_cont k) final)) (and (result_contents final output ofs kind stage detail entry uid run) (@ex Values.block (fun local : Values.block => @ex Memory.Mem.mem (fun before : Memory.Mem.mem => and (not (Memory.Mem.valid_block base local)) (@eq (option Memory.Mem.mem) (Memory.Mem.free before local BinNums.Z0 (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xO BinNums.xH))))))))) (@Some Memory.Mem.mem final)))))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "ResultSafety.result_return_exact",
+      "full_type": "result_return_exact\n     : forall (cell : tls) (base : Memory.Mem.mem) (output : Values.block) (ofs : BinNums.Z) (kind stage detail entry uid : Integers.Int.int) (run : Integers.Int64.int) (events : list library_event) (value : Values.val) (after : Memory.Mem.mem) (_ : result_input base output ofs run uid) (_ : library_steps result_ge cell (live (result_initial output ofs kind stage detail entry Clight.Kstop base)) events (live (Clight.Returnstate value Clight.Kstop after))), and (@eq Values.val value Values.Vundef) (and (result_contents after output ofs kind stage detail entry uid run) (and (result_preserved base output ofs after) (and (@eq (list library_event) events (@List.map event library_event original_event (@List.repeat event (source_step Events.E0) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (@ex Values.block (fun local : Values.block => @ex Memory.Mem.mem (fun before : Memory.Mem.mem => and (not (Memory.Mem.valid_block base local)) (@eq (option Memory.Mem.mem) (Memory.Mem.free before local BinNums.Z0 (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xO BinNums.xH))))))))) (@Some Memory.Mem.mem after))))))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "ResultSafety.result_all_prefixes",
+      "full_type": "result_all_prefixes\n     : forall (cell : tls) (base : Memory.Mem.mem) (output : Values.block) (ofs : BinNums.Z) (kind stage detail entry uid : Integers.Int.int) (run : Integers.Int64.int) (events : list library_event) (target : machine) (_ : result_input base output ofs run uid) (_ : library_steps result_ge cell (live (result_initial output ofs kind stage detail entry Clight.Kstop base)) events target), and (result_preserved base output ofs (routine_memory target)) (le (@length library_event events) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "ResultSafety.result_defined_prefix",
+      "full_type": "result_defined_prefix\n     : forall (cell : tls) (base : Memory.Mem.mem) (output : Values.block) (ofs : BinNums.Z) (kind stage detail entry uid : Integers.Int.int) (run : Integers.Int64.int) (events : list library_event) (s : Clight.state) (_ : result_input base output ofs run uid) (_ : library_steps result_ge cell (live (result_initial output ofs kind stage detail entry Clight.Kstop base)) events (live s)), or (@ex Memory.Mem.mem (fun final : Memory.Mem.mem => and (@eq Clight.state s (Clight.Returnstate Values.Vundef Clight.Kstop final)) (result_contents final output ofs kind stage detail entry uid run))) (@ex Clight.state (fun next : Clight.state => library_step result_ge cell (live s) (original_event (source_step Events.E0)) (live next)))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "ResultSafety.result_success_exists",
+      "full_type": "result_success_exists\n     : forall (cell : tls) (base : Memory.Mem.mem) (output : Values.block) (ofs : BinNums.Z) (kind stage detail entry uid : Integers.Int.int) (run : Integers.Int64.int) (k : Clight.cont) (_ : result_input base output ofs run uid), @ex Memory.Mem.mem (fun final : Memory.Mem.mem => and (library_steps result_ge cell (live (result_initial output ofs kind stage detail entry k base)) (@List.map event library_event original_event (@List.repeat event (source_step Events.E0) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (live (Clight.Returnstate Values.Vundef (Clight.call_cont k) final))) (result_contents final output ofs kind stage detail entry uid run))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "ResultSafety.result_freed_local_has_no_permission",
+      "full_type": "result_freed_local_has_no_permission\n     : forall (cell : tls) (base : Memory.Mem.mem) (output : Values.block) (ofs : BinNums.Z) (kind stage detail entry uid : Integers.Int.int) (run : Integers.Int64.int) (events : list library_event) (value : Values.val) (after : Memory.Mem.mem) (_ : result_input base output ofs run uid) (_ : library_steps result_ge cell (live (result_initial output ofs kind stage detail entry Clight.Kstop base)) events (live (Clight.Returnstate value Clight.Kstop after))), @ex Values.block (fun local : Values.block => and (not (Memory.Mem.valid_block base local)) (forall (pos : BinNums.Z) (perm_kind : Memtype.perm_kind) (permission : Memtype.permission) (_ : and (BinInt.Z.le BinNums.Z0 pos) (BinInt.Z.lt pos (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xO BinNums.xH)))))))))), not (Memory.Mem.perm after local pos perm_kind permission)))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "ResultSafety.result_loss_every_prefix",
+      "full_type": "result_loss_every_prefix\n     : forall (cell : tls) (base : Memory.Mem.mem) (output : Values.block) (ofs : BinNums.Z) (kind stage detail entry uid : Integers.Int.int) (run : Integers.Int64.int) (n : nat) (_ : result_input base output ofs run uid) (_ : le n (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))), @ex Clight.state (fun mid : Clight.state => and (library_steps result_ge cell (live (result_initial output ofs kind stage detail entry Clight.Kstop base)) (@List.map event library_event original_event (@List.repeat event (source_step Events.E0) n)) (live mid)) (and (library_steps result_ge cell (live (result_initial output ofs kind stage detail entry Clight.Kstop base)) (@List.map event library_event original_event (@app event (@List.repeat event (source_step Events.E0) n) (@cons event loss_step (@nil event)))) (dead (memory_of mid))) (result_preserved base output ofs (memory_of mid))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "ResultWitnesses.source_result_global_symbols",
+      "full_type": "source_result_global_symbols\n     : and (@eq (option Values.block) (@Globalenvs.Genv.find_symbol Clight.fundef Ctypes.type (Clight.genv_genv result_ge) Slice._run_id) (@Some BinNums.positive (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xO BinNums.xH)))))))) (@eq (option Values.block) (@Globalenvs.Genv.find_symbol Clight.fundef Ctypes.type (Clight.genv_genv result_ge) Slice._run_uid) (@Some BinNums.positive (BinNums.xI (BinNums.xO (BinNums.xI (BinNums.xI (BinNums.xO (BinNums.xO BinNums.xH))))))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": []
+    },
+    {
+      "name": "ResultWitnesses.allocated_result_globals",
+      "full_type": "allocated_result_globals\n     : forall (run : Integers.Int64.int) (uid : Integers.Int.int), @ex Memory.Mem.mem (fun m : Memory.Mem.mem => result_globals m (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xO BinNums.xH)))))) (BinNums.xI (BinNums.xO (BinNums.xI (BinNums.xI (BinNums.xO (BinNums.xO BinNums.xH)))))) run uid)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "ResultWitnesses.arbitrary_result_source_input",
+      "full_type": "arbitrary_result_source_input\n     : forall (run : Integers.Int64.int) (uid : Integers.Int.int), @ex Memory.Mem.mem (fun m : Memory.Mem.mem => @ex Values.block (fun output : Values.block => result_input m output BinNums.Z0 run uid))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ]
+    },
+    {
+      "name": "ResultWitnesses.arbitrary_result_source_witness",
+      "full_type": "arbitrary_result_source_witness\n     : forall (cell : tls) (kind stage detail entry : Integers.Int.int) (run : Integers.Int64.int) (uid : Integers.Int.int), @ex Memory.Mem.mem (fun m : Memory.Mem.mem => @ex Values.block (fun output : Values.block => @ex Memory.Mem.mem (fun final : Memory.Mem.mem => and (result_input m output BinNums.Z0 run uid) (and (library_steps result_ge cell (live (result_initial output BinNums.Z0 kind stage detail entry Clight.Kstop m)) (@List.map event library_event original_event (@List.repeat event (source_step Events.E0) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (live (Clight.Returnstate Values.Vundef Clight.Kstop final))) (result_contents final output BinNums.Z0 kind stage detail entry uid run)))))",
       "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
       "assumption_names": [
         "ClassicalDedekindReals.sig_forall_dec",

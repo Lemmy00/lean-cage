@@ -34,7 +34,7 @@
     "assurance/m4-slice.c": "f563cd6dc5163aad8d243ace10e95882cc3879bcf927ef765485886c07d43bb7",
     "assurance/m4-slice.i": "79dd344ee81ba37d15fbf1cc0fc0d8ceeec8f63d751251ece5b1049610556fc7",
     "assurance/m4-slice.v.gz": "0aa10f2e1ac62321990fb0b3ea41d87300c936ad4834fa80a8fad3a72afae28c",
-    "assurance/m4-connection-evidence.json": "7ef08603eaa6e58c9d0ffa44021e6b3ba6f0225956f601e7f986ba990eb2c98a",
+    "assurance/m4-connection-evidence.json": "310c6ea701805fe46852b8e3de0092edd3f26c5ff51f21ed6bb7af89d0631f38",
     "assurance/m4-obligations.json": "77f760ca9447b8ee05ec0e24efc637b35ff6a62356657515ffc68f0999182064"
   },
   "artifact_sha256": {
@@ -178,6 +178,18 @@
           "path": "assurance/m4-connection-evidence.json",
           "previous_sha256": "28b6ae9df2bf7fdc13dd10063e3f832fbebc751408b951282811996c3e278a26",
           "current_sha256": "7ef08603eaa6e58c9d0ffa44021e6b3ba6f0225956f601e7f986ba990eb2c98a",
+          "reason": "Only named documentation fingerprints and transitive evidence manifests.",
+          "map": "preserved_sha256"
+        }
+      ]
+    },
+    {
+      "reason": "Structure checkpoint: only explicit documentation fingerprints and evidence bookkeeping. All previous proof records, compiled artifacts and archived receipts retained.",
+      "changes": [
+        {
+          "path": "assurance/m4-connection-evidence.json",
+          "previous_sha256": "7ef08603eaa6e58c9d0ffa44021e6b3ba6f0225956f601e7f986ba990eb2c98a",
+          "current_sha256": "310c6ea701805fe46852b8e3de0092edd3f26c5ff51f21ed6bb7af89d0631f38",
           "reason": "Only named documentation fingerprints and transitive evidence manifests.",
           "map": "preserved_sha256"
         }

@@ -1,0 +1,6 @@
+Initial isolated collect: 373 Rocq and 12 Lean declarations checked; coqchk passed; 323 prior statements/assumptions preserved.
+REJECTED: validate_artifacts raised ValueError: checked proof artifact identity differs.
+Relocated artifacts differ: ClightSteps.vo, WriteAll.vo, WriteWitnesses.vo, Deterministic.vo, ErrorNumber.vo, Readers.vo, StoreSteps.vo, Writers.vo, CodecRoundtrip.vo, Library.vo, ProcessEffects.vo, LibraryMachine.vo, LibraryPreservation.vo, LibraryControl.vo, GlobalReads.vo, Fault.vo, LibraryWitnesses.vo
+ClightSteps.vo contains /localhome/milikic/sandbox-formalization/.tools/m4/input/ClightSteps.v in the canonical build and /localhome/milikic/sandbox-formalization/.tools/worktrees/m4-structures/.tools/m4/input/ClightSteps.v in the isolated build.
+Resolution: retain the reviewed artifact expectations and replay at the canonical checkout after the concurrent documentation commit.
+Canonical collection: all 373 declarations and all 21 previous artifact identities checked successfully.
