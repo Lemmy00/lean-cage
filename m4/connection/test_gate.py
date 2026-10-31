@@ -119,6 +119,53 @@ class EvidenceGate(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'unreviewed correspondence closure'):
                 gate.validate_obligations(actual)
 
+    def test_reporting_primitives_claims_present(self):
+        names = {r['name'] for r in self.claims['rocq_declarations']}
+        self.assertTrue({
+            'ErrorNumber.source_error_number_body', 'ErrorNumber.source_execution',
+            'ErrorNumber.normalize_signed', 'ErrorNumber.normalize_range',
+            'ErrorNumber.error_number_return_exact', 'ErrorNumber.error_number_defined_prefix',
+            'ErrorNumber.error_number_all_prefixes', 'ErrorNumber.error_number_at_most_35_steps',
+            'ErrorNumber.error_number_loss_every_prefix',
+            'ErrorNumber.arbitrary_errno_source_witness',
+            'Readers.reader_execution', 'Readers.reader_return_exact',
+            'Readers.reader_all_prefixes', 'Readers.reader_defined_prefix',
+            'Readers.reader_loss_every_prefix',
+            'Readers.arbitrary_get32_input', 'Readers.arbitrary_get64_input',
+        }.issubset(names))
+
+    def test_preserved_artifacts_and_complete_extension(self):
+        previous = {'IO.vo': 'old-proof'}
+        extended = {**previous, 'Readers.vo': 'new-proof'}
+        gate.validate_artifacts(previous, extended, subset=True)
+        gate.validate_artifacts(extended, extended)
+        for actual in [{'Readers.vo': 'new-proof'}, {**extended, 'IO.vo': 'changed-proof'}]:
+            with self.assertRaisesRegex(ValueError, 'artifact identity differs'):
+                gate.validate_artifacts(previous, actual, subset=True)
+        with self.assertRaisesRegex(ValueError, 'artifact inventory differs'):
+            gate.validate_artifacts(previous, extended)
+        with self.assertRaisesRegex(ValueError, 'artifact identity differs'):
+            gate.validate_artifacts({}, extended, subset=True)
+
+    def test_all_write_loop_claims_preserved(self):
+        previous = json.loads(gate.PRIMITIVES_BASELINE.read_text())
+        self.assertEqual(len(previous['rocq_declarations']), 126)
+        self.assertEqual(len(previous['lean_declarations']), 12)
+        gate.validate_preserved_claims(previous, self.claims)
+        for field in ['full_type', 'transitive_assumptions', 'assumption_names']:
+            actual = copy.deepcopy(self.claims)
+            record = next(r for r in actual['rocq_declarations']
+                          if r['name'] == 'WriteAll.write_all_prefix_safety')
+            record[field] = 'changed previously checked claim'
+            with self.assertRaisesRegex(ValueError, 'changed or disappeared'):
+                gate.validate_preserved_claims(previous, actual)
+
+    def test_truncated_statement_cannot_be_approved(self):
+        actual = copy.deepcopy(self.claims)
+        actual['rocq_declarations'][0]['full_type'] = 'forall x, ...'
+        with self.assertRaisesRegex(ValueError, 'truncated Rocq statement'):
+            gate.validate_claims(actual, actual)
+
 
 if __name__ == '__main__':
     unittest.main()

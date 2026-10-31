@@ -34,7 +34,7 @@
     "assurance/m4-slice.c": "f563cd6dc5163aad8d243ace10e95882cc3879bcf927ef765485886c07d43bb7",
     "assurance/m4-slice.i": "79dd344ee81ba37d15fbf1cc0fc0d8ceeec8f63d751251ece5b1049610556fc7",
     "assurance/m4-slice.v.gz": "0aa10f2e1ac62321990fb0b3ea41d87300c936ad4834fa80a8fad3a72afae28c",
-    "assurance/m4-connection-evidence.json": "a1d76ae5863d58d420ec23e8c53d6b60e82506d1b8b7b64b409ef97f14ce88f8",
+    "assurance/m4-connection-evidence.json": "856b1ba8ef55a0a3ad2ec270c7d8b1284daa98ea4cffd71c4108582152a4da57",
     "assurance/m4-obligations.json": "77f760ca9447b8ee05ec0e24efc637b35ff6a62356657515ffc68f0999182064"
   },
   "artifact_sha256": {
@@ -152,5 +152,11 @@
   "initial_gate_rejection": {
     "evidence": "assurance/m4-writeall-initial-gate-failure.log",
     "reason": "The audit rejected a stale test source. The two intended preservation regressions were restored to their exact already-reviewed SHA-256; no theorem/type/assumption expectation changed. The separate roadmap-only legacy preservation amendment is explicitly recorded."
+  },
+  "primitives_documentation_amendment": {
+    "path": "assurance/m4-connection-evidence.json",
+    "previous_sha256": "a1d76ae5863d58d420ec23e8c53d6b60e82506d1b8b7b64b409ef97f14ce88f8",
+    "current_sha256": "856b1ba8ef55a0a3ad2ec270c7d8b1284daa98ea4cffd71c4108582152a4da57",
+    "reason": "Propagates the explicit roadmap-only M4.1 source-manifest amendment; no theorem, artifact or archived receipt changes."
   }
 }

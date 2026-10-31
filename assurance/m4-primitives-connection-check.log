@@ -1,0 +1,24 @@
+M4 checked: 25 Rocq declarations, 12 Lean target types/axioms; 260 C lines; 11 witness tests; coqchk passed
+Outcome: pure codec feasibility checked; count-only effect route rejected; full native simulation, whole-slice memory safety and Lean bridge UNPROVED
+test_all_original_obligations_present (test_gate.EvidenceGate.test_all_original_obligations_present) ... ok
+test_all_write_loop_claims_preserved (test_gate.EvidenceGate.test_all_write_loop_claims_preserved) ... ok
+test_invented_completion (test_gate.EvidenceGate.test_invented_completion) ... ok
+test_missing_or_empty_proof (test_gate.EvidenceGate.test_missing_or_empty_proof) ... ok
+test_obligation_removal_or_duplicate (test_gate.EvidenceGate.test_obligation_removal_or_duplicate) ... ok
+test_omitted_proof_module_rejected (test_gate.EvidenceGate.test_omitted_proof_module_rejected) ... ok
+test_preserved_artifacts_and_complete_extension (test_gate.EvidenceGate.test_preserved_artifacts_and_complete_extension) ... ok
+test_preserved_claim_cannot_change (test_gate.EvidenceGate.test_preserved_claim_cannot_change) ... ok
+test_preserved_claim_cannot_disappear (test_gate.EvidenceGate.test_preserved_claim_cannot_disappear) ... ok
+test_reporting_primitives_claims_present (test_gate.EvidenceGate.test_reporting_primitives_claims_present) ... ok
+test_reviewed_inventory (test_gate.EvidenceGate.test_reviewed_inventory) ... ok
+test_stale_source_and_path_escape (test_gate.EvidenceGate.test_stale_source_and_path_escape) ... ok
+test_theorem_and_assumption_drift (test_gate.EvidenceGate.test_theorem_and_assumption_drift) ... ok
+test_truncated_statement_cannot_be_approved (test_gate.EvidenceGate.test_truncated_statement_cannot_be_approved) ... ok
+test_universal_source_claims_present (test_gate.EvidenceGate.test_universal_source_claims_present) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.026s
+
+OK
+Connection checked: 173 Rocq theorems, 12 Lean theorems, coqchk passed; 16 original obligations OPEN
+Universal write_all, errno and frame-reader source safety, effects and M3 endpoints checked; whole-slice C/Lean simulation, Linux/compiler/runtime correspondence and full M4 remain UNPROVED

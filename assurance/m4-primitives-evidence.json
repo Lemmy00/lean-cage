@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "base_revision": "31ee71fa94af3714c0f16a70dc852ab94108a313",
+  "recorded_utc": "2026-10-31T14:30:06.764876+00:00",
+  "status": "reporting primitives source submilestone complete; M4.2-M4.6 incomplete",
+  "specification": [
+    "AR-m4-effects.errno",
+    "AR-m4-effects.readers",
+    "DA-m4-effects.primitives",
+    "FS-workspace.results",
+    "FS-assurance.evidence",
+    "REQ-proof-integrity.statement"
+  ],
+  "scope": "Every finite execution of the exact maintained error_number/get32/get64 in the unchanged byte-aware Clight/loss machine at Kstop; constructive source paths also support arbitrary caller continuations up to return.",
+  "primary_claims": [
+    "ErrorNumber.source_error_number_body",
+    "ErrorNumber.source_execution",
+    "ErrorNumber.normalize_signed",
+    "ErrorNumber.normalize_range",
+    "ErrorNumber.normalized_boundaries",
+    "ErrorNumber.allocated_errno",
+    "ErrorNumber.error_number_success_exists",
+    "ErrorNumber.error_number_return_exact",
+    "ErrorNumber.error_number_defined_prefix",
+    "ErrorNumber.error_number_all_prefixes",
+    "ErrorNumber.error_number_at_most_35_steps",
+    "ErrorNumber.error_number_loss_every_prefix",
+    "ErrorNumber.arbitrary_errno_source_witness",
+    "Readers.get32_execution",
+    "Readers.get64_execution",
+    "Readers.reader_execution",
+    "Readers.reader_success_exists",
+    "Readers.reader_return_exact",
+    "Readers.reader_all_prefixes",
+    "Readers.reader_defined_prefix",
+    "Readers.reader_loss_every_prefix",
+    "Readers.allocated_bytes",
+    "Readers.arbitrary_get32_input",
+    "Readers.arbitrary_get64_input"
+  ],
+  "claims_sha256": "ef75db88ca4d6936b37f639952ba8733866e344c1dd34c4927e7578a30d34fa7",
+  "preserved_sha256": {
+    "assurance/m4-primitives-baseline-claims.json": "6a87d4e91fd657fdadc18ffc6ae345d8dcf9d1033b1ed4b9c7454c749b2396af",
+    "assurance/m4-writeall-evidence.json": "4495d00e21b89f073bb9f4568605753eae92fc86a3feb1b5b8108033c8fcc8e0",
+    "assurance/m4-connection-evidence.json": "856b1ba8ef55a0a3ad2ec270c7d8b1284daa98ea4cffd71c4108582152a4da57",
+    "assurance/m4-obligations.json": "77f760ca9447b8ee05ec0e24efc637b35ff6a62356657515ffc68f0999182064",
+    "m4/connection/IO.v": "1e0d7a736ddda75467ec2882663d8a02aeb4b65eea0af0f0f04c3b6d7e01e1df",
+    "m4/connection/Machine.v": "1469b64799d43d06cd3f8f1ae4430c19bf83947aff230d2de2188b8ad0b44e7d",
+    "m4/connection/ClightSteps.v": "3908a68171f220df8c0b18f38969f4a02d71c9da217c627409dcdb4aea6fd87c",
+    "m4/connection/WriteMemory.v": "73c7561dc3730529a8f24caeb83eead5d5531fb696909073f65e9f0b5bfa9135",
+    "m4/connection/WriteAll.v": "2fce62dfc3b678a432451e784d404a3d21e29d9d0902c26719bd4e607c4fd6b0",
+    "m4/connection/WriteWitnesses.v": "d8304157bc7ae42d22aa67a642df402b4218d77d6b31b203d4a4745c826b5fdf",
+    "m4/connection/Endpoints.lean": "39c562cf55df0a062791fee4f65a66b08066f04dac0b3ebfe1885c0369732468",
+    "m4/Codec.v": "7211798ce82bc0a212b0ab2fe54fab7891d5bfd8df8d43c37f7c330026b08efd",
+    "m4/toolchain-lock.json": "37f7baabab8c5defe032c5499eda7ba6f319f7c508bed6ee9c11b696033b6640",
+    "native/leancage_m3.c": "fe20ad61706bb8e8463d32e5c9a1a9f3bf038ff52cc9f2ac40ba14c1a010d82c",
+    "assurance/m4-slice.c": "f563cd6dc5163aad8d243ace10e95882cc3879bcf927ef765485886c07d43bb7",
+    "assurance/m4-slice.i": "79dd344ee81ba37d15fbf1cc0fc0d8ceeec8f63d751251ece5b1049610556fc7",
+    "assurance/m4-slice.v.gz": "0aa10f2e1ac62321990fb0b3ea41d87300c936ad4834fa80a8fad3a72afae28c"
+  },
+  "artifact_sha256": {
+    "IO.vo": "0c55b3533871640d15bc91b004509815d0870e1f3ce9dfbca329274918d0bc85",
+    "Machine.vo": "c8d8e2a6a8dd09a5163bf9b831e44d895b875b892ba8243c9247401bebe50597",
+    "ClightSteps.vo": "d34659acfd8e5e1e54647814fa0648774803135b2b36f0f263219ed567476fb7",
+    "WriteMemory.vo": "0a38f41c5be2d95e779544cd6abf20058b66f1a765edc0fb2ded269da252b8bf",
+    "WriteAll.vo": "1e73897b2a30b8f1380b636661c57faf7fc80a3e49739ffd3bfcd5c65afd58a8",
+    "WriteWitnesses.vo": "91afe21c5b9e6dae638079d416412e827a60e9d605e1a5d7032d95f69ba4be80",
+    "Deterministic.vo": "d0d14a68168b2ef4ae554ec92240e91ef04809cb7f86856aaeaca5a0d028f05e",
+    "ErrorNumber.vo": "d3af1a4ebd495b7cbb0af7c192098bff87a93ea392af1130e1373238208995ad",
+    "Readers.vo": "94496385f6ad7be35d10422accfb960be66cb34e9196ac15cc5b4a53458eeb80"
+  },
+  "declarations": {
+    "rocq_total": 173,
+    "rocq_previous_preserved": 126,
+    "rocq_added": 47,
+    "lean_preserved": 12
+  },
+  "foundations": [
+    "ClassicalDedekindReals.sig_forall_dec",
+    "ClassicalDedekindReals.sig_not_dec",
+    "Classical_Prop.classic",
+    "Events.external_functions_sem",
+    "Events.inline_assembly_sem",
+    "FunctionalExtensionality.functional_extensionality_dep"
+  ],
+  "observation_model": "Actual silent source steps, stable errno-address returns and asynchronous terminal loss at every boundary; no altered machine transitions. Exact reader traces and signed normalization.",
+  "memory_contract": "Errno: initialized aligned writable signed 32-bit TLS cell within the pointer address space. Readers: four/eight initialized readable bytes with no address-space wrap. The preconditions are inhabited for all errno bits and byte sequences.",
+  "bounds": {
+    "error_number": {
+      "nonpositive_steps": 18,
+      "nonpositive_errno_calls": 1,
+      "above_4095_steps": 26,
+      "above_4095_errno_calls": 2,
+      "accepted_steps": 34,
+      "accepted_errno_calls": 3,
+      "max_steps_including_loss": 35
+    },
+    "get32": {
+      "source_steps": 59,
+      "max_steps_including_loss": 60
+    },
+    "get64": {
+      "source_steps": 103,
+      "max_steps_including_loss": 104
+    }
+  },
+  "tool_profile": "Unchanged pinned CompCert commit 14d616046360a0b2611ebdfc2f98368af402e1f7 (VERSION 3.17), Coq 8.18.0 and OCaml 4.14.1. Source/frontend/extraction correctness remains trusted; no compiler preservation theorem applied to the extended machine.",
+  "kernel_replay": [
+    "coqchk",
+    "-silent",
+    "<pinned project-local load paths>",
+    "IO",
+    "Machine",
+    "ClightSteps",
+    "WriteMemory",
+    "WriteAll",
+    "WriteWitnesses",
+    "Deterministic",
+    "ErrorNumber",
+    "Readers"
+  ],
+  "deployment": "No changed native executable, Linux kernel, VM or hardware profile. Artifacts are checked proof terms; preserved VM records are tests.",
+  "documentation_amendments": [
+    {
+      "path": "assurance/m4-claims.json",
+      "previous_sha256": "017c6c108a1a4cccfdfd6fe4ea8571a5abf51f03e741e7afd598039b70063b4c",
+      "current_sha256": "500e67df841a214bf03edb1cb4f5d4cba4210b9658d87859c55cb66e885c1333",
+      "changed_source": "docs/roadmap.md",
+      "previous_source_sha256": "d5a83d2f501584c7ddea0f048883e99f112cd50ff5311463ecb1952e1c947d31",
+      "current_source_sha256": "75e57bc610635122bc96264e357150954057eb85b24ef7019b5f4d3ade86079d",
+      "reason": "Only reviewed M4 reporting-primitives progress; all 25 original Rocq records, 12 Lean targets and all other source hashes unchanged."
+    },
+    {
+      "path": "assurance/m4-connection-evidence.json",
+      "previous_sha256": "a1d76ae5863d58d420ec23e8c53d6b60e82506d1b8b7b64b409ef97f14ce88f8",
+      "current_sha256": "856b1ba8ef55a0a3ad2ec270c7d8b1284daa98ea4cffd71c4108582152a4da57",
+      "reason": "Propagates the explicit roadmap-only M4.1 source-manifest amendment; no theorem, artifact or archived receipt changes."
+    },
+    {
+      "path": "assurance/m4-writeall-evidence.json",
+      "previous_sha256": "9b49a624745f4991def3ba7d04f589428ce02afc536856561b21cf5c0217f54e",
+      "current_sha256": "4495d00e21b89f073bb9f4568605753eae92fc86a3feb1b5b8108033c8fcc8e0",
+      "reason": "Propagates only the historical evidence bookkeeping amendment. Original 126/12 claim manifest now lives byte-identically in m4-primitives-baseline-claims.json; old proof artifacts and receipts unchanged."
+    }
+  ],
+  "open_obligations": [
+    "Writer codecs and round trip; frame construction and acceptance; rejected-frame partial mutation; terminal reception and failed publication; whole-slice allocation and caller composition",
+    "Checked C/Rocq-to-Lean bridge",
+    "All 16 original M2/M3 native/Linux ledger entries",
+    "Linux/libc TLS and byte-aware effects; interference/concurrency correspondence",
+    "Extended-event observation relation and compiler preservation",
+    "GCC/Lean runtimes, linker, loader, kernel and executable correspondence",
+    "M4.6 independent composed-profile review",
+    "M5 hardware confidentiality"
+  ],
+  "validation": [
+    {
+      "command": "./scripts/check.sh",
+      "exit_code": 0,
+      "elapsed_seconds": 95.674,
+      "evidence": "assurance/m4-primitives-repository-check.log"
+    },
+    {
+      "command": "python3 scripts/run_m3_vm.py --check-artifacts",
+      "exit_code": 0,
+      "elapsed_seconds": 0.684,
+      "evidence": "assurance/m4-primitives-artifacts-check.log"
+    },
+    {
+      "command": "./scripts/check_m4_connection.sh",
+      "exit_code": 0,
+      "elapsed_seconds": 156.703,
+      "evidence": "assurance/m4-primitives-connection-check.log"
+    },
+    {
+      "command": "./scripts/grund.sh fmt --check",
+      "exit_code": 0,
+      "elapsed_seconds": 0.051,
+      "evidence": "assurance/m4-primitives-format-check.log"
+    },
+    {
+      "command": "git diff --check HEAD",
+      "exit_code": 0,
+      "elapsed_seconds": 0.006,
+      "evidence": "assurance/m4-primitives-diff-check.log"
+    },
+    {
+      "command": "Baseline source/theorem/artifact preservation audit against 31ee71fa94af3714c0f16a70dc852ab94108a313",
+      "exit_code": 0,
+      "evidence": "assurance/m4-primitives-preservation-check.log",
+      "summary": "182 frozen files and every previous source/theorem/proof artifact unchanged; only explicitly recorded roadmap/evidence bookkeeping amendments."
+    },
+    {
+      "command": "./scripts/grund.sh fmt --write",
+      "exit_code": 0,
+      "summary": "Ran before proof collection and the repository gate; final format check passed."
+    }
+  ],
+  "archived_receipts_sha256": {
+    "assurance/m4-primitives-repository-check.log": "61495eb1b0ee542d84530294c4c77db989ebe79cbd56a75887f7310cb0db317a",
+    "assurance/m4-primitives-artifacts-check.log": "8b731c23cf3c4b804f820095476a429731d7ad6831adeb8740133785aa46f4b9",
+    "assurance/m4-primitives-connection-check.log": "dd3e47177a21d6079d7f1c5278f36015ea942e843b0aba6868fc541122c80e50",
+    "assurance/m4-primitives-format-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "assurance/m4-primitives-diff-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "assurance/m4-primitives-preservation-check.log": "e0e04ae035bacfb4d8c01b74ad3e103b87aacbe308c4a7912596e885f4ba011d"
+  }
+}

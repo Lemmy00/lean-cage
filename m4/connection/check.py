@@ -20,7 +20,10 @@ EVIDENCE = ROOT / 'assurance/m4-connection-evidence.json'
 OBLIGATIONS = ROOT / 'assurance/m4-obligations.json'
 WRITEALL_EVIDENCE = ROOT / 'assurance/m4-writeall-evidence.json'
 BASELINE_CLAIMS = ROOT / 'assurance/m4-writeall-baseline-claims.json'
-MODULES = ['IO', 'Machine', 'ClightSteps', 'WriteMemory', 'WriteAll', 'WriteWitnesses']
+PRIMITIVES_BASELINE = ROOT / 'assurance/m4-primitives-baseline-claims.json'
+PRIMITIVES_EVIDENCE = ROOT / 'assurance/m4-primitives-evidence.json'
+MODULES = ['IO', 'Machine', 'ClightSteps', 'WriteMemory', 'WriteAll', 'WriteWitnesses',
+           'Deterministic', 'ErrorNumber', 'Readers']
 ALLOWED_COQ = {
     'ClassicalDedekindReals.sig_not_dec', 'ClassicalDedekindReals.sig_forall_dec',
     'FunctionalExtensionality.functional_extensionality_dep', 'Classical_Prop.classic',
@@ -37,7 +40,8 @@ def sources():
               ROOT / 'docs/decisions/architectural/README.md',
               ROOT / 'docs/roadmap.md', ROOT / 'docs/architecture/README.md',
               ROOT / 'docs/reviews/M4-progress.md',
-              ROOT / 'docs/reviews/M4-writeall.md', BASELINE_CLAIMS, OBLIGATIONS]
+              ROOT / 'docs/reviews/M4-writeall.md', ROOT / 'docs/reviews/M4-primitives.md',
+              BASELINE_CLAIMS, PRIMITIVES_BASELINE, OBLIGATIONS]
     return {str(p.relative_to(ROOT)): digest(p) for p in sorted(paths)}
 
 
@@ -69,7 +73,7 @@ def declaration_names():
 def rocq_inventory():
     names = declaration_names()
     query = ['Require Import ' + ' '.join(MODULES) + '.',
-             'Set Printing All.', 'Set Printing Width 1000000.']
+             'Set Printing All.', 'Set Printing Depth 1000000.', 'Set Printing Width 1000000.']
     for i, name in enumerate(names):
         query += [f'Redirect "connection-type-{i}" Check @{name}.',
                   f'Redirect "connection-axioms-{i}" Print Assumptions {name}.']
@@ -84,6 +88,8 @@ def rocq_inventory():
         axioms = sorted(set(re.findall(r'^([A-Za-z0-9_.]+)(?:\s*:|\s*$)', assumptions, re.M)) - {'Axioms'})
         if set(axioms) - ALLOWED_COQ:
             raise ValueError(f'unreviewed Rocq foundation: {name}: {axioms}')
+        if '...' in full_type:
+            raise ValueError(f'truncated Rocq statement: {name}')
         records.append({'name': name, 'full_type': full_type,
                         'transitive_assumptions': assumptions, 'assumption_names': axioms})
     return records
@@ -135,6 +141,8 @@ def validate_obligations(data):
 
 
 def validate_claims(expected, actual):
+    if any('...' in record['full_type'] for record in actual['rocq_declarations']):
+        raise ValueError('truncated Rocq statement')
     for key in ['rocq_declarations', 'lean_declarations']:
         if not actual[key] or actual[key] != expected[key]:
             raise ValueError(f'reviewed connection statement/assumption inventory differs: {key}')
@@ -146,6 +154,13 @@ def validate_preserved_claims(previous, actual):
         current = {record['name']: record for record in actual[key]}
         if not old or any(current.get(record['name']) != record for record in old):
             raise ValueError(f'previous connection proof changed or disappeared: {key}')
+
+
+def validate_artifacts(expected, actual, *, subset=False):
+    if not expected or any(actual.get(name) != value for name, value in expected.items()):
+        raise ValueError('checked proof artifact identity differs')
+    if not subset and set(actual) != set(expected):
+        raise ValueError('checked proof artifact inventory differs')
 
 
 def collect():
@@ -179,9 +194,16 @@ def check():
     expected = json.loads(MANIFEST.read_text())
     evidence = json.loads(EVIDENCE.read_text())
     writeall = json.loads(WRITEALL_EVIDENCE.read_text())
+    primitives = json.loads(PRIMITIVES_EVIDENCE.read_text())
+    if primitives['status'] != 'reporting primitives source submilestone complete; M4.2-M4.6 incomplete':
+        raise ValueError('local reporting primitives cannot complete M4 correspondence')
+    if digest(MANIFEST) != primitives['claims_sha256']:
+        raise ValueError('reporting primitives reviewed claim manifest identity differs')
+    verify_hashes(primitives['preserved_sha256'])
+    verify_hashes(primitives['archived_receipts_sha256'])
     if writeall['status'] != 'write_all source submilestone complete; M4.2-M4.6 incomplete':
         raise ValueError('write_all alone cannot complete whole-slice or M4 correspondence')
-    if digest(MANIFEST) != writeall['claims_sha256']:
+    if digest(PRIMITIVES_BASELINE) != writeall['claims_sha256']:
         raise ValueError('write_all reviewed claim manifest identity differs')
     verify_hashes(writeall['preserved_sha256'])
     verify_hashes(writeall['archived_receipts_sha256'])
@@ -220,8 +242,9 @@ def check():
     verify_hashes(evidence['compiled_dependencies_sha256'])
     validate_claims(expected, actual)
     validate_preserved_claims(json.loads(BASELINE_CLAIMS.read_text()), actual)
-    if actual['artifact_sha256'] != writeall['artifact_sha256']:
-        raise ValueError('write_all checked proof artifact identity differs')
+    validate_preserved_claims(json.loads(PRIMITIVES_BASELINE.read_text()), actual)
+    validate_artifacts(writeall['artifact_sha256'], actual['artifact_sha256'], subset=True)
+    validate_artifacts(primitives['artifact_sha256'], actual['artifact_sha256'])
     result = subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', str(DIRECTORY),
                              '-p', 'test_*.py', '-v'], cwd=ROOT,
                             capture_output=True, text=True, timeout=60)
@@ -230,8 +253,8 @@ def check():
     print(result.stdout + result.stderr, end='')
     print(f'Connection checked: {len(actual["rocq_declarations"])} Rocq theorems, '
           f'{len(actual["lean_declarations"])} Lean theorems, coqchk passed; 16 original obligations OPEN')
-    print('Universal write_all source safety, effects and M3 endpoints checked; whole-slice C/Lean simulation, '
-          'Linux/compiler/runtime correspondence and full M4 remain UNPROVED')
+    print('Universal write_all, errno and frame-reader source safety, effects and M3 endpoints checked; '
+          'whole-slice C/Lean simulation, Linux/compiler/runtime correspondence and full M4 remain UNPROVED')
 
 
 if __name__ == '__main__':

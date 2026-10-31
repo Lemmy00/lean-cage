@@ -281,14 +281,18 @@ unproved. The [continuation record](reviews/M4-progress.md) adds a checked byte-
 effect/loss layer and Lean endpoint lemmas under [§AR-m4-effects](architecture/AR-m4-effects.md#ar-m4-effects-byte-aware-native-effects-and-asynchronous-loss). The [write-loop review](reviews/M4-writeall.md)
 completes a source submilestone under [§AR-m4-effects.writeall](architecture/AR-m4-effects.md#writeall-universal-source-loop-connection): universal finite-execution
 prefix safety, defined execution and exact returns for the maintained `write_all`,
-with arbitrary retry/wait/loss witnesses. These are partial M4.2 results; the
+with arbitrary retry/wait/loss witnesses. The [reporting-primitives review](reviews/M4-primitives.md)
+adds universal source-prefix safety, exact returns and bounded execution for
+`error_number`, `get32` and `get64` under [§AR-m4-effects.errno](architecture/AR-m4-effects.md#errno-source-errno-normalization-and-bounded-execution) and
+[§AR-m4-effects.readers](architecture/AR-m4-effects.md#readers-universal-bounded-frame-reader-execution), with arbitrary caller continuations in the constructive
+paths and allocated arbitrary-value witnesses. These are partial M4.2 results; the
 remaining selected-slice simulation and checked bridge remain open. M4.3–M4.6
 remain planned, and none of these additions completes M4.
 
 | Package | Dependency | Deliverable and gate |
 |---|---|---|
 | M4.1 Native-semantics feasibility | Reviewed M3 on `main` | Feasibility result recorded: 260-line maintained-source extraction, checked pure-reader executions, and refuted direct effect adapters; full reporting simulation unproved |
-| M4.2 Checked connection to Lean | M4.1 revised effect route | Byte-aware effects, asynchronous loss and exact Lean endpoints checked; complete local `write_all` source safety/return/prefix theorem and nonvacuity checked under [§AR-m4-effects.writeall](architecture/AR-m4-effects.md#writeall-universal-source-loop-connection); framing/terminal-receiver/caller simulation, whole selected-slice safety and C-to-Lean bridge still open |
+| M4.2 Checked connection to Lean | M4.1 revised effect route | Byte-aware effects, asynchronous loss and exact Lean endpoints checked; local `write_all` source safety plus universal errno/frame-reader safety, exact returns and bounded execution checked under [§AR-m4-effects.writeall](architecture/AR-m4-effects.md#writeall-universal-source-loop-connection), [§AR-m4-effects.errno](architecture/AR-m4-effects.md#errno-source-errno-normalization-and-bounded-execution) and [§AR-m4-effects.readers](architecture/AR-m4-effects.md#readers-universal-bounded-frame-reader-execution); framing/terminal-receiver/caller simulation, whole selected-slice safety and C-to-Lean bridge still open |
 | M4.3 Controller and helper composition | M4.1–2 | Expand through parser/plan, memory/ABI, operation ordering, errors, asynchronous reports, supervision and cleanup; every local external effect gets a byte/memory/error contract and source connection; preserve partial decoder mutation and failed publication facts |
 | M4.4 Pinned Linux enforcement | Effect contracts from M4.3; research may overlap | Discharge the relevant VFS/mount/descriptor, process/credential, seccomp and cgroup obligations against the pinned kernel and transitive dependencies; track each original M2/M3 ledger entry separately, including the byte-aware I/O/errno contract and loss/progress premises exposed by M4.1 |
 | M4.5 Executable and runtime chain | M4.2–4 interfaces; artifact work may overlap | Connect compiler output, linking, Lean/native runtimes, loaders, runtime closure, kernel and deployed artifacts; review the actual assigned CompCert commit (VERSION 3.17 despite the earlier 3.18 label), licensing and any altered event semantics before applying compiler theorems; hashes alone do not prove correctness |

@@ -1,0 +1,6 @@
+182 frozen baseline files byte-identical; only the documented roadmap identity changes in the legacy M4.1 manifest.
+All original 25 Rocq declaration records, 12 Lean target records and all non-roadmap M4.1 source hashes unchanged.
+All six previous Rocq modules and Lean endpoint source byte-identical.
+All prior 126 Rocq and 12 Lean records identical; all six old compiled proof artifacts identical; 47 added Rocq declarations have complete statement/assumption records.
+Historical evidence edits only propagate the documented roadmap fingerprint; all old proof expectations, artifacts and archived receipts unchanged.
+All 16 original M2/M3 native/Linux obligations remain explicitly open.

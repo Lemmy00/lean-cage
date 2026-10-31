@@ -88,6 +88,60 @@ target nor closes framing, terminal receive, the C-to-Lean bridge or any Linux,
 libc, compiler and runtime obligation. Record only the propositions actually
 checked, with constructive allowed/error/interruption witnesses.
 
+## errno: Source errno normalization and bounded execution
+
+The next local source target is the complete maintained `error_number`, including
+all three possible calls to `__errno_location` and their actual signed 32-bit
+loads. Its independent precondition is an initialized, aligned writable errno
+cell at a representable address. Under the existing stable TLS effect contract,
+the function must return the initial signed value exactly when it is in 1–4095,
+and EIO (5) otherwise. Every finite execution must preserve memory and permit
+only actual silent source steps, errno-address returns, or terminal process loss.
+Definedness must use enabled ordinary steps, never the loss edge as a substitute.
+
+Unlike the write loop, this routine has no blocking I/O or retry loop. A checked
+finite source execution and uniqueness of each ordinary step must bound every
+execution, including loss before, between or after the loads. Construct witnesses
+for arbitrary signed errno bits using allocated CompCert memory; cover zero,
+negative values, the accepted endpoints and the first rejected positive value.
+The source-path construction should accept an arbitrary call continuation, so
+later reporting proofs can reuse it up to the function-return boundary. Universal
+whole-execution statements use `Kstop`; they do not constrain a caller after it
+resumes.
+
+The stable cell is an explicit property of the existing local effect layer. This
+does not establish Linux/libc TLS behavior or rule out interference in a future
+concurrent semantics. Preserve the original machine, source extraction and all
+previous theorem statements. This source sub-result leaves whole-slice framing,
+reception, caller composition, the checked Lean bridge and the original Linux/
+executable obligations open.
+
+The checked results and exact event counts are recorded in
+[the reporting-primitives review](../reviews/M4-primitives.md). They quantify over
+all 32-bit errno values and all finite executions under this local contract.
+
+## readers: Universal bounded frame-reader execution
+
+Extend the existing `get32`/`get64` successful-execution results to every finite
+execution of those exact generated functions in the unchanged effect/loss
+machine. Independent preconditions are four/eight initialized readable bytes,
+with the complete range inside the pointer address space. The returned word
+must equal the original checked little-endian bitwise expression. Memory stays
+unchanged; the only possible events are silent source steps and process loss.
+Every reachable live state must be the exact return or have an enabled source
+step. A finite checked path must bound all executions and admit loss at every
+prefix. Supply arbitrary-byte allocated-memory witnesses, not only zero bytes.
+
+Construct paths with arbitrary caller continuations up to the source return.
+Universal whole-execution results stop at `Kstop`; caller behavior after return
+is a separate proof. These results do not prove the frame decoder's acceptance
+predicate, its partial mutation on rejected input, the writer round trip or the
+C-to-Lean bridge. Keep those obligations visible.
+
+The reporting-primitives review records the universal source results and
+arbitrary-byte memory constructions. It preserves the original successful-reader
+theorems and their bitwise word expressions.
+
 ## lean: Exact public-result and knowledge endpoints
 
 Check additive Lean lemmas against the existing `LeanCageM3.decodeResult`,
@@ -114,3 +168,7 @@ The write-loop extension preserves every previous Rocq/Lean declaration against
 `assurance/m4-writeall-baseline-claims.json`, checks that every authored Rocq module
 is inventoried, and binds the new proof artifacts and receipts in
 `assurance/m4-writeall-evidence.json`. Ordinary checks cannot refresh expectations.
+The reporting-primitives extension additionally preserves all 126 preceding Rocq
+and 12 Lean records in `assurance/m4-primitives-baseline-claims.json`, checks the
+old compiled proof artifacts as an unchanged subset, and binds the extended
+inventory and validation receipts in `assurance/m4-primitives-evidence.json`.
