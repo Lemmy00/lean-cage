@@ -1,0 +1,5 @@
+PASS: all historical preservation maps, compiled artifacts and archived receipts match.
+PASS: all 227 prior Rocq and 12 Lean full types and transitive assumptions unchanged; baseline manifest byte-identical to d23fe8e37b89b721dc8b2e423b5edbbed3240ed8.
+PASS: all thirteen preceding compiled connection artifacts unchanged.
+PASS: original M1-M3 and 25 Rocq/12 Lean feasibility records unchanged; only listed documentation and manifest fingerprints amended.
+PASS: original native helper, extracted/preprocessed C, Clight AST, tool pins and VM evidence unchanged.

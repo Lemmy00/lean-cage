@@ -41,8 +41,8 @@
   "claims_sha256": "ef75db88ca4d6936b37f639952ba8733866e344c1dd34c4927e7578a30d34fa7",
   "preserved_sha256": {
     "assurance/m4-primitives-baseline-claims.json": "6a87d4e91fd657fdadc18ffc6ae345d8dcf9d1033b1ed4b9c7454c749b2396af",
-    "assurance/m4-writeall-evidence.json": "3c903a1daf8682919a509409a4b222dce63853c2c1c5f0b7face86f67b3f4f76",
-    "assurance/m4-connection-evidence.json": "28b6ae9df2bf7fdc13dd10063e3f832fbebc751408b951282811996c3e278a26",
+    "assurance/m4-writeall-evidence.json": "5f24ab74ff56507c0a53d104f2cb25643d686c3ecdf1e7d63bfd8409931f3562",
+    "assurance/m4-connection-evidence.json": "7ef08603eaa6e58c9d0ffa44021e6b3ba6f0225956f601e7f986ba990eb2c98a",
     "assurance/m4-obligations.json": "77f760ca9447b8ee05ec0e24efc637b35ff6a62356657515ffc68f0999182064",
     "m4/connection/IO.v": "1e0d7a736ddda75467ec2882663d8a02aeb4b65eea0af0f0f04c3b6d7e01e1df",
     "m4/connection/Machine.v": "1469b64799d43d06cd3f8f1ae4430c19bf83947aff230d2de2188b8ad0b44e7d",
@@ -156,6 +156,25 @@
           "previous_sha256": "4495d00e21b89f073bb9f4568605753eae92fc86a3feb1b5b8108033c8fcc8e0",
           "current_sha256": "3c903a1daf8682919a509409a4b222dce63853c2c1c5f0b7face86f67b3f4f76",
           "reason": "Historical evidence bookkeeping only; no theorem, artifact, or archived receipt change."
+        }
+      ]
+    },
+    {
+      "reason": "Library checkpoint: only explicit documentation fingerprints and evidence bookkeeping. All previous proof records, compiled artifacts and archived receipts retained.",
+      "changes": [
+        {
+          "path": "assurance/m4-connection-evidence.json",
+          "previous_sha256": "28b6ae9df2bf7fdc13dd10063e3f832fbebc751408b951282811996c3e278a26",
+          "current_sha256": "7ef08603eaa6e58c9d0ffa44021e6b3ba6f0225956f601e7f986ba990eb2c98a",
+          "reason": "Only named documentation fingerprints and transitive evidence manifests.",
+          "map": "preserved_sha256"
+        },
+        {
+          "path": "assurance/m4-writeall-evidence.json",
+          "previous_sha256": "3c903a1daf8682919a509409a4b222dce63853c2c1c5f0b7face86f67b3f4f76",
+          "current_sha256": "5f24ab74ff56507c0a53d104f2cb25643d686c3ecdf1e7d63bfd8409931f3562",
+          "reason": "Only named documentation fingerprints and transitive evidence manifests.",
+          "map": "preserved_sha256"
         }
       ]
     }

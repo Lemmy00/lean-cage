@@ -50,3 +50,15 @@ execution. Actual allocations, including unaligned addresses, inhabit ownership.
 Round-trip proofs first establish exact word identities and then use actual source
 calls and memory loads. Caller control flow, C-to-Lean translation and libc/Linux
 contracts remain separate obligations.
+
+## library: Version the external boundary and retain arbitrary copy order
+
+For [§AR-m4-library.machine](../../architecture/AR-m4-library.md#machine-additive-external-call-semantics), [§AR-m4-library.memory](../../architecture/AR-m4-library.md#memory-comparisons-strings-and-copying) and [§FS-workspace.results](../../functional-spec/FS-workspace.md#results-entry-cancellation-and-bounded-transport), add a
+separate library-effect extension. Keep original transitions and theorem meanings
+unchanged; explicitly prove reuse at applicable source boundaries. Comparisons
+expose arbitrary signed magnitudes with the correct zero/order relation. Copy loss
+admits arbitrary bounded destination-byte order, including non-prefix subsets,
+because a sequential prefix would exclude common implementation strategies.
+Close and exit events describe local calls and source continuation, not OS cleanup
+or process-extinction evidence. The new boundary remains a local assumption until
+libc/Linux/executable correspondence is independently supplied.

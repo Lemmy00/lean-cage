@@ -194,6 +194,35 @@ class EvidenceGate(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'changed or disappeared'):
             gate.validate_preserved_claims(previous, actual)
 
+    def test_library_effects_and_source_claims_present(self):
+        names = {r['name'] for r in self.claims['rocq_declarations']}
+        self.assertTrue({
+            'Library.strcmp_zero_iff', 'Library.memcmp_zero_iff',
+            'Library.copy_nonprefix_schedule_exists', 'Library.partial_copy_source',
+            'ProcessEffects.close_error_stores_errno', 'ProcessEffects.allocated_close_effects',
+            'LibraryMachine.original_event_exact', 'LibraryMachine.exit_never_returns',
+            'LibraryMachine.no_library_builtin_bypass',
+            'LibraryPreservation.store_path_library_projection',
+            'LibraryPreservation.execution_library_projection',
+            'LibraryPreservation.write_all_library_projection',
+            'Fault.fault_return_exact', 'Fault.fault_all_prefixes', 'Fault.fault_defined_prefix',
+            'Fault.fault_success_after_waits', 'LibraryWitnesses.source_fault_inputs_inhabited',
+            'LibraryWitnesses.equal_fault_source_witness',
+            'LibraryWitnesses.unequal_fault_source_witness',
+        }.issubset(names))
+
+    def test_all_writer_claims_preserved(self):
+        previous = json.loads(gate.LIBRARY_BASELINE.read_text())
+        self.assertEqual(len(previous['rocq_declarations']), 227)
+        self.assertEqual(len(previous['lean_declarations']), 12)
+        gate.validate_preserved_claims(previous, self.claims)
+        actual = copy.deepcopy(self.claims)
+        record = next(r for r in actual['rocq_declarations']
+                      if r['name'] == 'CodecRoundtrip.put64_source_roundtrip')
+        record['full_type'] = 'weakened preserved round-trip claim'
+        with self.assertRaisesRegex(ValueError, 'changed or disappeared'):
+            gate.validate_preserved_claims(previous, actual)
+
 
 if __name__ == '__main__':
     unittest.main()
