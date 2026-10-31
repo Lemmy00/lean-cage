@@ -22,8 +22,11 @@ WRITEALL_EVIDENCE = ROOT / 'assurance/m4-writeall-evidence.json'
 BASELINE_CLAIMS = ROOT / 'assurance/m4-writeall-baseline-claims.json'
 PRIMITIVES_BASELINE = ROOT / 'assurance/m4-primitives-baseline-claims.json'
 PRIMITIVES_EVIDENCE = ROOT / 'assurance/m4-primitives-evidence.json'
+WRITERS_BASELINE = ROOT / 'assurance/m4-writers-baseline-claims.json'
+WRITERS_EVIDENCE = ROOT / 'assurance/m4-writers-evidence.json'
 MODULES = ['IO', 'Machine', 'ClightSteps', 'WriteMemory', 'WriteAll', 'WriteWitnesses',
-           'Deterministic', 'ErrorNumber', 'Readers']
+           'Deterministic', 'ErrorNumber', 'Readers',
+           'StoreSteps', 'WriteBytes', 'Writers', 'CodecRoundtrip']
 ALLOWED_COQ = {
     'ClassicalDedekindReals.sig_not_dec', 'ClassicalDedekindReals.sig_forall_dec',
     'FunctionalExtensionality.functional_extensionality_dep', 'Classical_Prop.classic',
@@ -41,7 +44,8 @@ def sources():
               ROOT / 'docs/roadmap.md', ROOT / 'docs/architecture/README.md',
               ROOT / 'docs/reviews/M4-progress.md',
               ROOT / 'docs/reviews/M4-writeall.md', ROOT / 'docs/reviews/M4-primitives.md',
-              BASELINE_CLAIMS, PRIMITIVES_BASELINE, OBLIGATIONS]
+              ROOT / 'docs/reviews/M4-writers.md',
+              BASELINE_CLAIMS, PRIMITIVES_BASELINE, WRITERS_BASELINE, OBLIGATIONS]
     return {str(p.relative_to(ROOT)): digest(p) for p in sorted(paths)}
 
 
@@ -195,9 +199,16 @@ def check():
     evidence = json.loads(EVIDENCE.read_text())
     writeall = json.loads(WRITEALL_EVIDENCE.read_text())
     primitives = json.loads(PRIMITIVES_EVIDENCE.read_text())
+    writers = json.loads(WRITERS_EVIDENCE.read_text())
+    if writers['status'] != 'byte writers and codec round trip source submilestone complete; M4.2-M4.6 incomplete':
+        raise ValueError('local codecs cannot complete M4 correspondence')
+    if digest(MANIFEST) != writers['claims_sha256']:
+        raise ValueError('byte writers reviewed claim manifest identity differs')
+    verify_hashes(writers['preserved_sha256'])
+    verify_hashes(writers['archived_receipts_sha256'])
     if primitives['status'] != 'reporting primitives source submilestone complete; M4.2-M4.6 incomplete':
         raise ValueError('local reporting primitives cannot complete M4 correspondence')
-    if digest(MANIFEST) != primitives['claims_sha256']:
+    if digest(WRITERS_BASELINE) != primitives['claims_sha256']:
         raise ValueError('reporting primitives reviewed claim manifest identity differs')
     verify_hashes(primitives['preserved_sha256'])
     verify_hashes(primitives['archived_receipts_sha256'])
@@ -244,7 +255,9 @@ def check():
     validate_preserved_claims(json.loads(BASELINE_CLAIMS.read_text()), actual)
     validate_preserved_claims(json.loads(PRIMITIVES_BASELINE.read_text()), actual)
     validate_artifacts(writeall['artifact_sha256'], actual['artifact_sha256'], subset=True)
-    validate_artifacts(primitives['artifact_sha256'], actual['artifact_sha256'])
+    validate_preserved_claims(json.loads(WRITERS_BASELINE.read_text()), actual)
+    validate_artifacts(primitives['artifact_sha256'], actual['artifact_sha256'], subset=True)
+    validate_artifacts(writers['artifact_sha256'], actual['artifact_sha256'])
     result = subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', str(DIRECTORY),
                              '-p', 'test_*.py', '-v'], cwd=ROOT,
                             capture_output=True, text=True, timeout=60)
@@ -253,7 +266,7 @@ def check():
     print(result.stdout + result.stderr, end='')
     print(f'Connection checked: {len(actual["rocq_declarations"])} Rocq theorems, '
           f'{len(actual["lean_declarations"])} Lean theorems, coqchk passed; 16 original obligations OPEN')
-    print('Universal write_all, errno and frame-reader source safety, effects and M3 endpoints checked; '
+    print('Universal write_all, errno, byte reader/writer source safety and codec round trips checked; '
           'whole-slice C/Lean simulation, Linux/compiler/runtime correspondence and full M4 remain UNPROVED')
 
 

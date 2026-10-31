@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "base_revision": "ad71f8f729c08901b6208fd2c22e942f90b9a836",
+  "recorded_utc": "2026-10-31T15:11:27.701391+00:00",
+  "status": "byte writers and codec round trip source submilestone complete; M4.2-M4.6 incomplete",
+  "specification": [
+    "AR-m4-effects.writers",
+    "AR-m4-effects.gate",
+    "DA-m4-effects.stores",
+    "FS-workspace.results",
+    "FS-assurance.evidence",
+    "REQ-proof-integrity.statement"
+  ],
+  "scope": "Every finite execution of complete maintained put32/put64 in the unchanged byte-aware Clight/loss machine. Arbitrary word inputs and writable nonwrapping buffers, including uninitialized and unaligned buffers. Exact source codec round trips through the existing readers. Local universal results end at Kstop; constructive paths allow caller continuations.",
+  "primary_claims": [
+    "StoreSteps.unchanged_store_edge",
+    "StoreSteps.byte_assignment",
+    "StoreSteps.void_return_edge",
+    "StoreSteps.store_edge_cases",
+    "StoreSteps.store_path_initial",
+    "StoreSteps.store_path_actual",
+    "StoreSteps.store_path_trans",
+    "StoreSteps.store_path_all",
+    "StoreSteps.store_return_path",
+    "StoreSteps.store_path_return_exact",
+    "StoreSteps.store_path_prefix_invariant",
+    "StoreSteps.store_path_defined_prefix",
+    "StoreSteps.store_path_loss_every_prefix",
+    "StoreSteps.store_path_terminal_loss",
+    "WriteBytes.classical_memory_ext",
+    "WriteBytes.classical_store_bytes",
+    "WriteBytes.classical_bytes_concat",
+    "WriteBytes.byte_encoding_exact",
+    "WriteBytes.byte_writes_exists",
+    "WriteBytes.byte_writes_append",
+    "WriteBytes.byte_writes_storebytes",
+    "WriteBytes.byte_writes_permissions",
+    "WriteBytes.byte_writes_outside",
+    "WriteBytes.byte_writes_content",
+    "WriteBytes.writer_prefix_initial",
+    "WriteBytes.writer_prefix_final",
+    "WriteBytes.writer_prefix_content",
+    "WriteBytes.pointer_byte_store",
+    "WriteBytes.allocated_writer_input",
+    "Writers.writer_entry",
+    "Writers.put32_source_path",
+    "Writers.put64_source_path",
+    "Writers.writer_execution",
+    "Writers.writer_success_exists",
+    "Writers.writer_all_prefixes",
+    "Writers.writer_return_exact",
+    "Writers.writer_defined_prefix",
+    "Writers.writer_loss_every_prefix",
+    "Writers.arbitrary_put32_input",
+    "Writers.arbitrary_put64_input",
+    "Writers.put32_first_byte_loss",
+    "Writers.arbitrary_unaligned_writer_inputs",
+    "CodecRoundtrip.put32_bits",
+    "CodecRoundtrip.put_get32_word",
+    "CodecRoundtrip.widen_byte_bits",
+    "CodecRoundtrip.put64_bits",
+    "CodecRoundtrip.put_get64_word",
+    "CodecRoundtrip.encoded_suffix_load",
+    "CodecRoundtrip.encoded_head_load",
+    "CodecRoundtrip.encoded_byte_load",
+    "CodecRoundtrip.put32_reader_input",
+    "CodecRoundtrip.put32_source_roundtrip",
+    "CodecRoundtrip.put64_reader_input",
+    "CodecRoundtrip.put64_source_roundtrip"
+  ],
+  "claims_sha256": "696f5a05ed0384e06006f3c8e0b34a421b9f935566df341da50af599ca347371",
+  "preserved_sha256": {
+    "assurance/m4-primitives-baseline-claims.json": "6a87d4e91fd657fdadc18ffc6ae345d8dcf9d1033b1ed4b9c7454c749b2396af",
+    "assurance/m4-writeall-evidence.json": "3c903a1daf8682919a509409a4b222dce63853c2c1c5f0b7face86f67b3f4f76",
+    "assurance/m4-connection-evidence.json": "28b6ae9df2bf7fdc13dd10063e3f832fbebc751408b951282811996c3e278a26",
+    "assurance/m4-obligations.json": "77f760ca9447b8ee05ec0e24efc637b35ff6a62356657515ffc68f0999182064",
+    "m4/connection/IO.v": "1e0d7a736ddda75467ec2882663d8a02aeb4b65eea0af0f0f04c3b6d7e01e1df",
+    "m4/connection/Machine.v": "1469b64799d43d06cd3f8f1ae4430c19bf83947aff230d2de2188b8ad0b44e7d",
+    "m4/connection/ClightSteps.v": "3908a68171f220df8c0b18f38969f4a02d71c9da217c627409dcdb4aea6fd87c",
+    "m4/connection/WriteMemory.v": "73c7561dc3730529a8f24caeb83eead5d5531fb696909073f65e9f0b5bfa9135",
+    "m4/connection/WriteAll.v": "2fce62dfc3b678a432451e784d404a3d21e29d9d0902c26719bd4e607c4fd6b0",
+    "m4/connection/WriteWitnesses.v": "d8304157bc7ae42d22aa67a642df402b4218d77d6b31b203d4a4745c826b5fdf",
+    "m4/connection/Endpoints.lean": "39c562cf55df0a062791fee4f65a66b08066f04dac0b3ebfe1885c0369732468",
+    "m4/Codec.v": "7211798ce82bc0a212b0ab2fe54fab7891d5bfd8df8d43c37f7c330026b08efd",
+    "m4/toolchain-lock.json": "37f7baabab8c5defe032c5499eda7ba6f319f7c508bed6ee9c11b696033b6640",
+    "native/leancage_m3.c": "fe20ad61706bb8e8463d32e5c9a1a9f3bf038ff52cc9f2ac40ba14c1a010d82c",
+    "assurance/m4-slice.c": "f563cd6dc5163aad8d243ace10e95882cc3879bcf927ef765485886c07d43bb7",
+    "assurance/m4-slice.i": "79dd344ee81ba37d15fbf1cc0fc0d8ceeec8f63d751251ece5b1049610556fc7",
+    "assurance/m4-slice.v.gz": "0aa10f2e1ac62321990fb0b3ea41d87300c936ad4834fa80a8fad3a72afae28c",
+    "assurance/m4-writers-baseline-claims.json": "ef75db88ca4d6936b37f639952ba8733866e344c1dd34c4927e7578a30d34fa7",
+    "assurance/m4-primitives-evidence.json": "f7f8f4bb6718e4b1f58becdae2b0b6c3efe07d87e3320046472fb6e49b2a306b",
+    "m4/connection/Deterministic.v": "5f8e022b5bd52d7d73368fa6d565c282adfa957cc6a96279d6a490af54489ee8",
+    "m4/connection/ErrorNumber.v": "a69c020ef146a8fb315ed1c56d4877afa13195dd23306e13e9001b2995dca938",
+    "m4/connection/Readers.v": "28ed330d1fec632a2630c7d01f7af57c1957a6e5874db2b14b566456081636e4"
+  },
+  "artifact_sha256": {
+    "IO.vo": "0c55b3533871640d15bc91b004509815d0870e1f3ce9dfbca329274918d0bc85",
+    "Machine.vo": "c8d8e2a6a8dd09a5163bf9b831e44d895b875b892ba8243c9247401bebe50597",
+    "ClightSteps.vo": "d34659acfd8e5e1e54647814fa0648774803135b2b36f0f263219ed567476fb7",
+    "WriteMemory.vo": "0a38f41c5be2d95e779544cd6abf20058b66f1a765edc0fb2ded269da252b8bf",
+    "WriteAll.vo": "1e73897b2a30b8f1380b636661c57faf7fc80a3e49739ffd3bfcd5c65afd58a8",
+    "WriteWitnesses.vo": "91afe21c5b9e6dae638079d416412e827a60e9d605e1a5d7032d95f69ba4be80",
+    "Deterministic.vo": "d0d14a68168b2ef4ae554ec92240e91ef04809cb7f86856aaeaca5a0d028f05e",
+    "ErrorNumber.vo": "d3af1a4ebd495b7cbb0af7c192098bff87a93ea392af1130e1373238208995ad",
+    "Readers.vo": "94496385f6ad7be35d10422accfb960be66cb34e9196ac15cc5b4a53458eeb80",
+    "StoreSteps.vo": "a9224929656274bbcf3a72a06d7c69a8520b71b1fe62c39cecdc2d3eb42e8776",
+    "WriteBytes.vo": "b7578f679dab38e5dfa4e597703b2d7134ba3006eea11ca58cf13a7bcf2b0bc9",
+    "Writers.vo": "14d4845af222e18f811b649e73ee277fd1d79cccc137f2082a83e51f0c9998c3",
+    "CodecRoundtrip.vo": "cb06ef67f0303c4abb434c282e517a7575c3db67361496fe0bf28b846f963c71"
+  },
+  "declarations": {
+    "rocq_total": 227,
+    "rocq_previous_preserved": 173,
+    "rocq_added": 54,
+    "lean_preserved": 12
+  },
+  "foundations": [
+    "ClassicalDedekindReals.sig_forall_dec",
+    "ClassicalDedekindReals.sig_not_dec",
+    "Classical_Prop.classic",
+    "Events.external_functions_sem",
+    "Events.inline_assembly_sem",
+    "FunctionalExtensionality.functional_extensionality_dep"
+  ],
+  "memory_contract": "Writable four/eight-byte range and no pointer wrap. All finite prefixes have actual partial byte-store content, preserve all permissions and memory outside the written prefix. Full returns have exact little-endian bytes. Loss retains current memory; actual first-byte-loss witness and fresh unaligned ownership witnesses are checked.",
+  "bounds": {
+    "put32": {
+      "source_steps": 42,
+      "max_steps_including_loss": 43,
+      "first_byte_store_steps": 9
+    },
+    "put64": {
+      "source_steps": 74,
+      "max_steps_including_loss": 75
+    }
+  },
+  "roundtrip": "For all 32/64-bit words, bitwise codec identities and actual source writer-to-reader memory connections recover the original word; every completed reader return is exact. This does not certify a frame caller or provide a C-to-Lean proof translation.",
+  "foundation_review": "Three local memory identities adapt the LGPL upstream Memory.v proofs and derive proof irrelevance from already-audited Classical_Prop.classic; Axioms.proof_irr is not added. Attribution and LGPL terms are retained in WriteBytes.v and connection/LICENSES.md.",
+  "tool_profile": "Unchanged pinned CompCert commit 14d616046360a0b2611ebdfc2f98368af402e1f7 (VERSION 3.17), Coq 8.18.0 and OCaml 4.14.1. Source/frontend/extraction correctness remains trusted; no compiler preservation theorem applied to the extended machine.",
+  "kernel_replay": [
+    "coqchk",
+    "-silent",
+    "<pinned project-local load paths>",
+    "IO",
+    "Machine",
+    "ClightSteps",
+    "WriteMemory",
+    "WriteAll",
+    "WriteWitnesses",
+    "Deterministic",
+    "ErrorNumber",
+    "Readers",
+    "StoreSteps",
+    "WriteBytes",
+    "Writers",
+    "CodecRoundtrip"
+  ],
+  "deployment": "No changed native executable, Linux kernel, VM or hardware profile. Preserved VM artifacts are tests; no fresh workload experiment.",
+  "documentation_amendments": [
+    {
+      "path": "assurance/m4-claims.json",
+      "previous_sha256": "500e67df841a214bf03edb1cb4f5d4cba4210b9658d87859c55cb66e885c1333",
+      "current_sha256": "81c3c052a33f0ea521e0471b701f046b86b6f51c7c86f739a753f86a661ef6e3",
+      "changed_source": "docs/roadmap.md",
+      "previous_source_sha256": "75e57bc610635122bc96264e357150954057eb85b24ef7019b5f4d3ade86079d",
+      "current_source_sha256": "360dc82759e4f9cba4ad2f1003ddfd70026569ef932233e9fbbd1742240b594e",
+      "reason": "Only writer and source round-trip progress. All 25 original Rocq and 12 Lean target records and every other legacy source hash remain unchanged."
+    },
+    {
+      "path": "assurance/m4-connection-evidence.json",
+      "previous_sha256": "856b1ba8ef55a0a3ad2ec270c7d8b1284daa98ea4cffd71c4108582152a4da57",
+      "current_sha256": "28b6ae9df2bf7fdc13dd10063e3f832fbebc751408b951282811996c3e278a26",
+      "reason": "Historical evidence bookkeeping only; no theorem, artifact, or archived receipt change."
+    },
+    {
+      "path": "assurance/m4-writeall-evidence.json",
+      "previous_sha256": "4495d00e21b89f073bb9f4568605753eae92fc86a3feb1b5b8108033c8fcc8e0",
+      "current_sha256": "3c903a1daf8682919a509409a4b222dce63853c2c1c5f0b7face86f67b3f4f76",
+      "reason": "Historical evidence bookkeeping only; no theorem, artifact, or archived receipt change."
+    },
+    {
+      "path": "assurance/m4-primitives-evidence.json",
+      "previous_sha256": "71c5a7968c2f7f879566d51bba4d491a988ad0017cb11b36faef80fcb464c3fb",
+      "current_sha256": "f7f8f4bb6718e4b1f58becdae2b0b6c3efe07d87e3320046472fb6e49b2a306b",
+      "reason": "Historical evidence bookkeeping only; no theorem, artifact, or archived receipt change."
+    }
+  ],
+  "open_obligations": [
+    "Frame construction and acceptance, rejected-frame partial mutation, terminal reception and failed publication",
+    "Whole-slice allocation, structure copies, libc effects and caller composition",
+    "Checked C/Rocq-to-Lean bridge",
+    "All 16 original M2/M3 native/Linux ledger entries",
+    "Linux/libc implementation, interference and concurrency correspondence",
+    "Extended-event/compiler observation relation and compiler preservation",
+    "GCC/Lean runtime, linker, loader, kernel and executable correspondence",
+    "M4.6 independent composed-profile review",
+    "M5 hardware confidentiality"
+  ],
+  "validation": [
+    {
+      "command": "./scripts/check.sh",
+      "exit_code": 0,
+      "elapsed_seconds": 93.933,
+      "evidence": "assurance/m4-writers-repository-check.log"
+    },
+    {
+      "command": "python3 scripts/run_m3_vm.py --check-artifacts",
+      "exit_code": 0,
+      "elapsed_seconds": 0.563,
+      "evidence": "assurance/m4-writers-artifacts-check.log"
+    },
+    {
+      "command": "./scripts/grund.sh fmt --check",
+      "exit_code": 0,
+      "elapsed_seconds": 0.055,
+      "evidence": "assurance/m4-writers-format-check.log"
+    },
+    {
+      "command": "git diff --check HEAD",
+      "exit_code": 0,
+      "elapsed_seconds": 0.005,
+      "evidence": "assurance/m4-writers-diff-check.log"
+    },
+    {
+      "command": "Historical source/type/assumption/artifact preservation audit against ad71f8f729c08901b6208fd2c22e942f90b9a836",
+      "exit_code": 0,
+      "evidence": "assurance/m4-writers-preservation-check.log"
+    },
+    {
+      "command": "./scripts/check_m4_connection.sh",
+      "exit_code": 0,
+      "elapsed_seconds": 180.098,
+      "evidence": "assurance/m4-writers-connection-check.log"
+    }
+  ],
+  "archived_receipts_sha256": {
+    "assurance/m4-writers-repository-check.log": "7bedf013b58f69ed5661885b6ec3679f6567412d5624f0176263c3f6ff909c2a",
+    "assurance/m4-writers-artifacts-check.log": "8b731c23cf3c4b804f820095476a429731d7ad6831adeb8740133785aa46f4b9",
+    "assurance/m4-writers-format-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "assurance/m4-writers-diff-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "assurance/m4-writers-preservation-check.log": "156a228fd6f8fd7c962074af7d333be69ea53c27dc9b3473c6948e8208d8eff7",
+    "assurance/m4-writers-connection-check.log": "06ec84c8db3cf5696a2f7a9f5a34984f67fd747b65cf7cc7b0909d061a6e5083"
+  }
+}

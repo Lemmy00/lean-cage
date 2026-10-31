@@ -35,7 +35,7 @@
     "assurance/m3-vm-transcript.log": "7f9c8d92c09690244207ffb5b62202536ae11303a7cce49fad865f8296282183",
     "assurance/m4-baseline-ci.json": "2402627a9a3ba02cba77beb3ca3a8b2b95501894a783f5d1e47e407050a2f61f",
     "assurance/m4-check.log": "cbbfc65c649a62120a095c0de2db69692aed1247bb4604f43a9613eafa977629",
-    "assurance/m4-claims.json": "500e67df841a214bf03edb1cb4f5d4cba4210b9658d87859c55cb66e885c1333",
+    "assurance/m4-claims.json": "81c3c052a33f0ea521e0471b701f046b86b6f51c7c86f739a753f86a661ef6e3",
     "assurance/m4-evidence.json": "a4fcfbd19b51e256d881499729b559b89f8aa72e61d62cfb701eb004c0eaf67b",
     "assurance/m4-proof-output.log.gz": "b27786634ddb2a5ca1de6a928f17cef0fca463cd9e6a305896bd13ae987e4881",
     "assurance/m4-repository-check.log": "40db57a5f3523a3e7678dbfe3e5cc969198afd9e825bb6df78a0bb9d5802fa7d",
@@ -508,5 +508,21 @@
     "previous_source_sha256": "d5a83d2f501584c7ddea0f048883e99f112cd50ff5311463ecb1952e1c947d31",
     "current_source_sha256": "75e57bc610635122bc96264e357150954057eb85b24ef7019b5f4d3ade86079d",
     "reason": "Only reviewed M4 reporting-primitives progress; all 25 original Rocq records, 12 Lean targets and all other source hashes unchanged."
-  }
+  },
+  "documentation_amendments": [
+    {
+      "reason": "Writer/round-trip checkpoint: propagate only the explicit roadmap progress fingerprint amendment. Prior theorem records, artifacts and archived receipts unchanged.",
+      "changes": [
+        {
+          "path": "assurance/m4-claims.json",
+          "previous_sha256": "500e67df841a214bf03edb1cb4f5d4cba4210b9658d87859c55cb66e885c1333",
+          "current_sha256": "81c3c052a33f0ea521e0471b701f046b86b6f51c7c86f739a753f86a661ef6e3",
+          "changed_source": "docs/roadmap.md",
+          "previous_source_sha256": "75e57bc610635122bc96264e357150954057eb85b24ef7019b5f4d3ade86079d",
+          "current_source_sha256": "360dc82759e4f9cba4ad2f1003ddfd70026569ef932233e9fbbd1742240b594e",
+          "reason": "Only writer and source round-trip progress. All 25 original Rocq and 12 Lean target records and every other legacy source hash remain unchanged."
+        }
+      ]
+    }
+  ]
 }

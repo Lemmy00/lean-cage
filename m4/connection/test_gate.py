@@ -166,6 +166,34 @@ class EvidenceGate(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'truncated Rocq statement'):
             gate.validate_claims(actual, actual)
 
+    def test_writer_source_and_roundtrip_claims_present(self):
+        names = {r['name'] for r in self.claims['rocq_declarations']}
+        self.assertTrue({
+            'StoreSteps.store_path_all', 'StoreSteps.store_path_defined_prefix',
+            'StoreSteps.store_path_loss_every_prefix',
+            'WriteBytes.byte_writes_permissions', 'WriteBytes.byte_writes_outside',
+            'WriteBytes.byte_writes_content', 'WriteBytes.writer_prefix_content',
+            'Writers.writer_execution', 'Writers.writer_return_exact',
+            'Writers.writer_all_prefixes', 'Writers.writer_defined_prefix',
+            'Writers.writer_loss_every_prefix', 'Writers.put32_first_byte_loss',
+            'Writers.arbitrary_put32_input', 'Writers.arbitrary_put64_input',
+            'Writers.arbitrary_unaligned_writer_inputs',
+            'CodecRoundtrip.put_get32_word', 'CodecRoundtrip.put_get64_word',
+            'CodecRoundtrip.put32_source_roundtrip', 'CodecRoundtrip.put64_source_roundtrip',
+        }.issubset(names))
+
+    def test_all_reporting_primitives_preserved(self):
+        previous = json.loads(gate.WRITERS_BASELINE.read_text())
+        self.assertEqual(len(previous['rocq_declarations']), 173)
+        self.assertEqual(len(previous['lean_declarations']), 12)
+        gate.validate_preserved_claims(previous, self.claims)
+        actual = copy.deepcopy(self.claims)
+        record = next(r for r in actual['rocq_declarations']
+                      if r['name'] == 'Readers.reader_all_prefixes')
+        record['full_type'] = 'weakened preserved reader claim'
+        with self.assertRaisesRegex(ValueError, 'changed or disappeared'):
+            gate.validate_preserved_claims(previous, actual)
+
 
 if __name__ == '__main__':
     unittest.main()

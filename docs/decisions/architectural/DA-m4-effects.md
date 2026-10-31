@@ -34,3 +34,19 @@ local theorem after return. Stable initialized TLS is explicit for errno, and
 nonwrapping readable bytes are explicit for the frame readers. These choices
 support [§FS-workspace.results](../../functional-spec/FS-workspace.md#results-entry-cancellation-and-bounded-transport); they do not assume publication success or
 change the broader reporting contract.
+
+## stores: Preserve bytewise mutation through process loss
+
+For [§AR-m4-effects.writers](../../architecture/AR-m4-effects.md#writers-byte-stores-and-source-codec-round-trips) and [§FS-workspace.results](../../functional-spec/FS-workspace.md#results-entry-cancellation-and-bounded-transport), extend the source-certificate
+method additively with memory-changing store edges. The original read-only
+certificates and effect machine stay fixed. Each new edge proves an actual Clight
+step and classifies all machine successors; each finite path carries an invariant
+for every intermediate memory. Loss retains that memory, including only the first
+written byte. A full-word store is not substituted for the source byte loop.
+
+The public premise is writable byte ownership with no address wrap. A constructed
+store chain derives the output and prefix invariant; it is not an assumed successful
+execution. Actual allocations, including unaligned addresses, inhabit ownership.
+Round-trip proofs first establish exact word identities and then use actual source
+calls and memory loads. Caller control flow, C-to-Lean translation and libc/Linux
+contracts remain separate obligations.

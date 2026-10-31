@@ -142,6 +142,31 @@ The reporting-primitives review records the universal source results and
 arbitrary-byte memory constructions. It preserves the original successful-reader
 theorems and their bitwise word expressions.
 
+## writers: Byte stores and source codec round trips
+
+Connect the complete maintained `put32` and `put64` functions to actual Clight
+byte stores. Independent ownership is a writable four/eight-byte region with no
+address-space wrap; initial byte values need not be initialized and no word
+alignment may be required. Cover every 32/64-bit input, every finite source
+prefix and process loss at each boundary. Each prefix may modify only the
+already-written byte prefix, preserves permissions and all outside memory, and
+has a defined source step or the exact void return. Prove bounded execution and
+the exact little-endian final bytes. Construct actual allocated-memory witnesses.
+
+Compose the source writes with the checked source readers and prove recovery of
+the original word. Keep the intermediate stores visible: loss after one byte is
+not an atomic whole-word store. The source proof must support caller continuations
+up to return so frame construction can reuse it. These local source results do
+not establish frame validity, successful publication or compiler/Linux behavior.
+
+The [writer and round-trip review](../reviews/M4-writers.md) records the checked
+complete source bodies: 42 steps for `put32` and 74 for `put64`, plus at most one
+terminal loss. `Writers.writer_all_prefixes` and `writer_return_exact` constrain
+every finite execution from independent writable-buffer ownership. The source
+round-trip theorems connect any completed writer to the existing reader and show
+that every completed read recovers the original word. These are sequential local
+call interfaces; frame callers and arbitrary concurrent interference remain open.
+
 ## lean: Exact public-result and knowledge endpoints
 
 Check additive Lean lemmas against the existing `LeanCageM3.decodeResult`,
@@ -172,3 +197,8 @@ The reporting-primitives extension additionally preserves all 126 preceding Rocq
 and 12 Lean records in `assurance/m4-primitives-baseline-claims.json`, checks the
 old compiled proof artifacts as an unchanged subset, and binds the extended
 inventory and validation receipts in `assurance/m4-primitives-evidence.json`.
+
+The writer extension additionally preserves all 173 preceding Rocq and 12 Lean
+records in `assurance/m4-writers-baseline-claims.json`, preserves all nine preceding
+compiled artifacts, and records its 13-module replay and receipts in
+`assurance/m4-writers-evidence.json`. Its active inventory has 227 Rocq declarations.

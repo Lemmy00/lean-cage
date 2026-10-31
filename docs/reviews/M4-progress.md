@@ -14,6 +14,11 @@ nonvacuity witnesses. The original effect-layer snapshot below is retained as
 historical evidence; its missing `write_all` connection is now supplied, while
 whole-slice simulation and the checked Lean bridge remain open.
 
+The later [reporting-primitives review](M4-primitives.md) and
+[writer/round-trip review](M4-writers.md) add checked source errno normalization,
+byte readers/writers and codec round trips. The current inventory has 227 Rocq
+and 12 Lean declarations. The snapshots below retain their original scope.
+
 ## Delivered evidence
 
 The additive `m4/connection/` package defines byte-aware effects with actual
