@@ -275,6 +275,59 @@ class EvidenceGate(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'changed or disappeared'):
             gate.validate_preserved_claims(previous, actual)
 
+    def test_complete_decoder_claims_present(self):
+        names = {r['name'] for r in self.claims['rocq_declarations']}
+        self.assertTrue({
+            'DecoderInput.decoder_memories_exist', 'DecoderAssembly.decoder_after_comparison_source',
+            'DecoderProgram.decoder_source_connection', 'DecoderProgram.decoder_whole_source_guarantee',
+            'DecoderProgram.decoder_all_returns', 'DecoderProgram.decoder_all_prefixes',
+            'DecoderProgram.decoder_defined_prefix', 'DecoderProgram.decoder_freed_local_has_no_permission',
+            'DecoderRuns.decoder_finite_return_exists', 'DecoderRuns.decoder_arbitrary_waits_and_loss',
+            'DecoderRuns.decoder_loss_from_every_live_prefix', 'DecoderAllocation.arbitrary_decoder_source_input',
+            'DecoderWitnesses.every_accepted_tag_executes',
+            'DecoderWitnesses.early_rejection_executes_without_output_write',
+            'DecoderWitnesses.late_rejection_executes_after_output_write',
+        }.issubset(names))
+
+    def test_all_caller_claims_preserved(self):
+        previous = json.loads(gate.DECODER_BASELINE.read_text())
+        self.assertEqual(len(previous['rocq_declarations']), 494)
+        self.assertEqual(len(previous['lean_declarations']), 12)
+        gate.validate_preserved_claims(previous, self.claims)
+        actual = copy.deepcopy(self.claims)
+        record = next(r for r in actual['rocq_declarations']
+                      if r['name'] == 'FailureSafety.failure_all_prefixes_defined')
+        record['full_type'] = 'weakened child-failure execution'
+        with self.assertRaisesRegex(ValueError, 'changed or disappeared'):
+            gate.validate_preserved_claims(previous, actual)
+
+    def test_unknown_and_forward_project_imports_rejected(self):
+        original = gate.module_source
+        first = gate.MODULES[0]
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'changed.v'
+            for imported in ['IncidentalCachedProof', gate.MODULES[-1]]:
+                path.write_text(original(first).read_text() + '\nRequire Import ' + imported + '.\n')
+                with patch.object(gate, 'module_source',
+                                  side_effect=lambda name: path if name == first else original(name)):
+                    with self.assertRaisesRegex(ValueError, 'undeclared or unordered'):
+                        gate.declaration_names()
+
+    def test_compatibility_closure_cannot_disappear(self):
+        self.assertEqual(len(gate.COMPAT_MODULES), 15)
+        self.assertTrue(all(gate.module_source(name).parent.name == 'compat'
+                            for name in gate.COMPAT_MODULES))
+        with patch.object(gate, 'MODULES', [m for m in gate.MODULES if m not in gate.COMPAT_MODULES]):
+            with self.assertRaisesRegex(ValueError, 'every authored proof file'):
+                gate.declaration_names()
+
+    def test_import_parser_covers_plain_require_and_rejects_bypass(self):
+        self.assertEqual(gate.project_imports('Require IO. Require Export Machine.'), ['IO', 'Machine'])
+        self.assertEqual(gate.project_imports('From Coq Require Import List.'), [])
+        for source in ['Load "cached.v".', 'Require Cached.Hidden.', 'From Cached Require Import Proof.']:
+            with self.assertRaises(ValueError):
+                gate.project_imports(source)
+
 
 if __name__ == '__main__':
     unittest.main()

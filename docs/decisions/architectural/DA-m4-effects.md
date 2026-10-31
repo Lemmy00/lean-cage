@@ -87,3 +87,22 @@ child-failure routine under [§AR-m4-callers.failure](../../architecture/AR-m4-c
 terminal-receiver compositions open. Kernel inventory queries are grouped into
 batches of at most 100 declarations, retaining each complete type/assumption
 record and the same fail-closed checks and per-command limits.
+
+## decoder: Derive complete parsing from independent input ownership
+
+For [§AR-m4-decoder.input](../../architecture/AR-m4-decoder.md#input-independent-frame-and-output-ownership), [§AR-m4-decoder.source](../../architecture/AR-m4-decoder.md#source-actual-construction-and-validation) and [§FS-workspace.results](../../functional-spec/FS-workspace.md#results-entry-cancellation-and-bounded-transport),
+compose actual short-circuit branches, reader calls, bounded loops and typed
+local/output storage. Keep the comparison's complete signed result contract,
+waits and process loss. The input contract owns bytes and permissions; validity
+and successful execution are conclusions. Preserve the source's output write
+before payload validation, including failed decodes with that mutation.
+
+For [§AR-m4-effects.gate](../../architecture/AR-m4-effects.md#gate-additive-evidence-and-completion-boundary), retain fifteen historical caller module names as exact
+maintained compatibility sources because their names occur in frozen theorem
+types. Audit their whole dependency closure and reject undeclared imports.
+Retain the earlier query import context when printing frozen full statements,
+so later imports cannot change their name qualification. This fixes replay
+reproducibility without replacing the previous propositions or compiled terms.
+The additional inventory requires a larger bounded connection replay budget;
+per-file compilation, kernel checking, full statements and foundation checks
+remain enforced.

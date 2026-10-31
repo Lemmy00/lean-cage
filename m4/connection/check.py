@@ -30,18 +30,11 @@ STRUCTURES_BASELINE = ROOT / 'assurance/m4-structures-baseline-claims.json'
 STRUCTURES_EVIDENCE = ROOT / 'assurance/m4-structures-evidence.json'
 CALLERS_BASELINE = ROOT / 'assurance/m4-callers-baseline-claims.json'
 CALLERS_EVIDENCE = ROOT / 'assurance/m4-callers-evidence.json'
-MODULES = ['IO', 'Machine', 'ClightSteps', 'WriteMemory', 'WriteAll', 'WriteWitnesses',
-           'Deterministic', 'ErrorNumber', 'Readers',
-           'StoreSteps', 'WriteBytes', 'Writers', 'CodecRoundtrip',
-           'Library', 'ProcessEffects', 'LibraryMachine', 'LibraryPreservation',
-           'LibraryControl', 'GlobalReads', 'Fault', 'LibraryWitnesses',
-           'LocalAccess', 'ScalarMemory', 'ResultLayout', 'ResultSource', 'ResultSafety', 'ResultWitnesses',
-           'CallContexts', 'CallAccess', 'CallPaths', 'WriteCallers',
-           'FreshMemory', 'CallProgress', 'ExitControl', 'HelperProgress',
-           'CallEvents', 'ReportingTrace', 'ExitEvents', 'FailureSource',
-           'FailureMemory', 'FailureBranches', 'FailureContract', 'FailureSafety',
-           'FailureTrace', 'FailureRuns', 'FailureError', 'FailureExit',
-           'FailureWitnesses']
+DECODER_BASELINE = ROOT / 'assurance/m4-decoder-baseline-claims.json'
+DECODER_EVIDENCE = ROOT / 'assurance/m4-decoder-evidence.json'
+BASELINE_QUERY_MODULES = ['IO', 'Machine', 'ClightSteps', 'WriteMemory', 'WriteAll', 'WriteWitnesses', 'Deterministic', 'ErrorNumber', 'Readers', 'StoreSteps', 'WriteBytes', 'Writers', 'CodecRoundtrip', 'Library', 'ProcessEffects', 'LibraryMachine', 'LibraryPreservation', 'LibraryControl', 'GlobalReads', 'Fault', 'LibraryWitnesses', 'LocalAccess', 'ScalarMemory', 'ResultLayout', 'ResultSource', 'ResultSafety', 'ResultWitnesses', 'CallContexts', 'CallAccess', 'CallPaths', 'WriteCallers', 'FreshMemory', 'CallProgress', 'ExitControl', 'HelperProgress', 'CallEvents', 'ReportingTrace', 'ExitEvents', 'FailureSource', 'FailureMemory', 'FailureBranches', 'FailureContract', 'FailureSafety', 'FailureTrace', 'FailureRuns', 'FailureError', 'FailureExit', 'FailureWitnesses']
+COMPAT_MODULES = ['CallEventsDraft', 'CallProgressDraft', 'ExitControlDraft', 'ExitEventsDraft', 'FailureBranchesDraft', 'FailureContractDraft', 'FailureErrorDraft', 'FailureMemoryDraft', 'FailureRunsDraft', 'FailureSafetyDraft', 'FailureSourceDraft', 'FailureTraceDraft', 'FreshMemoryDraft', 'HelperProgressDraft', 'ReportingTraceDraft']
+MODULES = ['IO', 'Machine', 'ClightSteps', 'WriteMemory', 'WriteAll', 'WriteWitnesses', 'Deterministic', 'ErrorNumber', 'Readers', 'StoreSteps', 'WriteBytes', 'Writers', 'CodecRoundtrip', 'Library', 'ProcessEffects', 'LibraryMachine', 'LibraryPreservation', 'LibraryControl', 'GlobalReads', 'Fault', 'LibraryWitnesses', 'LocalAccess', 'ScalarMemory', 'ResultLayout', 'ResultSource', 'ResultSafety', 'ResultWitnesses', 'CallContexts', 'CallAccess', 'CallPaths', 'WriteCallers', 'FreshMemory', 'CallProgress', 'ExitControl', 'CallEvents', 'FailureSource', 'CallEventsDraft', 'CallProgressDraft', 'ExitControlDraft', 'HelperProgress', 'ReportingTrace', 'ExitEvents', 'ExitEventsDraft', 'FailureSourceDraft', 'FreshMemoryDraft', 'FailureMemory', 'FailureContract', 'FailureContractDraft', 'FailureMemoryDraft', 'FailureBranches', 'FailureBranchesDraft', 'HelperProgressDraft', 'FailureSafety', 'FailureSafetyDraft', 'FailureExit', 'ReportingTraceDraft', 'FailureTrace', 'FailureTraceDraft', 'FailureRuns', 'FailureRunsDraft', 'FailureError', 'FailureErrorDraft', 'FailureWitnesses', 'FrameBytes', 'ComparisonControl', 'SourcePaths', 'DecoderLayout', 'DecoderSource', 'DecoderMemory', 'SequencePaths', 'SourceReach', 'DecoderCompare', 'DecoderControl', 'DecoderHeader', 'DecoderZeros', 'DecoderFields', 'SwitchControl', 'DecoderCommon', 'DecoderTags', 'DecoderValidity', 'DecoderInput', 'DecoderPayload', 'SourceConsequences', 'DecoderAssembly', 'ComparisonRuns', 'SourceGuarantees', 'ComparisonGuarantees', 'DecoderProgram', 'DecoderRuns', 'DecoderAllocation', 'DecoderWitnesses']
 ALLOWED_COQ = {
     'ClassicalDedekindReals.sig_not_dec', 'ClassicalDedekindReals.sig_forall_dec',
     'FunctionalExtensionality.functional_extensionality_dep', 'Classical_Prop.classic',
@@ -52,6 +45,7 @@ ALLOWED_LEAN = {'propext', 'Classical.choice', 'Quot.sound'}
 
 def sources():
     paths = [p for p in DIRECTORY.iterdir() if p.is_file()]
+    paths += [p for p in (DIRECTORY / 'compat').iterdir() if p.is_file()]
     paths += [ROOT / 'scripts/check_m4.sh', ROOT / 'scripts/check_m4_connection.sh',
               ROOT / 'docs/architecture/AR-m4-effects.md',
               ROOT / 'docs/decisions/architectural/DA-m4-effects.md',
@@ -63,7 +57,8 @@ def sources():
               ROOT / 'docs/architecture/AR-m4-library.md',
               ROOT / 'docs/architecture/AR-m4-structures.md', ROOT / 'docs/reviews/M4-structures.md',
               ROOT / 'docs/architecture/AR-m4-callers.md', ROOT / 'docs/reviews/M4-callers.md',
-              CALLERS_BASELINE, STRUCTURES_BASELINE,
+              CALLERS_BASELINE, STRUCTURES_BASELINE, DECODER_BASELINE,
+              ROOT / 'docs/architecture/AR-m4-decoder.md', ROOT / 'docs/reviews/M4-decoder.md',
               ROOT / 'docs/functional-spec/FS-assurance.md', LIBRARY_BASELINE,
               BASELINE_CLAIMS, PRIMITIVES_BASELINE, WRITERS_BASELINE, OBLIGATIONS]
     return {str(p.relative_to(ROOT)): digest(p) for p in sorted(paths)}
@@ -78,35 +73,71 @@ def verify_hashes(expected, root=ROOT):
             raise ValueError(f'stale or tampered connection input: {relative}')
 
 
+def module_source(module):
+    return DIRECTORY / ('compat' if module in COMPAT_MODULES else '') / (module + '.v')
+
+
+def project_imports(source):
+    source = re.sub(r'\(\*.*?\*\)', '', source, flags=re.S)
+    imports = []
+    pattern = r'(?:(?:From\s+(\w+)\s+)?Require\s+(?:(?:Import|Export)\s+)?([\w.\s]+?)\.(?!\w))'
+    if re.search(r'\b(?:Require|Load)\b', re.sub(pattern, '', source)):
+        raise ValueError('unsupported proof import syntax')
+    for match in re.finditer(pattern, source):
+        namespace, names = match.groups()
+        if namespace is None:
+            if any('.' in name for name in names.split()):
+                raise ValueError('undeclared qualified project proof import')
+            imports.extend(names.split())
+        elif namespace not in {'Coq', 'compcert'}:
+            raise ValueError(f'undeclared proof namespace: {namespace}')
+    return imports
+
+
 def declaration_names():
-    if {p.stem for p in DIRECTORY.glob('*.v')} != set(MODULES):
+    authored = list(DIRECTORY.rglob('*.v'))
+    if len(authored) != len(MODULES) or {p.stem for p in authored} != set(MODULES):
         raise ValueError('Rocq module inventory does not cover every authored proof file')
     records = []
+    available = {'Slice', 'Codec'}  # Both are checked by the preserved M4.1 gate.
     for module in MODULES:
-        source = (DIRECTORY / (module + '.v')).read_text()
+        source = module_source(module).read_text()
         source = re.sub(r'\(\*.*?\*\)', '', source, flags=re.S)
+        for imported in project_imports(source):
+            if imported not in available:
+                raise ValueError(f'undeclared or unordered project proof import: {module}: {imported}')
         if re.search(r'\b(?:Admitted|admit|Axiom|Parameter|Abort)\b', source):
             raise ValueError(f'unfinished/custom-axiom connection proof: {module}')
         names = re.findall(r'^\s*(?:Theorem|Lemma|Example|Corollary|Fact|Remark|Proposition)\s+(\w+)', source, re.M)
         if not names:
             raise ValueError(f'empty theorem inventory: {module}')
         records += [module + '.' + name for name in names]
+        available.add(module)
     return records
 
 
 def rocq_inventory():
     names = declaration_names()
-    for batch, start in enumerate(range(0, len(names), 100)):
-        query = ['Require Import ' + ' '.join(MODULES) + '.',
-                 'Set Printing All.', 'Set Printing Depth 1000000.', 'Set Printing Width 1000000.']
-        for i, name in enumerate(names[start:start + 100], start):
-            query += [f'Redirect "connection-type-{i}" Check @{name}.',
-                      f'Redirect "connection-axioms-{i}" Print Assumptions {name}.']
-        filename = f'ConnectionAudit{batch}.v'
-        (WORK / 'input' / filename).write_text('\n'.join(query) + '\n')
-        result = compile_file(filename)
-        if result.returncode:
-            raise ValueError(result.stdout + result.stderr)
+    # Keep the preceding manifest's printing context; new modules cannot shadow
+    # names in frozen full statements. Both contexts still audit full assumptions.
+    groups = [
+        (BASELINE_QUERY_MODULES, [(i, n) for i, n in enumerate(names)
+                                 if n.split('.')[0] in BASELINE_QUERY_MODULES]),
+        (MODULES, [(i, n) for i, n in enumerate(names)
+                   if n.split('.')[0] not in BASELINE_QUERY_MODULES]),
+    ]
+    for group, (modules, selected) in enumerate(groups):
+        for batch, start in enumerate(range(0, len(selected), 100)):
+            query = ['Require Import ' + ' '.join(modules) + '.',
+                     'Set Printing All.', 'Set Printing Depth 1000000.', 'Set Printing Width 1000000.']
+            for i, name in selected[start:start + 100]:
+                query += [f'Redirect "connection-type-{i}" Check @{name}.',
+                          f'Redirect "connection-axioms-{i}" Print Assumptions {name}.']
+            filename = f'ConnectionAudit{group}_{batch}.v'
+            (WORK / 'input' / filename).write_text('\n'.join(query) + '\n')
+            result = compile_file(filename)
+            if result.returncode:
+                raise ValueError(result.stdout + result.stderr)
     records = []
     for i, name in enumerate(names):
         full_type = (WORK / f'input/connection-type-{i}.out').read_text().strip()
@@ -194,7 +225,7 @@ def collect():
     logs = {}
     for module in MODULES:
         filename = module + '.v'
-        shutil.copyfile(DIRECTORY / filename, WORK / 'input' / filename)
+        shutil.copyfile(module_source(module), WORK / 'input' / filename)
         result = compile_file(filename)
         if result.returncode:
             raise ValueError(result.stdout + result.stderr)
@@ -225,9 +256,16 @@ def check():
     library = json.loads(LIBRARY_EVIDENCE.read_text())
     structures = json.loads(STRUCTURES_EVIDENCE.read_text())
     callers = json.loads(CALLERS_EVIDENCE.read_text())
+    decoder = json.loads(DECODER_EVIDENCE.read_text())
+    if decoder['status'] != 'complete private-frame decoder source submilestone; M4.2-M4.6 incomplete':
+        raise ValueError('local decoder source cannot complete M4 correspondence')
+    if digest(MANIFEST) != decoder['claims_sha256']:
+        raise ValueError('decoder reviewed claim manifest identity differs')
+    verify_hashes(decoder['preserved_sha256'])
+    verify_hashes(decoder['archived_receipts_sha256'])
     if callers['status'] != 'caller composition and complete child-failure source submilestone complete; M4.2-M4.6 incomplete':
         raise ValueError('child-failure source cannot complete M4 correspondence')
-    if digest(MANIFEST) != callers['claims_sha256']:
+    if digest(DECODER_BASELINE) != callers['claims_sha256']:
         raise ValueError('caller reviewed claim manifest identity differs')
     verify_hashes(callers['preserved_sha256'])
     verify_hashes(callers['archived_receipts_sha256'])
@@ -306,7 +344,9 @@ def check():
     validate_artifacts(library['artifact_sha256'], actual['artifact_sha256'], subset=True)
     validate_preserved_claims(json.loads(CALLERS_BASELINE.read_text()), actual)
     validate_artifacts(structures['artifact_sha256'], actual['artifact_sha256'], subset=True)
-    validate_artifacts(callers['artifact_sha256'], actual['artifact_sha256'])
+    validate_preserved_claims(json.loads(DECODER_BASELINE.read_text()), actual)
+    validate_artifacts(callers['artifact_sha256'], actual['artifact_sha256'], subset=True)
+    validate_artifacts(decoder['artifact_sha256'], actual['artifact_sha256'])
     result = subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', str(DIRECTORY),
                              '-p', 'test_*.py', '-v'], cwd=ROOT,
                             capture_output=True, text=True, timeout=60)
@@ -316,7 +356,7 @@ def check():
     print(f'Connection checked: {len(actual["rocq_declarations"])} Rocq theorems, '
           f'{len(actual["lean_declarations"])} Lean theorems, coqchk passed; 16 original obligations OPEN')
     print('Universal write_all, errno, byte reader/writer source safety and codec round trips checked; '
-          'local library effects, fault, result construction, actual caller composition and complete fail_child checked; '
+          'local library effects, fault, result construction, actual caller composition, complete fail_child and complete private decode_frame checked; '
           'whole-slice C/Lean simulation, Linux/compiler/runtime correspondence and full M4 remain UNPROVED')
 
 

@@ -202,3 +202,11 @@ The writer extension additionally preserves all 173 preceding Rocq and 12 Lean
 records in `assurance/m4-writers-baseline-claims.json`, preserves all nine preceding
 compiled artifacts, and records its 13-module replay and receipts in
 `assurance/m4-writers-evidence.json`. Its active inventory has 227 Rocq declarations.
+
+Every imported project proof module must have maintained source, an explicit
+build order, full declaration and assumption auditing, and a compiled identity.
+Reject imports that can only be resolved from incidental local build files.
+Historical module names used in already-reviewed theorem types may be preserved
+as exact maintained compatibility sources; audit those declarations too and keep
+their original identities. This records a reproducibility correction, not a new
+security result or permission to replace previous statements.

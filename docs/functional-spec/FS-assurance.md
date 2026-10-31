@@ -38,7 +38,7 @@ These counts identify coverage and evidence, not a measure of security strength.
 | M2 owned lifecycle and filter action | [§FS-lifecycle.model](FS-lifecycle.md#model-executable-controller-and-effect-contracts) and [§FS-lifecycle.filter](FS-lifecycle.md#filter-general-action-of-the-preserved-m1-program) | Model-proved; VM-tested; handoff gate passed | [§FS-assurance.lifecycle](FS-assurance.md#lifecycle-m2-lifecycle-and-filter-semantics-claim-record); exact plan, ownership/inheritance and general bytecode action; source-bound VM evidence | Native/Linux correspondence; M3 authority; M5 hardware channels |
 | Native workload confinement | [§FS-workspace.authority](FS-workspace.md#authority-objects-and-rights) | M3 model proofs, implementation and source-bound VM evidence; gate passed | [§FS-assurance.workspace](FS-assurance.md#workspace-m3-workspace-model-and-vm-evidence); object/handle/alias model and workspace helper | Native/Linux correspondence |
 | Bounded resources | [§FS-workspace.resources](FS-workspace.md#resources-units-ownership-and-failure) | Conditional model proofs; native VM limit cases | Scope/capture/reservation/sample proofs; charged memory/task/CPU/deadline observations | Linux accounting and progress/overshoot premises |
-| Local reporting source behavior | [§FS-workspace.results](FS-workspace.md#results-entry-cancellation-and-bounded-transport) | Partial M4.2 source/effect proofs | [§FS-assurance.native](FS-assurance.md#native-partial-m4-reporting-source-evidence); maintained-source codecs, write loop, errno, selectors, result construction and child-failure reporting | Whole-slice framing/caller safety, checked C-to-Lean bridge, Linux/compiler/executable correspondence |
+| Local reporting source behavior | [§FS-workspace.results](FS-workspace.md#results-entry-cancellation-and-bounded-transport) | Partial M4.2 source/effect proofs | [§FS-assurance.native](FS-assurance.md#native-partial-m4-reporting-source-evidence); maintained-source codecs, write loop, errno, selectors, result construction, child-failure reporting and complete private-frame decoding | Whole-slice framing/caller safety, checked C-to-Lean bridge, Linux/compiler/executable correspondence |
 | Functional confidentiality | [§FS-observations.logical](FS-observations.md#logical-functional-observations) | Planned | Observation requirements | Noninterference theorem and correspondence |
 | Hardware-aware confidentiality | [§FS-observations.hardware](FS-observations.md#hardware-software-observable-channels) | Planned | Scope and research obligations | Model, mechanisms, proof, deployed profile |
 | Deployed executable correctness | [§GOAL-end-to-end](../goals.md#goal-end-to-end-connect-the-policy-to-the-deployed-artifact) | Planned | Roadmap | Compiler/runtime/FFI and Linux correspondence |
@@ -411,12 +411,14 @@ Clight model plus explicit byte-aware effects and asynchronous loss. The maintai
 retains the 25 feasibility declarations and 12 Lean target records;
 `assurance/m4-connection-claims.json` inventories every additive Rocq declaration
 with its complete type and transitive assumptions and the unchanged 12 Lean
-endpoint claims. The caller checkpoint contains 494 Rocq declarations, preserving
-all 373 previous records and twenty-seven compiled artifacts exactly. These counts
+endpoint claims. The decoder checkpoint contains 680 Rocq declarations: all 494 previous records,
+113 decoder/composition declarations and 73 declarations in historical import
+modules now included in the maintained audit. All 48 previous compiled artifacts
+are preserved. These counts
 identify the audited inventory, not a security score.
 
 **Results:** universal finite-prefix safety and exact returns for `write_all`,
-`error_number`, `get32`, `get64`, `put32`, `put64`, `fault` and `result_of`; source codec round
+`error_number`, `get32`, `get64`, `put32`, `put64`, `fault`, `result_of` and `decode_frame`; source codec round
 trips for all 32/64-bit words; defined ordinary progress rather than loss/wait
 witnesses. The extended machine retains old transitions and earlier universal
 source safety. Explicit comparison/copy/close/exit contracts have owned-memory
@@ -442,9 +444,21 @@ are constructed for arbitrary descriptor/stage/error words. This is partial
 correctness and progress availability, not termination, successful publication,
 whole-program initialization or Linux exit/resource-reclamation correspondence.
 
-**Evidence and assumptions:** `assurance/m4-library-evidence.json`,
+The complete private-frame decoder derives every read from arbitrary owned
+160-byte input, actual globals and an independent writable 144-byte output.
+Its complete source predicates determine the return: header failures preserve
+all old caller memory; later failures retain the constructed output. All seven
+accepted tags, rejected tag/default branches, short-circuit checks and both
+reserved-byte loops execute actual source. Every finite live prefix has ordinary
+progress or an exact return. Outside-output memory is preserved through loss,
+and every return frees the actual local structure. Allocated inputs inhabit all
+seven accepted tags and early/late rejection. Finite successful runs coexist
+with arbitrary comparison waits and loss; no termination claim follows.
+
+**Evidence and assumptions:** `assurance/m4-decoder-evidence.json`,
+`assurance/m4-library-evidence.json`,
 `assurance/m4-structures-evidence.json`, `assurance/m4-callers-evidence.json` and
-[the caller proposition review](../reviews/M4-callers.md) bind sources, terms, preservation
+[the caller proposition review](../reviews/M4-callers.md) and [decoder proposition review](../reviews/M4-decoder.md) bind sources, terms, preservation
 checks and raw command receipts. `./scripts/check_m4_connection.sh` replays the
 pinned tools, actual extracted source/AST, complete declarations and `coqchk`.
 The six Rocq foundation/semantic-parameter entries remain unchanged; the explicit
@@ -454,8 +468,13 @@ not assert initialized whole-program execution. Native/compiler/kernel/runtime
 and hardware identities remain the preserved earlier profiles, not new execution
 evidence. No native guest workload is run on the shared host.
 
-**Open:** frame construction/acceptance and partial rejected-frame mutation,
-terminal receipt/publication, local allocation and structure-copy/caller
+The caller checkpoint's local replay depended on fifteen historical module
+names with source only in the ignored build directory. The decoder checkpoint
+maintains and audits those exact dependencies, preserving previous statements
+and artifacts, and rejects undeclared imports. The earlier receipt did not by
+itself establish replay from only maintained proof inputs.
+
+**Open:** frame sending, `finish`, terminal receipt/publication, local allocation and structure-copy/caller
 composition for the complete selected slice, checked C/Rocq-to-Lean translation,
 all sixteen original M2/M3 Linux/native ledger entries, libc/Linux interference,
 compiler/runtime/linker/loader correspondence and independent composed-profile

@@ -22,5 +22,6 @@ end-to-end isolation remain explicit M4/M5 obligations.
 | [§AR-m4-library](AR-m4-library.md#ar-m4-library-local-library-effects-for-the-reporting-slice) | Local comparison/copy/close/exit effects, preserved earlier source safety and complete fault-selector source connection |
 | [§AR-m4-structures](AR-m4-structures.md#ar-m4-structures-local-storage-and-result-construction-in-the-maintained-source) | Actual local/field/storage semantics and complete result constructor source, with loss and caller-memory preservation |
 | [§AR-m4-callers](AR-m4-callers.md#ar-m4-callers-actual-source-call-composition) | Actual caller continuation proofs and complete child-failure reporting with bounded byte traces, loss and exit |
+| [§AR-m4-decoder](AR-m4-decoder.md#ar-m4-decoder-complete-private-frame-decoding-from-owned-bytes) | Complete private-frame decoder source, exact rejection mutation, all-prefix safety and owned executions |
 | [§AR-verification](AR-verification.md#ar-verification-compose-explicit-refinement-and-security-arguments) | Proof composition, audits, and executable correspondence |
 | [§AR-tooling](AR-tooling.md#ar-tooling-keep-development-reproducible-and-project-local) | Local tooling, pins, and development checks |

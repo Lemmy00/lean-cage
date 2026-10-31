@@ -13,9 +13,9 @@ Run from the project root, with the existing project-local M4 research tools:
 ```
 
 The first command runs the original maintained-source/frontend/ABI/tool gate,
-then compiles all six Rocq modules, checks their kernel terms with `coqchk`,
+then compiles all 91 Rocq modules, checks their kernel terms with `coqchk`,
 queries every new theorem's full type and assumptions, checks all Lean endpoint
-theorems and runs the evidence regressions. Both phases have five-minute bounds.
+theorems and runs the evidence regressions. The source phase has a five-minute bound and the extended proof phase a ten-minute bound.
 It performs no downloads or expectation refresh and executes no guest/OS workload.
 Tools and build products stay under the existing `.tools/m4` directory.
 
@@ -45,7 +45,7 @@ non-EINTR reply and incomplete transfer. This is partial correctness, not a
 termination guarantee. `WriteWitnesses.v` constructs bounded arbitrary input,
 success, short writes, arbitrary EINTR retries, errors, waits and partial loss.
 See [§AR-m4-effects.writeall](../../docs/architecture/AR-m4-effects.md#writeall-universal-source-loop-connection) and [the source-proof review](../../docs/reviews/M4-writeall.md).
-The framer, receiver, caller composition and checked Lean connection remain open.
+Actual caller composition, child-failure reporting and private-frame decoding are now checked. Frame sending, terminal reception and the checked Lean connection remain open.
 
 `Endpoints.lean` proves observation-trace entry origin/persistence and release
 requirements, rejection of private intermediate tags by the actual final decoder,
@@ -68,3 +68,17 @@ roadmap/architecture-index documentation fingerprints and the preserved decision
 index are deliberately advanced when linking this additive package, with old/new
 identities recorded. See `docs/reviews/M4-progress.md` for the validation record
 and remaining work.
+
+The complete decoder under [§AR-m4-decoder](../../docs/architecture/AR-m4-decoder.md#ar-m4-decoder-complete-private-frame-decoding-from-owned-bytes) is connected to the actual generated
+body from arbitrary owned bytes and independent output permissions. It proves
+exact return conditions, early versus late rejection mutation, all-prefix
+preservation/progress, local freeing, accepted-tag executions, rejection runs,
+and arbitrary waits/loss. See [the decoder review](../../docs/reviews/M4-decoder.md).
+
+The current inventory contains 680 Rocq and 12 Lean declarations. It preserves
+all 494 previous declarations and 48 previous compiled artifacts. Of the 186
+added records, 113 support decoder/source composition and 73 make the historical
+caller import closure explicit. The exact compatibility sources in `compat/`
+repair an earlier dependence on incidental ignored build files. Every project
+import must now resolve to an inventoried maintained module or the preserved
+M4.1 `Slice`/`Codec` inputs. No claim count is a security score.
