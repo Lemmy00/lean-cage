@@ -1,0 +1,1914 @@
+{
+  "rocq_declarations": [
+    {
+      "name": "LeanCagePlan.PlanValues.plan_add_exact",
+      "full_type": "plan_add_exact\n     : forall a b : Nat, @Logic.eq nat (nat_of_Nat (Nat_add a b)) (Nat.add (nat_of_Nat a) (nat_of_Nat b))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCagePlan.PlanValues.plan_mul_exact",
+      "full_type": "plan_mul_exact\n     : forall a b : Nat, @Logic.eq nat (nat_of_Nat (Nat_mul a b)) (Nat.mul (nat_of_Nat a) (nat_of_Nat b))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCagePlan.PlanValues.plan_pred_exact",
+      "full_type": "plan_pred_exact\n     : forall a : Nat, @Logic.eq nat (nat_of_Nat (Nat_pred a)) (PeanoNat.Nat.pred (nat_of_Nat a))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCagePlan.PlanValues.plan_sub_exact",
+      "full_type": "plan_sub_exact\n     : forall a b : Nat, @Logic.eq nat (nat_of_Nat (Nat_sub a b)) (Nat.sub (nat_of_Nat a) (nat_of_Nat b))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCagePlan.PlanValues.plan_ble_exact",
+      "full_type": "plan_ble_exact\n     : forall a b : Nat, @Logic.eq bool (plan_bool (Nat_ble a b)) (PeanoNat.Nat.leb (nat_of_Nat a) (nat_of_Nat b))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCagePlan.PlanValues.plan_bool_and",
+      "full_type": "plan_bool_and\n     : forall a b : Bool, @Logic.eq bool (plan_bool (Bool_and a b)) (andb (plan_bool a) (plan_bool b))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCagePlan.PlanValues.plan_ite_bool",
+      "full_type": "plan_ite_bool\n     : forall (A : Type) (b : Bool) (t e : A), @Logic.eq A (ite A (@eq Bool b Bool_true) (instDecidableEqBool b Bool_true) t e) match plan_bool b return A with\n                                                                                                                                | true => t\n                                                                                                                                | false => e\n                                                                                                                                end",
+      "transitive_assumptions": "Axioms:\neq relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "eq"
+      ]
+    },
+    {
+      "name": "LeanCagePlan.PlanValues.plan_fold_exact",
+      "full_type": "plan_fold_exact\n     : forall (acc : Nat) (bytes : List_inst1 Nat), @Logic.eq nat (nat_of_Nat (LeanCageM4_Plan_decimalFold acc bytes)) (natural_decimal_fold (nat_of_Nat acc) (plan_values bytes))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCagePlan.PlanValues.plan_digits_exact",
+      "full_type": "plan_digits_exact\n     : forall bytes : List_inst1 Nat, @Logic.eq bool (plan_bool (LeanCageM4_Plan_decimalDigits bytes)) (natural_decimal_digits (plan_values bytes))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCagePlan.PlanValues.plan_parser_exact",
+      "full_type": "plan_parser_exact\n     : forall (bound : Nat) (bytes : List_inst1 Nat), @Logic.eq (option nat) (plan_option (LeanCageM4_Plan_parseDecimal bound bytes)) (natural_decimal (nat_of_Nat bound) (plan_values bytes))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCagePlan.PlanCodec.plan_bytes_values",
+      "full_type": "plan_bytes_values\n     : forall bytes : list Integers.Byte.int, @Logic.eq (list nat) (plan_values (plan_bytes bytes)) (byte_naturals bytes)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCagePlan.PlanCodec.natural_digits_true",
+      "full_type": "natural_digits_true\n     : forall bytes : list nat, iff (@Logic.eq bool (natural_decimal_digits bytes) true) (@ListDef.Forall nat (fun b : nat => and (Peano.le (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))) b) (Peano.le b (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) bytes)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCagePlan.PlanCodec.natural_decimal_some",
+      "full_type": "natural_decimal_some\n     : forall (bound : nat) (bytes : list nat) (value : nat), iff (@Logic.eq (option nat) (natural_decimal bound bytes) (@Some nat value)) (and (not (@Logic.eq (list nat) bytes (@nil nat))) (and (@ListDef.Forall nat (fun b : nat => and (Peano.le (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))) b) (Peano.le b (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) bytes) (and (@Logic.eq nat value (natural_decimal_fold O bytes)) (Peano.le value bound))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCagePlan.PlanCodec.byte_digits_exact",
+      "full_type": "byte_digits_exact\n     : forall bytes : list Integers.Byte.int, iff (@ListDef.Forall nat (fun b : nat => and (Peano.le (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))) b) (Peano.le b (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (byte_naturals bytes)) (@ListDef.Forall Integers.Byte.int NumberMath.decimal_digit_ok bytes)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCagePlan.PlanCodec.byte_decimal_fold",
+      "full_type": "byte_decimal_fold\n     : forall (bytes : list Integers.Byte.int) (acc : nat) (_ : @ListDef.Forall Integers.Byte.int NumberMath.decimal_digit_ok bytes), @Logic.eq BinNums.Z (BinInt.Z.of_nat (natural_decimal_fold acc (byte_naturals bytes))) (NumberMath.decimal_fold (BinInt.Z.of_nat acc) bytes)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCagePlan.PlanCodec.plan_parser_some",
+      "full_type": "plan_parser_some\n     : forall (bytes : list Integers.Byte.int) (value : nat), iff (@Logic.eq (option nat) (plan_parsed bytes) (@Some nat value)) (@Logic.eq (option BinNums.Z) (NumberMath.decimal_number bytes) (@Some BinNums.Z (BinInt.Z.of_nat value)))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCagePlan.PlanCodec.plan_parser_none",
+      "full_type": "plan_parser_none\n     : forall bytes : list Integers.Byte.int, iff (@Logic.eq (option nat) (plan_parsed bytes) (@None nat)) (@Logic.eq (option BinNums.Z) (NumberMath.decimal_number bytes) (@None BinNums.Z))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCagePlan.PlanCodec.plan_parser_value",
+      "full_type": "plan_parser_value\n     : forall bytes : list Integers.Byte.int, @Logic.eq (option BinNums.Z) (@option_map nat BinNums.Z BinInt.Z.of_nat (plan_parsed bytes)) (NumberMath.decimal_number bytes)",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCagePlan.PlanSource.plan_source_path",
+      "full_type": "plan_source_path\n     : forall (ge : Clight.genv) (m : Memory.Mem.mem) (block : Values.block) (ofs : Integers.Ptrofs.int) (bytes : list Integers.Byte.int) (out : Values.block) (outofs : Integers.Ptrofs.int) (k : Clight.cont) (_ : NumberMemory.number_input m block ofs bytes) (_ : NumberMemory.number_output m out outofs), @ex nat (fun count : nat => @ex Memory.Mem.mem (fun after : Memory.Mem.mem => and (NumberStorage.number_post m out outofs (plan_result bytes) after) (StoreSteps.store_path ge (NumberStorage.number_memory m out outofs (plan_result bytes)) (NumberStructure.number_initial (Values.Vptr block ofs) (Values.Vptr out outofs) k m) count (Clight.Returnstate (NumberStorage.number_code (plan_result bytes)) (Clight.call_cont k) after))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCagePlan.PlanSource.plan_source_execution",
+      "full_type": "plan_source_execution\n     : forall (ge : Clight.genv) (cell : Machine.tls) (m : Memory.Mem.mem) (block : Values.block) (ofs : Integers.Ptrofs.int) (bytes : list Integers.Byte.int) (out : Values.block) (outofs : Integers.Ptrofs.int) (k : Clight.cont) (_ : NumberMemory.number_input m block ofs bytes) (_ : NumberMemory.number_output m out outofs), @ex nat (fun count : nat => @ex Memory.Mem.mem (fun after : Memory.Mem.mem => and (NumberStorage.number_post m out outofs (plan_result bytes) after) (Machine.steps ge cell (Machine.live (NumberStructure.number_initial (Values.Vptr block ofs) (Values.Vptr out outofs) k m)) (@ListDef.repeat Machine.event (Machine.source_step Events.E0) count) (Machine.live (Clight.Returnstate (NumberStorage.number_code (plan_result bytes)) (Clight.call_cont k) after)))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCagePlan.PlanSource.plan_source_return",
+      "full_type": "plan_source_return\n     : forall (ge : Clight.genv) (cell : Machine.tls) (m : Memory.Mem.mem) (block : Values.block) (ofs : Integers.Ptrofs.int) (bytes : list Integers.Byte.int) (out : Values.block) (outofs : Integers.Ptrofs.int) (events : list Machine.event) (value : Values.val) (after : Memory.Mem.mem) (_ : NumberMemory.number_input m block ofs bytes) (_ : NumberMemory.number_output m out outofs) (_ : Machine.steps ge cell (Machine.live (NumberStructure.number_initial (Values.Vptr block ofs) (Values.Vptr out outofs) Clight.Kstop m)) events (Machine.live (Clight.Returnstate value Clight.Kstop after))), and (@Logic.eq Values.val value (NumberStorage.number_code (plan_result bytes))) (NumberStorage.number_post m out outofs (plan_result bytes) after)",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCagePlan.PlanSource.plan_source_prefix",
+      "full_type": "plan_source_prefix\n     : forall (ge : Clight.genv) (cell : Machine.tls) (m : Memory.Mem.mem) (block : Values.block) (ofs : Integers.Ptrofs.int) (bytes : list Integers.Byte.int) (out : Values.block) (outofs : Integers.Ptrofs.int) (events : list Machine.event) (target : Machine.machine) (_ : NumberMemory.number_input m block ofs bytes) (_ : NumberMemory.number_output m out outofs) (_ : Machine.steps ge cell (Machine.live (NumberStructure.number_initial (Values.Vptr block ofs) (Values.Vptr out outofs) Clight.Kstop m)) events target), NumberStorage.number_memory m out outofs (plan_result bytes) (Deterministic.routine_memory target)",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCagePlan.PlanSource.plan_source_progress",
+      "full_type": "plan_source_progress\n     : forall (ge : Clight.genv) (cell : Machine.tls) (m : Memory.Mem.mem) (block : Values.block) (ofs : Integers.Ptrofs.int) (bytes : list Integers.Byte.int) (out : Values.block) (outofs : Integers.Ptrofs.int) (events : list Machine.event) (s : Clight.state) (_ : NumberMemory.number_input m block ofs bytes) (_ : NumberMemory.number_output m out outofs) (_ : Machine.steps ge cell (Machine.live (NumberStructure.number_initial (Values.Vptr block ofs) (Values.Vptr out outofs) Clight.Kstop m)) events (Machine.live s)), or (@ex Memory.Mem.mem (fun after : Memory.Mem.mem => and (@Logic.eq Clight.state s (Clight.Returnstate (NumberStorage.number_code (plan_result bytes)) Clight.Kstop after)) (NumberStorage.number_post m out outofs (plan_result bytes) after))) (@ex Clight.state (fun next : Clight.state => Machine.step ge cell (Machine.live s) (Machine.source_step Events.E0) (Machine.live next)))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCagePlan.PlanSource.plan_source_loss",
+      "full_type": "plan_source_loss\n     : forall (ge : Clight.genv) (cell : Machine.tls) (m : Memory.Mem.mem) (block : Values.block) (ofs : Integers.Ptrofs.int) (bytes : list Integers.Byte.int) (out : Values.block) (outofs : Integers.Ptrofs.int) (_ : NumberMemory.number_input m block ofs bytes) (_ : NumberMemory.number_output m out outofs), @ex nat (fun count : nat => @ex Memory.Mem.mem (fun after : Memory.Mem.mem => and (NumberStorage.number_post m out outofs (plan_result bytes) after) (and (Machine.steps ge cell (Machine.live (NumberStructure.number_initial (Values.Vptr block ofs) (Values.Vptr out outofs) Clight.Kstop m)) (@ListDef.repeat Machine.event (Machine.source_step Events.E0) count) (Machine.live (Clight.Returnstate (NumberStorage.number_code (plan_result bytes)) Clight.Kstop after))) (forall (n : nat) (_ : Peano.le n count), @ex Clight.state (fun mid : Clight.state => and (Machine.steps ge cell (Machine.live (NumberStructure.number_initial (Values.Vptr block ofs) (Values.Vptr out outofs) Clight.Kstop m)) (@ListDef.repeat Machine.event (Machine.source_step Events.E0) n) (Machine.live mid)) (and (Machine.steps ge cell (Machine.live (NumberStructure.number_initial (Values.Vptr block ofs) (Values.Vptr out outofs) Clight.Kstop m)) (@app Machine.event (@ListDef.repeat Machine.event (Machine.source_step Events.E0) n) (@cons Machine.event Machine.loss_step (@nil Machine.event))) (Machine.dead (Machine.memory_of mid))) (NumberStorage.number_memory m out outofs (plan_result bytes) (Machine.memory_of mid))))))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCagePlan.PlanSource.plan_source_rejection",
+      "full_type": "plan_source_rejection\n     : forall (ge : Clight.genv) (cell : Machine.tls) (m : Memory.Mem.mem) (block : Values.block) (ofs : Integers.Ptrofs.int) (bytes : list Integers.Byte.int) (out : Values.block) (outofs : Integers.Ptrofs.int) (events : list Machine.event) (target : Machine.machine) (_ : NumberMemory.number_input m block ofs bytes) (_ : NumberMemory.number_output m out outofs) (_ : @Logic.eq (option nat) (plan_parsed bytes) (@None nat)) (_ : Machine.steps ge cell (Machine.live (NumberStructure.number_initial (Values.Vptr block ofs) (Values.Vptr out outofs) Clight.Kstop m)) events target), @Logic.eq Memory.Mem.mem (Deterministic.routine_memory target) m",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCagePlan.PlanSource.plan_source_success",
+      "full_type": "plan_source_success\n     : forall (ge : Clight.genv) (cell : Machine.tls) (m : Memory.Mem.mem) (block : Values.block) (ofs : Integers.Ptrofs.int) (bytes : list Integers.Byte.int) (out : Values.block) (outofs : Integers.Ptrofs.int) (events : list Machine.event) (after : Memory.Mem.mem) (_ : NumberMemory.number_input m block ofs bytes) (_ : NumberMemory.number_output m out outofs) (_ : Machine.steps ge cell (Machine.live (NumberStructure.number_initial (Values.Vptr block ofs) (Values.Vptr out outofs) Clight.Kstop m)) events (Machine.live (Clight.Returnstate (Values.Vint Integers.Int.zero) Clight.Kstop after))), @ex nat (fun value : nat => and (@Logic.eq (option nat) (plan_parsed bytes) (@Some nat value)) (and (BinInt.Z.le (BinInt.Z.of_nat value) NumberMath.decimal_max) (@Logic.eq (option Values.val) (Memory.Mem.load AST.Mint64 after out (Integers.Ptrofs.unsigned outofs)) (@Some Values.val (Values.Vlong (Integers.Int64.repr (BinInt.Z.of_nat value)))))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCagePlan.PlanSource.plan_overlapping_source",
+      "full_type": "plan_overlapping_source\n     : forall (base : Memory.Mem.mem) (ge : Clight.genv) (cell : Machine.tls) (bytes : list Integers.Byte.int) (_ : @ListDef.Forall Integers.Byte.int (fun b : Integers.Byte.int => not (@Logic.eq Integers.Byte.int b Integers.Byte.zero)) bytes) (_ : BinInt.Z.le (BinInt.Z.add (BinInt.Z.of_nat (@length Integers.Byte.int bytes)) (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO BinNums.xH))))) Integers.Ptrofs.modulus), @ex Memory.Mem.mem' (fun allocated : Memory.Mem.mem' => @ex Values.block (fun block : Values.block => @ex Memory.Mem.mem (fun m : Memory.Mem.mem => @ex nat (fun count : nat => @ex Memory.Mem.mem (fun after : Memory.Mem.mem => and (@Logic.eq (prod Memory.Mem.mem' Values.block) (Memory.Mem.alloc base BinNums.Z0 (BinInt.Z.of_nat (@length Integers.Byte.int (NumberAllocation.number_allocation_bytes bytes)))) (@pair Memory.Mem.mem' Values.block allocated block)) (and (@Logic.eq (option Memory.Mem.mem) (Memory.Mem.storebytes allocated block BinNums.Z0 (@ListDef.map Integers.Byte.int Memdata.memval Memdata.Byte (NumberAllocation.number_allocation_bytes bytes))) (@Some Memory.Mem.mem m)) (and (NumberMemory.number_input m block Integers.Ptrofs.zero bytes) (and (NumberMemory.number_output m block Integers.Ptrofs.zero) (and (NumberStorage.number_post m block Integers.Ptrofs.zero (plan_result bytes) after) (Machine.steps ge cell (Machine.live (NumberStructure.number_initial (Values.Vptr block Integers.Ptrofs.zero) (Values.Vptr block Integers.Ptrofs.zero) Clight.Kstop m)) (@ListDef.repeat Machine.event (Machine.source_step Events.E0) count) (Machine.live (Clight.Returnstate (NumberStorage.number_code (plan_result bytes)) Clight.Kstop after))))))))))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCagePlan.PlanSource.plan_separate_source",
+      "full_type": "plan_separate_source\n     : forall (base : Memory.Mem.mem) (ge : Clight.genv) (cell : Machine.tls) (bytes : list Integers.Byte.int) (_ : @ListDef.Forall Integers.Byte.int (fun b : Integers.Byte.int => not (@Logic.eq Integers.Byte.int b Integers.Byte.zero)) bytes) (_ : BinInt.Z.le (BinInt.Z.add (BinInt.Z.of_nat (@length Integers.Byte.int bytes)) (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO BinNums.xH))))) Integers.Ptrofs.modulus), @ex Memory.Mem.mem' (fun allocated : Memory.Mem.mem' => @ex Values.block (fun block : Values.block => @ex Memory.Mem.mem (fun before : Memory.Mem.mem => @ex Memory.Mem.mem' (fun m : Memory.Mem.mem' => @ex Values.block (fun out : Values.block => @ex nat (fun count : nat => @ex Memory.Mem.mem (fun after : Memory.Mem.mem => and (@Logic.eq (prod Memory.Mem.mem' Values.block) (Memory.Mem.alloc base BinNums.Z0 (BinInt.Z.of_nat (@length Integers.Byte.int (NumberAllocation.number_allocation_bytes bytes)))) (@pair Memory.Mem.mem' Values.block allocated block)) (and (@Logic.eq (option Memory.Mem.mem) (Memory.Mem.storebytes allocated block BinNums.Z0 (@ListDef.map Integers.Byte.int Memdata.memval Memdata.Byte (NumberAllocation.number_allocation_bytes bytes))) (@Some Memory.Mem.mem before)) (and (@Logic.eq (prod Memory.Mem.mem' Values.block) (Memory.Mem.alloc before BinNums.Z0 (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))) (@pair Memory.Mem.mem' Values.block m out)) (and (not (@Logic.eq Values.block block out)) (and (NumberMemory.number_input m block Integers.Ptrofs.zero bytes) (and (NumberMemory.number_output m out Integers.Ptrofs.zero) (and (NumberStorage.number_post m out Integers.Ptrofs.zero (plan_result bytes) after) (Machine.steps ge cell (Machine.live (NumberStructure.number_initial (Values.Vptr block Integers.Ptrofs.zero) (Values.Vptr out Integers.Ptrofs.zero) Clight.Kstop m)) (@ListDef.repeat Machine.event (Machine.source_step Events.E0) count) (Machine.live (Clight.Returnstate (NumberStorage.number_code (plan_result bytes)) Clight.Kstop after))))))))))))))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCagePlan.PlanSamples.plan_samples_match",
+      "full_type": "plan_samples_match\n     : @ListDef.Forall (prod (list Integers.Byte.int) (option BinNums.Z)) (fun sample : prod (list Integers.Byte.int) (option BinNums.Z) => @Logic.eq (option BinNums.Z) (plan_result (@Datatypes.fst (list Integers.Byte.int) (option BinNums.Z) sample)) (@Datatypes.snd (list Integers.Byte.int) (option BinNums.Z) sample)) NumberSamples.number_samples",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCagePlan.PlanSamples.plan_maximum_accepted",
+      "full_type": "plan_maximum_accepted\n     : @Logic.eq (option nat) (plan_parsed (NumberMath.decimal_bytes (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xI (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xI (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@nil BinNums.Z))))))))))))))))))))))) (@Some nat (BinInt.Z.to_nat NumberMath.decimal_max))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCagePlan.PlanSamples.plan_overflow_rejected",
+      "full_type": "plan_overflow_rejected\n     : @Logic.eq (option nat) (plan_parsed (NumberMath.decimal_bytes (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xI (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xI (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))) (@cons BinNums.Z (BinNums.Zpos (BinNums.xO (BinNums.xI (BinNums.xI (BinNums.xO (BinNums.xI BinNums.xH)))))) (@nil BinNums.Z))))))))))))))))))))))) (@None nat)",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCagePlan.PlanSamples.plan_samples_actual_source",
+      "full_type": "plan_samples_actual_source\n     : forall (ge : Clight.genv) (cell : Machine.tls) (sample : prod (list Integers.Byte.int) (option BinNums.Z)) (_ : @List.In (prod (list Integers.Byte.int) (option BinNums.Z)) sample NumberSamples.number_samples), and (@Logic.eq (option BinNums.Z) (plan_result (@Datatypes.fst (list Integers.Byte.int) (option BinNums.Z) sample)) (@Datatypes.snd (list Integers.Byte.int) (option BinNums.Z) sample)) (and (@ex Memory.Mem.mem' (fun allocated : Memory.Mem.mem' => @ex Values.block (fun block : Values.block => @ex Memory.Mem.mem (fun m : Memory.Mem.mem => @ex nat (fun count : nat => @ex Memory.Mem.mem (fun after : Memory.Mem.mem => and (@Logic.eq (prod Memory.Mem.mem' Values.block) (Memory.Mem.alloc Memory.Mem.empty BinNums.Z0 (BinInt.Z.of_nat (@length Integers.Byte.int (NumberAllocation.number_allocation_bytes (@Datatypes.fst (list Integers.Byte.int) (option BinNums.Z) sample))))) (@pair Memory.Mem.mem' Values.block allocated block)) (and (@Logic.eq (option Memory.Mem.mem) (Memory.Mem.storebytes allocated block BinNums.Z0 (@ListDef.map Integers.Byte.int Memdata.memval Memdata.Byte (NumberAllocation.number_allocation_bytes (@Datatypes.fst (list Integers.Byte.int) (option BinNums.Z) sample)))) (@Some Memory.Mem.mem m)) (and (NumberMemory.number_input m block Integers.Ptrofs.zero (@Datatypes.fst (list Integers.Byte.int) (option BinNums.Z) sample)) (and (NumberMemory.number_output m block Integers.Ptrofs.zero) (and (NumberStorage.number_post m block Integers.Ptrofs.zero (@Datatypes.snd (list Integers.Byte.int) (option BinNums.Z) sample) after) (Machine.steps ge cell (Machine.live (NumberStructure.number_initial (Values.Vptr block Integers.Ptrofs.zero) (Values.Vptr block Integers.Ptrofs.zero) Clight.Kstop m)) (@ListDef.repeat Machine.event (Machine.source_step Events.E0) count) (Machine.live (Clight.Returnstate (NumberStorage.number_code (@Datatypes.snd (list Integers.Byte.int) (option BinNums.Z) sample)) Clight.Kstop after))))))))))))) (@ex Memory.Mem.mem' (fun allocated : Memory.Mem.mem' => @ex Values.block (fun block : Values.block => @ex Memory.Mem.mem (fun before : Memory.Mem.mem => @ex Memory.Mem.mem' (fun m : Memory.Mem.mem' => @ex Values.block (fun out : Values.block => @ex nat (fun count : nat => @ex Memory.Mem.mem (fun after : Memory.Mem.mem => and (@Logic.eq (prod Memory.Mem.mem' Values.block) (Memory.Mem.alloc Memory.Mem.empty BinNums.Z0 (BinInt.Z.of_nat (@length Integers.Byte.int (NumberAllocation.number_allocation_bytes (@Datatypes.fst (list Integers.Byte.int) (option BinNums.Z) sample))))) (@pair Memory.Mem.mem' Values.block allocated block)) (and (@Logic.eq (option Memory.Mem.mem) (Memory.Mem.storebytes allocated block BinNums.Z0 (@ListDef.map Integers.Byte.int Memdata.memval Memdata.Byte (NumberAllocation.number_allocation_bytes (@Datatypes.fst (list Integers.Byte.int) (option BinNums.Z) sample)))) (@Some Memory.Mem.mem before)) (and (@Logic.eq (prod Memory.Mem.mem' Values.block) (Memory.Mem.alloc before BinNums.Z0 (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))) (@pair Memory.Mem.mem' Values.block m out)) (and (not (@Logic.eq Values.block block out)) (and (NumberMemory.number_input m block Integers.Ptrofs.zero (@Datatypes.fst (list Integers.Byte.int) (option BinNums.Z) sample)) (and (NumberMemory.number_output m out Integers.Ptrofs.zero) (and (NumberStorage.number_post m out Integers.Ptrofs.zero (@Datatypes.snd (list Integers.Byte.int) (option BinNums.Z) sample) after) (Machine.steps ge cell (Machine.live (NumberStructure.number_initial (Values.Vptr block Integers.Ptrofs.zero) (Values.Vptr out Integers.Ptrofs.zero) Clight.Kstop m)) (@ListDef.repeat Machine.event (Machine.source_step Events.E0) count) (Machine.live (Clight.Returnstate (NumberStorage.number_code (@Datatypes.snd (list Integers.Byte.int) (option BinNums.Z) sample)) Clight.Kstop after))))))))))))))))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    }
+  ],
+  "lean_declarations": [
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM3.argvValid.eq_1",
+      "type": "\u2200 (argv : Array.{0} String),\n  Eq.{1} (LeanCageM3.argvValid argv)\n    ((Decidable.decide (LT.lt.{0} 0 (Array.size.{0} argv)) && Decidable.decide (LE.le.{0} (Array.size.{0} argv) 64) &&\n          (BEq.beq.{0} (GetElem?.getElem?.{0, 0, 0} argv 0) (Option.some.{0} \"/bin/sh\") ||\n            BEq.beq.{0} (GetElem?.getElem?.{0, 0, 0} argv 0) (Option.some.{0} \"/usr/local/bin/python3\")) &&\n        Array.all.{0} argv fun s =>\n          !s.isEmpty && Decidable.decide (LE.le.{0} s.utf8ByteSize 4096) && !s.contains '\\x00') &&\n      Decidable.decide\n        (LE.le.{0} (Array.foldl.{0, 0} (fun n s => HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} n s.utf8ByteSize) 1) 0 argv)\n          16384))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM3.limitsValid.eq_1",
+      "type": "\u2200 (l : LeanCageM3.Limits),\n  Eq.{1} (LeanCageM3.limitsValid l)\n    (Decidable.decide (LE.le.{0} 16777216 l.memory) && Decidable.decide (LE.le.{0} l.memory 1073741824) &&\n                          BEq.beq.{0} (HMod.hMod.{0, 0, 0} l.memory 4096) 0 &&\n                        (Decidable.decide (LE.le.{0} 4 l.tasks) && Decidable.decide (LE.le.{0} l.tasks 256)) &&\n                      (Decidable.decide (LE.le.{0} 1000 l.quota) && Decidable.decide (LE.le.{0} l.quota 100000)) &&\n                    BEq.beq.{0} l.period 100000 &&\n                  (Decidable.decide (LE.le.{0} 10000 l.cpu) && Decidable.decide (LE.le.{0} l.cpu 3600000000)) &&\n                (Decidable.decide (LE.le.{0} 10 l.wall) && Decidable.decide (LE.le.{0} l.wall 3600000)) &&\n              (Decidable.decide (LE.le.{0} 1048576 l.workspace) && Decidable.decide (LE.le.{0} l.workspace 268435456) &&\n                BEq.beq.{0} (HMod.hMod.{0, 0, 0} l.workspace 4096) 0) &&\n            (Decidable.decide (LE.le.{0} 64 l.inodes) && Decidable.decide (LE.le.{0} l.inodes 65536)) &&\n          Decidable.decide (LE.le.{0} l.stdin 67108864) &&\n        Decidable.decide (LE.le.{0} l.stdout 16777216) &&\n      Decidable.decide (LE.le.{0} l.stderr 16777216))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM3.planArgs.eq_1",
+      "type": "\u2200 (policy : LeanCageM3.Policy) (parentPid : Nat) (preflight : Bool),\n  Eq.{1} (LeanCageM3.planArgs policy parentPid preflight)\n    (HAppend.hAppend.{0, 0, 0}\n      (List.toArray.{0}\n        (List.cons.{0} (ite.{1} (Eq.{1} preflight Bool.true) \"M3CHECK1\" \"M3PLAN1\")\n          (List.cons.{0} (ToString.toString.{0} policy.limits.memory)\n            (List.cons.{0} (ToString.toString.{0} policy.limits.tasks)\n              (List.cons.{0} (ToString.toString.{0} policy.limits.quota)\n                (List.cons.{0} (ToString.toString.{0} policy.limits.cpu)\n                  (List.cons.{0} (ToString.toString.{0} policy.limits.wall)\n                    (List.cons.{0} (ToString.toString.{0} policy.limits.workspace)\n                      (List.cons.{0} (ToString.toString.{0} policy.limits.inodes)\n                        (List.cons.{0} (ToString.toString.{0} policy.limits.stdin)\n                          (List.cons.{0} (ToString.toString.{0} policy.limits.stdout)\n                            (List.cons.{0} (ToString.toString.{0} policy.limits.stderr)\n                              (List.cons.{0} (ToString.toString.{0} parentPid)\n                                (List.cons.{0} (ite.{1} (Eq.{1} policy.exportFiles Bool.true) \"regular-files\" \"discard\")\n                                  (List.cons.{0}\n                                    (Option.getD.{0}\n                                      (Option.map.{0, 0} (fun s => (s.drop 7).toString) policy.workspaceInput) \"none\")\n                                    (List.cons.{0}\n                                      (Option.getD.{0}\n                                        (Option.map.{0, 0} (fun s => (s.drop 7).toString) policy.stdinInput) \"none\")\n                                      List.nil.{0}))))))))))))))))\n      policy.argv)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.actual_decimal_accepted",
+      "type": "\u2200 (bound n : Nat),\n  LE.le.{0} n bound \u2192\n    Eq.{1}\n      (LeanCageM4.Plan.parseDecimal bound\n        (List.map.{0, 0} UInt8.toNat (Array.toList.{0} (ToString.toString.{0} n).toUTF8.data)))\n      (Option.some.{0} n)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.actual_decimal_digits",
+      "type": "\u2200 (n : Nat) (b : UInt8),\n  Membership.mem.{0, 0} (Array.toList.{0} (ToString.toString.{0} n).toUTF8.data) b \u2192\n    LE.le.{0} 48 b.toNat \u2227 LE.le.{0} b.toNat 57"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.actual_decimal_no_nul",
+      "type": "\u2200 (n : Nat), \u00acMembership.mem.{0, 0} (Array.toList.{0} (ToString.toString.{0} n).toUTF8.data) 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.actual_decimal_nonempty",
+      "type": "\u2200 (n : Nat), Ne.{1} (Array.toList.{0} (ToString.toString.{0} n).toUTF8.data) List.nil.{0}"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.actual_decimal_overflow",
+      "type": "\u2200 (bound n : Nat),\n  LT.lt.{0} bound n \u2192\n    Eq.{1}\n      (LeanCageM4.Plan.parseDecimal bound\n        (List.map.{0, 0} UInt8.toNat (Array.toList.{0} (ToString.toString.{0} n).toUTF8.data)))\n      Option.none.{0}"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.actual_decimal_overflow._proof_1_4",
+      "type": "\u2200 (bound n : Nat),\n  LT.lt.{0} bound n \u2192\n    \u2200 (b : Nat) (bs : List.{0} Nat),\n      Eq.{1} (LeanCageM4.Plan.decimalFold 0 (List.cons.{0} b bs)) n \u2192 LE.le.{0} n bound \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.actual_decimal_size",
+      "type": "\u2200 (n : Nat), LE.le.{0} n 18446744073709551615 \u2192 LE.le.{0} (ToString.toString.{0} n).toUTF8.size 20"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.allowed_plan_example",
+      "type": "Eq.{1} (LeanCageM3.limitsValid LeanCageM4.Plan.samplePolicy.limits) Bool.true \u2227\n  Eq.{1} (LeanCageM3.argvValid LeanCageM4.Plan.samplePolicy.argv) Bool.true \u2227\n    Eq.{1}\n      (Array.toList.{0} (LeanCageM4.Plan.nativeArgs \"/leancage-m3-helper\" LeanCageM4.Plan.samplePolicy 42 Bool.false))\n      (List.cons.{0} \"/leancage-m3-helper\"\n        (List.cons.{0} \"M3PLAN1\"\n          (List.cons.{0} \"16777216\"\n            (List.cons.{0} \"4\"\n              (List.cons.{0} \"1000\"\n                (List.cons.{0} \"10000\"\n                  (List.cons.{0} \"10\"\n                    (List.cons.{0} \"1048576\"\n                      (List.cons.{0} \"64\"\n                        (List.cons.{0} \"0\"\n                          (List.cons.{0} \"0\"\n                            (List.cons.{0} \"0\"\n                              (List.cons.{0} \"42\"\n                                (List.cons.{0} \"discard\"\n                                  (List.cons.{0} \"none\"\n                                    (List.cons.{0} \"none\"\n                                      (List.cons.{0} \"/bin/sh\"\n                                        (List.cons.{0} \"-c\" (List.cons.{0} \"true\" List.nil.{0})))))))))))))))))))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.allowed_plan_example._simp_1_2",
+      "type": "\u2200 {\u03b1 : Type u_1} {p : \u03b1 \u2192 Bool} {as : Array.{u_1} \u03b1},\n  Eq.{1} (Array.all.{u_1} as p) (List.all.{u_1} (Array.toList.{u_1} as) p)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.allowed_plan_example._simp_1_3",
+      "type": "\u2200 {\u03b2 : Type u_1} {\u03b1 : Type u_2} (f : \u03b2 \u2192 \u03b1 \u2192 \u03b2) {init : \u03b2} {xs : Array.{u_2} \u03b1},\n  Eq.{u_1 + 1} (Array.foldl.{u_2, u_1} f init xs) (List.foldl.{u_1, u_2} f init (Array.toList.{u_2} xs))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.ascii_utf8",
+      "type": "\u2200 (chars : List.{0} Char),\n  (\u2200 (c : Char), Membership.mem.{0, 0} chars c \u2192 LT.lt.{0} c.toNat 128) \u2192\n    Eq.{1} (List.map.{0, 0} UInt8.toNat (Array.toList.{0} (String.ofList chars).toUTF8.data))\n      (List.map.{0, 0} Char.toNat chars)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.ascii_utf8._proof_1_2",
+      "type": "\u2200 (c : Char), LT.lt.{0} c.toNat 128 \u2192 \u00acLE.le.{0} c.toNat 127 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.ascii_utf8._proof_1_3",
+      "type": "\u2200 (c : Char), LT.lt.{0} c.toNat 128 \u2192 \u00acLT.lt.{0} c.toNat 256 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.ascii_utf8._simp_1_1",
+      "type": "\u2200 {a b : UInt32}, Eq.{1} (LE.le.{0} a b) (LE.le.{0} a.toNat b.toNat)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.decimalBytes_exact",
+      "type": "\u2200 (n : Nat), Eq.{1} (LeanCageM4.Plan.decimalBytes n) (List.map.{0, 0} Char.toNat (Nat.toDigits 10 n))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.decimalDigits.eq_1",
+      "type": "Eq.{1} (LeanCageM4.Plan.decimalDigits List.nil.{0}) Bool.true"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.decimalDigits.eq_2",
+      "type": "\u2200 (b : Nat) (bytes : List.{0} Nat),\n  Eq.{1} (LeanCageM4.Plan.decimalDigits (List.cons.{0} b bytes))\n    (Decidable.decide (LE.le.{0} 48 b) && Decidable.decide (LE.le.{0} b 57) && LeanCageM4.Plan.decimalDigits bytes)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.decimalDigits.eq_def",
+      "type": "\u2200 (x : List.{0} Nat),\n  Eq.{1} (LeanCageM4.Plan.decimalDigits x)\n    (match x with\n    | List.nil.{0} => Bool.true\n    | List.cons.{0} b bytes =>\n      Decidable.decide (LE.le.{0} 48 b) && Decidable.decide (LE.le.{0} b 57) && LeanCageM4.Plan.decimalDigits bytes)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.decimal_accepted_examples",
+      "type": "Eq.{1} (LeanCageM4.Plan.parseDecimal 18446744073709551615 (List.cons.{0} 48 List.nil.{0})) (Option.some.{0} 0) \u2227\n  Eq.{1}\n      (LeanCageM4.Plan.parseDecimal 18446744073709551615\n        (List.cons.{0} 48 (List.cons.{0} 48 (List.cons.{0} 52 (List.cons.{0} 50 List.nil.{0})))))\n      (Option.some.{0} 42) \u2227\n    Eq.{1}\n        (LeanCageM4.Plan.parseDecimal 18446744073709551615\n          (List.cons.{0} 52\n            (List.cons.{0} 50\n              (List.cons.{0} 57\n                (List.cons.{0} 52\n                  (List.cons.{0} 57\n                    (List.cons.{0} 54\n                      (List.cons.{0} 55 (List.cons.{0} 50 (List.cons.{0} 57 (List.cons.{0} 54 List.nil.{0})))))))))))\n        (Option.some.{0} 4294967296) \u2227\n      Eq.{1}\n        (LeanCageM4.Plan.parseDecimal 18446744073709551615\n          (List.cons.{0} 49\n            (List.cons.{0} 56\n              (List.cons.{0} 52\n                (List.cons.{0} 52\n                  (List.cons.{0} 54\n                    (List.cons.{0} 55\n                      (List.cons.{0} 52\n                        (List.cons.{0} 52\n                          (List.cons.{0} 48\n                            (List.cons.{0} 55\n                              (List.cons.{0} 51\n                                (List.cons.{0} 55\n                                  (List.cons.{0} 48\n                                    (List.cons.{0} 57\n                                      (List.cons.{0} 53\n                                        (List.cons.{0} 53\n                                          (List.cons.{0} 49\n                                            (List.cons.{0} 54\n                                              (List.cons.{0} 49 (List.cons.{0} 53 List.nil.{0})))))))))))))))))))))\n        (Option.some.{0} 18446744073709551615)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.decimal_bytes_digits",
+      "type": "\u2200 (n b : Nat), Membership.mem.{0, 0} (LeanCageM4.Plan.decimalBytes n) b \u2192 LE.le.{0} 48 b \u2227 LE.le.{0} b 57"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.decimal_bytes_length",
+      "type": "\u2200 (n : Nat), LE.le.{0} n 18446744073709551615 \u2192 LE.le.{0} (List.length.{0} (LeanCageM4.Plan.decimalBytes n)) 20"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.decimal_bytes_length._proof_1_1",
+      "type": "\u2200 (n : Nat), LE.le.{0} n 18446744073709551615 \u2192 \u00acLT.lt.{0} n (HPow.hPow.{0, 0, 0} 10 20) \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.decimal_bytes_nonempty",
+      "type": "\u2200 (n : Nat), Ne.{1} (LeanCageM4.Plan.decimalBytes n) List.nil.{0}"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.decimal_digits_exact",
+      "type": "\u2200 (bytes : List.{0} Nat),\n  Eq.{1} (LeanCageM4.Plan.decimalDigits bytes) Bool.true \u2194\n    \u2200 (b : Nat), Membership.mem.{0, 0} bytes b \u2192 LE.le.{0} 48 b \u2227 LE.le.{0} b 57"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.decimal_digits_exact._simp_1_4",
+      "type": "\u2200 {a b c : Prop}, Eq.{1} ((a \u2227 b) \u2227 c) (a \u2227 b \u2227 c)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.decimal_fold_chars",
+      "type": "\u2200 (chars : List.{0} Char) (acc : Nat),\n  Eq.{1} (LeanCageM4.Plan.decimalFold acc (List.map.{0, 0} Char.toNat chars)) (Nat.ofDigitChars 10 chars acc)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.decimal_fold_value",
+      "type": "\u2200 (n : Nat), Eq.{1} (LeanCageM4.Plan.decimalFold 0 (LeanCageM4.Plan.decimalBytes n)) n"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.decimal_rejected_examples",
+      "type": "Eq.{1} (LeanCageM4.Plan.parseDecimal 18446744073709551615 List.nil.{0}) Option.none.{0} \u2227\n  Eq.{1} (LeanCageM4.Plan.parseDecimal 18446744073709551615 (List.cons.{0} 45 (List.cons.{0} 49 List.nil.{0})))\n      Option.none.{0} \u2227\n    Eq.{1} (LeanCageM4.Plan.parseDecimal 18446744073709551615 (List.cons.{0} 43 (List.cons.{0} 49 List.nil.{0})))\n        Option.none.{0} \u2227\n      Eq.{1} (LeanCageM4.Plan.parseDecimal 18446744073709551615 (List.cons.{0} 32 (List.cons.{0} 49 List.nil.{0})))\n          Option.none.{0} \u2227\n        Eq.{1} (LeanCageM4.Plan.parseDecimal 18446744073709551615 (List.cons.{0} 49 (List.cons.{0} 0 List.nil.{0})))\n            Option.none.{0} \u2227\n          Eq.{1} (LeanCageM4.Plan.parseDecimal 18446744073709551615 (List.cons.{0} 49 (List.cons.{0} 255 List.nil.{0})))\n              Option.none.{0} \u2227\n            Eq.{1}\n              (LeanCageM4.Plan.parseDecimal 18446744073709551615\n                (List.cons.{0} 49\n                  (List.cons.{0} 56\n                    (List.cons.{0} 52\n                      (List.cons.{0} 52\n                        (List.cons.{0} 54\n                          (List.cons.{0} 55\n                            (List.cons.{0} 52\n                              (List.cons.{0} 52\n                                (List.cons.{0} 48\n                                  (List.cons.{0} 55\n                                    (List.cons.{0} 51\n                                      (List.cons.{0} 55\n                                        (List.cons.{0} 48\n                                          (List.cons.{0} 57\n                                            (List.cons.{0} 53\n                                              (List.cons.{0} 53\n                                                (List.cons.{0} 49\n                                                  (List.cons.{0} 54\n                                                    (List.cons.{0} 49\n                                                      (List.cons.{0} 54 List.nil.{0})))))))))))))))))))))\n              Option.none.{0}"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.decimal_roundtrip",
+      "type": "\u2200 (n : Nat), Eq.{1} (ToString.toString.{0} n).toNat? (Option.some.{0} n)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.decimal_utf8",
+      "type": "\u2200 (n : Nat),\n  Eq.{1} (List.map.{0, 0} UInt8.toNat (Array.toList.{0} (ToString.toString.{0} n).toUTF8.data))\n    (LeanCageM4.Plan.decimalBytes n)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.decimal_utf8._proof_1_1",
+      "type": "\u2200 (c : Char), LE.le.{0} 48 c.toNat \u2227 LE.le.{0} c.toNat 57 \u2192 \u00acLT.lt.{0} c.toNat 128 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.limits_numeric_width",
+      "type": "\u2200 (l : LeanCageM3.Limits),\n  Eq.{1} (LeanCageM3.limitsValid l) Bool.true \u2192\n    \u2200 (n : Nat), Membership.mem.{0, 0} (LeanCageM4.Plan.numericFields l) n \u2192 LE.le.{0} n 18446744073709551615"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.limits_numeric_width._proof_1_10",
+      "type": "\u2200 (l : LeanCageM3.Limits),\n  (((((((((((LE.le.{0} 16777216 l.memory \u2227 LE.le.{0} l.memory 1073741824) \u2227\n                          Eq.{1} (HMod.hMod.{0, 0, 0} l.memory 4096) 0) \u2227\n                        LE.le.{0} 4 l.tasks \u2227 LE.le.{0} l.tasks 256) \u2227\n                      LE.le.{0} 1000 l.quota \u2227 LE.le.{0} l.quota 100000) \u2227\n                    Eq.{1} l.period 100000) \u2227\n                  LE.le.{0} 10000 l.cpu \u2227 LE.le.{0} l.cpu 3600000000) \u2227\n                LE.le.{0} 10 l.wall \u2227 LE.le.{0} l.wall 3600000) \u2227\n              (LE.le.{0} 1048576 l.workspace \u2227 LE.le.{0} l.workspace 268435456) \u2227\n                Eq.{1} (HMod.hMod.{0, 0, 0} l.workspace 4096) 0) \u2227\n            LE.le.{0} 64 l.inodes \u2227 LE.le.{0} l.inodes 65536) \u2227\n          LE.le.{0} l.stdin 67108864) \u2227\n        LE.le.{0} l.stdout 16777216) \u2227\n      LE.le.{0} l.stderr 16777216 \u2192\n    \u00acLE.le.{0} l.wall 18446744073709551615 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.limits_numeric_width._proof_1_11",
+      "type": "\u2200 (l : LeanCageM3.Limits),\n  (((((((((((LE.le.{0} 16777216 l.memory \u2227 LE.le.{0} l.memory 1073741824) \u2227\n                          Eq.{1} (HMod.hMod.{0, 0, 0} l.memory 4096) 0) \u2227\n                        LE.le.{0} 4 l.tasks \u2227 LE.le.{0} l.tasks 256) \u2227\n                      LE.le.{0} 1000 l.quota \u2227 LE.le.{0} l.quota 100000) \u2227\n                    Eq.{1} l.period 100000) \u2227\n                  LE.le.{0} 10000 l.cpu \u2227 LE.le.{0} l.cpu 3600000000) \u2227\n                LE.le.{0} 10 l.wall \u2227 LE.le.{0} l.wall 3600000) \u2227\n              (LE.le.{0} 1048576 l.workspace \u2227 LE.le.{0} l.workspace 268435456) \u2227\n                Eq.{1} (HMod.hMod.{0, 0, 0} l.workspace 4096) 0) \u2227\n            LE.le.{0} 64 l.inodes \u2227 LE.le.{0} l.inodes 65536) \u2227\n          LE.le.{0} l.stdin 67108864) \u2227\n        LE.le.{0} l.stdout 16777216) \u2227\n      LE.le.{0} l.stderr 16777216 \u2192\n    \u00acLE.le.{0} l.workspace 18446744073709551615 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.limits_numeric_width._proof_1_12",
+      "type": "\u2200 (l : LeanCageM3.Limits),\n  (((((((((((LE.le.{0} 16777216 l.memory \u2227 LE.le.{0} l.memory 1073741824) \u2227\n                          Eq.{1} (HMod.hMod.{0, 0, 0} l.memory 4096) 0) \u2227\n                        LE.le.{0} 4 l.tasks \u2227 LE.le.{0} l.tasks 256) \u2227\n                      LE.le.{0} 1000 l.quota \u2227 LE.le.{0} l.quota 100000) \u2227\n                    Eq.{1} l.period 100000) \u2227\n                  LE.le.{0} 10000 l.cpu \u2227 LE.le.{0} l.cpu 3600000000) \u2227\n                LE.le.{0} 10 l.wall \u2227 LE.le.{0} l.wall 3600000) \u2227\n              (LE.le.{0} 1048576 l.workspace \u2227 LE.le.{0} l.workspace 268435456) \u2227\n                Eq.{1} (HMod.hMod.{0, 0, 0} l.workspace 4096) 0) \u2227\n            LE.le.{0} 64 l.inodes \u2227 LE.le.{0} l.inodes 65536) \u2227\n          LE.le.{0} l.stdin 67108864) \u2227\n        LE.le.{0} l.stdout 16777216) \u2227\n      LE.le.{0} l.stderr 16777216 \u2192\n    \u00acLE.le.{0} l.inodes 18446744073709551615 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.limits_numeric_width._proof_1_13",
+      "type": "\u2200 (l : LeanCageM3.Limits),\n  (((((((((((LE.le.{0} 16777216 l.memory \u2227 LE.le.{0} l.memory 1073741824) \u2227\n                          Eq.{1} (HMod.hMod.{0, 0, 0} l.memory 4096) 0) \u2227\n                        LE.le.{0} 4 l.tasks \u2227 LE.le.{0} l.tasks 256) \u2227\n                      LE.le.{0} 1000 l.quota \u2227 LE.le.{0} l.quota 100000) \u2227\n                    Eq.{1} l.period 100000) \u2227\n                  LE.le.{0} 10000 l.cpu \u2227 LE.le.{0} l.cpu 3600000000) \u2227\n                LE.le.{0} 10 l.wall \u2227 LE.le.{0} l.wall 3600000) \u2227\n              (LE.le.{0} 1048576 l.workspace \u2227 LE.le.{0} l.workspace 268435456) \u2227\n                Eq.{1} (HMod.hMod.{0, 0, 0} l.workspace 4096) 0) \u2227\n            LE.le.{0} 64 l.inodes \u2227 LE.le.{0} l.inodes 65536) \u2227\n          LE.le.{0} l.stdin 67108864) \u2227\n        LE.le.{0} l.stdout 16777216) \u2227\n      LE.le.{0} l.stderr 16777216 \u2192\n    \u00acLE.le.{0} l.stdin 18446744073709551615 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.limits_numeric_width._proof_1_14",
+      "type": "\u2200 (l : LeanCageM3.Limits),\n  (((((((((((LE.le.{0} 16777216 l.memory \u2227 LE.le.{0} l.memory 1073741824) \u2227\n                          Eq.{1} (HMod.hMod.{0, 0, 0} l.memory 4096) 0) \u2227\n                        LE.le.{0} 4 l.tasks \u2227 LE.le.{0} l.tasks 256) \u2227\n                      LE.le.{0} 1000 l.quota \u2227 LE.le.{0} l.quota 100000) \u2227\n                    Eq.{1} l.period 100000) \u2227\n                  LE.le.{0} 10000 l.cpu \u2227 LE.le.{0} l.cpu 3600000000) \u2227\n                LE.le.{0} 10 l.wall \u2227 LE.le.{0} l.wall 3600000) \u2227\n              (LE.le.{0} 1048576 l.workspace \u2227 LE.le.{0} l.workspace 268435456) \u2227\n                Eq.{1} (HMod.hMod.{0, 0, 0} l.workspace 4096) 0) \u2227\n            LE.le.{0} 64 l.inodes \u2227 LE.le.{0} l.inodes 65536) \u2227\n          LE.le.{0} l.stdin 67108864) \u2227\n        LE.le.{0} l.stdout 16777216) \u2227\n      LE.le.{0} l.stderr 16777216 \u2192\n    \u00acLE.le.{0} l.stdout 18446744073709551615 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.limits_numeric_width._proof_1_15",
+      "type": "\u2200 (l : LeanCageM3.Limits),\n  (((((((((((LE.le.{0} 16777216 l.memory \u2227 LE.le.{0} l.memory 1073741824) \u2227\n                          Eq.{1} (HMod.hMod.{0, 0, 0} l.memory 4096) 0) \u2227\n                        LE.le.{0} 4 l.tasks \u2227 LE.le.{0} l.tasks 256) \u2227\n                      LE.le.{0} 1000 l.quota \u2227 LE.le.{0} l.quota 100000) \u2227\n                    Eq.{1} l.period 100000) \u2227\n                  LE.le.{0} 10000 l.cpu \u2227 LE.le.{0} l.cpu 3600000000) \u2227\n                LE.le.{0} 10 l.wall \u2227 LE.le.{0} l.wall 3600000) \u2227\n              (LE.le.{0} 1048576 l.workspace \u2227 LE.le.{0} l.workspace 268435456) \u2227\n                Eq.{1} (HMod.hMod.{0, 0, 0} l.workspace 4096) 0) \u2227\n            LE.le.{0} 64 l.inodes \u2227 LE.le.{0} l.inodes 65536) \u2227\n          LE.le.{0} l.stdin 67108864) \u2227\n        LE.le.{0} l.stdout 16777216) \u2227\n      LE.le.{0} l.stderr 16777216 \u2192\n    \u00acLE.le.{0} l.stderr 18446744073709551615 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.limits_numeric_width._proof_1_6",
+      "type": "\u2200 (l : LeanCageM3.Limits),\n  (((((((((((LE.le.{0} 16777216 l.memory \u2227 LE.le.{0} l.memory 1073741824) \u2227\n                          Eq.{1} (HMod.hMod.{0, 0, 0} l.memory 4096) 0) \u2227\n                        LE.le.{0} 4 l.tasks \u2227 LE.le.{0} l.tasks 256) \u2227\n                      LE.le.{0} 1000 l.quota \u2227 LE.le.{0} l.quota 100000) \u2227\n                    Eq.{1} l.period 100000) \u2227\n                  LE.le.{0} 10000 l.cpu \u2227 LE.le.{0} l.cpu 3600000000) \u2227\n                LE.le.{0} 10 l.wall \u2227 LE.le.{0} l.wall 3600000) \u2227\n              (LE.le.{0} 1048576 l.workspace \u2227 LE.le.{0} l.workspace 268435456) \u2227\n                Eq.{1} (HMod.hMod.{0, 0, 0} l.workspace 4096) 0) \u2227\n            LE.le.{0} 64 l.inodes \u2227 LE.le.{0} l.inodes 65536) \u2227\n          LE.le.{0} l.stdin 67108864) \u2227\n        LE.le.{0} l.stdout 16777216) \u2227\n      LE.le.{0} l.stderr 16777216 \u2192\n    \u00acLE.le.{0} l.memory 18446744073709551615 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.limits_numeric_width._proof_1_7",
+      "type": "\u2200 (l : LeanCageM3.Limits),\n  (((((((((((LE.le.{0} 16777216 l.memory \u2227 LE.le.{0} l.memory 1073741824) \u2227\n                          Eq.{1} (HMod.hMod.{0, 0, 0} l.memory 4096) 0) \u2227\n                        LE.le.{0} 4 l.tasks \u2227 LE.le.{0} l.tasks 256) \u2227\n                      LE.le.{0} 1000 l.quota \u2227 LE.le.{0} l.quota 100000) \u2227\n                    Eq.{1} l.period 100000) \u2227\n                  LE.le.{0} 10000 l.cpu \u2227 LE.le.{0} l.cpu 3600000000) \u2227\n                LE.le.{0} 10 l.wall \u2227 LE.le.{0} l.wall 3600000) \u2227\n              (LE.le.{0} 1048576 l.workspace \u2227 LE.le.{0} l.workspace 268435456) \u2227\n                Eq.{1} (HMod.hMod.{0, 0, 0} l.workspace 4096) 0) \u2227\n            LE.le.{0} 64 l.inodes \u2227 LE.le.{0} l.inodes 65536) \u2227\n          LE.le.{0} l.stdin 67108864) \u2227\n        LE.le.{0} l.stdout 16777216) \u2227\n      LE.le.{0} l.stderr 16777216 \u2192\n    \u00acLE.le.{0} l.tasks 18446744073709551615 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.limits_numeric_width._proof_1_8",
+      "type": "\u2200 (l : LeanCageM3.Limits),\n  (((((((((((LE.le.{0} 16777216 l.memory \u2227 LE.le.{0} l.memory 1073741824) \u2227\n                          Eq.{1} (HMod.hMod.{0, 0, 0} l.memory 4096) 0) \u2227\n                        LE.le.{0} 4 l.tasks \u2227 LE.le.{0} l.tasks 256) \u2227\n                      LE.le.{0} 1000 l.quota \u2227 LE.le.{0} l.quota 100000) \u2227\n                    Eq.{1} l.period 100000) \u2227\n                  LE.le.{0} 10000 l.cpu \u2227 LE.le.{0} l.cpu 3600000000) \u2227\n                LE.le.{0} 10 l.wall \u2227 LE.le.{0} l.wall 3600000) \u2227\n              (LE.le.{0} 1048576 l.workspace \u2227 LE.le.{0} l.workspace 268435456) \u2227\n                Eq.{1} (HMod.hMod.{0, 0, 0} l.workspace 4096) 0) \u2227\n            LE.le.{0} 64 l.inodes \u2227 LE.le.{0} l.inodes 65536) \u2227\n          LE.le.{0} l.stdin 67108864) \u2227\n        LE.le.{0} l.stdout 16777216) \u2227\n      LE.le.{0} l.stderr 16777216 \u2192\n    \u00acLE.le.{0} l.quota 18446744073709551615 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.limits_numeric_width._proof_1_9",
+      "type": "\u2200 (l : LeanCageM3.Limits),\n  (((((((((((LE.le.{0} 16777216 l.memory \u2227 LE.le.{0} l.memory 1073741824) \u2227\n                          Eq.{1} (HMod.hMod.{0, 0, 0} l.memory 4096) 0) \u2227\n                        LE.le.{0} 4 l.tasks \u2227 LE.le.{0} l.tasks 256) \u2227\n                      LE.le.{0} 1000 l.quota \u2227 LE.le.{0} l.quota 100000) \u2227\n                    Eq.{1} l.period 100000) \u2227\n                  LE.le.{0} 10000 l.cpu \u2227 LE.le.{0} l.cpu 3600000000) \u2227\n                LE.le.{0} 10 l.wall \u2227 LE.le.{0} l.wall 3600000) \u2227\n              (LE.le.{0} 1048576 l.workspace \u2227 LE.le.{0} l.workspace 268435456) \u2227\n                Eq.{1} (HMod.hMod.{0, 0, 0} l.workspace 4096) 0) \u2227\n            LE.le.{0} 64 l.inodes \u2227 LE.le.{0} l.inodes 65536) \u2227\n          LE.le.{0} l.stdin 67108864) \u2227\n        LE.le.{0} l.stdout 16777216) \u2227\n      LE.le.{0} l.stderr 16777216 \u2192\n    \u00acLE.le.{0} l.cpu 18446744073709551615 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.limits_numeric_width._simp_1_2",
+      "type": "\u2200 {\u03b1 : Type u_1} [inst : BEq.{u_1} \u03b1] [LawfulBEq.{u_1} \u03b1] {a b : \u03b1},\n  Eq.{1} (Eq.{1} (BEq.beq.{u_1} a b) Bool.true) (Eq.{u_1 + 1} a b)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.limits_numeric_width._simp_1_4",
+      "type": "\u2200 {\u03b1 : Type u_1} {b : \u03b1} {l : List.{u_1} \u03b1} {a : \u03b1},\n  Eq.{1} (Membership.mem.{u_1, u_1} (List.cons.{u_1} b l) a) (Eq.{u_1 + 1} a b \u2228 Membership.mem.{u_1, u_1} l a)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.limits_numeric_width._simp_1_5",
+      "type": "\u2200 {\u03b1 : Type u_1} {a : \u03b1}, Eq.{1} (Membership.mem.{u_1, u_1} List.nil.{u_1} a) False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.nativeArgs.eq_1",
+      "type": "\u2200 (executable : String) (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (LeanCageM4.Plan.nativeArgs executable p pid pre)\n    (HAppend.hAppend.{0, 0, 0} (List.toArray.{0} (List.cons.{0} executable List.nil.{0}))\n      (LeanCageM3.planArgs p pid pre))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.native_argument_count",
+      "type": "\u2200 (executable : String) (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (Array.size.{0} (LeanCageM4.Plan.nativeArgs executable p pid pre))\n    (HAdd.hAdd.{0, 0, 0} 16 (Array.size.{0} p.argv))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.native_argument_count._proof_1_2",
+      "type": "\u2200 (p : LeanCageM3.Policy),\n  \u00acEq.{1} (HAdd.hAdd.{0, 0, 0} 1 (HAdd.hAdd.{0, 0, 0} 15 (Array.size.{0} p.argv)))\n        (HAdd.hAdd.{0, 0, 0} 16 (Array.size.{0} p.argv)) \u2192\n    False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.native_count_valid",
+      "type": "\u2200 (executable : String) (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (LeanCageM3.argvValid p.argv) Bool.true \u2192\n    LE.le.{0} 17 (Array.size.{0} (LeanCageM4.Plan.nativeArgs executable p pid pre)) \u2227\n      LE.le.{0} (Array.size.{0} (LeanCageM4.Plan.nativeArgs executable p pid pre)) 80"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.native_count_valid._proof_1_2",
+      "type": "\u2200 (p : LeanCageM3.Policy),\n  (((LT.lt.{0} 0 (Array.size.{0} p.argv) \u2227 LE.le.{0} (Array.size.{0} p.argv) 64) \u2227\n          Eq.{1}\n            (BEq.beq.{0} (GetElem?.getElem?.{0, 0, 0} p.argv 0) (Option.some.{0} \"/bin/sh\") ||\n              BEq.beq.{0} (GetElem?.getElem?.{0, 0, 0} p.argv 0) (Option.some.{0} \"/usr/local/bin/python3\"))\n            Bool.true) \u2227\n        Eq.{1}\n          (Array.all.{0} p.argv fun s =>\n            !s.isEmpty && Decidable.decide (LE.le.{0} s.utf8ByteSize 4096) && !s.contains '\\x00')\n          Bool.true) \u2227\n      LE.le.{0} (Array.foldl.{0, 0} (fun n s => HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} n s.utf8ByteSize) 1) 0 p.argv)\n        16384 \u2192\n    \u00ac(LE.le.{0} 17 (HAdd.hAdd.{0, 0, 0} 16 (Array.size.{0} p.argv)) \u2227\n          LE.le.{0} (HAdd.hAdd.{0, 0, 0} 16 (Array.size.{0} p.argv)) 80) \u2192\n      False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.native_digests",
+      "type": "\u2200 (executable : String) (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (GetElem?.getElem?.{0, 0, 0} (LeanCageM4.Plan.nativeArgs executable p pid pre) 14)\n      (Option.some.{0} (Option.getD.{0} (Option.map.{0, 0} (fun s => (s.drop 7).toString) p.workspaceInput) \"none\")) \u2227\n    Eq.{1} (GetElem?.getElem?.{0, 0, 0} (LeanCageM4.Plan.nativeArgs executable p pid pre) 15)\n      (Option.some.{0} (Option.getD.{0} (Option.map.{0, 0} (fun s => (s.drop 7).toString) p.stdinInput) \"none\"))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.native_executable",
+      "type": "\u2200 (executable : String) (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (GetElem?.getElem?.{0, 0, 0} (LeanCageM4.Plan.nativeArgs executable p pid pre) 0) (Option.some.{0} executable)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.native_export",
+      "type": "\u2200 (executable : String) (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (GetElem?.getElem?.{0, 0, 0} (LeanCageM4.Plan.nativeArgs executable p pid pre) 13)\n    (Option.some.{0} (ite.{1} (Eq.{1} p.exportFiles Bool.true) \"regular-files\" \"discard\"))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.native_guest_arguments",
+      "type": "\u2200 (executable : String) (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (List.drop.{0} 16 (Array.toList.{0} (LeanCageM4.Plan.nativeArgs executable p pid pre)))\n    (Array.toList.{0} p.argv)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.native_mode",
+      "type": "\u2200 (executable : String) (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (GetElem?.getElem?.{0, 0, 0} (LeanCageM4.Plan.nativeArgs executable p pid pre) 1)\n    (Option.some.{0} (ite.{1} (Eq.{1} pre Bool.true) \"M3CHECK1\" \"M3PLAN1\"))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.native_numeric_fields",
+      "type": "\u2200 (executable : String) (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (List.take.{0} 10 (List.drop.{0} 2 (Array.toList.{0} (LeanCageM4.Plan.nativeArgs executable p pid pre))))\n    (List.map.{0, 0} ToString.toString.{0} (LeanCageM4.Plan.numericFields p.limits))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.native_parent",
+      "type": "\u2200 (executable : String) (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (GetElem?.getElem?.{0, 0, 0} (LeanCageM4.Plan.nativeArgs executable p pid pre) 12)\n    (Option.some.{0} (ToString.toString.{0} pid))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.numericFields.eq_1",
+      "type": "\u2200 (l : LeanCageM3.Limits),\n  Eq.{1} (LeanCageM4.Plan.numericFields l)\n    (List.cons.{0} l.memory\n      (List.cons.{0} l.tasks\n        (List.cons.{0} l.quota\n          (List.cons.{0} l.cpu\n            (List.cons.{0} l.wall\n              (List.cons.{0} l.workspace\n                (List.cons.{0} l.inodes\n                  (List.cons.{0} l.stdin (List.cons.{0} l.stdout (List.cons.{0} l.stderr List.nil.{0}))))))))))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.numeric_fields_byte_shape",
+      "type": "\u2200 (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (LeanCageM3.limitsValid p.limits) Bool.true \u2192\n    \u2200 (s : String),\n      Membership.mem.{0, 0} (List.take.{0} 10 (List.drop.{0} 1 (Array.toList.{0} (LeanCageM3.planArgs p pid pre)))) s \u2192\n        Ne.{1} (Array.toList.{0} s.toUTF8.data) List.nil.{0} \u2227\n          \u00acMembership.mem.{0, 0} (Array.toList.{0} s.toUTF8.data) 0 \u2227 LE.le.{0} s.toUTF8.size 20"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.numeric_fields_decoded",
+      "type": "\u2200 (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (LeanCageM3.limitsValid p.limits) Bool.true \u2192\n    Eq.{1}\n      (List.map.{0, 0}\n        (fun s =>\n          LeanCageM4.Plan.parseDecimal 18446744073709551615\n            (List.map.{0, 0} UInt8.toNat (Array.toList.{0} s.toUTF8.data)))\n        (List.take.{0} 10 (List.drop.{0} 1 (Array.toList.{0} (LeanCageM3.planArgs p pid pre)))))\n      (List.map.{0, 0} Option.some.{0} (LeanCageM4.Plan.numericFields p.limits))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.parent_field_decoded",
+      "type": "\u2200 (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  LE.le.{0} pid 18446744073709551615 \u2192\n    Eq.{1}\n      (Option.bind.{0, 0} (GetElem?.getElem?.{0, 0, 0} (LeanCageM3.planArgs p pid pre) 11) fun s =>\n        LeanCageM4.Plan.parseDecimal 18446744073709551615\n          (List.map.{0, 0} UInt8.toNat (Array.toList.{0} s.toUTF8.data)))\n      (Option.some.{0} pid)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.parent_uint32_decoded",
+      "type": "\u2200 (p : LeanCageM3.Policy) (pid : UInt32) (pre : Bool),\n  Eq.{1}\n    (Option.bind.{0, 0} (GetElem?.getElem?.{0, 0, 0} (LeanCageM3.planArgs p pid.toNat pre) 11) fun s =>\n      LeanCageM4.Plan.parseDecimal 18446744073709551615 (List.map.{0, 0} UInt8.toNat (Array.toList.{0} s.toUTF8.data)))\n    (Option.some.{0} pid.toNat)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.parent_uint32_fits",
+      "type": "\u2200 (pid : UInt32), LE.le.{0} pid.toNat 18446744073709551615"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.parent_uint32_fits._proof_1_1",
+      "type": "\u2200 (pid : UInt32), LT.lt.{0} pid.toNat (HPow.hPow.{0, 0, 0} 2 32) \u2192 \u00acLE.le.{0} pid.toNat 18446744073709551615 \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.parseDecimal.eq_1",
+      "type": "\u2200 (bound : Nat), Eq.{1} (LeanCageM4.Plan.parseDecimal bound List.nil.{0}) Option.none.{0}"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.parseDecimal.eq_2",
+      "type": "\u2200 (bound b : Nat) (bytes_1 : List.{0} Nat),\n  Eq.{1} (LeanCageM4.Plan.parseDecimal bound (List.cons.{0} b bytes_1))\n    (ite.{1}\n      (Eq.{1}\n        (LeanCageM4.Plan.decimalDigits (List.cons.{0} b bytes_1) &&\n          Decidable.decide (LE.le.{0} (LeanCageM4.Plan.decimalFold 0 (List.cons.{0} b bytes_1)) bound))\n        Bool.true)\n      (Option.some.{0} (LeanCageM4.Plan.decimalFold 0 (List.cons.{0} b bytes_1))) Option.none.{0})"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.parse_decimal_exact",
+      "type": "\u2200 (bound : Nat) (bytes : List.{0} Nat) (n : Nat),\n  Eq.{1} (LeanCageM4.Plan.parseDecimal bound bytes) (Option.some.{0} n) \u2194\n    Ne.{1} bytes List.nil.{0} \u2227\n      (\u2200 (b : Nat), Membership.mem.{0, 0} bytes b \u2192 LE.le.{0} 48 b \u2227 LE.le.{0} b 57) \u2227\n        Eq.{1} (LeanCageM4.Plan.decimalFold 0 bytes) n \u2227 LE.le.{0} n bound"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.parse_decimal_exact._simp_1_4",
+      "type": "\u2200 (bytes : List.{0} Nat),\n  Eq.{1} (Eq.{1} (LeanCageM4.Plan.decimalDigits bytes) Bool.true)\n    (\u2200 (b : Nat), Membership.mem.{0, 0} bytes b \u2192 LE.le.{0} 48 b \u2227 LE.le.{0} b 57)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.plan_argv",
+      "type": "\u2200 (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (List.drop.{0} 15 (Array.toList.{0} (LeanCageM3.planArgs p pid pre))) (Array.toList.{0} p.argv)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.plan_export",
+      "type": "\u2200 (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (GetElem?.getElem?.{0, 0, 0} (LeanCageM3.planArgs p pid pre) 12)\n    (Option.some.{0} (ite.{1} (Eq.{1} p.exportFiles Bool.true) \"regular-files\" \"discard\"))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.plan_mode",
+      "type": "\u2200 (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (GetElem?.getElem?.{0, 0, 0} (LeanCageM3.planArgs p pid pre) 0)\n    (Option.some.{0} (ite.{1} (Eq.{1} pre Bool.true) \"M3CHECK1\" \"M3PLAN1\"))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.plan_numeric_fields",
+      "type": "\u2200 (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (List.take.{0} 10 (List.drop.{0} 1 (Array.toList.{0} (LeanCageM3.planArgs p pid pre))))\n    (List.map.{0, 0} ToString.toString.{0} (LeanCageM4.Plan.numericFields p.limits))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.plan_parent",
+      "type": "\u2200 (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (GetElem?.getElem?.{0, 0, 0} (LeanCageM3.planArgs p pid pre) 11) (Option.some.{0} (ToString.toString.{0} pid))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.plan_size",
+      "type": "\u2200 (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (Array.size.{0} (LeanCageM3.planArgs p pid pre)) (HAdd.hAdd.{0, 0, 0} 15 (Array.size.{0} p.argv))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.plan_stdin_digest",
+      "type": "\u2200 (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (GetElem?.getElem?.{0, 0, 0} (LeanCageM3.planArgs p pid pre) 14)\n    (Option.some.{0} (Option.getD.{0} (Option.map.{0, 0} (fun s => (s.drop 7).toString) p.stdinInput) \"none\"))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.plan_workspace_digest",
+      "type": "\u2200 (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (GetElem?.getElem?.{0, 0, 0} (LeanCageM3.planArgs p pid pre) 13)\n    (Option.some.{0} (Option.getD.{0} (Option.map.{0, 0} (fun s => (s.drop 7).toString) p.workspaceInput) \"none\"))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.preflight_plan_example",
+      "type": "Eq.{1}\n  (Array.toList.{0}\n    (LeanCageM4.Plan.nativeArgs \"/leancage-m3-helper\"\n      (have __src := LeanCageM4.Plan.samplePolicy;\n      { argv := __src.argv, workspaceInput := __src.workspaceInput, stdinInput := __src.stdinInput,\n        exportFiles := Bool.true, limits := __src.limits })\n      42 Bool.true))\n  (List.cons.{0} \"/leancage-m3-helper\"\n    (List.cons.{0} \"M3CHECK1\"\n      (List.cons.{0} \"16777216\"\n        (List.cons.{0} \"4\"\n          (List.cons.{0} \"1000\"\n            (List.cons.{0} \"10000\"\n              (List.cons.{0} \"10\"\n                (List.cons.{0} \"1048576\"\n                  (List.cons.{0} \"64\"\n                    (List.cons.{0} \"0\"\n                      (List.cons.{0} \"0\"\n                        (List.cons.{0} \"0\"\n                          (List.cons.{0} \"42\"\n                            (List.cons.{0} \"regular-files\"\n                              (List.cons.{0} \"none\"\n                                (List.cons.{0} \"none\"\n                                  (List.cons.{0} \"/bin/sh\"\n                                    (List.cons.{0} \"-c\" (List.cons.{0} \"true\" List.nil.{0})))))))))))))))))))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.rejected_policy_examples",
+      "type": "Eq.{1}\n    (LeanCageM3.limitsValid\n      (have __src := LeanCageM4.Plan.sampleLimits;\n      { memory := 0, tasks := __src.tasks, quota := __src.quota, period := __src.period, cpu := __src.cpu,\n        wall := __src.wall, workspace := __src.workspace, inodes := __src.inodes, stdin := __src.stdin,\n        stdout := __src.stdout, stderr := __src.stderr }))\n    Bool.false \u2227\n  Eq.{1}\n      (LeanCageM3.limitsValid\n        (have __src := LeanCageM4.Plan.sampleLimits;\n        { memory := __src.memory, tasks := __src.tasks, quota := __src.quota, period := 1, cpu := __src.cpu,\n          wall := __src.wall, workspace := __src.workspace, inodes := __src.inodes, stdin := __src.stdin,\n          stdout := __src.stdout, stderr := __src.stderr }))\n      Bool.false \u2227\n    Eq.{1} (LeanCageM3.argvValid (List.toArray.{0} List.nil.{0})) Bool.false \u2227\n      Eq.{1} (LeanCageM3.argvValid (List.toArray.{0} (List.cons.{0} \"/bin/unknown\" List.nil.{0}))) Bool.false \u2227\n        Eq.{1}\n          (LeanCageM3.argvValid (List.toArray.{0} (List.cons.{0} \"/bin/sh\" (List.cons.{0} \"bad\\x00arg\" List.nil.{0}))))\n          Bool.false"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.rejected_policy_examples._simp_1_2",
+      "type": "\u2200 {\u03b1 : Type u_1} {p : \u03b1 \u2192 Bool} {as : Array.{u_1} \u03b1},\n  Eq.{1} (Array.all.{u_1} as p) (List.all.{u_1} (Array.toList.{u_1} as) p)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.rejected_policy_examples._simp_1_3",
+      "type": "\u2200 {\u03b2 : Type u_1} {\u03b1 : Type u_2} (f : \u03b2 \u2192 \u03b1 \u2192 \u03b2) {init : \u03b2} {xs : Array.{u_2} \u03b1},\n  Eq.{u_1 + 1} (Array.foldl.{u_2, u_1} f init xs) (List.foldl.{u_1, u_2} f init (Array.toList.{u_2} xs))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.valid_period",
+      "type": "\u2200 (l : LeanCageM3.Limits), Eq.{1} (LeanCageM3.limitsValid l) Bool.true \u2192 Eq.{1} l.period 100000"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.valid_period._proof_1_3",
+      "type": "\u2200 (l : LeanCageM3.Limits),\n  (((((((((((LE.le.{0} 16777216 l.memory \u2227 LE.le.{0} l.memory 1073741824) \u2227\n                          Eq.{1} (HMod.hMod.{0, 0, 0} l.memory 4096) 0) \u2227\n                        LE.le.{0} 4 l.tasks \u2227 LE.le.{0} l.tasks 256) \u2227\n                      LE.le.{0} 1000 l.quota \u2227 LE.le.{0} l.quota 100000) \u2227\n                    Eq.{1} l.period 100000) \u2227\n                  LE.le.{0} 10000 l.cpu \u2227 LE.le.{0} l.cpu 3600000000) \u2227\n                LE.le.{0} 10 l.wall \u2227 LE.le.{0} l.wall 3600000) \u2227\n              (LE.le.{0} 1048576 l.workspace \u2227 LE.le.{0} l.workspace 268435456) \u2227\n                Eq.{1} (HMod.hMod.{0, 0, 0} l.workspace 4096) 0) \u2227\n            LE.le.{0} 64 l.inodes \u2227 LE.le.{0} l.inodes 65536) \u2227\n          LE.le.{0} l.stdin 67108864) \u2227\n        LE.le.{0} l.stdout 16777216) \u2227\n      LE.le.{0} l.stderr 16777216 \u2192\n    \u00acEq.{1} l.period 100000 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.valid_period._simp_1_2",
+      "type": "\u2200 {\u03b1 : Type u_1} [inst : BEq.{u_1} \u03b1] [LawfulBEq.{u_1} \u03b1] {a b : \u03b1},\n  Eq.{1} (Eq.{1} (BEq.beq.{u_1} a b) Bool.true) (Eq.{u_1 + 1} a b)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Decimal.0.LeanCageM4.Plan.decimalDigits.match_1.eq_1",
+      "type": "\u2200 (motive : List.{0} Nat \u2192 Sort u_1) (h_1 : Unit \u2192 motive List.nil.{0})\n  (h_2 : (b : Nat) \u2192 (bytes : List.{0} Nat) \u2192 motive (List.cons.{0} b bytes)),\n  Eq.{u_1}\n    (match List.nil.{0} with\n    | List.nil.{0} => h_1 ()\n    | List.cons.{0} b bytes => h_2 b bytes)\n    (h_1 ())"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Decimal.0.LeanCageM4.Plan.decimalDigits.match_1.eq_2",
+      "type": "\u2200 (motive : List.{0} Nat \u2192 Sort u_1) (b : Nat) (bytes : List.{0} Nat) (h_1 : Unit \u2192 motive List.nil.{0})\n  (h_2 : (b : Nat) \u2192 (bytes : List.{0} Nat) \u2192 motive (List.cons.{0} b bytes)),\n  Eq.{u_1}\n    (match List.cons.{0} b bytes with\n    | List.nil.{0} => h_1 ()\n    | List.cons.{0} b bytes => h_2 b bytes)\n    (h_2 b bytes)"
+    }
+  ],
+  "imported_endpoint": {
+    "name": "LeanCagePlan.PlanImport.LeanCageM4_Plan_parseDecimal",
+    "full_type": "LeanCageM4_Plan_parseDecimal\n     : forall (_ : Nat) (_ : List_inst1 Nat), Option_inst1 Nat",
+    "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+    "assumption_names": [],
+    "definitional_uip": [
+      "HEq_inst1",
+      "True",
+      "eq",
+      "eq_inst1"
+    ]
+  },
+  "export_inventory": {
+    "metadata": {
+      "exporter": {
+        "name": "lean4export",
+        "version": "3.1.0"
+      },
+      "format": {
+        "version": "3.1.0"
+      },
+      "lean": {
+        "githash": "eb6cafb7290e8bd5f2937522d8d804f58f02bafc",
+        "version": "4.35.0"
+      }
+    },
+    "declarations": [
+      {
+        "name": "Nat",
+        "kind": "types"
+      },
+      {
+        "name": "Nat.zero",
+        "kind": "ctors"
+      },
+      {
+        "name": "Nat.succ",
+        "kind": "ctors"
+      },
+      {
+        "name": "Nat.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "List",
+        "kind": "types"
+      },
+      {
+        "name": "List.nil",
+        "kind": "ctors"
+      },
+      {
+        "name": "List.cons",
+        "kind": "ctors"
+      },
+      {
+        "name": "List.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Option",
+        "kind": "types"
+      },
+      {
+        "name": "Option.none",
+        "kind": "ctors"
+      },
+      {
+        "name": "Option.some",
+        "kind": "ctors"
+      },
+      {
+        "name": "Option.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "PUnit",
+        "kind": "types"
+      },
+      {
+        "name": "PUnit.unit",
+        "kind": "ctors"
+      },
+      {
+        "name": "PUnit.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Unit",
+        "kind": "def"
+      },
+      {
+        "name": "List.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "Unit.unit",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Plan.decimalDigits.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Bool",
+        "kind": "types"
+      },
+      {
+        "name": "Bool.false",
+        "kind": "ctors"
+      },
+      {
+        "name": "Bool.true",
+        "kind": "ctors"
+      },
+      {
+        "name": "Bool.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Bool.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.Reflects.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "False",
+        "kind": "types"
+      },
+      {
+        "name": "False.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Not",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.Reflects",
+        "kind": "def"
+      },
+      {
+        "name": "Decidable",
+        "kind": "types"
+      },
+      {
+        "name": "Decidable.intro",
+        "kind": "ctors"
+      },
+      {
+        "name": "Decidable.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Decidable.decide",
+        "kind": "def"
+      },
+      {
+        "name": "Decidable.reflects_decide",
+        "kind": "thm"
+      },
+      {
+        "name": "dite",
+        "kind": "def"
+      },
+      {
+        "name": "ite",
+        "kind": "def"
+      },
+      {
+        "name": "Eq",
+        "kind": "types"
+      },
+      {
+        "name": "Eq.refl",
+        "kind": "ctors"
+      },
+      {
+        "name": "Eq.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Bool.and",
+        "kind": "def"
+      },
+      {
+        "name": "PProd",
+        "kind": "types"
+      },
+      {
+        "name": "PProd.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "PProd.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "List.below",
+        "kind": "def"
+      },
+      {
+        "name": "List.brecOn.go",
+        "kind": "def"
+      },
+      {
+        "name": "List.brecOn",
+        "kind": "def"
+      },
+      {
+        "name": "LE",
+        "kind": "types"
+      },
+      {
+        "name": "LE.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "LE.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "LE.le",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.le",
+        "kind": "types"
+      },
+      {
+        "name": "Nat.le.refl",
+        "kind": "ctors"
+      },
+      {
+        "name": "Nat.le.step",
+        "kind": "ctors"
+      },
+      {
+        "name": "Nat.le.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "instLENat",
+        "kind": "def"
+      },
+      {
+        "name": "OfNat",
+        "kind": "types"
+      },
+      {
+        "name": "OfNat.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "OfNat.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "OfNat.ofNat",
+        "kind": "def"
+      },
+      {
+        "name": "instOfNatNat",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.below",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.brecOn.go",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.brecOn",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.decEq.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "False.elim",
+        "kind": "def"
+      },
+      {
+        "name": "Eq.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "HEq",
+        "kind": "types"
+      },
+      {
+        "name": "HEq.refl",
+        "kind": "ctors"
+      },
+      {
+        "name": "HEq.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "True",
+        "kind": "types"
+      },
+      {
+        "name": "True.intro",
+        "kind": "ctors"
+      },
+      {
+        "name": "True.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Nat.beq.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.beq._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.beq",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.noConfusion_of_Nat.aux.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.noConfusion_of_Nat.aux._f",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.noConfusion_of_Nat.aux",
+        "kind": "thm"
+      },
+      {
+        "name": "rfl",
+        "kind": "def"
+      },
+      {
+        "name": "congrArg",
+        "kind": "thm"
+      },
+      {
+        "name": "noConfusion_of_Nat",
+        "kind": "thm"
+      },
+      {
+        "name": "Bool.ctorIdx",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.le_of_ble_eq_true.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.zero_le.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.zero_le._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.zero_le",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.le.below",
+        "kind": "types"
+      },
+      {
+        "name": "Nat.le.below.refl",
+        "kind": "ctors"
+      },
+      {
+        "name": "Nat.le.below.step",
+        "kind": "ctors"
+      },
+      {
+        "name": "Nat.le.below.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Nat.le.brecOn",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.le.below.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "Eq.ndrec",
+        "kind": "def"
+      },
+      {
+        "name": "Eq.symm",
+        "kind": "thm"
+      },
+      {
+        "name": "cast",
+        "kind": "def"
+      },
+      {
+        "name": "eq_of_heq",
+        "kind": "thm"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.succ_le_succ.match_1_7",
+        "kind": "def"
+      },
+      {
+        "name": "outParam",
+        "kind": "def"
+      },
+      {
+        "name": "HAdd",
+        "kind": "types"
+      },
+      {
+        "name": "HAdd.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "HAdd.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "HAdd.hAdd",
+        "kind": "def"
+      },
+      {
+        "name": "Add",
+        "kind": "types"
+      },
+      {
+        "name": "Add.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Add.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Add.add",
+        "kind": "def"
+      },
+      {
+        "name": "instHAdd",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.add.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.add._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.add",
+        "kind": "def"
+      },
+      {
+        "name": "instAddNat",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.succ_le_succ",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.le_of_ble_eq_true._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.le_of_ble_eq_true",
+        "kind": "thm"
+      },
+      {
+        "name": "absurd",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.ble_eq_true_of_le.match_1_7",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.ble_self_eq_true.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble_self_eq_true._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble_self_eq_true",
+        "kind": "thm"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.ble_succ_eq_true.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble_succ_eq_true._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble_succ_eq_true",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.ble_eq_true_of_le",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.not_le_of_not_ble_eq_true",
+        "kind": "thm"
+      },
+      {
+        "name": "Bool.noConfusionType",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.noConfusion",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.decLe._proof_1",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.decLe",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Plan.decimalDigits._f",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Plan.decimalDigits",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Plan.decimalFold.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "HMul",
+        "kind": "types"
+      },
+      {
+        "name": "HMul.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "HMul.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "HMul.hMul",
+        "kind": "def"
+      },
+      {
+        "name": "Mul",
+        "kind": "types"
+      },
+      {
+        "name": "Mul.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Mul.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Mul.mul",
+        "kind": "def"
+      },
+      {
+        "name": "instHMul",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.mul.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.mul._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.mul",
+        "kind": "def"
+      },
+      {
+        "name": "instMulNat",
+        "kind": "def"
+      },
+      {
+        "name": "HSub",
+        "kind": "types"
+      },
+      {
+        "name": "HSub.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "HSub.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "HSub.hSub",
+        "kind": "def"
+      },
+      {
+        "name": "Sub",
+        "kind": "types"
+      },
+      {
+        "name": "Sub.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Sub.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Sub.sub",
+        "kind": "def"
+      },
+      {
+        "name": "instHSub",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.pow.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.pred",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.sub._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.sub",
+        "kind": "def"
+      },
+      {
+        "name": "instSubNat",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Plan.decimalFold._f",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Plan.decimalFold",
+        "kind": "def"
+      },
+      {
+        "name": "DecidableEq",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.Internal.and.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.not",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.beq",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.decEq.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.decEq._proof_1",
+        "kind": "thm"
+      },
+      {
+        "name": "Bool.decEq",
+        "kind": "def"
+      },
+      {
+        "name": "instDecidableEqBool",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Plan.parseDecimal",
+        "kind": "def"
+      }
+    ]
+  },
+  "schema_version": 1,
+  "scope": "Live Lean plan layout and exact numeric-byte interface connected to the native decimal source under owned memory and explicit translation/runtime boundaries",
+  "full_controller_complete": false,
+  "full_m4_complete": false
+}

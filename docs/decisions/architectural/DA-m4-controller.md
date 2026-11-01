@@ -40,3 +40,19 @@ profile, without changing previous proofs or dependency pins.
 This slice serves [§FS-workspace.policy](../../functional-spec/FS-workspace.md#policy-bounded-typed-request). It does not assume that a valid pure plan
 establishes Linux argument ownership, parent identity, policy storage order or
 the remaining controller effects.
+
+## main-inputs: Replay against the complete helper translation
+
+For [§AR-m4-controller.main-inputs](../../architecture/AR-m4-controller.md#main-inputs-actual-main-routine-numeric-initialization), use the complete helper's
+actual frontend output, including its composite layout and global environment.
+Retain the decimal proof sources as the single maintained implementation of
+their arguments. Generate a narrowly checked namespace adaptation and local
+identifier alias, then kernel-check equality with the complete helper's parser
+and replay every original parser proposition and foundation record.
+
+Prove the selected main block from explicit memory ownership, using the existing
+Clight transitions and loss model. Stop before invoking unproved failure-report
+behavior. Distinguish allocated source witnesses from Linux-supplied arguments;
+this serves [§FS-workspace.policy](../../functional-spec/FS-workspace.md#policy-bounded-typed-request) while preserving the remaining controller
+obligations. Record host-header provenance and licensing without changing the
+native implementation, pinned tools or prior proof artifacts.

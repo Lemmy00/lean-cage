@@ -1,0 +1,5 @@
+Main input replay failed: unreviewed bridge foundation: Axioms:
+eq_inst1 relies on definitional UIP.
+eq relies on definitional UIP.
+PlanImport.True relies on definitional UIP.
+PlanImport.HEq_inst1 relies on definitional UIP.

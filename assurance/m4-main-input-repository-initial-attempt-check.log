@@ -1,0 +1,3 @@
+exists AGENTS.md
+exists grund.toml
+m4/main/check.py:3: error: inline note is 101 columns, over the 100-column maximum: line 3 cites §AR-m4-controller.main-inputs

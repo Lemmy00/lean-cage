@@ -556,6 +556,19 @@ prefixes and loss. The separate and overlapping allocated witnesses retain all
 twenty earlier cases. This adds 32 Rocq and 88 Lean theorem records, with the
 imported logical model and translation-faithfulness boundary stated explicitly.
 
+The [complete-helper numeric block](../reviews/M4-main-input.md) adds 107 source
+and memory declarations for the ten field-pointer initializers and actual parser
+loop. It replays all 83 parser records against the complete helper and checks
+exact function identity. Successful fields are stored in order; a later rejection
+retains those stores and stops before its reporting call. Owned arguments remain
+stable across the writes. Constructed paths retain every interruption boundary
+and preserve memory outside the two 80-byte write regions. Sixteen allocated
+source witnesses begin with constructible full-program initial memory; they do
+not establish reachability through earlier main-routine checks. The imported
+numeric byte interface determines the same stored vector and stopping decision.
+Actual argument provenance, parent checks, later policy bounds and the remaining
+controller still need their own connections.
+
 **Evidence and assumptions:** `assurance/m4-public-evidence.json`,
 `assurance/m4-wire-evidence.json`,
 `assurance/m4-receiver-evidence.json`,
@@ -582,7 +595,13 @@ plan connection has `assurance/m4-plan-claims.json`, `assurance/m4-plan-evidence
 and `python3 m4/plan/check.py`; it preserves all preceding native/parser/frame
 records and artifacts. Its imported endpoint uses four explicit definitional-UIP
 instances. The [plan review](../reviews/M4-plan.md) records the exact transitive
-foundations in both proof assistants. Full M4 remains open.
+foundations in both proof assistants. The numeric-block gate is
+`python3 m4/main/check.py`, with `assurance/m4-main-input-claims.json` and
+`assurance/m4-main-input-evidence.json`. It records the complete helper's actual
+header inputs, all new/adapted propositions, exact function identity, a rejected
+compiled mutation and independent kernel replay. Earlier manifests and receipts
+are preserved, with explicit documentation-fingerprint amendments. Full M4
+remains open.
 The established Coq 8.18 profile's six foundation/semantic-parameter entries remain unchanged; the explicit
 machine excludes stock external/builtin execution. No new Lean axiom is added.
 The owned witnesses allocate cells for the actual source symbol mapping; they do

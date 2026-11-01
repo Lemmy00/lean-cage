@@ -80,6 +80,42 @@ the imported terms, full proposition/foundation inventory and earlier compiled
 identities auditable. The importer's translation faithfulness and logical-model
 review remain open; a checked translated term alone does not discharge them.
 
+## main-inputs: Actual main-routine numeric initialization
+
+Translate the unchanged complete native helper with the pinned frontend and
+record every preprocessor/header input, ABI option and resulting function. This
+is provenance for the selected source semantics, not a proof of all functions or
+of the deployed binary. Preserve upstream notices and identify the host-header
+environment separately from the pinned VM kernel.
+
+Connect the ten numeric-field pointer initializers and their parsing loop to
+their actual statements in `main`. Check the policy structure layout and the
+actual global binding of `number`. A frontend-renamed local identifier must be
+handled by replaying the existing parser proofs against the full-program AST,
+with a kernel-checked function identity; textual resemblance is insufficient.
+
+Start at the numeric initialization block with independently stated local,
+global and argument-memory premises. Construct its real source path: read each
+argument and field pointer, call the actual parser, retain each successful
+store, and stop before the first failure-reporting call or after all ten fields.
+On a later rejection, earlier stores remain. Do not assume an atomic plan
+commit or the success of the reporting routine. Prove that loop indices and
+pointer offsets fit their actual machine widths. Preserve all memory outside
+the initialized field-pointer array and selected policy cells.
+
+State the separation needed to preserve the argument table and input strings
+across those stores. The standalone parser permits input/output overlap, but
+composition must not silently reuse stale input bytes after a prior field
+write. Retain source-boundary interruption and intermediate memories, useful
+allocated executions, malformed fields and rejection after a successful prefix.
+Connect the stored vector and stopping decision to the imported numeric byte
+interface from [§AR-m4-controller.plan](AR-m4-controller.md#plan-live-lean-plan-fields-and-their-decimal-bytes), retaining its existing translation
+faithfulness obligation and the separate physical argument-memory premises.
+
+This local connection does not establish reachability from Linux process entry,
+`check_profile`, the mode checks, parent identity, later policy bounds or setup
+effects. Account for those separately before extending the controller claim.
+
 ## composition: Remaining controller obligations
 
 Decimal syntax alone does not establish policy bounds, argument provenance or
