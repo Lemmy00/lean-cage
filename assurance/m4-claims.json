@@ -29,7 +29,7 @@
     "scripts/check_m4.sh": "83c0165ee40e3584ba10cb1c98d300c3d8ff42307895e241005674c0c9e51b3c",
     "docs/architecture/AR-m4-native.md": "7822f4f3f580b20da1379ec816b9122a6dc90628f2e31b0112be819c26db7771",
     "docs/architecture/README.md": "ed8e55a3dfd2739c8cef1bbb94b8bcffd90cb113e94752c99b962cba888118d5",
-    "docs/roadmap.md": "f516413e7e9b238bf34102bc71dc77e3ddc351ba2d0dcedca3b18bf8cb12b664"
+    "docs/roadmap.md": "d8f50a54587debf457c015ba2ac0db89766e451d2bff70eeef8d731782b99369"
   },
   "rocq_declarations": [
     {

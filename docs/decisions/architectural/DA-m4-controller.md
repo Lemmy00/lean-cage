@@ -84,3 +84,32 @@ the strict checker. The normalized computational closure must contain no new
 axioms; its ordinary Lean equivalence proofs remain separately audited. This is
 a representation connection for [§AR-m4-controller.bounds](../../architecture/AR-m4-controller.md#bounds-actual-policy-bound-validation), not an optimization
 or replacement of the running launcher.
+
+## arguments: Preserve waits while connecting length accumulation
+
+For [§AR-m4-controller.arguments](../../architecture/AR-m4-controller.md#arguments-actual-guest-argument-length-accumulation) and [§FS-workspace.policy](../../functional-spec/FS-workspace.md#policy-bounded-typed-request), add a local `strlen`
+effect over the existing owned C-string representation. Wrap the preceding
+library machine without changing its transition relation or its proof artifacts.
+Show that internal source steps retain their original meaning and that the
+actual `strlen` symbol has exactly the modeled external signature.
+
+Use a finite path certificate that classifies every actual step as the proved
+next step, a waiting self-loop, or terminal loss. Measure non-wait steps and
+state the selected-block prefix boundary explicitly; the later main routine
+must not inherit an unproved invariant. Derive each certificate from independent
+table/string ownership and actual source evaluation. The certificate is a proof
+output, never an input assumption replacing the source connection.
+
+Prove the accumulator's range before using the later policy-bound block. The
+largest signed `argc` and the already-checked 4096-byte per-string bound imply
+that the sum of lengths plus NUL bytes fits in unsigned 64 bits. Retain the first
+invalid-string ordering and compose the successful total with the existing
+policy-bound proofs. Physical argv construction, libc behavior and concurrent
+memory interference remain explicit obligations.
+
+Keep the imported argument interface small: a list of natural byte lengths maps
+to the per-string acceptance bit and the sum including terminators. Prove the
+live Lean array/string projection and fold agree with that interface, then prove
+the strictly imported computation agrees with source outcomes. Arrays, Unicode
+encoding and physical process memory remain separate layers of this connection;
+an accepted length alone must not imply their provenance.

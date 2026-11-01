@@ -147,6 +147,46 @@ policy image without assuming the desired limit result. Reachability across the
 intervening parent, digest, export and argument checks remains an explicit
 obligation until those actual source regions are connected.
 
+## arguments: Actual guest-argument length accumulation
+
+Connect the unchanged complete-helper block that initializes `bytes`, iterates
+from argument sixteen to `argc`, calls `strlen`, rejects an empty or overlong
+string, and adds the accepted length plus its terminating NUL. Use the actual
+signed index, pointer arithmetic and unsigned 64-bit addition. Derive absence of
+arithmetic wrap from the signed argument-count bound and the per-string check;
+the later total-byte rejection is not an available premise for this loop.
+
+Start from independently owned argument-table cells and terminated byte strings,
+with explicit pointer-span bounds. Allow aliases consistent with that memory.
+The local `strlen` contract returns the unique owned string's byte length and
+leaves memory unchanged. Extend the preceding effect machine conservatively:
+retain its transitions, arbitrary waits at the library boundary, and loss at
+every source and effect boundary. Do not use stock external execution as a
+second path around the local contract. Its correspondence to deployed libc is
+an open obligation.
+
+Construct both accepted and first-rejected source paths from ownership alone.
+Acceptance establishes the exact accumulated byte count; rejection stops before
+the first `E2BIG` report call and retains the total of preceding valid strings.
+Prove unchanged memory, defined progress for every live prefix before the chosen
+endpoint, and the exact endpoint for every execution with that number of
+non-wait steps. A finite bound on those steps does not bound library waiting or
+establish survival. Compose the accepted block with
+[§AR-m4-controller.bounds](AR-m4-controller.md#bounds-actual-policy-bound-validation), preserving the actual intervening source control.
+
+Include allocated accepted and rejected strings, empty and 4096/4097-byte
+boundaries, argument-table aliasing, and interruption witnesses. Relate the
+computed total and per-string predicate to live `argvValid` without inferring
+the separate executable allowlist, parent/export/digest validation, physical
+Linux argument provenance, or reachability through all preceding main code.
+Export the structurally recursive length predicate and NUL-inclusive total as a
+strict computational interface. Prove its agreement with the actual imported
+terms and source loop. Audit the live Lean string-to-length and array-fold
+connections separately; the import does not certify physical UTF-8 storage or
+the libc implementation.
+This implements the argument part of [§FS-workspace.policy](../functional-spec/FS-workspace.md#policy-bounded-typed-request) while leaving the
+whole-controller obligations explicit.
+
 ## composition: Remaining controller obligations
 
 Decimal syntax alone does not establish policy bounds, argument provenance or

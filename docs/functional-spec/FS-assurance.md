@@ -581,6 +581,23 @@ Twenty-six allocated source witnesses cover accepted boundaries, each rejected
 guard and machine extremes. These local statements do not establish the earlier
 argument accumulation, parent/digest/export/allowlist checks or whole-main entry.
 
+The [argument-loop connection](../reviews/M4-arguments.md) adds 114 Rocq and 23
+Lean records for the actual initialization, signed loop, `strlen` boundary,
+per-string rejection and unsigned accumulation. Independent argument-table and
+terminated-string ownership produce accepted and first-rejected paths. Each
+accepted string is bounded before addition, so the total cannot wrap even at
+the maximum signed argument count. The complete selected block takes at most
+26 times the guest argument count plus 13 non-wait steps; composition with the
+actual policy block adds at most 141. Every bounded actual prefix preserves
+memory, with defined live progress, exact endpoints and loss at every boundary.
+Library waiting remains arbitrary. Twelve allocated cases cover nine accepted
+and three rejected length scans; the composed policy block accepts seven and
+rejects five. A further witness repeats the same string pointer in two table
+cells. The strict imported length predicate agrees with source acceptance and
+the successful total. Rejection retains the preceding valid prefix's total,
+not the reference sum over all arguments. Physical argv and libc correspondence,
+earlier parent/digest/export/allowlist checks and whole-main entry remain open.
+
 **Evidence and assumptions:** `assurance/m4-public-evidence.json`,
 `assurance/m4-wire-evidence.json`,
 `assurance/m4-receiver-evidence.json`,
@@ -617,8 +634,13 @@ gate is `python3 m4/policy/check.py`, with
 `assurance/m4-policy-bounds-claims.json` and
 `assurance/m4-policy-bounds-evidence.json`. It preserves the numeric-block
 checkpoint and records the exact imported predicate, rejected descriptor
-mutation, failed direct-import experiments and full foundation inventory. Full
-M4 remains open.
+mutation, failed direct-import experiments and full foundation inventory.
+`python3 m4/arguments/check.py`, `assurance/m4-arguments-claims.json` and
+`assurance/m4-arguments-evidence.json` add the argument loop, its conservative
+`strlen` effect, exact imported profile and the preserved bounds checkpoint.
+The gate checks all 151 export entries, nineteen compiled identities, twelve
+integrity regressions, a rejected source-limit mutation, disabled-check rejection
+and independent kernel replay. Full M4 remains open.
 The established Coq 8.18 profile's six foundation/semantic-parameter entries remain unchanged; the explicit
 machine excludes stock external/builtin execution. No new Lean axiom is added.
 The owned witnesses allocate cells for the actual source symbol mapping; they do

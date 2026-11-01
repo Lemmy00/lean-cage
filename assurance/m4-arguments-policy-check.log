@@ -1,0 +1,2 @@
+Bounds replay passed: 64 Rocq and 36 Lean full records; strict import, actual AST and kernel checks.
+Reviewed bounds statements, foundations, artifacts and prior main-input identities match.

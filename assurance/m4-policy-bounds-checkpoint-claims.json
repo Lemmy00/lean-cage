@@ -1,0 +1,1650 @@
+{
+  "rocq_declarations": [
+    {
+      "name": "LeanCageBounds.BoundsStructure.bounds_exact_structure",
+      "full_type": "bounds_exact_structure\n     : and (@Logic.eq Clight.statement bounds_suffix (Clight.Ssequence bounds_region after_bounds)) (and (@Logic.eq Clight.statement bounds_region (Clight.Ssequence (guard_sequence bounds_start policy_guards) bounds_finish)) (and (@Logic.eq Clight.statement bounds_finish (Clight.Sifthenelse (Clight.Etempvar Main._t'55 Ctypesdefs.tint) bounds_failure Clight.Sskip)) (@Logic.eq Clight.statement bounds_failure (Clight.Ssequence (Clight.Ssequence bounds_report bounds_report_suffix) bounds_failure_return))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsStructure.bounds_start_structure",
+      "full_type": "bounds_start_structure\n     : @Logic.eq Clight.statement bounds_start (Clight.Sifthenelse (Clight.Ebinop Cop.Ogt (Clight.Ebinop Cop.Osub (Clight.Etempvar Main._argc Ctypesdefs.tint) (Clight.Econst_int (Integers.Int.repr (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))) Ctypesdefs.tint) Ctypesdefs.tint) (Clight.Econst_int (Integers.Int.repr (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))))) Ctypesdefs.tint) Ctypesdefs.tint) (Clight.Sset Main._t'36 (Clight.Econst_int Integers.Int.one Ctypesdefs.tint)) (Clight.Sset Main._t'36 (Clight.Ecast (Clight.Ebinop Cop.Ogt (Clight.Etempvar Main._bytes Ctypesdefs.tulong) (Clight.Econst_int (Integers.Int.repr (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))))))))))))) Ctypesdefs.tint) Ctypesdefs.tint) Ctypesdefs.tbool)))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsStructure.policy_guards_valid",
+      "full_type": "policy_guards_valid\n     : @ListDef.Forall policy_guard guard_valid policy_guards",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsStructure.policy_guard_count",
+      "full_type": "policy_guard_count\n     : @Logic.eq nat (@length policy_guard policy_guards) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsWords.bounds_ltu",
+      "full_type": "bounds_ltu\n     : forall (x y : BinNums.Z) (_ : and (BinInt.Z.le BinNums.Z0 x) (BinInt.Z.le x Integers.Int64.max_unsigned)) (_ : and (BinInt.Z.le BinNums.Z0 y) (BinInt.Z.le y Integers.Int64.max_unsigned)), @Logic.eq bool (Integers.Int64.ltu (Integers.Int64.repr x) (Integers.Int64.repr y)) (BinInt.Z.ltb x y)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsWords.bounds_long_zero",
+      "full_type": "bounds_long_zero\n     : forall (x : BinNums.Z) (_ : and (BinInt.Z.le BinNums.Z0 x) (BinInt.Z.le x Integers.Int64.max_unsigned)), @Logic.eq bool (Integers.Int64.eq (Integers.Int64.repr x) Integers.Int64.zero) (BinInt.Z.eqb x BinNums.Z0)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsWords.bounds_machine_operation",
+      "full_type": "bounds_machine_operation\n     : forall (ge : Ctypes.composite_env) (m : Memory.Mem.mem) (kind : bound_kind) (x bound : BinNums.Z) (_ : and (BinInt.Z.le BinNums.Z0 x) (BinInt.Z.le x Integers.Int64.max_unsigned)) (_ : and (BinInt.Z.lt BinNums.Z0 bound) (BinInt.Z.le bound Integers.Int64.max_unsigned)), @Logic.eq (option Values.val) (Cop.sem_binary_operation ge match kind return Cop.binary_operation with\n                                                                                                                                                                                                                                                                                                                                               | lower => Cop.Olt\n                                                                                                                                                                                                                                                                                                                                               | upper => Cop.Ogt\n                                                                                                                                                                                                                                                                                                                                               | aligned => Cop.Omod\n                                                                                                                                                                                                                                                                                                                                               end (Values.Vlong (Integers.Int64.repr x)) Ctypesdefs.tulong (Values.Vlong (Integers.Int64.repr bound)) Ctypesdefs.tulong m) (@Some Values.val (bound_operation_value kind x bound))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsWords.bounds_operation_cast",
+      "full_type": "bounds_operation_cast\n     : forall (m : Memory.Mem.mem) (kind : bound_kind) (x bound : BinNums.Z) (_ : and (BinInt.Z.le BinNums.Z0 x) (BinInt.Z.le x Integers.Int64.max_unsigned)) (_ : and (BinInt.Z.lt BinNums.Z0 bound) (BinInt.Z.le bound Integers.Int64.max_unsigned)), @Logic.eq (option Values.val) (Cop.sem_cast (bound_operation_value kind x bound) match kind return Ctypes.type with\n                                                                                                                                                                                                                                                                                                                                         | lower => Ctypesdefs.tint\n                                                                                                                                                                                                                                                                                                                                         | upper => Ctypesdefs.tint\n                                                                                                                                                                                                                                                                                                                                         | aligned => Ctypesdefs.tulong\n                                                                                                                                                                                                                                                                                                                                         end Ctypesdefs.tbool m) (@Some Values.val (Values.Val.of_bool match kind return bool with\n                                                                                                                                                                                                                                                                                                                                                                                                       | lower => BinInt.Z.ltb x bound\n                                                                                                                                                                                                                                                                                                                                                                                                       | upper => BinInt.Z.ltb bound x\n                                                                                                                                                                                                                                                                                                                                                                                                       | aligned => negb (BinInt.Z.eqb (BinInt.Z.modulo x bound) BinNums.Z0)\n                                                                                                                                                                                                                                                                                                                                                                                                       end))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsWords.bounds_narrow_operation",
+      "full_type": "bounds_narrow_operation\n     : forall (ge : Ctypes.composite_env) (m : Memory.Mem.mem) (kind : bound_kind) (x bound : BinNums.Z) (_ : and (BinInt.Z.le BinNums.Z0 x) (BinInt.Z.le x Integers.Int64.max_unsigned)) (_ : and (BinInt.Z.lt BinNums.Z0 bound) (BinInt.Z.le bound (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI BinNums.xH))))))))))))))))))))))))))))))))), @Logic.eq (option Values.val) (Cop.sem_binary_operation ge match kind return Cop.binary_operation with\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | lower => Cop.Olt\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | upper => Cop.Ogt\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | aligned => Cop.Omod\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   end (Values.Vlong (Integers.Int64.repr x)) Ctypesdefs.tulong (Values.Vint (Integers.Int.repr bound)) Ctypesdefs.tint m) (@Some Values.val (bound_operation_value kind x bound))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsWords.bounds_argc_sub",
+      "full_type": "bounds_argc_sub\n     : forall (ge : Ctypes.composite_env) (m : Memory.Mem.mem) (argc : BinNums.Z) (_ : and (BinInt.Z.le (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))) argc) (BinInt.Z.le argc (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI BinNums.xH))))))))))))))))))))))))))))))))), @Logic.eq (option Values.val) (Cop.sem_binary_operation ge Cop.Osub (Values.Vint (Integers.Int.repr argc)) Ctypesdefs.tint (Values.Vint (Integers.Int.repr (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))) Ctypesdefs.tint m) (@Some Values.val (Values.Vint (Integers.Int.repr (BinInt.Z.sub argc (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsWords.bounds_argc_cmp",
+      "full_type": "bounds_argc_cmp\n     : forall (ge : Ctypes.composite_env) (m : Memory.Mem.mem) (argc : BinNums.Z) (_ : and (BinInt.Z.le (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))) argc) (BinInt.Z.le argc (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI BinNums.xH))))))))))))))))))))))))))))))))), @Logic.eq (option Values.val) (Cop.sem_binary_operation ge Cop.Ogt (Values.Vint (Integers.Int.repr (BinInt.Z.sub argc (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))))) Ctypesdefs.tint (Values.Vint (Integers.Int.repr (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))))) Ctypesdefs.tint m) (@Some Values.val (Values.Val.of_bool (BinInt.Z.ltb (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))) (BinInt.Z.sub argc (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsMemory.policy_image_read",
+      "full_type": "policy_image_read\n     : forall (m : Memory.Mem.mem) (values : list BinNums.Z) (e : Maps.PTree.tree (prod Values.block Ctypes.type)) (le : Clight.temp_env) (i : BinNums.Z) (id : AST.ident) (_ : policy_image m values) (_ : @Logic.eq (option (prod Values.block Ctypes.type)) (@Maps.PTree.get (prod Values.block Ctypes.type) Main._policy__1 e) (@None (prod Values.block Ctypes.type))) (_ : @List.In (prod BinNums.Z AST.ident) (@pair BinNums.Z AST.ident i id) MainStructure.policy_fields), LocalAccess.expression_value MainStructure.main_ge e le m (Clight.Efield (Clight.Evar Main._policy__1 MainStructure.policy_type) id Ctypesdefs.tulong) (Values.Vlong (Integers.Int64.repr (@ListDef.nth BinNums.Z (BinInt.Z.to_nat i) values BinNums.Z0)))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsMemory.policy_image_range",
+      "full_type": "policy_image_range\n     : forall (m : Memory.Mem.mem) (values : list BinNums.Z) (i : BinNums.Z) (id : AST.ident) (_ : policy_image m values) (_ : @List.In (prod BinNums.Z AST.ident) (@pair BinNums.Z AST.ident i id) MainStructure.policy_fields), and (BinInt.Z.le BinNums.Z0 (@ListDef.nth BinNums.Z (BinInt.Z.to_nat i) values BinNums.Z0)) (BinInt.Z.le (@ListDef.nth BinNums.Z (BinInt.Z.to_nat i) values BinNums.Z0) Integers.Int64.max_unsigned)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsMemory.policy_cells_member",
+      "full_type": "policy_cells_member\n     : forall (i : BinNums.Z) (values : list BinNums.Z) (j : nat) (_ : lt j (@length BinNums.Z values)), @List.In ScalarMemory.scalar_cell (ScalarMemory.Build_scalar_cell AST.Mint64 (BinInt.Z.mul (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))) (BinInt.Z.add i (BinInt.Z.of_nat j))) (Values.Vlong (Integers.Int64.repr (@ListDef.nth BinNums.Z j values BinNums.Z0)))) (MainMemory.policy_cells i values)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsMemory.policy_image_stored",
+      "full_type": "policy_image_stored\n     : forall (before : Memory.Mem.mem) (values : list BinNums.Z) (after : Memory.Mem.mem) (_ : @Logic.eq nat (@length BinNums.Z values) (S (S (S (S (S (S (S (S (S (S O))))))))))) (_ : @ListDef.Forall BinNums.Z (fun v : BinNums.Z => and (BinInt.Z.le BinNums.Z0 v) (BinInt.Z.le v Integers.Int64.max_unsigned)) values) (_ : MainMemory.policy_stores MainStructure.main_policy_block BinNums.Z0 before values after), policy_image after values",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsMemory.numeric_values_width",
+      "full_type": "numeric_values_width\n     : forall inputs : list MainMemory.numeric_input, @ListDef.Forall BinNums.Z (fun v : BinNums.Z => and (BinInt.Z.le BinNums.Z0 v) (BinInt.Z.le v Integers.Int64.max_unsigned)) (MainMemory.numeric_values inputs)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsMemory.complete_numeric_image",
+      "full_type": "complete_numeric_image\n     : forall (before : Memory.Mem.mem) (inputs : list MainMemory.numeric_input) (after : Memory.Mem.mem) (_ : @Logic.eq nat (@length MainMemory.numeric_input inputs) (S (S (S (S (S (S (S (S (S (S O))))))))))) (_ : @Logic.eq bool (MainMemory.numeric_complete inputs) true) (_ : MainMemory.policy_stores MainStructure.main_policy_block BinNums.Z0 before (MainMemory.numeric_values inputs) after), policy_image after (MainMemory.numeric_values inputs)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsValues.guard_expression_value",
+      "full_type": "guard_expression_value\n     : forall (ge : Clight.genv) (e : Clight.env) (le : Maps.PTree.tree Values.val) (m : Memory.Mem.mem) (g : policy_guard) (x : BinNums.Z) (_ : guard_valid g) (_ : and (BinInt.Z.le BinNums.Z0 x) (BinInt.Z.le x Integers.Int64.max_unsigned)) (_ : @Logic.eq (option Values.val) (@Maps.PTree.get Values.val (guard_read g) le) (@Some Values.val (Values.Vlong (Integers.Int64.repr x)))), LocalAccess.expression_value ge e le m (Clight.Ecast (Clight.Ebinop (guard_operator g) (Clight.Etempvar (guard_read g) Ctypesdefs.tulong) (guard_constant g) (guard_type g)) Ctypesdefs.tbool) (Values.Val.of_bool (guard_bad g x))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsValues.bounds_count_value",
+      "full_type": "bounds_count_value\n     : forall (ge : Clight.genv) (e : Clight.env) (le : Maps.PTree.tree Values.val) (m : Memory.Mem.mem) (argc : BinNums.Z) (_ : and (BinInt.Z.le (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))) argc) (BinInt.Z.le argc (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI BinNums.xH))))))))))))))))))))))))))))))))) (_ : @Logic.eq (option Values.val) (@Maps.PTree.get Values.val Main._argc le) (@Some Values.val (Values.Vint (Integers.Int.repr argc)))), LocalAccess.expression_value ge e le m (Clight.Ebinop Cop.Ogt (Clight.Ebinop Cop.Osub (Clight.Etempvar Main._argc Ctypesdefs.tint) (Clight.Econst_int (Integers.Int.repr (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))) Ctypesdefs.tint) Ctypesdefs.tint) (Clight.Econst_int (Integers.Int.repr (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))))) Ctypesdefs.tint) Ctypesdefs.tint) (Values.Val.of_bool (BinInt.Z.ltb (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))) (BinInt.Z.sub argc (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsValues.bounds_bytes_value",
+      "full_type": "bounds_bytes_value\n     : forall (ge : Clight.genv) (e : Clight.env) (le : Maps.PTree.tree Values.val) (m : Memory.Mem.mem) (bytes : BinNums.Z) (_ : and (BinInt.Z.le BinNums.Z0 bytes) (BinInt.Z.le bytes Integers.Int64.max_unsigned)) (_ : @Logic.eq (option Values.val) (@Maps.PTree.get Values.val Main._bytes le) (@Some Values.val (Values.Vlong (Integers.Int64.repr bytes)))), LocalAccess.expression_value ge e le m (Clight.Ecast (Clight.Ebinop Cop.Ogt (Clight.Etempvar Main._bytes Ctypesdefs.tulong) (Clight.Econst_int (Integers.Int.repr (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))))))))))))) Ctypesdefs.tint) Ctypesdefs.tint) Ctypesdefs.tbool) (Values.Val.of_bool (BinInt.Z.ltb (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))))))))))) bytes))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsControl.guard_env_result",
+      "full_type": "guard_env_result\n     : forall (g : policy_guard) (le : Maps.PTree.tree Values.val) (bad : bool) (x : BinNums.Z), @Logic.eq (option Values.val) (@Maps.PTree.get Values.val (guard_output g) (guard_env g le bad x)) (@Some Values.val (Values.Val.of_bool (orb bad (guard_bad g x))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsControl.guard_skipped",
+      "full_type": "guard_skipped\n     : forall (g : policy_guard) (e : Clight.env) (le : Maps.PTree.tree Values.val) (m : Memory.Mem.mem) (k : Clight.cont) (_ : @Logic.eq (option Values.val) (@Maps.PTree.get Values.val (guard_input g) le) (@Some Values.val (Values.Val.of_bool true))), StoreSteps.store_path MainStructure.main_ge (fun after : Memory.Mem.mem => @Logic.eq Memory.Mem.mem after m) (Clight.State Main.f_main (guard_statement g) k e le m) (S (S O)) (Clight.State Main.f_main Clight.Sskip k e (@Maps.PTree.set Values.val (guard_output g) (Values.Vint Integers.Int.one) le) m)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsControl.guard_source",
+      "full_type": "guard_source\n     : forall (g : policy_guard) (values : list BinNums.Z) (e : Maps.PTree.tree (prod Values.block Ctypes.type)) (le : Maps.PTree.tree Values.val) (m : Memory.Mem.mem) (k : Clight.cont) (bad : bool) (_ : guard_valid g) (_ : policy_image m values) (_ : @Logic.eq (option (prod Values.block Ctypes.type)) (@Maps.PTree.get (prod Values.block Ctypes.type) Main._policy__1 e) (@None (prod Values.block Ctypes.type))) (_ : @Logic.eq (option Values.val) (@Maps.PTree.get Values.val (guard_input g) le) (@Some Values.val (Values.Val.of_bool bad))), StoreSteps.store_path MainStructure.main_ge (fun after : Memory.Mem.mem => @Logic.eq Memory.Mem.mem after m) (Clight.State Main.f_main (guard_statement g) k e le m) match bad return nat with\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | true => S (S O)\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | false => S (S (S (S (S O))))\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  end (Clight.State Main.f_main Clight.Sskip k e (guard_env g le bad (@ListDef.nth BinNums.Z (BinInt.Z.to_nat (guard_index g)) values BinNums.Z0)) m)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsControl.bounds_start_source",
+      "full_type": "bounds_start_source\n     : forall (e : Clight.env) (le : Maps.PTree.tree Values.val) (m : Memory.Mem.mem) (k : Clight.cont) (argc bytes : BinNums.Z) (_ : and (BinInt.Z.le (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))) argc) (BinInt.Z.le argc (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI BinNums.xH))))))))))))))))))))))))))))))))) (_ : and (BinInt.Z.le BinNums.Z0 bytes) (BinInt.Z.le bytes Integers.Int64.max_unsigned)) (_ : @Logic.eq (option Values.val) (@Maps.PTree.get Values.val Main._argc le) (@Some Values.val (Values.Vint (Integers.Int.repr argc)))) (_ : @Logic.eq (option Values.val) (@Maps.PTree.get Values.val Main._bytes le) (@Some Values.val (Values.Vlong (Integers.Int64.repr bytes)))), StoreSteps.store_path MainStructure.main_ge (fun after : Memory.Mem.mem => @Logic.eq Memory.Mem.mem after m) (Clight.State Main.f_main bounds_start k e le m) (S (S O)) (Clight.State Main.f_main Clight.Sskip k e (bounds_start_env le argc bytes) m)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsSequence.policy_guard_links",
+      "full_type": "policy_guard_links\n     : and (guard_links Main._t'36 policy_guards) (@Logic.eq AST.ident (final_guard_id Main._t'36 policy_guards) Main._t'55)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsSequence.guard_append_source",
+      "full_type": "guard_append_source\n     : forall (e : Clight.env) (m : Memory.Mem.mem) (start : Clight.statement) (first middle : Clight.temp_env) (count : nat) (g : policy_guard) (values : list BinNums.Z) (bad : bool) (_ : forall k : Clight.cont, StoreSteps.store_path MainStructure.main_ge (fun after : Memory.Mem.mem => @Logic.eq Memory.Mem.mem after m) (Clight.State Main.f_main start k e first m) count (Clight.State Main.f_main Clight.Sskip k e middle m)) (_ : guard_valid g) (_ : policy_image m values) (_ : @Logic.eq (option (prod Values.block Ctypes.type)) (@Maps.PTree.get (prod Values.block Ctypes.type) Main._policy__1 e) (@None (prod Values.block Ctypes.type))) (_ : @Logic.eq (option Values.val) (@Maps.PTree.get Values.val (guard_input g) middle) (@Some Values.val (Values.Val.of_bool bad))) (k : Clight.cont), StoreSteps.store_path MainStructure.main_ge (fun after : Memory.Mem.mem => @Logic.eq Memory.Mem.mem after m) (Clight.State Main.f_main (Clight.Ssequence start (guard_statement g)) k e first m) (Nat.add (Nat.add count (S (S O))) match bad return nat with\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | true => S (S O)\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | false => S (S (S (S (S O))))\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           end) (Clight.State Main.f_main Clight.Sskip k e (guard_env g middle bad (@ListDef.nth BinNums.Z (BinInt.Z.to_nat (guard_index g)) values BinNums.Z0)) m)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsSequence.guard_sequence_source",
+      "full_type": "guard_sequence_source\n     : forall (e : Maps.PTree.tree (prod Values.block Ctypes.type)) (m : Memory.Mem.mem) (guards : list policy_guard) (values : list BinNums.Z) (_ : @ListDef.Forall policy_guard guard_valid guards) (_ : policy_image m values) (_ : @Logic.eq (option (prod Values.block Ctypes.type)) (@Maps.PTree.get (prod Values.block Ctypes.type) Main._policy__1 e) (@None (prod Values.block Ctypes.type))) (start : Clight.statement) (first : Clight.temp_env) (middle : Maps.PTree.tree Values.val) (initial_count : nat) (id : AST.ident) (bad : bool) (_ : guard_links id guards) (_ : @Logic.eq (option Values.val) (@Maps.PTree.get Values.val id middle) (@Some Values.val (Values.Val.of_bool bad))) (_ : forall k : Clight.cont, StoreSteps.store_path MainStructure.main_ge (fun after : Memory.Mem.mem => @Logic.eq Memory.Mem.mem after m) (Clight.State Main.f_main start k e first m) initial_count (Clight.State Main.f_main Clight.Sskip k e middle m)), @ex nat (fun count : nat => @ex Clight.temp_env (fun final : Clight.temp_env => and (Peano.le count (Nat.add initial_count (Nat.mul (S (S (S (S (S (S (S O))))))) (@length policy_guard guards)))) (and (forall k : Clight.cont, StoreSteps.store_path MainStructure.main_ge (fun after : Memory.Mem.mem => @Logic.eq Memory.Mem.mem after m) (Clight.State Main.f_main (guard_sequence start guards) k e first m) count (Clight.State Main.f_main Clight.Sskip k e final m)) (@Logic.eq (option Values.val) (@Maps.PTree.get Values.val (final_guard_id id guards) final) (@Some Values.val (Values.Val.of_bool (orb bad (guard_results values guards))))))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsSequence.bounds_conditions_source",
+      "full_type": "bounds_conditions_source\n     : forall (e : Maps.PTree.tree (prod Values.block Ctypes.type)) (le : Maps.PTree.tree Values.val) (m : Memory.Mem.mem) (argc bytes : BinNums.Z) (values : list BinNums.Z) (_ : and (BinInt.Z.le (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))) argc) (BinInt.Z.le argc (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI BinNums.xH))))))))))))))))))))))))))))))))) (_ : and (BinInt.Z.le BinNums.Z0 bytes) (BinInt.Z.le bytes Integers.Int64.max_unsigned)) (_ : @Logic.eq (option Values.val) (@Maps.PTree.get Values.val Main._argc le) (@Some Values.val (Values.Vint (Integers.Int.repr argc)))) (_ : @Logic.eq (option Values.val) (@Maps.PTree.get Values.val Main._bytes le) (@Some Values.val (Values.Vlong (Integers.Int64.repr bytes)))) (_ : @Logic.eq (option (prod Values.block Ctypes.type)) (@Maps.PTree.get (prod Values.block Ctypes.type) Main._policy__1 e) (@None (prod Values.block Ctypes.type))) (_ : policy_image m values), @ex nat (fun count : nat => @ex Clight.temp_env (fun final : Clight.temp_env => and (Peano.le count (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (and (forall k : Clight.cont, StoreSteps.store_path MainStructure.main_ge (fun after : Memory.Mem.mem => @Logic.eq Memory.Mem.mem after m) (Clight.State Main.f_main bounds_conditions k e le m) count (Clight.State Main.f_main Clight.Sskip k e final m)) (@Logic.eq (option Values.val) (@Maps.PTree.get Values.val Main._t'55 final) (@Some Values.val (Values.Val.of_bool (bounds_rejected argc bytes values)))))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsSource.bounds_finish_source",
+      "full_type": "bounds_finish_source\n     : forall (e : Clight.env) (le : Maps.PTree.tree Values.val) (m : Memory.Mem.mem) (k : Clight.cont) (bad : bool) (_ : @Logic.eq (option Values.val) (@Maps.PTree.get Values.val Main._t'55 le) (@Some Values.val (Values.Val.of_bool bad))), StoreSteps.store_path MainStructure.main_ge (fun after : Memory.Mem.mem => @Logic.eq Memory.Mem.mem after m) (Clight.State Main.f_main bounds_finish k e le m) match bad return nat with\n                                                                                                                                                                                                                                                                                                                                                                                                                | true => S (S (S O))\n                                                                                                                                                                                                                                                                                                                                                                                                                | false => S O\n                                                                                                                                                                                                                                                                                                                                                                                                                end (bounds_endpoint e le k m bad)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsSource.bounds_region_source",
+      "full_type": "bounds_region_source\n     : forall (e : Maps.PTree.tree (prod Values.block Ctypes.type)) (le : Maps.PTree.tree Values.val) (m : Memory.Mem.mem) (argc bytes : BinNums.Z) (values : list BinNums.Z) (_ : and (BinInt.Z.le (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))) argc) (BinInt.Z.le argc (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI BinNums.xH))))))))))))))))))))))))))))))))) (_ : and (BinInt.Z.le BinNums.Z0 bytes) (BinInt.Z.le bytes Integers.Int64.max_unsigned)) (_ : @Logic.eq (option Values.val) (@Maps.PTree.get Values.val Main._argc le) (@Some Values.val (Values.Vint (Integers.Int.repr argc)))) (_ : @Logic.eq (option Values.val) (@Maps.PTree.get Values.val Main._bytes le) (@Some Values.val (Values.Vlong (Integers.Int64.repr bytes)))) (_ : @Logic.eq (option (prod Values.block Ctypes.type)) (@Maps.PTree.get (prod Values.block Ctypes.type) Main._policy__1 e) (@None (prod Values.block Ctypes.type))) (_ : policy_image m values), @ex nat (fun count : nat => @ex Clight.temp_env (fun final : Clight.temp_env => and (Peano.le count (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (forall k : Clight.cont, StoreSteps.store_path MainStructure.main_ge (fun after : Memory.Mem.mem => @Logic.eq Memory.Mem.mem after m) (Clight.State Main.f_main bounds_region k e le m) count (bounds_endpoint e final k m (bounds_rejected argc bytes values)))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsSource.bounds_region_execution",
+      "full_type": "bounds_region_execution\n     : forall (e : Maps.PTree.tree (prod Values.block Ctypes.type)) (le : Maps.PTree.tree Values.val) (m : Memory.Mem.mem) (argc bytes : BinNums.Z) (values : list BinNums.Z) (_ : and (BinInt.Z.le (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))) argc) (BinInt.Z.le argc (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI BinNums.xH))))))))))))))))))))))))))))))))) (_ : and (BinInt.Z.le BinNums.Z0 bytes) (BinInt.Z.le bytes Integers.Int64.max_unsigned)) (_ : @Logic.eq (option Values.val) (@Maps.PTree.get Values.val Main._argc le) (@Some Values.val (Values.Vint (Integers.Int.repr argc)))) (_ : @Logic.eq (option Values.val) (@Maps.PTree.get Values.val Main._bytes le) (@Some Values.val (Values.Vlong (Integers.Int64.repr bytes)))) (_ : @Logic.eq (option (prod Values.block Ctypes.type)) (@Maps.PTree.get (prod Values.block Ctypes.type) Main._policy__1 e) (@None (prod Values.block Ctypes.type))) (_ : policy_image m values), @ex nat (fun count : nat => @ex Clight.temp_env (fun final : Clight.temp_env => and (Peano.le count (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (forall (cell : Machine.tls) (k : Clight.cont), and (Machine.steps MainStructure.main_ge cell (Machine.live (Clight.State Main.f_main bounds_region k e le m)) (@ListDef.repeat Machine.event (Machine.source_step Events.E0) count) (Machine.live (bounds_endpoint e final k m (bounds_rejected argc bytes values)))) (and (forall (events : list Machine.event) (target : Machine.machine) (_ : Machine.steps MainStructure.main_ge cell (Machine.live (Clight.State Main.f_main bounds_region k e le m)) events target) (_ : Peano.le (@length Machine.event events) count), @Logic.eq Memory.Mem.mem (Deterministic.routine_memory target) m) (and (forall (events : list Machine.event) (state : Clight.state) (_ : Machine.steps MainStructure.main_ge cell (Machine.live (Clight.State Main.f_main bounds_region k e le m)) events (Machine.live state)) (_ : lt (@length Machine.event events) count), @ex Clight.state (fun next : Clight.state => Machine.step MainStructure.main_ge cell (Machine.live state) (Machine.source_step Events.E0) (Machine.live next))) (and (forall (events : list Machine.event) (state : Clight.state) (_ : Machine.steps MainStructure.main_ge cell (Machine.live (Clight.State Main.f_main bounds_region k e le m)) events (Machine.live state)) (_ : @Logic.eq nat (@length Machine.event events) count), @Logic.eq Clight.state state (bounds_endpoint e final k m (bounds_rejected argc bytes values))) (forall (n : nat) (_ : Peano.le n count), Machine.steps MainStructure.main_ge cell (Machine.live (Clight.State Main.f_main bounds_region k e le m)) (@app Machine.event (@ListDef.repeat Machine.event (Machine.source_step Events.E0) n) (@cons Machine.event Machine.loss_step (@nil Machine.event))) (Machine.dead m))))))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsWitnesses.writable_scalar_stores_exist",
+      "full_type": "writable_scalar_stores_exist\n     : forall (b : Values.block) (size : BinNums.Z) (cells : list ScalarMemory.scalar_cell) (m : Memory.Mem.mem) (_ : @ListDef.Forall ScalarMemory.scalar_cell (ScalarMemory.scalar_valid size) cells) (_ : Memory.Mem.range_perm m b BinNums.Z0 size Memtype.Cur Memtype.Writable), @ex Memory.Mem.mem (fun after : Memory.Mem.mem => ScalarMemory.scalar_stores b m cells after)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsWitnesses.allocated_policy_image",
+      "full_type": "allocated_policy_image\n     : forall (values : list BinNums.Z) (_ : @Logic.eq nat (@length BinNums.Z values) (S (S (S (S (S (S (S (S (S (S O))))))))))) (_ : @ListDef.Forall BinNums.Z (fun v : BinNums.Z => and (BinInt.Z.le BinNums.Z0 v) (BinInt.Z.le v Integers.Int64.max_unsigned)) values), @ex Memory.Mem.mem (fun initial : Memory.Mem.mem => @ex Memory.Mem.mem (fun m : Memory.Mem.mem => and (@Logic.eq (option Memory.Mem.mem) (@Globalenvs.Genv.init_mem (Ctypes.fundef Clight.function) Ctypes.type (@Ctypes.program_of_program Clight.function Main.prog)) (@Some Memory.Mem.mem initial)) (and (MainMemory.policy_stores MainStructure.main_policy_block BinNums.Z0 initial values m) (policy_image m values))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsWitnesses.bounds_fixture_registers",
+      "full_type": "bounds_fixture_registers\n     : forall argc bytes : BinNums.Z, and (@Logic.eq (option Values.val) (@Maps.PTree.get Values.val Main._argc (bounds_fixture_temps argc bytes)) (@Some Values.val (Values.Vint (Integers.Int.repr argc)))) (@Logic.eq (option Values.val) (@Maps.PTree.get Values.val Main._bytes (bounds_fixture_temps argc bytes)) (@Some Values.val (Values.Vlong (Integers.Int64.repr bytes))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsWitnesses.bounds_allocated_execution",
+      "full_type": "bounds_allocated_execution\n     : forall (argc bytes : BinNums.Z) (values : list BinNums.Z) (_ : and (BinInt.Z.le (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))) argc) (BinInt.Z.le argc (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI BinNums.xH))))))))))))))))))))))))))))))))) (_ : and (BinInt.Z.le BinNums.Z0 bytes) (BinInt.Z.le bytes Integers.Int64.max_unsigned)) (_ : @Logic.eq nat (@length BinNums.Z values) (S (S (S (S (S (S (S (S (S (S O))))))))))) (_ : @ListDef.Forall BinNums.Z (fun v : BinNums.Z => and (BinInt.Z.le BinNums.Z0 v) (BinInt.Z.le v Integers.Int64.max_unsigned)) values), @ex Memory.Mem.mem (fun initial : Memory.Mem.mem => @ex Memory.Mem.mem (fun m : Memory.Mem.mem => @ex nat (fun count : nat => @ex Clight.temp_env (fun final : Clight.temp_env => and (@Logic.eq (option Memory.Mem.mem) (@Globalenvs.Genv.init_mem (Ctypes.fundef Clight.function) Ctypes.type (@Ctypes.program_of_program Clight.function Main.prog)) (@Some Memory.Mem.mem initial)) (and (MainMemory.policy_stores MainStructure.main_policy_block BinNums.Z0 initial values m) (and (Peano.le count (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (forall (cell : Machine.tls) (k : Clight.cont), and (Machine.steps MainStructure.main_ge cell (Machine.live (Clight.State Main.f_main bounds_region k Clight.empty_env (bounds_fixture_temps argc bytes) m)) (@ListDef.repeat Machine.event (Machine.source_step Events.E0) count) (Machine.live (bounds_endpoint Clight.empty_env final k m (bounds_rejected argc bytes values)))) (forall (n : nat) (_ : Peano.le n count), Machine.steps MainStructure.main_ge cell (Machine.live (Clight.State Main.f_main bounds_region k Clight.empty_env (bounds_fixture_temps argc bytes) m)) (@app Machine.event (@ListDef.repeat Machine.event (Machine.source_step Events.E0) n) (@cons Machine.event Machine.loss_step (@nil Machine.event))) (Machine.dead m)))))))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsSamples.case_owned_sound",
+      "full_type": "case_owned_sound\n     : forall (c : bounds_case) (_ : @Logic.eq bool (case_owned c) true), and (and (BinInt.Z.le (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))) (case_argc c)) (BinInt.Z.le (case_argc c) (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI BinNums.xH))))))))))))))))))))))))))))))))) (and (and (BinInt.Z.le BinNums.Z0 (case_bytes c)) (BinInt.Z.le (case_bytes c) Integers.Int64.max_unsigned)) (and (@Logic.eq nat (@length BinNums.Z (case_values c)) (S (S (S (S (S (S (S (S (S (S O))))))))))) (@ListDef.Forall BinNums.Z (fun x : BinNums.Z => and (BinInt.Z.le BinNums.Z0 x) (BinInt.Z.le x Integers.Int64.max_unsigned)) (case_values c))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsSamples.bounds_cases_owned",
+      "full_type": "bounds_cases_owned\n     : @Logic.eq bool (@List.forallb bounds_case case_owned bounds_cases) true",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsSamples.bounds_cases_results",
+      "full_type": "bounds_cases_results\n     : @Logic.eq (list bool) (@ListDef.map bounds_case bool case_rejected bounds_cases) (@app bool (@ListDef.repeat bool false (S (S (S O)))) (@ListDef.repeat bool true (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsSamples.every_numeric_rejection",
+      "full_type": "every_numeric_rejection\n     : @Logic.eq (list (option nat)) (@ListDef.map (list BinNums.Z) (option nat) (fun values : list BinNums.Z => first_rejected_guard values policy_guards) rejected_numeric_values) (@ListDef.map nat (option nat) (@Some nat) (ListDef.seq O (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsSamples.bounds_cases_allocated",
+      "full_type": "bounds_cases_allocated\n     : forall (c : bounds_case) (_ : @List.In bounds_case c bounds_cases), @ex Memory.Mem.mem (fun initial : Memory.Mem.mem => @ex Memory.Mem.mem (fun m : Memory.Mem.mem => @ex nat (fun count : nat => @ex Clight.temp_env (fun final : Clight.temp_env => and (@Logic.eq (option Memory.Mem.mem) (@Globalenvs.Genv.init_mem (Ctypes.fundef Clight.function) Ctypes.type (@Ctypes.program_of_program Clight.function Main.prog)) (@Some Memory.Mem.mem initial)) (and (MainMemory.policy_stores MainStructure.main_policy_block BinNums.Z0 initial (case_values c) m) (and (Peano.le count (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (forall (cell : Machine.tls) (k : Clight.cont), and (Machine.steps MainStructure.main_ge cell (Machine.live (Clight.State Main.f_main bounds_region k Clight.empty_env (bounds_fixture_temps (case_argc c) (case_bytes c)) m)) (@ListDef.repeat Machine.event (Machine.source_step Events.E0) count) (Machine.live (bounds_endpoint Clight.empty_env final k m (case_rejected c)))) (forall (n : nat) (_ : Peano.le n count), Machine.steps MainStructure.main_ge cell (Machine.live (Clight.State Main.f_main bounds_region k Clight.empty_env (bounds_fixture_temps (case_argc c) (case_bytes c)) m)) (@app Machine.event (@ListDef.repeat Machine.event (Machine.source_step Events.E0) n) (@cons Machine.event Machine.loss_step (@nil Machine.event))) (Machine.dead m)))))))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsPredicate.bounds_not_less",
+      "full_type": "bounds_not_less\n     : forall x y : BinNums.Z, @Logic.eq bool (negb (BinInt.Z.ltb x y)) (BinInt.Z.leb y x)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsPredicate.numeric_limits_exact",
+      "full_type": "numeric_limits_exact\n     : forall values : list BinNums.Z, @Logic.eq bool (numeric_limits values) (negb (policy_rejected values))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsPredicate.bounds_predicate_exact",
+      "full_type": "bounds_predicate_exact\n     : forall (argc bytes : BinNums.Z) (values : list BinNums.Z), @Logic.eq bool (negb (bounds_rejected argc bytes values)) (andb (andb (BinInt.Z.leb (BinInt.Z.sub argc (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))))) (BinInt.Z.leb bytes (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))))))))))))) (numeric_limits values))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsImportedValues.bound_nat_nonnegative",
+      "full_type": "bound_nat_nonnegative\n     : forall n : Nat, BinInt.Z.le BinNums.Z0 (bound_nat n)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsImportedValues.bound_nat_double",
+      "full_type": "bound_nat_double\n     : forall n : Nat, @Logic.eq BinNums.Z (bound_nat (double n)) (BinInt.Z.mul (BinNums.Zpos (BinNums.xO BinNums.xH)) (bound_nat n))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsImportedValues.bound_nat_succ",
+      "full_type": "bound_nat_succ\n     : forall n : Nat, @Logic.eq BinNums.Z (bound_nat (Nat_succ n)) (BinInt.Z.add (BinNums.Zpos BinNums.xH) (bound_nat n))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsImportedValues.bound_nat_zero",
+      "full_type": "bound_nat_zero\n     : @Logic.eq BinNums.Z (bound_nat Nat_zero) BinNums.Z0",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsImportedValues.bound_bool_and",
+      "full_type": "bound_bool_and\n     : forall a b : Bool, @Logic.eq bool (bound_bool (Bool_and a b)) (andb (bound_bool a) (bound_bool b))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsImportedValues.bound_ble",
+      "full_type": "bound_ble\n     : forall a b : Nat, @Logic.eq bool (bound_bool (Nat_ble a b)) (BinInt.Z.leb (bound_nat a) (bound_nat b))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsImportedValues.bound_beq",
+      "full_type": "bound_beq\n     : forall a b : Nat, @Logic.eq bool (bound_bool (Nat_beq a b)) (BinInt.Z.eqb (bound_nat a) (bound_nat b))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsImportedValues.bound_pred",
+      "full_type": "bound_pred\n     : forall a : Nat, @Logic.eq BinNums.Z (bound_nat (Nat_pred a)) (BinInt.Z.max BinNums.Z0 (BinInt.Z.sub (bound_nat a) (BinNums.Zpos BinNums.xH)))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsImportedValues.bound_sub",
+      "full_type": "bound_sub\n     : forall a b : Nat, @Logic.eq BinNums.Z (bound_nat (Nat_sub a b)) (BinInt.Z.max BinNums.Z0 (BinInt.Z.sub (bound_nat a) (bound_nat b)))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsImportedValues.bound_add",
+      "full_type": "bound_add\n     : forall a b : Nat, @Logic.eq BinNums.Z (bound_nat (Nat_add a b)) (BinInt.Z.add (bound_nat a) (bound_nat b))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsImportedValues.bound_ite",
+      "full_type": "bound_ite\n     : forall (A : Type) (b : Bool) (yes no : A), @Logic.eq A (ite A (@eq Bool b Bool_true) (instDecidableEqBool b Bool_true) yes no) match bound_bool b return A with\n                                                                                                                                      | true => yes\n                                                                                                                                      | false => no\n                                                                                                                                      end",
+      "transitive_assumptions": "Axioms:\neq relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "eq"
+      ]
+    },
+    {
+      "name": "LeanCageBounds.BoundsImportedValues.imported_page_remainder",
+      "full_type": "imported_page_remainder\n     : forall (fuel n : Nat) (_ : BinInt.Z.le (bound_nat n) (bound_nat fuel)), @Logic.eq BinNums.Z (bound_nat (LeanCageM4_Bounds_pageRemainder fuel n)) (BinInt.Z.modulo (bound_nat n) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))))))))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCageBounds.BoundsImportedValues.imported_page_aligned",
+      "full_type": "imported_page_aligned\n     : forall n : Nat, @Logic.eq bool (bound_bool (LeanCageM4_Bounds_pageAligned n)) (BinInt.Z.eqb (BinInt.Z.modulo (bound_nat n) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))))))))))) BinNums.Z0)",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCageBounds.BoundsImportedValues.imported_field_count",
+      "full_type": "imported_field_count\n     : forall fields : List_inst1 Nat, @Logic.eq BinNums.Z (bound_nat (LeanCageM4_Bounds_fieldCount fields)) (BinInt.Z.of_nat (@length BinNums.Z (bound_values fields)))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsImportedValues.imported_field_at",
+      "full_type": "imported_field_at\n     : forall (fields : List_inst1 Nat) (index : Nat), @Logic.eq BinNums.Z (bound_nat (LeanCageM4_Bounds_fieldAt fields index)) (@ListDef.nth BinNums.Z (nat_of_Nat index) (bound_values fields) BinNums.Z0)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageBounds.BoundsImported.bound_decide_le",
+      "full_type": "bound_decide_le\n     : forall a b : Nat, @Logic.eq bool (bound_bool (Decidable_decide (LE_le_inst1 Nat instLENat a b) (Nat_decLe a b))) (BinInt.Z.leb (bound_nat a) (bound_nat b))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCageBounds.BoundsImported.bound_decide_eq",
+      "full_type": "bound_decide_eq\n     : forall a b : Nat, @Logic.eq bool (bound_bool (BEq_beq_inst1 Nat (instBEqOfDecidableEq_inst1 Nat instDecidableEqNat) a b)) (BinInt.Z.eqb (bound_nat a) (bound_nat b))",
+      "transitive_assumptions": "Axioms:\neq relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "eq"
+      ]
+    },
+    {
+      "name": "LeanCageBounds.BoundsImported.imported_numeric_limits",
+      "full_type": "imported_numeric_limits\n     : forall (fields : List_inst1 Nat) (_ : @Logic.eq nat (@length BinNums.Z (bound_values fields)) (S (S (S (S (S (S (S (S (S (S O))))))))))), @Logic.eq bool (bound_bool (LeanCageM4_Bounds_nativeLimits fields)) (numeric_limits (bound_values fields))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCageBounds.BoundsImported.imported_argument_bounds",
+      "full_type": "imported_argument_bounds\n     : forall (argc bytes : Nat) (_ : BinInt.Z.le (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))) (bound_nat argc)), @Logic.eq bool (bound_bool (LeanCageM4_Bounds_nativeArguments argc bytes)) (andb (BinInt.Z.leb (BinInt.Z.sub (bound_nat argc) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))))) (BinInt.Z.leb (bound_nat bytes) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))))))))))))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCageBounds.BoundsImported.imported_bounds_exact",
+      "full_type": "imported_bounds_exact\n     : forall (argc bytes : Nat) (fields : List_inst1 Nat) (_ : BinInt.Z.le (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))) (bound_nat argc)) (_ : @Logic.eq nat (@length BinNums.Z (bound_values fields)) (S (S (S (S (S (S (S (S (S (S O))))))))))), @Logic.eq bool (bound_bool (LeanCageM4_Bounds_nativeBounds argc bytes fields)) (negb (bounds_rejected (bound_nat argc) (bound_nat bytes) (bound_values fields)))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "LeanCageBounds.BoundsConnection.bounds_imported_execution",
+      "full_type": "bounds_imported_execution\n     : forall (e : Maps.PTree.tree (prod Values.block Ctypes.type)) (le : Maps.PTree.tree Values.val) (m : Memory.Mem.mem) (argc bytes : Nat) (fields : List_inst1 Nat) (_ : and (BinInt.Z.le (BinNums.Zpos (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))) (bound_nat argc)) (BinInt.Z.le (bound_nat argc) (BinNums.Zpos (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI BinNums.xH))))))))))))))))))))))))))))))))) (_ : BinInt.Z.le (bound_nat bytes) Integers.Int64.max_unsigned) (_ : @Logic.eq (option Values.val) (@Maps.PTree.get Values.val Main._argc le) (@Some Values.val (Values.Vint (Integers.Int.repr (bound_nat argc))))) (_ : @Logic.eq (option Values.val) (@Maps.PTree.get Values.val Main._bytes le) (@Some Values.val (Values.Vlong (Integers.Int64.repr (bound_nat bytes))))) (_ : @Logic.eq (option (prod Values.block Ctypes.type)) (@Maps.PTree.get (prod Values.block Ctypes.type) Main._policy__1 e) (@None (prod Values.block Ctypes.type))) (_ : policy_image m (bound_values fields)), @ex nat (fun count : nat => @ex Clight.temp_env (fun final : Clight.temp_env => and (Peano.le count (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (forall (cell : Machine.tls) (k : Clight.cont), and (Machine.steps MainStructure.main_ge cell (Machine.live (Clight.State Main.f_main bounds_region k e le m)) (@ListDef.repeat Machine.event (Machine.source_step Events.E0) count) (Machine.live (bounds_endpoint e final k m (negb (bound_bool (LeanCageM4_Bounds_nativeBounds argc bytes fields)))))) (and (forall (events : list Machine.event) (target : Machine.machine) (_ : Machine.steps MainStructure.main_ge cell (Machine.live (Clight.State Main.f_main bounds_region k e le m)) events target) (_ : Peano.le (@length Machine.event events) count), @Logic.eq Memory.Mem.mem (Deterministic.routine_memory target) m) (and (forall (events : list Machine.event) (state : Clight.state) (_ : Machine.steps MainStructure.main_ge cell (Machine.live (Clight.State Main.f_main bounds_region k e le m)) events (Machine.live state)) (_ : lt (@length Machine.event events) count), @ex Clight.state (fun next : Clight.state => Machine.step MainStructure.main_ge cell (Machine.live state) (Machine.source_step Events.E0) (Machine.live next))) (and (forall (events : list Machine.event) (state : Clight.state) (_ : Machine.steps MainStructure.main_ge cell (Machine.live (Clight.State Main.f_main bounds_region k e le m)) events (Machine.live state)) (_ : @Logic.eq nat (@length Machine.event events) count), @Logic.eq Clight.state state (bounds_endpoint e final k m (negb (bound_bool (LeanCageM4_Bounds_nativeBounds argc bytes fields))))) (forall (n : nat) (_ : Peano.le n count), Machine.steps MainStructure.main_ge cell (Machine.live (Clight.State Main.f_main bounds_region k e le m)) (@app Machine.event (@ListDef.repeat Machine.event (Machine.source_step Events.E0) n) (@cons Machine.event Machine.loss_step (@nil Machine.event))) (Machine.dead m))))))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    }
+  ],
+  "lean_declarations": [
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.absent_period_check",
+      "type": "Eq.{1}\n    (LeanCageM4.Bounds.nativeLimits\n      (LeanCageM4.Plan.numericFields\n        (have __src := LeanCageM4.Plan.sampleLimits;\n        { memory := __src.memory, tasks := __src.tasks, quota := __src.quota, period := 1, cpu := __src.cpu,\n          wall := __src.wall, workspace := __src.workspace, inodes := __src.inodes, stdin := __src.stdin,\n          stdout := __src.stdout, stderr := __src.stderr })))\n    Bool.true \u2227\n  Eq.{1}\n    (LeanCageM3.limitsValid\n      (have __src := LeanCageM4.Plan.sampleLimits;\n      { memory := __src.memory, tasks := __src.tasks, quota := __src.quota, period := 1, cpu := __src.cpu,\n        wall := __src.wall, workspace := __src.workspace, inodes := __src.inodes, stdin := __src.stdin,\n        stdout := __src.stdout, stderr := __src.stderr }))\n    Bool.false"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.allowed_boundary",
+      "type": "Eq.{1} (LeanCageM4.Bounds.nativeBounds 17 8 (LeanCageM4.Plan.numericFields LeanCageM4.Plan.sampleLimits)) Bool.true"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.argument_conditions",
+      "type": "\u2200 (executable : String) (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (LeanCageM3.argvValid p.argv) Bool.true \u2192\n    Eq.{1}\n      (LeanCageM4.Bounds.nativeArguments (Array.size.{0} (LeanCageM4.Plan.nativeArgs executable p pid pre))\n        (LeanCageM4.Bounds.guestBytes p))\n      Bool.true"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.argument_conditions._proof_1_3",
+      "type": "\u2200 (p : LeanCageM3.Policy),\n  (((LT.lt.{0} 0 (Array.size.{0} p.argv) \u2227 LE.le.{0} (Array.size.{0} p.argv) 64) \u2227\n          Eq.{1}\n            (BEq.beq.{0} (GetElem?.getElem?.{0, 0, 0} p.argv 0) (Option.some.{0} \"/bin/sh\") ||\n              BEq.beq.{0} (GetElem?.getElem?.{0, 0, 0} p.argv 0) (Option.some.{0} \"/usr/local/bin/python3\"))\n            Bool.true) \u2227\n        Eq.{1}\n          (Array.all.{0} p.argv fun s =>\n            !s.isEmpty && Decidable.decide (LE.le.{0} s.utf8ByteSize 4096) && !s.contains '\\x00')\n          Bool.true) \u2227\n      LE.le.{0} (Array.foldl.{0, 0} (fun n s => HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} n s.utf8ByteSize) 1) 0 p.argv)\n        16384 \u2192\n    \u00acLE.le.{0} (HSub.hSub.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} 16 (Array.size.{0} p.argv)) 16) 64 \u2192 False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.fieldAt.eq_1",
+      "type": "\u2200 (x : Nat), Eq.{1} (LeanCageM4.Bounds.fieldAt List.nil.{0} x) 0"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.fieldAt.eq_2",
+      "type": "\u2200 (x_2 : Nat) (tail : List.{0} Nat), Eq.{1} (LeanCageM4.Bounds.fieldAt (List.cons.{0} x_2 tail) 0) x_2"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.fieldAt.eq_3",
+      "type": "\u2200 (head : Nat) (xs : List.{0} Nat) (i : Nat),\n  Eq.{1} (LeanCageM4.Bounds.fieldAt (List.cons.{0} head xs) i.succ) (LeanCageM4.Bounds.fieldAt xs i)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.fieldAt.eq_def",
+      "type": "\u2200 (x : List.{0} Nat) (x_1 : Nat),\n  Eq.{1} (LeanCageM4.Bounds.fieldAt x x_1)\n    (match x, x_1 with\n    | List.nil.{0}, x => 0\n    | List.cons.{0} x tail, 0 => x\n    | List.cons.{0} head xs, i.succ => LeanCageM4.Bounds.fieldAt xs i)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.fieldCount.eq_1",
+      "type": "Eq.{1} (LeanCageM4.Bounds.fieldCount List.nil.{0}) 0"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.fieldCount.eq_2",
+      "type": "\u2200 (head : Nat) (xs : List.{0} Nat),\n  Eq.{1} (LeanCageM4.Bounds.fieldCount (List.cons.{0} head xs))\n    (HAdd.hAdd.{0, 0, 0} (LeanCageM4.Bounds.fieldCount xs) 1)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.fieldCount.eq_def",
+      "type": "\u2200 (x : List.{0} Nat),\n  Eq.{1} (LeanCageM4.Bounds.fieldCount x)\n    (match x with\n    | List.nil.{0} => 0\n    | List.cons.{0} head xs => HAdd.hAdd.{0, 0, 0} (LeanCageM4.Bounds.fieldCount xs) 1)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.guestBytes.eq_1",
+      "type": "\u2200 (p : LeanCageM3.Policy),\n  Eq.{1} (LeanCageM4.Bounds.guestBytes p)\n    (Array.foldl.{0, 0} (fun n s => HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} n s.utf8ByteSize) 1) 0 p.argv)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.limits_accepted",
+      "type": "\u2200 (l : LeanCageM3.Limits),\n  Eq.{1} (LeanCageM3.limitsValid l) Bool.true \u2192\n    Eq.{1} (LeanCageM4.Bounds.nativeLimits (LeanCageM4.Plan.numericFields l)) Bool.true"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.limits_exact",
+      "type": "\u2200 (l : LeanCageM3.Limits),\n  Eq.{1} (LeanCageM3.limitsValid l)\n    (LeanCageM4.Bounds.nativeLimits (LeanCageM4.Plan.numericFields l) && BEq.beq.{0} l.period 100000)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.limits_recovered",
+      "type": "\u2200 (l : LeanCageM3.Limits),\n  Eq.{1} l.period 100000 \u2192\n    Eq.{1} (LeanCageM4.Bounds.nativeLimits (LeanCageM4.Plan.numericFields l)) Bool.true \u2192\n      Eq.{1} (LeanCageM3.limitsValid l) Bool.true"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.nativeArguments.eq_1",
+      "type": "\u2200 (argc bytes : Nat),\n  Eq.{1} (LeanCageM4.Bounds.nativeArguments argc bytes)\n    (Decidable.decide (LE.le.{0} (HSub.hSub.{0, 0, 0} argc 16) 64) && Decidable.decide (LE.le.{0} bytes 16384))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.nativeBounds.eq_1",
+      "type": "\u2200 (argc bytes : Nat) (fields : List.{0} Nat),\n  Eq.{1} (LeanCageM4.Bounds.nativeBounds argc bytes fields)\n    (LeanCageM4.Bounds.nativeArguments argc bytes && LeanCageM4.Bounds.nativeLimits fields)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.nativeLimits.eq_1",
+      "type": "\u2200 (fields : List.{0} Nat),\n  Eq.{1} (LeanCageM4.Bounds.nativeLimits fields)\n    (BEq.beq.{0} (LeanCageM4.Bounds.fieldCount fields) 10 &&\n                        (Decidable.decide (LE.le.{0} 16777216 (LeanCageM4.Bounds.fieldAt fields 0)) &&\n                            Decidable.decide (LE.le.{0} (LeanCageM4.Bounds.fieldAt fields 0) 1073741824) &&\n                          LeanCageM4.Bounds.pageAligned (LeanCageM4.Bounds.fieldAt fields 0)) &&\n                      (Decidable.decide (LE.le.{0} 4 (LeanCageM4.Bounds.fieldAt fields 1)) &&\n                        Decidable.decide (LE.le.{0} (LeanCageM4.Bounds.fieldAt fields 1) 256)) &&\n                    (Decidable.decide (LE.le.{0} 1000 (LeanCageM4.Bounds.fieldAt fields 2)) &&\n                      Decidable.decide (LE.le.{0} (LeanCageM4.Bounds.fieldAt fields 2) 100000)) &&\n                  (Decidable.decide (LE.le.{0} 10000 (LeanCageM4.Bounds.fieldAt fields 3)) &&\n                    Decidable.decide (LE.le.{0} (LeanCageM4.Bounds.fieldAt fields 3) 3600000000)) &&\n                (Decidable.decide (LE.le.{0} 10 (LeanCageM4.Bounds.fieldAt fields 4)) &&\n                  Decidable.decide (LE.le.{0} (LeanCageM4.Bounds.fieldAt fields 4) 3600000)) &&\n              (Decidable.decide (LE.le.{0} 1048576 (LeanCageM4.Bounds.fieldAt fields 5)) &&\n                  Decidable.decide (LE.le.{0} (LeanCageM4.Bounds.fieldAt fields 5) 268435456) &&\n                LeanCageM4.Bounds.pageAligned (LeanCageM4.Bounds.fieldAt fields 5)) &&\n            (Decidable.decide (LE.le.{0} 64 (LeanCageM4.Bounds.fieldAt fields 6)) &&\n              Decidable.decide (LE.le.{0} (LeanCageM4.Bounds.fieldAt fields 6) 65536)) &&\n          Decidable.decide (LE.le.{0} (LeanCageM4.Bounds.fieldAt fields 7) 67108864) &&\n        Decidable.decide (LE.le.{0} (LeanCageM4.Bounds.fieldAt fields 8) 16777216) &&\n      Decidable.decide (LE.le.{0} (LeanCageM4.Bounds.fieldAt fields 9) 16777216))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.pageAligned.eq_1",
+      "type": "\u2200 (n : Nat), Eq.{1} (LeanCageM4.Bounds.pageAligned n) (BEq.beq.{0} (LeanCageM4.Bounds.pageRemainder n n) 0)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.pageAligned_exact",
+      "type": "\u2200 (n : Nat), Eq.{1} (LeanCageM4.Bounds.pageAligned n) (BEq.beq.{0} (HMod.hMod.{0, 0, 0} n 4096) 0)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.pageRemainder.eq_1",
+      "type": "\u2200 (x : Nat), Eq.{1} (LeanCageM4.Bounds.pageRemainder 0 x) x"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.pageRemainder.eq_2",
+      "type": "\u2200 (x fuel : Nat),\n  Eq.{1} (LeanCageM4.Bounds.pageRemainder fuel.succ x)\n    (ite.{1} (Eq.{1} (Decidable.decide (LE.le.{0} 4096 x)) Bool.true)\n      (LeanCageM4.Bounds.pageRemainder fuel (HSub.hSub.{0, 0, 0} x 4096)) x)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.pageRemainder.eq_def",
+      "type": "\u2200 (x x_1 : Nat),\n  Eq.{1} (LeanCageM4.Bounds.pageRemainder x x_1)\n    (match x, x_1 with\n    | 0, n => n\n    | fuel.succ, n =>\n      ite.{1} (Eq.{1} (Decidable.decide (LE.le.{0} 4096 n)) Bool.true)\n        (LeanCageM4.Bounds.pageRemainder fuel (HSub.hSub.{0, 0, 0} n 4096)) n)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.pageRemainder_exact",
+      "type": "\u2200 (fuel n : Nat), LE.le.{0} n fuel \u2192 Eq.{1} (LeanCageM4.Bounds.pageRemainder fuel n) (HMod.hMod.{0, 0, 0} n 4096)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.pageRemainder_exact._proof_1_1",
+      "type": "\u2200 (n : Nat), LE.le.{0} n 0 \u2192 \u00acEq.{1} n 0 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.pageRemainder_exact._proof_1_5",
+      "type": "\u2200 (fuel n : Nat),\n  LE.le.{0} n (HAdd.hAdd.{0, 0, 0} fuel 1) \u2192 LE.le.{0} 4096 n \u2192 \u00acLE.le.{0} (HSub.hSub.{0, 0, 0} n 4096) fuel \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.pageRemainder_exact._proof_1_6",
+      "type": "\u2200 (fuel n : Nat), \u00acLE.le.{0} 4096 n \u2192 \u00acLT.lt.{0} n 4096 \u2192 False"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Bounds.valid_plan_bounds",
+      "type": "\u2200 (executable : String) (p : LeanCageM3.Policy) (pid : Nat) (pre : Bool),\n  Eq.{1} (LeanCageM3.limitsValid p.limits) Bool.true \u2192\n    Eq.{1} (LeanCageM3.argvValid p.argv) Bool.true \u2192\n      Eq.{1}\n        (LeanCageM4.Bounds.nativeBounds (Array.size.{0} (LeanCageM4.Plan.nativeArgs executable p pid pre))\n          (LeanCageM4.Bounds.guestBytes p) (LeanCageM4.Plan.numericFields p.limits))\n        Bool.true"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Plan.sampleLimits.eq_1",
+      "type": "Eq.{1} LeanCageM4.Plan.sampleLimits\n  { memory := 16777216, tasks := 4, quota := 1000, period := 100000, cpu := 10000, wall := 10, workspace := 1048576,\n    inodes := 64, stdin := 0, stdout := 0, stderr := 0 }"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Bounds.0.LeanCageM4.Bounds.fieldAt.match_1.eq_1",
+      "type": "\u2200 (motive : List.{0} Nat \u2192 Nat \u2192 Sort u_1) (x : Nat) (h_1 : (x : Nat) \u2192 motive List.nil.{0} x)\n  (h_2 : (x : Nat) \u2192 (tail : List.{0} Nat) \u2192 motive (List.cons.{0} x tail) 0)\n  (h_3 : (head : Nat) \u2192 (xs : List.{0} Nat) \u2192 (i : Nat) \u2192 motive (List.cons.{0} head xs) i.succ),\n  Eq.{u_1}\n    (match List.nil.{0}, x with\n    | List.nil.{0}, x => h_1 x\n    | List.cons.{0} x tail, 0 => h_2 x tail\n    | List.cons.{0} head xs, i.succ => h_3 head xs i)\n    (h_1 x)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Bounds.0.LeanCageM4.Bounds.fieldAt.match_1.eq_2",
+      "type": "\u2200 (motive : List.{0} Nat \u2192 Nat \u2192 Sort u_1) (x : Nat) (tail : List.{0} Nat) (h_1 : (x : Nat) \u2192 motive List.nil.{0} x)\n  (h_2 : (x : Nat) \u2192 (tail : List.{0} Nat) \u2192 motive (List.cons.{0} x tail) 0)\n  (h_3 : (head : Nat) \u2192 (xs : List.{0} Nat) \u2192 (i : Nat) \u2192 motive (List.cons.{0} head xs) i.succ),\n  Eq.{u_1}\n    (match List.cons.{0} x tail, 0 with\n    | List.nil.{0}, x => h_1 x\n    | List.cons.{0} x tail, 0 => h_2 x tail\n    | List.cons.{0} head xs, i.succ => h_3 head xs i)\n    (h_2 x tail)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Bounds.0.LeanCageM4.Bounds.fieldAt.match_1.eq_3",
+      "type": "\u2200 (motive : List.{0} Nat \u2192 Nat \u2192 Sort u_1) (head : Nat) (xs : List.{0} Nat) (i : Nat)\n  (h_1 : (x : Nat) \u2192 motive List.nil.{0} x) (h_2 : (x : Nat) \u2192 (tail : List.{0} Nat) \u2192 motive (List.cons.{0} x tail) 0)\n  (h_3 : (head : Nat) \u2192 (xs : List.{0} Nat) \u2192 (i : Nat) \u2192 motive (List.cons.{0} head xs) i.succ),\n  Eq.{u_1}\n    (match List.cons.{0} head xs, i.succ with\n    | List.nil.{0}, x => h_1 x\n    | List.cons.{0} x tail, 0 => h_2 x tail\n    | List.cons.{0} head xs, i.succ => h_3 head xs i)\n    (h_3 head xs i)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Bounds.0.LeanCageM4.Bounds.fieldCount.match_1.eq_1",
+      "type": "\u2200 (motive : List.{0} Nat \u2192 Sort u_1) (h_1 : Unit \u2192 motive List.nil.{0})\n  (h_2 : (head : Nat) \u2192 (xs : List.{0} Nat) \u2192 motive (List.cons.{0} head xs)),\n  Eq.{u_1}\n    (match List.nil.{0} with\n    | List.nil.{0} => h_1 ()\n    | List.cons.{0} head xs => h_2 head xs)\n    (h_1 ())"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Bounds.0.LeanCageM4.Bounds.fieldCount.match_1.eq_2",
+      "type": "\u2200 (motive : List.{0} Nat \u2192 Sort u_1) (head : Nat) (xs : List.{0} Nat) (h_1 : Unit \u2192 motive List.nil.{0})\n  (h_2 : (head : Nat) \u2192 (xs : List.{0} Nat) \u2192 motive (List.cons.{0} head xs)),\n  Eq.{u_1}\n    (match List.cons.{0} head xs with\n    | List.nil.{0} => h_1 ()\n    | List.cons.{0} head xs => h_2 head xs)\n    (h_2 head xs)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Bounds.0.LeanCageM4.Bounds.pageRemainder.match_1.eq_1",
+      "type": "\u2200 (motive : Nat \u2192 Nat \u2192 Sort u_1) (n : Nat) (h_1 : (n : Nat) \u2192 motive 0 n) (h_2 : (fuel n : Nat) \u2192 motive fuel.succ n),\n  Eq.{u_1}\n    (match 0, n with\n    | 0, n => h_1 n\n    | fuel.succ, n => h_2 fuel n)\n    (h_1 n)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Bounds.0.LeanCageM4.Bounds.pageRemainder.match_1.eq_2",
+      "type": "\u2200 (motive : Nat \u2192 Nat \u2192 Sort u_1) (fuel n : Nat) (h_1 : (n : Nat) \u2192 motive 0 n)\n  (h_2 : (fuel n : Nat) \u2192 motive fuel.succ n),\n  Eq.{u_1}\n    (match fuel.succ, n with\n    | 0, n => h_1 n\n    | fuel.succ, n => h_2 fuel n)\n    (h_2 fuel n)"
+    }
+  ],
+  "imported_endpoint": {
+    "name": "LeanCageBounds.BoundsImport.LeanCageM4_Bounds_nativeBounds",
+    "full_type": "LeanCageM4_Bounds_nativeBounds\n     : forall (_ : Nat) (_ : Nat) (_ : List_inst1 Nat), Bool",
+    "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+    "assumption_names": [],
+    "definitional_uip": [
+      "HEq_inst1",
+      "True",
+      "eq",
+      "eq_inst1"
+    ]
+  },
+  "export_inventory": {
+    "metadata": {
+      "exporter": {
+        "name": "lean4export",
+        "version": "3.1.0"
+      },
+      "format": {
+        "version": "3.1.0"
+      },
+      "lean": {
+        "githash": "eb6cafb7290e8bd5f2937522d8d804f58f02bafc",
+        "version": "4.35.0"
+      }
+    },
+    "declarations": [
+      {
+        "name": "Nat",
+        "kind": "types"
+      },
+      {
+        "name": "Nat.zero",
+        "kind": "ctors"
+      },
+      {
+        "name": "Nat.succ",
+        "kind": "ctors"
+      },
+      {
+        "name": "Nat.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "List",
+        "kind": "types"
+      },
+      {
+        "name": "List.nil",
+        "kind": "ctors"
+      },
+      {
+        "name": "List.cons",
+        "kind": "ctors"
+      },
+      {
+        "name": "List.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Bool",
+        "kind": "types"
+      },
+      {
+        "name": "Bool.false",
+        "kind": "ctors"
+      },
+      {
+        "name": "Bool.true",
+        "kind": "ctors"
+      },
+      {
+        "name": "Bool.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Bool.and",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.Reflects.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "False",
+        "kind": "types"
+      },
+      {
+        "name": "False.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Not",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.Reflects",
+        "kind": "def"
+      },
+      {
+        "name": "Decidable",
+        "kind": "types"
+      },
+      {
+        "name": "Decidable.intro",
+        "kind": "ctors"
+      },
+      {
+        "name": "Decidable.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Decidable.decide",
+        "kind": "def"
+      },
+      {
+        "name": "LE",
+        "kind": "types"
+      },
+      {
+        "name": "LE.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "LE.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "LE.le",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.le",
+        "kind": "types"
+      },
+      {
+        "name": "Nat.le.refl",
+        "kind": "ctors"
+      },
+      {
+        "name": "Nat.le.step",
+        "kind": "ctors"
+      },
+      {
+        "name": "Nat.le.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "instLENat",
+        "kind": "def"
+      },
+      {
+        "name": "outParam",
+        "kind": "def"
+      },
+      {
+        "name": "HSub",
+        "kind": "types"
+      },
+      {
+        "name": "HSub.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "HSub.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "HSub.hSub",
+        "kind": "def"
+      },
+      {
+        "name": "Sub",
+        "kind": "types"
+      },
+      {
+        "name": "Sub.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Sub.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Sub.sub",
+        "kind": "def"
+      },
+      {
+        "name": "instHSub",
+        "kind": "def"
+      },
+      {
+        "name": "PUnit",
+        "kind": "types"
+      },
+      {
+        "name": "PUnit.unit",
+        "kind": "ctors"
+      },
+      {
+        "name": "PUnit.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "PProd",
+        "kind": "types"
+      },
+      {
+        "name": "PProd.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "PProd.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Nat.below",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.brecOn.go",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.brecOn",
+        "kind": "def"
+      },
+      {
+        "name": "OfNat",
+        "kind": "types"
+      },
+      {
+        "name": "OfNat.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "OfNat.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "OfNat.ofNat",
+        "kind": "def"
+      },
+      {
+        "name": "instOfNatNat",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.mul.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Unit",
+        "kind": "def"
+      },
+      {
+        "name": "Unit.unit",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.pow.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.pred",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.sub._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.sub",
+        "kind": "def"
+      },
+      {
+        "name": "instSubNat",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble",
+        "kind": "def"
+      },
+      {
+        "name": "Eq",
+        "kind": "types"
+      },
+      {
+        "name": "Eq.refl",
+        "kind": "ctors"
+      },
+      {
+        "name": "Eq.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Nat.decEq.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "False.elim",
+        "kind": "def"
+      },
+      {
+        "name": "Eq.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "HEq",
+        "kind": "types"
+      },
+      {
+        "name": "HEq.refl",
+        "kind": "ctors"
+      },
+      {
+        "name": "HEq.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "True",
+        "kind": "types"
+      },
+      {
+        "name": "True.intro",
+        "kind": "ctors"
+      },
+      {
+        "name": "True.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Nat.beq.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.beq._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.beq",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.noConfusion_of_Nat.aux.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.noConfusion_of_Nat.aux._f",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.noConfusion_of_Nat.aux",
+        "kind": "thm"
+      },
+      {
+        "name": "rfl",
+        "kind": "def"
+      },
+      {
+        "name": "congrArg",
+        "kind": "thm"
+      },
+      {
+        "name": "noConfusion_of_Nat",
+        "kind": "thm"
+      },
+      {
+        "name": "Bool.ctorIdx",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.le_of_ble_eq_true.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.zero_le.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.zero_le._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.zero_le",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.le.below",
+        "kind": "types"
+      },
+      {
+        "name": "Nat.le.below.refl",
+        "kind": "ctors"
+      },
+      {
+        "name": "Nat.le.below.step",
+        "kind": "ctors"
+      },
+      {
+        "name": "Nat.le.below.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Nat.le.brecOn",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.le.below.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "Eq.ndrec",
+        "kind": "def"
+      },
+      {
+        "name": "Eq.symm",
+        "kind": "thm"
+      },
+      {
+        "name": "cast",
+        "kind": "def"
+      },
+      {
+        "name": "eq_of_heq",
+        "kind": "thm"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.succ_le_succ.match_1_7",
+        "kind": "def"
+      },
+      {
+        "name": "HAdd",
+        "kind": "types"
+      },
+      {
+        "name": "HAdd.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "HAdd.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "HAdd.hAdd",
+        "kind": "def"
+      },
+      {
+        "name": "Add",
+        "kind": "types"
+      },
+      {
+        "name": "Add.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Add.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Add.add",
+        "kind": "def"
+      },
+      {
+        "name": "instHAdd",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.add.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.add._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.add",
+        "kind": "def"
+      },
+      {
+        "name": "instAddNat",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.succ_le_succ",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.le_of_ble_eq_true._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.le_of_ble_eq_true",
+        "kind": "thm"
+      },
+      {
+        "name": "absurd",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.ble_eq_true_of_le.match_1_7",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.ble_self_eq_true.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble_self_eq_true._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble_self_eq_true",
+        "kind": "thm"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.ble_succ_eq_true.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble_succ_eq_true._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble_succ_eq_true",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.ble_eq_true_of_le",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.not_le_of_not_ble_eq_true",
+        "kind": "thm"
+      },
+      {
+        "name": "Bool.noConfusionType",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.noConfusion",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.decLe._proof_1",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.decLe",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Bounds.nativeArguments",
+        "kind": "def"
+      },
+      {
+        "name": "List.below",
+        "kind": "def"
+      },
+      {
+        "name": "List.brecOn.go",
+        "kind": "def"
+      },
+      {
+        "name": "List.brecOn",
+        "kind": "def"
+      },
+      {
+        "name": "List.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Bounds.fieldAt.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Bounds.fieldAt._f",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Bounds.fieldAt",
+        "kind": "def"
+      },
+      {
+        "name": "BEq",
+        "kind": "types"
+      },
+      {
+        "name": "BEq.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "BEq.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "BEq.beq",
+        "kind": "def"
+      },
+      {
+        "name": "DecidableEq",
+        "kind": "def"
+      },
+      {
+        "name": "instBEqOfDecidableEq",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.eq_of_beq_eq_true.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.eq_of_beq_eq_true._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.eq_of_beq_eq_true",
+        "kind": "thm"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.ne_of_beq_eq_false.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.noConfusionType",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.noConfusion",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ne_of_beq_eq_false._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ne_of_beq_eq_false",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.decEq._proof_1",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.decEq",
+        "kind": "def"
+      },
+      {
+        "name": "instDecidableEqNat",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Bounds.fieldCount.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Bounds.fieldCount._f",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Bounds.fieldCount",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Bounds.pageRemainder.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Decidable.reflects_decide",
+        "kind": "thm"
+      },
+      {
+        "name": "dite",
+        "kind": "def"
+      },
+      {
+        "name": "ite",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.Internal.and.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.not",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.beq",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.decEq.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.decEq._proof_1",
+        "kind": "thm"
+      },
+      {
+        "name": "Bool.decEq",
+        "kind": "def"
+      },
+      {
+        "name": "instDecidableEqBool",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Bounds.pageRemainder._f",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Bounds.pageRemainder",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Bounds.pageAligned",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Bounds.nativeLimits",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Bounds.nativeBounds",
+        "kind": "def"
+      }
+    ]
+  },
+  "schema_version": 1,
+  "scope": "Actual complete-helper policy-bound block, exact machine arithmetic and short-circuit reads, unchanged memory, finite source/loss paths and strict imported live-policy agreement",
+  "full_controller_complete": false,
+  "full_m4_complete": false
+}
