@@ -1,0 +1,2 @@
+Initialization replay passed: 81 Rocq and 2 Lean full records; actual stores, strict imported flags and kernel checks.
+Reviewed initialization statements, foundations, artifacts and prior caller-string identities match.

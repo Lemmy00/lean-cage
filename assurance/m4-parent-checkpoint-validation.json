@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-01T07:16:04.107424+00:00",
+  "status": "kernel-checked review candidate; independent statement review and maintained-gate integration pending",
+  "baseline_commit": "2db87b46d861ffd1c10e295a985818197b8c6170",
+  "accepted_claims_changed": false,
+  "original_obligations_closed": 0,
+  "full_controller_complete": false,
+  "full_m4_complete": false,
+  "baseline_ci": {
+    "run_id": 41281764829,
+    "conclusion": "success",
+    "scope": "foundation checks only",
+    "url": "https://github.com/Lemmy00/lean-cage/actions/runs/41281764829"
+  },
+  "candidate": {
+    "rocq_modules": 35,
+    "lean_modules": 1,
+    "rocq_theorem_records": 121,
+    "lean_theorem_records": 2,
+    "imported_computational_records": 1,
+    "compiled_artifacts": 36,
+    "source_identities": 670,
+    "allocated_parent_cases": 24,
+    "allocated_parent_acceptances": 6,
+    "allocated_parent_rejections": 18
+  },
+  "foundations": [
+    {
+      "count": 53,
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "count": 47,
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "count": 17,
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "count": 4,
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    }
+  ],
+  "exports": {
+    "caller_strings": {
+      "declarations": 161,
+      "sha256": "5ddc4f5016a727a213a4bdc3f0ceadd615114775c1476a9c79b2a8dabff242fb"
+    },
+    "numeric_plan": {
+      "declarations": 173,
+      "sha256": "f24a21ab52f54f97b9b4970a0b3887684190d1d1f7f1071702cb83fba17db045"
+    }
+  },
+  "validation": [
+    {
+      "name": "repository",
+      "command": [
+        "./scripts/check.sh"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 104.329,
+      "log": "assurance/m4-parent-checkpoint-repository-check.log",
+      "log_sha256": "f86903216bd241d5bce53af4c3865ac6b9c26dfd993e3312ea6ed44c48493bd5"
+    },
+    {
+      "name": "initialization",
+      "command": [
+        "python3",
+        "m4/initialization/check.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 77.407,
+      "log": "assurance/m4-parent-checkpoint-initialization-check.log",
+      "log_sha256": "4439ae29d4f217266077f0b6d9c5231abc3010bda482f68c6ae0a4b075d42275"
+    },
+    {
+      "name": "candidate-collection",
+      "command": [
+        "python3",
+        "m4/parent-checkpoint/verify.py",
+        "--collect"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 108.783,
+      "log": "assurance/m4-parent-checkpoint-candidate-collection-check.log",
+      "log_sha256": "e3cd72606aedd8842ea625c441a09b77be7c6c1aba8d461ba8ffaaeb82989f85"
+    },
+    {
+      "name": "candidate-snapshot",
+      "command": [
+        "python3",
+        "m4/parent-checkpoint/verify.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 100.642,
+      "log": "assurance/m4-parent-checkpoint-candidate-snapshot-check.log",
+      "log_sha256": "2fbaca0791789a96260412e03b069862c7330feac63ec02ae0821c3f547af434"
+    },
+    {
+      "name": "format",
+      "command": [
+        "./scripts/grund.sh",
+        "fmt",
+        "--check"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.086,
+      "log": "assurance/m4-parent-checkpoint-format-check.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "diff",
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.004,
+      "log": "assurance/m4-parent-checkpoint-diff-check.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "snapshot": {
+    "path": "assurance/m4-parent-checkpoint-proof-output.json.gz",
+    "sha256": "e56d65d8d303b5ebe5bd9c33279f99a975439cbd013af359b7b3c8275258bc9c",
+    "uncompressed_sha256": "35eb5418e0eae9aa6f52477a10baf246a09d19cacb7b0762a2363cdd999fba21"
+  },
+  "native_source_sha256": "fe20ad61706bb8e8463d32e5c9a1a9f3bf038ff52cc9f2ac40ba14c1a010d82c",
+  "original_obligations_sha256": "77f760ca9447b8ee05ec0e24efc637b35ff6a62356657515ffc68f0999182064",
+  "unchanged_baseline": "All previously tracked files remain byte-for-byte unchanged; the checkpoint adds candidate sources, handoff and receipts only.",
+  "limits": [
+    "The complete dependency chain was not freshly replayed at this pause; the preserved initialization receipts cover that earlier run. The fresh maintained initialization gate and candidate checker validated recursive identities.",
+    "No VM workload was rerun; repository checks validated archived VM evidence and compiled the native helpers.",
+    "No new candidate-specific compiled mutation controls or whole-composition concrete case table are claimed.",
+    "The candidate snapshot does not close any original M4 obligation."
+  ]
+}

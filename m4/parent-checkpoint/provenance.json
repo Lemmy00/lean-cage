@@ -1,0 +1,146 @@
+{
+  "NumericComposition.v": {
+    "experimental_source_sha256": "99d248e5949c716bca5375e61d6bc4bce5367a3498f5be44bb84868b346c1fee",
+    "change": "Added license and scope comments only."
+  },
+  "NumericFrame.v": {
+    "experimental_source_sha256": "89b33b36112f785cd832dd93475731098e2ae6202cf3c4d749eee1a4d6131b75",
+    "change": "Added license and scope comments only."
+  },
+  "NumericMatching.v": {
+    "experimental_source_sha256": "8cec6d629fdfd7d2652fe345484a136059c4aa9e6b30e1550e7df0377f3b07b0",
+    "change": "Added license and scope comments only."
+  },
+  "NumericMemory.v": {
+    "experimental_source_sha256": "b9a5e6523d893acb588569a048f2afc26353731375601a72c87deb9212500780",
+    "change": "Added license and scope comments only."
+  },
+  "NumericSource.v": {
+    "experimental_source_sha256": "4477b441bdb698cdd31badc04d79294e1603470d60fe2be69717f009c99740b9",
+    "change": "Added license and scope comments only."
+  },
+  "NumericWitnesses.v": {
+    "experimental_source_sha256": "d7dd2171d9a3c646df5d87269cdcba48bb4418d1f10be548edaaafb97438f693",
+    "change": "Added license and scope comments only."
+  },
+  "ParentAfterParse.v": {
+    "experimental_source_sha256": "9d38d5d3cce7cd4263ffcf2a15096ec1d98ea4f36cfacf62cd1193719d39d83c",
+    "change": "Added license and scope comments only."
+  },
+  "ParentAllocation.v": {
+    "experimental_source_sha256": "d31a133652b8e90fe401ac0d91170bf525874d22160411e4b0a6e55328b7d455",
+    "change": "Added license and scope comments only."
+  },
+  "ParentComparison.v": {
+    "experimental_source_sha256": "5fb2e4d3145752c230dd30c10cda99b6f6cbbcb5f6518a2f0e0fb00914c92ff0",
+    "change": "Added license and scope comments only."
+  },
+  "ParentControl.v": {
+    "experimental_source_sha256": "a0bcee8bc77cab1f627b907683f97439abc888f5811a332a9287a376074d727b",
+    "change": "Added license and scope comments only."
+  },
+  "ParentDecision.v": {
+    "experimental_source_sha256": "8fd717bb41b0d7defcd8f990925a23dd75957fb6f4b35f87dfa2dfaa591ba187",
+    "change": "Added license and scope comments only."
+  },
+  "ParentFinish.v": {
+    "experimental_source_sha256": "c72dad483adb2e46118a87848fe3302637d1b66f7b1e69eb248a7759102b2892",
+    "change": "Added license and scope comments only."
+  },
+  "ParentFrontier.v": {
+    "experimental_source_sha256": "01ae5b7d2470b0b8e9e15392932607ca32257f8946156d48d7c95d8c63a2aa59",
+    "change": "Added license and scope comments only."
+  },
+  "ParentGuards.v": {
+    "experimental_source_sha256": "a1b5ac6c302d0683a1163555efee5d75c62620bbc7d62bb86da3c5cd8717505b",
+    "change": "Added license and scope comments only."
+  },
+  "ParentInitialization.v": {
+    "experimental_source_sha256": "bcbc7055fc5269420a4868fe31e294f65e55ce2cdd79b19ee9944ec404c4200a",
+    "change": "Added license and scope comments only."
+  },
+  "ParentLift.v": {
+    "experimental_source_sha256": "b82489bc09feec193a7c9287dbd682fe97037dc0a06475f41762f66b443f27fd",
+    "change": "Added license and scope comments only."
+  },
+  "ParentLoss.v": {
+    "experimental_source_sha256": "3cf6975c7b3826c4de49c7ad0715275ae18082529d8b58f78c1ed09cae2ad4b6",
+    "change": "Added license and scope comments only."
+  },
+  "ParentMachine.v": {
+    "experimental_source_sha256": "1a68f10e56d5042c902cb1b9bd4d9f31a8dd99d2e337a95ab086f924001ae041",
+    "change": "Added license and scope comments only."
+  },
+  "ParentMatching.v": {
+    "experimental_source_sha256": "1c4e66d79b0fa4057f1774a9aea3090d3f3b33e8e15c0dcd34b2c2dcde503f47",
+    "change": "Added license and scope comments only."
+  },
+  "ParentMemory.v": {
+    "experimental_source_sha256": "e5b51dc68deb61e166bc506d2ea9d8889e6113efc5c466a6f8734eb950ffa9d2",
+    "change": "Added license and scope comments only."
+  },
+  "ParentObserve.v": {
+    "experimental_source_sha256": "62775b7d955b7454465a17d0e762781cb1d628d87b8dfa5c438602114e478856",
+    "change": "Added license and scope comments only."
+  },
+  "ParentParse.v": {
+    "experimental_source_sha256": "9994bc87c2e8e6eb68478e9da1667aa490366e274049c3c2c40e95759760a55b",
+    "change": "Added license and scope comments only."
+  },
+  "ParentPaths.v": {
+    "experimental_source_sha256": "c8f5f2c624c6a392a1cd7de29cef7525bfcce8756f1f9849f1e1fd140ee4f9d8",
+    "change": "Added license and scope comments only."
+  },
+  "ParentPlan.v": {
+    "experimental_source_sha256": "ded797c869422162372b69a7723913c138b079594609c457e50299a8087b5098",
+    "change": "Added license and scope comments only."
+  },
+  "ParentRegion.v": {
+    "experimental_source_sha256": "3fc300c0049de9e21028615bdf346280d9c9ece7a54f7e0048cfd56328a8c576",
+    "change": "Added license and scope comments only."
+  },
+  "ParentRuns.v": {
+    "experimental_source_sha256": "fdd630c6e18a9ea707730a229db4d78736d95872448b8f78e85038739d023093",
+    "change": "Added license and scope comments only."
+  },
+  "ParentSamples.v": {
+    "experimental_source_sha256": "147af63f67346fe31de96848f7aa12bd50f686f2e3fc43142468608a500a7e3b",
+    "change": "Added license and scope comments only."
+  },
+  "ParentSource.v": {
+    "experimental_source_sha256": "14f9f19ea31fdffd7d07d1ee21f4d1f4c0b70d8863a55bea1462f548df94bde8",
+    "change": "Added license and scope comments only."
+  },
+  "ParentStructure.v": {
+    "experimental_source_sha256": "7bcc9c39d0671d6f3c532326aad9669033655261c73027512e016c1072f27ad6",
+    "change": "Added license and scope comments only."
+  },
+  "ParentWitnesses.v": {
+    "experimental_source_sha256": "082fc2badf39a0d2329981efb033cabd90f288e148dfd9c77a950d9e6ef6b49f",
+    "change": "Added license and scope comments only."
+  },
+  "ParentWords.v": {
+    "experimental_source_sha256": "3ad61d7715fd93d3129cd070d66010f66caee3e172b68c650ba876da8489af80",
+    "change": "Added license and scope comments only."
+  },
+  "ValidationAllocation.v": {
+    "experimental_source_sha256": "7f2791479b16c844f69d8b02769b00fd991a3eff402e50a034c8946c39b273d6",
+    "change": "Added license and scope comments only."
+  },
+  "ValidationInputs.v": {
+    "experimental_source_sha256": "f65f410ee57244e02512a89771feb1c6e49c929a30127112b965b807caf29991",
+    "change": "Added license and scope comments only."
+  },
+  "ValidationLocals.v": {
+    "experimental_source_sha256": "4921615e358db185776f9234b00f7136f7c4a61490e22167fda254dcc494ddff",
+    "change": "Added license and scope comments only."
+  },
+  "ValidationMatching.v": {
+    "experimental_source_sha256": "132f2590116069021dfd842eac18d7581c7cd1140ed48e16c9f56a25e463843e",
+    "change": "Added license and scope comments only."
+  },
+  "Parent.lean": {
+    "experimental_source_sha256": "a382da92b303c6d746c1c1db51fe6216ace807cf75561ba3ff86e8fa4285d3fa",
+    "change": "Added license and scope comments only."
+  }
+}
