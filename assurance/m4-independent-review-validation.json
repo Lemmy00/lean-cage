@@ -1,0 +1,270 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-01T07:48:22.372929+00:00",
+  "reviewed_commit": "80d4bbe5db1e0d1cc75f250df0fa32baa7738d04",
+  "reviewed_tree": "dae36e1e5ef3f6e82655db02930d07987812d0f6",
+  "accepted_local_baseline": "2db87b46d861ffd1c10e295a985818197b8c6170",
+  "decision": "Preserve candidate pending trace/input-contract improvements, complete-composition examples and negative controls.",
+  "candidate_promoted": false,
+  "accepted_security_claims_changed": false,
+  "original_obligations_closed": 0,
+  "full_m4_complete": false,
+  "existing_tracked_files_changed": false,
+  "fresh_vm_workloads_run": false,
+  "replay_started_utc": "2026-11-01T07:19:48.666108+00:00",
+  "replay_finished_utc": "2026-11-01T07:47:56.906322+00:00",
+  "validation": [
+    {
+      "name": "foundation",
+      "command": [
+        "./scripts/check.sh"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 101.896,
+      "log_sha256": "a6cbb850f12e37f148a299076560605a47593469b312e5f5b9394daa138f56f7",
+      "archive_entry": "foundation.log"
+    },
+    {
+      "name": "connection",
+      "command": [
+        "./scripts/check_m4_connection.sh"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 724.174,
+      "log_sha256": "5f0dcb8b278e34e51e75067b95a1a3dbfc0c15ce6d05481974a9bd8837875d34",
+      "archive_entry": "connection.log"
+    },
+    {
+      "name": "bridge",
+      "command": [
+        "python3",
+        "m4/bridge/check.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 240.805,
+      "log_sha256": "8c2940691ec985019b470dcccda0aa206ce69ad51dcaed5331e19076a250a48e",
+      "archive_entry": "bridge.log"
+    },
+    {
+      "name": "controller",
+      "command": [
+        "python3",
+        "m4/controller/check.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 44.17,
+      "log_sha256": "d13f39aad8754cc5cb572c6ad7bd8dadb2bb37c8a070ea312490b29fbf1637eb",
+      "archive_entry": "controller.log"
+    },
+    {
+      "name": "plan",
+      "command": [
+        "python3",
+        "m4/plan/check.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 36.877,
+      "log_sha256": "1ac447f0e7b8d561ef55a13b1d8e46841d650d34aef17a74d8043faa9ed6ee2c",
+      "archive_entry": "plan.log"
+    },
+    {
+      "name": "main",
+      "command": [
+        "python3",
+        "m4/main/check.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 77.246,
+      "log_sha256": "74da9b56f04cb9da0dc22b1ad8084af9bbfd7ead491450300bdaf95de24dd7af",
+      "archive_entry": "main.log"
+    },
+    {
+      "name": "policy",
+      "command": [
+        "python3",
+        "m4/policy/check.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 72.686,
+      "log_sha256": "d38d8fb62d7857cec96328fb980433a016631807e90a063cbe7e2385ba160243",
+      "archive_entry": "policy.log"
+    },
+    {
+      "name": "arguments",
+      "command": [
+        "python3",
+        "m4/arguments/check.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 62.638,
+      "log_sha256": "779e42f0ed4c9b12b2ed6b3d1598cf14810661ee0b5438ecea354ed18e70f7d3",
+      "archive_entry": "arguments.log"
+    },
+    {
+      "name": "digest",
+      "command": [
+        "python3",
+        "m4/digest/check.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 64.7,
+      "log_sha256": "9252eb989b37bfc5049bb37a67e66bb66ab001f5cd6f0c1bfde5775724fcd1ac",
+      "archive_entry": "digest.log"
+    },
+    {
+      "name": "validation",
+      "command": [
+        "python3",
+        "m4/validation/check.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 83.96,
+      "log_sha256": "b70e1637386c3102933801a31f340e04fec1e905aaeb3379a181c517761dd9e5",
+      "archive_entry": "validation.log"
+    },
+    {
+      "name": "initialization",
+      "command": [
+        "python3",
+        "m4/initialization/check.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 90.454,
+      "log_sha256": "4439ae29d4f217266077f0b6d9c5231abc3010bda482f68c6ae0a4b075d42275",
+      "archive_entry": "initialization.log"
+    },
+    {
+      "name": "parent-candidate",
+      "command": [
+        "python3",
+        "m4/parent-checkpoint/verify.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 88.628,
+      "log_sha256": "2fbaca0791789a96260412e03b069862c7330feac63ec02ae0821c3f547af434",
+      "archive_entry": "parent-candidate.log"
+    },
+    {
+      "name": "grund-full",
+      "command": [
+        "./scripts/grund.sh",
+        "check",
+        "--full",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.055,
+      "log_sha256": "81b2bd4ea98c8db66554fbc8d7637a1a69a130f331feb732b75caab4c4868fd5",
+      "archive_entry": "grund-full.log"
+    },
+    {
+      "name": "format",
+      "command": [
+        "./scripts/grund.sh",
+        "fmt",
+        "--check"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.072,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive_entry": "format.log"
+    },
+    {
+      "name": "receipt-integrity",
+      "command": [
+        "python3",
+        "m4/review/check_receipts.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.024,
+      "log_sha256": "3f6eff85480173320baa46cf3b82a4e73612893b5e2ed4e7ebb46e382059bc85",
+      "archive_entry": "receipt-integrity.log"
+    },
+    {
+      "name": "receipt-regressions",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "m4/review",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.089,
+      "log_sha256": "4717a82babd2ddbd55c9d023ff83716e948e424b00e4cf99da45c980eac514d6",
+      "archive_entry": "receipt-regressions.log"
+    },
+    {
+      "name": "m3-artifacts",
+      "command": [
+        "python3",
+        "scripts/run_m3_vm.py",
+        "--check-artifacts"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.534,
+      "log_sha256": "8b731c23cf3c4b804f820095476a429731d7ad6831adeb8740133785aa46f4b9",
+      "archive_entry": "m3-artifacts.log"
+    },
+    {
+      "name": "aggregate-syntax",
+      "command": [
+        "bash",
+        "-n",
+        "scripts/check_m4_all.sh"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.001,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive_entry": "aggregate-syntax.log"
+    },
+    {
+      "name": "staged-diff",
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.002,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive_entry": "staged-diff.log"
+    }
+  ],
+  "logs_archive": {
+    "path": "assurance/m4-independent-review-logs.json.gz",
+    "sha256": "41ad575f221de7a85f97d3101985c420b24b94c5176793677a9d877c8bfcd3f6",
+    "uncompressed_sha256": "829f8a35b6bc88574de3a420430b80f310bc50a9813eb42e1e84a243afd88221"
+  },
+  "review_artifacts_sha256": {
+    "M4-CONTINUE.md": "f9ebad380d78b6318192298980a27daa3887984ed1b0632d2b82df17e130f7f8",
+    "docs/reviews/M4-independent-review.md": "28888c6bab35219832c16df19011400623ea7644eee11bd1e46bc7a786f269b0",
+    "scripts/check_m4_all.sh": "48c2365f80aa0a67e385db494bc445bc51c7ee2ca593b9cb0223d482ecbf76f8",
+    "m4/review/check_receipts.py": "a70a930bb63ba0c655fa0dde40ec274057480f25e1a2f05f6df3b4c4fdad67ff",
+    "m4/review/test_receipts.py": "57d0718dcb280b4beafd66fedfaf3035fdb3b126631a678c290d86abf17c06b7"
+  },
+  "preserved_checkpoint_sha256": {
+    "assurance/m4-parent-checkpoint-validation.json": "f1bfcf2eca69767c63ff75b5357531f8eb682a55e87215ab2f08142cdfe68442",
+    "assurance/m4-parent-checkpoint-proof-output.json.gz": "e56d65d8d303b5ebe5bd9c33279f99a975439cbd013af359b7b3c8275258bc9c",
+    "assurance/m4-obligations.json": "77f760ca9447b8ee05ec0e24efc637b35ff6a62356657515ffc68f0999182064",
+    "native/leancage_m3.c": "fe20ad61706bb8e8463d32e5c9a1a9f3bf038ff52cc9f2ac40ba14c1a010d82c"
+  },
+  "candidate_replay": {
+    "rocq_records": 121,
+    "lean_records": 2,
+    "compiled_artifacts": 36,
+    "source_identities": 670
+  },
+  "limits": [
+    "Kernel replay and frozen statement comparison do not replace semantic statement review.",
+    "Independent statement review focused on the parent candidate, its effect/ownership/history interfaces and the evidence machinery; earlier M4 statements were not all independently re-reviewed.",
+    "The aggregate shell entrypoint received a syntax check; its constituent commands were replayed sequentially with separately archived outputs.",
+    "Foundation replay preceded the additive review files; final Grund checks and the new receipt regressions validate those additions.",
+    "No native/Linux/compiler/runtime closure, translation faithfulness, production security or hardware confidentiality is claimed."
+  ]
+}
