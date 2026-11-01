@@ -613,6 +613,22 @@ which the existing plan places at native positions fourteen and fifteen.
 The enclosing JSON parser, physical argv, the native caller's `none` and digest
 checks, authentication of content and whole-controller behavior remain separate.
 
+The [caller-string connection](../reviews/M4-validation.md) adds 135 Rocq and 39
+Lean full records. The actual mode, export, digest-option and executable checks
+agree with the strict imported byte predicate and live native plan positions.
+Every actual execution before the stated boundary is covered, including arbitrary
+`strcmp` result magnitudes, waiting and loss. An execution either remains in the
+bounded region or has crossed the proved continuation; no region memory claim
+extends into later code. Rejection reaches the actual setup/EINVAL `result_of`
+call, without claiming completed publication. Ordinary bounds are 31, 26, 4,300
+and 34 non-wait steps respectively. The executable check composes with argument
+accumulation and numeric bounds at `26*N + 188` steps. Thirty-six allocated cases
+include eleven acceptances and twenty-five rejections; four additional cases
+exercise non-unit comparison results, and an allocated source prefix permits
+arbitrary waiting before loss. Literal bytes come from actual program
+initialization. Physical argv, preceding caller stores, parent identity,
+whole-main entry and the remaining effect/runtime obligations remain open.
+
 **Evidence and assumptions:** `assurance/m4-public-evidence.json`,
 `assurance/m4-wire-evidence.json`,
 `assurance/m4-receiver-evidence.json`,
@@ -663,6 +679,13 @@ complete foundations, twelve integrity regressions and compiled negative
 controls, preserving the argument checkpoint. Generated Lean helper propositions
 are printed with their proof arguments; no compiler-trust axiom supports the
 closed examples. Full M4 remains open.
+The caller-string gate is `python3 m4/validation/check.py`, with
+`assurance/m4-validation-claims.json` and `assurance/m4-validation-evidence.json`.
+It records 161 axiom-free export entries, twenty compiled identities, twelve
+integrity regressions and three compiled negative controls. Both rejected sparse
+import experiments are archived; exhaustive constructor normalization passes
+without relaxing the strict importer. The digest checkpoint and every earlier
+proposition, artifact, pin and original receipt remain preserved.
 The established Coq 8.18 profile's six foundation/semantic-parameter entries remain unchanged; the explicit
 machine excludes stock external/builtin execution. No new Lean axiom is added.
 The owned witnesses allocate cells for the actual source symbol mapping; they do

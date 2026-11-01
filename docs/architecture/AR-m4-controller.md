@@ -218,6 +218,40 @@ uppercase, boundary-character and high-byte executions, plus arbitrary-wait and
 every-prefix loss witnesses. Retain the explicit sequential-memory and libc
 correspondence obligations.
 
+## strings: Actual caller string checks
+
+Connect the main routine's mode, export-policy, digest-option and executable
+checks to their exact byte conditions under [§FS-workspace.policy](../functional-spec/FS-workspace.md#policy-bounded-typed-request). Reuse the
+unchanged complete-helper AST, its global layout and the string machine from
+[§AR-m4-controller.arguments](AR-m4-controller.md#arguments-actual-guest-argument-length-accumulation). The digest options accept exactly `none` or the
+syntax proved in [§AR-m4-controller.digest](AR-m4-controller.md#digest-actual-lowercase-digest-text-validation). Export names are exactly `discard`
+and `regular-files`; executable names are exactly `/bin/sh` and
+`/usr/local/bin/python3`. Mode accepts `M3PLAN1` or `M3CHECK1` only after the
+actual minimum-argument-count guard. Preserve source short-circuiting and all
+repeated pointer reads.
+
+The local `strcmp` contract permits every negative or positive signed result
+consistent with byte order, not just minus one or one. Derive boolean decisions
+from the exact zero/equality relation. Retain arbitrary library waiting and
+process loss, including at calls into the already checked digest recognizer.
+Construct selected-region certificates from independent argument-table,
+pointer-cell and C-string ownership. Every actual transition before the selected
+boundary must be covered. An arbitrary execution either remains a bounded live
+prefix or has crossed the proved accept/reject boundary; later source behavior
+must not inherit the region's memory claim. Provide actual ordinary execution
+witnesses and finite non-wait bounds without claiming termination under waiting
+or loss. Derive literal bytes from the actual program's initial memory.
+
+Accepted branches reach their real source continuation. Rejected branches reach
+the actual `result_of` call with its setup-stage error arguments; this does not
+claim completed report publication or exit. Keep preceding pointer stores,
+whole-main entry, physical argument provenance, parent identity, later effects,
+concurrent writer exclusion and libc correspondence explicit until separately
+connected. Allocate both accepted and rejected witnesses, cover digest-option
+short-circuit cases and arbitrary `strcmp` result magnitudes, and reject a
+compiled mutation of an actual source constant. Preserve the complete digest
+checkpoint and its earlier proof and artifact inventories.
+
 ## composition: Remaining controller obligations
 
 Decimal syntax alone does not establish policy bounds, argument provenance or

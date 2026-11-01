@@ -128,3 +128,27 @@ live Lean array/string projection and fold agree with that interface, then prove
 the strictly imported computation agrees with source outcomes. Arrays, Unicode
 encoding and physical process memory remain separate layers of this connection;
 an accepted length alone must not imply their provenance.
+
+## strings: Preserve library nondeterminism through caller regions
+
+For [§AR-m4-controller.strings](../../architecture/AR-m4-controller.md#strings-actual-caller-string-checks) and [§FS-workspace.policy](../../functional-spec/FS-workspace.md#policy-bounded-typed-request), use a branching finite
+certificate over the unchanged string machine. A fixed path cannot represent
+all conforming `strcmp` return magnitudes. Each certificate node proves ordinary
+progress and classifies every actual next step; the local library call keeps
+all results allowed by its byte contract. Compose the checked `digest_text`
+function at its actual caller continuation.
+
+Permit a region to end at an explicitly identified source state, then split
+arbitrary executions at that boundary. This supports selected main blocks
+without imposing their read-only invariant on later stores or reporting code.
+The certificate is constructed from ownership and the actual AST, never assumed
+as an input premise replacing source correctness. Connect original literal
+globals through full-program initialization and retain distinct obligations for
+physical argv, prior stores and complete main entry.
+
+Normalize the imported byte computation with exhaustive constructor patterns for
+both list comparison and the numeric selector. Two sparse-pattern attempts,
+including one with an explicit structural recursion annotation, failed strict
+import at generated elimination dependencies. Preserve their exact sources,
+exports and diagnostic reproductions. Do not relax importer checks; prove the
+normalized computation's exact behavior in ordinary Lean and Rocq.
