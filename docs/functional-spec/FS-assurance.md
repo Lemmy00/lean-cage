@@ -546,6 +546,16 @@ have allocated overlapping and separate source executions. The machine remains
 sequential; absence of interfering writers, deployed store atomicity, argument
 provenance, policy bounds and whole-controller ordering remain obligations.
 
+The [live plan connection](../reviews/M4-plan.md) adds exact argument layout and
+decimal UTF-8 facts for the actual Lean encoder. Its ten serialized limits fit
+the unsigned range when the live policy predicate succeeds; parent identity and
+the actual runtime argument table remain obligations. A strictly imported numeric
+byte interface has the same complete acceptance/rejection language and value as
+the native parser, and its results determine actual owned source runs, stores,
+prefixes and loss. The separate and overlapping allocated witnesses retain all
+twenty earlier cases. This adds 32 Rocq and 88 Lean theorem records, with the
+imported logical model and translation-faithfulness boundary stated explicitly.
+
 **Evidence and assumptions:** `assurance/m4-public-evidence.json`,
 `assurance/m4-wire-evidence.json`,
 `assurance/m4-receiver-evidence.json`,
@@ -567,7 +577,12 @@ The controller parser has its own `assurance/m4-controller-number-claims.json`,
 `assurance/m4-controller-number-evidence.json` and `python3 m4/controller/check.py`
 replay, preserving the complete frame checkpoint byte-for-byte. Its 83 records
 use no new foundation: 49 report none, 29 the existing six and five the existing
-four logical foundations. No new Lean result or full M4 completion is claimed.
+four logical foundations. That parser package adds no Lean result. The subsequent
+plan connection has `assurance/m4-plan-claims.json`, `assurance/m4-plan-evidence.json`
+and `python3 m4/plan/check.py`; it preserves all preceding native/parser/frame
+records and artifacts. Its imported endpoint uses four explicit definitional-UIP
+instances. The [plan review](../reviews/M4-plan.md) records the exact transitive
+foundations in both proof assistants. Full M4 remains open.
 The established Coq 8.18 profile's six foundation/semantic-parameter entries remain unchanged; the explicit
 machine excludes stock external/builtin execution. No new Lean axiom is added.
 The owned witnesses allocate cells for the actual source symbol mapping; they do

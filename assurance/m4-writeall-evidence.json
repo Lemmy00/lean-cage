@@ -34,7 +34,7 @@
     "assurance/m4-slice.c": "f563cd6dc5163aad8d243ace10e95882cc3879bcf927ef765485886c07d43bb7",
     "assurance/m4-slice.i": "79dd344ee81ba37d15fbf1cc0fc0d8ceeec8f63d751251ece5b1049610556fc7",
     "assurance/m4-slice.v.gz": "0aa10f2e1ac62321990fb0b3ea41d87300c936ad4834fa80a8fad3a72afae28c",
-    "assurance/m4-connection-evidence.json": "b981589944f137a3f6ae9ff1b0aecaa854f779caa5f0365951b26acbeef9c142",
+    "assurance/m4-connection-evidence.json": "0899f74ab50580831691687f16e3b4fb0252f28aefa76a913c4915db23ab2166",
     "assurance/m4-obligations.json": "77f760ca9447b8ee05ec0e24efc637b35ff6a62356657515ffc68f0999182064"
   },
   "artifact_sha256": {
@@ -298,6 +298,18 @@
           "path": "assurance/m4-connection-evidence.json",
           "previous_sha256": "0e449f92cbafca8deb44adb56946cc7398cc78992007b26179ee97e0a2ac4ce9",
           "current_sha256": "b981589944f137a3f6ae9ff1b0aecaa854f779caa5f0365951b26acbeef9c142",
+          "reason": "Only named documentation and transitive evidence manifests.",
+          "map": "preserved_sha256"
+        }
+      ]
+    },
+    {
+      "reason": "Live plan and imported decimal source connection: only named documentation fingerprints and transitive evidence bookkeeping. All original theorem records, compiled artifacts and archived receipts retained.",
+      "changes": [
+        {
+          "path": "assurance/m4-connection-evidence.json",
+          "previous_sha256": "b981589944f137a3f6ae9ff1b0aecaa854f779caa5f0365951b26acbeef9c142",
+          "current_sha256": "0899f74ab50580831691687f16e3b4fb0252f28aefa76a913c4915db23ab2166",
           "reason": "Only named documentation and transitive evidence manifests.",
           "map": "preserved_sha256"
         }

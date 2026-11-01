@@ -631,24 +631,24 @@
     "LeanCage/Proofs/Launch.lean": "8c1f9fce1478bad6b54bc300bc1c742799cbe587bdcf97173ce12582105537a5",
     "LeanCage/Proofs/LaunchInput.lean": "d151376c8c726370a96ace7419e0ec34be325eb0d62f454c0c681384c7cb9de9",
     "M1Main.lean": "bd9ac8f78df625efb350bf83503244d8fe4a1e2c419eeabee4639a27784c18f8",
-    "assurance/filter-decoder.json": "aa5b777c3c54baa10b79f4f622c4c07084ab5a2830c5ed849fa434913e569526",
+    "assurance/filter-decoder.json": "ae3092b2c4369de608789d4ac878b19de72cdc574d97e5a9a04b027b94195c90",
     "assurance/m1-reviewed-baseline.json": "877584a38b1d6db3860f3abc99f62e80711954e1c3e4a929ac33de1c2a774dea",
     "assurance/m1-vm-evidence.json": "4d918dfb9f0af095c5dd55de5db5d1b6d04112b847ecc45cb94396104af1669d",
     "assurance/m1-vm-transcript.log": "13b51c51b79cc639dd01d03634f8bfce46d407a9f2bd29c867fcda706161ad90",
     "assurance/m1.2-decoder-claims.json": "f2fe789172e7db532c2aa74ad3aa3133ab0797b45386b983669fd4f8b4e928e7",
-    "assurance/m2-claims.json": "c61214040ac67f4ee8e2ef6d12cabe67806fe072b047670d4500dea79c461a4b",
+    "assurance/m2-claims.json": "375e36de3cbe990fbf135bb8d91c312f4a8d1e89266e7cfc119e4eca7a0bfc43",
     "assurance/m2-vm-evidence.json": "c134f58c0b13449993af32e2b2d7d626afa00ea6e2655c1ae0253b449542c29f",
     "assurance/m2-vm-transcript.log": "cb25f2f42f01eed63cf9b385d43bb672cfcdf432e3940357c97f1a1ad0269082",
-    "assurance/m3-claims.json": "b2fe3c95751f2f892836eb26d5d14aa445ecc1de2d61658c5d11d43913844338",
+    "assurance/m3-claims.json": "1907c7768d27d230684333f48b03db4266c92fce2183ba1e8296467cd4108719",
     "assurance/m3-image-inventory.json": "03d93dbe56c04938044ed27b3aa0c54b1ab899e8c54a80a4052a17f1c43e41cd",
     "assurance/m3-vm-evidence.json": "7488ee236de59d7f0d8941eaf56b97e9edb6af4b5bc759ea79b31dcbbddcaa1f",
     "assurance/m3-vm-transcript.log": "7f9c8d92c09690244207ffb5b62202536ae11303a7cce49fad865f8296282183",
     "assurance/m4-bridge-claims.json": "80b44430a559b0c965dccad7dab08e0c78c6f3d6b3eb0a19e053830d89dd49e0",
-    "assurance/m4-bridge-evidence.json": "7673e7872654f832e8d8cb3a0fdf4d851eb0a4d2039c092550e4096f14062a8f",
+    "assurance/m4-bridge-evidence.json": "e47c5bb66893284e46bb88188d989cfe2a2bad729fc51793a48b9bcdda00c44e",
     "assurance/m4-bridge-primitives-claims.json": "5e8bef1dd3568798f9b292262076c5a2529b5ff9693f99a9fe85f399a116bb09",
     "assurance/m4-bridge-primitives-evidence.json": "2e1c5e579c0617627af3de4e5b47c5f2e0b45f8ff5b64a530ce61801cc6420c4",
     "assurance/m4-callers-baseline-claims.json": "ef2d734da9c9d6689c097f59f29463a1e03f069cae2c6333abe5c014f9da7d3d",
-    "assurance/m4-connection-claims.json": "1524e27548e716cd1682ba5cc466aceab13d701cbbca97ae48320532adaf697b",
+    "assurance/m4-connection-claims.json": "92398e0d20ee493a578efe5aebc927ec660f7a937e4f810433db30339e83275c",
     "assurance/m4-decoder-baseline-claims.json": "839a46bfc920113ae2b360ed44be2fed18ce7cfa6bafdaf476a150cfa9a074b1",
     "assurance/m4-frames-claims.json": "80b44430a559b0c965dccad7dab08e0c78c6f3d6b3eb0a19e053830d89dd49e0",
     "assurance/m4-frames-evidence.json": "b15a4fa57aadeb4b6dbdee97ce5648d34a5e5661a4494faa88963294258727fd",
@@ -656,7 +656,7 @@
     "assurance/m4-obligations.json": "77f760ca9447b8ee05ec0e24efc637b35ff6a62356657515ffc68f0999182064",
     "assurance/m4-primitives-baseline-claims.json": "6a87d4e91fd657fdadc18ffc6ae345d8dcf9d1033b1ed4b9c7454c749b2396af",
     "assurance/m4-public-baseline-claims.json": "74eeea32c256604ee45957d583d8613b1a45b915e3de31c4499fc9104cf9d747",
-    "assurance/m4-public-evidence.json": "3a302632fa23f7dbf6b14060663855254c442bc74d7a343069a4e65f7967031b",
+    "assurance/m4-public-evidence.json": "cbbd0929463fe95b279c1e71164876e2c8930cad61e8b0821293e9c63987f068",
     "assurance/m4-receiver-baseline-claims.json": "c3451cb30913704c9acbcf403a1ae8174bfa4b413f755e31a2a4e498263c00d5",
     "assurance/m4-sender-baseline-claims.json": "01acfe1ff33b3689bb1c0ecce0970a26acf1fffe2400f24c24856857a4788c1f",
     "assurance/m4-slice.v.gz": "0aa10f2e1ac62321990fb0b3ea41d87300c936ad4834fa80a8fad3a72afae28c",
@@ -670,7 +670,7 @@
     "docs/architecture/AR-m1-launch.md": "97ac3491dfe4444ab781e5dcbec44ba77a84c2a3495d18e66999ecf443f68e58",
     "docs/architecture/AR-m4-bridge.md": "3c85b8c743e92fa88cfe6d3280a8a8b897aa3aeca1217d107124191a2daa94e4",
     "docs/architecture/AR-m4-callers.md": "6f4e81e59219b602a081c2f7e7fa9f84fea0db618239723d8c35932e7ece9f49",
-    "docs/architecture/AR-m4-controller.md": "60def7bc488df0756b0e9394a5925d274bea063d35e4c0afa9ad12c1d3fd4859",
+    "docs/architecture/AR-m4-controller.md": "a79223d12efc7641ab07bda3ce35d51267c1b6f3a9783543997b0fff26f89a76",
     "docs/architecture/AR-m4-decoder.md": "d6f5d0ed5fd59fd51e4f219be8a6b9ab33a1a92f5a7b4bfd84666d14a4f27a87",
     "docs/architecture/AR-m4-effects.md": "70d9bc2c2badc74d9a9a39656d62d4829a69fc8412f3d025980c124dd8c47a24",
     "docs/architecture/AR-m4-library.md": "52d94044e71aaa129ac34a9ffa4edc7a2e99ac6dfd37a065e401891c18352e04",
@@ -684,10 +684,10 @@
     "docs/decisions/architectural/DA-m1-filter-profile.md": "700910cb91df66381070145e64be25d6cd3a9f43c0634ee40ebbd74bc000b0e4",
     "docs/decisions/architectural/DA-m2-profile.md": "500cc8c10ac68699b92163aaa28a1c472591654a576cabd592fc0ea543798eb1",
     "docs/decisions/architectural/DA-m3-profile.md": "e89726873f435b97d5555637efe677c26c7afc90d31fbda8ffca865a5bb24a9f",
-    "docs/decisions/architectural/DA-m4-controller.md": "d4f03b148e7dfa9c52d85818b5b06a851cea3e91a0f8791fd911f886ebee4e18",
+    "docs/decisions/architectural/DA-m4-controller.md": "3a101b684c760c125eb592128b3b15fe9570c90e2860ce14f0e39b4abe33a657",
     "docs/decisions/architectural/DA-m4-effects.md": "949e5933f30ef052e256c9a3b912d901125abeb6ba68fafd80a921a339558ff0",
     "docs/decisions/architectural/README.md": "aeeaf7733f901140d5c22a6c0a9dc230a15f4e8f6eee473841b48efa37a488c6",
-    "docs/functional-spec/FS-assurance.md": "be8d337e7afbf864eb046902bbe67f7be4aa2776a159425e293a7c8bdb1b2910",
+    "docs/functional-spec/FS-assurance.md": "f18fd9e252716aaa0aa967ebd9360d6eb8ec79b294cff620d8447d64237f2e25",
     "docs/functional-spec/FS-compatibility.md": "1c5cdf7ab2234753ce4e615149b206f969c1059abaf1af58f9f27b48c6aac76e",
     "docs/functional-spec/FS-filter-loading.md": "59da9347e65ef82fb411df595c199ab8b93707a448261b7f2983714412040ee8",
     "docs/functional-spec/FS-lifecycle.md": "cbd6588215e234bf51ebc655832db0a33d0970cf752f25da36bc6b8dcc9c9254",
@@ -711,7 +711,7 @@
     "docs/reviews/M4-wire.md": "1db72822282294d8029c5a2fd753e412d6a98f9b91ff45ff97685c9a91255137",
     "docs/reviews/M4-writeall.md": "0c7dcca76621cdbc022ec4800708182d022e1c358bb3cd1304b163cc5b58c487",
     "docs/reviews/M4-writers.md": "0a828f10161f0ba3207485dfda63b4a7ea4ca8763123e8f75ec62f72c142a5c4",
-    "docs/roadmap.md": "8c817b69826a4ac7485b0af262436eb2c35171f9b0cb3f2200bb76757960815f",
+    "docs/roadmap.md": "ddecd0fac758aa28ce6e368ec357948935217d2b7ad1437967b7b80840139254",
     "lake-manifest.json": "a1dc0359a14712b9c7a399c3b4dec9bec6e12d162712272265271f10282f3ae9",
     "lakefile.lean": "2addd6d9060c1622dec4572d5bb2f31db6bfc6f882b0e6cf00df868980ab4cdd",
     "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
@@ -1242,6 +1242,149 @@
       "previous_sha256": "b15a4fa57aadeb4b6dbdee97ce5648d34a5e5661a4494faa88963294258727fd",
       "current_sha256": "7673e7872654f832e8d8cb3a0fdf4d851eb0a4d2039c092550e4096f14062a8f",
       "reason": "Only explicit documentation/transitive source bookkeeping; all frame statements, artifacts, tools and receipts retained."
+    },
+    {
+      "reason": "Live plan connection: only explicit documentation/transitive fingerprints changed. All 83 native records, generated frontend inputs, compiled artifacts, parent identities and original receipts retained.",
+      "changes": [
+        {
+          "path": "docs/functional-spec/FS-assurance.md",
+          "previous_sha256": "be8d337e7afbf864eb046902bbe67f7be4aa2776a159425e293a7c8bdb1b2910",
+          "current_sha256": "f18fd9e252716aaa0aa967ebd9360d6eb8ec79b294cff620d8447d64237f2e25",
+          "reason": "Exact live plan and native decimal connection; original native, proof, tool and VM inputs retained."
+        },
+        {
+          "path": "docs/roadmap.md",
+          "previous_sha256": "8c817b69826a4ac7485b0af262436eb2c35171f9b0cb3f2200bb76757960815f",
+          "current_sha256": "ddecd0fac758aa28ce6e368ec357948935217d2b7ad1437967b7b80840139254",
+          "reason": "Exact live plan and native decimal connection; original native, proof, tool and VM inputs retained."
+        },
+        {
+          "path": "docs/architecture/AR-m4-controller.md",
+          "previous_sha256": "60def7bc488df0756b0e9394a5925d274bea063d35e4c0afa9ad12c1d3fd4859",
+          "current_sha256": "a79223d12efc7641ab07bda3ce35d51267c1b6f3a9783543997b0fff26f89a76",
+          "reason": "Exact live plan and native decimal connection; original native, proof, tool and VM inputs retained."
+        },
+        {
+          "path": "docs/decisions/architectural/DA-m4-controller.md",
+          "previous_sha256": "d4f03b148e7dfa9c52d85818b5b06a851cea3e91a0f8791fd911f886ebee4e18",
+          "current_sha256": "3a101b684c760c125eb592128b3b15fe9570c90e2860ce14f0e39b4abe33a657",
+          "reason": "Exact live plan and native decimal connection; original native, proof, tool and VM inputs retained."
+        },
+        {
+          "path": "assurance/filter-decoder.json",
+          "previous_sha256": "aa5b777c3c54baa10b79f4f622c4c07084ab5a2830c5ed849fa434913e569526",
+          "current_sha256": "ae3092b2c4369de608789d4ac878b19de72cdc574d97e5a9a04b027b94195c90",
+          "reason": "Only named documentation and transitive evidence manifests."
+        },
+        {
+          "path": "assurance/m2-claims.json",
+          "previous_sha256": "c61214040ac67f4ee8e2ef6d12cabe67806fe072b047670d4500dea79c461a4b",
+          "current_sha256": "375e36de3cbe990fbf135bb8d91c312f4a8d1e89266e7cfc119e4eca7a0bfc43",
+          "reason": "Only named documentation and transitive evidence manifests."
+        },
+        {
+          "path": "assurance/m3-claims.json",
+          "previous_sha256": "b2fe3c95751f2f892836eb26d5d14aa445ecc1de2d61658c5d11d43913844338",
+          "current_sha256": "1907c7768d27d230684333f48b03db4266c92fce2183ba1e8296467cd4108719",
+          "reason": "Only named documentation and transitive evidence manifests."
+        },
+        {
+          "path": "assurance/m4-claims.json",
+          "previous_sha256": "4b593031b054598663411106bcf90c9f47675c9f808421a0e7a752b89d219696",
+          "current_sha256": "7fc136ae4112a2f1883cc88c5e7a8a091d5056fc32cd1a37a66d800f8563b608",
+          "reason": "Only named documentation and transitive evidence manifests."
+        },
+        {
+          "path": "assurance/m4-evidence.json",
+          "previous_sha256": "fd8513a8f41e93e85a25c2fcf74a8aa49f1e09925aeb3348e37c57071fded17c",
+          "current_sha256": "64b1bcb3212335daccd7dab1da518825252c04d1c28e9a8670bef562be10d404",
+          "reason": "Only named documentation and transitive evidence manifests."
+        },
+        {
+          "path": "assurance/m4-connection-evidence.json",
+          "previous_sha256": "b981589944f137a3f6ae9ff1b0aecaa854f779caa5f0365951b26acbeef9c142",
+          "current_sha256": "0899f74ab50580831691687f16e3b4fb0252f28aefa76a913c4915db23ab2166",
+          "reason": "Only named documentation and transitive evidence manifests."
+        },
+        {
+          "path": "assurance/m4-writeall-evidence.json",
+          "previous_sha256": "43a1ff1c5101d2671f3751e4a67e7a699076e9e1e1ab70b79d8ee3a8890ffb6a",
+          "current_sha256": "09ac0331ea65af8ace1bfc8957c7ec5aea8ce94b40acc33a8fb0b7410536b960",
+          "reason": "Only named documentation and transitive evidence manifests."
+        },
+        {
+          "path": "assurance/m4-primitives-evidence.json",
+          "previous_sha256": "86acd9abb77a853a18543fe58ef159b78e95d8774f62fe321c2dda159919b027",
+          "current_sha256": "8a278bbfb255d3c613250bd86f60be1371c113d982fa0dee62f4c0f414fd6f43",
+          "reason": "Only named documentation and transitive evidence manifests."
+        },
+        {
+          "path": "assurance/m4-writers-evidence.json",
+          "previous_sha256": "4952f9223c552459b0d3359bff055070d4eddc921a67741aba9f726ddfe88009",
+          "current_sha256": "80f9768a5dca8658bf313223d73cfe192839bad15ede5eed2c2db0e075748cde",
+          "reason": "Only named documentation and transitive evidence manifests."
+        },
+        {
+          "path": "assurance/m4-library-evidence.json",
+          "previous_sha256": "bf4205a36e85df1e8d13747fe38f961075c125c4ddc9143458f7c2fbc5e36933",
+          "current_sha256": "1de604631ba50bf684666b9999f90e1bc46dcde5c465cd9fd869ad792681f62b",
+          "reason": "Only named documentation and transitive evidence manifests."
+        },
+        {
+          "path": "assurance/m4-structures-evidence.json",
+          "previous_sha256": "34fd79822627f332ea3ae10cc647e439103a09f6808025c74c1bbaa0376f2005",
+          "current_sha256": "c1626fcce03e85ffde710e6b1c5b47aafff0de88ff106c0f96028d24cc0226b4",
+          "reason": "Only named documentation and transitive evidence manifests."
+        },
+        {
+          "path": "assurance/m4-callers-evidence.json",
+          "previous_sha256": "cf5ca1dc1f2c1dbdc403172b4451975f471529d1e70bb36f21a4bc7089916934",
+          "current_sha256": "2e6aa207cefd55fc7f7364d1d605ff8c70ec39911a1ecf013cafa0eefcdfa433",
+          "reason": "Only named documentation and transitive evidence manifests."
+        },
+        {
+          "path": "assurance/m4-decoder-evidence.json",
+          "previous_sha256": "aab3d71507cb70ee2986603138eb366602b0e5c62e4029e1a52cd6a337c291d3",
+          "current_sha256": "6404050a42e5cc1c2d1533bfd387b2d9963f872279b5226f2f2f3d1f013ba523",
+          "reason": "Only named documentation and transitive evidence manifests."
+        },
+        {
+          "path": "assurance/m4-sender-evidence.json",
+          "previous_sha256": "ff22e9739bbae4d7a475b638e4e3aff40aab9f48638847922292abf346bdf987",
+          "current_sha256": "94da3a4094b42bc8511d2f0696b56a24f75336955935182624df14bc95443043",
+          "reason": "Only named documentation and transitive evidence manifests."
+        },
+        {
+          "path": "assurance/m4-receiver-evidence.json",
+          "previous_sha256": "20019ccfe6f47f17daf93f5b7539bf3981e86a2601fdad3c2dfa8758de3e695c",
+          "current_sha256": "92fb91b478cf88e5035f12376bce4e30c819adee657c1217a157008781a44ce4",
+          "reason": "Only named documentation and transitive evidence manifests."
+        },
+        {
+          "path": "assurance/m4-wire-evidence.json",
+          "previous_sha256": "efbd0af02f297fe4d3079d32df30a75aae873c8fe6237c8d5c2c045b81e02a05",
+          "current_sha256": "c2064d746603a52f7e3f30bdacf99e554c97eb9989df64f7b9cff67207c2a369",
+          "reason": "Only named documentation and transitive evidence manifests."
+        },
+        {
+          "path": "assurance/m4-connection-claims.json",
+          "previous_sha256": "1524e27548e716cd1682ba5cc466aceab13d701cbbca97ae48320532adaf697b",
+          "current_sha256": "92398e0d20ee493a578efe5aebc927ec660f7a937e4f810433db30339e83275c",
+          "reason": "Only named documentation and transitive evidence manifests."
+        },
+        {
+          "path": "assurance/m4-public-evidence.json",
+          "previous_sha256": "3a302632fa23f7dbf6b14060663855254c442bc74d7a343069a4e65f7967031b",
+          "current_sha256": "cbbd0929463fe95b279c1e71164876e2c8930cad61e8b0821293e9c63987f068",
+          "reason": "Only named documentation and transitive evidence manifests."
+        },
+        {
+          "path": "assurance/m4-bridge-evidence.json",
+          "previous_sha256": "7673e7872654f832e8d8cb3a0fdf4d851eb0a4d2039c092550e4096f14062a8f",
+          "current_sha256": "e47c5bb66893284e46bb88188d989cfe2a2bad729fc51793a48b9bcdda00c44e",
+          "reason": "Only explicit documentation/transitive source bookkeeping; all frame statements, artifacts, tools and receipts retained."
+        }
+      ]
     }
   ],
   "candidate_to_final_source_changes": [

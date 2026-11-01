@@ -1,0 +1,5 @@
+PASS: 32 Rocq/88 Lean full plan records, strict computational endpoint, 173 export entries and seven compiled identities.
+PASS: native 83-record/20-identity checkpoint and frame 135/33 records, 239 compiled/85 tool identities, 530 exports preserved.
+PASS: all 465 sources and 24 explicit documentation/transitive amendments verified against c93c550; original receipts unchanged.
+PASS: original 1113 Rocq/103 Lean records, native source, old proof sources, tool pins and VM artifacts unchanged.
+PASS: all sixteen native/Linux obligations and the explicit translation/runtime/controller boundaries remain open.

@@ -51,10 +51,43 @@ compiled artifacts. Retain kernel checks and useful execution witnesses under
 [§REQ-proof-integrity.statement](../requirements/REQ-proof-integrity.md#statement-review-the-proposition). Source extraction and frontend acceptance are
 provenance evidence, not an end-to-end compilation proof.
 
+## plan: Live Lean plan fields and their decimal bytes
+
+Connect the actual `LeanCageM3.planArgs` implementation to its complete argument
+layout: mode, ten numeric limits, parent PID, export choice, both optional digest
+texts and the unmodified guest argument suffix. State the one-position shift
+when an executable name is prepended, without assuming that a proof of this pure
+array operation certifies `IO.Process.spawn` or Linux's argument memory.
+
+Prove the actual `toString`/UTF-8 representation of natural numbers contains only
+ASCII digits, is nonempty, has the expected mathematical value, and has at most
+twenty bytes for an unsigned 64-bit value. Valid policy limits must fit that
+range; the fixed CPU period is a separate policy condition and is not one of the
+ten serialized numeric arguments. The parent PID's encoding has the same decimal
+contract, while its positivity, signed-PID range and kernel identity remain
+native-controller checks.
+
+Use a small, exact numeric byte interface whose accepted values are precisely
+nonempty digit sequences within a supplied bound. Prove in Lean that the live
+encoded fields satisfy it. Import its computational definition with the existing
+strict profile, prove its exact relation to `number`, and compose that relation
+with actual source executions, owned memory, successful stores and every-prefix
+loss. An input equal to the encoded bytes is a representation premise, not a
+claim that the OS has supplied those bytes.
+
+Retain malformed and overflow examples as well as useful accepted plans. Keep
+the imported terms, full proposition/foundation inventory and earlier compiled
+identities auditable. The importer's translation faithfulness and logical-model
+review remain open; a checked translated term alone does not discharge them.
+
 ## composition: Remaining controller obligations
 
-Decimal syntax alone does not establish policy bounds, the Lean plan encoder,
-argument provenance or the native main routine's validation and setup ordering.
+Decimal syntax alone does not establish policy bounds, argument provenance or
+the native main routine's validation and setup ordering. The plan connection in
+[§AR-m4-controller.plan](AR-m4-controller.md#plan-live-lean-plan-fields-and-their-decimal-bytes) does not prove that the native main routine
+calls the parsers in that order or establishes their ownership premises.
+Its ten numeric stores occur sequentially: a later validation failure may retain
+earlier stores. Do not replace this with an all-or-nothing initialization claim.
 Connect those boundaries separately before claiming whole-controller behavior.
 Process supervision, cleanup, descriptor inheritance, native effects, the pinned
 Linux kernel, executable/runtime correspondence and hardware channels remain
