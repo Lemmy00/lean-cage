@@ -1,0 +1,5 @@
+PASS: 86 Rocq and 193 Lean full records, including generated helpers; 149-entry axiom-free export and sixteen compiled identities.
+PASS: actual digest entry, signed reads, short-circuit loop and exact return; all isolated executions preserve memory and retain progress/wait/loss.
+PASS: eighteen allocated cases, two NUL-boundary witnesses, actual live digestField and plan connection, strict imported source agreement.
+PASS: all preceding argument/bounds/main/plan/parser/frame/original statements, compiled artifacts, headers, pins and raw receipts preserved.
+PASS: all 28 explicit documentation/transitive amendments checked against 90461f6; sixteen original obligations remain open.

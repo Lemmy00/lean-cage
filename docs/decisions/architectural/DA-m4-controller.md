@@ -85,6 +85,21 @@ axioms; its ordinary Lean equivalence proofs remain separately audited. This is
 a representation connection for [§AR-m4-controller.bounds](../../architecture/AR-m4-controller.md#bounds-actual-policy-bound-validation), not an optimization
 or replacement of the running launcher.
 
+## digest: Reuse owned strings for the actual digest recognizer
+
+For [§AR-m4-controller.digest](../../architecture/AR-m4-controller.md#digest-actual-lowercase-digest-text-validation) and [§FS-workspace.policy](../../functional-spec/FS-workspace.md#policy-bounded-typed-request), retain the full-program
+`digest_text` AST and the existing owned-string `strlen` contract. Prove the
+signed-byte tests agree with lowercase ASCII hexadecimal classification, then
+construct the source loop and all-execution result. Keep the exact byte predicate
+small enough for the unchanged strict importer; connect higher-level Lean
+representations through ordinary checked lemmas. No parser or runtime source
+change is needed to make this proof convenient.
+
+The local claim is syntax recognition. Caller sequencing, the `none` alternative,
+digest verification against content and physical input provenance remain explicit
+composition work. Preserve the prior argument-loop checkpoint and its complete
+proof and artifact inventory.
+
 ## arguments: Preserve waits while connecting length accumulation
 
 For [§AR-m4-controller.arguments](../../architecture/AR-m4-controller.md#arguments-actual-guest-argument-length-accumulation) and [§FS-workspace.policy](../../functional-spec/FS-workspace.md#policy-bounded-typed-request), add a local `strlen`

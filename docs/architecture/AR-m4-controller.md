@@ -187,6 +187,37 @@ the libc implementation.
 This implements the argument part of [§FS-workspace.policy](../functional-spec/FS-workspace.md#policy-bounded-typed-request) while leaving the
 whole-controller obligations explicit.
 
+## digest: Actual lowercase digest-text validation
+
+Connect the unchanged complete-helper `digest_text` function to exactly sixty-four
+ASCII lowercase hexadecimal bytes. Start from an independently owned terminated
+byte string, including malformed lengths and characters. Execute the actual
+`strlen` call, unsigned loop index, signed-character loads, short-circuit tests
+and first rejection. Preserve every repeated character read in the source;
+high-bit bytes must reject under the actual signed-char ABI.
+
+Use the conservative string-effect machine from
+[§AR-m4-controller.arguments](AR-m4-controller.md#arguments-actual-guest-argument-length-accumulation), retaining arbitrary waiting and loss. Construct
+actual function-entry-to-return paths with arbitrary caller continuations.
+Prove unchanged memory, defined ordinary progress at live prefixes, and the exact
+zero or one return. For an isolated function call, characterize every execution
+and completed return, including loss after return; do not impose a prefix bound
+as a premise of that whole-function result. State finite non-wait bounds without
+asserting termination in the presence of waiting or loss.
+
+Connect an exact, strictly imported byte predicate to that source behavior, with
+separately checked Lean representation facts. Show that a successful `some` result
+of the actual live `digestField` yields the checked digest suffix, and connect
+that suffix to its UTF-8 bytes and existing plan positions. Preserve the original
+live policy and its digest encoding. Do not infer validation of the enclosing JSON object,
+physical argument memory, the special `none` spelling, the caller's conditional
+checks, digest authentication, SHA-256 correctness or file contents from a
+digest-text syntax result. These are separate parts of [§FS-workspace.policy](../functional-spec/FS-workspace.md#policy-bounded-typed-request) and
+the controller composition. Include allocated accepted, malformed-length,
+uppercase, boundary-character and high-byte executions, plus arbitrary-wait and
+every-prefix loss witnesses. Retain the explicit sequential-memory and libc
+correspondence obligations.
+
 ## composition: Remaining controller obligations
 
 Decimal syntax alone does not establish policy bounds, argument provenance or

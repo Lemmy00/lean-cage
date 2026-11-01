@@ -598,6 +598,21 @@ the successful total. Rejection retains the preceding valid prefix's total,
 not the reference sum over all arguments. Physical argv and libc correspondence,
 earlier parent/digest/export/allowlist checks and whole-main entry remain open.
 
+The [digest recognizer connection](../reviews/M4-digest.md) adds 86 Rocq and 193
+Lean full records, including generated Lean equations and helpers. Owned strings
+construct complete actual function paths and exact zero/one returns for
+sixty-four lowercase hexadecimal bytes. The signed-byte reads, repeated loads,
+unsigned loop and first rejection are checked. Every isolated execution preserves
+memory and has defined live progress or the exact return, with arbitrary library
+waiting and loss. The finite bound is 2,068 non-wait steps, or 2,069 events when
+including loss after return; no prefix-bound premise or termination claim is
+used. Eighteen allocated cases and two NUL-boundary cases establish useful and
+rejected executions. The strict imported byte predicate agrees with the source.
+The actual live `digestField` success implies a valid stripped UTF-8 suffix,
+which the existing plan places at native positions fourteen and fifteen.
+The enclosing JSON parser, physical argv, the native caller's `none` and digest
+checks, authentication of content and whole-controller behavior remain separate.
+
 **Evidence and assumptions:** `assurance/m4-public-evidence.json`,
 `assurance/m4-wire-evidence.json`,
 `assurance/m4-receiver-evidence.json`,
@@ -640,7 +655,14 @@ mutation, failed direct-import experiments and full foundation inventory.
 `strlen` effect, exact imported profile and the preserved bounds checkpoint.
 The gate checks all 151 export entries, nineteen compiled identities, twelve
 integrity regressions, a rejected source-limit mutation, disabled-check rejection
-and independent kernel replay. Full M4 remains open.
+and independent kernel replay.
+The digest gate is `python3 m4/digest/check.py`, with
+`assurance/m4-digest-claims.json` and `assurance/m4-digest-evidence.json`. It checks
+the 149-entry axiom-free computational export, sixteen compiled identities,
+complete foundations, twelve integrity regressions and compiled negative
+controls, preserving the argument checkpoint. Generated Lean helper propositions
+are printed with their proof arguments; no compiler-trust axiom supports the
+closed examples. Full M4 remains open.
 The established Coq 8.18 profile's six foundation/semantic-parameter entries remain unchanged; the explicit
 machine excludes stock external/builtin execution. No new Lean axiom is added.
 The owned witnesses allocate cells for the actual source symbol mapping; they do
