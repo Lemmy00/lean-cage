@@ -1,0 +1,5 @@
+PASS: 83 exact decimal source statements/foundations, 17 compiled/3 frontend identities, 20 samples and 40 allocated runs.
+PASS: 49 axiom-free, 29 with six existing foundations, five with four; no definitional UIP.
+PASS: full parent 135 Rocq/33 Lean records, 239 compiled/85 tool identities, 530 exports, primitive checkpoint and receipts preserved.
+PASS: all 450 current sources and 23 explicit documentation/transitive amendments verified against dfaf997.
+PASS: original 1113 Rocq/103 Lean records and all native/proof/tool/VM inputs unchanged; all sixteen obligations remain open.

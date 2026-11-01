@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/localhome/milikic/sandbox-formalization/.tools/m4/controller-number/audit.py", line 11, in <module>
+    check.bridge.connection().verify_hashes(e['archived_receipts_sha256'])
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/localhome/milikic/sandbox-formalization/m4/connection/check.py", line 89, in verify_hashes
+    raise ValueError(f'stale or tampered connection input: {relative}')
+ValueError: stale or tampered connection input: assurance/m4-number-integrity-check.log

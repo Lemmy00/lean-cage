@@ -535,6 +535,17 @@ accepted/rejected source witnesses. Source kind narrowing remains explicit.
 Translation-faithfulness review, whole-controller composition and Linux/executable
 correspondence remain open; this is not a completed cross-assistant guarantee.
 
+The [native decimal parser connection](../reviews/M4-controller-number.md) adds
+83 Rocq records for [§FS-workspace.policy](FS-workspace.md#policy-bounded-typed-request). It connects the unchanged
+`number` source to the exact nonempty decimal language and unsigned 64-bit bound,
+including short-circuit overflow checks, signed/unsigned byte reads, leading
+zeros and output/input aliasing. Constructed complete source paths support
+all-return correctness, finite-prefix memory/permission preservation, ordinary
+progress and loss at every source boundary. Twenty accepted/rejected cases each
+have allocated overlapping and separate source executions. The machine remains
+sequential; absence of interfering writers, deployed store atomicity, argument
+provenance, policy bounds and whole-controller ordering remain obligations.
+
 **Evidence and assumptions:** `assurance/m4-public-evidence.json`,
 `assurance/m4-wire-evidence.json`,
 `assurance/m4-receiver-evidence.json`,
@@ -552,6 +563,11 @@ pinned tools, actual extracted source/AST, complete declarations and `coqchk`.
 The isolated profile has its own [bridge review](../reviews/M4-bridge.md),
 `assurance/m4-bridge-claims.json`, `assurance/m4-bridge-evidence.json` and
 `python3 m4/bridge/check.py` replay. Its additional logical model is kept explicit.
+The controller parser has its own `assurance/m4-controller-number-claims.json`,
+`assurance/m4-controller-number-evidence.json` and `python3 m4/controller/check.py`
+replay, preserving the complete frame checkpoint byte-for-byte. Its 83 records
+use no new foundation: 49 report none, 29 the existing six and five the existing
+four logical foundations. No new Lean result or full M4 completion is claimed.
 The established Coq 8.18 profile's six foundation/semantic-parameter entries remain unchanged; the explicit
 machine excludes stock external/builtin execution. No new Lean axiom is added.
 The owned witnesses allocate cells for the actual source symbol mapping; they do

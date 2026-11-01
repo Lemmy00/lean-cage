@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "/localhome/milikic/sandbox-formalization/m4/bridge/check.py", line 330, in <module>
+    collect() if args.collect else check()
+                                   ~~~~~^^
+  File "/localhome/milikic/sandbox-formalization/m4/bridge/check.py", line 309, in check
+    report = collect()
+  File "/localhome/milikic/sandbox-formalization/m4/bridge/check.py", line 237, in collect
+    logs[path.name] = compile_file(path)
+                      ~~~~~~~~~~~~^^^^^^
+  File "/localhome/milikic/sandbox-formalization/m4/bridge/check.py", line 189, in compile_file
+    result = run(['rocq', 'c', '-q', *flags(), str(path)], cwd=WORK / 'proofs')
+  File "/localhome/milikic/sandbox-formalization/m4/bridge/profile.py", line 46, in run
+    return subprocess.run(args, cwd=cwd, env=environment(), text=True,
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                          stdout=subprocess.PIPE if capture else None,
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                          stderr=subprocess.STDOUT, timeout=timeout, check=True)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/localhome/milikic/miniconda3/lib/python3.13/subprocess.py", line 556, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/localhome/milikic/miniconda3/lib/python3.13/subprocess.py", line 1222, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/localhome/milikic/miniconda3/lib/python3.13/subprocess.py", line 2128, in _communicate
+    ready = selector.select(timeout)
+  File "/localhome/milikic/miniconda3/lib/python3.13/selectors.py", line 398, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt

@@ -41,8 +41,8 @@
   "claims_sha256": "ef75db88ca4d6936b37f639952ba8733866e344c1dd34c4927e7578a30d34fa7",
   "preserved_sha256": {
     "assurance/m4-primitives-baseline-claims.json": "6a87d4e91fd657fdadc18ffc6ae345d8dcf9d1033b1ed4b9c7454c749b2396af",
-    "assurance/m4-writeall-evidence.json": "289c928ac6569eeadff9b242295514e594989976c124e0d28f85aadcea135121",
-    "assurance/m4-connection-evidence.json": "0e449f92cbafca8deb44adb56946cc7398cc78992007b26179ee97e0a2ac4ce9",
+    "assurance/m4-writeall-evidence.json": "43a1ff1c5101d2671f3751e4a67e7a699076e9e1e1ab70b79d8ee3a8890ffb6a",
+    "assurance/m4-connection-evidence.json": "b981589944f137a3f6ae9ff1b0aecaa854f779caa5f0365951b26acbeef9c142",
     "assurance/m4-obligations.json": "77f760ca9447b8ee05ec0e24efc637b35ff6a62356657515ffc68f0999182064",
     "m4/connection/IO.v": "1e0d7a736ddda75467ec2882663d8a02aeb4b65eea0af0f0f04c3b6d7e01e1df",
     "m4/connection/Machine.v": "1469b64799d43d06cd3f8f1ae4430c19bf83947aff230d2de2188b8ad0b44e7d",
@@ -344,6 +344,25 @@
           "path": "assurance/m4-writeall-evidence.json",
           "previous_sha256": "f69b4bdbdce651a9b85a280692f80b8fe40f670ee82a3aac16d5adbb21998170",
           "current_sha256": "289c928ac6569eeadff9b242295514e594989976c124e0d28f85aadcea135121",
+          "reason": "Only named documentation and transitive evidence manifests.",
+          "map": "preserved_sha256"
+        }
+      ]
+    },
+    {
+      "reason": "Native decimal parser proofs: only named documentation fingerprints and transitive evidence bookkeeping. All original theorem records, compiled artifacts and archived receipts retained.",
+      "changes": [
+        {
+          "path": "assurance/m4-connection-evidence.json",
+          "previous_sha256": "0e449f92cbafca8deb44adb56946cc7398cc78992007b26179ee97e0a2ac4ce9",
+          "current_sha256": "b981589944f137a3f6ae9ff1b0aecaa854f779caa5f0365951b26acbeef9c142",
+          "reason": "Only named documentation and transitive evidence manifests.",
+          "map": "preserved_sha256"
+        },
+        {
+          "path": "assurance/m4-writeall-evidence.json",
+          "previous_sha256": "289c928ac6569eeadff9b242295514e594989976c124e0d28f85aadcea135121",
+          "current_sha256": "43a1ff1c5101d2671f3751e4a67e7a699076e9e1e1ab70b79d8ee3a8890ffb6a",
           "reason": "Only named documentation and transitive evidence manifests.",
           "map": "preserved_sha256"
         }

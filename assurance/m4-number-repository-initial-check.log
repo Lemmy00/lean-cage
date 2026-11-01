@@ -1,0 +1,6 @@
+exists AGENTS.md
+exists grund.toml
+docs/architecture/AR-m4-controller.md:1: error: AR-m4-controller is not listed in docs/architecture/README.md: an entry is a `§`-marked Markdown link to the declaration; write `[§AR-m4-controller](AR-m4-controller.md#ar-m4-controller-source-connections-for-controller-inputs-and-ordering)` in docs/architecture/README.md — became an error in grund 0.13.0
+docs/decisions/architectural/DA-m4-controller.md:1: error: DA-m4-controller is not listed in docs/decisions/architectural/README.md: an entry is a `§`-marked Markdown link to the declaration; write `[§DA-m4-controller](DA-m4-controller.md#da-m4-controller-extend-source-correspondence-through-small-controller-routines)` in docs/decisions/architectural/README.md — became an error in grund 0.13.0
+docs/functional-spec/FS-assurance.md:539: error: FS must not cite AR (citation direction) — re-point the citation or downgrade it to a plain Markdown link
+docs/decisions/architectural/DA-m4-controller.md:1: warning: declared but never cited: DA-m4-controller

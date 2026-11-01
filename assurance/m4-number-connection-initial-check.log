@@ -1,0 +1,37 @@
+Traceback (most recent call last):
+  File "/localhome/milikic/miniconda3/lib/python3.13/subprocess.py", line 1222, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/localhome/milikic/miniconda3/lib/python3.13/subprocess.py", line 2128, in _communicate
+    ready = selector.select(timeout)
+  File "/localhome/milikic/miniconda3/lib/python3.13/selectors.py", line 398, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/localhome/milikic/sandbox-formalization/m4/check.py", line 282, in <module>
+    check()
+    ~~~~~^^
+  File "/localhome/milikic/sandbox-formalization/m4/check.py", line 259, in check
+    actual = collect()
+  File "/localhome/milikic/sandbox-formalization/m4/check.py", line 195, in collect
+    records = coq_inventory()
+  File "/localhome/milikic/sandbox-formalization/m4/check.py", line 106, in coq_inventory
+    result = compile_file('Audit.v')
+  File "/localhome/milikic/sandbox-formalization/m4/prover.py", line 24, in compile_file
+    return subprocess.run([str(WORK / 'root/usr/bin/coqc'), '-q', *flags(), str(target)],
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                          env=environment(), cwd=WORK / "input", text=True, capture_output=True, timeout=180)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/localhome/milikic/miniconda3/lib/python3.13/subprocess.py", line 556, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/localhome/milikic/miniconda3/lib/python3.13/subprocess.py", line 1233, in communicate
+    self._wait(timeout=sigint_timeout)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/localhome/milikic/miniconda3/lib/python3.13/subprocess.py", line 2060, in _wait
+    time.sleep(delay)
+    ~~~~~~~~~~^^^^^^^
+KeyboardInterrupt
