@@ -252,6 +252,36 @@ short-circuit cases and arbitrary `strcmp` result magnitudes, and reject a
 compiled mutation of an actual source constant. Preserve the complete digest
 checkpoint and its earlier proof and artifact inventories.
 
+## initialization: Actual flag and pointer initialization
+
+Connect the source assignments between the caller checks in
+[§AR-m4-controller.strings](AR-m4-controller.md#strings-actual-caller-string-checks) under [§FS-workspace.policy](../functional-spec/FS-workspace.md#policy-bounded-typed-request). The actual mode comparison
+sets the preflight flag; export comparison sets the policy's export flag; the
+next assignments store the tree and stdin pointers and the guest-argument table
+pointer. Prove their exact values and continuations from independent ownership
+and writable-cell premises. Preserve every conforming `strcmp` result, arbitrary
+waiting and process loss. Memory after an interruption retains earlier stores;
+there is no rollback. Establish unchanged bytes outside the designated stores
+and unchanged permissions throughout each region.
+
+Compose export checking, export and digest-pointer initialization, digest
+checking, argument-pointer initialization, executable checking, argument-length
+accumulation and policy bounds in their actual source order. Classify each
+intermediate memory and each first rejecting branch. Exclude interference with
+live input strings and the argument table by explicit separation premises;
+preserve numeric cells and literal globals through the writes. Keep the distinct
+mode/preflight region separate until the intervening numeric and parent regions
+are connected. Do not infer whole-main reachability from this selected region.
+
+Construct successful and rejected executions from full-program initial memory,
+allocated strings and argument cells, and an explicit numeric-policy store
+sequence. These witnesses establish that the ownership premises are inhabited;
+they do not establish physical argv provenance or preceding source execution.
+Any prospective stores used to describe possible later states must not be
+reported as executed on an earlier rejection branch. Inspect exact theorem
+types and foundations, retain strict imported byte computation, and preserve
+the preceding caller-string evidence before extending the maintained gate.
+
 ## composition: Remaining controller obligations
 
 Decimal syntax alone does not establish policy bounds, argument provenance or

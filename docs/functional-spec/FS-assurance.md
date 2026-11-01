@@ -629,6 +629,21 @@ arbitrary waiting before loss. Literal bytes come from actual program
 initialization. Physical argv, preceding caller stores, parent identity,
 whole-main entry and the remaining effect/runtime obligations remain open.
 
+The [initialization connection](../reviews/M4-initialization.md) adds actual
+preflight, export, digest-pointer and argument-pointer source assignments.
+Export validation through numeric bounds forms one continuous region, with
+ordinary non-wait bound `26*N + 4540`; mode/preflight is a separate 42-step region.
+Each first rejecting branch retains exactly the memory reached before it.
+Every actual pre-boundary transition, including waiting and process loss, keeps
+the explicit sequential-memory invariant and all memory permissions. Bytes
+outside the designated stores are unchanged. Independent ownership and separation
+premises remain explicit. Thirty-five combined allocated cases include six
+acceptances, and ten mode cases include three; a separate allocated family
+reaches all four configuration memories and can lose the process at each one.
+The existing strict byte import and live Lean launch arguments agree with both
+stored flags. Physical argv, prior numeric/parent composition, main entry and
+subsequent effects remain open; these are source-model proofs, not VM results.
+
 **Evidence and assumptions:** `assurance/m4-public-evidence.json`,
 `assurance/m4-wire-evidence.json`,
 `assurance/m4-receiver-evidence.json`,
@@ -686,6 +701,15 @@ integrity regressions and three compiled negative controls. Both rejected sparse
 import experiments are archived; exhaustive constructor normalization passes
 without relaxing the strict importer. The digest checkpoint and every earlier
 proposition, artifact, pin and original receipt remain preserved.
+The initialization gate is `python3 m4/initialization/check.py`, with
+`assurance/m4-initialization-claims.json` and
+`assurance/m4-initialization-evidence.json`. It records complete theorem types
+and foundations, twenty compiled identities, twelve integrity regressions and
+three compiled negative controls. The exact 161-entry axiom-free caller-string
+export supplies the imported flag computation without a new translation.
+The caller-string checkpoint and all earlier statements, artifacts, headers,
+pins and original receipts remain preserved. Full M4 and whole-controller
+correspondence remain incomplete.
 The established Coq 8.18 profile's six foundation/semantic-parameter entries remain unchanged; the explicit
 machine excludes stock external/builtin execution. No new Lean axiom is added.
 The owned witnesses allocate cells for the actual source symbol mapping; they do

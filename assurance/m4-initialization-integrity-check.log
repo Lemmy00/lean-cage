@@ -1,0 +1,5 @@
+PASS: 81 Rocq/2 Lean full records; three strict imported flag declarations; twenty compiled identities.
+PASS: actual flag/pointer stores, continuous export-to-bounds source region, sequential memory and all-step boundary guarantees.
+PASS: 45 allocated boundaries and every configuration-store interruption; live flags and exact final cell loads.
+PASS: all previous propositions, compiled artifacts, headers, pins and raw receipts retained.
+PASS: all 30 explicit documentation/transitive amendments checked against 572df1e; all sixteen original obligations remain open.

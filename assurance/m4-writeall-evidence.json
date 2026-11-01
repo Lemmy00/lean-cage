@@ -34,7 +34,7 @@
     "assurance/m4-slice.c": "f563cd6dc5163aad8d243ace10e95882cc3879bcf927ef765485886c07d43bb7",
     "assurance/m4-slice.i": "79dd344ee81ba37d15fbf1cc0fc0d8ceeec8f63d751251ece5b1049610556fc7",
     "assurance/m4-slice.v.gz": "0aa10f2e1ac62321990fb0b3ea41d87300c936ad4834fa80a8fad3a72afae28c",
-    "assurance/m4-connection-evidence.json": "b401f0cfa7454755357dbd533b5f4d39693912b7ed3521558d49b87cb5afdae4",
+    "assurance/m4-connection-evidence.json": "d77e826146c45a4863e4058e039f8b417482bb63dd68d90d6394ebbc568647ba",
     "assurance/m4-obligations.json": "77f760ca9447b8ee05ec0e24efc637b35ff6a62356657515ffc68f0999182064"
   },
   "artifact_sha256": {
@@ -370,6 +370,18 @@
           "path": "assurance/m4-connection-evidence.json",
           "previous_sha256": "6f425d0d6d51aa5ba59be14696731407051d5b990565aa88f77785250b0099ba",
           "current_sha256": "b401f0cfa7454755357dbd533b5f4d39693912b7ed3521558d49b87cb5afdae4",
+          "reason": "Only named documentation and transitive evidence manifests.",
+          "map": "preserved_sha256"
+        }
+      ]
+    },
+    {
+      "reason": "Actual initialization source connection: only named documentation fingerprints and transitive evidence bookkeeping. All original theorem records, compiled artifacts and archived receipts retained.",
+      "changes": [
+        {
+          "path": "assurance/m4-connection-evidence.json",
+          "previous_sha256": "b401f0cfa7454755357dbd533b5f4d39693912b7ed3521558d49b87cb5afdae4",
+          "current_sha256": "d77e826146c45a4863e4058e039f8b417482bb63dd68d90d6394ebbc568647ba",
           "reason": "Only named documentation and transitive evidence manifests.",
           "map": "preserved_sha256"
         }

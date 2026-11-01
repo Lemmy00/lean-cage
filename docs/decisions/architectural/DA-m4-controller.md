@@ -152,3 +152,21 @@ including one with an explicit structural recursion annotation, failed strict
 import at generated elimination dependencies. Preserve their exact sources,
 exports and diagnostic reproductions. Do not relax importer checks; prove the
 normalized computation's exact behavior in ordinary Lean and Rocq.
+
+## initialization: Keep sequential stores visible during composition
+
+For [§AR-m4-controller.initialization](../../architecture/AR-m4-controller.md#initialization-actual-flag-and-pointer-initialization) and [§FS-workspace.policy](../../functional-spec/FS-workspace.md#policy-bounded-typed-request), reuse the existing
+branching region certificate and unchanged string machine. Extend the memory
+predicate from equality with one initial memory to the explicit finite sequence
+of actual stores. Each source assignment supplies its own ordinary step proof
+and classification of every transition. A frame relation preserves all memory
+permissions and bytes outside the preflight, export, digest-pointer and
+argument-pointer cells. Require separation where subsequent reads need it.
+
+Compose certificates internally and expose an execution guarantee from owned
+inputs. The guarantee includes an ordinary path and a split for every finite
+execution at its actual source boundary. It does not claim memory preservation
+for arbitrary code after that boundary. Constructing a possible later memory
+with `Mem.store` only proves that the store is feasible; the reached endpoint
+and trace determine whether it was executed. Preserve that distinction on
+export, digest and executable rejection and on process loss.

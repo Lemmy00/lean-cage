@@ -1,0 +1,2 @@
+Plan replay passed: 32 Rocq and 88 Lean full theorem records; strict import and independent kernel check.
+Live plan bytes and imported native parsing checked; translation, argv provenance, main ordering and Linux/executable composition remain OPEN.

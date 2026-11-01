@@ -1,0 +1,107 @@
+exists AGENTS.md
+exists grund.toml
+success
+success
+Build completed successfully (57 jobs).
+Axiom audit passed: 445 theorem declarations; types, axiom sets, and 39 source/dependency identities match.
+Checked Lean artifact identities: .tools/assurance/filter-decoder-report.json
+Build completed successfully (16 jobs).
+Archived M1 VM evidence matches current sources: 13 passing cases; no VM rerun.
+test_changed_type_fails (test_axiom_audit.AxiomAuditIntegration.test_changed_type_fails) ... ok
+test_empty_or_duplicate_inventory_fails (test_axiom_audit.AxiomAuditIntegration.test_empty_or_duplicate_inventory_fails) ... ok
+test_missing_declaration_fails_in_lean (test_axiom_audit.AxiomAuditIntegration.test_missing_declaration_fails_in_lean) ... ok
+test_non_theorem_fails (test_axiom_audit.AxiomAuditIntegration.test_non_theorem_fails) ... ok
+test_production_inventory_passes (test_axiom_audit.AxiomAuditIntegration.test_production_inventory_passes) ... ok
+test_source_identity_drift_fails_before_build (test_axiom_audit.AxiomAuditIntegration.test_source_identity_drift_fails_before_build) ... ok
+test_transitive_forbidden_axioms_fail_even_when_manifest_lists_them (test_axiom_audit.AxiomAuditIntegration.test_transitive_forbidden_axioms_fail_even_when_manifest_lists_them) ... ok
+test_unrecorded_theorem_fails (test_axiom_audit.AxiomAuditIntegration.test_unrecorded_theorem_fails) ... ok
+test_unreviewed_logical_axiom_set_fails (test_axiom_audit.AxiomAuditIntegration.test_unreviewed_logical_axiom_set_fails) ... ok
+test_c_citations_are_discovered_and_dangling_citations_fail (test_grund.GrundLeanIntegration.test_c_citations_are_discovered_and_dangling_citations_fail) ... ok
+test_dangling_lean_citation_fails (test_grund.GrundLeanIntegration.test_dangling_lean_citation_fails) ... ok
+test_dependency_sources_are_excluded (test_grund.GrundLeanIntegration.test_dependency_sources_are_excluded) ... ok
+test_lean_citation_is_discovered (test_grund.GrundLeanIntegration.test_lean_citation_is_discovered) ... ok
+test_archived_observations_pass (test_m1_vm_evidence.M1VmEvidenceIntegration.test_archived_observations_pass) ... ok
+test_guest_execution_after_validation_failure_fails (test_m1_vm_evidence.M1VmEvidenceIntegration.test_guest_execution_after_validation_failure_fails) ... ok
+test_infrastructure_failure_is_not_denial (test_m1_vm_evidence.M1VmEvidenceIntegration.test_infrastructure_failure_is_not_denial) ... ok
+test_missing_allowed_or_denied_action_fails (test_m1_vm_evidence.M1VmEvidenceIntegration.test_missing_allowed_or_denied_action_fails) ... ok
+test_missing_or_duplicate_case_fails (test_m1_vm_evidence.M1VmEvidenceIntegration.test_missing_or_duplicate_case_fails) ... ok
+test_stale_source_identity_fails (test_m1_vm_evidence.M1VmEvidenceIntegration.test_stale_source_identity_fails) ... ok
+test_timeout_or_failed_vm_never_passes (test_m1_vm_evidence.M1VmEvidenceIntegration.test_timeout_or_failed_vm_never_passes) ... ok
+test_wrong_errno_or_missing_receipt_fails (test_m1_vm_evidence.M1VmEvidenceIntegration.test_wrong_errno_or_missing_receipt_fails) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 12.842s
+
+OK
+Archived M1 VM evidence matches current sources: 13 passing cases; no VM rerun.
+Build completed successfully (73 jobs).
+M2 evidence verified: 43 cases; archived source/transcript check; no VM replay.
+M2 audit passed: 274 theorems; 31 named claims; 45 identities; all 445 M1 theorem statements/axioms preserved.
+test_changed_package_toolchain_is_rejected_and_recorded (test_audit.Audit.test_changed_package_toolchain_is_rejected_and_recorded) ... ok
+test_changed_proposition_is_rejected (test_audit.Audit.test_changed_proposition_is_rejected) ... ok
+test_empty_or_missing_inventory_is_rejected (test_audit.Audit.test_empty_or_missing_inventory_is_rejected) ... ok
+test_every_module_theorem_matches (test_audit.Audit.test_every_module_theorem_matches) ... ok
+test_forbidden_transitive_axiom_is_rejected (test_audit.Audit.test_forbidden_transitive_axiom_is_rejected) ... ok
+test_m1_statements_and_axioms_preserved (test_audit.Audit.test_m1_statements_and_axioms_preserved) ... ok
+test_archive_is_independent_of_current_checkout (test_evidence.Evidence.test_archive_is_independent_of_current_checkout) ... ok
+test_artifact_mode_compares_current_files (test_evidence.Evidence.test_artifact_mode_compares_current_files) ... ok
+test_cancellation_requires_observed_cleanup_and_sentinel_survival (test_evidence.Evidence.test_cancellation_requires_observed_cleanup_and_sentinel_survival) ... ok
+test_complete_source_bound_record (test_evidence.Evidence.test_complete_source_bound_record) ... ok
+test_current_artifacts_resolve_to_current_checkout (test_evidence.Evidence.test_current_artifacts_resolve_to_current_checkout) ... ok
+test_every_top_level_field_is_required (test_evidence.Evidence.test_every_top_level_field_is_required) ... ok
+test_exit125_is_not_a_setup_error (test_evidence.Evidence.test_exit125_is_not_a_setup_error) ... ok
+test_incomplete_profile_artifacts_and_runtime_are_rejected (test_evidence.Evidence.test_incomplete_profile_artifacts_and_runtime_are_rejected) ... ok
+test_lost_report_never_becomes_exec_success (test_evidence.Evidence.test_lost_report_never_becomes_exec_success) ... ok
+test_missing_or_duplicate_cases_and_guest_markers (test_evidence.Evidence.test_missing_or_duplicate_cases_and_guest_markers) ... ok
+test_mixed_recording_roots_are_rejected (test_evidence.Evidence.test_mixed_recording_roots_are_rejected) ... ok
+test_no_guest_entry_after_rejection (test_evidence.Evidence.test_no_guest_entry_after_rejection) ... ok
+test_positive_controls_are_required (test_evidence.Evidence.test_positive_controls_are_required) ... ok
+test_stale_sources_fail (test_evidence.Evidence.test_stale_sources_fail) ... ok
+test_timeout_infrastructure_failure_or_wrong_profile_fails (test_evidence.Evidence.test_timeout_infrastructure_failure_or_wrong_profile_fails) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 18.739s
+
+OK
+M2 evidence verified: 43 cases; current recorded artifacts match.
+Build completed successfully (36 jobs).
+Build completed successfully (73 jobs).
+M3 evidence verified: 60 cases, 3 API checks, 6 death/cancel boundaries; archived source/transcript check; no VM replay.
+M3 assurance audit passed: 419 theorem declarations, 60 claims; all 274 M2 declarations preserved.
+test_complete_types_and_logical_foundations (test_audit.Audit.test_complete_types_and_logical_foundations) ... ok
+test_declared_compiler_trust_and_custom_axioms_rejected (test_audit.Audit.test_declared_compiler_trust_and_custom_axioms_rejected) ... ok
+test_missing_duplicate_changed_type_and_non_theorem (test_audit.Audit.test_missing_duplicate_changed_type_and_non_theorem) ... ok
+test_dynamic_table_must_terminate (test_elf.Elf.test_dynamic_table_must_terminate) ... ok
+test_exact_needed_string (test_elf.Elf.test_exact_needed_string) ... ok
+test_invalid_abi_and_program_bounds (test_elf.Elf.test_invalid_abi_and_program_bounds) ... ok
+test_string_pointer_and_offset_bounds (test_elf.Elf.test_string_pointer_and_offset_bounds) ... ok
+test_complete_archived_record (test_evidence.Evidence.test_complete_archived_record) ... ok
+test_concurrent_credentials_and_overlap_required (test_evidence.Evidence.test_concurrent_credentials_and_overlap_required) ... ok
+test_missing_duplicate_reordered_records_and_timeout (test_evidence.Evidence.test_missing_duplicate_reordered_records_and_timeout) ... ok
+test_moved_checkout_without_original_artifacts (test_evidence.Evidence.test_moved_checkout_without_original_artifacts) ... ok
+test_private_counters_and_scope_are_required (test_evidence.Evidence.test_private_counters_and_scope_are_required) ... ok
+test_reports_and_supervisor_death_cannot_be_omitted (test_evidence.Evidence.test_reports_and_supervisor_death_cannot_be_omitted) ... ok
+test_sources_profile_and_artifact_completeness (test_evidence.Evidence.test_sources_profile_and_artifact_completeness) ... ok
+test_native_widths_and_resource_bounds (test_policy.Policy.test_native_widths_and_resource_bounds) ... ok
+test_real_example_and_unicode_arguments (test_policy.Policy.test_real_example_and_unicode_arguments) ... ok
+test_reject_ambiguous_json (test_policy.Policy.test_reject_ambiguous_json) ... ok
+test_unknown_fields_profiles_digests_and_argument_bounds (test_policy.Policy.test_unknown_fields_profiles_digests_and_argument_bounds) ... ok
+test_missing_directory_preserves_setup_failure (test_report_storage.ReportStorage.test_missing_directory_preserves_setup_failure) ... ok
+test_publication_error_preserves_execution_and_cancellation (test_report_storage.ReportStorage.test_publication_error_preserves_execution_and_cancellation) ... ok
+test_successful_publication_is_retrievable (test_report_storage.ReportStorage.test_successful_publication_is_retrievable) ... ok
+test_bad_hardlinks_special_files_and_cycles (test_runtime.Runtime.test_bad_hardlinks_special_files_and_cycles) ... ok
+test_changed_runtime_graph_rejected (test_runtime.Runtime.test_changed_runtime_graph_rejected) ... ok
+test_duplicate_members_rejected (test_runtime.Runtime.test_duplicate_members_rejected) ... ok
+test_hardlink_holds_previous_bytes_after_replacement (test_runtime.Runtime.test_hardlink_holds_previous_bytes_after_replacement) ... ok
+test_image_internal_absolute_symlinks_and_loop_bound (test_runtime.Runtime.test_image_internal_absolute_symlinks_and_loop_bound) ... ok
+test_opaque_directory_preserves_new_entries (test_runtime.Runtime.test_opaque_directory_preserves_new_entries) ... ok
+test_pinned_manifest_config_graph (test_runtime.Runtime.test_pinned_manifest_config_graph) ... ok
+test_symlink_parent_never_followed (test_runtime.Runtime.test_symlink_parent_never_followed) ... ok
+test_traversal_and_absolute_names (test_runtime.Runtime.test_traversal_and_absolute_names) ... ok
+test_whiteout_applies_only_to_previous_layer (test_runtime.Runtime.test_whiteout_applies_only_to_previous_layer) ... ok
+test_vectors_and_stream_boundaries (test_sha256.Sha256.test_vectors_and_stream_boundaries) ... ok
+
+----------------------------------------------------------------------
+Ran 32 tests in 3.436s
+
+OK
