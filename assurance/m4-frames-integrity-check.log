@@ -1,0 +1,5 @@
+PASS: 135 Rocq and 33 Lean full statements/foundations, 530 exported declarations, 239 compiled identities.
+PASS: all 42 earlier bridge records, 221 earlier compiled identities, 85 tool identities and export bytes preserved.
+PASS: 421 current source hashes, 235 preserved paths, all archived receipts, 21 explicit documentation/transitive amendments.
+PASS: original 1113 Rocq/103 Lean records, native sources, original proofs/pins and VM artifacts unchanged.
+PASS: explicit-parser proof change preserves all 135 statements/foundations; all sixteen native/Linux obligations remain open.

@@ -16,7 +16,16 @@ from profile import ROOT, DIRECTORY, WORK, digest, flags, lean_run, run, verify_
 
 MANIFEST = ROOT / 'assurance/m4-bridge-claims.json'
 EVIDENCE = ROOT / 'assurance/m4-bridge-evidence.json'
-MODULES = ['BridgeNat', 'BridgeBytes', 'BridgeWords', 'BridgeSource']
+PRIMITIVE_MODULES = ['BridgeNat', 'BridgeBytes', 'BridgeWords', 'BridgeSource']
+MODULES = PRIMITIVE_MODULES + [
+    'FrameLists', 'FrameArray', 'FrameAppend', 'FrameSlices', 'FrameEquality', 'FrameByteEq',
+    'FrameNumbers', 'FrameFields', 'FrameHeader', 'FrameMatch', 'FrameParser', 'FrameDecode',
+    'FrameLengths', 'FrameLogic', 'FrameValidity', 'FrameComplete', 'FrameExecution', 'FrameSamples',
+]
+PRIMITIVE_ARCHIVES = {
+    'assurance/m4-bridge-primitives-claims.json': '5e8bef1dd3568798f9b292262076c5a2529b5ff9693f99a9fe85f399a116bb09',
+    'assurance/m4-bridge-primitives-evidence.json': '2e1c5e579c0617627af3de4e5b47c5f2e0b45f8ff5b64a530ce61801cc6420c4',
+}
 ALLOWED_LEAN = {'Classical.choice', 'Quot.sound', 'propext'}
 ALLOWED_ROCQ = {
     'ClassicalDedekindReals.sig_not_dec', 'ClassicalDedekindReals.sig_forall_dec',
@@ -43,6 +52,7 @@ def baseline_audits():
 def sources():
     paths = [p for p in DIRECTORY.iterdir() if p.is_file()]
     paths += [ROOT / 'docs/architecture/AR-m4-bridge.md', ROOT / 'docs/reviews/M4-bridge.md',
+              ROOT / 'docs/reviews/M4-frames.md', *[ROOT / p for p in PRIMITIVE_ARCHIVES],
               ROOT / 'scripts/m3_axiom_query.lean',
               ROOT / 'm4/Codec.v', ROOT / 'm4/toolchain-lock.json', ROOT / 'assurance/m4-slice.v.gz',
               ROOT / 'assurance/m4-connection-claims.json', ROOT / 'assurance/m4-public-evidence.json']
@@ -101,6 +111,29 @@ def validate_claims(expected, actual):
     for key in ['rocq_declarations', 'lean_declarations', 'imported_endpoint', 'export_inventory']:
         if not actual[key] or actual[key] != expected[key]:
             raise ValueError('reviewed bridge statement/foundation/export inventory differs: ' + key)
+
+
+def validate_primitive_preservation(claims, evidence, actual):
+    # §AR-m4-bridge.frames: New results cannot replace earlier statements or compiled identities.
+    previous = {record['name']: record for record in claims['rocq_declarations']}
+    current = {record['name']: record for record in actual['rocq_declarations']}
+    if not previous or any(current.get(name) != record for name, record in previous.items()):
+        raise ValueError('primitive theorem statement or foundation changed or missing')
+    for key in ['lean_declarations', 'imported_endpoint', 'export_inventory']:
+        if actual[key] != claims[key]:
+            raise ValueError('primitive endpoint/export changed: ' + key)
+    for key in ['artifact_sha256', 'tool_artifact_sha256', 'replayed_sources_sha256']:
+        if any(actual[key].get(path) != value for path, value in evidence[key].items()):
+            raise ValueError('primitive artifact or source identity changed: ' + key)
+    if actual['export_sha256'] != evidence['export_sha256']:
+        raise ValueError('primitive computational export changed')
+
+
+def primitive_preservation(actual):
+    connection().verify_hashes(PRIMITIVE_ARCHIVES)
+    claims = json.loads((ROOT / 'assurance/m4-bridge-primitives-claims.json').read_text())
+    evidence = json.loads((ROOT / 'assurance/m4-bridge-primitives-evidence.json').read_text())
+    validate_primitive_preservation(claims, evidence, actual)
 
 
 def lean_inventory():
@@ -264,6 +297,7 @@ def collect():
               'artifact_sha256': artifacts, 'tool_artifact_sha256': tools_before,
               'kernel_output': kernel.stdout, 'logs': logs,
               'elapsed_seconds': round(time.monotonic() - started, 3)}
+    primitive_preservation(report)
     (WORK / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
     print(f"Bridge replay: {len(records)-1} Rocq and {len(lean)} Lean theorem records; strict import and kernel replay passed.", flush=True)
     return report
@@ -285,7 +319,7 @@ def check():
     if hashlib.sha256(exported).hexdigest() != report['export_sha256']:
         raise ValueError('archived exported term closure differs from the actual export')
     connection().validate_obligations(json.loads((ROOT / 'assurance/m4-obligations.json').read_text()))
-    print('Primitive source/imported-reader correspondence checked; translation review, full-frame and Linux/executable composition remain OPEN.')
+    print('Complete imported-frame/source-publication correspondence checked; translation review, controller and Linux/executable composition remain OPEN.')
 
 
 if __name__ == '__main__':

@@ -1,5 +1,6 @@
 # §AR-m4-bridge.import: Reject altered statements, omitted inputs and unknown foundations.
 import copy
+import json
 from pathlib import Path
 import tempfile
 import unittest
@@ -45,6 +46,29 @@ class BridgeGateTests(unittest.TestCase):
             path.write_text('{"meta": {"lean": {"version": "4.35.0"}}}\n')
             with self.assertRaisesRegex(ValueError, 'missing actual'):
                 gate.export_inventory(path)
+
+    def primitive_fixture(self):
+        claims = json.loads((gate.ROOT / 'assurance/m4-bridge-primitives-claims.json').read_text())
+        evidence = json.loads((gate.ROOT / 'assurance/m4-bridge-primitives-evidence.json').read_text())
+        return claims, evidence, copy.deepcopy(evidence | claims)
+
+    def test_removed_primitive_theorem_rejected(self):
+        claims, evidence, actual = self.primitive_fixture()
+        actual['rocq_declarations'].pop()
+        with self.assertRaisesRegex(ValueError, 'primitive theorem'):
+            gate.validate_primitive_preservation(claims, evidence, actual)
+
+    def test_changed_primitive_artifact_rejected(self):
+        claims, evidence, actual = self.primitive_fixture()
+        actual['artifact_sha256']['proofs/BridgeSource.vo'] = 'changed'
+        with self.assertRaisesRegex(ValueError, 'primitive artifact'):
+            gate.validate_primitive_preservation(claims, evidence, actual)
+
+    def test_changed_imported_endpoint_rejected(self):
+        claims, evidence, actual = self.primitive_fixture()
+        actual['imported_endpoint']['full_type'] = 'False'
+        with self.assertRaisesRegex(ValueError, 'primitive endpoint'):
+            gate.validate_primitive_preservation(claims, evidence, actual)
 
 
 if __name__ == '__main__':

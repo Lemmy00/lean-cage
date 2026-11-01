@@ -526,9 +526,14 @@ successful traces, progress, every-prefix loss and allocated nonvacuity. It adds
 42 Rocq and 33 Lean theorem records while preserving the earlier 1113/103 records
 and established proof profile. The imported logical model uses SProp and five
 declared instances of definitional UIP; the new Lean proofs use quotient
-soundness and propositional extensionality. Translation-faithfulness review and
-complete public-frame/controller composition remain open. This is not a completed
-cross-assistant or Linux/executable correspondence claim.
+soundness and propositional extensionality. The subsequent [complete imported-frame
+connection](../reviews/M4-frames.md) preserves those records and proves total slice
+and equality operations, all source-frame fields, exact parsing/rejection order,
+and the full validity predicate. Actual sender observations yield the complete
+imported decoder result, with allocated arbitrary-field executions and eighteen
+accepted/rejected source witnesses. Source kind narrowing remains explicit.
+Translation-faithfulness review, whole-controller composition and Linux/executable
+correspondence remain open; this is not a completed cross-assistant guarantee.
 
 **Evidence and assumptions:** `assurance/m4-public-evidence.json`,
 `assurance/m4-wire-evidence.json`,

@@ -1,0 +1,2860 @@
+{
+  "rocq_declarations": [
+    {
+      "name": "BridgeNat.imported_add_exact",
+      "full_type": "imported_add_exact\n     : forall a b : Nat, @Logic.eq nat (nat_of_Nat (Nat_add a b)) (Nat.add (nat_of_Nat a) (nat_of_Nat b))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeNat.imported_mul_exact",
+      "full_type": "imported_mul_exact\n     : forall a b : Nat, @Logic.eq nat (nat_of_Nat (Nat_mul a b)) (Nat.mul (nat_of_Nat a) (nat_of_Nat b))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeNat.imported_pow_exact",
+      "full_type": "imported_pow_exact\n     : forall a b : Nat, @Logic.eq nat (nat_of_Nat (Nat_pow a b)) (PeanoNat.Nat.pow (nat_of_Nat a) (nat_of_Nat b))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeNat.standard_imported_list",
+      "full_type": "standard_imported_list\n     : forall (A : Type) (xs : list A), @Logic.eq (list A) (@standard_list A (@imported_list A xs)) xs",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeNat.imported_standard_list",
+      "full_type": "imported_standard_list\n     : forall (A : Type) (xs : List_inst1 A), @Logic.eq (List_inst1 A) (@imported_list A (@standard_list A xs)) xs",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeNat.imported_lookup_exact",
+      "full_type": "imported_lookup_exact\n     : forall (xs : List_inst1 UInt8) (i : Nat), @Logic.eq nat (nat_of_Nat (UInt8_toNat (LeanCageM4_Normalized_lookup xs i))) (@ListDef.nth nat (nat_of_Nat i) (@ListDef.map UInt8 nat (fun b : UInt8 => nat_of_Nat (UInt8_toNat b)) (@standard_list UInt8 xs)) O)",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeNat.imported_foldl_nats",
+      "full_type": "imported_foldl_nats\n     : forall (f : forall (_ : Nat) (_ : Nat), Nat) (g : forall (_ : nat) (_ : nat), nat) (_ : forall a b : Nat, @Logic.eq nat (nat_of_Nat (f a b)) (g (nat_of_Nat a) (nat_of_Nat b))) (xs : List_inst1 Nat) (init : Nat), @Logic.eq nat (nat_of_Nat (List_foldl_inst3 Nat Nat f init xs)) (@List.fold_left nat nat g (@ListDef.map Nat nat nat_of_Nat (@standard_list Nat xs)) (nat_of_Nat init))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeNat.imported_range_loop_exact",
+      "full_type": "imported_range_loop_exact\n     : forall (n : Nat) (acc : List_inst1 Nat), @Logic.eq (list nat) (@ListDef.map Nat nat nat_of_Nat (@standard_list Nat (List_range_loop n acc))) (@app nat (ListDef.seq O (nat_of_Nat n)) (@ListDef.map Nat nat nat_of_Nat (@standard_list Nat acc)))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeNat.imported_range_exact",
+      "full_type": "imported_range_exact\n     : forall n : Nat, @Logic.eq (list nat) (@ListDef.map Nat nat nat_of_Nat (@standard_list Nat (List_range n))) (ListDef.seq O (nat_of_Nat n))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeNat.imported_byteAt_exact",
+      "full_type": "imported_byteAt_exact\n     : forall (bytes : ByteArray) (i : Nat), @Logic.eq nat (nat_of_Nat (UInt8_toNat (LeanCageM4_Normalized_byteAt bytes i))) (@ListDef.nth nat (nat_of_Nat i) (byte_values bytes) O)",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeNat.imported_little_exact",
+      "full_type": "imported_little_exact\n     : forall (bytes : ByteArray) (offset width : Nat), @Logic.eq nat (nat_of_Nat (LeanCageM4_Normalized_littleBytes bytes offset width)) (natural_little (byte_values bytes) (nat_of_Nat offset) (nat_of_Nat width))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeBytes.imported_byte_exact",
+      "full_type": "imported_byte_exact\n     : forall b : Integers.Byte.int, @Logic.eq nat (nat_of_Nat (UInt8_toNat (imported_byte b))) (BinInt.Z.to_nat (Integers.Byte.unsigned b))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeBytes.imported_bytes_exact",
+      "full_type": "imported_bytes_exact\n     : forall bs : list Integers.Byte.int, @Logic.eq (list nat) (byte_values (imported_bytes bs)) (@ListDef.map Integers.Byte.int nat (fun b : Integers.Byte.int => BinInt.Z.to_nat (Integers.Byte.unsigned b)) bs)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeBytes.imported_little_bytes_exact",
+      "full_type": "imported_little_bytes_exact\n     : forall (bs : list Integers.Byte.int) (offset width : nat), @Logic.eq nat (nat_of_Nat (LeanCageM4_Normalized_littleBytes (imported_bytes bs) (Nat_of_nat offset) (Nat_of_nat width))) (natural_little (@ListDef.map Integers.Byte.int nat (fun b : Integers.Byte.int => BinInt.Z.to_nat (Integers.Byte.unsigned b)) bs) offset width)",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeBytes.separated_lor",
+      "full_type": "separated_lor\n     : forall (lo hi bits : BinNums.Z) (_ : BinInt.Z.le BinNums.Z0 bits) (_ : and (BinInt.Z.le BinNums.Z0 lo) (BinInt.Z.lt lo (Zpower.two_p bits))), @Logic.eq BinNums.Z (BinInt.Z.lor lo (BinInt.Z.shiftl hi bits)) (BinInt.Z.add lo (BinInt.Z.mul hi (Zpower.two_p bits)))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeWords.int32_low_shifted",
+      "full_type": "int32_low_shifted\n     : forall (lo hi bits : BinNums.Z) (_ : and (BinInt.Z.le BinNums.Z0 bits) (BinInt.Z.le bits (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH))))))) (_ : and (BinInt.Z.le BinNums.Z0 lo) (BinInt.Z.lt lo (Zpower.two_p bits))) (_ : and (BinInt.Z.le BinNums.Z0 hi) (BinInt.Z.lt hi (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))))))), @Logic.eq Integers.Int.int (Integers.Int.or (Integers.Int.repr lo) (Integers.Int.shl (Integers.Int.repr hi) (Integers.Int.repr bits))) (Integers.Int.repr (BinInt.Z.add lo (BinInt.Z.mul hi (Zpower.two_p bits))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeWords.byte_word_unsigned",
+      "full_type": "byte_word_unsigned\n     : forall b : Integers.Byte.int, @Logic.eq BinNums.Z (Integers.Int.unsigned (Readers.byte_word b)) (Integers.Byte.unsigned b)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeWords.get32_bytes_numeric",
+      "full_type": "get32_bytes_numeric\n     : forall a b c d : Integers.Byte.int, @Logic.eq Integers.Int.int (Codec.get32_word (Readers.byte_word a) (Readers.byte_word b) (Readers.byte_word c) (Readers.byte_word d)) (Integers.Int.repr (BinInt.Z.add (BinInt.Z.add (BinInt.Z.add (Integers.Byte.unsigned a) (BinInt.Z.mul (Integers.Byte.unsigned b) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))))))) (BinInt.Z.mul (Integers.Byte.unsigned c) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))))))))))))))) (BinInt.Z.mul (Integers.Byte.unsigned d) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))))))))))))))))))))))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeWords.natural_little_four",
+      "full_type": "natural_little_four\n     : forall (bytes : list nat) (offset : nat), @Logic.eq nat (natural_little bytes offset (S (S (S (S O))))) (Nat.add (Nat.add (Nat.add (@ListDef.nth nat offset bytes O) (Nat.mul (@ListDef.nth nat (Nat.add offset (S O)) bytes O) (PeanoNat.Nat.pow (S (S O)) (S (S (S (S (S (S (S (S O))))))))))) (Nat.mul (@ListDef.nth nat (Nat.add offset (S (S O))) bytes O) (PeanoNat.Nat.pow (S (S O)) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))) (Nat.mul (@ListDef.nth nat (Nat.add offset (S (S (S O)))) bytes O) (PeanoNat.Nat.pow (S (S O)) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeWords.natural_byte_at",
+      "full_type": "natural_byte_at\n     : forall (bs : list Integers.Byte.int) (n : nat), @Logic.eq nat (@ListDef.nth nat n (@ListDef.map Integers.Byte.int nat (fun b : Integers.Byte.int => BinInt.Z.to_nat (Integers.Byte.unsigned b)) bs) O) (BinInt.Z.to_nat (Integers.Byte.unsigned (@ListDef.nth Integers.Byte.int n bs Integers.Byte.zero)))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeWords.natural_byte_at_Z",
+      "full_type": "natural_byte_at_Z\n     : forall (bs : list Integers.Byte.int) (n : nat), @Logic.eq BinNums.Z (BinInt.Z.of_nat (@ListDef.nth nat n (@ListDef.map Integers.Byte.int nat (fun b : Integers.Byte.int => BinInt.Z.to_nat (Integers.Byte.unsigned b)) bs) O)) (Integers.Byte.unsigned (@ListDef.nth Integers.Byte.int n bs Integers.Byte.zero))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeWords.imported_word32_exact",
+      "full_type": "imported_word32_exact\n     : forall (bs : list Integers.Byte.int) (offset : nat), @Logic.eq Integers.Int.int (FrameBytes.word32_at bs offset) (Integers.Int.repr (BinInt.Z.of_nat (nat_of_Nat (LeanCageM4_Normalized_littleBytes (imported_bytes bs) (Nat_of_nat offset) (Nat_of_nat (S (S (S (S O)))))))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeWords.int64_low_shifted",
+      "full_type": "int64_low_shifted\n     : forall (lo hi bits : BinNums.Z) (_ : and (BinInt.Z.le BinNums.Z0 bits) (BinInt.Z.le bits (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xI BinNums.xH)))))))) (_ : and (BinInt.Z.le BinNums.Z0 lo) (BinInt.Z.lt lo (Zpower.two_p bits))) (_ : and (BinInt.Z.le BinNums.Z0 hi) (BinInt.Z.lt hi (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))))))), @Logic.eq Integers.Int64.int (Integers.Int64.or (Integers.Int64.repr lo) (Integers.Int64.shl (Integers.Int64.repr hi) (Integers.Int64.repr bits))) (Integers.Int64.repr (BinInt.Z.add lo (BinInt.Z.mul hi (Zpower.two_p bits))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeWords.get64_bytes_numeric",
+      "full_type": "get64_bytes_numeric\n     : forall a b c d e f g h : Integers.Byte.int, @Logic.eq Integers.Int64.int (Codec.get64_word (Readers.byte_word a) (Readers.byte_word b) (Readers.byte_word c) (Readers.byte_word d) (Readers.byte_word e) (Readers.byte_word f) (Readers.byte_word g) (Readers.byte_word h)) (Integers.Int64.repr (BinInt.Z.add (BinInt.Z.add (BinInt.Z.add (BinInt.Z.add (BinInt.Z.add (BinInt.Z.add (BinInt.Z.add (Integers.Byte.unsigned a) (BinInt.Z.mul (Integers.Byte.unsigned b) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))))))) (BinInt.Z.mul (Integers.Byte.unsigned c) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))))))))))))))) (BinInt.Z.mul (Integers.Byte.unsigned d) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))))))))))))))))))))))) (BinInt.Z.mul (Integers.Byte.unsigned e) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))))))))))))))))))))))))))))))) (BinInt.Z.mul (Integers.Byte.unsigned f) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))))))))))))))))))))))))))))))))))))))) (BinInt.Z.mul (Integers.Byte.unsigned g) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))))))))))))))))))))))))))))))))))))))))))))))) (BinInt.Z.mul (Integers.Byte.unsigned h) (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeWords.natural_little_eight",
+      "full_type": "natural_little_eight\n     : forall (bytes : list nat) (offset : nat), @Logic.eq nat (natural_little bytes offset (S (S (S (S (S (S (S (S O))))))))) (Nat.add (Nat.add (Nat.add (Nat.add (Nat.add (Nat.add (Nat.add (@ListDef.nth nat offset bytes O) (Nat.mul (@ListDef.nth nat (Nat.add offset (S O)) bytes O) (PeanoNat.Nat.pow (S (S O)) (S (S (S (S (S (S (S (S O))))))))))) (Nat.mul (@ListDef.nth nat (Nat.add offset (S (S O))) bytes O) (PeanoNat.Nat.pow (S (S O)) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))) (Nat.mul (@ListDef.nth nat (Nat.add offset (S (S (S O)))) bytes O) (PeanoNat.Nat.pow (S (S O)) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))) (Nat.mul (@ListDef.nth nat (Nat.add offset (S (S (S (S O))))) bytes O) (PeanoNat.Nat.pow (S (S O)) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))) (Nat.mul (@ListDef.nth nat (Nat.add offset (S (S (S (S (S O)))))) bytes O) (PeanoNat.Nat.pow (S (S O)) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))) (Nat.mul (@ListDef.nth nat (Nat.add offset (S (S (S (S (S (S O))))))) bytes O) (PeanoNat.Nat.pow (S (S O)) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))) (Nat.mul (@ListDef.nth nat (Nat.add offset (S (S (S (S (S (S (S O)))))))) bytes O) (PeanoNat.Nat.pow (S (S O)) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "BridgeWords.imported_word64_exact",
+      "full_type": "imported_word64_exact\n     : forall (bs : list Integers.Byte.int) (offset : nat), @Logic.eq Integers.Int64.int (FrameBytes.word64_at bs offset) (Integers.Int64.repr (BinInt.Z.of_nat (nat_of_Nat (LeanCageM4_Normalized_littleBytes (imported_bytes bs) (Nat_of_nat offset) (Nat_of_nat (S (S (S (S (S (S (S (S O)))))))))))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeWords.imported_little32_bounded",
+      "full_type": "imported_little32_bounded\n     : forall (bs : list Integers.Byte.int) (offset : nat), and (BinInt.Z.le BinNums.Z0 (BinInt.Z.of_nat (nat_of_Nat (LeanCageM4_Normalized_littleBytes (imported_bytes bs) (Nat_of_nat offset) (Nat_of_nat (S (S (S (S O))))))))) (BinInt.Z.lt (BinInt.Z.of_nat (nat_of_Nat (LeanCageM4_Normalized_littleBytes (imported_bytes bs) (Nat_of_nat offset) (Nat_of_nat (S (S (S (S O)))))))) Integers.Int.modulus)",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeWords.imported_word32_unsigned",
+      "full_type": "imported_word32_unsigned\n     : forall (bs : list Integers.Byte.int) (offset : nat), @Logic.eq BinNums.Z (Integers.Int.unsigned (FrameBytes.word32_at bs offset)) (BinInt.Z.of_nat (nat_of_Nat (LeanCageM4_Normalized_littleBytes (imported_bytes bs) (Nat_of_nat offset) (Nat_of_nat (S (S (S (S O))))))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeWords.imported_little64_bounded",
+      "full_type": "imported_little64_bounded\n     : forall (bs : list Integers.Byte.int) (offset : nat), and (BinInt.Z.le BinNums.Z0 (BinInt.Z.of_nat (nat_of_Nat (LeanCageM4_Normalized_littleBytes (imported_bytes bs) (Nat_of_nat offset) (Nat_of_nat (S (S (S (S (S (S (S (S O))))))))))))) (BinInt.Z.lt (BinInt.Z.of_nat (nat_of_Nat (LeanCageM4_Normalized_littleBytes (imported_bytes bs) (Nat_of_nat offset) (Nat_of_nat (S (S (S (S (S (S (S (S O)))))))))))) Integers.Int64.modulus)",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeWords.imported_word64_unsigned",
+      "full_type": "imported_word64_unsigned\n     : forall (bs : list Integers.Byte.int) (offset : nat), @Logic.eq BinNums.Z (Integers.Int64.unsigned (FrameBytes.word64_at bs offset)) (BinInt.Z.of_nat (nat_of_Nat (LeanCageM4_Normalized_littleBytes (imported_bytes bs) (Nat_of_nat offset) (Nat_of_nat (S (S (S (S (S (S (S (S O))))))))))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeSource.imported_reader32_input",
+      "full_type": "imported_reader32_input\n     : forall (m : Memory.Mem.mem) (p : Library.address) (bs : list Integers.Byte.int) (offset : nat) (_ : Library.readable_bytes m p bs) (_ : Peano.le (Nat.add offset (S (S (S (S O))))) (@length Integers.Byte.int bs)), Readers.reader_input m (Library.address_block p) (Integers.Ptrofs.repr (BinInt.Z.add (Library.address_offset p) (BinInt.Z.of_nat offset))) Slice.f_get32 (imported_value32 bs offset) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeSource.source32_imported_return",
+      "full_type": "source32_imported_return\n     : forall (cell : Machine.tls) (m : Memory.Mem.mem) (p : Library.address) (bs : list Integers.Byte.int) (offset : nat) (events : list Machine.event) (actual : Values.val) (after : Memory.Mem.mem) (_ : Library.readable_bytes m p bs) (_ : Peano.le (Nat.add offset (S (S (S (S O))))) (@length Integers.Byte.int bs)) (_ : Machine.steps (Clight.globalenv Slice.prog) cell (Machine.live (Readers.initial Slice.f_get32 (Library.address_block p) (Integers.Ptrofs.repr (BinInt.Z.add (Library.address_offset p) (BinInt.Z.of_nat offset))) Clight.Kstop m)) events (Machine.live (Clight.Returnstate actual Clight.Kstop after))), and (@Logic.eq Values.val actual (imported_value32 bs offset)) (and (@Logic.eq Memory.Mem.mem after m) (@Logic.eq (list Machine.event) events (@ListDef.repeat Machine.event (Machine.source_step Events.E0) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeSource.source32_imported_execution",
+      "full_type": "source32_imported_execution\n     : forall (cell : Machine.tls) (m : Memory.Mem.mem) (p : Library.address) (bs : list Integers.Byte.int) (offset : nat) (k : Clight.cont) (_ : Library.readable_bytes m p bs) (_ : Peano.le (Nat.add offset (S (S (S (S O))))) (@length Integers.Byte.int bs)), Machine.steps (Clight.globalenv Slice.prog) cell (Machine.live (Readers.initial Slice.f_get32 (Library.address_block p) (Integers.Ptrofs.repr (BinInt.Z.add (Library.address_offset p) (BinInt.Z.of_nat offset))) k m)) (@ListDef.repeat Machine.event (Machine.source_step Events.E0) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (Machine.live (Clight.Returnstate (imported_value32 bs offset) (Clight.call_cont k) m))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeSource.source32_imported_progress",
+      "full_type": "source32_imported_progress\n     : forall (cell : Machine.tls) (m : Memory.Mem.mem) (p : Library.address) (bs : list Integers.Byte.int) (offset : nat) (events : list Machine.event) (s : Clight.state) (_ : Library.readable_bytes m p bs) (_ : Peano.le (Nat.add offset (S (S (S (S O))))) (@length Integers.Byte.int bs)) (_ : Machine.steps (Clight.globalenv Slice.prog) cell (Machine.live (Readers.initial Slice.f_get32 (Library.address_block p) (Integers.Ptrofs.repr (BinInt.Z.add (Library.address_offset p) (BinInt.Z.of_nat offset))) Clight.Kstop m)) events (Machine.live s)), or (@Logic.eq Clight.state s (Clight.Returnstate (imported_value32 bs offset) Clight.Kstop m)) (@ex Clight.state (fun next : Clight.state => Machine.step (Clight.globalenv Slice.prog) cell (Machine.live s) (Machine.source_step Events.E0) (Machine.live next)))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeSource.source32_imported_loss",
+      "full_type": "source32_imported_loss\n     : forall (cell : Machine.tls) (m : Memory.Mem.mem) (p : Library.address) (bs : list Integers.Byte.int) (offset n : nat) (_ : Library.readable_bytes m p bs) (_ : Peano.le (Nat.add offset (S (S (S (S O))))) (@length Integers.Byte.int bs)) (_ : Peano.le n (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))), @ex Clight.state (fun mid : Clight.state => and (Machine.steps (Clight.globalenv Slice.prog) cell (Machine.live (Readers.initial Slice.f_get32 (Library.address_block p) (Integers.Ptrofs.repr (BinInt.Z.add (Library.address_offset p) (BinInt.Z.of_nat offset))) Clight.Kstop m)) (@ListDef.repeat Machine.event (Machine.source_step Events.E0) n) (Machine.live mid)) (Machine.steps (Clight.globalenv Slice.prog) cell (Machine.live (Readers.initial Slice.f_get32 (Library.address_block p) (Integers.Ptrofs.repr (BinInt.Z.add (Library.address_offset p) (BinInt.Z.of_nat offset))) Clight.Kstop m)) (@app Machine.event (@ListDef.repeat Machine.event (Machine.source_step Events.E0) n) (@cons Machine.event Machine.loss_step (@nil Machine.event))) (Machine.dead m)))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeSource.source32_imported_nonvacuous",
+      "full_type": "source32_imported_nonvacuous\n     : forall (cell : Machine.tls) (bs : list Integers.Byte.int) (_ : @Logic.eq nat (@length Integers.Byte.int bs) (S (S (S (S O))))), @ex Memory.Mem.mem (fun m : Memory.Mem.mem => @ex Values.block (fun block : Values.block => and (Library.readable_bytes m (Library.Build_address block BinNums.Z0) bs) (Machine.steps (Clight.globalenv Slice.prog) cell (Machine.live (Readers.initial Slice.f_get32 block Integers.Ptrofs.zero Clight.Kstop m)) (@ListDef.repeat Machine.event (Machine.source_step Events.E0) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (Machine.live (Clight.Returnstate (imported_value32 bs O) Clight.Kstop m)))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeSource.imported_reader64_input",
+      "full_type": "imported_reader64_input\n     : forall (m : Memory.Mem.mem) (p : Library.address) (bs : list Integers.Byte.int) (offset : nat) (_ : Library.readable_bytes m p bs) (_ : Peano.le (Nat.add offset (S (S (S (S (S (S (S (S O))))))))) (@length Integers.Byte.int bs)), Readers.reader_input m (Library.address_block p) (Integers.Ptrofs.repr (BinInt.Z.add (Library.address_offset p) (BinInt.Z.of_nat offset))) Slice.f_get64 (imported_value64 bs offset) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeSource.source64_imported_return",
+      "full_type": "source64_imported_return\n     : forall (cell : Machine.tls) (m : Memory.Mem.mem) (p : Library.address) (bs : list Integers.Byte.int) (offset : nat) (events : list Machine.event) (actual : Values.val) (after : Memory.Mem.mem) (_ : Library.readable_bytes m p bs) (_ : Peano.le (Nat.add offset (S (S (S (S (S (S (S (S O))))))))) (@length Integers.Byte.int bs)) (_ : Machine.steps (Clight.globalenv Slice.prog) cell (Machine.live (Readers.initial Slice.f_get64 (Library.address_block p) (Integers.Ptrofs.repr (BinInt.Z.add (Library.address_offset p) (BinInt.Z.of_nat offset))) Clight.Kstop m)) events (Machine.live (Clight.Returnstate actual Clight.Kstop after))), and (@Logic.eq Values.val actual (imported_value64 bs offset)) (and (@Logic.eq Memory.Mem.mem after m) (@Logic.eq (list Machine.event) events (@ListDef.repeat Machine.event (Machine.source_step Events.E0) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeSource.source64_imported_execution",
+      "full_type": "source64_imported_execution\n     : forall (cell : Machine.tls) (m : Memory.Mem.mem) (p : Library.address) (bs : list Integers.Byte.int) (offset : nat) (k : Clight.cont) (_ : Library.readable_bytes m p bs) (_ : Peano.le (Nat.add offset (S (S (S (S (S (S (S (S O))))))))) (@length Integers.Byte.int bs)), Machine.steps (Clight.globalenv Slice.prog) cell (Machine.live (Readers.initial Slice.f_get64 (Library.address_block p) (Integers.Ptrofs.repr (BinInt.Z.add (Library.address_offset p) (BinInt.Z.of_nat offset))) k m)) (@ListDef.repeat Machine.event (Machine.source_step Events.E0) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (Machine.live (Clight.Returnstate (imported_value64 bs offset) (Clight.call_cont k) m))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeSource.source64_imported_progress",
+      "full_type": "source64_imported_progress\n     : forall (cell : Machine.tls) (m : Memory.Mem.mem) (p : Library.address) (bs : list Integers.Byte.int) (offset : nat) (events : list Machine.event) (s : Clight.state) (_ : Library.readable_bytes m p bs) (_ : Peano.le (Nat.add offset (S (S (S (S (S (S (S (S O))))))))) (@length Integers.Byte.int bs)) (_ : Machine.steps (Clight.globalenv Slice.prog) cell (Machine.live (Readers.initial Slice.f_get64 (Library.address_block p) (Integers.Ptrofs.repr (BinInt.Z.add (Library.address_offset p) (BinInt.Z.of_nat offset))) Clight.Kstop m)) events (Machine.live s)), or (@Logic.eq Clight.state s (Clight.Returnstate (imported_value64 bs offset) Clight.Kstop m)) (@ex Clight.state (fun next : Clight.state => Machine.step (Clight.globalenv Slice.prog) cell (Machine.live s) (Machine.source_step Events.E0) (Machine.live next)))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeSource.source64_imported_loss",
+      "full_type": "source64_imported_loss\n     : forall (cell : Machine.tls) (m : Memory.Mem.mem) (p : Library.address) (bs : list Integers.Byte.int) (offset n : nat) (_ : Library.readable_bytes m p bs) (_ : Peano.le (Nat.add offset (S (S (S (S (S (S (S (S O))))))))) (@length Integers.Byte.int bs)) (_ : Peano.le n (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))), @ex Clight.state (fun mid : Clight.state => and (Machine.steps (Clight.globalenv Slice.prog) cell (Machine.live (Readers.initial Slice.f_get64 (Library.address_block p) (Integers.Ptrofs.repr (BinInt.Z.add (Library.address_offset p) (BinInt.Z.of_nat offset))) Clight.Kstop m)) (@ListDef.repeat Machine.event (Machine.source_step Events.E0) n) (Machine.live mid)) (Machine.steps (Clight.globalenv Slice.prog) cell (Machine.live (Readers.initial Slice.f_get64 (Library.address_block p) (Integers.Ptrofs.repr (BinInt.Z.add (Library.address_offset p) (BinInt.Z.of_nat offset))) Clight.Kstop m)) (@app Machine.event (@ListDef.repeat Machine.event (Machine.source_step Events.E0) n) (@cons Machine.event Machine.loss_step (@nil Machine.event))) (Machine.dead m)))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    },
+    {
+      "name": "BridgeSource.source64_imported_nonvacuous",
+      "full_type": "source64_imported_nonvacuous\n     : forall (cell : Machine.tls) (bs : list Integers.Byte.int) (_ : @Logic.eq nat (@length Integers.Byte.int bs) (S (S (S (S (S (S (S (S O))))))))), @ex Memory.Mem.mem (fun m : Memory.Mem.mem => @ex Values.block (fun block : Values.block => and (Library.readable_bytes m (Library.Build_address block BinNums.Z0) bs) (Machine.steps (Clight.globalenv Slice.prog) cell (Machine.live (Readers.initial Slice.f_get64 block Integers.Ptrofs.zero Clight.Kstop m)) (@ListDef.repeat Machine.event (Machine.source_step Events.E0) (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (Machine.live (Clight.Returnstate (imported_value64 bs O) Clight.Kstop m)))))",
+      "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "True",
+        "eq",
+        "eq_inst1"
+      ]
+    }
+  ],
+  "lean_declarations": [
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.ErrorCode.cleanup.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCageM4.Normalized.ErrorCode.cleanup) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.ErrorCode.entry.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCageM4.Normalized.ErrorCode.entry) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.ErrorCode.header.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCageM4.Normalized.ErrorCode.header) 1"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.ErrorCode.ofNat_ctorIdx",
+      "type": "∀ (x : LeanCageM4.Normalized.ErrorCode), Eq.{1} (LeanCageM4.Normalized.ErrorCode.ofNat x.ctorIdx) x"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.ErrorCode.validity.sizeOf_spec",
+      "type": "Eq.{1} (SizeOf.sizeOf.{1} LeanCageM4.Normalized.ErrorCode.validity) 1"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.byteAt_exact",
+      "type": "∀ (bytes : ByteArray) (i : Nat),\n  Eq.{1} (LeanCageM4.Normalized.byteAt bytes i) (Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} bytes i) 0)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.decode_exact",
+      "type": "∀ (bytes : ByteArray),\n  Eq.{1} (LeanCageM4.Normalized.restore (LeanCageM4.Normalized.decode bytes)) (LeanCageM3.decodeResult bytes)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.fieldsBytes.eq_1",
+      "type": "∀ (bytes : ByteArray) (entry : LeanCageM3.Entry),\n  Eq.{1} (LeanCageM4.Normalized.fieldsBytes bytes entry)\n    { kind := LeanCageM4.Normalized.littleBytes bytes 6 2, stage := LeanCageM4.Normalized.littleBytes bytes 32 4,\n      detail := LeanCageM4.Normalized.littleBytes bytes 36 4, entry := entry,\n      clean := BEq.beq.{0} (LeanCageM4.Normalized.littleBytes bytes 44 4) 1,\n      triggers := LeanCageM4.Normalized.littleBytes bytes 48 4, uid := LeanCageM4.Normalized.littleBytes bytes 52 4,\n      run := LeanCageM4.Normalized.littleBytes bytes 8 8, cpu := LeanCageM4.Normalized.littleBytes bytes 56 8,\n      peak := LeanCageM4.Normalized.littleBytes bytes 64 8, stdoutBytes := LeanCageM4.Normalized.littleBytes bytes 72 8,\n      stderrBytes := LeanCageM4.Normalized.littleBytes bytes 80 8,\n      elapsed := LeanCageM4.Normalized.littleBytes bytes 88 8,\n      exportState := LeanCageM4.Normalized.littleBytes bytes 96 4,\n      omitted := LeanCageM4.Normalized.littleBytes bytes 100 4, exportDigest := bytes.extract 104 136,\n      oomKills := LeanCageM4.Normalized.littleBytes bytes 136 8,\n      taskDenials := LeanCageM4.Normalized.littleBytes bytes 144 8,\n      exportError := LeanCageM4.Normalized.littleBytes bytes 152 4 }"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.fields_exact",
+      "type": "∀ (bytes : ByteArray) (entry : LeanCageM3.Entry),\n  Eq.{1} (LeanCageM4.Normalized.fieldsBytes bytes entry) (LeanCageM4.PublicWire.fields bytes entry)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.headerBadBytes.eq_1",
+      "type": "∀ (bytes : ByteArray),\n  Eq.{1} (LeanCageM4.Normalized.headerBadBytes bytes)\n    (bne.{0} bytes.size 160 ||\n                bne.{0} (bytes.extract 0 4)\n                  {\n                    data :=\n                      List.toArray.{0}\n                        (List.cons.{0} 76 (List.cons.{0} 67 (List.cons.{0} 51 (List.cons.{0} 82 List.nil.{0})))) } ||\n              bne.{0} (LeanCageM4.Normalized.littleBytes bytes 4 2) 1 ||\n            bne.{0} (LeanCageM4.Normalized.littleBytes bytes 16 8) 0 ||\n          bne.{0} (LeanCageM4.Normalized.littleBytes bytes 24 4) 128 ||\n        bne.{0} (LeanCageM4.Normalized.littleBytes bytes 28 4) 0 ||\n      bne.{0} (LeanCageM4.Normalized.littleBytes bytes 156 4) 0)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.header_exact",
+      "type": "∀ (bytes : ByteArray), Eq.{1} (LeanCageM4.Normalized.headerBadBytes bytes) (LeanCageM4.PublicWire.headerBad bytes)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.instDecidableEqErrorCode._proof_1",
+      "type": "∀ (x y : LeanCageM4.Normalized.ErrorCode), Eq.{1} x.ctorIdx y.ctorIdx → Eq.{1} x y"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.instDecidableEqErrorCode._proof_2",
+      "type": "∀ (x y : LeanCageM4.Normalized.ErrorCode), ¬Eq.{1} x.ctorIdx y.ctorIdx → Eq.{1} x y → False"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.littleBytes.eq_1",
+      "type": "∀ (bytes : ByteArray) (offset width : Nat),\n  Eq.{1} (LeanCageM4.Normalized.littleBytes bytes offset width)\n    (List.foldl.{0, 0}\n      (fun n i =>\n        HAdd.hAdd.{0, 0, 0} n\n          (HMul.hMul.{0, 0, 0} (LeanCageM4.Normalized.byteAt bytes (HAdd.hAdd.{0, 0, 0} offset i)).toNat\n            (HPow.hPow.{0, 0, 0} 2 (HMul.hMul.{0, 0, 0} 8 i))))\n      0 (List.range width))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.little_exact",
+      "type": "∀ (bytes : ByteArray) (offset width : Nat),\n  Eq.{1} (LeanCageM4.Normalized.littleBytes bytes offset width) (LeanCageM3.little bytes offset width)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.lookup.eq_1",
+      "type": "∀ (x : Nat), Eq.{1} (LeanCageM4.Normalized.lookup List.nil.{0} x) 0"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.lookup.eq_2",
+      "type": "∀ (b : UInt8) (tail : List.{0} UInt8), Eq.{1} (LeanCageM4.Normalized.lookup (List.cons.{0} b tail) 0) b"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.lookup.eq_3",
+      "type": "∀ (head : UInt8) (bs : List.{0} UInt8) (n : Nat),\n  Eq.{1} (LeanCageM4.Normalized.lookup (List.cons.{0} head bs) n.succ) (LeanCageM4.Normalized.lookup bs n)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.lookup.eq_def",
+      "type": "∀ (x : List.{0} UInt8) (x_1 : Nat),\n  Eq.{1} (LeanCageM4.Normalized.lookup x x_1)\n    (match x, x_1 with\n    | List.nil.{0}, x => 0\n    | List.cons.{0} b tail, 0 => b\n    | List.cons.{0} head bs, n.succ => LeanCageM4.Normalized.lookup bs n)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.lookup_exact",
+      "type": "∀ (bytes : List.{0} UInt8) (i : Nat),\n  Eq.{1} (LeanCageM4.Normalized.lookup bytes i) (Option.getD.{0} (GetElem?.getElem?.{0, 0, 0} bytes i) 0)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.parse_exact",
+      "type": "∀ (bytes : ByteArray),\n  Eq.{1} (LeanCageM4.Normalized.restore (LeanCageM4.Normalized.parse bytes)) (LeanCageM4.PublicWire.parserView bytes)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM4.Normalized.validate_exact",
+      "type": "∀ (r : LeanCageM3.Result),\n  Eq.{1} (LeanCageM4.Normalized.restore (LeanCageM4.Normalized.validate r)) (LeanCageM3.validateResult r)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Normalized.0.LeanCageM3.parseResult.match_1.eq_1",
+      "type": "∀ (motive : Nat → Sort u_1) (h_1 : Unit → motive 0) (h_2 : Unit → motive 1) (h_3 : Unit → motive 2)\n  (h_4 : (x : Nat) → motive x),\n  Eq.{u_1}\n    (match 0 with\n    | 0 => h_1 ()\n    | 1 => h_2 ()\n    | 2 => h_3 ()\n    | x => h_4 x)\n    (h_1 ())"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Normalized.0.LeanCageM3.parseResult.match_1.eq_2",
+      "type": "∀ (motive : Nat → Sort u_1) (h_1 : Unit → motive 0) (h_2 : Unit → motive 1) (h_3 : Unit → motive 2)\n  (h_4 : (x : Nat) → motive x),\n  Eq.{u_1}\n    (match 1 with\n    | 0 => h_1 ()\n    | 1 => h_2 ()\n    | 2 => h_3 ()\n    | x => h_4 x)\n    (h_2 ())"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Normalized.0.LeanCageM3.parseResult.match_1.eq_3",
+      "type": "∀ (motive : Nat → Sort u_1) (h_1 : Unit → motive 0) (h_2 : Unit → motive 1) (h_3 : Unit → motive 2)\n  (h_4 : (x : Nat) → motive x),\n  Eq.{u_1}\n    (match 2 with\n    | 0 => h_1 ()\n    | 1 => h_2 ()\n    | 2 => h_3 ()\n    | x => h_4 x)\n    (h_3 ())"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Normalized.0.LeanCageM3.parseResult.match_1.eq_4",
+      "type": "∀ (motive : Nat → Sort u_1) (x : Nat) (h_1 : Unit → motive 0) (h_2 : Unit → motive 1) (h_3 : Unit → motive 2)\n  (h_4 : (x : Nat) → motive x),\n  (Eq.{1} x 0 → False) →\n    (Eq.{1} x 1 → False) →\n      (Eq.{1} x 2 → False) →\n        Eq.{u_1}\n          (match x with\n          | 0 => h_1 ()\n          | 1 => h_2 ()\n          | 2 => h_3 ()\n          | x => h_4 x)\n          (h_4 x)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Normalized.0.LeanCageM4.Normalized.lookup.match_1.eq_1",
+      "type": "∀ (motive : List.{0} UInt8 → Nat → Sort u_1) (x : Nat) (h_1 : (x : Nat) → motive List.nil.{0} x)\n  (h_2 : (b : UInt8) → (tail : List.{0} UInt8) → motive (List.cons.{0} b tail) 0)\n  (h_3 : (head : UInt8) → (bs : List.{0} UInt8) → (n : Nat) → motive (List.cons.{0} head bs) n.succ),\n  Eq.{u_1}\n    (match List.nil.{0}, x with\n    | List.nil.{0}, x => h_1 x\n    | List.cons.{0} b tail, 0 => h_2 b tail\n    | List.cons.{0} head bs, n.succ => h_3 head bs n)\n    (h_1 x)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Normalized.0.LeanCageM4.Normalized.lookup.match_1.eq_2",
+      "type": "∀ (motive : List.{0} UInt8 → Nat → Sort u_1) (b : UInt8) (tail : List.{0} UInt8)\n  (h_1 : (x : Nat) → motive List.nil.{0} x)\n  (h_2 : (b : UInt8) → (tail : List.{0} UInt8) → motive (List.cons.{0} b tail) 0)\n  (h_3 : (head : UInt8) → (bs : List.{0} UInt8) → (n : Nat) → motive (List.cons.{0} head bs) n.succ),\n  Eq.{u_1}\n    (match List.cons.{0} b tail, 0 with\n    | List.nil.{0}, x => h_1 x\n    | List.cons.{0} b tail, 0 => h_2 b tail\n    | List.cons.{0} head bs, n.succ => h_3 head bs n)\n    (h_2 b tail)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Normalized.0.LeanCageM4.Normalized.lookup.match_1.eq_3",
+      "type": "∀ (motive : List.{0} UInt8 → Nat → Sort u_1) (head : UInt8) (bs : List.{0} UInt8) (n : Nat)\n  (h_1 : (x : Nat) → motive List.nil.{0} x)\n  (h_2 : (b : UInt8) → (tail : List.{0} UInt8) → motive (List.cons.{0} b tail) 0)\n  (h_3 : (head : UInt8) → (bs : List.{0} UInt8) → (n : Nat) → motive (List.cons.{0} head bs) n.succ),\n  Eq.{u_1}\n    (match List.cons.{0} head bs, n.succ with\n    | List.nil.{0}, x => h_1 x\n    | List.cons.{0} b tail, 0 => h_2 b tail\n    | List.cons.{0} head bs, n.succ => h_3 head bs n)\n    (h_3 head bs n)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Normalized.0.LeanCageM4.Normalized.parse.match_1.eq_1",
+      "type": "∀ (motive : Nat → Sort u_1) (h_1 : Unit → motive 0) (h_2 : Unit → motive 1) (h_3 : Unit → motive 2)\n  (h_4 : (x : Nat) → motive x),\n  Eq.{u_1}\n    (match 0 with\n    | 0 => h_1 ()\n    | 1 => h_2 ()\n    | 2 => h_3 ()\n    | x => h_4 x)\n    (h_1 ())"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Normalized.0.LeanCageM4.Normalized.parse.match_1.eq_2",
+      "type": "∀ (motive : Nat → Sort u_1) (h_1 : Unit → motive 0) (h_2 : Unit → motive 1) (h_3 : Unit → motive 2)\n  (h_4 : (x : Nat) → motive x),\n  Eq.{u_1}\n    (match 1 with\n    | 0 => h_1 ()\n    | 1 => h_2 ()\n    | 2 => h_3 ()\n    | x => h_4 x)\n    (h_2 ())"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Normalized.0.LeanCageM4.Normalized.parse.match_1.eq_3",
+      "type": "∀ (motive : Nat → Sort u_1) (h_1 : Unit → motive 0) (h_2 : Unit → motive 1) (h_3 : Unit → motive 2)\n  (h_4 : (x : Nat) → motive x),\n  Eq.{u_1}\n    (match 2 with\n    | 0 => h_1 ()\n    | 1 => h_2 ()\n    | 2 => h_3 ()\n    | x => h_4 x)\n    (h_3 ())"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "_private.Normalized.0.LeanCageM4.Normalized.parse.match_1.eq_4",
+      "type": "∀ (motive : Nat → Sort u_1) (x : Nat) (h_1 : Unit → motive 0) (h_2 : Unit → motive 1) (h_3 : Unit → motive 2)\n  (h_4 : (x : Nat) → motive x),\n  (Eq.{1} x 0 → False) →\n    (Eq.{1} x 1 → False) →\n      (Eq.{1} x 2 → False) →\n        Eq.{u_1}\n          (match x with\n          | 0 => h_1 ()\n          | 1 => h_2 ()\n          | 2 => h_3 ()\n          | x => h_4 x)\n          (h_4 x)"
+    }
+  ],
+  "imported_endpoint": {
+    "name": "NormalizedImport.LeanCageM4_Normalized_decode",
+    "full_type": "LeanCageM4_Normalized_decode\n     : forall _ : ByteArray, Except_inst3 LeanCageM4_Normalized_ErrorCode LeanCageM3_Result",
+    "transitive_assumptions": "Axioms:\neq_inst1 relies on definitional UIP.\neq relies on definitional UIP.\nTrue relies on definitional UIP.\nHEq_inst1 relies on definitional UIP.\nHEq relies on definitional UIP.",
+    "assumption_names": [],
+    "definitional_uip": [
+      "HEq",
+      "HEq_inst1",
+      "True",
+      "eq",
+      "eq_inst1"
+    ]
+  },
+  "export_inventory": {
+    "metadata": {
+      "exporter": {
+        "name": "lean4export",
+        "version": "3.1.0"
+      },
+      "format": {
+        "version": "3.1.0"
+      },
+      "lean": {
+        "githash": "eb6cafb7290e8bd5f2937522d8d804f58f02bafc",
+        "version": "4.35.0"
+      }
+    },
+    "declarations": [
+      {
+        "name": "List",
+        "kind": "types"
+      },
+      {
+        "name": "List.nil",
+        "kind": "ctors"
+      },
+      {
+        "name": "List.cons",
+        "kind": "ctors"
+      },
+      {
+        "name": "List.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Array",
+        "kind": "types"
+      },
+      {
+        "name": "Array.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Array.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Nat",
+        "kind": "types"
+      },
+      {
+        "name": "Nat.zero",
+        "kind": "ctors"
+      },
+      {
+        "name": "Nat.succ",
+        "kind": "ctors"
+      },
+      {
+        "name": "Nat.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "LT",
+        "kind": "types"
+      },
+      {
+        "name": "LT.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "LT.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "LT.lt",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.le",
+        "kind": "types"
+      },
+      {
+        "name": "Nat.le.refl",
+        "kind": "ctors"
+      },
+      {
+        "name": "Nat.le.step",
+        "kind": "ctors"
+      },
+      {
+        "name": "Nat.le.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Nat.lt",
+        "kind": "def"
+      },
+      {
+        "name": "instLTNat",
+        "kind": "def"
+      },
+      {
+        "name": "Fin",
+        "kind": "types"
+      },
+      {
+        "name": "Fin.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Fin.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "outParam",
+        "kind": "def"
+      },
+      {
+        "name": "HPow",
+        "kind": "types"
+      },
+      {
+        "name": "HPow.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "HPow.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "HPow.hPow",
+        "kind": "def"
+      },
+      {
+        "name": "Pow",
+        "kind": "types"
+      },
+      {
+        "name": "Pow.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Pow.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Pow.pow",
+        "kind": "def"
+      },
+      {
+        "name": "instHPow",
+        "kind": "def"
+      },
+      {
+        "name": "NatPow",
+        "kind": "types"
+      },
+      {
+        "name": "NatPow.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "NatPow.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "NatPow.pow",
+        "kind": "def"
+      },
+      {
+        "name": "instPowNat",
+        "kind": "def"
+      },
+      {
+        "name": "PUnit",
+        "kind": "types"
+      },
+      {
+        "name": "PUnit.unit",
+        "kind": "ctors"
+      },
+      {
+        "name": "PUnit.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "PProd",
+        "kind": "types"
+      },
+      {
+        "name": "PProd.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "PProd.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Nat.below",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.brecOn.go",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.brecOn",
+        "kind": "def"
+      },
+      {
+        "name": "Unit",
+        "kind": "def"
+      },
+      {
+        "name": "OfNat",
+        "kind": "types"
+      },
+      {
+        "name": "OfNat.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "OfNat.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "OfNat.ofNat",
+        "kind": "def"
+      },
+      {
+        "name": "instOfNatNat",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "Unit.unit",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.pow.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.mul.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.add.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.add._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.add",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.mul._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.mul",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.pow._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.pow",
+        "kind": "def"
+      },
+      {
+        "name": "instNatPowNat",
+        "kind": "def"
+      },
+      {
+        "name": "BitVec",
+        "kind": "types"
+      },
+      {
+        "name": "BitVec.ofFin",
+        "kind": "ctors"
+      },
+      {
+        "name": "BitVec.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "UInt8",
+        "kind": "types"
+      },
+      {
+        "name": "UInt8.ofBitVec",
+        "kind": "ctors"
+      },
+      {
+        "name": "UInt8.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "ByteArray",
+        "kind": "types"
+      },
+      {
+        "name": "ByteArray.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "ByteArray.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Except",
+        "kind": "types"
+      },
+      {
+        "name": "Except.error",
+        "kind": "ctors"
+      },
+      {
+        "name": "Except.ok",
+        "kind": "ctors"
+      },
+      {
+        "name": "Except.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "LeanCageM4.Normalized.ErrorCode",
+        "kind": "types"
+      },
+      {
+        "name": "LeanCageM4.Normalized.ErrorCode.header",
+        "kind": "ctors"
+      },
+      {
+        "name": "LeanCageM4.Normalized.ErrorCode.entry",
+        "kind": "ctors"
+      },
+      {
+        "name": "LeanCageM4.Normalized.ErrorCode.cleanup",
+        "kind": "ctors"
+      },
+      {
+        "name": "LeanCageM4.Normalized.ErrorCode.validity",
+        "kind": "ctors"
+      },
+      {
+        "name": "LeanCageM4.Normalized.ErrorCode.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "LeanCageM3.Entry",
+        "kind": "types"
+      },
+      {
+        "name": "LeanCageM3.Entry.no",
+        "kind": "ctors"
+      },
+      {
+        "name": "LeanCageM3.Entry.yes",
+        "kind": "ctors"
+      },
+      {
+        "name": "LeanCageM3.Entry.unknown",
+        "kind": "ctors"
+      },
+      {
+        "name": "LeanCageM3.Entry.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Bool",
+        "kind": "types"
+      },
+      {
+        "name": "Bool.false",
+        "kind": "ctors"
+      },
+      {
+        "name": "Bool.true",
+        "kind": "ctors"
+      },
+      {
+        "name": "Bool.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "LeanCageM3.Result",
+        "kind": "types"
+      },
+      {
+        "name": "LeanCageM3.Result.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "LeanCageM3.Result.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Bind",
+        "kind": "types"
+      },
+      {
+        "name": "Bind.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Bind.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Bind.bind",
+        "kind": "def"
+      },
+      {
+        "name": "Functor",
+        "kind": "types"
+      },
+      {
+        "name": "Functor.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Functor.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Pure",
+        "kind": "types"
+      },
+      {
+        "name": "Pure.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Pure.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Seq",
+        "kind": "types"
+      },
+      {
+        "name": "Seq.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Seq.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "SeqLeft",
+        "kind": "types"
+      },
+      {
+        "name": "SeqLeft.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "SeqLeft.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "SeqRight",
+        "kind": "types"
+      },
+      {
+        "name": "SeqRight.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "SeqRight.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Applicative",
+        "kind": "types"
+      },
+      {
+        "name": "Applicative.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Applicative.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Monad",
+        "kind": "types"
+      },
+      {
+        "name": "Monad.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Monad.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Monad.toBind",
+        "kind": "def"
+      },
+      {
+        "name": "Except.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "Except.map.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Except.map",
+        "kind": "def"
+      },
+      {
+        "name": "Function.comp",
+        "kind": "def"
+      },
+      {
+        "name": "Function.const",
+        "kind": "def"
+      },
+      {
+        "name": "Except.pure",
+        "kind": "def"
+      },
+      {
+        "name": "Except.bind",
+        "kind": "def"
+      },
+      {
+        "name": "Except.instMonad",
+        "kind": "def"
+      },
+      {
+        "name": "Pure.pure",
+        "kind": "def"
+      },
+      {
+        "name": "Applicative.toPure",
+        "kind": "def"
+      },
+      {
+        "name": "Monad.toApplicative",
+        "kind": "def"
+      },
+      {
+        "name": "List.below",
+        "kind": "def"
+      },
+      {
+        "name": "List.brecOn.go",
+        "kind": "def"
+      },
+      {
+        "name": "List.brecOn",
+        "kind": "def"
+      },
+      {
+        "name": "List.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "List.foldl.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "List.foldl._f",
+        "kind": "def"
+      },
+      {
+        "name": "List.foldl",
+        "kind": "def"
+      },
+      {
+        "name": "HAdd",
+        "kind": "types"
+      },
+      {
+        "name": "HAdd.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "HAdd.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "HAdd.hAdd",
+        "kind": "def"
+      },
+      {
+        "name": "Add",
+        "kind": "types"
+      },
+      {
+        "name": "Add.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Add.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Add.add",
+        "kind": "def"
+      },
+      {
+        "name": "instHAdd",
+        "kind": "def"
+      },
+      {
+        "name": "instAddNat",
+        "kind": "def"
+      },
+      {
+        "name": "HMul",
+        "kind": "types"
+      },
+      {
+        "name": "HMul.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "HMul.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "HMul.hMul",
+        "kind": "def"
+      },
+      {
+        "name": "Mul",
+        "kind": "types"
+      },
+      {
+        "name": "Mul.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Mul.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Mul.mul",
+        "kind": "def"
+      },
+      {
+        "name": "instHMul",
+        "kind": "def"
+      },
+      {
+        "name": "instMulNat",
+        "kind": "def"
+      },
+      {
+        "name": "Fin.val",
+        "kind": "def"
+      },
+      {
+        "name": "BitVec.toFin",
+        "kind": "def"
+      },
+      {
+        "name": "BitVec.toNat",
+        "kind": "def"
+      },
+      {
+        "name": "UInt8.toBitVec",
+        "kind": "def"
+      },
+      {
+        "name": "UInt8.toNat",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Normalized.lookup.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "HMod",
+        "kind": "types"
+      },
+      {
+        "name": "HMod.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "HMod.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "HMod.hMod",
+        "kind": "def"
+      },
+      {
+        "name": "Mod",
+        "kind": "types"
+      },
+      {
+        "name": "Mod.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Mod.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Mod.mod",
+        "kind": "def"
+      },
+      {
+        "name": "instHMod",
+        "kind": "def"
+      },
+      {
+        "name": "Eq",
+        "kind": "types"
+      },
+      {
+        "name": "Eq.refl",
+        "kind": "ctors"
+      },
+      {
+        "name": "Eq.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "namedPattern",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.mod.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.Reflects.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "False",
+        "kind": "types"
+      },
+      {
+        "name": "False.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Not",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.Reflects",
+        "kind": "def"
+      },
+      {
+        "name": "Decidable",
+        "kind": "types"
+      },
+      {
+        "name": "Decidable.intro",
+        "kind": "ctors"
+      },
+      {
+        "name": "Decidable.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Decidable.decide",
+        "kind": "def"
+      },
+      {
+        "name": "Decidable.reflects_decide",
+        "kind": "thm"
+      },
+      {
+        "name": "dite",
+        "kind": "def"
+      },
+      {
+        "name": "ite",
+        "kind": "def"
+      },
+      {
+        "name": "LE",
+        "kind": "types"
+      },
+      {
+        "name": "LE.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "LE.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "LE.le",
+        "kind": "def"
+      },
+      {
+        "name": "instLENat",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.decEq.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "False.elim",
+        "kind": "def"
+      },
+      {
+        "name": "Eq.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "HEq",
+        "kind": "types"
+      },
+      {
+        "name": "HEq.refl",
+        "kind": "ctors"
+      },
+      {
+        "name": "HEq.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "True",
+        "kind": "types"
+      },
+      {
+        "name": "True.intro",
+        "kind": "ctors"
+      },
+      {
+        "name": "True.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Nat.beq.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.beq._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.beq",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.noConfusion_of_Nat.aux.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.noConfusion_of_Nat.aux._f",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.noConfusion_of_Nat.aux",
+        "kind": "thm"
+      },
+      {
+        "name": "rfl",
+        "kind": "def"
+      },
+      {
+        "name": "congrArg",
+        "kind": "thm"
+      },
+      {
+        "name": "noConfusion_of_Nat",
+        "kind": "thm"
+      },
+      {
+        "name": "Bool.ctorIdx",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.le_of_ble_eq_true.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.zero_le.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.zero_le._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.zero_le",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.le.below",
+        "kind": "types"
+      },
+      {
+        "name": "Nat.le.below.refl",
+        "kind": "ctors"
+      },
+      {
+        "name": "Nat.le.below.step",
+        "kind": "ctors"
+      },
+      {
+        "name": "Nat.le.below.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Nat.le.brecOn",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.le.below.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "Eq.ndrec",
+        "kind": "def"
+      },
+      {
+        "name": "Eq.symm",
+        "kind": "thm"
+      },
+      {
+        "name": "cast",
+        "kind": "def"
+      },
+      {
+        "name": "eq_of_heq",
+        "kind": "thm"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.succ_le_succ.match_1_7",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.succ_le_succ",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.le_of_ble_eq_true._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.le_of_ble_eq_true",
+        "kind": "thm"
+      },
+      {
+        "name": "absurd",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.ble_eq_true_of_le.match_1_7",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.ble_self_eq_true.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble_self_eq_true._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble_self_eq_true",
+        "kind": "thm"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.ble_succ_eq_true.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble_succ_eq_true._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ble_succ_eq_true",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.ble_eq_true_of_le",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.not_le_of_not_ble_eq_true",
+        "kind": "thm"
+      },
+      {
+        "name": "Bool.noConfusionType",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.noConfusion",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.decLe._proof_1",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.decLe",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.decLt",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.le.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ctorIdx",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.div.go.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "HSub",
+        "kind": "types"
+      },
+      {
+        "name": "HSub.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "HSub.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "HSub.hSub",
+        "kind": "def"
+      },
+      {
+        "name": "Sub",
+        "kind": "types"
+      },
+      {
+        "name": "Sub.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Sub.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Sub.sub",
+        "kind": "def"
+      },
+      {
+        "name": "instHSub",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.pred",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.sub._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.sub",
+        "kind": "def"
+      },
+      {
+        "name": "instSubNat",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.le_trans.match_1_10",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.le_trans",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.lt_of_lt_of_le",
+        "kind": "thm"
+      },
+      {
+        "name": "And",
+        "kind": "types"
+      },
+      {
+        "name": "And.intro",
+        "kind": "ctors"
+      },
+      {
+        "name": "And.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "And.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.div_rec_lemma.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.sub_lt.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.not_succ_le_self.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.noConfusionType",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.noConfusion",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.not_succ_le_zero",
+        "kind": "thm"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.pred_le_pred.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.le_succ",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.pred_le_pred",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.le_of_succ_le_succ",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.not_succ_le_self._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.not_succ_le_self",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.lt_irrefl",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.lt_succ_of_le",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.le_refl",
+        "kind": "thm"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.pred_le.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.pred_le",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.sub_le",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.succ_sub_succ_eq_sub",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.sub_lt",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.div_rec_lemma",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.le_of_lt_succ",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.div_rec_fuel_lemma",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.modCore.go._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.modCore.go",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.lt_add_one",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.lt_succ_self",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.modCore",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.mod",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.instMod",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.mod_lt.match_1_3",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.zero_lt_succ",
+        "kind": "thm"
+      },
+      {
+        "name": "Decidable.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.mod_lt.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.modCore_lt.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.not_lt_zero",
+        "kind": "thm"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.modCoreGo_lt.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Decidable.isTrue",
+        "kind": "def"
+      },
+      {
+        "name": "Or",
+        "kind": "types"
+      },
+      {
+        "name": "Or.inl",
+        "kind": "ctors"
+      },
+      {
+        "name": "Or.inr",
+        "kind": "ctors"
+      },
+      {
+        "name": "Or.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Or.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Or.elim.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Or.elim",
+        "kind": "thm"
+      },
+      {
+        "name": "id",
+        "kind": "def"
+      },
+      {
+        "name": "Or.resolve_right",
+        "kind": "thm"
+      },
+      {
+        "name": "GE.ge",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.lt_or_ge.match_1_5",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.lt_or_ge.match_1_3",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.le_succ_of_le",
+        "kind": "thm"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.lt_or_ge.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.eq_or_lt_of_le.match_1_3",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.eq_or_lt_of_le.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.eq_or_lt_of_le._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.eq_or_lt_of_le",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.lt_or_ge._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.lt_or_ge",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.lt_of_not_le",
+        "kind": "thm"
+      },
+      {
+        "name": "Decidable.isFalse",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.modCoreGo_lt",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.modCore_lt",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.mod_lt",
+        "kind": "thm"
+      },
+      {
+        "name": "Fin.Internal.ofNat",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.pow_pos.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.mul_pos.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.add_pos_right.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.add_pos_right",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.mul_pos",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.pow_pos._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.pow_pos",
+        "kind": "thm"
+      },
+      {
+        "name": "BitVec.ofNat._proof_1",
+        "kind": "thm"
+      },
+      {
+        "name": "BitVec.ofNat",
+        "kind": "def"
+      },
+      {
+        "name": "UInt8.ofNat",
+        "kind": "def"
+      },
+      {
+        "name": "UInt8.instOfNat",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Normalized.lookup._f",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Normalized.lookup",
+        "kind": "def"
+      },
+      {
+        "name": "Array.toList",
+        "kind": "def"
+      },
+      {
+        "name": "ByteArray.data",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Normalized.byteAt",
+        "kind": "def"
+      },
+      {
+        "name": "List.range.loop.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "List.range.loop._f",
+        "kind": "def"
+      },
+      {
+        "name": "List.range.loop",
+        "kind": "def"
+      },
+      {
+        "name": "List.range",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Normalized.littleBytes",
+        "kind": "def"
+      },
+      {
+        "name": "BEq",
+        "kind": "types"
+      },
+      {
+        "name": "BEq.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "BEq.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "BEq.beq",
+        "kind": "def"
+      },
+      {
+        "name": "DecidableEq",
+        "kind": "def"
+      },
+      {
+        "name": "instBEqOfDecidableEq",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.eq_of_beq_eq_true.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.eq_of_beq_eq_true._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.eq_of_beq_eq_true",
+        "kind": "thm"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Nat.ne_of_beq_eq_false.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ne_of_beq_eq_false._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.ne_of_beq_eq_false",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.decEq._proof_1",
+        "kind": "thm"
+      },
+      {
+        "name": "Nat.decEq",
+        "kind": "def"
+      },
+      {
+        "name": "instDecidableEqNat",
+        "kind": "def"
+      },
+      {
+        "name": "optParam",
+        "kind": "def"
+      },
+      {
+        "name": "HAppend",
+        "kind": "types"
+      },
+      {
+        "name": "HAppend.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "HAppend.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "HAppend.hAppend",
+        "kind": "def"
+      },
+      {
+        "name": "Append",
+        "kind": "types"
+      },
+      {
+        "name": "Append.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Append.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Append.append",
+        "kind": "def"
+      },
+      {
+        "name": "instHAppendOfAppend",
+        "kind": "def"
+      },
+      {
+        "name": "instDecidableEqList.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "List.length._f",
+        "kind": "def"
+      },
+      {
+        "name": "List.length",
+        "kind": "def"
+      },
+      {
+        "name": "Array.size",
+        "kind": "def"
+      },
+      {
+        "name": "Id",
+        "kind": "def"
+      },
+      {
+        "name": "Id.run",
+        "kind": "def"
+      },
+      {
+        "name": "Array.foldlM.loop.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "GetElem",
+        "kind": "types"
+      },
+      {
+        "name": "GetElem.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "GetElem.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "GetElem.getElem",
+        "kind": "def"
+      },
+      {
+        "name": "Fin.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "List.get.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "List.get._f",
+        "kind": "def"
+      },
+      {
+        "name": "List.get",
+        "kind": "def"
+      },
+      {
+        "name": "Array.getInternal",
+        "kind": "def"
+      },
+      {
+        "name": "Array.instGetElemNatLtSize",
+        "kind": "def"
+      },
+      {
+        "name": "Array.foldlM.loop._f",
+        "kind": "def"
+      },
+      {
+        "name": "Array.foldlM.loop",
+        "kind": "def"
+      },
+      {
+        "name": "Array.isEqv._proof_1",
+        "kind": "thm"
+      },
+      {
+        "name": "Array.foldlM",
+        "kind": "def"
+      },
+      {
+        "name": "Id.instMonad",
+        "kind": "def"
+      },
+      {
+        "name": "Array.foldl",
+        "kind": "def"
+      },
+      {
+        "name": "List.concat.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "List.concat._f",
+        "kind": "def"
+      },
+      {
+        "name": "List.concat",
+        "kind": "def"
+      },
+      {
+        "name": "Array.push",
+        "kind": "def"
+      },
+      {
+        "name": "Array.append",
+        "kind": "def"
+      },
+      {
+        "name": "Array.instAppend",
+        "kind": "def"
+      },
+      {
+        "name": "Min",
+        "kind": "types"
+      },
+      {
+        "name": "Min.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "Min.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "Min.min",
+        "kind": "def"
+      },
+      {
+        "name": "DecidableRel",
+        "kind": "def"
+      },
+      {
+        "name": "minOfLe",
+        "kind": "def"
+      },
+      {
+        "name": "instMinNat",
+        "kind": "def"
+      },
+      {
+        "name": "Array.appendCore.loop.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Array.extract.loop._f",
+        "kind": "def"
+      },
+      {
+        "name": "Array.extract.loop",
+        "kind": "def"
+      },
+      {
+        "name": "Array.emptyWithCapacity",
+        "kind": "def"
+      },
+      {
+        "name": "Array.extract",
+        "kind": "def"
+      },
+      {
+        "name": "ByteArray.copySlice",
+        "kind": "def"
+      },
+      {
+        "name": "Array.empty",
+        "kind": "def"
+      },
+      {
+        "name": "ByteArray.emptyWithCapacity",
+        "kind": "def"
+      },
+      {
+        "name": "ByteArray.empty",
+        "kind": "def"
+      },
+      {
+        "name": "ByteArray.extract",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Normalized.fieldsBytes",
+        "kind": "def"
+      },
+      {
+        "name": "GT.gt",
+        "kind": "def"
+      },
+      {
+        "name": "MonadExcept",
+        "kind": "types"
+      },
+      {
+        "name": "MonadExcept.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "MonadExcept.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "MonadExcept.throw",
+        "kind": "def"
+      },
+      {
+        "name": "semiOutParam",
+        "kind": "def"
+      },
+      {
+        "name": "MonadExceptOf",
+        "kind": "types"
+      },
+      {
+        "name": "MonadExceptOf.mk",
+        "kind": "ctors"
+      },
+      {
+        "name": "MonadExceptOf.rec",
+        "kind": "recs"
+      },
+      {
+        "name": "MonadExceptOf.throw",
+        "kind": "def"
+      },
+      {
+        "name": "throwThe",
+        "kind": "def"
+      },
+      {
+        "name": "MonadExceptOf.tryCatch",
+        "kind": "def"
+      },
+      {
+        "name": "tryCatchThe",
+        "kind": "def"
+      },
+      {
+        "name": "instMonadExceptOfMonadExceptOf",
+        "kind": "def"
+      },
+      {
+        "name": "Except.toBool.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Except.tryCatch",
+        "kind": "def"
+      },
+      {
+        "name": "instMonadExceptOfExcept",
+        "kind": "def"
+      },
+      {
+        "name": "Eq.ndrec_symm",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Normalized.parse.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.or",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.not",
+        "kind": "def"
+      },
+      {
+        "name": "bne",
+        "kind": "def"
+      },
+      {
+        "name": "ByteArray.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "ByteArray.size.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "ByteArray.size",
+        "kind": "def"
+      },
+      {
+        "name": "Array.isEqvAux.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.and",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Data.Nat.Basic.0.Nat.le_add_right.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.le_add_right._f",
+        "kind": "def"
+      },
+      {
+        "name": "Nat.le_add_right",
+        "kind": "thm"
+      },
+      {
+        "name": "Array.isEqvAux._f",
+        "kind": "def"
+      },
+      {
+        "name": "Array.isEqvAux",
+        "kind": "def"
+      },
+      {
+        "name": "Array.isEqv",
+        "kind": "def"
+      },
+      {
+        "name": "Array.instBEq",
+        "kind": "def"
+      },
+      {
+        "name": "instDecidableEqFin.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "_private.Init.Prelude.0.Fin.eq_of_val_eq.match_1_1",
+        "kind": "def"
+      },
+      {
+        "name": "Fin.eq_of_val_eq",
+        "kind": "thm"
+      },
+      {
+        "name": "Fin.val_eq_of_eq",
+        "kind": "thm"
+      },
+      {
+        "name": "instDecidableEqFin._proof_1",
+        "kind": "thm"
+      },
+      {
+        "name": "instDecidableEqFin",
+        "kind": "def"
+      },
+      {
+        "name": "BitVec.decEq.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "BitVec.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "BitVec.noConfusionType",
+        "kind": "def"
+      },
+      {
+        "name": "BitVec.noConfusion",
+        "kind": "def"
+      },
+      {
+        "name": "Eq.subst",
+        "kind": "thm"
+      },
+      {
+        "name": "heq_of_eq",
+        "kind": "thm"
+      },
+      {
+        "name": "BitVec.decEq._proof_1",
+        "kind": "thm"
+      },
+      {
+        "name": "BitVec.decEq",
+        "kind": "def"
+      },
+      {
+        "name": "instDecidableEqBitVec",
+        "kind": "def"
+      },
+      {
+        "name": "UInt8.decEq.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "UInt8.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "UInt8.noConfusionType",
+        "kind": "def"
+      },
+      {
+        "name": "UInt8.noConfusion",
+        "kind": "def"
+      },
+      {
+        "name": "UInt8.decEq._proof_1",
+        "kind": "thm"
+      },
+      {
+        "name": "UInt8.decEq",
+        "kind": "def"
+      },
+      {
+        "name": "instDecidableEqUInt8",
+        "kind": "def"
+      },
+      {
+        "name": "ByteArray.beq",
+        "kind": "def"
+      },
+      {
+        "name": "ByteArray.instBEq",
+        "kind": "def"
+      },
+      {
+        "name": "List.toArray",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Normalized.headerBadBytes",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.Internal.and.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.beq",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.decEq.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "Bool.decEq._proof_1",
+        "kind": "thm"
+      },
+      {
+        "name": "Bool.decEq",
+        "kind": "def"
+      },
+      {
+        "name": "instDecidableEqBool",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Normalized.parse",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM3.Result.kind",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM3.Result.triggers",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM3.Result.exportState",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM3.Result.exportError",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM3.Result.run",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM3.Result.exportDigest",
+        "kind": "def"
+      },
+      {
+        "name": "List.replicate.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "List.replicate._f",
+        "kind": "def"
+      },
+      {
+        "name": "List.replicate",
+        "kind": "def"
+      },
+      {
+        "name": "Array.replicate",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM3.Result.uid",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM3.resultValid.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM3.Result.stage",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM3.Result.detail",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM3.Entry.casesOn",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM3.Entry.ctorIdx",
+        "kind": "def"
+      },
+      {
+        "name": "cond.match_1",
+        "kind": "def"
+      },
+      {
+        "name": "cond",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM3.Entry.ofNat",
+        "kind": "def"
+      },
+      {
+        "name": "Eq.mp",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM3.Entry.ofNat_ctorIdx",
+        "kind": "thm"
+      },
+      {
+        "name": "LeanCageM3.instDecidableEqEntry._proof_1",
+        "kind": "thm"
+      },
+      {
+        "name": "LeanCageM3.instDecidableEqEntry._proof_2",
+        "kind": "thm"
+      },
+      {
+        "name": "LeanCageM3.instDecidableEqEntry",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM3.Result.entry",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM3.Result.clean",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM3.resultValid",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Normalized.validate",
+        "kind": "def"
+      },
+      {
+        "name": "LeanCageM4.Normalized.decode",
+        "kind": "def"
+      }
+    ]
+  },
+  "schema_version": 1,
+  "scope": "Exact live Lean normalization and isolated strict import; explicit primitive C-reader correspondence; full translation faithfulness and full-frame/Linux/executable composition remain open.",
+  "full_bridge_complete": false
+}

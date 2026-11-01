@@ -219,3 +219,18 @@ loss. The separate profile rebuilds the original pinned CompCert and all earlier
 source modules. Its unsupported-version configuration flag does not disable a
 kernel proof check. Translation faithfulness review and complete frame/controller
 composition remain separate obligations; this experiment does not close M4.
+
+## frames: Prove complete imported operations before controller expansion
+
+For [§AR-m4-bridge.frames](../../architecture/AR-m4-bridge.md#frames-complete-imported-frame-operations) and [§FS-workspace.results](../../functional-spec/FS-workspace.md#results-entry-cancellation-and-bounded-transport), prove generic array slicing,
+copying and equality against ordinary lists, then connect the actual source
+layout to every public result field. Keep the sender's low-byte kind narrowing
+explicit. Prove the complete imported validator against integer and byte-list
+conditions; do not leave its acceptance as an assumed premise. Compose with
+actual publication observations and retain prefix/loss and test-selector facts.
+
+Preserve the primitive bridge manifests byte-for-byte and compare every previous
+statement, compiled identity and tool artifact during the expanded gate. The
+new full-frame result is about the imported endpoint. It does not discharge the
+translation-faithfulness review, Linux delivery, whole-controller ordering or
+executable/runtime obligations.

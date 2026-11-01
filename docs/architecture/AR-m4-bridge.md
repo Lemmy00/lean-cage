@@ -47,10 +47,27 @@ separate local directory. Record unsupported-version flags, compatibility
 changes and all source and artifact identities. Successful recompilation does
 not transfer compiler or operating-system guarantees.
 
-The target beyond these primitives is a checked connection from actual reporting
-executions through complete public-frame decoding and controller observations.
-Until composed and reviewed, full-frame correspondence, controller ordering,
-Linux byte provenance, all original native/Linux obligations, executable/runtime
-correspondence and hardware confidentiality remain open. Reuse [§AR-m4-wire](AR-m4-wire.md#ar-m4-wire-source-connections-through-exact-report-bytes) and
+The next composition uses these primitives to connect actual reporting executions
+through complete imported-frame decoding under [§AR-m4-bridge.frames](AR-m4-bridge.md#frames-complete-imported-frame-operations). Independent
+translation-faithfulness review, controller ordering, Linux byte provenance, all
+original native/Linux obligations, executable/runtime correspondence and hardware
+confidentiality remain open until separately composed and reviewed. Reuse [§AR-m4-wire](AR-m4-wire.md#ar-m4-wire-source-connections-through-exact-report-bytes) and
 [§AR-m4-public](AR-m4-public.md#ar-m4-public-exact-live-public-result-endpoint) without weakening their statements or refreshing their expectations
 to hide a changed proof.
+
+## frames: Complete imported frame operations
+
+Extend the primitive connection to the actual imported array extraction,
+byte-array equality, header checks, result fields, parser and validator. Prove
+the operations for arbitrary inputs, including truncated slices, out-of-range
+indices and malformed frames. Connect concrete source frames using their exact
+byte layout; preserve the private sender's narrowing of the kind field and the
+public decoder's two-byte interpretation. Preserve the exact rejection order
+and the complete successful result, including the digest.
+
+Compose only with established source executions and their explicit transport
+observations. A frame-level theorem must not assume that Linux delivered the
+bytes, that the controller called operations in the required order, or that the
+imported representation is faithful merely because its terms type-check. Keep
+those separate obligations visible until independently discharged. Preserve the
+strict primitive bridge records when adding these results.
