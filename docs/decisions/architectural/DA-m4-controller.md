@@ -56,3 +56,31 @@ behavior. Distinguish allocated source witnesses from Linux-supplied arguments;
 this serves [§FS-workspace.policy](../../functional-spec/FS-workspace.md#policy-bounded-typed-request) while preserving the remaining controller
 obligations. Record host-header provenance and licensing without changing the
 native implementation, pinned tools or prior proof artifacts.
+
+## bounds: Check the real short-circuit sequence
+
+For [§AR-m4-controller.bounds](../../architecture/AR-m4-controller.md#bounds-actual-policy-bound-validation) and [§FS-workspace.policy](../../functional-spec/FS-workspace.md#policy-bounded-typed-request), represent the nineteen
+repeated native checks by descriptors and prove their assembled statement is
+exactly the selected complete-helper AST. Use those descriptors only after this
+kernel-checked identity. Keep the initial argument/byte condition and the final
+failure branch as actual source statements, with their machine-width casts.
+
+Reuse the existing source-step, loss and memory interfaces. Require readable
+policy values independently, derive that image from successful numeric stores,
+and construct finite paths for both acceptance and rejection. This avoids an
+assumed execution or policy-validity premise. A selected-block connection does
+not establish the preceding checks or the later environment and setup effects.
+
+Normalize the computational Lean interface with explicit field lookup/count and
+a structurally recursive, fuelled page remainder. Prove that enough fuel yields
+exactly `Nat.mod` and that the complete interface equals the live numeric limits
+when the separately checked CPU period is included. The source implementation
+continues to use its unchanged unsigned modulus operation.
+
+Direct standard-modulus export, and then a ten-element sparse pattern, brought
+division/modulus proof dependencies into the export. The existing strict importer
+rejected their `Iff` elimination path. Preserve those experiment receipts and
+the strict checker. The normalized computational closure must contain no new
+axioms; its ordinary Lean equivalence proofs remain separately audited. This is
+a representation connection for [§AR-m4-controller.bounds](../../architecture/AR-m4-controller.md#bounds-actual-policy-bound-validation), not an optimization
+or replacement of the running launcher.

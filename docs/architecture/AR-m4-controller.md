@@ -116,6 +116,37 @@ This local connection does not establish reachability from Linux process entry,
 `check_profile`, the mode checks, parent identity, later policy bounds or setup
 effects. Account for those separately before extending the controller claim.
 
+## bounds: Actual policy-bound validation
+
+Connect the unchanged `main` block that checks guest argument count, accumulated
+argument bytes and all nineteen numeric limit conditions. Use the complete
+helper translation from [§AR-m4-controller.main-inputs](AR-m4-controller.md#main-inputs-actual-main-routine-numeric-initialization). Prove the actual signed
+argument subtraction, unsigned 64-bit comparisons, boolean casts and modulo
+operations, including the long constant used for the CPU upper bound.
+
+Start with an independently supplied argument count in the admitted signed range,
+an unsigned accumulated byte count and readable policy cells. Preserve the
+source's short-circuit order: once a condition rejects, later policy fields are
+not read. Construct both successful and rejected source paths. Success ends
+before the subsequent environment lookup; failure ends before its first report
+call. This block changes temporary registers only, so every source prefix must
+preserve the entire memory, including under loss. Establish a finite source-step
+bound and defined progress up to the selected endpoint.
+
+Relate the complete numeric predicate to the live Lean `limitsValid` contract and
+its serialized fields. Keep the fixed CPU period separate because the native
+argument vector omits it. Relate the argument-count and byte-total conditions to
+the corresponding parts of `argvValid`; do not infer executable allowlisting,
+per-string bounds, NUL exclusion or the preceding accumulation loop from those
+two conditions. Any imported computational interface must retain the strict
+translation and logical-model obligations from [§AR-m4-controller.plan](AR-m4-controller.md#plan-live-lean-plan-fields-and-their-decimal-bytes).
+
+Include accepted boundary vectors and a rejected case for every condition, with
+allocated readable policy memory. Compose the numeric stores with the readable
+policy image without assuming the desired limit result. Reachability across the
+intervening parent, digest, export and argument checks remains an explicit
+obligation until those actual source regions are connected.
+
 ## composition: Remaining controller obligations
 
 Decimal syntax alone does not establish policy bounds, argument provenance or

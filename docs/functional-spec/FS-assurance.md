@@ -566,8 +566,20 @@ and preserve memory outside the two 80-byte write regions. Sixteen allocated
 source witnesses begin with constructible full-program initial memory; they do
 not establish reachability through earlier main-routine checks. The imported
 numeric byte interface determines the same stored vector and stopping decision.
-Actual argument provenance, parent checks, later policy bounds and the remaining
-controller still need their own connections.
+Actual argument provenance, parent checks and the remaining controller still
+need their own connections.
+
+The [policy-bound connection](../reviews/M4-policy-bounds.md) adds 64 Rocq and 36
+Lean records for the actual argument-count/byte condition, nineteen numeric
+guards and final rejection branch. Exact source paths preserve short-circuit
+order, leave memory unchanged and reach the selected endpoint within 140 steps;
+every boundary permits loss. Successful numeric stores establish their readable
+policy image. The strictly imported computational predicate determines the same
+endpoint, and ordinary Lean proofs relate it to the live policy limits and
+argument totals. The fixed CPU period remains separate from serialized limits.
+Twenty-six allocated source witnesses cover accepted boundaries, each rejected
+guard and machine extremes. These local statements do not establish the earlier
+argument accumulation, parent/digest/export/allowlist checks or whole-main entry.
 
 **Evidence and assumptions:** `assurance/m4-public-evidence.json`,
 `assurance/m4-wire-evidence.json`,
@@ -600,12 +612,17 @@ foundations in both proof assistants. The numeric-block gate is
 `assurance/m4-main-input-evidence.json`. It records the complete helper's actual
 header inputs, all new/adapted propositions, exact function identity, a rejected
 compiled mutation and independent kernel replay. Earlier manifests and receipts
-are preserved, with explicit documentation-fingerprint amendments. Full M4
-remains open.
+are preserved, with explicit documentation-fingerprint amendments. The bounds
+gate is `python3 m4/policy/check.py`, with
+`assurance/m4-policy-bounds-claims.json` and
+`assurance/m4-policy-bounds-evidence.json`. It preserves the numeric-block
+checkpoint and records the exact imported predicate, rejected descriptor
+mutation, failed direct-import experiments and full foundation inventory. Full
+M4 remains open.
 The established Coq 8.18 profile's six foundation/semantic-parameter entries remain unchanged; the explicit
 machine excludes stock external/builtin execution. No new Lean axiom is added.
 The owned witnesses allocate cells for the actual source symbol mapping; they do
-not assert initialized whole-program execution. Native/compiler/kernel/runtime
+not assert reachability from whole-program entry. Native/compiler/kernel/runtime
 and hardware identities remain the preserved earlier profiles, not new execution
 evidence. No native guest workload is run on the shared host.
 
