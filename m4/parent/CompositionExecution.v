@@ -58,7 +58,7 @@ Proof.
  pose proof(representation_numeric_data before fields argv textfields bytes export_bytes tree_bytes stdin_bytes sources inputs export tree stdin x rest REP)as[NUMBYTES GUESTBYTES].
  unfold numeric_trace_contract in CONTRACT;unfold composed_endpoint.
  destruct(numeric_complete inputs)eqn:COMPLETE.
- - destruct CONTRACT as[parser_count[middle[flagged[tree_set[configured[after[POST[CONFIG[STORE[CERT REST]]]]]]]]]].
+ - destruct CONTRACT as[parser_count[middle[flagged[tree_set[configured[after[POST[CONFIG[STORE[[CERT REST] CUT]]]]]]]]]].
    destruct(trace_actual_chosen _ _ _ _ _ _ _ observed CERT)
    as[events[endpoint[RUN[COST[MEM[END ALL]]]]]].
    cbn in END;unfold traced_initialization_frontier in END.
@@ -80,7 +80,7 @@ Proof.
        -- rewrite Ptrofs.add_zero_l in STORE;exact STORE.
        -- split;[exact COST|rewrite GOOD;exists final;auto].
      * intros _;split;[intros BAD;congruence|intros _;exact MATCH].
- - destruct CONTRACT as[CERT REST].
+ - destruct CONTRACT as[[CERT REST] CUT].
    destruct(trace_actual_chosen _ _ _ _ _ _ _ observed CERT)as[events[endpoint[RUN[COST[MEM[[H LAST] ALL]]]]]].
    cbn in H.
    exists initial,before,fields,output,argv,inputs,export,tree,stdin,x,rest,initialized,numeric_count,numeric,base,events,endpoint.

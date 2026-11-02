@@ -171,6 +171,216 @@
       "definitional_uip": []
     },
     {
+      "name": "LeanCageParent.ParentMachine.parent_event",
+      "full_type": "parent_event\n     : Type",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentMachine.previous",
+      "full_type": "previous\n     : forall _ : StringMachine.string_event, parent_event",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentMachine.parent_observed",
+      "full_type": "parent_observed\n     : forall _ : Integers.Int.int, parent_event",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentMachine.parent_wait",
+      "full_type": "parent_wait\n     : parent_event",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentMachine.parent_event_rect",
+      "full_type": "parent_event_rect\n     : forall (P : forall _ : parent_event, Type) (_ : forall ev : StringMachine.string_event, P (previous ev)) (_ : forall value : Integers.Int.int, P (parent_observed value)) (_ : P parent_wait) (p : parent_event), P p",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentMachine.parent_event_ind",
+      "full_type": "parent_event_ind\n     : forall (P : forall _ : parent_event, Prop) (_ : forall ev : StringMachine.string_event, P (previous ev)) (_ : forall value : Integers.Int.int, P (parent_observed value)) (_ : P parent_wait) (p : parent_event), P p",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentMachine.parent_event_rec",
+      "full_type": "parent_event_rec\n     : forall (P : forall _ : parent_event, Set) (_ : forall ev : StringMachine.string_event, P (previous ev)) (_ : forall value : Integers.Int.int, P (parent_observed value)) (_ : P parent_wait) (p : parent_event), P p",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentMachine.parent_event_sind",
+      "full_type": "parent_event_sind\n     : forall (P : forall _ : parent_event, SProp) (_ : forall ev : StringMachine.string_event, P (previous ev)) (_ : forall value : Integers.Int.int, P (parent_observed value)) (_ : P parent_wait) (p : parent_event), P p",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentMachine.parent_step",
+      "full_type": "parent_step\n     : forall (_ : Clight.genv) (_ : Machine.tls) (_ : Machine.machine) (_ : parent_event) (_ : Machine.machine), Prop",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentMachine.previous_step",
+      "full_type": "previous_step\n     : forall (ge : Clight.genv) (cell : Machine.tls) (s : Machine.machine) (ev : StringMachine.string_event) (target : Machine.machine) (_ : StringMachine.string_step ge cell s ev target), parent_step ge cell s (previous ev) target",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentMachine.observe_parent",
+      "full_type": "observe_parent\n     : forall (ge : Clight.genv) (cell : Machine.tls) (k : Clight.cont) (m : Memory.Mem.mem) (value : Integers.Int.int), parent_step ge cell (Machine.live (Clight.Callstate getppid_definition (@nil Values.val) k m)) (parent_observed value) (Machine.live (Clight.Returnstate (Values.Vint value) k m))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentMachine.wait_parent",
+      "full_type": "wait_parent\n     : forall (ge : Clight.genv) (cell : Machine.tls) (k : Clight.cont) (m : Memory.Mem.mem), parent_step ge cell (Machine.live (Clight.Callstate getppid_definition (@nil Values.val) k m)) parent_wait (Machine.live (Clight.Callstate getppid_definition (@nil Values.val) k m))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentMachine.parent_step_ind",
+      "full_type": "parent_step_ind\n     : forall (ge : Clight.genv) (cell : Machine.tls) (P : forall (_ : Machine.machine) (_ : parent_event) (_ : Machine.machine), Prop) (_ : forall (s : Machine.machine) (ev : StringMachine.string_event) (target : Machine.machine) (_ : StringMachine.string_step ge cell s ev target), P s (previous ev) target) (_ : forall (k : Clight.cont) (m : Memory.Mem.mem) (value : Integers.Int.int), P (Machine.live (Clight.Callstate getppid_definition (@nil Values.val) k m)) (parent_observed value) (Machine.live (Clight.Returnstate (Values.Vint value) k m))) (_ : forall (k : Clight.cont) (m : Memory.Mem.mem), P (Machine.live (Clight.Callstate getppid_definition (@nil Values.val) k m)) parent_wait (Machine.live (Clight.Callstate getppid_definition (@nil Values.val) k m))) (m : Machine.machine) (p : parent_event) (m0 : Machine.machine) (_ : parent_step ge cell m p m0), P m p m0",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentMachine.parent_step_sind",
+      "full_type": "parent_step_sind\n     : forall (ge : Clight.genv) (cell : Machine.tls) (P : forall (_ : Machine.machine) (_ : parent_event) (_ : Machine.machine), SProp) (_ : forall (s : Machine.machine) (ev : StringMachine.string_event) (target : Machine.machine) (_ : StringMachine.string_step ge cell s ev target), P s (previous ev) target) (_ : forall (k : Clight.cont) (m : Memory.Mem.mem) (value : Integers.Int.int), P (Machine.live (Clight.Callstate getppid_definition (@nil Values.val) k m)) (parent_observed value) (Machine.live (Clight.Returnstate (Values.Vint value) k m))) (_ : forall (k : Clight.cont) (m : Memory.Mem.mem), P (Machine.live (Clight.Callstate getppid_definition (@nil Values.val) k m)) parent_wait (Machine.live (Clight.Callstate getppid_definition (@nil Values.val) k m))) (m : Machine.machine) (p : parent_event) (m0 : Machine.machine) (_ : parent_step ge cell m p m0), P m p m0",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentMachine.parent_steps",
+      "full_type": "parent_steps\n     : forall (_ : Clight.genv) (_ : Machine.tls) (_ : Machine.machine) (_ : list parent_event) (_ : Machine.machine), Prop",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentMachine.parent_steps_nil",
+      "full_type": "parent_steps_nil\n     : forall (ge : Clight.genv) (cell : Machine.tls) (s : Machine.machine), parent_steps ge cell s (@nil parent_event) s",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentMachine.parent_steps_cons",
+      "full_type": "parent_steps_cons\n     : forall (ge : Clight.genv) (cell : Machine.tls) (s : Machine.machine) (ev : parent_event) (mid : Machine.machine) (rest : list parent_event) (target : Machine.machine) (_ : parent_step ge cell s ev mid) (_ : parent_steps ge cell mid rest target), parent_steps ge cell s (@cons parent_event ev rest) target",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentMachine.parent_steps_ind",
+      "full_type": "parent_steps_ind\n     : forall (ge : Clight.genv) (cell : Machine.tls) (P : forall (_ : Machine.machine) (_ : list parent_event) (_ : Machine.machine), Prop) (_ : forall s : Machine.machine, P s (@nil parent_event) s) (_ : forall (s : Machine.machine) (ev : parent_event) (mid : Machine.machine) (rest : list parent_event) (target : Machine.machine) (_ : parent_step ge cell s ev mid) (_ : parent_steps ge cell mid rest target) (_ : P mid rest target), P s (@cons parent_event ev rest) target) (m : Machine.machine) (l : list parent_event) (m0 : Machine.machine) (_ : parent_steps ge cell m l m0), P m l m0",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentMachine.parent_steps_sind",
+      "full_type": "parent_steps_sind\n     : forall (ge : Clight.genv) (cell : Machine.tls) (P : forall (_ : Machine.machine) (_ : list parent_event) (_ : Machine.machine), SProp) (_ : forall s : Machine.machine, P s (@nil parent_event) s) (_ : forall (s : Machine.machine) (ev : parent_event) (mid : Machine.machine) (rest : list parent_event) (target : Machine.machine) (_ : parent_step ge cell s ev mid) (_ : parent_steps ge cell mid rest target) (_ : P mid rest target), P s (@cons parent_event ev rest) target) (m : Machine.machine) (l : list parent_event) (m0 : Machine.machine) (_ : parent_steps ge cell m l m0), P m l m0",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
       "name": "LeanCageParent.ParentMachine.parent_loss",
       "full_type": "parent_loss\n     : parent_event",
       "transitive_assumptions": "Closed under the global context",
@@ -644,6 +854,76 @@
       "full_type": "parent_parsed_frame\n     : forall (le : Clight.temp_env) (parsed : option BinNums.Z), ValidationValues.validation_frame le (@Maps.PTree.set Values.val Main._t'11 (NumberStorage.number_code parsed) le)",
       "transitive_assumptions": "Closed under the global context",
       "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentRegion.parent_certificate",
+      "full_type": "parent_certificate\n     : forall (_ : Clight.genv) (_ : Machine.tls) (_ : forall _ : Memory.Mem.mem, Prop) (_ : forall _ : Clight.state, Prop) (_ : nat) (_ : Clight.state), Prop",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentRegion.parent_stop",
+      "full_type": "parent_stop\n     : forall (ge : Clight.genv) (cell : Machine.tls) (P : forall _ : Memory.Mem.mem, Prop) (R : forall _ : Clight.state, Prop) (n : nat) (s : Clight.state) (_ : P (Machine.memory_of s)) (_ : R s), parent_certificate ge cell P R n s",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentRegion.parent_next",
+      "full_type": "parent_next\n     : forall (ge : Clight.genv) (cell : Machine.tls) (P : forall _ : Memory.Mem.mem, Prop) (R : forall _ : Clight.state, Prop) (n : nat) (s : Clight.state) (_ : P (Machine.memory_of s)) (_ : @ex parent_event (fun ev : parent_event => @ex Clight.state (fun next : Clight.state => and (@Logic.eq bool (parent_waiting ev) false) (and (not (@Logic.eq parent_event ev parent_loss)) (parent_step ge cell (Machine.live s) ev (Machine.live next)))))) (_ : forall (ev : parent_event) (target : Machine.machine) (_ : parent_step ge cell (Machine.live s) ev target), or (and (@Logic.eq bool (parent_waiting ev) true) (@Logic.eq Machine.machine target (Machine.live s))) (or (@ex Memory.Mem.mem (fun after : Memory.Mem.mem => and (@Logic.eq Machine.machine target (Machine.dead after)) (P after))) (@ex Clight.state (fun next : Clight.state => and (@Logic.eq Machine.machine target (Machine.live next)) (and (@Logic.eq bool (parent_waiting ev) false) (parent_certificate ge cell P R n next)))))), parent_certificate ge cell P R (S n) s",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentRegion.parent_certificate_ind",
+      "full_type": "parent_certificate_ind\n     : forall (ge : Clight.genv) (cell : Machine.tls) (P : forall _ : Memory.Mem.mem, Prop) (R : forall _ : Clight.state, Prop) (P0 : forall (_ : nat) (_ : Clight.state), Prop) (_ : forall (n : nat) (s : Clight.state) (_ : P (Machine.memory_of s)) (_ : R s), P0 n s) (_ : forall (n : nat) (s : Clight.state) (_ : P (Machine.memory_of s)) (_ : @ex parent_event (fun ev : parent_event => @ex Clight.state (fun next : Clight.state => and (@Logic.eq bool (parent_waiting ev) false) (and (not (@Logic.eq parent_event ev parent_loss)) (parent_step ge cell (Machine.live s) ev (Machine.live next)))))) (_ : forall (ev : parent_event) (target : Machine.machine) (_ : parent_step ge cell (Machine.live s) ev target), or (and (@Logic.eq bool (parent_waiting ev) true) (@Logic.eq Machine.machine target (Machine.live s))) (or (@ex Memory.Mem.mem (fun after : Memory.Mem.mem => and (@Logic.eq Machine.machine target (Machine.dead after)) (P after))) (@ex Clight.state (fun next : Clight.state => and (@Logic.eq Machine.machine target (Machine.live next)) (and (@Logic.eq bool (parent_waiting ev) false) (parent_certificate ge cell P R n next)))))), P0 (S n) s) (n : nat) (s : Clight.state) (_ : parent_certificate ge cell P R n s), P0 n s",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentRegion.parent_certificate_sind",
+      "full_type": "parent_certificate_sind\n     : forall (ge : Clight.genv) (cell : Machine.tls) (P : forall _ : Memory.Mem.mem, Prop) (R : forall _ : Clight.state, Prop) (P0 : forall (_ : nat) (_ : Clight.state), SProp) (_ : forall (n : nat) (s : Clight.state) (_ : P (Machine.memory_of s)) (_ : R s), P0 n s) (_ : forall (n : nat) (s : Clight.state) (_ : P (Machine.memory_of s)) (_ : @ex parent_event (fun ev : parent_event => @ex Clight.state (fun next : Clight.state => and (@Logic.eq bool (parent_waiting ev) false) (and (not (@Logic.eq parent_event ev parent_loss)) (parent_step ge cell (Machine.live s) ev (Machine.live next)))))) (_ : forall (ev : parent_event) (target : Machine.machine) (_ : parent_step ge cell (Machine.live s) ev target), or (and (@Logic.eq bool (parent_waiting ev) true) (@Logic.eq Machine.machine target (Machine.live s))) (or (@ex Memory.Mem.mem (fun after : Memory.Mem.mem => and (@Logic.eq Machine.machine target (Machine.dead after)) (P after))) (@ex Clight.state (fun next : Clight.state => and (@Logic.eq Machine.machine target (Machine.live next)) (and (@Logic.eq bool (parent_waiting ev) false) (parent_certificate ge cell P R n next)))))), P0 (S n) s) (n : nat) (s : Clight.state) (_ : parent_certificate ge cell P R n s), P0 n s",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
       "definitional_uip": []
     },
     {
@@ -1544,6 +1824,76 @@
       "definitional_uip": []
     },
     {
+      "name": "LeanCageParent.TraceRegion.trace_certificate",
+      "full_type": "trace_certificate\n     : forall (_ : Clight.genv) (_ : Machine.tls) (_ : forall _ : Memory.Mem.mem, Prop) (_ : forall (_ : list Integers.Int.int) (_ : Clight.state), Prop) (_ : nat) (_ : list Integers.Int.int) (_ : Clight.state), Prop",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceRegion.trace_stop",
+      "full_type": "trace_stop\n     : forall (ge : Clight.genv) (cell : Machine.tls) (P : forall _ : Memory.Mem.mem, Prop) (R : forall (_ : list Integers.Int.int) (_ : Clight.state), Prop) (n : nat) (history : list Integers.Int.int) (s : Clight.state) (_ : P (Machine.memory_of s)) (_ : R history s), trace_certificate ge cell P R n history s",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceRegion.trace_next",
+      "full_type": "trace_next\n     : forall (ge : Clight.genv) (cell : Machine.tls) (P : forall _ : Memory.Mem.mem, Prop) (R : forall (_ : list Integers.Int.int) (_ : Clight.state), Prop) (n : nat) (history : list Integers.Int.int) (s : Clight.state) (_ : P (Machine.memory_of s)) (_ : @ex parent_event (fun ev : parent_event => @ex Clight.state (fun next : Clight.state => and (@Logic.eq bool (parent_waiting ev) false) (and (not (@Logic.eq parent_event ev parent_loss)) (parent_step ge cell (Machine.live s) ev (Machine.live next)))))) (_ : forall (ev : parent_event) (target : Machine.machine) (_ : parent_step ge cell (Machine.live s) ev target), or (and (@Logic.eq bool (parent_waiting ev) true) (and (@Logic.eq Machine.machine target (Machine.live s)) (@Logic.eq (list Integers.Int.int) (observation ev) (@nil Integers.Int.int)))) (or (@ex Memory.Mem.mem (fun after : Memory.Mem.mem => and (@Logic.eq Machine.machine target (Machine.dead after)) (and (P after) (@Logic.eq (list Integers.Int.int) (observation ev) (@nil Integers.Int.int))))) (@ex Clight.state (fun next : Clight.state => and (@Logic.eq Machine.machine target (Machine.live next)) (and (@Logic.eq bool (parent_waiting ev) false) (trace_certificate ge cell P R n (@app Integers.Int.int history (observation ev)) next)))))), trace_certificate ge cell P R (S n) history s",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceRegion.trace_certificate_ind",
+      "full_type": "trace_certificate_ind\n     : forall (ge : Clight.genv) (cell : Machine.tls) (P : forall _ : Memory.Mem.mem, Prop) (R : forall (_ : list Integers.Int.int) (_ : Clight.state), Prop) (P0 : forall (_ : nat) (_ : list Integers.Int.int) (_ : Clight.state), Prop) (_ : forall (n : nat) (history : list Integers.Int.int) (s : Clight.state) (_ : P (Machine.memory_of s)) (_ : R history s), P0 n history s) (_ : forall (n : nat) (history : list Integers.Int.int) (s : Clight.state) (_ : P (Machine.memory_of s)) (_ : @ex parent_event (fun ev : parent_event => @ex Clight.state (fun next : Clight.state => and (@Logic.eq bool (parent_waiting ev) false) (and (not (@Logic.eq parent_event ev parent_loss)) (parent_step ge cell (Machine.live s) ev (Machine.live next)))))) (_ : forall (ev : parent_event) (target : Machine.machine) (_ : parent_step ge cell (Machine.live s) ev target), or (and (@Logic.eq bool (parent_waiting ev) true) (and (@Logic.eq Machine.machine target (Machine.live s)) (@Logic.eq (list Integers.Int.int) (observation ev) (@nil Integers.Int.int)))) (or (@ex Memory.Mem.mem (fun after : Memory.Mem.mem => and (@Logic.eq Machine.machine target (Machine.dead after)) (and (P after) (@Logic.eq (list Integers.Int.int) (observation ev) (@nil Integers.Int.int))))) (@ex Clight.state (fun next : Clight.state => and (@Logic.eq Machine.machine target (Machine.live next)) (and (@Logic.eq bool (parent_waiting ev) false) (trace_certificate ge cell P R n (@app Integers.Int.int history (observation ev)) next)))))), P0 (S n) history s) (n : nat) (l : list Integers.Int.int) (s : Clight.state) (_ : trace_certificate ge cell P R n l s), P0 n l s",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceRegion.trace_certificate_sind",
+      "full_type": "trace_certificate_sind\n     : forall (ge : Clight.genv) (cell : Machine.tls) (P : forall _ : Memory.Mem.mem, Prop) (R : forall (_ : list Integers.Int.int) (_ : Clight.state), Prop) (P0 : forall (_ : nat) (_ : list Integers.Int.int) (_ : Clight.state), SProp) (_ : forall (n : nat) (history : list Integers.Int.int) (s : Clight.state) (_ : P (Machine.memory_of s)) (_ : R history s), P0 n history s) (_ : forall (n : nat) (history : list Integers.Int.int) (s : Clight.state) (_ : P (Machine.memory_of s)) (_ : @ex parent_event (fun ev : parent_event => @ex Clight.state (fun next : Clight.state => and (@Logic.eq bool (parent_waiting ev) false) (and (not (@Logic.eq parent_event ev parent_loss)) (parent_step ge cell (Machine.live s) ev (Machine.live next)))))) (_ : forall (ev : parent_event) (target : Machine.machine) (_ : parent_step ge cell (Machine.live s) ev target), or (and (@Logic.eq bool (parent_waiting ev) true) (and (@Logic.eq Machine.machine target (Machine.live s)) (@Logic.eq (list Integers.Int.int) (observation ev) (@nil Integers.Int.int)))) (or (@ex Memory.Mem.mem (fun after : Memory.Mem.mem => and (@Logic.eq Machine.machine target (Machine.dead after)) (and (P after) (@Logic.eq (list Integers.Int.int) (observation ev) (@nil Integers.Int.int))))) (@ex Clight.state (fun next : Clight.state => and (@Logic.eq Machine.machine target (Machine.live next)) (and (@Logic.eq bool (parent_waiting ev) false) (trace_certificate ge cell P R n (@app Integers.Int.int history (observation ev)) next)))))), P0 (S n) history s) (n : nat) (l : list Integers.Int.int) (s : Clight.state) (_ : trace_certificate ge cell P R n l s), P0 n l s",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
       "name": "LeanCageParent.TraceRegion.trace_memory",
       "full_type": "trace_memory\n     : forall (ge : Clight.genv) (cell : Machine.tls) (P : forall _ : Memory.Mem.mem, Prop) (R : forall (_ : list Integers.Int.int) (_ : Clight.state), Prop) (n : nat) (history : list Integers.Int.int) (s : Clight.state) (_ : trace_certificate ge cell P R n history s), P (Machine.memory_of s)",
       "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
@@ -1698,6 +2048,188 @@
       "definitional_uip": []
     },
     {
+      "name": "LeanCageParent.TraceCut.selected_stop_shape",
+      "full_type": "selected_stop_shape\n     : forall _ : Clight.state, Prop",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceCut.getenv_type",
+      "full_type": "getenv_type\n     : Ctypes.type",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceCut.getenv_call",
+      "full_type": "getenv_call\n     : Clight.statement",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceCut.getenv_call_cont",
+      "full_type": "getenv_call_cont\n     : forall _ : Clight.cont, Clight.cont",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceCut.getenv_source_shape",
+      "full_type": "getenv_source_shape\n     : and (@Logic.eq Clight.statement BoundsStructure.after_bounds (ValidationStructure.validation_suffix (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))))) (and (@Logic.eq Clight.statement BoundsStructure.after_bounds (Clight.Ssequence (Clight.Ssequence getenv_call (MainStructure.second_statement (MainStructure.first_statement BoundsStructure.after_bounds))) (MainStructure.second_statement BoundsStructure.after_bounds))) (@Logic.eq Clight.statement getenv_call (Clight.Scall (@Some AST.ident Main._t'56) (Clight.Evar Main._getenv getenv_type) (@cons Clight.expr (Clight.Evar Main.___stringlit_136 (Ctypesdefs.tarray Ctypesdefs.tschar (BinNums.Zpos (BinNums.xO (BinNums.xI (BinNums.xI (BinNums.xO BinNums.xH))))))) (@nil Clight.expr)))))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceCut.main_internal_returns",
+      "full_type": "main_internal_returns\n     : @ListDef.Forall (prod AST.ident (AST.globdef (Ctypes.fundef Clight.function) Ctypes.type)) (fun item : prod AST.ident (AST.globdef (Ctypes.fundef Clight.function) Ctypes.type) => match @Datatypes.snd AST.ident (AST.globdef (Ctypes.fundef Clight.function) Ctypes.type) item return Prop with\n                                                                                                                                                                                          | @AST.Gfun _ _ f0 => match f0 return Prop with\n                                                                                                                                                                                                                | @Ctypes.Internal _ f => not (@Logic.eq Ctypes.type (Clight.fn_return f) (Ctypesdefs.tptr Ctypesdefs.tschar))\n                                                                                                                                                                                                                | @Ctypes.External _ _ _ _ _ => Logic.True\n                                                                                                                                                                                                                end\n                                                                                                                                                                                          | @AST.Gvar _ _ _ => Logic.True\n                                                                                                                                                                                          end) (@Ctypes.prog_defs Clight.function Main.prog)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceCut.accepted_prefix_contract",
+      "full_type": "accepted_prefix_contract\n     : forall (_ : Machine.tls) (_ : forall _ : Memory.Mem.mem, Prop) (_ : forall (_ : list Integers.Int.int) (_ : Clight.state), Prop) (_ : nat) (_ : Clight.state), Prop",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceCut.clight_funct_member",
+      "full_type": "clight_funct_member\n     : forall (p : Clight.program) (vf : Values.val) (fd : Clight.fundef) (_ : @Logic.eq (option Clight.fundef) (@Globalenvs.Genv.find_funct Clight.fundef Ctypes.type (Clight.genv_genv (Clight.globalenv p)) vf) (@Some Clight.fundef fd)), @ex AST.ident (fun id : AST.ident => @List.In (prod AST.ident (AST.globdef Clight.fundef Ctypes.type)) (@pair AST.ident (AST.globdef Clight.fundef Ctypes.type) id (@AST.Gfun Clight.fundef Ctypes.type fd)) (@Ctypes.prog_defs Clight.function p))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceCut.getenv_target_external",
+      "full_type": "getenv_target_external\n     : forall (vf : Values.val) (fd : Clight.fundef) (_ : @Logic.eq (option Clight.fundef) (@Globalenvs.Genv.find_funct Clight.fundef Ctypes.type (Clight.genv_genv MainStructure.main_ge) vf) (@Some Clight.fundef fd)) (_ : @Logic.eq Ctypes.type (Clight.type_of_fundef fd) getenv_type), @ex AST.external_function (fun ef : AST.external_function => @Logic.eq Clight.fundef fd (@Ctypes.External Clight.function ef (@cons Ctypes.type (Ctypesdefs.tptr Ctypesdefs.tschar) (@nil Ctypes.type)) (Ctypesdefs.tptr Ctypesdefs.tschar) AST.cc_default))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceCut.getenv_local_no_progress",
+      "full_type": "getenv_local_no_progress\n     : forall (ge : Clight.genv) (cell : Machine.tls) (ef : AST.external_function) (args : list Values.val) (k : Clight.cont) (m : Memory.Mem.mem) (ev : parent_event) (next : Clight.state), not (parent_step ge cell (Machine.live (Clight.Callstate (@Ctypes.External Clight.function ef (@cons Ctypes.type (Ctypesdefs.tptr Ctypesdefs.tschar) (@nil Ctypes.type)) (Ctypesdefs.tptr Ctypesdefs.tschar) AST.cc_default) args k m)) ev (Machine.live next))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceCut.trace_internal_follow",
+      "full_type": "trace_internal_follow\n     : forall (ge : Clight.genv) (cell : Machine.tls) (P : forall _ : Memory.Mem.mem, Prop) (R : forall (_ : list Integers.Int.int) (_ : Clight.state), Prop) (n : nat) (history : list Integers.Int.int) (s next : Clight.state) (_ : trace_certificate ge cell P R n history s) (_ : StoreSteps.store_edge ge s next), or (R history s) (@ex nat (fun remaining : nat => trace_certificate ge cell P R remaining history next))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceCut.no_selected_callstate",
+      "full_type": "no_selected_callstate\n     : forall (fd : Clight.fundef) (args : list Values.val) (k : Clight.cont) (m : Memory.Mem.mem), not (selected_stop_shape (Clight.Callstate fd args k m))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceCut.no_selected_getenv_call",
+      "full_type": "no_selected_getenv_call\n     : forall (k : Clight.cont) (e : Clight.env) (le : Clight.temp_env) (m : Memory.Mem.mem), not (selected_stop_shape (Clight.State Main.f_main getenv_call k e le m))",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceCut.trace_getenv_call_impossible",
+      "full_type": "trace_getenv_call_impossible\n     : forall (cell : Machine.tls) (P : forall _ : Memory.Mem.mem, Prop) (R : forall (_ : list Integers.Int.int) (_ : Clight.state), Prop) (n : nat) (history : list Integers.Int.int) (k : Clight.cont) (e : Clight.env) (le : Clight.temp_env) (m : Memory.Mem.mem) (_ : forall (h : list Integers.Int.int) (s : Clight.state) (_ : R h s), selected_stop_shape s), not (trace_certificate MainStructure.main_ge cell P R n history (Clight.State Main.f_main getenv_call k e le m))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceCut.trace_post_bounds_cut",
+      "full_type": "trace_post_bounds_cut\n     : forall (cell : Machine.tls) (P : forall _ : Memory.Mem.mem, Prop) (R : forall (_ : list Integers.Int.int) (_ : Clight.state), Prop) (n : nat) (history : list Integers.Int.int) (k : Clight.cont) (e : Clight.env) (le : Clight.temp_env) (m : Memory.Mem.mem) (_ : forall (h : list Integers.Int.int) (s : Clight.state) (_ : R h s), selected_stop_shape s) (_ : trace_certificate MainStructure.main_ge cell P R n history (Clight.State Main.f_main Clight.Sskip (Clight.Kseq BoundsStructure.after_bounds k) e le m)), R history (Clight.State Main.f_main Clight.Sskip (Clight.Kseq BoundsStructure.after_bounds k) e le m)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceCut.trace_acceptance_prefix",
+      "full_type": "trace_acceptance_prefix\n     : forall (cell : Machine.tls) (P : forall _ : Memory.Mem.mem, Prop) (R : forall (_ : list Integers.Int.int) (_ : Clight.state), Prop) (n : nat) (start : Clight.state) (_ : forall (h : list Integers.Int.int) (s : Clight.state) (_ : R h s), selected_stop_shape s) (_ : trace_certificate MainStructure.main_ge cell P R n (@nil Integers.Int.int) start), accepted_prefix_contract cell P R n start",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceCut.frontier_guarantee",
+      "full_type": "frontier_guarantee\n     : forall (_ : Machine.tls) (_ : forall _ : Memory.Mem.mem, Prop) (_ : forall (_ : list Integers.Int.int) (_ : Clight.state), Prop) (_ : nat) (_ : Clight.state), Prop",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.TraceCut.frontier_guaranteed",
+      "full_type": "frontier_guaranteed\n     : forall (cell : Machine.tls) (P : forall _ : Memory.Mem.mem, Prop) (R : forall (_ : list Integers.Int.int) (_ : Clight.state), Prop) (n : nat) (start : Clight.state) (_ : forall (h : list Integers.Int.int) (s : Clight.state) (_ : R h s), selected_stop_shape s) (_ : trace_certificate MainStructure.main_ge cell P R n (@nil Integers.Int.int) start), frontier_guarantee cell P R n start",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
       "name": "LeanCageParent.TraceChoices.chosen_progress",
       "full_type": "chosen_progress\n     : forall (ge : Clight.genv) (cell : Machine.tls) (P : forall _ : Memory.Mem.mem, Prop) (R : forall (_ : list Integers.Int.int) (_ : Clight.state), Prop) (n : nat) (history : list Integers.Int.int) (start : Clight.state) (preferred : Integers.Int.int) (_ : trace_certificate ge cell P R n history start), or (R history start) (@ex parent_event (fun ev : parent_event => @ex Clight.state (fun next : Clight.state => and (@Logic.eq bool (parent_waiting ev) false) (and (not (@Logic.eq parent_event ev parent_loss)) (and (parent_step ge cell (Machine.live start) ev (Machine.live next)) (@ListDef.Forall Integers.Int.int (fun value : Integers.Int.int => @Logic.eq Integers.Int.int value preferred) (observation ev)))))))",
       "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
@@ -1828,6 +2360,41 @@
         "Events.inline_assembly_sem",
         "FunctionalExtensionality.functional_extensionality_dep"
       ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentSamples.parent_case",
+      "full_type": "parent_case\n     : Set",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentSamples.Build_parent_case",
+      "full_type": "Build_parent_case\n     : forall (_ : list Integers.Byte.int) (_ : Integers.Int.int) (_ : bool), parent_case",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentSamples.case_bytes",
+      "full_type": "case_bytes\n     : forall _ : parent_case, list Integers.Byte.int",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentSamples.case_observed",
+      "full_type": "case_observed\n     : forall _ : parent_case, Integers.Int.int",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.ParentSamples.case_rejected",
+      "full_type": "case_rejected\n     : forall _ : parent_case, bool",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
       "definitional_uip": []
     },
     {
@@ -1971,6 +2538,69 @@
       "definitional_uip": []
     },
     {
+      "name": "LeanCageParent.FrontierShapes.selected_skip_shape",
+      "full_type": "selected_skip_shape\n     : forall (f : Clight.function) (k : Clight.cont) (e : Clight.env) (le : Clight.temp_env) (m : Memory.Mem.mem), selected_stop_shape (Clight.State f Clight.Sskip k e le m)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.FrontierShapes.selected_report_shape",
+      "full_type": "selected_report_shape\n     : forall (f : Clight.function) (opt : option AST.ident) (ty : Ctypes.type) (args : list Clight.expr) (k : Clight.cont) (e : Clight.env) (le : Clight.temp_env) (m : Memory.Mem.mem), selected_stop_shape (Clight.State f (Clight.Scall opt (Clight.Evar Main._result_of ty) args) k e le m)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.FrontierShapes.selected_selection_rejection",
+      "full_type": "selected_selection_rejection\n     : forall (index : nat) (e : Clight.env) (le : Clight.temp_env) (k : Clight.cont) (m : Memory.Mem.mem) (s : Clight.state) (_ : or (@Logic.eq nat index (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))) (or (@Logic.eq nat index (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))) (or (@Logic.eq nat index (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))))))) (@Logic.eq nat index (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))))))))))) (_ : ValidationFinish.selection_frontier index e le k m true s), selected_stop_shape s",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.FrontierShapes.selected_argument_bounds",
+      "full_type": "selected_argument_bounds\n     : forall (argc : BinNums.Z) (inputs : list ArgumentMemory.guest_argument) (values : list BinNums.Z) (e : Clight.env) (le : Clight.temp_env) (k : Clight.cont) (m : Memory.Mem.mem), selected_stop_shape (ArgumentBounds.argument_bounds_endpoint argc inputs values e le k m)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.FrontierShapes.traced_frontier_selected",
+      "full_type": "traced_frontier_selected\n     : forall (middle configured after : Memory.Mem.mem) (e : Clight.env) (le : Clight.temp_env) (k : Clight.cont) (argc : BinNums.Z) (bytes export_bytes tree_bytes stdin_bytes : list Integers.Byte.int) (x : ArgumentMemory.guest_argument) (rest : list ArgumentMemory.guest_argument) (values : list BinNums.Z) (history : list Integers.Int.int) (s : Clight.state) (_ : traced_initialization_frontier middle configured after e le k argc bytes export_bytes tree_bytes stdin_bytes x rest values history s), selected_stop_shape s",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.FrontierShapes.numeric_rejection_selected",
+      "full_type": "numeric_rejection_selected\n     : forall (e : Clight.env) (le : Clight.temp_env) (k : Clight.cont) (m : Memory.Mem.mem) (history : list Integers.Int.int) (s : Clight.state) (_ : and (@Logic.eq (list Integers.Int.int) history (@nil Integers.Int.int)) (@Logic.eq Clight.state s (MainControl.numeric_failure_state e le k m))), selected_stop_shape s",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.FrontierShapes.traced_frontier_accepted_history",
+      "full_type": "traced_frontier_accepted_history\n     : forall (middle configured after : Memory.Mem.mem) (e : Clight.env) (le : Clight.temp_env) (k : Clight.cont) (argc : BinNums.Z) (bytes export_bytes tree_bytes stdin_bytes : list Integers.Byte.int) (x : ArgumentMemory.guest_argument) (rest : list ArgumentMemory.guest_argument) (values : list BinNums.Z) (history : list Integers.Int.int) (k' : Clight.cont) (e' : Clight.env) (le' : Clight.temp_env) (m' : Memory.Mem.mem) (_ : traced_initialization_frontier middle configured after e le k argc bytes export_bytes tree_bytes stdin_bytes x rest values history (Clight.State Main.f_main Clight.Sskip (Clight.Kseq BoundsStructure.after_bounds k') e' le' m')), matching_history bytes history",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.FrontierShapes.residual_acceptance_history",
+      "full_type": "residual_acceptance_history\n     : forall (cell : Machine.tls) (P : forall _ : Memory.Mem.mem, Prop) (middle configured after : Memory.Mem.mem) (e : Clight.env) (le : Clight.temp_env) (k : Clight.cont) (argc : BinNums.Z) (bytes export_bytes tree_bytes stdin_bytes : list Integers.Byte.int) (x : ArgumentMemory.guest_argument) (rest : list ArgumentMemory.guest_argument) (values : list BinNums.Z) (n : nat) (history : list Integers.Int.int) (k' : Clight.cont) (e' : Clight.env) (le' : Clight.temp_env) (m' : Memory.Mem.mem) (_ : trace_certificate MainStructure.main_ge cell P (traced_initialization_frontier middle configured after e le k argc bytes export_bytes tree_bytes stdin_bytes x rest values) n history (Clight.State Main.f_main Clight.Sskip (Clight.Kseq BoundsStructure.after_bounds k') e' le' m')), matching_history bytes history",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
       "name": "LeanCageParent.NumericTrace.numeric_trace_contract",
       "full_type": "numeric_trace_contract\n     : forall (_ : Machine.tls) (_ : Clight.env) (_ : Clight.temp_env) (_ : Memory.Mem.mem) (_ : Clight.cont) (_ : Values.block) (_ : list MainMemory.numeric_input) (_ : Memory.Mem.mem) (_ : nat) (_ : Memory.Mem.mem) (_ : Clight.temp_env) (_ : BinNums.Z) (_ : Values.block) (_ : Integers.Ptrofs.int) (_ : list Integers.Byte.int) (_ : Values.block) (_ : Library.address) (_ : Library.address) (_ : list Integers.Byte.int) (_ : list Integers.Byte.int) (_ : list Integers.Byte.int) (_ : ArgumentMemory.guest_argument) (_ : list ArgumentMemory.guest_argument), Prop",
       "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @Logic.eq (B x) (f x) (g x)), @Logic.eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
@@ -2098,6 +2728,62 @@
       "definitional_uip": []
     },
     {
+      "name": "LeanCageParent.CompositionSamples.composition_kind",
+      "full_type": "composition_kind\n     : Set",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.CompositionSamples.numeric_first",
+      "full_type": "numeric_first\n     : forall _ : nat, composition_kind",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.CompositionSamples.parent_first",
+      "full_type": "parent_first\n     : forall _ : bool, composition_kind",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.CompositionSamples.initialization_first",
+      "full_type": "initialization_first\n     : forall _ : InitializationWitnesses.initialization_result, composition_kind",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.CompositionSamples.composition_kind_rect",
+      "full_type": "composition_kind_rect\n     : forall (P : forall _ : composition_kind, Type) (_ : forall index : nat, P (numeric_first index)) (_ : forall observed : bool, P (parent_first observed)) (_ : forall result : InitializationWitnesses.initialization_result, P (initialization_first result)) (c : composition_kind), P c",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.CompositionSamples.composition_kind_ind",
+      "full_type": "composition_kind_ind\n     : forall (P : forall _ : composition_kind, Prop) (_ : forall index : nat, P (numeric_first index)) (_ : forall observed : bool, P (parent_first observed)) (_ : forall result : InitializationWitnesses.initialization_result, P (initialization_first result)) (c : composition_kind), P c",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.CompositionSamples.composition_kind_rec",
+      "full_type": "composition_kind_rec\n     : forall (P : forall _ : composition_kind, Set) (_ : forall index : nat, P (numeric_first index)) (_ : forall observed : bool, P (parent_first observed)) (_ : forall result : InitializationWitnesses.initialization_result, P (initialization_first result)) (c : composition_kind), P c",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.CompositionSamples.composition_kind_sind",
+      "full_type": "composition_kind_sind\n     : forall (P : forall _ : composition_kind, SProp) (_ : forall index : nat, P (numeric_first index)) (_ : forall observed : bool, P (parent_first observed)) (_ : forall result : InitializationWitnesses.initialization_result, P (initialization_first result)) (c : composition_kind), P c",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
       "name": "LeanCageParent.CompositionSamples.composition_kind_of",
       "full_type": "composition_kind_of\n     : forall (_ : list (list Integers.Byte.int)) (_ : list Integers.Byte.int) (_ : Integers.Int.int) (_ : list Integers.Byte.int) (_ : list Integers.Byte.int) (_ : list Integers.Byte.int) (_ : list (list Integers.Byte.int)), composition_kind",
       "transitive_assumptions": "Closed under the global context",
@@ -2107,6 +2793,83 @@
     {
       "name": "LeanCageParent.CompositionSamples.decimal_digits",
       "full_type": "decimal_digits\n     : forall (_ : nat) (_ : BinNums.Z), list Integers.Byte.int",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.CompositionSamples.composition_case",
+      "full_type": "composition_case\n     : Set",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.CompositionSamples.Build_composition_case",
+      "full_type": "Build_composition_case\n     : forall (_ : list (list Integers.Byte.int)) (_ : list Integers.Byte.int) (_ : Integers.Int.int) (_ : list Integers.Byte.int) (_ : list Integers.Byte.int) (_ : list Integers.Byte.int) (_ : list (list Integers.Byte.int)) (_ : composition_kind) (_ : list BinNums.Z), composition_case",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.CompositionSamples.numeric_texts",
+      "full_type": "numeric_texts\n     : forall _ : composition_case, list (list Integers.Byte.int)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.CompositionSamples.parent_text",
+      "full_type": "parent_text\n     : forall _ : composition_case, list Integers.Byte.int",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.CompositionSamples.observed_parent",
+      "full_type": "observed_parent\n     : forall _ : composition_case, Integers.Int.int",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.CompositionSamples.export_option",
+      "full_type": "export_option\n     : forall _ : composition_case, list Integers.Byte.int",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.CompositionSamples.tree_option",
+      "full_type": "tree_option\n     : forall _ : composition_case, list Integers.Byte.int",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.CompositionSamples.stdin_option",
+      "full_type": "stdin_option\n     : forall _ : composition_case, list Integers.Byte.int",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.CompositionSamples.guest_sources",
+      "full_type": "guest_sources\n     : forall _ : composition_case, list (list Integers.Byte.int)",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.CompositionSamples.expected_kind",
+      "full_type": "expected_kind\n     : forall _ : composition_case, composition_kind",
+      "transitive_assumptions": "Closed under the global context",
+      "assumption_names": [],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageParent.CompositionSamples.expected_numeric_stores",
+      "full_type": "expected_numeric_stores\n     : forall _ : composition_case, list BinNums.Z",
       "transitive_assumptions": "Closed under the global context",
       "assumption_names": [],
       "definitional_uip": []
@@ -2254,6 +3017,9 @@
   "primary_contracts": [
     "LeanCageParent.NumericTrace.numeric_trace_source",
     "LeanCageParent.TraceExecution.trace_execution_split",
+    "LeanCageParent.TraceCut.trace_post_bounds_cut",
+    "LeanCageParent.TraceCut.trace_acceptance_prefix",
+    "LeanCageParent.FrontierShapes.residual_acceptance_history",
     "LeanCageParent.NumericWitnesses.allocated_numeric_validation",
     "LeanCageParent.ValidationMatching.allocated_validation_matching"
   ],
@@ -2395,5 +3161,307 @@
     "FS-workspace.policy",
     "FS-assurance.parent"
   ],
-  "remaining_obligations": "All sixteen original M4 obligations remain open; physical argv, whole-controller composition, Lean proof connection, translation faithfulness, compiler compatibility, Linux/runtime/linking/loader and M5 hardware confidentiality remain unproved."
+  "remaining_obligations": "All sixteen original M4 obligations remain open; physical argv, whole-controller composition, Lean proof connection, translation faithfulness, compiler compatibility, Linux/runtime/linking/loader and M5 hardware confidentiality remain unproved.",
+  "checked_environment_names": [
+    "LeanCageParent.NumericFrame.numeric_loop_framed",
+    "LeanCageParent.NumericMemory.numeric_write_frame",
+    "LeanCageParent.NumericMemory.numeric_final_frame",
+    "LeanCageParent.NumericMemory.numeric_separate",
+    "LeanCageParent.NumericMemory.numeric_frame_string",
+    "LeanCageParent.NumericMemory.numeric_frame_input",
+    "LeanCageParent.NumericMemory.numeric_frame_load",
+    "LeanCageParent.NumericMemory.numeric_frame_access",
+    "LeanCageParent.NumericMemory.numeric_frame_output",
+    "LeanCageParent.NumericMemory.numeric_literal_separation",
+    "LeanCageParent.NumericMemory.numeric_frame_literals",
+    "LeanCageParent.NumericMemory.numeric_frame_arguments",
+    "LeanCageParent.ParentAllocation.parent_string_input",
+    "LeanCageParent.ParentAllocation.allocate_parent_cell",
+    "LeanCageParent.ParentAllocation.allocate_parent_table",
+    "LeanCageParent.ParentAllocation.parent_witness_locals",
+    "LeanCageParent.ParentAllocation.parent_witness_env",
+    "LeanCageParent.ParentAllocation.allocated_parent_inputs",
+    "LeanCageParent.ParentMachine.getppid_definition",
+    "LeanCageParent.ParentMachine.getppid_binding",
+    "LeanCageParent.ParentMachine.parent_event",
+    "LeanCageParent.ParentMachine.previous",
+    "LeanCageParent.ParentMachine.parent_observed",
+    "LeanCageParent.ParentMachine.parent_wait",
+    "LeanCageParent.ParentMachine.parent_event_rect",
+    "LeanCageParent.ParentMachine.parent_event_ind",
+    "LeanCageParent.ParentMachine.parent_event_rec",
+    "LeanCageParent.ParentMachine.parent_event_sind",
+    "LeanCageParent.ParentMachine.parent_step",
+    "LeanCageParent.ParentMachine.previous_step",
+    "LeanCageParent.ParentMachine.observe_parent",
+    "LeanCageParent.ParentMachine.wait_parent",
+    "LeanCageParent.ParentMachine.parent_step_ind",
+    "LeanCageParent.ParentMachine.parent_step_sind",
+    "LeanCageParent.ParentMachine.parent_steps",
+    "LeanCageParent.ParentMachine.parent_steps_nil",
+    "LeanCageParent.ParentMachine.parent_steps_cons",
+    "LeanCageParent.ParentMachine.parent_steps_ind",
+    "LeanCageParent.ParentMachine.parent_steps_sind",
+    "LeanCageParent.ParentMachine.parent_loss",
+    "LeanCageParent.ParentMachine.parent_waiting",
+    "LeanCageParent.ParentMachine.parent_cost",
+    "LeanCageParent.ParentMachine.getppid_old_only_loss",
+    "LeanCageParent.ParentMachine.getppid_cases",
+    "LeanCageParent.ParentMachine.parent_dead_terminal",
+    "LeanCageParent.ParentMachine.parent_dead_steps",
+    "LeanCageParent.ParentMachine.parent_loss_everywhere",
+    "LeanCageParent.ParentMachine.parent_steps_trans",
+    "LeanCageParent.ParentMachine.prior_runs_preserved",
+    "LeanCageParent.ParentMachine.parent_wait_then_loss",
+    "LeanCageParent.ParentMachine.parent_observations_unconstrained",
+    "LeanCageParent.ParentMemory.parent_memory_string",
+    "LeanCageParent.ParentMemory.parent_memory_arguments",
+    "LeanCageParent.ParentMemory.parent_memory_policy",
+    "LeanCageParent.ParentMemory.parent_literal_separation",
+    "LeanCageParent.ParentMemory.parent_memory_literals",
+    "LeanCageParent.ParentMemory.parent_memory_access",
+    "LeanCageParent.ParentStructure.parent_parse",
+    "LeanCageParent.ParentStructure.parent_zero",
+    "LeanCageParent.ParentStructure.parent_upper",
+    "LeanCageParent.ParentStructure.parent_compare",
+    "LeanCageParent.ParentStructure.parent_call",
+    "LeanCageParent.ParentStructure.parent_observe",
+    "LeanCageParent.ParentStructure.parent_conditions",
+    "LeanCageParent.ParentStructure.parent_source_structure",
+    "LeanCageParent.ParentStructure.parent_guard_bad",
+    "LeanCageParent.ParentStructure.parent_parse_cont",
+    "LeanCageParent.ParentStructure.parent_observation_cont",
+    "LeanCageParent.ParentWords.parent_local_value",
+    "LeanCageParent.ParentWords.parent_zero_operation",
+    "LeanCageParent.ParentWords.parent_upper_operation",
+    "LeanCageParent.ParentWords.parent_narrow_cast",
+    "LeanCageParent.ParentWords.parent_comparison",
+    "LeanCageParent.ParentWords.parent_match_signed",
+    "LeanCageParent.NumericSource.numeric_region_framed",
+    "LeanCageParent.ParentGuards.parent_zero_bad",
+    "LeanCageParent.ParentGuards.parent_zero_env",
+    "LeanCageParent.ParentGuards.parent_zero_path",
+    "LeanCageParent.ParentGuards.parent_zero_env_register",
+    "LeanCageParent.ParentGuards.parent_zero_env_frame",
+    "LeanCageParent.ParentGuards.parent_upper_env",
+    "LeanCageParent.ParentGuards.parent_upper_path",
+    "LeanCageParent.ParentGuards.parent_upper_env_register",
+    "LeanCageParent.ParentGuards.parent_upper_env_frame",
+    "LeanCageParent.ParentParse.parent_loaded",
+    "LeanCageParent.ParentParse.parent_number_cont",
+    "LeanCageParent.ParentParse.parent_to_number",
+    "LeanCageParent.ParentParse.parent_loaded_frame",
+    "LeanCageParent.ParentParse.parent_parsed_frame",
+    "LeanCageParent.ParentRegion.parent_certificate",
+    "LeanCageParent.ParentRegion.parent_stop",
+    "LeanCageParent.ParentRegion.parent_next",
+    "LeanCageParent.ParentRegion.parent_certificate_ind",
+    "LeanCageParent.ParentRegion.parent_certificate_sind",
+    "LeanCageParent.ParentRegion.parent_memory",
+    "LeanCageParent.ParentRegion.parent_weaken",
+    "LeanCageParent.ParentRegion.parent_execution_split",
+    "LeanCageParent.ParentRegion.parent_live_progress",
+    "LeanCageParent.ParentRegion.parent_bind",
+    "LeanCageParent.ParentRegion.parent_actual",
+    "LeanCageParent.ValidationLocals.validation_local_space",
+    "LeanCageParent.ValidationLocals.validation_locals_old",
+    "LeanCageParent.ValidationLocals.validation_locals_valid",
+    "LeanCageParent.ValidationLocals.validation_string_valid",
+    "LeanCageParent.ValidationLocals.fresh_parent_literals",
+    "LeanCageParent.ValidationLocals.fresh_numeric_literals",
+    "LeanCageParent.ValidationLocals.old_policy_writable",
+    "LeanCageParent.ValidationLocals.allocate_validation_locals",
+    "LeanCageParent.ParentLift.parent_from_string",
+    "LeanCageParent.ParentLift.parent_convert",
+    "LeanCageParent.ValidationAllocation.validation_separate",
+    "LeanCageParent.ValidationAllocation.validation_fresh_separate",
+    "LeanCageParent.ValidationAllocation.allocate_validation_strings",
+    "LeanCageParent.ValidationAllocation.allocate_validation_table",
+    "LeanCageParent.ValidationAllocation.allocated_validation_storage",
+    "LeanCageParent.ParentComparison.parent_compared",
+    "LeanCageParent.ParentComparison.parent_comparison_path",
+    "LeanCageParent.ParentComparison.parent_comparison_frame",
+    "LeanCageParent.ParentComparison.parent_comparison_registers",
+    "LeanCageParent.ParentPaths.parent_source_prepend",
+    "LeanCageParent.ParentPaths.parent_store_path",
+    "LeanCageParent.ParentPaths.parent_choice",
+    "LeanCageParent.ValidationInputs.validation_locals",
+    "LeanCageParent.ValidationInputs.validation_numeric_locals",
+    "LeanCageParent.ValidationInputs.guest_numeric",
+    "LeanCageParent.ValidationInputs.split_guest_bytes",
+    "LeanCageParent.ValidationInputs.guest_arguments_split",
+    "LeanCageParent.ValidationInputs.guest_numeric_ready",
+    "LeanCageParent.ValidationInputs.validation_separate_numeric",
+    "LeanCageParent.ParentFinish.parent_endpoint",
+    "LeanCageParent.ParentFinish.parent_finish_path",
+    "LeanCageParent.ParentFinish.parent_return_env",
+    "LeanCageParent.ParentFinish.parent_return_path",
+    "LeanCageParent.ParentFinish.parent_observed_frontier",
+    "LeanCageParent.ParentFinish.parent_return_certificate",
+    "LeanCageParent.ParentControl.parent_value",
+    "LeanCageParent.ParentControl.parent_returned",
+    "LeanCageParent.ParentControl.parent_guard_env",
+    "LeanCageParent.ParentControl.parent_guard_cost",
+    "LeanCageParent.ParentControl.parent_guard_cost_bound",
+    "LeanCageParent.ParentControl.parent_guard_expansion",
+    "LeanCageParent.ParentControl.parent_to_observe_path",
+    "LeanCageParent.ParentControl.parent_guard_env_register",
+    "LeanCageParent.ParentControl.parent_guard_env_frame",
+    "LeanCageParent.ParentObserve.parent_observe_call",
+    "LeanCageParent.ParentObserve.parent_observe_reject",
+    "LeanCageParent.ParentObserve.parent_observe_certificate",
+    "LeanCageParent.ParentAfterParse.parent_frontier",
+    "LeanCageParent.ParentAfterParse.parent_frontier_frame",
+    "LeanCageParent.ParentAfterParse.parent_after_parse",
+    "LeanCageParent.ParentDecision.parent_decision",
+    "LeanCageParent.ParentDecision.parent_decision_exact",
+    "LeanCageParent.ParentDecision.parent_invalid_never_matches",
+    "LeanCageParent.ParentDecision.parent_negative_observation_rejects",
+    "LeanCageParent.ParentFrontier.parent_rejection",
+    "LeanCageParent.ParentFrontier.parent_admission",
+    "LeanCageParent.ParentFrontier.parent_frontier_split",
+    "LeanCageParent.ParentFrontier.initialization_frame",
+    "LeanCageParent.ParentPlan.parent_plan_parser",
+    "LeanCageParent.ParentPlan.parent_plan_value",
+    "LeanCageParent.ParentPlan.parent_plan_decision",
+    "LeanCageParent.ParentPlan.parent_plan_acceptance",
+    "LeanCageParent.ParentSource.parent_post_value",
+    "LeanCageParent.ParentSource.parent_source_certificate",
+    "LeanCageParent.ParentSource.parent_guarantee",
+    "LeanCageParent.ParentSource.parent_certificate_guarantee",
+    "LeanCageParent.ParentSource.parent_source",
+    "LeanCageParent.ParentInitialization.parent_initialization_memory",
+    "LeanCageParent.ParentInitialization.parent_initialization_frontier",
+    "LeanCageParent.ParentInitialization.parent_initialization_certificate",
+    "LeanCageParent.ParentInitialization.parent_initialization_source",
+    "LeanCageParent.ParentRuns.parent_internal",
+    "LeanCageParent.ParentRuns.parent_store_actual",
+    "LeanCageParent.ParentRuns.parent_guard_valid",
+    "LeanCageParent.ParentRuns.parent_observation_reached",
+    "LeanCageParent.ParentRuns.parent_observation_execution",
+    "LeanCageParent.NumericComposition.numeric_validation_contract",
+    "LeanCageParent.NumericComposition.numeric_validation_source",
+    "LeanCageParent.ParentLoss.allocated_parent_wait_loss",
+    "LeanCageParent.TraceRegion.observation",
+    "LeanCageParent.TraceRegion.observations",
+    "LeanCageParent.TraceRegion.observations_append",
+    "LeanCageParent.TraceRegion.observations_repeat_empty",
+    "LeanCageParent.TraceRegion.trace_certificate",
+    "LeanCageParent.TraceRegion.trace_stop",
+    "LeanCageParent.TraceRegion.trace_next",
+    "LeanCageParent.TraceRegion.trace_certificate_ind",
+    "LeanCageParent.TraceRegion.trace_certificate_sind",
+    "LeanCageParent.TraceRegion.trace_memory",
+    "LeanCageParent.TraceRegion.trace_weaken",
+    "LeanCageParent.TraceRegion.trace_convert",
+    "LeanCageParent.TraceRegion.trace_bind",
+    "LeanCageParent.TraceRegion.trace_from_string",
+    "LeanCageParent.TraceRegion.trace_store_path",
+    "LeanCageParent.TraceRegion.trace_choice",
+    "LeanCageParent.TraceExecution.trace_execution_split",
+    "LeanCageParent.TraceExecution.trace_actual",
+    "LeanCageParent.TraceExecution.trace_guarantee",
+    "LeanCageParent.TraceExecution.trace_guaranteed",
+    "LeanCageParent.TraceCut.selected_stop_shape",
+    "LeanCageParent.TraceCut.getenv_type",
+    "LeanCageParent.TraceCut.getenv_call",
+    "LeanCageParent.TraceCut.getenv_call_cont",
+    "LeanCageParent.TraceCut.getenv_source_shape",
+    "LeanCageParent.TraceCut.main_internal_returns",
+    "LeanCageParent.TraceCut.accepted_prefix_contract",
+    "LeanCageParent.TraceCut.clight_funct_member",
+    "LeanCageParent.TraceCut.getenv_target_external",
+    "LeanCageParent.TraceCut.getenv_local_no_progress",
+    "LeanCageParent.TraceCut.trace_internal_follow",
+    "LeanCageParent.TraceCut.no_selected_callstate",
+    "LeanCageParent.TraceCut.no_selected_getenv_call",
+    "LeanCageParent.TraceCut.trace_getenv_call_impossible",
+    "LeanCageParent.TraceCut.trace_post_bounds_cut",
+    "LeanCageParent.TraceCut.trace_acceptance_prefix",
+    "LeanCageParent.TraceCut.frontier_guarantee",
+    "LeanCageParent.TraceCut.frontier_guaranteed",
+    "LeanCageParent.TraceChoices.chosen_progress",
+    "LeanCageParent.TraceChoices.trace_actual_chosen",
+    "LeanCageParent.ParentCost.parent_cost_append",
+    "LeanCageParent.ParentCost.parent_internal_cost",
+    "LeanCageParent.ParentCost.parent_wait_cost",
+    "LeanCageParent.ParentCost.parent_observation_cost",
+    "LeanCageParent.ParentCost.parent_observation_trace",
+    "LeanCageParent.ParentMatching.parent_initialization_matching",
+    "LeanCageParent.ParentWitnesses.allocated_parent_certificate",
+    "LeanCageParent.ParentWitnesses.allocated_parent_decision",
+    "LeanCageParent.ParentWitnesses.allocated_parent_observations",
+    "LeanCageParent.NumericMatching.numeric_validation_matching",
+    "LeanCageParent.ParentSamples.parent_case",
+    "LeanCageParent.ParentSamples.Build_parent_case",
+    "LeanCageParent.ParentSamples.case_bytes",
+    "LeanCageParent.ParentSamples.case_observed",
+    "LeanCageParent.ParentSamples.case_rejected",
+    "LeanCageParent.ParentSamples.parent_cases",
+    "LeanCageParent.ParentSamples.parent_cases_valid",
+    "LeanCageParent.ParentSamples.parent_cases_results",
+    "LeanCageParent.ParentSamples.parent_case_counts",
+    "LeanCageParent.ParentSamples.parent_samples_source",
+    "LeanCageParent.ParentTrace.traced_parent_frontier",
+    "LeanCageParent.ParentTrace.matching_history",
+    "LeanCageParent.ParentTrace.traced_parent_frame",
+    "LeanCageParent.ParentTrace.parent_after_parse_trace",
+    "LeanCageParent.ParentTrace.parent_source_trace_certificate",
+    "LeanCageParent.ParentTrace.traced_parent_split",
+    "LeanCageParent.TraceInitialization.traced_initialization_memory",
+    "LeanCageParent.TraceInitialization.traced_initialization_frontier",
+    "LeanCageParent.TraceInitialization.traced_initialization_certificate",
+    "LeanCageParent.TraceInitialization.traced_initialization_source",
+    "LeanCageParent.FrontierShapes.selected_skip_shape",
+    "LeanCageParent.FrontierShapes.selected_report_shape",
+    "LeanCageParent.FrontierShapes.selected_selection_rejection",
+    "LeanCageParent.FrontierShapes.selected_argument_bounds",
+    "LeanCageParent.FrontierShapes.traced_frontier_selected",
+    "LeanCageParent.FrontierShapes.numeric_rejection_selected",
+    "LeanCageParent.FrontierShapes.traced_frontier_accepted_history",
+    "LeanCageParent.FrontierShapes.residual_acceptance_history",
+    "LeanCageParent.NumericTrace.numeric_trace_contract",
+    "LeanCageParent.NumericTrace.numeric_trace_source",
+    "LeanCageParent.InputRepresentation.validation_input_representation",
+    "LeanCageParent.InputRepresentation.representation_has_owned_argv",
+    "LeanCageParent.InputRepresentation.representation_numeric_data",
+    "LeanCageParent.NumericWitnesses.allocated_numeric_validation",
+    "LeanCageParent.ValidationMatching.allocated_validation_matching",
+    "LeanCageParent.CompositionDecision.matching_history_decision",
+    "LeanCageParent.CompositionDecision.rejecting_history_decision",
+    "LeanCageParent.CompositionExecution.composed_endpoint",
+    "LeanCageParent.CompositionExecution.allocated_composition_execution",
+    "LeanCageParent.CompositionSamples.composition_kind",
+    "LeanCageParent.CompositionSamples.numeric_first",
+    "LeanCageParent.CompositionSamples.parent_first",
+    "LeanCageParent.CompositionSamples.initialization_first",
+    "LeanCageParent.CompositionSamples.composition_kind_rect",
+    "LeanCageParent.CompositionSamples.composition_kind_ind",
+    "LeanCageParent.CompositionSamples.composition_kind_rec",
+    "LeanCageParent.CompositionSamples.composition_kind_sind",
+    "LeanCageParent.CompositionSamples.composition_kind_of",
+    "LeanCageParent.CompositionSamples.decimal_digits",
+    "LeanCageParent.CompositionSamples.composition_case",
+    "LeanCageParent.CompositionSamples.Build_composition_case",
+    "LeanCageParent.CompositionSamples.numeric_texts",
+    "LeanCageParent.CompositionSamples.parent_text",
+    "LeanCageParent.CompositionSamples.observed_parent",
+    "LeanCageParent.CompositionSamples.export_option",
+    "LeanCageParent.CompositionSamples.tree_option",
+    "LeanCageParent.CompositionSamples.stdin_option",
+    "LeanCageParent.CompositionSamples.guest_sources",
+    "LeanCageParent.CompositionSamples.expected_kind",
+    "LeanCageParent.CompositionSamples.expected_numeric_stores",
+    "LeanCageParent.CompositionSamples.simple_case",
+    "LeanCageParent.CompositionSamples.composition_cases",
+    "LeanCageParent.CompositionSamples.composition_case_valid",
+    "LeanCageParent.CompositionSamples.composition_cases_valid",
+    "LeanCageParent.CompositionSamples.composition_cases_results",
+    "LeanCageParent.CompositionSamples.composition_case_count",
+    "LeanCageParent.CompositionLoss.parent_steps_append_split",
+    "LeanCageParent.CompositionLoss.composed_prefix_loss",
+    "LeanCageParent.CompositionLoss.singleton_observation_split",
+    "LeanCageParent.CompositionLoss.actual_observation_loss_boundaries",
+    "LeanCageParent.CompositionWitnesses.composition_samples_source"
+  ]
 }

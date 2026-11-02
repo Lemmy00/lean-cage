@@ -19,6 +19,15 @@ after exactly one observation whose signed value equals the parsed positive
 parent, at most `INT_MAX`. Later behavior beyond the selected endpoint inherits
 no identity, memory or progress assertion from this region.
 
+The universal interface must eliminate its unfinished-certificate alternative
+when the actual execution reaches the post-bounds acceptance control state.
+Prove the cut against the unchanged source: the following internal prefix reaches
+the `getenv` call; no intervening state is a selected endpoint, and the current
+local effect machine admits no ordinary progress at that function type. This
+argument uses the machine's external-call scope explicitly. Extending that scope
+requires rechecking the cut. A completed selected prefix retains arbitrary later
+continuation; its observation assertion applies to that prefix.
+
 Memory changes are sequential. Earlier numeric stores and each executed flag or
 pointer store survive subsequent rejection or loss. Prospective stores do not
 assert execution. Non-wait source-step bounds are derived from the source
@@ -54,6 +63,14 @@ commands and proof-valued definitions. Regress missing declarations, changed
 foundations/artifacts/exports, fabricated history, erased representation and
 tampered receipts. The ordinary gate compares reviewed expectations and never
 collects new expectations automatically.
+
+The maintained inventory reads each compiled module's complete checked signature,
+including opaque proofs, local constants, mutual definitions, inductive types,
+constructors, generated eliminators and record projections. Compare all of those
+names, complete types and transitive foundations. Unsupported signature syntax
+fails explicitly. The source-command restriction is an additional check, not the
+authority for which constants exist. Compiled regression modules must expose both
+mutual proof-valued definitions and declarations wrapped inside a proof.
 
 Preserve `m4/parent-checkpoint/` and its snapshot and replay it at its original
 revision. Documentation/dependency amendments must be enumerated and reviewed;

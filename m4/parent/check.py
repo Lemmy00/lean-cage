@@ -26,9 +26,9 @@ MODULES = [
     'ParentFinish', 'ParentControl', 'ParentObserve', 'ParentAfterParse',
     'ParentDecision', 'ParentFrontier', 'ParentPlan', 'ParentSource',
     'ParentInitialization', 'ParentRuns', 'NumericComposition', 'ParentLoss',
-    'TraceRegion', 'TraceExecution', 'TraceChoices', 'ParentCost', 'ParentMatching', 'ParentWitnesses', 'NumericMatching',
+    'TraceRegion', 'TraceExecution', 'TraceCut', 'TraceChoices', 'ParentCost', 'ParentMatching', 'ParentWitnesses', 'NumericMatching',
     'ParentSamples', 'ParentTrace',
-    'TraceInitialization', 'NumericTrace', 'InputRepresentation',
+    'TraceInitialization', 'FrontierShapes', 'NumericTrace', 'InputRepresentation',
     'NumericWitnesses', 'ValidationMatching', 'CompositionDecision', 'CompositionExecution', 'CompositionSamples', 'CompositionLoss', 'CompositionWitnesses',
 ]
 
@@ -47,6 +47,15 @@ inventory_module = load(DIRECTORY / 'inventory.py', 'maintained_parent_inventory
 amendment = load(DIRECTORY / 'amendment.py', 'maintained_parent_amendment')
 ENDPOINT = candidate.ENDPOINT
 STATUS = 'kernel-checked parent repair candidate; independent acceptance pending'
+PRIMARY_CONTRACTS = [
+    'LeanCageParent.NumericTrace.numeric_trace_source',
+    'LeanCageParent.TraceExecution.trace_execution_split',
+    'LeanCageParent.TraceCut.trace_post_bounds_cut',
+    'LeanCageParent.TraceCut.trace_acceptance_prefix',
+    'LeanCageParent.FrontierShapes.residual_acceptance_history',
+    'LeanCageParent.NumericWitnesses.allocated_numeric_validation',
+    'LeanCageParent.ValidationMatching.allocated_validation_matching',
+]
 RECEIPTS = {
     'assurance/m4-parent-baseline-validation.json',
     'assurance/m4-parent-baseline-check.log.gz',
@@ -55,6 +64,16 @@ RECEIPTS = {
     'assurance/m4-parent-checkpoint-validation.json',
 }
 CHECKPOINT_RECEIPT = 'f1bfcf2eca69767c63ff75b5357531f8eb682a55e87215ab2f08142cdfe68442'
+REVIEW_CHECKPOINT = {
+    'assurance/m4-parent-reviewed-candidate-claims.json':
+        '357a423c31d314a7efe8a04dc2361676cafbe0289209b1a490ca13e3b03152f3',
+    'assurance/m4-parent-reviewed-candidate-evidence.json':
+        'e746fa2f7524ff251d5ee64e746fc1f1d6c8f99152f36b017eaca7878cb614cb',
+    'assurance/m4-parent-reviewed-candidate-proof-output.json.gz':
+        '7a6cc4e4b296eba0f0a1471fea00f88a114aca284f294a40e458a0bfb95251ee',
+    'assurance/m4-parent-reviewed-candidate-validation.json':
+        'b4c5be501b3e820c73905fac70bd18d86f5d6bf1da111c896fd64dec4aaa7a1b',
+}
 REVISED_CANDIDATE = {
     'LeanCageParent.ParentLift.parent_getppid': 'Remove unused duplicate observation constructor.',
     'LeanCageParent.ParentRuns.parent_observation_execution': 'Export independently constructed suffix bound.',
@@ -77,6 +96,9 @@ def sources():
     paths += [ROOT / 'assurance/m4-parent-build-roots.json',
               ROOT / 'assurance/m4-parent-initial-build-output.json.gz',
               ROOT / 'assurance/m4-compiler-initial-build-output.json.gz']
+    paths += [ROOT / ('assurance/m4-parent-reviewed-candidate-' + suffix)
+              for suffix in ['claims.json', 'evidence.json', 'proof-output.json.gz', 'validation.json']]
+    paths += [ROOT / 'assurance/m4-parent-review-correction.json']
     paths += [p for p in (ROOT / 'm4/feasibility').iterdir() if p.is_file()]
     paths += [ROOT / 'assurance/m4-compiler-feasibility.json',
               ROOT / 'assurance/m4-compiler-feasibility-output.json.gz']
@@ -114,6 +136,26 @@ def compile_proofs(modules=None):
         logs[path.name] = result.stdout
         print('Compiled ' + module, flush=True)
     return logs
+
+
+def checked_inventory(source_names):
+    """Read actual compiled signatures; the source scanner is not an inventory oracle."""
+    directory = WORK / 'proofs'
+    query = ['From LeanCageParent Require Import ' + ' '.join(MODULES) + '.',
+             'Set Printing All.', 'Set Printing Depth 1000000.', 'Set Printing Width 1000000.']
+    for index, module in enumerate(MODULES):
+        query.append(f'Redirect "parent-environment-{index}" Print Module LeanCageParent.{module}.')
+    path = directory / 'ParentEnvironment.v'
+    path.write_text('\n'.join(query) + '\n')
+    compilation = profile.run(['rocq', 'c', '-q', *flags(), str(path)], cwd=directory)
+    names, signatures = [], {}
+    for index, module in enumerate(MODULES):
+        signature = (directory / f'parent-environment-{index}.out').read_text().strip()
+        signatures[module] = signature
+        names += inventory_module.checked_declarations(signature, 'LeanCageParent.' + module)
+    if not set(source_names).issubset(names) or len(names) != len(set(names)):
+        raise ValueError('source declarations missing from checked environment or duplicate names')
+    return names, dict(compilation_output=compilation.stdout, signatures=signatures)
 
 
 def native_controls():
@@ -174,12 +216,24 @@ def validate_claims(expected, actual):
         'LeanCageParent.CompositionLoss.composed_prefix_loss',
         *actual['primary_contracts'],
     }
-    if len(names) != len(set(names)) or not required.issubset(names):
+    if (len(names) != len(set(names)) or not required.issubset(names)
+            or names != actual['checked_environment_names']
+            or actual['primary_contracts'] != PRIMARY_CONTRACTS):
         raise ValueError('missing or duplicate maintained parent contracts')
     validate_candidate_preservation(actual['rocq_declarations'])
-    for key in ['rocq_declarations', 'lean_declarations', 'imported_endpoint', 'primary_contracts', 'candidate_preservation']:
+    validate_review_preservation(actual['rocq_declarations'])
+    for key in ['rocq_declarations', 'checked_environment_names', 'lean_declarations',
+                'imported_endpoint', 'primary_contracts', 'candidate_preservation']:
         if not actual[key] or actual[key] != expected[key]:
             raise ValueError('maintained parent statement/foundation inventory differs: ' + key)
+
+
+def validate_review_preservation(records):
+    original = read(ROOT / 'assurance/m4-parent-reviewed-candidate-claims.json')
+    current = {row['name']: row for row in records}
+    for row in original['rocq_declarations']:
+        if current.get(row['name']) != row:
+            raise ValueError('unamended reviewed-candidate type/foundation changed: ' + row['name'])
 
 
 def validate_candidate_preservation(records):
@@ -234,8 +288,9 @@ def validate_evidence(evidence, archived, actual, claims_sha256):
 
 def collect_proofs():
     profile.verify_tools()
-    names = inventory()
+    source_names = inventory()
     logs = compile_proofs()
+    names, logs['checked_environment'] = checked_inventory(source_names)
     path = WORK / 'modules/Parent.lean'
     shutil.copyfile(DIRECTORY / path.name, path)
     logs[path.name] = lean_run(['lean', '-R', str(path.parent), '-o', str(path.with_suffix('.olean')), str(path)]).stdout
@@ -276,12 +331,10 @@ def collect_proofs():
     logs['gate_tests'] = tests.stdout
     artifacts = [WORK / 'proofs' / (m + '.vo') for m in MODULES] + [path.with_suffix('.olean')]
     return dict(schema_version=1, full_controller_complete=False, full_m4_complete=False,
-                  rocq_declarations=records[1:], lean_declarations=lean, imported_endpoint=records[0],
+                  rocq_declarations=records[1:], checked_environment_names=names,
+                  lean_declarations=lean, imported_endpoint=records[0],
                   candidate_preservation=preservation,
-                  primary_contracts=['LeanCageParent.NumericTrace.numeric_trace_source',
-                                     'LeanCageParent.TraceExecution.trace_execution_split',
-                                     'LeanCageParent.NumericWitnesses.allocated_numeric_validation',
-                                     'LeanCageParent.ValidationMatching.allocated_validation_matching'],
+                  primary_contracts=PRIMARY_CONTRACTS,
                   artifact_sha256={str(p.relative_to(WORK)): digest(p) for p in artifacts},
                   kernel_output=kernel.stdout, logs=logs)
 
@@ -289,6 +342,9 @@ def collect_proofs():
 def collect():
     started = time.monotonic()
     amendment.check()
+    if read(ROOT / 'assurance/m4-parent-review-correction.json')['preserved_sha256'] != REVIEW_CHECKPOINT:
+        raise ValueError('rejected review checkpoint inventory differs')
+    bridge.connection().verify_hashes(REVIEW_CHECKPOINT)
     before, identity = sources(), candidate.baseline_identity()
     report = collect_proofs()
     # The early compiler interface is a separate experiment, not a discharged M4 edge.

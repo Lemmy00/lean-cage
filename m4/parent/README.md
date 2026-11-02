@@ -7,6 +7,10 @@ composition cases, negative controls and maintained gate pass.
 
 `TraceRegion.v` carries the actual observation history through certificates.
 `TraceExecution.v` splits every execution at its selected source endpoint.
+`TraceCut.v` and `FrontierShapes.v` eliminate an unfinished certificate at actual
+post-bounds acceptance and prove its matching observation history. The cut uses
+the current external-call scope at the following `getenv` call; extending that
+scope requires revalidation. `NumericTrace.v` exports the strengthened result.
 `ParentTrace.v`, `TraceInitialization.v` and `NumericTrace.v` compose numeric
 parsing, parent admission and initialization with that history. The earlier
 state-only certificates remain compatibility lemmas; the trace contracts are
@@ -17,9 +21,11 @@ The public universal contracts allow all aliases admitted by their explicit
 premises. Allocated examples use fresh storage. Neither establishes physical
 process argv provenance, persistent parent identity or Linux behavior.
 
-The inventory rejects unsupported Rocq syntax and audits all supported named
-definitions as well as theorem forms, so a proof-valued definition cannot hide
-behind a keyword change. Native controls compile unchanged C and three actual
+The inventory enumerates complete compiled module signatures, including local
+constants, inductives, constructors, generated helpers and projections. It audits
+all their types/foundations and rejects unsupported signature syntax. Compiled
+regressions cover mutual and wrapped nested proof definitions. Source restrictions
+remain an additional check. Native controls compile unchanged C and three actual
 parent-guard/narrowing/comparison edits, and kernel-check whole-main identity.
 
 Replay after the existing dependency chain:

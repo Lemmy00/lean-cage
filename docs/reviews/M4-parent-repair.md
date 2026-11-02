@@ -21,6 +21,19 @@ execution into an unfinished prefix or a selected completed prefix and arbitrary
 later continuation. The completed prefix's result receives `observations prefix`;
 it cannot substitute an independently chosen admitted state or event list.
 
+`TraceCut.trace_post_bounds_cut` eliminates a residual certificate at the actual
+accepted control state, `Sskip` with the post-bounds continuation. It proves that
+the following internal prefix cannot reach any selected endpoint before its
+`getenv` call. The checked source has no internal function with that call's
+return type; the local machine has no ordinary progress at such an external
+call. The proof retains arbitrary environment bindings and every existing input
+premise. `FrontierShapes.residual_acceptance_history` then proves matching signed
+history at that actual state. The composed numeric contract now exports
+`frontier_guarantee`, including universal completed-prefix classification for
+executions reaching it. Completed prefixes retain arbitrary later continuation.
+This cut depends explicitly on the current external-call scope and must be
+rechecked when it grows.
+
 `ParentTrace` preserves empty histories through guard failures and records the
 actual signed observation through mismatch or admission. `TraceInitialization`
 retains that history through later checks and writes. `NumericTrace` constructs
@@ -57,12 +70,21 @@ or unconditional termination.
 
 ## Inventory, controls and preservation
 
-The maintained inventory accepts a restricted vernacular and rejects unsupported
-qualified/attributed/scoped declarations explicitly. It audits every supported
-named `Definition` and `Fixpoint` as well as theorem forms. Proof-valued
-definitions therefore enter the full type/foundation comparison. Nested and
-proof-mode definitions are unsupported. The frozen candidate's original checker
-and narrow supported source forms are preserved.
+The inventory authority is the complete signature of each compiled Rocq module.
+It includes opaque/local definitions, mutual definitions, inductives,
+constructors, generated eliminators and projections, and compares every complete
+type and transitive foundation. Unsupported signature syntax fails explicitly.
+The conservative source restrictions remain an additional check. Compiled
+regressions enumerate the review's mutual-Fixpoint and wrapped nested-definition
+counterexamples, local proofs and generated declarations. The frozen candidate's
+original checker and narrow supported source forms are preserved.
+
+The independent review of `d1f361e` rejected its missing frontier-elimination
+statement and both declaration-inventory bypasses. Its exact claims, evidence,
+raw output and validation receipt remain under
+`assurance/m4-parent-reviewed-candidate-*`; the separate review-correction record
+names those issues and preserved hashes. Those passing historical checks did
+not constitute acceptance. The corrected statements require another review.
 
 Native controls run the pinned frontend on unchanged C and three real edits to
 the parent guard, cast and comparison. A kernel-checked whole-main identity is

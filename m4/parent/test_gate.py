@@ -23,6 +23,20 @@ class ParentEvidenceTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             check.validate_claims(self.expected, self.actual)
 
+    def test_missing_generated_statement_in_both_records(self):
+        for record in [self.expected, self.actual]:
+            record['rocq_declarations'] = [row for row in record['rocq_declarations']
+                                         if not row['name'].endswith('.trace_certificate_ind')]
+        with self.assertRaises(ValueError):
+            check.validate_claims(self.expected, self.actual)
+
+    def test_missing_frontier_contract_in_both_records(self):
+        for record in [self.expected, self.actual]:
+            record['primary_contracts'] = [name for name in record['primary_contracts']
+                                          if not name.endswith('.trace_post_bounds_cut')]
+        with self.assertRaises(ValueError):
+            check.validate_claims(self.expected, self.actual)
+
     def test_duplicate_statement(self):
         self.actual['rocq_declarations'].append(self.actual['rocq_declarations'][0])
         with self.assertRaises(ValueError):

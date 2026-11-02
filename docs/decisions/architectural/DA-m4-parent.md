@@ -9,10 +9,18 @@ without introducing observations, and preserve the observation through later
 initialization. This is a supplemental trace contract, not a persistent identity
 claim.
 
+Eliminate a residual certificate at the actual post-bounds control state by a
+source-specific cut theorem. Its fixed internal continuation reaches the next
+out-of-slice `getenv` call, which has no ordinary local-machine progress; none of
+those intervening states is a selected endpoint. This is an explicit dependency
+on the current effect scope, not a Linux interpretation of `getenv`. Preserve
+arbitrary execution after the selected completed prefix.
+
 Keep the candidate source/snapshot unchanged. Put maintained proofs and evidence
 under `m4/parent/` and `assurance/m4-parent-*`. Export allocation ownership facts
-alongside runs. Reject unsupported Rocq declaration syntax in the maintained
-inventory until checked-environment enumeration replaces the restriction.
+alongside runs. Enumerate compiled module signatures as the maintained inventory
+authority, including generated and local constants. Retain source restrictions
+as a separate conservative check and reject unsupported signature syntax.
 
 This decision does not accept the package before its cases, full statement review
 and maintained gate pass. It leaves the original correspondence ledger open.

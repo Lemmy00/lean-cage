@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "reviewed_revision": "d1f361e8b85aeb3d36ac1823447dbbc501216091",
+  "review_decision": "not accepted: missing universal frontier elimination and two compiled inventory bypasses",
+  "preserved_sha256": {
+    "assurance/m4-parent-reviewed-candidate-claims.json": "357a423c31d314a7efe8a04dc2361676cafbe0289209b1a490ca13e3b03152f3",
+    "assurance/m4-parent-reviewed-candidate-evidence.json": "e746fa2f7524ff251d5ee64e746fc1f1d6c8f99152f36b017eaca7878cb614cb",
+    "assurance/m4-parent-reviewed-candidate-proof-output.json.gz": "7a6cc4e4b296eba0f0a1471fea00f88a114aca284f294a40e458a0bfb95251ee",
+    "assurance/m4-parent-reviewed-candidate-validation.json": "b4c5be501b3e820c73905fac70bd18d86f5d6bf1da111c896fd64dec4aaa7a1b"
+  },
+  "corrections": [
+    "Source-specific checked post-bounds cut and residual matching-history theorem, exported through the composed numeric frontier guarantee.",
+    "Authoritative checked module signature inventory, including generated and local declarations, and compiled regressions for both review counterexamples."
+  ],
+  "new_input_premises": false,
+  "transitions_removed": false,
+  "original_m4_obligations_closed": 0,
+  "full_m4_complete": false
+}

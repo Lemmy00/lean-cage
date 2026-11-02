@@ -10,7 +10,7 @@ From LeanCageArguments Require Import ArgumentMemory.
 From LeanCageValidation Require Import StringRegion ValidationStructure ValidationValues ValidationAllocation.
 From LeanCageInitialization Require Import StoreFrames ConfigurationMemory InitializationSource.
 From LeanCageParent Require Import ParentMachine ParentRegion ParentLift ParentPaths ParentStructure ParentSource ParentMemory ParentInitialization
- NumericFrame NumericSource NumericMemory TraceRegion TraceExecution ParentTrace TraceInitialization.
+ NumericFrame NumericSource NumericMemory TraceRegion TraceExecution TraceCut ParentTrace TraceInitialization FrontierShapes.
 Import ListNotations.
 Open Scope nat_scope.
 Definition numeric_trace_contract cell e le before k fields inputs initialized numeric_count numeric final
@@ -20,13 +20,13 @@ Definition numeric_trace_contract cell e le before k fields inputs initialized n
  number_post numeric output Ptrofs.zero(decimal_number bytes)middle /\
  configuration_stores middle flagged tree_set configured(bytes_equal export_bytes files_bytes)tree stdin /\
  Mem.store Mptr configured main_policy_block 88(Vptr argv(Ptrofs.add ofs(Ptrofs.repr 128)))=Some after /\
- trace_guarantee main_ge cell
+ frontier_guarantee cell
  (fun current=>numeric_region_memory before initialized fields inputs current \/
  traced_initialization_memory numeric output(decimal_number bytes)middle flagged tree_set configured after current)
  (traced_initialization_frontier middle configured after e final k argc bytes export_bytes tree_bytes stdin_bytes x rest(numeric_values inputs))
  (numeric_count+1+((9+parser_count+28)+(26*length(x::rest)+4540)))
  (State f_main numeric_region k e le before)
- else trace_guarantee main_ge cell(numeric_region_memory before initialized fields inputs)
+ else frontier_guarantee cell(numeric_region_memory before initialized fields inputs)
  (fun history s=>history=[] /\s=numeric_failure_state e final(Kseq after_numeric k)numeric)numeric_count
  (State f_main numeric_region k e le before).
 Theorem numeric_trace_source cell e le before k fields inputs argc argv ofs p bytes output export tree stdin export_bytes tree_bytes stdin_bytes x rest :
@@ -100,7 +100,7 @@ Proof.
     (proj1 REGS)ltac:(rewrite ARGFRAME;exact ARGC)EL' TL' SL' EO' TO' SO' FW' TW' SW' AW')
     as[parser_count[middle[flagged[tree_set[configured[after[POST[CONFIG[STORE CERT]]]]]]]]].
    exists parser_count,middle,flagged,tree_set,configured,after;split;[exact POST|];split;[exact CONFIG|];split;[exact STORE|].
-   apply trace_guaranteed.
+   apply frontier_guaranteed;[intros h s END;eapply traced_frontier_selected;exact END|].
    replace(numeric_count+1+((9+parser_count+28)+(26*length(x::rest)+4540)))with
     (numeric_count+S((9+parser_count+28)+(26*length(x::rest)+4540)))by lia.
    eapply trace_store_path.
@@ -109,7 +109,8 @@ Proof.
      * eapply store_next;[left;exact MEM|apply unchanged_store_edge;WriteAll.structural|].
        apply store_done;left;exact MEM.
      * change after_numeric with(validation_suffix 15);eapply trace_convert;[exact CERT|intros current GOOD;right;exact GOOD|intros h s RESULT;exact RESULT].
- - apply trace_guaranteed;replace numeric_count with(numeric_count+0)at 1 by lia.
+ - apply frontier_guaranteed;[intros h s END;eapply numeric_rejection_selected;exact END|].
+   replace numeric_count with(numeric_count+0)at 1 by lia.
    eapply trace_store_path;[exact PATH|].
    unfold numeric_endpoint;rewrite COMPLETE;apply trace_stop;[exact MEM|split;reflexivity].
 Qed.

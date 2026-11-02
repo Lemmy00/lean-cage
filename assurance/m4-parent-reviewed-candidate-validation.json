@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-11-02T18:32:52.594426+00:00",
+  "finished_utc": "2026-11-02T19:01:51.745432+00:00",
+  "status": "local repaired candidate replay; independent acceptance pending",
+  "full_m4_complete": false,
+  "original_obligations_closed": 0,
+  "fresh_vm_workloads_run": false,
+  "claims_sha256": "357a423c31d314a7efe8a04dc2361676cafbe0289209b1a490ca13e3b03152f3",
+  "evidence_sha256": "e746fa2f7524ff251d5ee64e746fc1f1d6c8f99152f36b017eaca7878cb614cb",
+  "aggregate_entrypoint_sha256": "7db6c8fcbed24de1e09355c3ba49d5192dcd9098b78788d1e122e03afb42fd48",
+  "initial_attempt": {
+    "command": [
+      "./scripts/check_m4_all.sh"
+    ],
+    "exit_code": 1,
+    "cause": "Initial repaired-package artifact hashes came from isolated build paths; Rocq embeds those paths. Full propositions/foundations matched. Canonical binding is explicitly recorded and initial records preserved.",
+    "log": {
+      "path": "assurance/m4-parent-artifact-root-rejection.log.gz",
+      "sha256": "f8ad1ae7cdccf2209c03e9e0eb156735b37245b3330f63d71aa9168908f36353",
+      "uncompressed_sha256": "533ba290dc4a37074137c29d6c8549613b89d4cb8b6330057b7a6192fdf9bd03"
+    }
+  },
+  "focused_correction": {
+    "command": [
+      "python3",
+      "m4/parent/check.py"
+    ],
+    "exit_code": 0,
+    "log": {
+      "path": "assurance/m4-parent-canonical-focused.log.gz",
+      "sha256": "79631f42076f34af1b78de2df511d2781feda96b16925c6b7686c8361181191e",
+      "uncompressed_sha256": "6d7e1779018dcc161c60cab0e5a1e7146043b996eade6657188c8cffd4e84fa7"
+    }
+  },
+  "validation": [
+    {
+      "name": "final-aggregate",
+      "command": [
+        "./scripts/check_m4_all.sh"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1739.012,
+      "log_path": "assurance/m4-parent-final-aggregate.log.gz",
+      "log_sha256": "8b1c642d635a563b4966c869aa530c5a2d3c7bd1d951cbe1544a79ce9e01a141",
+      "uncompressed_log_sha256": "594941ac9b0c920142b3338bfb84567ad20096207907330114b1d68d926d6700"
+    },
+    {
+      "name": "grund-full",
+      "command": [
+        "./scripts/grund.sh",
+        "check",
+        "--full",
+        "."
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.056,
+      "log_path": "assurance/m4-parent-grund-full.log.gz",
+      "log_sha256": "e55c03b04c805f03f6b9f2b79662369582699f0f7f98f47a69d7ac0f88f71b08",
+      "uncompressed_log_sha256": "81b2bd4ea98c8db66554fbc8d7637a1a69a130f331feb732b75caab4c4868fd5"
+    },
+    {
+      "name": "format",
+      "command": [
+        "./scripts/grund.sh",
+        "fmt",
+        "--check"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.078,
+      "log_path": "assurance/m4-parent-format.log.gz",
+      "log_sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "uncompressed_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "shell-syntax",
+      "command": [
+        "bash",
+        "-n",
+        "scripts/check_m4_all.sh"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.001,
+      "log_path": "assurance/m4-parent-shell-syntax.log.gz",
+      "log_sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "uncompressed_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "diff",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.002,
+      "log_path": "assurance/m4-parent-diff.log.gz",
+      "log_sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "uncompressed_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "base_revision": "1321b0fa3c830d9cdc4b665f0173106e048860e3",
+  "focused_regression_count": 27,
+  "allocated_composition_case_count": 67
+}
