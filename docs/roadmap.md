@@ -7,9 +7,10 @@ Each milestone must leave reusable contracts and evidence for the next one.
 
 **Current stage: M1–M3 accepted for their stated conditional profiles.**
 The [M3 handoff](reviews/M3-handoff.md) records the useful offline workspace,
-checked model claims and fresh VM evidence. The bounded M4.1 experiment now
-records checked pure-codec executions and a rejected direct I/O-effect adapter;
-its full native simulation remains unproved (see [the M4.1 handoff](reviews/M4.1-handoff.md)).
+checked model claims and fresh VM evidence. M4.1 feasibility and local M4.2/M4.3
+reporting, input-validation and initialization results are recorded. Parent
+composition repair is the current review boundary under [§RM-roadmap.m4.next](roadmap.md#m4next-current-m4-continuation).
+The full native/Lean/Linux/executable connection remains unproved.
 The source/ABI slice, pure decoder/bounds proofs, exact launch-order proofs,
 native Linux driver, and 13-case isolated VM demonstration are recorded under
 [§AR-filter-slice](architecture/AR-filter-slice.md#ar-filter-slice-m11-source-map-and-typed-contract-boundary), [§AR-filter-decoder](architecture/AR-filter-decoder.md#ar-filter-decoder-byte-decoder-proofs-and-executable-evidence-audit), and [§AR-m1-launch](architecture/AR-m1-launch.md#ar-m1-launch-launch-model-linux-driver-and-isolated-demonstration). The claim register
@@ -357,6 +358,24 @@ remain planned, and none of these additions completes M4.
 M5 retains timing/cache/contention/speculation work. M6 remains optional. Neither
 is a shortcut around the Linux/executable obligations or a reason to expand the
 VM profile while its correspondence is still unproved.
+
+### m4.next: Current M4 continuation
+
+Follow [M4-CONTINUE.md](../M4-CONTINUE.md) and the
+[independent checkpoint review](reviews/M4-independent-review.md). The accepted
+local baseline is initialization commit `2db87b4`. The frozen parent candidate
+at `80d4bbe` is preserved. Its trace/input contract repairs live separately under
+[§AR-m4-parent.history](architecture/AR-m4-parent.md#history-selected-execution-history) and [§AR-m4-parent.inputs](architecture/AR-m4-parent.md#inputs-owned-input-representation), with the decision
+[§DA-m4-parent](decisions/architectural/DA-m4-parent.md#da-m4-parent-preserve-the-candidate-and-track-observations-in-composition). Promotion requires complete-composition cases, compiled negative
+controls, full statement/foundation review and the maintained gate. A new local
+lemma or a passing frozen-candidate replay does not accept that package.
+
+The full implemented chain replays with `./scripts/check_m4_all.sh`. Documentation
+and dependency fingerprint amendments are explicit and preserve the frozen
+candidate and initialization snapshots, earlier statements and compiled
+identities. All sixteen original obligations remain open. Continue with whole
+input-validation composition and the early Lean/compiler/Linux feasibility edges
+in the assignment before extending setup.
 
 ### m4.entry: Next assignment — M4.1 native-semantics feasibility
 

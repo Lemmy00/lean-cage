@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "command": [
+    "./scripts/check_m4_all.sh"
+  ],
+  "exit_code": 0,
+  "preserved_revision": "1321b0f",
+  "scope": "Full pre-amendment chain and exact frozen candidate replay; no VM workloads. New parent package is outside this receipt.",
+  "log_sha256": "23b084a5fd535d6d9c5b37f61297b768f1a239a87378e10fde8f23f45bd19bb1",
+  "compressed_log_sha256": "d050207f0846a36632ea6d2a25aabfaa1daab16643455e67d78e1def5344160c",
+  "frozen_candidate_snapshot_sha256": "e56d65d8d303b5ebe5bd9c33279f99a975439cbd013af359b7b3c8275258bc9c",
+  "initialization_snapshot_sha256": "b57fc932cfc8538df8d5d76f34200859d9baef90320ddd2fbee8456a64ddd744"
+}

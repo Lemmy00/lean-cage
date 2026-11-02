@@ -29,5 +29,6 @@ end-to-end isolation remain explicit M4/M5 obligations.
 | [§AR-m4-public](AR-m4-public.md#ar-m4-public-exact-live-public-result-endpoint) | Exact live public parser, byte widths and public frame round trips |
 | [§AR-m4-bridge](AR-m4-bridge.md#ar-m4-bridge-strict-imported-endpoint-and-source-byte-correspondence) | Strict imported decoder, exact normalization and primitive source-reader correspondence |
 | [§AR-m4-controller](AR-m4-controller.md#ar-m4-controller-source-connections-for-controller-inputs-and-ordering) | Exact native decimal parser, aliases, finite-prefix safety and remaining controller ordering |
+| [§AR-m4-parent](AR-m4-parent.md#ar-m4-parent-trace-connected-numeric-parent-and-initialization-region) | Parent composition repair: actual observation histories, owned input memory and complete-region cases; promotion requires review |
 | [§AR-verification](AR-verification.md#ar-verification-compose-explicit-refinement-and-security-arguments) | Proof composition, audits, and executable correspondence |
 | [§AR-tooling](AR-tooling.md#ar-tooling-keep-development-reproducible-and-project-local) | Local tooling, pins, and development checks |

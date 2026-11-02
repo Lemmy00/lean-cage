@@ -11,9 +11,10 @@ M3 follows the contract [§FS-workspace](docs/functional-spec/FS-workspace.md#fs
 package order [§RM-roadmap.m3.packages](docs/roadmap.md#m3packages-build-the-profile-in-reviewable-slices);
 read the [M2 handoff review](docs/reviews/M2-handoff.md) and accepted
 [M3 handoff review](docs/reviews/M3-handoff.md) and [main review](docs/reviews/M3-main-review.md)
-first. The next assignment is [§RM-roadmap.m4.entry](docs/roadmap.md#m4entry-next-assignment--m41-native-semantics-feasibility), the bounded M4.1
-experiment extending [§AR-workspace.experiment](docs/architecture/AR-workspace.md#experiment-bounded-first-native-semantics-connection); its tooling and semantics
-connection remain unimplemented. Follow the assigned package; M3 does not complete
+first. The current assignment is [§RM-roadmap.m4.next](docs/roadmap.md#m4next-current-m4-continuation)
+and [M4-CONTINUE.md](M4-CONTINUE.md). The historical M4.1 acceptance contract stays
+at [§RM-roadmap.m4.entry](docs/roadmap.md#m4entry-next-assignment--m41-native-semantics-feasibility).
+Follow the assigned package; M3 does not complete
 native/Linux correspondence or hardware confidentiality.
 
 All `grund` commands in the managed instructions below mean the repository-local

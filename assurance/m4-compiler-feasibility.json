@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "status": "local compiler-interface experiment; Linux producer and composed compiler/Lean connection open",
+  "original_obligations_closed": 0,
+  "full_m4_complete": false,
+  "rocq_declarations": [
+    {
+      "name": "LeanCageFeasibility.CompilerBoundary.parent_external_compatibility",
+      "full_type": "parent_external_compatibility\n     : forall _ : Clight.genv, Prop",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageFeasibility.CompilerBoundary.parent_observation_projection",
+      "full_type": "parent_observation_projection\n     : forall _ : Clight.genv, Prop",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageFeasibility.CompilerBoundary.parent_external_safety",
+      "full_type": "parent_external_safety\n     : forall _ : Clight.genv, Prop",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageFeasibility.CompilerBoundary.stock_parent_step_exact",
+      "full_type": "stock_parent_step_exact\n     : forall (ge : Clight.genv) (k : Clight.cont) (m : Memory.Mem.mem) (value : Integers.Int.int) (trace : Events.trace), iff (Clight.step2 ge (Clight.Callstate ParentMachine.getppid_definition (@nil Values.val) k m) trace (Clight.Returnstate (Values.Vint value) k m)) (Events.external_call (AST.EF_external (String.String (Ascii.Ascii true true true false false true true false) (String.String (Ascii.Ascii true false true false false true true false) (String.String (Ascii.Ascii false false true false true true true false) (String.String (Ascii.Ascii false false false false true true true false) (String.String (Ascii.Ascii false false false false true true true false) (String.String (Ascii.Ascii true false false true false true true false) (String.String (Ascii.Ascii false false true false false true true false) String.EmptyString))))))) (AST.mksignature (@nil AST.xtype) AST.Xint AST.cc_default)) (@Globalenvs.Genv.to_senv Clight.fundef Ctypes.type (Clight.genv_genv ge)) (@nil Values.val) m trace (Values.Vint value) m)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageFeasibility.CompilerBoundary.parent_projection_iff_external_contract",
+      "full_type": "parent_projection_iff_external_contract\n     : forall ge : Clight.genv, iff (parent_observation_projection ge) (parent_external_compatibility ge)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageFeasibility.CompilerBoundary.delegated_parent_step_projects",
+      "full_type": "delegated_parent_step_projects\n     : forall (ge : Clight.genv) (cell : Machine.tls) (start next : Clight.state) (_ : ParentMachine.parent_step ge cell (Machine.live start) ParentRuns.parent_internal (Machine.live next)), Clight.step2 ge start Events.E0 next",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageFeasibility.CompilerBoundary.stock_internal_refines_parent",
+      "full_type": "stock_internal_refines_parent\n     : forall (ge : Clight.genv) (cell : Machine.tls) (start next : Clight.state) (_ : Machine.internal_state start) (_ : Clight.step2 ge start Events.E0 next), ParentMachine.parent_step ge cell (Machine.live start) ParentRuns.parent_internal (Machine.live next)",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    },
+    {
+      "name": "LeanCageFeasibility.CompilerBoundary.stock_parent_refines_local_under_effect_contract",
+      "full_type": "stock_parent_refines_local_under_effect_contract\n     : forall (ge : Clight.genv) (_ : parent_external_safety ge) (cell : Machine.tls) (k : Clight.cont) (m : Memory.Mem.mem) (trace : Events.trace) (result : Values.val) (after : Memory.Mem.mem) (_ : Clight.step2 ge (Clight.Callstate ParentMachine.getppid_definition (@nil Values.val) k m) trace (Clight.Returnstate result k after)), @ex Integers.Int.int (fun value : Integers.Int.int => and (@eq Values.val result (Values.Vint value)) (and (@eq Memory.Mem.mem after m) (ParentMachine.parent_step ge cell (Machine.live (Clight.Callstate ParentMachine.getppid_definition (@nil Values.val) k m)) (ParentMachine.parent_observed value) (Machine.live (Clight.Returnstate result k after)))))",
+      "transitive_assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, sumbool (not (not P)) (not P)\nClassicalDedekindReals.sig_forall_dec : forall (P : forall _ : nat, Prop) (_ : forall n : nat, sumbool (P n) (not (P n))), sumor (@sig nat (fun n : nat => not (P n))) (forall n : nat, P n)\nEvents.inline_assembly_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : forall _ : A, Type) (f g : forall x : A, B x) (_ : forall x : A, @eq (B x) (f x) (g x)), @eq (forall x : A, B x) f g\nEvents.external_functions_sem : forall (_ : String.string) (_ : AST.signature), Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, or P (not P)",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": []
+    }
+  ],
+  "source_sha256": {
+    "m4/feasibility/CompilerBoundary.v": "e1cb39b14e5716df92702b4bce16d7292fdf2a6593099e727b303f50bcc31a26",
+    "m4/feasibility/check.py": "0e6f184ce320f9402c7d4e6d3c8902f67403a70bd62b9edde9cb80ddb4f267d3",
+    "m4/feasibility/README.md": "67416d07cdd680aa1ca0f5b2ac2902d622286b68efe6d548da90768c9a52e1eb"
+  },
+  "compiler_source_sha256": "1782a975c8df642a54d28c891405714145997c1cfe4d227f07a4c4d71ff525fb",
+  "parent_machine_sha256": "6ab3ce7cfa32922387cfc15442ef15655575d98abe820190f9656f7748c27bac",
+  "parent_artifact_sha256": {
+    "ParentMachine.vo": "e83eca8a56aa8666095f74ef96a75b4d6c3e8e43e0dfbd0ec65aedd7b60c18c4",
+    "ParentRuns.vo": "c1b1238eb99fb8f5b1c7f49586253215218807aa4733b643bc7d0ac368be5b72"
+  },
+  "artifact_sha256": {
+    "CompilerBoundary.vo": "39429e15434ed0e60cb789b29552104a9868d31604de53786ae54db11a5a1119"
+  },
+  "attempted_goal_source": "From compcert Require Import Integers AST Values Memory Events Clight.\nRequire Import Machine.\nFrom LeanCageMain Require Import MainStructure.\nFrom LeanCageParent Require Import ParentMachine.\nFrom LeanCageFeasibility Require Import CompilerBoundary.\nTheorem direct_local_to_stock : parent_observation_projection main_ge.\nProof.\n intros cell k m value LOCAL.\n exists E0.\n apply stock_parent_step_exact.\n cbn.\n exact LOCAL.\nQed.\n",
+  "rejected_route": "Naive local-to-stock projection requires every abstract signed observation to be producible.",
+  "replacement_route": "Refine stock executions into the custom model under actual effect safety contracts; compose with the stock compiler simulation.",
+  "open_producer": "Pinned libc/Linux parent_external_safety, byte/descriptor effects, waits/loss relation and whole compiler/runtime/loader composition.",
+  "lean_security_connection": "Still open; this Rocq interface supplies no ordinary Lean security theorem.",
+  "proof_output_sha256": "88b93f914eddddbb6eb442ea0cf0d309aef0409f7118a84699b5767ab6068ed9"
+}

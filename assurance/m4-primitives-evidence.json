@@ -41,8 +41,8 @@
   "claims_sha256": "ef75db88ca4d6936b37f639952ba8733866e344c1dd34c4927e7578a30d34fa7",
   "preserved_sha256": {
     "assurance/m4-primitives-baseline-claims.json": "6a87d4e91fd657fdadc18ffc6ae345d8dcf9d1033b1ed4b9c7454c749b2396af",
-    "assurance/m4-writeall-evidence.json": "9f41d9d77a4ea953f9473cada722a0fb64a6960de11c9cf4f21b843cd7116229",
-    "assurance/m4-connection-evidence.json": "d77e826146c45a4863e4058e039f8b417482bb63dd68d90d6394ebbc568647ba",
+    "assurance/m4-writeall-evidence.json": "b245e8d236c1ba8bf93494b8367dffe375ac70180007994aeafd8926bb0c5c52",
+    "assurance/m4-connection-evidence.json": "8d41811cf64577aed1e16fd071afee94a0372c118c499373dcf3adf26aeae8a0",
     "assurance/m4-obligations.json": "77f760ca9447b8ee05ec0e24efc637b35ff6a62356657515ffc68f0999182064",
     "m4/connection/IO.v": "1e0d7a736ddda75467ec2882663d8a02aeb4b65eea0af0f0f04c3b6d7e01e1df",
     "m4/connection/Machine.v": "1469b64799d43d06cd3f8f1ae4430c19bf83947aff230d2de2188b8ad0b44e7d",

@@ -24,7 +24,8 @@ certified by these conditional model results and tests.
 - [M2 lifecycle and handoff](docs/reviews/M2-handoff.md)
 - [M3 workspace and handoff](docs/reviews/M3-handoff.md)
 - [M3 main review and correction](docs/reviews/M3-main-review.md)
-- [Next assignment: M4.1 native-semantics feasibility](docs/roadmap.md#m4entry-next-assignment--m41-native-semantics-feasibility)
+- [Current M4 continuation and review boundary](docs/roadmap.md#m4next-current-m4-continuation)
+- [M4 continuation assignment](M4-CONTINUE.md)
 - [Functional specification](docs/functional-spec/README.md)
 - [Architecture](docs/architecture/README.md)
 - [First filter and launch boundary](docs/architecture/AR-filter-slice.md)
@@ -53,6 +54,10 @@ Run the proof/build gate separately:
 ```sh
 ./scripts/check.sh
 ```
+
+The full implemented M4 chain has a separate gate, `./scripts/check_m4_all.sh`.
+M4.1 feasibility and local reporting/controller proofs through initialization
+are recorded. Parent composition repair is under review; full M4 remains open.
 
 The first run downloads checksum-pinned Grund 0.20.0 into this repository's
 ignored `.tools/` directory and fetches the pinned Lean dependencies. No global

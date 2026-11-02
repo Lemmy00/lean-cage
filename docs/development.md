@@ -7,7 +7,9 @@ M2 is complete for the stated lifecycle profile under [§AR-lifecycle](architect
 M3 implementation follows [§FS-workspace](functional-spec/FS-workspace.md#fs-workspace-m3-offline-workspace-contract-version-1) and [§AR-workspace](architecture/AR-workspace.md#ar-workspace-m3-authority-model-linux-realization-and-evidence-plan) in
 [§RM-roadmap.m3.packages](roadmap.md#m3packages-build-the-profile-in-reviewable-slices) order.
 The workflow is specified in [§AR-tooling](architecture/AR-tooling.md#ar-tooling-keep-development-reproducible-and-project-local).
-The next bounded assignment is [§RM-roadmap.m4.entry](roadmap.md#m4entry-next-assignment--m41-native-semantics-feasibility). Keep validated
+The current bounded assignment is [§RM-roadmap.m4.next](roadmap.md#m4next-current-m4-continuation)
+and [M4-CONTINUE.md](../M4-CONTINUE.md); the historical M4.1 contract remains at
+[§RM-roadmap.m4.entry](roadmap.md#m4entry-next-assignment--m41-native-semantics-feasibility). Keep validated
 milestone work integrated on `main`; temporary branches are for isolation during
 active work, not separate long-lived milestone histories.
 

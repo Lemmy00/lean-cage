@@ -39,6 +39,7 @@ These counts identify coverage and evidence, not a measure of security strength.
 | Native workload confinement | [§FS-workspace.authority](FS-workspace.md#authority-objects-and-rights) | M3 model proofs, implementation and source-bound VM evidence; gate passed | [§FS-assurance.workspace](FS-assurance.md#workspace-m3-workspace-model-and-vm-evidence); object/handle/alias model and workspace helper | Native/Linux correspondence |
 | Bounded resources | [§FS-workspace.resources](FS-workspace.md#resources-units-ownership-and-failure) | Conditional model proofs; native VM limit cases | Scope/capture/reservation/sample proofs; charged memory/task/CPU/deadline observations | Linux accounting and progress/overshoot premises |
 | Local reporting source behavior | [§FS-workspace.results](FS-workspace.md#results-entry-cancellation-and-bounded-transport) | Partial M4.2 source/effect proofs | [§FS-assurance.native](FS-assurance.md#native-partial-m4-reporting-source-evidence); maintained-source codecs, write loop, errno, selectors, result construction, child-failure reporting and complete private-frame decoding | Whole-slice framing/caller safety, checked C-to-Lean bridge, Linux/compiler/executable correspondence |
+| Local input-validation source behavior | [§FS-workspace.policy](FS-workspace.md#policy-bounded-typed-request) | Accepted local M4.3 results through initialization; parent composition repair under review | [§FS-assurance.parent](FS-assurance.md#parent-parent-composition-repair-claim-record); numeric, string, argument, digest and initialization source certificates | Whole entry-to-setup composition, physical argv, ordinary Lean proof connection and Linux/compiler/runtime correspondence |
 | Functional confidentiality | [§FS-observations.logical](FS-observations.md#logical-functional-observations) | Planned | Observation requirements | Noninterference theorem and correspondence |
 | Hardware-aware confidentiality | [§FS-observations.hardware](FS-observations.md#hardware-software-observable-channels) | Planned | Scope and research obligations | Model, mechanisms, proof, deployed profile |
 | Deployed executable correctness | [§GOAL-end-to-end](../goals.md#goal-end-to-end-connect-the-policy-to-the-deployed-artifact) | Planned | Roadmap | Compiler/runtime/FFI and Linux correspondence |
@@ -728,6 +729,32 @@ Linux wait-status provenance, checked C/Rocq-to-Lean translation,
 all sixteen original M2/M3 Linux/native ledger entries, libc/Linux interference,
 compiler/runtime/linker/loader correspondence and independent composed-profile
 review. M4 remains incomplete. Hardware channels remain [§FS-observations.hardware](FS-observations.md#hardware-software-observable-channels).
+
+## parent: Parent-composition repair claim record
+
+The input-validation part of [§FS-workspace.policy](FS-workspace.md#policy-bounded-typed-request) has accepted local source
+results through initialization commit `2db87b4`. The preserved `80d4bbe` parent
+candidate remains a historical review input. The maintained repair under
+`m4/parent/` carries actual parent observations through numeric and initialization
+composition and exports input-memory representation. Its status remains under
+review until the complete cases, evidence gate and independent statement review
+are accepted. No new sandbox security guarantee is asserted by this entry.
+
+The primary interfaces are `numeric_trace_source`, `trace_execution_split`,
+`allocated_numeric_validation`, `allocated_validation_matching` and
+`allocated_composition_execution`; full qualified types, transitive foundations,
+source/export and compiled identities belong in the separate parent claim and
+evidence records. `python3 m4/parent/check.py` is the focused replay. The original
+candidate and initialization snapshots remain immutable; documentation amendments
+must enumerate changed fingerprints and preserve prior statements/artifacts.
+
+These are local Rocq source results plus separately checked Lean plan lemmas.
+They do not yet supply the ordinary Lean security theorem required by
+[§REQ-proof-integrity.kernel](../requirements/REQ-proof-integrity.md#kernel-kernel-checked-evidence). Physical process argv, persistent parent identity,
+libc/Linux effects and concurrency, importer faithfulness, compiler-semantics
+compatibility and executable/runtime/loader composition remain open. The native,
+kernel and hardware identities are the earlier preserved profile; this work
+performs no fresh VM replay and closes none of the original sixteen obligations.
 
 ## assumptions: Initial assumption and obligation register
 

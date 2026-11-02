@@ -28,8 +28,8 @@
     "m4/witness.c": "5b96047322b25bc0fdd6e78534cdd2d34106383018dd5b7a23b3b60719dc87d3",
     "scripts/check_m4.sh": "83c0165ee40e3584ba10cb1c98d300c3d8ff42307895e241005674c0c9e51b3c",
     "docs/architecture/AR-m4-native.md": "7822f4f3f580b20da1379ec816b9122a6dc90628f2e31b0112be819c26db7771",
-    "docs/architecture/README.md": "ed8e55a3dfd2739c8cef1bbb94b8bcffd90cb113e94752c99b962cba888118d5",
-    "docs/roadmap.md": "f0807fffc18dd9c56d4a82f26ced4ead2384f5939df37296f53203b24bb035cb"
+    "docs/architecture/README.md": "49e3914234267478fe2cee183b1d1fb3415ead77fd71ded36a4270d0c1c8f7d1",
+    "docs/roadmap.md": "d355a876bf569ade731f3d2b3619f940367c608951bef684e8c7896e9ed8dd83"
   },
   "rocq_declarations": [
     {
@@ -278,31 +278,31 @@
       "axioms": [],
       "is_theorem": false,
       "name": "LeanCageM3.decodeResult",
-      "type": "ByteArray → Except.{0, 0} String LeanCageM3.Result"
+      "type": "ByteArray \u2192 Except.{0, 0} String LeanCageM3.Result"
     },
     {
       "axioms": [],
       "is_theorem": false,
       "name": "LeanCageM3.resultValid",
-      "type": "LeanCageM3.Result → Bool"
+      "type": "LeanCageM3.Result \u2192 Bool"
     },
     {
       "axioms": [],
       "is_theorem": true,
       "name": "LeanCageM3.decodeResult_valid",
-      "type": "∀ (bytes : ByteArray) (result : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.decodeResult bytes) (Except.ok.{0, 0} result) → Eq.{1} (LeanCageM3.resultValid result) Bool.true"
+      "type": "\u2200 (bytes : ByteArray) (result : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.decodeResult bytes) (Except.ok.{0, 0} result) \u2192 Eq.{1} (LeanCageM3.resultValid result) Bool.true"
     },
     {
       "axioms": [],
       "is_theorem": false,
       "name": "LeanCageM3.observe",
-      "type": "LeanCageM3.Knowledge → LeanCageM3.Observation → LeanCageM3.Knowledge"
+      "type": "LeanCageM3.Knowledge \u2192 LeanCageM3.Observation \u2192 LeanCageM3.Knowledge"
     },
     {
       "axioms": [],
       "is_theorem": true,
       "name": "LeanCageM3.private_report_knowledge",
-      "type": "∀ (state : LeanCageM3.Knowledge) (outputs : List.{0} ByteArray),\n  Eq.{1} (LeanCageM3.guestOutputTrace state outputs) state"
+      "type": "\u2200 (state : LeanCageM3.Knowledge) (outputs : List.{0} ByteArray),\n  Eq.{1} (LeanCageM3.guestOutputTrace state outputs) state"
     },
     {
       "axioms": [
@@ -310,13 +310,13 @@
       ],
       "is_theorem": true,
       "name": "LeanCageM3.report_loss_preserves_entry",
-      "type": "∀ (state : LeanCageM3.Knowledge),\n  Eq.{1} state.entry LeanCageM3.Entry.yes →\n    Eq.{1} (LeanCageM3.observe state LeanCageM3.Observation.reportLost).entry LeanCageM3.Entry.yes"
+      "type": "\u2200 (state : LeanCageM3.Knowledge),\n  Eq.{1} state.entry LeanCageM3.Entry.yes \u2192\n    Eq.{1} (LeanCageM3.observe state LeanCageM3.Observation.reportLost).entry LeanCageM3.Entry.yes"
     },
     {
       "axioms": [],
       "is_theorem": true,
       "name": "LeanCageM3.cancel_not_completion",
-      "type": "∀ (state : LeanCageM3.Knowledge),\n  Eq.{1} (LeanCageM3.observe state LeanCageM3.Observation.cancel).extinct state.extinct ∧\n    Eq.{1} (LeanCageM3.observe state LeanCageM3.Observation.cancel).entry state.entry"
+      "type": "\u2200 (state : LeanCageM3.Knowledge),\n  Eq.{1} (LeanCageM3.observe state LeanCageM3.Observation.cancel).extinct state.extinct \u2227\n    Eq.{1} (LeanCageM3.observe state LeanCageM3.Observation.cancel).entry state.entry"
     },
     {
       "axioms": [
@@ -324,7 +324,7 @@
       ],
       "is_theorem": true,
       "name": "LeanCageM3.release_requires_extinction",
-      "type": "∀ (state : LeanCageM3.Knowledge),\n  Eq.{1} state.released Bool.false →\n    Eq.{1} (LeanCageM3.observe state LeanCageM3.Observation.releaseObserved).released Bool.true →\n      Eq.{1} state.extinct Bool.true"
+      "type": "\u2200 (state : LeanCageM3.Knowledge),\n  Eq.{1} state.released Bool.false \u2192\n    Eq.{1} (LeanCageM3.observe state LeanCageM3.Observation.releaseObserved).released Bool.true \u2192\n      Eq.{1} state.extinct Bool.true"
     },
     {
       "axioms": [
@@ -333,7 +333,7 @@
       ],
       "is_theorem": true,
       "name": "LeanCageM3.entry_requires_receipts",
-      "type": "∀ (s : LeanCageM3.Lifecycle),\n  Eq.{1} s.entered Bool.false →\n    Eq.{1} (LeanCageM3.launchStep s LeanCageM3.LaunchEvent.attemptExec).entered Bool.true →\n      Eq.{1} s.failed Bool.false ∧\n        ∀ (r : LeanCageM3.Receipt), Membership.mem.{0, 0} LeanCageM3.required r → Membership.mem.{0, 0} s.receipts r"
+      "type": "\u2200 (s : LeanCageM3.Lifecycle),\n  Eq.{1} s.entered Bool.false \u2192\n    Eq.{1} (LeanCageM3.launchStep s LeanCageM3.LaunchEvent.attemptExec).entered Bool.true \u2192\n      Eq.{1} s.failed Bool.false \u2227\n        \u2200 (r : LeanCageM3.Receipt), Membership.mem.{0, 0} LeanCageM3.required r \u2192 Membership.mem.{0, 0} s.receipts r"
     },
     {
       "axioms": [
@@ -341,7 +341,7 @@
       ],
       "is_theorem": true,
       "name": "LeanCageM3.reachable_entry_ordered",
-      "type": "∀ (events : List.{0} LeanCageM3.LaunchEvent), LeanCageM3.entryOrdered (LeanCageM3.launchTrace { } events)"
+      "type": "\u2200 (events : List.{0} LeanCageM3.LaunchEvent), LeanCageM3.entryOrdered (LeanCageM3.launchTrace { } events)"
     },
     {
       "axioms": [
@@ -351,7 +351,7 @@
       ],
       "is_theorem": true,
       "name": "LeanCageM2.lost_report_unknown",
-      "type": "∀ (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray) (s : LeanCageM2.State),\n  Eq.{1} (LeanCageM2.step abi bytes s LeanCageM2.Event.reportLost)\n    (Option.some.{0}\n      { phase := s.phase, completed := s.completed, imageSealed := s.imageSealed, privateInputs := s.privateInputs,\n        signalsReset := s.signalsReset, namespaced := s.namespaced, handlesClosed := s.handlesClosed,\n        credentialsDropped := s.credentialsDropped, credentials := s.credentials, startupSignals := s.startupSignals,\n        decoded := s.decoded, nnp := s.nnp, filtered := s.filtered, entered := s.entered,\n        knowledge := LeanCageM2.Entry.unknown, cancelRequested := s.cancelRequested, extinct := s.extinct,\n        members := s.members, issued := s.issued, owned := s.owned, released := s.released })"
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray) (s : LeanCageM2.State),\n  Eq.{1} (LeanCageM2.step abi bytes s LeanCageM2.Event.reportLost)\n    (Option.some.{0}\n      { phase := s.phase, completed := s.completed, imageSealed := s.imageSealed, privateInputs := s.privateInputs,\n        signalsReset := s.signalsReset, namespaced := s.namespaced, handlesClosed := s.handlesClosed,\n        credentialsDropped := s.credentialsDropped, credentials := s.credentials, startupSignals := s.startupSignals,\n        decoded := s.decoded, nnp := s.nnp, filtered := s.filtered, entered := s.entered,\n        knowledge := LeanCageM2.Entry.unknown, cancelRequested := s.cancelRequested, extinct := s.extinct,\n        members := s.members, issued := s.issued, owned := s.owned, released := s.released })"
     },
     {
       "axioms": [
@@ -361,7 +361,7 @@
       ],
       "is_theorem": true,
       "name": "LeanCageM2.entry_requires_plan",
-      "type": "∀ (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray) (s : LeanCageM2.State),\n  LeanCageM2.Reaches abi bytes s → Eq.{1} s.entered Bool.true → Eq.{1} s.completed LeanCageM2.plan"
+      "type": "\u2200 (abi : LeanCage.Linux.Filter.Abi) (bytes : ByteArray) (s : LeanCageM2.State),\n  LeanCageM2.Reaches abi bytes s \u2192 Eq.{1} s.entered Bool.true \u2192 Eq.{1} s.completed LeanCageM2.plan"
     }
   ],
   "lean_connection_status": "Target types/axioms audited; no bridge theorem or translated proof",
