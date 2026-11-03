@@ -121,6 +121,9 @@ The Lean library is `library/LeanCageWorkspace.lean`, built by the root recipe.
 `import LeanCageWorkspace` exposes `LeanCage.Workspace.Policy`, `Result`,
 `decodePolicy`, `decodeResult`, `filterBytes`, `check` and `run`. These aliases
 use the existing executable definitions, with audited definition equations.
+The Lean `check` and `run` entries execute inside the prepared VM and require
+its helper/profile. Host integrations use the Python `Workspace` API above,
+which owns VM creation, transport and teardown.
 The compatibility map is [§AR-workspace-vm.migration](architecture/AR-workspace-vm.md#migration-preserve-proof-identities-while-moving-maintained-components) and
 `assurance/product-layout.json`; there are no parallel implementation copies.
 

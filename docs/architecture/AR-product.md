@@ -18,7 +18,9 @@ The existing path implements [§FS-workspace.policy](../functional-spec/FS-works
 
 ```mermaid
 flowchart TD
-  caller["Operator or AI agent"] --> cli["Lean CLI: leancage check / run / report"]
+  caller["Operator or AI agent"] --> host["Root CLI / Python library: request, snapshots and VM ownership"]
+  host --> vm["VM init: private request and result channel"]
+  vm --> cli["In-VM Lean controller"]
   cli --> policy["Decode and validate the bounded policy"]
   policy --> helper["Native Linux helper"]
   helper --> setup["Namespaces, mounts, credentials, filter and cgroup"]
@@ -26,7 +28,9 @@ flowchart TD
   guest --> output["Bounded captures and workspace export"]
   helper --> result["Private supervision result"]
   result --> cli
-  cli --> stored["Stored JSON report and artifact identities"]
+  cli --> vm
+  vm --> host
+  host --> stored["Returned captures, exports and stored report"]
 ```
 
 `LeanCageM3.API` prepares the policy plan, starts `/leancage-m3-helper`, decodes
@@ -51,7 +55,7 @@ output never become trusted result frames.
 | M2 | Lifecycle, ownership, setup order and descendant foundations | The M3 successful receipt sequence projects to the M2 plan |
 | M3 | Current runnable policy/controller/helper/runtime/report path | Model composition plus native VM workflows; correspondence remains conditional |
 | M4 | Deliver the reusable Linux product and verified executable core | Root build, caller-policy VM workflow, library, functional layout and exact proof/trust manifest |
-| M5 | Verify the whole application control path | Actual controller/helper correspondence and composed authority/lifecycle/reporting properties over primitive platform contracts |
+| M5 | Verify the whole application control path | Actual host, VM-init, controller and helper correspondence; compose the deliveries in [§AR-application-verification](AR-application-verification.md#ar-application-verification-prove-the-application-through-integrated-security-guarantees) under primitive platform contracts |
 | M6 | Strengthen platform/confidentiality guarantees and add seLe4n | Selected assumption replacements, named leakage properties, and the separate seLe4n execution/refinement track |
 | M7 | Package and support the integrated implementation | Releases may begin after M4; each claim determines its required application/platform evidence |
 
@@ -108,11 +112,12 @@ their original meaning and unchanged implementation bytes.
 
 The maintained product must be understandable from its functionality. New source
 packages, namespaces, binaries, scripts and tests use responsibility-based names.
-Milestone labels remain useful in the roadmap and archived evidence. The current
-`m2/`, `m3/`, `m4/`, `LeanCageM*` and milestone-named native/script paths are
-temporary organization. Consolidation is part of the current product delivery.
-The compiler/reporting checkpoint is its preserved baseline. Coordinate any
-migration with active workers and keep their current inputs stable until integration.
+Milestone labels remain useful in the roadmap and archived evidence. The product
+delivery established canonical functional paths and retained old names as
+compatibility interfaces or historical proof inputs, as mapped below. Extend
+those canonical components; avoid gratuitous compatibility changes during proof
+work. Coordinate any further migration with active workers and keep their
+current inputs stable until integration.
 
 Consolidation has concrete acceptance criteria:
 

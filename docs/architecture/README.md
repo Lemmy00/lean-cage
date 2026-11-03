@@ -4,12 +4,16 @@ These are design contracts for the staged implementation. M1 supplies a pure
 decoder, checked decoder/bounds and launch-order proofs, an axiom audit, a native
 Linux driver, and an isolated VM demonstration. M2 adds conditional lifecycle
 proofs and a capable VM. M3 adds the useful offline workspace, authority/filter/
-resource models and source-bound native tests. Native/Linux correspondence and
-end-to-end isolation remain explicit M4/M5 obligations.
+resource models and source-bound native tests. The reusable product now has a
+public host/VM workflow. Application correspondence is planned through named M5
+deliveries; selected platform and confidentiality proofs are M6 tracks.
+Historical proof documents keep their recorded milestone meanings; use the
+current roadmap and application-verification contract for assignments.
 
 | Contract | Subject |
 |---|---|
 | [§AR-product](AR-product.md#ar-product-one-runnable-product-and-a-composed-assurance-chain) | One maintained executable path, current CLI/VM entry point, integration tasks and release composition |
+| [§AR-application-verification](AR-application-verification.md#ar-application-verification-prove-the-application-through-integrated-security-guarantees) | Complete application boundary, integrated proof deliveries and current assignment |
 | [§AR-core](AR-core.md#ar-core-separate-portable-security-contracts-from-platform-mechanisms) | Portable policy, state, effects, and observations |
 | [§AR-linux](AR-linux.md#ar-linux-connect-a-lean-launcher-to-real-linux-enforcement) | Linux enforcement, OS bindings, and pinned reference |
 | [§AR-filter-slice](AR-filter-slice.md#ar-filter-slice-m11-source-map-and-typed-contract-boundary) | M1.1 source map, ABI, typed contracts, and open binding obligations |

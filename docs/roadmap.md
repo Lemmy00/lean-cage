@@ -9,9 +9,9 @@ Each milestone must leave reusable contracts and evidence for the next one.
 [§FS-linux-product](functional-spec/FS-linux-product.md#fs-linux-product-a-reusable-linux-workspace-with-an-explicit-trust-boundary), with the explicit trust decision
 [§DA-product-assurance](decisions/architectural/DA-product-assurance.md#da-product-assurance-deliver-the-linux-product-with-explicit-platform-trust).
 M1–M3 provide the tested offline workspace and reusable model/code proofs.
-The current implementation also includes the output-capture correction and the
-source/compiler reporting connection reviewed at `fe96f16`. The next delivery is
-one usable, functionally organized Linux product from that implementation.
+The reusable product was delivered at `92367a5`, reusing the output-capture
+correction and source/compiler reporting connection reviewed at `fe96f16`.
+The next delivery is the proved guest-entry interface under [§RM-roadmap.m5.next](roadmap.md#m5next-current-assignment).
 
 This revision separates product delivery, complete application verification and
 platform research. It does not mark the previous M4 contract complete. Earlier
@@ -37,23 +37,22 @@ below and [§FS-assurance.product](functional-spec/FS-assurance.md#product-produ
 |---|---|---|
 | M0–M3, preserved | Existing specifications, filter/lifecycle proofs and offline VM workspace | Their accepted profile records remain inputs to the product |
 | M4 | Reusable Linux product with verified executable policy/reporting core | Caller-supplied shell/Python runs through root build/check/run/report, reusable library, functional layout, exact core proof inventory and trusted component manifest |
-| M5 | Complete application control-path verification | Maintained policy/launch, supervision/cancellation and publication code compose under explicit primitive OS/runtime contracts |
+| M5, planned | Complete application control-path verification in five named deliveries | Guest entry, host boundary, policy authority, owned lifetime and justified public observations compose under primitive platform contracts |
 | M6 | Platform proofs, confidentiality and the seLe4n backend | Selected Linux/runtime assumptions are replaced by proofs; a named leakage property or a separate seLe4n execution profile is established |
 | M7, starts after M4 | Supported releases and maintenance | Installable identified bundle, supported environment, update/recovery procedure, proof and test evidence matching its advertised claims |
 
-M4 can be delivered using the existing Linux kernel and compiler/runtime as
-published trusted components. M5 strengthens application guarantees. M6 research
+M4 uses the existing Linux kernel and compiler/runtime as published trusted
+components. M5 strengthens application guarantees. M6 research
 is selected per profile and does not gate a functional release. A release that
 advertises M5 or hardware guarantees must have that corresponding evidence.
 
 ## organization: Product consolidation at the next stable integration point
 
-Carry out [§AR-product.organization](architecture/AR-product.md#organization-organize-the-maintained-product-by-responsibility) as part of the current M4 product delivery.
-Coordinate staged migrations with any active worker. The deliverable is one product organized by
-responsibility, with root build/run entry points, updated consumers and
-preserved evidence. It also separates operational documentation from proof
-dependencies and eliminates redundant gate execution. This is a planned
-integration task; its acceptance criteria are in the linked product architecture.
+The M4 delivery implemented [§AR-product.organization](architecture/AR-product.md#organization-organize-the-maintained-product-by-responsibility): canonical functional source
+paths, root build/run entry points and compatibility aliases preserving existing
+proof/profile identities. Extend that structure. Milestone labels organize this
+plan; new modules and scripts use functional names. Coordinate further necessary
+migrations with active workers, and preserve historical evidence.
 
 Every assignment must name a usable result, its existing consumer, and a concrete
 acceptance check. Break large goals into integrated functional results. Lemmas,
@@ -303,6 +302,8 @@ restart the completed product integration or accepted proof components.
 with reusable components and a declared trust boundary.** The
 [product handoff](reviews/workspace-product-handoff.md) gives the working commands,
 library entries, exact evidence and validation.
+The current assignment is [§RM-roadmap.m5.next](roadmap.md#m5next-current-assignment); this stable historical section
+remains available to existing citations.
 
 Reuse the accepted parent/input work, the native output-capture correction,
 [§AR-reporting.proof](architecture/AR-reporting.md#proof-check-the-interface-in-both-proof-environments) and [§AR-compiled-reporting.connection](architecture/AR-compiled-reporting.md#connection-carry-the-reporting-argument-across-verified-compilation).
@@ -391,27 +392,54 @@ commits back into `main` and push. Preserve other active work and never force-pu
 
 ## m5: Verify the complete application control path
 
-Establish the application guarantee in [§FS-linux-product.proofs](functional-spec/FS-linux-product.md#proofs-useful-proofs-connected-to-shipped-code)
-against the published primitive Linux/runtime contracts. Deliver successive
-connected regions of the actual maintained program:
+**Status: planned; none of the five deliveries below is complete.** Establish
+[§FS-linux-product.proofs.application](functional-spec/FS-linux-product.md#proofsapplication-the-complete-application-guarantee) across the host, VM init, Lean controller,
+native helper and returned artifacts. M5 is a verification stage with separate
+assignments, not one agent task. M4's elapsed time does not estimate this work:
+M4 integrated a working implementation; M5 proves its application behavior.
 
-1. Policy/input bytes through setup and guest admission: validated authority,
-   correct handle/credential/filter use, and fail-closed setup.
-2. Running guest through supervision, resource decisions and cancellation:
-   hostile transitions, descendant identity, signal/race/error cases and cleanup.
-3. Actual observations through output capture, export and stored report:
-   bounded bytes, observation provenance, interrupted publication and report loss.
+| Delivery | Concrete guarantee and consumer | Dependencies and acceptance |
+|---|---|---|
+| M5.1 — Proved guest entry | The actual launch path reaches exec only with the required credentials, handles, filter and arguments; failure prevents entry. Consumed by the full authority/lifetime argument. | Start now. Settle the execution/proof route early; prove all entry/preflight paths and real caller connection under explicit prepared-run inputs. [§AR-application-verification.admission](architecture/AR-application-verification.md#admission-fail-closed-native-guest-admission) |
+| M5.2 — Safe host boundary | Host snapshots and publication stay within owned paths and bounds for arbitrary VM output; accepted transport has consistent request/artifact identities. Consumed by every caller and later composition. | Independent of inner-VM correctness. Prove the executable decisions and their effect adapter; cover malformed bytes, unsafe paths and storage loss. [§AR-application-verification.host](architecture/AR-application-verification.md#host-safe-host-boundary-for-arbitrary-vm-output) |
+| M5.3 — Policy-authorized setup | Caller bytes determine the actual argv, limits, snapshots, objects and run authority established before entry. Supplies M5.1's preparation premises. | Uses M5.1/M5.2. Prove byte interpretation, controller/VM handoff, native workspace construction and real argument/ownership producers. [§AR-application-verification.authority](architecture/AR-application-verification.md#authority-policy-authorized-workspace-construction) |
+| M5.4 — Owned lifetime and limits | Supervision/cancellation targets only owned scopes, enforces the stated limits and justifies exit/cleanup observations across helper, VM and host. | Uses M5.3. Prove hostile interleavings and failure/loss safety; state progress assumptions separately. [§AR-application-verification.lifetime](architecture/AR-application-verification.md#lifetime-owned-descendants-limits-and-cancellation) |
+| M5.5 — Justified public results | Each report field, capture and export follows from this run's observations; the whole public request composes under the named platform contracts. | Uses M5.1–M5.4; proves remaining sender/export/controller publication paths and discharges application premises at actual callers. [§AR-application-verification.composition](architecture/AR-application-verification.md#composition-justified-observations-and-the-complete-public-request) |
 
-Each region produces the inputs required by the next. Reuse the existing source
-proofs and ordinary Lean consumers. Prove the application-side memory, bytes,
-call ordering and state correspondence; OS assumptions describe individual
-primitive effects, not the intended confinement/reporting conclusion.
+The preferred implementation direction is shared executable Lean control and
+security decisions with small primitive adapters. The entry assignment must
+resolve Lean runtime/fork constraints and any remaining native proof connection
+before expanding the approach. Existing source proofs are reused where their
+interfaces fit; rewriting a live path must preserve its public behavior and
+archive the old evidence, not create a second implementation.
 
-**Exit:** one composed application contract for the supported profile, with
-inhabited inputs, actual call-site producers and explicit compiler/runtime/OS
-trust. Source proofs and executable Lean theorems must be connected to the code
-in the product bundle. The previous whole-platform ledger is a map of further
-trust-reduction work, not a reason to restart completed application components.
+M5.2 can proceed independently after its own host-adapter route is concrete;
+parallel ownership requires a separate assignment. Each delivery includes its
+supporting lemmas, caller integration and one affected acceptance gate. Useful
+component contracts may retain explicit premises that another named delivery
+produces; no whole application component can remain an assumed secure operation
+in M5.5. Neither test counts nor additional proof wrappers constitute completion.
+
+**Exit:** the composed application theorem, inhabited requests, audited
+transitive assumptions and bindings to the code in the identified bundle.
+Compiler/runtime, precise primitive Linux behavior and the declared platform
+remain assumptions. Their implementation proofs are M6 work. Estimate subsequent
+deliveries after M5.1 demonstrates the approach on actual effectful code; the plan
+does not promise that all five have equal difficulty or fit one session.
+
+### m5.next: Current assignment
+
+Deliver **M5.1 — proved guest entry**, using the full contract and execution
+instructions in [§AR-application-verification.next](architecture/AR-application-verification.md#next-first-assignment-and-early-route-decision) and the value-carrying target
+in [§FS-linux-product.proofs.entry](functional-spec/FS-linux-product.md#proofsentry-establish-actual-state-at-workload-entry). Preserve the working product at `92367a5` and
+reuse its matching-input validation evidence.
+
+The first four working hours bound the architecture investigation, not the
+complete assignment. Demonstrate an actual caller-to-entry/failure path and its
+checked proof connection, choose the implementation route, then finish the
+complete entry interface, integration and acceptance. A failed prototype must
+change the approach; it is not a substitute delivery. The host, authority,
+lifetime and observation assignments remain explicit next work.
 
 ## m6: Platform trust reduction and confidentiality research
 
@@ -425,6 +453,13 @@ bounded feasibility decision. Candidate tracks are:
 - Establish the hardware-aware observation/leakage property in
   [§FS-observations.hardware](functional-spec/FS-observations.md#hardware-software-observable-channels) for a named CPU/kernel/configuration.
 - Deliver the separate seLe4n backend track in [§RM-roadmap.m6.sele4n](roadmap.md#m6sele4n-a-sele4n-backend-using-the-same-portable-contracts).
+
+These are independent assignments, not a single "finish M6" task. Choose one
+named assumption/property and its product consumer. If an M5 route change moves
+control from C to Lean, update the binary-chain target to the code actually
+shipped, including Lean compiler/runtime trust; preserve earlier CompCert results
+at their recorded source boundary. Do not translate the whole kernel as an entry
+requirement for an application proof.
 
 **Exit for an assigned upgrade:** the replacement producer or leakage theorem is
 consumed by the profile's composed argument, and the profile's trusted-component
@@ -456,6 +491,12 @@ A kernel-model adapter alone is an intermediate result. If execution support is
 missing, identify and implement the needed integration, or present the concrete
 architecture decision that is needed to proceed.
 
+Boot/toolchain feasibility can start now. Before assigning backend refinement,
+agree the value-carrying entry and observation interfaces used by
+[§AR-application-verification.admission](architecture/AR-application-verification.md#admission-fail-closed-native-guest-admission) and [§AR-application-verification.composition](architecture/AR-application-verification.md#composition-justified-observations-and-the-complete-public-request).
+The existing label-level lifecycle model alone is not the backend's execution
+contract; Linux-specific mechanisms stay in their adapter.
+
 ## m7: Supported releases and maintenance
 
 Begin release engineering after the M4 product gate. Release identified bundles
@@ -469,6 +510,9 @@ update/revalidation policy, recovery/quarantine behavior and a security-reportin
 process. Keep the first supported execution environment explicit; extending from
 VM execution to direct deployment requires a separate platform contract and tests.
 Only the claims actually advertised determine the required assurance upgrades.
+The experimental/core profile can ship before M5. Stabilize any changed
+execution/proof route before freezing a stronger supported bundle; changing
+source language or a trusted component requires a new identified evidence set.
 
 ## next: M1 work packages and next scope
 

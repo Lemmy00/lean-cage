@@ -10,6 +10,7 @@ the broader sandbox isolation guarantees that remain future work.
 | Contract | Subject |
 |---|---|
 | [§FS-linux-product](FS-linux-product.md#fs-linux-product-a-reusable-linux-workspace-with-an-explicit-trust-boundary) | Current reusable product, VM workflow, proved core and explicit platform trust |
+| [§FS-linux-product.proofs.application](FS-linux-product.md#proofsapplication-the-complete-application-guarantee) | Target application guarantee across host, VM init, Lean controller, native helper and returned artifacts |
 | [§FS-policy](FS-policy.md#fs-policy-grant-only-explicit-supported-authority) | Authority, validation, and default denial |
 | [§FS-launch](FS-launch.md#fs-launch-establish-containment-before-executing-the-guest) | Launch ordering, failure, and cleanup |
 | [§FS-lifecycle](FS-lifecycle.md#fs-lifecycle-m2-owned-launcher-lifecycle) | Versioned M2 owned-resource, namespace, privilege, supervision, cancellation and filter contracts |

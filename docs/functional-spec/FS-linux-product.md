@@ -88,6 +88,59 @@ owned descendants, preserves output bounds and reports only justified observatio
 This requires correspondence for the actual application code and call sites;
 it cannot be replaced by an assumption that the entire native helper is correct.
 
+### proofs.application: The complete application guarantee
+
+This is the target for application verification, not an additional claim of the
+delivered core. It covers the public CLI/library, host request/snapshot/VM runner,
+VM init and transport, Lean controller, native helper, and artifact publication
+and retrieval. Preparing an identified bundle is a trusted operator/bootstrap
+action; per-request validation, identity checks and execution are application work.
+
+For an accepted request in the supported profile, prove these connected results:
+
+- The workload starts with only the policy-authorized filesystem, handles,
+  credentials and filter. Every failed setup path prevents guest entry. The
+  `check` operation reports preflight observations without executing the workload.
+- The application owns the relevant run/descendant identities and uses the
+  specified resource and cancellation mechanisms on those identities. Distinguish
+  a cancellation request, observed guest exit, observed inner cleanup and VM
+  teardown. Eventual completion needs stated scheduling and primitive-progress
+  assumptions; safety must hold for incomplete executions as well.
+- Returned output and exports respect the policy's bounds and authority. Report
+  fields are justified by observations of this request; guest bytes, malformed
+  frames, channel loss or storage failure cannot manufacture stronger facts.
+  Retrieval preserves the binding between the request, bundle, report and files.
+
+Compose source-connected proofs of these results across actual call sites.
+Application-side ownership, argument construction, error handling, concurrency
+and observation provenance must be established by their producers. Primitive
+platform contracts may assume Linux/compiler/runtime behavior at the boundary
+in [§FS-linux-product.trust](FS-linux-product.md#trust-platform-assumptions-for-the-initial-product); they may not assume an entire host/native adapter or
+any of the conclusions above. Record cryptographic and environment assumptions
+where identities or private storage depend on them. Test evidence continues to
+establish conformance of the configured deployment, separately from these proofs.
+
+### proofs.entry: Establish actual state at workload entry
+
+The application proof must describe values and owned objects at guest execution,
+not just successful operation labels. Its entry-state contract includes:
+
+| State | Required relation to the accepted request and profile |
+|---|---|
+| Policy and arguments | Exact executable, argv, environment and limits derived from the accepted bytes; bounded storage with the stated ABI and ownership |
+| Credentials | The run's leased UID/GID, real/effective/saved/filesystem IDs, empty supplementary groups and capability sets, required securebits and no-new-privileges |
+| Handles | Only the intended stdin/stdout/stderr and pre-exec failure pipe; the failure pipe is close-on-exec; no surviving host/control/namespace authority |
+| Filesystem | The authorized runtime and copied workspace objects, mount flags, root and working directory; aliases cannot add authority |
+| Process scope | The owned namespaces, run/cgroup membership and requested resource settings; only the trusted supervisor may supply the tracing/entry observation |
+| Filter and signals | The exact proved filter installed under the supported ABI, controlled dispositions/mask, and no unsupported inherited filter state |
+
+The entry gate establishes credential/handle/filter restrictions and the actual
+exec arguments from explicit prepared-run inputs. Workspace construction proves
+the identity, object and namespace/cgroup producers for those inputs. Both are
+needed for the complete authority result. Every failed setup branch prevents
+execution; reporting may itself fail or be lost and must then preserve uncertainty.
+Preflight success is a separate observation and never implies that a guest ran.
+
 ## acceptance: Product completion
 
 The first delivery passes a caller-supplied Python workflow and a shell workflow

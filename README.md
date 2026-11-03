@@ -9,13 +9,19 @@ grow a verified Lean implementation, using Velvet where it helps with imperative
 proofs. The roadmap extends through Linux enforcement, executable correspondence,
 and software-observable hardware side channels.
 
-**Status: M1–M4 accepted for their stated conditional profiles and product contract.** M3 adds an offline Dash/Python workspace,
-immutable runtime, private copied inputs, controlled I/O/export, confined
-descendants, cgroup limits and real check/run/report commands. Its model proofs
-and source-bound VM evidence are documented in the [M3 review](docs/reviews/M3-handoff.md).
-The current plan delivers a reusable product with explicit Linux/runtime trust,
-then strengthens application and platform proofs. The precise product and claim
-boundary is [specified here](docs/functional-spec/FS-linux-product.md).
+**Status: a runnable offline Linux workspace with a verified executable core.**
+The root CLI and reusable libraries run caller-supplied shell/Python tasks in a
+disposable VM and return bounded output, exports and reports. Policy validation,
+filter decisions and result decoding have machine-checked proofs; the
+[product handoff](docs/reviews/workspace-product-handoff.md) identifies the exact
+implementation, acceptance evidence and trust boundary.
+
+The next stage verifies the complete application around that core under explicit
+Linux/runtime contracts. Its [named deliveries](docs/roadmap.md#m5-verify-the-complete-application-control-path)
+cover admission, execution lifetime and trustworthy returned results, including
+the host and VM adapters. Full application verification is planned work. The
+[product contract](docs/functional-spec/FS-linux-product.md) distinguishes it
+from the delivered core and later platform proofs.
 
 - [Run LeanCage: build, VM replay, and CLI commands](docs/running.md)
 - [How the milestones compose into one product](docs/architecture/AR-product.md)
@@ -24,8 +30,8 @@ boundary is [specified here](docs/functional-spec/FS-linux-product.md).
 - [M2 lifecycle and handoff](docs/reviews/M2-handoff.md)
 - [M3 workspace and handoff](docs/reviews/M3-handoff.md)
 - [M3 main review and correction](docs/reviews/M3-main-review.md)
-- [Current M4 continuation and review boundary](docs/roadmap.md#m4next-current-m4-continuation)
-- [M4 continuation assignment](M4-CONTINUE.md)
+- [Current application-verification assignment](docs/roadmap.md#m5next-current-assignment)
+- [Application proof boundaries and delivery contracts](docs/architecture/AR-application-verification.md)
 - [Revised product and assurance plan](docs/decisions/architectural/DA-product-assurance.md)
 - [Planned seLe4n backend](docs/roadmap.md#m6sele4n-a-sele4n-backend-using-the-same-portable-contracts)
 - [Functional specification](docs/functional-spec/README.md)
@@ -66,7 +72,7 @@ The implemented reporting/compiler chain has a separate gate,
 code includes the output-capture correction, accepted input/parent contracts,
 and a source/compiler connection to the ordinary Lean decoder. The
 [integration review](docs/reviews/compiler-reporting-review.md) records its scope.
-The [product contract](M4-CONTINUE.md) is implemented by the root build, caller-policy
+The [delivered product assignment](M4-CONTINUE.md) is implemented by the root build, caller-policy
 VM transport and functional component layout. Public acceptance runs with
 `python3 tests/product/acceptance.py` against the identified bundle.
 

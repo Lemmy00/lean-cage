@@ -2,14 +2,17 @@
 
 ## Start here
 
-Read [README](README.md), [§RM-roadmap.m4.next](docs/roadmap.md#m4next-current-m4-continuation),
+Read [README](README.md), [§RM-roadmap.m5.next](docs/roadmap.md#m5next-current-assignment),
 [§FS-linux-product](docs/functional-spec/FS-linux-product.md#fs-linux-product-a-reusable-linux-workspace-with-an-explicit-trust-boundary), the assigned contract, and
 [§REQ-proof-integrity](docs/requirements/REQ-proof-integrity.md#req-proof-integrity-never-substitute-a-weaker-claim-for-an-unfinished-proof) before changing code.
-[M4-CONTINUE.md](M4-CONTINUE.md) is the current product implementation assignment.
+The current assignment is the first application guarantee in
+[§AR-application-verification.next](docs/architecture/AR-application-verification.md#next-first-assignment-and-early-route-decision). The reusable product at `92367a5` is its
+working baseline; [M4-CONTINUE.md](M4-CONTINUE.md) preserves that completed contract.
 The planning revision of 2026-11-03 separates the usable product, complete
 application verification and platform research under [§FS-assurance.product](docs/functional-spec/FS-assurance.md#product-product-assurance-levels-and-trusted-components).
-Use its explicit platform trust boundary. Do not restart kernel/compiler research
-as a prerequisite to the assigned product workflow.
+Use its explicit platform trust boundary. M5 subparts are integrated guarantees
+with named callers and acceptance checks, not permission to count internal lemmas
+as completed assignments. Kernel/compiler research is a separately assigned track.
 
 The accepted [M3 handoff](docs/reviews/M3-handoff.md), [main review](docs/reviews/M3-main-review.md)
 and [compiler/reporting review](docs/reviews/compiler-reporting-review.md) locate
@@ -88,11 +91,12 @@ and [§AR-tooling](docs/architecture/AR-tooling.md#ar-tooling-keep-development-r
 - Extend shared components and integrate them into the documented `leancage`
   interface. Do not copy a prior milestone into another parallel implementation.
   Use versions only for actual compatibility contracts.
-- Existing milestone directories are structural debt. Their consolidation is a
-  part of the current product integration assignment; follow
+- The delivered product has canonical functional paths and compatibility aliases;
+  follow
   [§AR-product.organization](docs/architecture/AR-product.md#organization-organize-the-maintained-product-by-responsibility).
-  Coordinate migrations with any active worker. New work must have a functional
-  home; preserve historical evidence and provenance during migration.
+  Extend those components. Preserve historical proof/profile identities and
+  provenance; coordinate further migrations with any active worker. New work
+  must have a functional home.
 
 ## Workspace and collaboration
 

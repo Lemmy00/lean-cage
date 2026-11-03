@@ -44,16 +44,55 @@ of adapted compiler material must respect its recorded license.
 
 ## sequencing: Assign the next useful integration
 
-The next worker owns the caller-policy VM workflow, root build entry and source
-organization needed by it. It reuses the existing runtime, controller/helper,
-policy and decoder proofs. Its acceptance is [§FS-linux-product.acceptance](../../functional-spec/FS-linux-product.md#acceptance-product-completion).
-It must not substitute new datatype imports, kernel translation experiments or
-another round of reviews for that delivery.
+The caller-policy VM workflow, root build and source organization were delivered
+at `92367a5` against [§FS-linux-product.acceptance](../../functional-spec/FS-linux-product.md#acceptance-product-completion).
+The current assignment is [§RM-roadmap.m5.next](../../roadmap.md#m5next-current-assignment). Its acceptance is a source-connected
+guest-entry guarantee, with the exact execution state in
+[§FS-linux-product.proofs.entry](../../functional-spec/FS-linux-product.md#proofsentry-establish-actual-state-at-workload-entry). Keep the product workflow available while proving
+or refactoring one live path at a time.
 
-Application proof assignments follow the actual policy/launch, supervision and
-publication boundaries of that product. Each one identifies the concrete code,
-primitive assumptions and consumer theorem before implementation. Research is
-assigned only with a specific assumption to remove and a bounded route decision.
+The M5 deliveries are guest entry, host-boundary safety, full policy authority,
+owned lifetime/limits, and justified public observations/composition. Their code,
+premises, consumers and acceptance are [§AR-application-verification](../../architecture/AR-application-verification.md#ar-application-verification-prove-the-application-through-integrated-security-guarantees). Platform
+research is assigned only with a specific assumption to remove and a bounded
+route decision. Earlier references to M5 hardware work belong to the historical
+schedule; current hardware research is [§RM-roadmap.m6](../../roadmap.md#m6-platform-trust-reduction-and-confidentiality-research). The old proof records
+retain their recorded content and theorem scope.
+
+## refinement: Resolve implementation feasibility before expanding the proof work
+
+The post-delivery review found that the three broad M5 regions did not settle
+the source-to-proof route or account explicitly for all host/VM application
+code. Reusing the M4 label for product delivery made its completion easy to
+confuse with the old correspondence target. Keep the revised milestone meanings
+fixed and describe the delivered guarantees by name in public documentation.
+
+Prefer shared executable Lean control/security decisions over separately
+maintained models. First resolve runtime/fork constraints and any necessary
+native adapter connection through [§AR-application-verification.next](../../architecture/AR-application-verification.md#next-first-assignment-and-early-route-decision). The first
+four working hours bound that investigation; they are not an estimate for the
+complete entry proof. Preserve [§REQ-proof-integrity](../../requirements/REQ-proof-integrity.md#req-proof-integrity-never-substitute-a-weaker-claim-for-an-unfinished-proof): a multi-operation executor
+cannot become trusted merely to make the route convenient. The same rule applies
+to Python effects around a verified host decision core.
+
+The current policy proofs establish acceptance/bounds of returned values, while
+the recursive JSON implementation remains `partial`. Proving the byte-to-field
+interpretation belongs to the policy-authority delivery. Entry needs a record
+of actual credentials, handles, namespace/root/cgroup, filter and arguments;
+the earlier receipt labels alone are insufficient. A valid host frame establishes
+structural consistency; truthful inner observations need the later provenance
+and composition result. These are named implementation obligations, not new
+claims about the accepted product.
+
+This refinement used a read-only planning assessment through the local
+`claude-code` skill (configured model `claude-opus-5-5`, maximum effort) and
+targeted inspection of the source/theorem statements. The existing matching
+validation evidence was reused. It was a planning assessment, not a new full
+security audit. Adopt its concrete coverage/parser/runtime concerns; retain
+existing compatibility identifiers and proof rules rather than introducing an
+automatic rewrite or a broader trusted executor. A native refactor may change
+which earlier source proofs remain on the product path; preserve those results
+at their recorded versions and update the live evidence map explicitly.
 
 ## delivery: Integrate the existing core through an owned VM transport
 
