@@ -370,12 +370,26 @@ at `80d4bbe` is preserved. Its trace/input contract repairs live separately unde
 controls, full statement/foundation review and the maintained gate. A new local
 lemma or a passing frozen-candidate replay does not accept that package.
 
+The repaired contract at `b961685` has now passed independent statement and
+focused replay review. Its six requirements are accepted conditional only on
+the corrected aggregate gate; `assurance/m4-parent-validation.json` records that
+outcome. The [repair review](reviews/M4-parent-independent-review.md) preserves
+the decision and exact evidence. Current navigation amendments preserve all 300
+reviewed type/foundation records and 51 compiled proof artifacts.
+
 The full implemented chain replays with `./scripts/check_m4_all.sh`. Documentation
 and dependency fingerprint amendments are explicit and preserve the frozen
 candidate and initialization snapshots, earlier statements and compiled
 identities. All sixteen original obligations remain open. Continue with whole
 input-validation composition and the early Lean/compiler/Linux feasibility edges
 in the assignment before extending setup.
+
+The early [semantics and Linux attempts](architecture/AR-m4-routes.md) expose
+reproducible blockers: strict import of the experimental Lean Clight step
+relation fails on a nested recursor, and the unchanged configured kernel pipe
+translation fails on `__int128`. [§DA-m4-routes](decisions/architectural/DA-m4-routes.md#da-m4-routes-expose-failed-central-connections-before-expanding-setup) records the replacement
+routes. Resolve the semantics/certificate and concurrent kernel source-refinement
+edges before treating further controller expansion as M4 completion work.
 
 ### m4.entry: Next assignment — M4.1 native-semantics feasibility
 

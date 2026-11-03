@@ -9,5 +9,6 @@
 | [§DA-m4-effects](DA-m4-effects.md#da-m4-effects-separate-byte-aware-effects-from-compcert-compiler-traces) | Byte-aware native effects and process loss without inheriting compiler trace theorems |
 | [§DA-m4-controller](DA-m4-controller.md#da-m4-controller-extend-source-correspondence-through-small-controller-routines) | Small controller source slices with explicit parsing, memory and aliasing contracts |
 | [§DA-m4-parent](DA-m4-parent.md#da-m4-parent-preserve-the-candidate-and-track-observations-in-composition) | Preserve the frozen candidate and carry actual parent observations through composition |
+| [§DA-m4-routes](DA-m4-routes.md#da-m4-routes-expose-failed-central-connections-before-expanding-setup) | Preserve failed central connection attempts and require checked replacements before setup expansion |
 | [§DA-grund](DA-grund.md#da-grund-trial-pinned-grund-inside-this-repository-only) | Project-local Grund trial |
 | [§DA-secondary-backend](DA-secondary-backend.md#da-secondary-backend-consider-sele4n-after-the-first-useful-linux-profile) | Optional seLe4n track after M3 |

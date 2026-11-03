@@ -2,8 +2,9 @@
 
 This package implements [§AR-m4-parent.history](../../docs/architecture/AR-m4-parent.md#history-selected-execution-history) and [§AR-m4-parent.inputs](../../docs/architecture/AR-m4-parent.md#inputs-owned-input-representation) from
 the continuation assignment. It preserves the frozen review input under
-`m4/parent-checkpoint/`. It is under development until its full statement review,
-composition cases, negative controls and maintained gate pass.
+`m4/parent-checkpoint/`. Its full statement/focused replay review accepts the six
+bounded requirements at `b961685`, conditional only on the corrected aggregate
+gate. The current outcome is in `assurance/m4-parent-validation.json`.
 
 `TraceRegion.v` carries the actual observation history through certificates.
 `TraceExecution.v` splits every execution at its selected source endpoint.

@@ -23,7 +23,9 @@ run_check python3 m4/parent/amendment.py --replay-candidate
 run_check python3 m4/review/check_receipts.py
 run_check python3 -m unittest discover -s m4/review -p 'test_*.py' -v
 run_check python3 m4/parent/check.py
+# §AR-m4-routes.evidence: Reproduce failed central connections without weakening their goals.
+run_check python3 m4/routes/check.py
 run_check python3 scripts/run_m3_vm.py --check-artifacts
 
-printf '\nImplemented M4 checkpoints and parent repair replayed; independent promotion review remains required.\n'
+printf '\nImplemented M4 checkpoints, reviewed parent contract and early connection attempts replayed.\n'
 printf 'The original correspondence obligations remain open. No VM workloads were run.\n'

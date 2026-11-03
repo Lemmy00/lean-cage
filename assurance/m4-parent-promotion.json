@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "reviewed_revision": "b96168507c2574402b23ce4cdb382ab6fa437808",
+  "review_decision": "six bounded-contract requirements accepted conditional only on corrected aggregate replay",
+  "reviewed_files_sha256": {
+    "assurance/m4-parent-corrected-review-claims.json": "f004e56d4a795f43d54074cae6704b40394dc168f046cc3ecc2c094c58a125ab",
+    "assurance/m4-parent-corrected-review-evidence.json": "feabafd6405f27242d797cbb2f0575b92c7c6bea1a7d30261acbcd4ca2eef986",
+    "assurance/m4-parent-corrected-review-proof-output.json.gz": "16333499339577be42e7f2fc5a6fcb9aa4c996bad8aedd681f7e441fbfe9d5a8",
+    "assurance/m4-parent-corrected-review-validation.json": "c382ef536ea3c9e7423a23483c0ca25b5b5b714edd977cfd04fdf9ad9eb0d06a"
+  },
+  "previous_navigation_sha256": "9c10f3eab091b42d23ed883fce7737528cf2ae5230b69ea07ca0a1ab4ba975b6",
+  "independent_focused_check": {
+    "command": [
+      "python3",
+      "m4/parent/check.py"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 175.506,
+    "log_path": "assurance/m4-parent-independent-check.log.gz",
+    "compressed_log_sha256": "1f0551a9897eebc43dbf527aa2cd947c86d1de0f5157ed75bd847031adbc2d03",
+    "uncompressed_log_sha256": "fac89bdda090b42ec071050f5d63bfb75dd2f8afe8b7e2662912d3739a5e84c2"
+  },
+  "proof_sources_changed_after_review": false,
+  "prior_300_type_foundation_records_must_match": true,
+  "prior_51_compiled_artifacts_must_match": true,
+  "original_obligations_closed": 0,
+  "full_m4_complete": false
+}

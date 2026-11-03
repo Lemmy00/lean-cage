@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "status": "corrected candidate canonical focused checks passed; independent acceptance and aggregate replay pending",
+  "reviewed_base_revision": "d1f361e8b85aeb3d36ac1823447dbbc501216091",
+  "full_m4_complete": false,
+  "original_obligations_closed": 0,
+  "fresh_vm_workloads_run": false,
+  "recorded_utc": "2026-11-02T23:27:58.353409+00:00",
+  "claims_sha256": "f004e56d4a795f43d54074cae6704b40394dc168f046cc3ecc2c094c58a125ab",
+  "evidence_sha256": "feabafd6405f27242d797cbb2f0575b92c7c6bea1a7d30261acbcd4ca2eef986",
+  "canonical_elapsed_seconds": 175.974,
+  "focused_regression_count": 31,
+  "allocated_composition_case_count": 67,
+  "rocq_declaration_count": 300,
+  "compiled_artifact_count": 51,
+  "all_221_prior_types_and_foundations_identical": true,
+  "prior_validation_path": "assurance/m4-parent-reviewed-candidate-validation.json",
+  "validation": [
+    {
+      "command": [
+        "python3",
+        "m4/parent/check.py",
+        "--collect"
+      ],
+      "exit_code": 0,
+      "log_path": "assurance/m4-parent-correction-collect.log.gz",
+      "log_sha256": "0c6bcf0bb149ae7b007d00c0cd1d4964e02d2b71b55e4e9d15df8f8155ac298e",
+      "uncompressed_log_sha256": "8bd2bbb4b60dab5a006048201a56b4d9c05cdb6126a1de89dea34dced3998145"
+    },
+    {
+      "command": [
+        "python3",
+        "m4/parent/check.py"
+      ],
+      "exit_code": 0,
+      "log_path": "assurance/m4-parent-correction-check.log.gz",
+      "log_sha256": "1f0551a9897eebc43dbf527aa2cd947c86d1de0f5157ed75bd847031adbc2d03",
+      "uncompressed_log_sha256": "fac89bdda090b42ec071050f5d63bfb75dd2f8afe8b7e2662912d3739a5e84c2"
+    },
+    {
+      "command": [
+        "./scripts/check.sh"
+      ],
+      "exit_code": 0,
+      "log_path": "assurance/m4-parent-correction-root-check.log.gz",
+      "log_sha256": "f606b4b42286b7e0eef6eb10b6beefec921983f2e1d26ca0511e0351e2bab7a5",
+      "uncompressed_log_sha256": "b156ae2e5ea60d0f16426eee4b5213076c8c73f34ef409dc84f36170e04cdc07"
+    }
+  ]
+}

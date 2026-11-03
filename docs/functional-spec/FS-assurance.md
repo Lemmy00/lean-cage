@@ -736,11 +736,14 @@ The input-validation part of [§FS-workspace.policy](FS-workspace.md#policy-boun
 results through initialization commit `2db87b4`. The preserved `80d4bbe` parent
 candidate remains a historical review input. The maintained repair under
 `m4/parent/` carries actual parent observations through numeric and initialization
-composition and exports input-memory representation. Its status remains under
-review until the complete cases, evidence gate and independent statement review
-are accepted. No new sandbox security guarantee is asserted by this entry.
+composition and exports input-memory representation. The independent review of
+`b961685` accepts its six bounded-contract requirements conditional only on the
+corrected aggregate replay. The current acceptance outcome is recorded in
+`assurance/m4-parent-validation.json`; the review and promotion record preserve
+the exact reviewed inputs. No new sandbox security guarantee is asserted here.
 
-The primary interfaces are `numeric_trace_source`, `trace_execution_split`,
+The primary interfaces are `numeric_trace_source`, `trace_post_bounds_cut`,
+`residual_acceptance_history`, `trace_execution_split`,
 `allocated_numeric_validation`, `allocated_validation_matching` and
 `allocated_composition_execution`; full qualified types, transitive foundations,
 source/export and compiled identities belong in the separate parent claim and
@@ -755,6 +758,14 @@ libc/Linux effects and concurrency, importer faithfulness, compiler-semantics
 compatibility and executable/runtime/loader composition remain open. The native,
 kernel and hardware identities are the earlier preserved profile; this work
 performs no fresh VM replay and closes none of the original sixteen obligations.
+
+Early semantics-connection attempts are recorded separately in
+`assurance/m4-route-feasibility.json`. The inspected Lean Clight port builds, but
+both strict imports of its step relation fail at a nested recursor; unchanged
+configured kernel pipe source is rejected by the frontend at `__int128`.
+Those reproducible blockers and their revised routes do not discharge any
+correspondence obligation. Source-to-source type checking, port builds and
+diagnostic identities do not establish semantic equivalence or a Linux producer.
 
 ## assumptions: Initial assumption and obligation register
 

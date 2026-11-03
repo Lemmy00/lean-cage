@@ -1,6 +1,8 @@
 # M4 parent composition repair — author handoff
 
-**Status: repaired package candidate; independent promotion review pending.**
+**Status: independently reviewed bounded contract; aggregate acceptance is recorded
+in `assurance/m4-parent-validation.json`.** The [independent repair review](M4-parent-independent-review.md)
+accepts the six requirements at `b961685` conditional only on corrected aggregate replay.
 The accepted local baseline remains initialization commit `2db87b4`. The frozen
 `80d4bbe` candidate and its initialization snapshot are preserved. This package
 addresses the first assignment in [M4-CONTINUE.md](../../M4-CONTINUE.md) under
@@ -84,7 +86,7 @@ statement and both declaration-inventory bypasses. Its exact claims, evidence,
 raw output and validation receipt remain under
 `assurance/m4-parent-reviewed-candidate-*`; the separate review-correction record
 names those issues and preserved hashes. Those passing historical checks did
-not constitute acceptance. The corrected statements require another review.
+not constitute acceptance. The corrected statements passed the independent review at `b961685`.
 
 Native controls run the pinned frontend on unchanged C and three real edits to
 the parent guard, cast and comparison. A kernel-checked whole-main identity is

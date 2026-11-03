@@ -3152,7 +3152,7 @@
     "frozen_snapshot_sha256": "e56d65d8d303b5ebe5bd9c33279f99a975439cbd013af359b7b3c8275258bc9c",
     "original_candidate_promoted": false
   },
-  "scope": "Repaired numeric/parent/initialization source candidate; independent acceptance pending; no ordinary Lean/native/Linux security claim.",
+  "scope": "Independently reviewed bounded numeric/parent/initialization source contract at b961685; aggregate receipt governs acceptance; no ordinary Lean/native/Linux security claim.",
   "spec_ids": [
     "AR-m4-parent.history",
     "AR-m4-parent.inputs",

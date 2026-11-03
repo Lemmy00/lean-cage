@@ -13,6 +13,14 @@ and [M4-CONTINUE.md](../M4-CONTINUE.md); the historical M4.1 contract remains at
 milestone work integrated on `main`; temporary branches are for isolation during
 active work, not separate long-lived milestone histories.
 
+The parent repair's independent review and aggregate outcome are recorded in
+`assurance/m4-parent-validation.json`. Its maintained gate is
+`python3 m4/parent/check.py`. Early Lean/Linux connection attempts have a separate
+replay, `python3 m4/routes/check.py`, under [§AR-m4-routes.evidence](architecture/AR-m4-routes.md#evidence-replay-and-claim-boundary).
+Prepare its isolated inspection checkout as described in `m4/routes/README.md`;
+this changes no maintained toolchain or VM pin. Reproducing an expected failed
+connection is not a security proof or M4 completion.
+
 ## Setup and checks
 
 Use Linux x86-64 with Bash, Git, curl, tar, GNU coreutils, Python 3, elan, a C

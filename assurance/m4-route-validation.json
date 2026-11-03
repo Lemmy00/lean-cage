@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "status": "independent replay of failed connection attempts passed; no connecting proof established",
+  "recorded_utc": "2026-11-03T00:21:10.059090+00:00",
+  "full_m4_complete": false,
+  "original_obligations_closed": 0,
+  "fresh_vm_workloads_run": false,
+  "record_sha256": "1be15e7e75f5700ef1c909a884eb00a67e62694ef632525e06629139f27cb3fe",
+  "raw_sha256": "8b140d93e1e23a7eb8c0bafe57c2664a3634ccf0eb2c2fb98040967ddad0106a",
+  "independent_command": [
+    "python3",
+    "m4/routes/check.py"
+  ],
+  "exit_code": 0,
+  "independent_log_path": "assurance/m4-route-independent-check.log.gz",
+  "compressed_log_sha256": "bda55f590630e884e842595200b7fd49a823fc8e0ae8b819127812fe5f825815",
+  "uncompressed_log_sha256": "a3e6fa344958ce6e7920e117716587ecc61dd2e9f6beedc31a07d05bdea14f7e",
+  "independent_controls": [
+    "changed source, port and kernel inputs rejected before builds",
+    "raw archive tampering rejected",
+    "Boolean and number substitutions rejected"
+  ],
+  "aggregate_receipt_path": "assurance/m4-parent-validation.json",
+  "aggregate_receipt_sha256": "456edd85f78d51274b52c5795040af44b284174b96078c6c02e11e9a79a73eb3"
+}

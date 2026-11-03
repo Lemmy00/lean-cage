@@ -57,7 +57,11 @@ Run the proof/build gate separately:
 
 The full implemented M4 chain has a separate gate, `./scripts/check_m4_all.sh`.
 M4.1 feasibility and local reporting/controller proofs through initialization
-are recorded. Parent composition repair is under review; full M4 remains open.
+are recorded. Parent composition repair has passed independent statement/focused
+review; its [acceptance record](assurance/m4-parent-validation.json) tracks the
+aggregate gate. Early Lean/Linux connection attempts expose reproducible blockers;
+full M4 remains open. See the [independent repair review](docs/reviews/M4-parent-independent-review.md)
+and [connection feasibility](docs/architecture/AR-m4-routes.md).
 
 The first run downloads checksum-pinned Grund 0.20.0 into this repository's
 ignored `.tools/` directory and fetches the pinned Lean dependencies. No global

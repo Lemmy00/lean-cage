@@ -46,7 +46,7 @@ bridge, profile, read, digest = candidate.bridge, candidate.profile, candidate.r
 inventory_module = load(DIRECTORY / 'inventory.py', 'maintained_parent_inventory')
 amendment = load(DIRECTORY / 'amendment.py', 'maintained_parent_amendment')
 ENDPOINT = candidate.ENDPOINT
-STATUS = 'kernel-checked parent repair candidate; independent acceptance pending'
+STATUS = 'independently reviewed bounded parent source contract; full M4 remains open'
 PRIMARY_CONTRACTS = [
     'LeanCageParent.NumericTrace.numeric_trace_source',
     'LeanCageParent.TraceExecution.trace_execution_split',
@@ -91,6 +91,7 @@ def sources():
     paths += [ROOT / 'docs/architecture/AR-m4-parent.md',
               ROOT / 'docs/decisions/architectural/DA-m4-parent.md',
               ROOT / 'docs/reviews/M4-parent-repair.md',
+              ROOT / 'docs/reviews/M4-parent-independent-review.md',
               amendment.RECORD, amendment.BEFORE, ROOT / 'assurance/m4-parent-baseline-validation.json',
               ROOT / 'assurance/m4-parent-baseline-check.log.gz']
     paths += [ROOT / 'assurance/m4-parent-build-roots.json',
@@ -99,6 +100,10 @@ def sources():
     paths += [ROOT / ('assurance/m4-parent-reviewed-candidate-' + suffix)
               for suffix in ['claims.json', 'evidence.json', 'proof-output.json.gz', 'validation.json']]
     paths += [ROOT / 'assurance/m4-parent-review-correction.json']
+    paths += [ROOT / ('assurance/m4-parent-corrected-review-' + suffix)
+              for suffix in ['claims.json', 'evidence.json', 'proof-output.json.gz', 'validation.json']]
+    paths += [ROOT / 'assurance/m4-parent-navigation-stage1.json',
+              ROOT / 'assurance/m4-parent-promotion.json', ROOT / 'assurance/m4-parent-independent-check.log.gz']
     paths += [p for p in (ROOT / 'm4/feasibility').iterdir() if p.is_file()]
     paths += [ROOT / 'assurance/m4-compiler-feasibility.json',
               ROOT / 'assurance/m4-compiler-feasibility-output.json.gz']
@@ -265,6 +270,9 @@ def validate_candidate_preservation(records):
 
 
 def validate_evidence(evidence, archived, actual, claims_sha256):
+    reviewed = read(ROOT / 'assurance/m4-parent-corrected-review-evidence.json')
+    if actual['artifact_sha256'] != reviewed['artifact_sha256']:
+        raise ValueError('promotion changed a reviewed compiled artifact')
     for key in ['source_sha256', 'baseline', 'exports', 'artifact_sha256', 'kernel_output']:
         if actual[key] != evidence[key] or actual[key] != archived[key]:
             raise ValueError('parent evidence differs: ' + key)
@@ -345,8 +353,17 @@ def collect():
     if read(ROOT / 'assurance/m4-parent-review-correction.json')['preserved_sha256'] != REVIEW_CHECKPOINT:
         raise ValueError('rejected review checkpoint inventory differs')
     bridge.connection().verify_hashes(REVIEW_CHECKPOINT)
+    promotion = read(ROOT / 'assurance/m4-parent-promotion.json')
+    bridge.connection().verify_hashes(promotion['reviewed_files_sha256'])
+    log = ROOT / promotion['independent_focused_check']['log_path']
+    if (digest(log) != promotion['independent_focused_check']['compressed_log_sha256']
+            or amendment.sha(gzip.decompress(log.read_bytes())) !=
+            promotion['independent_focused_check']['uncompressed_log_sha256']):
+        raise ValueError('independent promotion receipt differs')
     before, identity = sources(), candidate.baseline_identity()
     report = collect_proofs()
+    reviewed = read(ROOT / 'assurance/m4-parent-corrected-review-claims.json')
+    validate_claims(reviewed, report)
     # The early compiler interface is a separate experiment, not a discharged M4 edge.
     load(ROOT / 'm4/feasibility/check.py', 'parent_compiler_feasibility').check()
     if before != sources() or identity != candidate.baseline_identity():

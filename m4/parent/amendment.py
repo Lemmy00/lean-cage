@@ -12,6 +12,8 @@ BEFORE = ROOT / 'assurance/m4-parent-navigation-before.json.gz'
 DOCUMENTS = {'AGENTS.md', 'README.md', 'docs/development.md', 'docs/roadmap.md',
              'docs/functional-spec/FS-assurance.md', 'docs/architecture/README.md',
              'docs/decisions/architectural/README.md'}
+STAGE_ONE = ROOT / 'assurance/m4-parent-navigation-stage1.json'
+STAGE_ONE_SHA256 = '9c10f3eab091b42d23ed883fce7737528cf2ae5230b69ea07ca0a1ab4ba975b6'
 
 
 def sha(data):
@@ -65,6 +67,14 @@ def validate(record=None, original=None, root=ROOT):
 
 def check():
     record = validate()
+    previous = json.loads(STAGE_ONE.read_text())
+    if (sha(STAGE_ONE.read_bytes()) != STAGE_ONE_SHA256
+            or record['previous_amendment_sha256'] != STAGE_ONE_SHA256
+            or record['before_archive_sha256'] != previous['before_archive_sha256']
+            or set(record['files']) != set(previous['files'])
+            or any(row['before_sha256'] != previous['files'][path]['before_sha256']
+                   for path, row in record['files'].items())):
+        raise ValueError('preserved first navigation amendment differs')
     if sha(BEFORE.read_bytes()) != record['before_archive_sha256']:
         raise ValueError('navigation preimage archive differs')
     for filename, field in [
