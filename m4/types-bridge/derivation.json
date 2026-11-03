@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "derived_from": "m4/bridge/toolchain-lock.json",
+  "base_source_sha256": {
+    "src/leanExpr.mli": {
+      "before": "2b1b7b0acfedbe1df4d310a8a57ed873ab0699a36aca04b69db5d9c6c9120da7",
+      "after": "f1b1f70b4a4268b973fbaeddbff177285d97a569845df61cef390076a69872e5"
+    },
+    "src/leanParse.ml": {
+      "before": "e030a1bee932b9c3837d1d354c1ca7b930088edad48fb85150a38620f4c0166c",
+      "after": "a0229be16af42b311bedb59e8bb6ff5941732379dca3772d58877dab39b37b0a"
+    },
+    "src/leanParseShared.mli": {
+      "before": "9bb822dca988ef99c8d38d345d08d150721ca3bd3a88754699c69d669c1e4f90",
+      "after": "e4fc2595ac75f67187ff27248372c39697af22890d977a15b8baebc6852172a6"
+    },
+    "src/leanParseNdjson.ml": {
+      "before": "90f2e6cd9e839d080cbf85aa574f55078ee235ede06defac14c05d27dd45ad8d",
+      "after": "40786b89c419cfe57572894fd355acf081c588735be073773bfeeca9b59ea7aa"
+    },
+    "src/lean.ml": {
+      "before": "0d9bffa94f917a61c9d7471bd40ed407f1c4f8c44878dbab7b4552e58ce6d7fc",
+      "after": "d4082104ee0c51ced87e75348a47557b7e8510b55ae9b42520e1c04577df5e3b"
+    },
+    "src/lean.mli": {
+      "before": "48b80ee28a285770fad7e61457da5cde054a21de5a5476ef27bdc8d72e1dec9c",
+      "after": "1c0dcf30f03b9237aa9bccb716cbda423d3bc404961e79261b38934579b343c9"
+    },
+    "src/g_lean.mlg": {
+      "before": "50a540f767f47914aef4767a9fbf23d2be500b9828da5f017627fad7b0a061cf",
+      "after": "77f6747698ff8ab7e11f4f6046f5e0457984d8fc7e5ddfc4794bf9fb44bbb649"
+    }
+  },
+  "patch_sha256": "94b699fd5c5d8015677e1dcd0786172a1b30c05275ebcb2c0d68ad26c82c1919",
+  "ported_closure_sha256": "fdf2cb2e2b75c2e0e96af346bb21dd55652436cf92d01445ccb190724403487c",
+  "modules": [
+    "TypePrefix",
+    "TypeRecursors",
+    "StmtPrefix",
+    "StmtRecursors",
+    "CheckedRecursors",
+    "TyRelation"
+  ]
+}

@@ -5,8 +5,8 @@
   "original_obligations_closed": 0,
   "fresh_vm_workloads_run": false,
   "source_sha256": {
-    "docs/architecture/AR-m4-routes.md": "a19acf77befdb4599a1d5b534ac64ff986bf859ecd9e5dd17e679a3f2d99d21c",
-    "docs/decisions/architectural/DA-m4-routes.md": "7d7c3c62d9c8135a409a22459ee703defe623111f2d004a1f2f98746f51fe9f8",
+    "docs/architecture/AR-m4-routes.md": "7f0b77e3febd8c49e59eda0f38b24b9ec15c7d224f7562bd3d36fcf24cfa3d7a",
+    "docs/decisions/architectural/DA-m4-routes.md": "291cd7183d72152c4043e544e62f17324b9b3b484afb2994c0d8c316ddf00e73",
     "m3/lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
     "m4/bridge/opam-switch.export": "9aa7fab426dfab230488406686c78488822c8df14194193585ea6e2373cb7012",
     "m4/bridge/strict-importer.patch": "3db685bdb29d9c5927940c0f46b675795e8b9db59dc2a4f0cfba269573529c0a",

@@ -1,0 +1,659 @@
+--- a/src/leanExpr.mli
++++ b/src/leanExpr.mli
+@@ -38,11 +38,18 @@
+ }
+ type ax = { name : LeanName.t; ty : expr; univs : LeanName.t list }
+ 
++type recursor_rule = { constructor : LeanName.t; fields : int; rhs : expr }
++
++type recursor = { rname : LeanName.t; rty : expr; runivs : LeanName.t list; nparams : int; nmotives : int; nminors : int; rules : recursor_rule list }
++
+ type ind = {
+   name : LeanName.t;
+   params : (binder_kind * LeanName.t * expr) list;
+   ty : expr;
+   ctors : (LeanName.t * expr) list;
++  group : LeanName.t list;
++  nested : int;
++  recursors : recursor list;
+   univs : LeanName.t list;
+ }
+ 
+@@ -55,6 +62,6 @@
+   token : string;
+ }
+ 
+-type entry = Def of def | Ax of ax | Ind of ind | Quot of LeanName.t
++type entry = Def of def | Ax of ax | Ind of ind | Mutual of ind list | Quot of LeanName.t
+ 
+ type action = Entry of entry | Nota of notation
+--- a/src/leanParse.ml
++++ b/src/leanParse.ml
+@@ -111,7 +111,7 @@
+       List.map (fun (nctor, ty) -> (nctor, fix_ctor name nparams ty)) ctors
+     in
+     let univs = List.map (get_name state) univs in
+-    let ind = { name; params; ty; ctors; univs } in
++    let ind = { name; params; ty; ctors; univs; group = []; nested = 0; recursors = [] } in
+     (state, Some (Entry (Ind ind)))
+   | [ "#QUOT" ] ->
+     line_msg quot_name;
+--- a/src/leanParseShared.mli
++++ b/src/leanParseShared.mli
+@@ -14,3 +14,5 @@
+ val pop_params : int -> expr -> (binder_kind * LeanName.t * expr) list * expr
+ val fix_ctor : LeanName.t -> int -> expr -> expr
+ val quot_name : LeanName.t
++
++val replace_ind : LeanName.t -> int -> LeanExpr.expr -> LeanExpr.expr
+--- a/src/leanParseNdjson.ml
++++ b/src/leanParseNdjson.ml
+@@ -266,7 +266,21 @@
+   with Assert_failure _ ->
+     err ~lcnt "inductive parameter count does not match exported type"
+ 
+-let parse_ind_val ~lcnt state ind_json ctor_jsons =
++let parse_rec_val ~lcnt state payload =
++  let rules = require_list ~lcnt "rules" payload |> List.map (fun rule ->
++    { constructor = get_name ~lcnt state (require_int ~lcnt "ctor" rule);
++      fields = require_int ~lcnt "nfields" rule;
++      rhs = get_expr ~lcnt state (require_int ~lcnt "rhs" rule) }) in
++  if require_bool ~lcnt "isUnsafe" payload then err ~lcnt "unsafe recursor";
++  { rname = get_name ~lcnt state (require_int ~lcnt "name" payload);
++    rty = get_expr ~lcnt state (require_int ~lcnt "type" payload);
++    runivs = level_params ~lcnt state payload;
++    nparams = require_int ~lcnt "numParams" payload;
++    nmotives = require_int ~lcnt "numMotives" payload;
++    nminors = require_int ~lcnt "numMinors" payload;
++    rules }
++
++let parse_ind_val ~lcnt state ind_json ctor_jsons recs =
+   let name = get_name ~lcnt state (require_int ~lcnt "name" ind_json) in
+   line_msg ~lcnt name;
+   let nparams = require_int ~lcnt "numParams" ind_json in
+@@ -282,14 +296,35 @@
+         LeanParseShared.fix_ctor name nparams ctor_ty)))
+   in
+   let univs = level_params ~lcnt state ind_json in
+-  Entry (Ind { name; params; ty; ctors; univs })
++  Entry (Ind { name; params; ty; ctors; univs; group = []; nested = require_int ~lcnt "numNested" ind_json; recursors = List.map (parse_rec_val ~lcnt state) recs })
+ 
+ let parse_inductive ~lcnt state payload =
+   let types = require_list ~lcnt "types" payload in
+   let ctors = require_list ~lcnt "ctors" payload in
+   match types with
+-  | [ ind_json ] -> (state, Some (parse_ind_val ~lcnt state ind_json ctors))
+-  | _ -> err ~lcnt "mutual inductive groups are not supported by the current importer model"
++  | [ ind_json ] -> (state, Some (parse_ind_val ~lcnt state ind_json ctors (require_list ~lcnt "recs" payload)))
++  | _ :: _ :: _ ->
++    let names = List.map (fun t -> get_name ~lcnt state (require_int ~lcnt "name" t)) types in
++    if List.length names <> 2 || List.exists (fun t ->
++      require_int ~lcnt "numParams" t <> 0 || require_int ~lcnt "numNested" t <> 0 ||
++      require_int ~lcnt "numIndices" t <> 0 || level_params ~lcnt state t <> [] ||
++      require_bool ~lcnt "isUnsafe" t) types then
++      err ~lcnt "unsupported mutual inductive shape";
++    let recs = List.map (parse_rec_val ~lcnt state) (require_list ~lcnt "recs" payload) in
++    let inds = List.map (fun t ->
++      let name = get_name ~lcnt state (require_int ~lcnt "name" t) in
++      line_msg ~lcnt name;
++      let ownctors = List.filter (fun c -> N.equal name
++        (get_name ~lcnt state (require_int ~lcnt "induct" c))) ctors in
++      let ownctors = List.map (fun c ->
++        let cn,ty = parse_ctor_val ~lcnt state c in
++        let ty = List.fold_left (fun ty (k,n) -> LeanParseShared.replace_ind n k ty) ty
++          (List.mapi (fun k n -> List.length names - k - 1,n) names) in
++        cn,ty) ownctors in
++      { name; params = []; ty = get_expr ~lcnt state (require_int ~lcnt "type" t);
++        ctors = ownctors; univs = []; nested = 0; group = names; recursors = recs }) types in
++    state, Some (Entry (Mutual inds))
++  | [] -> err ~lcnt "empty inductive group"
+ 
+ let parse_meta ~lcnt state json =
+   let meta = require_member ~lcnt "meta" json in
+--- a/src/lean.ml
++++ b/src/lean.ml
+@@ -219,7 +219,7 @@
+ 
+ (* LeanCage bounded bridge trial: refuse the upstream unchecked elimination path.
+    The original LGPL-2.1-only source and license remain in this isolated checkout. *)
+-let with_unsafe_univs _f () =
++let _with_unsafe_univs _f () =
+   CErrors.user_err Pp.(str "M4 strict bridge refuses disabled elimination checking")
+ 
+ module N = LeanName
+@@ -706,21 +706,7 @@
+     | exception _ -> None
+   else None
+ 
+-let get_predeclared_def defn n i =
+-  if N.equal n (N.append_list N.anon defn) then
+-    let def_name = name_for_core n i in
+-    let reg = "lean." ^ Id.to_string def_name in
+-    match Rocqlib.lib_ref reg with
+-    | ConstRef c -> Some (def_name, c)
+-    | _ ->
+-      CErrors.user_err
+-        Pp.(
+-          str "Bad registration for " ++ str reg ++ str " expected a constant.")
+-    | exception _ -> None
+-  else None
+-
+-type predeclared_ind_kind = Eq | Nat | Nat_le | Or | And | Fin | UInt32 | Char
+-type predeclared_def_kind = UInt32_size | Nat_isValidChar
++type predeclared_ind_kind = Eq | Nat | Nat_le | Or | And | Fin
+ type predeclared_ind_as_def_kind = ULift_cumul
+ 
+ let get_predeclared_cnames (k : predeclared_ind_kind) n =
+@@ -731,8 +717,6 @@
+   | Or -> [ N.append n "inl"; N.append n "inr" ]
+   | And -> [ N.append n "intro" ]
+   | Fin -> [ N.append n "mk" ]
+-  | UInt32 -> [ N.append n "mk" ]
+-  | Char -> [ N.append n "mk" ]
+ 
+ let get_predeclared_ind_any n i =
+   List.filter_map
+@@ -745,8 +729,6 @@
+       (Or, [ "Or" ]);
+       (And, [ "And" ]);
+       (Fin, [ "Fin" ]);
+-      (UInt32, [ "UInt32" ]);
+-      (Char, [ "Char" ]);
+     ]
+ 
+ let get_predeclared_ind_some n i =
+@@ -773,24 +755,7 @@
+     CErrors.user_err
+       Pp.(str "Multiple predeclared ind-as-def constants for " ++ N.pp n)
+ 
+-let get_predeclared_def_any n i =
+-  List.filter_map
+-    (fun (defk, defh) ->
+-      get_predeclared_def defh n i |> Option.map (fun x -> (defk, defh, x)))
+-    [
+-      (UInt32_size, [ "UInt32"; "size" ]);
+-      (Nat_isValidChar, [ "Nat"; "isValidChar" ]);
+-    ]
+-
+-let get_predeclared_def_some n i =
+-  match get_predeclared_def_any n i with
+-  | [] -> None
+-  | [ x ] -> Some x
+-  | _ :: _ :: _ ->
+-    CErrors.user_err Pp.(str "Multiple predeclared constants for " ++ N.pp n)
+-
+ (* let get_predeclared_eq n i = get_predeclared_ind "eq" n i *)
+-let mk_char_prim = "Char.mk.reflective_prim"
+ 
+ (*
+ Register Nat_isValidChar as lean.Nat_isValidChar.
+@@ -806,6 +771,10 @@
+   Summary.ref ~name:"lean-declared-instances" N.Map.empty
+ 
+ let entries : entry N.Map.t ref = Summary.ref ~name:"lean-entries" N.Map.empty
++let checked_special = Summary.ref ~name:"lean-checked-special-recursors" N.Set.empty
++let { Goptions.get = defer_nested } =
++  Goptions.declare_bool_option_and_ref ~key:["Lean"; "Defer"; "Nested"; "Recursors"] ~value:false ()
++
+ 
+ let squash_info : squashy N.Map.t ref =
+   Summary.ref ~name:"lean-squash-info" N.Map.empty
+@@ -942,61 +911,6 @@
+     | `Await -> assert false (* This case should not occur for a string input *)
+   in
+   collect_codepoints [] *)
+-
+-let string_to_codepoints str =
+-  let rec decode_utf8 s pos acc =
+-    if pos >= String.length s then List.rev acc
+-    else
+-      let c = Char.code (String.get s pos) in
+-      let n =
+-        if c < 0x80 then (1, c)
+-        else if c < 0xE0 then (2, c land 0x1F)
+-        else if c < 0xF0 then (3, c land 0x0F)
+-        else (4, c land 0x07)
+-      in
+-      let bytes, value = n in
+-      let code_point = ref value in
+-      for i = 1 to bytes - 1 do
+-        let next_byte = Char.code (String.get s (pos + i)) in
+-        code_point := (!code_point lsl 6) lor (next_byte land 0x3F)
+-      done;
+-      decode_utf8 s (pos + bytes) (!code_point :: acc)
+-  in
+-  decode_utf8 str 0 []
+-
+-let check_valid_codepoints cs =
+-  List.map
+-    (fun c ->
+-      if c < 0xd800 || (0xdfff < c && c < 0x110000) then c
+-      else
+-        let bad_char = Printf.sprintf "U+%04X" c in
+-        CErrors.user_err
+-          Pp.(str (Printf.sprintf "Invalid codepoint: %s" bad_char)))
+-    cs
+-
+-let mk_char mkChar (c : int) =
+-  Constr.(mkApp (mkChar, [| mkInt (Uint63.of_int c) |]))
+-
+-let mk_list list uinst ty l =
+-  let cNil = Constr.(mkApp (mkConstructU ((list, 1), uinst), [| ty |])) in
+-  let cCons = Constr.mkConstructU ((list, 2), uinst) in
+-  let rec mk_list_rec l =
+-    match l with
+-    | [] -> cNil
+-    | hd :: tl -> Constr.mkApp (cCons, [| ty; hd; mk_list_rec tl |])
+-  in
+-  mk_list_rec l
+-
+-let mk_string char string list char_uinst mkChar s =
+-  let codepoints =
+-    try check_valid_codepoints (string_to_codepoints s)
+-    with Failure msg as exn ->
+-      let _, info = Exninfo.capture exn in
+-      CErrors.user_err ~info Pp.(str msg)
+-  in
+-  let chars = List.map (mk_char mkChar) codepoints in
+-  let ls = mk_list list char_uinst char chars in
+-  Constr.(mkApp (mkConstructU ((string, 1), UVars.Instance.empty), [| ls |]))
+ 
+ (* [c] has type [indu] applied to [args] *)
+ let unfold_proj_case env evd ~field ~indu ~mib ~mip ~args c =
+@@ -1169,51 +1083,8 @@
+           ()
+       in
+       ret (nat_int nat double i)
+-    | String s ->
+-      (* instantiate (N.append N.anon "Char") [] >>= fun char -> *)
+-      (* let (_, charu) = Constr.destInd char in *)
+-      instantiate (N.append N.anon "String") [] >>= fun string ->
+-      let string, _ = Constr.destInd string in
+-      instantiate (N.append (N.append N.anon "String") "mk") []
+-      >>= fun string_mk ->
+-      get_uconv >>= fun uconv ->
+-      let list, char =
+-        with_env_evm env uconv
+-          (fun env evd () ->
+-            let ty =
+-              Retyping.get_type_of env evd (EConstr.of_constr string_mk)
+-            in
+-            let _, list_char, _ = EConstr.destProd evd ty in
+-            let list, char =
+-              match EConstr.destApp evd list_char with
+-              | list, [| char |] -> (list, char)
+-              | _ ->
+-                CErrors.user_err
+-                  Pp.(
+-                    str "Invalid type for string constructor: "
+-                    ++ Printer.pr_type_env env evd (EConstr.to_constr evd ty)
+-                    ++ str " ("
+-                    ++ Printer.pr_type_env env evd
+-                         (EConstr.to_constr evd list_char)
+-                    ++ str " should be an application of list to char)")
+-            in
+-            (EConstr.to_constr evd list, EConstr.to_constr evd char))
+-          ()
+-      in
+-      (* instantiate (N.append N.anon "List") [] >>= fun list -> *)
+-      let list, _ = Constr.destInd list in
+-      get_uconv >>= fun uconv ->
+-      let mkChar =
+-        with_env_evm env uconv
+-          (fun env evd () ->
+-            let _, mkChar =
+-              Evd.fresh_global env evd
+-                (Rocqlib.lib_ref ("lean." ^ mk_char_prim))
+-            in
+-            EConstr.to_constr evd mkChar)
+-          ()
+-      in
+-      ret (mk_string char string list UVars.Instance.empty mkChar s)
++    | String _ ->
++      CErrors.user_err Pp.(str "the checked type bridge does not support string literals")
+ 
+ and instantiate n univs uconv =
+   assert (List.length univs < Sys.int_size);
+@@ -1252,18 +1123,12 @@
+     | Def def -> declare_def def i
+     | Ax ax -> declare_ax ax i
+     | Ind ind -> declare_ind ind i
++    | Mutual _ -> CErrors.user_err Pp.(str "mutual instances must be declared together")
+     | Quot _ -> CErrors.user_err Pp.(str "quot must be predeclared")
+     | exception Not_found -> CErrors.user_err Pp.(str "missing " ++ N.pp n))
+ 
+ and declare_def { name = n; ty; body; univs; hint; kernel_opaque } i =
+   let ref, algs =
+-    match get_predeclared_def_some n i with
+-    | Some ((UInt32_size | Nat_isValidChar), _, (def_name, c)) ->
+-      (* Hack to let the user predeclare some constants
+-         TODO make a more general Register-like API? *)
+-      Feedback.msg_info Pp.(Id.print def_name ++ str " is predeclared");
+-      (GlobRef.ConstRef c, [])
+-    | None ->
+       let uconv = start_uconv univs i in
+       let uconv, ty = to_constr empty_env ty uconv in
+       let uconv, body = to_constr empty_env body uconv in
+@@ -1330,7 +1195,7 @@
+   in
+   (acc, List.rev params)
+ 
+-and declare_ind { name = n; params; ty; ctors; univs } i =
++and declare_ind { name = n; params; ty; ctors; univs; nested; recursors; group = _ } i =
+   (* Handle inductives predeclared as definitions (e.g., ULift with cumulativity).
+      We check if there's a cumul registration for this specific instance. *)
+   match get_predeclared_ind_as_def_some n i with
+@@ -1391,7 +1256,7 @@
+       in
+       (mind, [], ind_name, [ cname ], univs, squashy)
+     | Some
+-        ( ((Nat | Nat_le | Or | And | Fin | UInt32 | Char) as k),
++        ( ((Nat | Nat_le | Or | And | Fin) as k),
+           _,
+           (ind_name, mind) ) ->
+       (* Hack to let the user predeclare various types before running Lean Import
+@@ -1533,12 +1398,11 @@
+             []
+         in
+         let act () = try act BiFinite with e -> act Finite in
+-        if squashy.lean_squashes || not coq_squashes then act ()
+-        else with_unsafe_univs act ()
+-      in
+-      assert (
+-        squashy.lean_squashes
+-        || (Global.lookup_mind mind).mind_packets.(0).mind_squashed == None);
++        if not squashy.lean_squashes && coq_squashes && record = None then
++          Feedback.msg_notice Pp.(str "Strict SProp-only elimination for " ++ N.pp n);
++        act ()
++      in
++
+       (* Declare projections if the inductive is a record *)
+       let () =
+         match record with
+@@ -1575,6 +1439,10 @@
+       cnames
+   in
+ 
++  if nested > 0 && defer_nested () then begin
++    Feedback.msg_notice Pp.(str "Deferred nested recursors for " ++ N.pp n);
++    inst
++  end else begin
+   (* elim *)
+   let make_scheme fam =
+     let u =
+@@ -1617,7 +1485,8 @@
+   in
+   let nrec = N.append n "rec" in
+   let elims =
+-    if squashy.lean_squashes then [ ("_indl", SchemeSProp) ]
++    if squashy.lean_squashes || (Global.lookup_mind mind).mind_packets.(0).mind_squashed <> None
++    then [ ("_indl", SchemeSProp) ]
+     else [ ("_recl", SchemeType); ("_indl", SchemeSProp) ]
+   in
+ 
+@@ -1661,6 +1530,7 @@
+       elims
+   in
+   inst
++  end
+ 
+ (** Generate and add the squashy info *)
+ let squashify { name = n; params; ty; ctors; univs } =
+@@ -1805,8 +1675,13 @@
+   in
+   if not (lazy_instances ()) then loop 0
+ 
++let { Goptions.get = lazy_definition_instances } =
++  Goptions.declare_bool_option_and_ref
++    ~key:["Lean"; "Demand"; "Definitions"] ~value:false ()
++
+ let declare_def def =
+-  declare_instances (fun i -> ignore (declare_def def i)) def.univs
++  if not (lazy_definition_instances ()) then
++    declare_instances (fun i -> ignore (declare_def def i)) def.univs
+ 
+ let declare_ax ax =
+   declare_instances (fun i -> ignore (declare_ax ax i)) ax.univs
+@@ -1815,7 +1690,38 @@
+   let () = squashify ind in
+   declare_instances (fun i -> ignore (declare_ind ind i)) ind.univs
+ 
++let declare_mutual inds =
++  if not (defer_nested ()) || List.length inds <> 2 || List.exists (fun ind ->
++    ind.univs <> [] || ind.params <> [] || ind.nested <> 0) inds then
++    CErrors.user_err Pp.(str "unsupported mutual inductive group");
++  List.iter squashify inds;
++  let uconv = start_uconv [] 0 in
++  let uconv, arities = CList.fold_left_map (fun uconv ind ->
++    let uconv,ty = to_constr empty_env ind.ty uconv in uconv,(ind,ty)) uconv inds in
++  let env = List.fold_left (fun env (ind,ty) ->
++    Environ.push_rel_context_val (LocalAssum
++      (Context.make_annot (N.to_name ind.name) Sorts.Relevant, ty)) env) empty_env arities in
++  let uconv, packets = CList.fold_left_map (fun uconv (ind,ty) ->
++    let uconv,ctys = CList.fold_left_map (fun uconv (_,cty) -> to_constr env cty uconv) uconv ind.ctors in
++    uconv, { Entries.mind_entry_typename = name_for ind.name 0;
++      mind_entry_arity = ty; mind_entry_consnames = List.map (fun (n,_) -> name_for n 0) ind.ctors;
++      mind_entry_lc = ctys }) uconv arities in
++  let univs,algs = univ_entry_gen uconv [] in
++  let entry = { Entries.mind_entry_params = []; mind_entry_record = None;
++    mind_entry_finite = Finite; mind_entry_inds = packets; mind_entry_private = None;
++    mind_entry_universes = Polymorphic_ind_entry univs; mind_entry_variance = None } in
++  let mind = DeclareInd.declare_mutual_inductive_with_eliminations entry
++    (UState.Polymorphic_entry UContext.empty, UnivNames.empty_binders) [] in
++  List.iteri (fun k ind ->
++    add_declared ind.name 0 { ref = GlobRef.IndRef (mind,k); algs };
++    List.iteri (fun c (name,_) -> add_declared name 0
++      { ref = GlobRef.ConstructRef ((mind,k),c+1); algs }) ind.ctors;
++    entries := N.Map.add ind.name (Ind ind) !entries) inds;
++  Feedback.msg_notice Pp.(str "Deferred exported mutual recursors")
++
+ let entry_name = function
++| Mutual (ind::_) -> ind.name
++| Mutual [] -> CErrors.user_err Pp.(str "empty mutual group")
+ | Quot name | Def { name } | Ax { name } | Ind { name } -> name
+ 
+ let add_entry entry =
+@@ -1829,8 +1735,9 @@
+     | Def def -> declare_def def
+     | Ax ax -> declare_ax ax
+     | Ind ind -> declare_ind ind
+-  in
+-  entries := N.Map.add (entry_name entry) entry !entries
++    | Mutual inds -> declare_mutual inds
++  in
++  match entry with Mutual _ -> () | _ -> entries := N.Map.add (entry_name entry) entry !entries
+ 
+ let rec is_arity = function
+   | Sort _ -> true
+@@ -1863,7 +1770,8 @@
+         | Ax { univs } | Def { univs } | Ind { univs } ->
+           let l = List.length univs in
+           (max m l, cnt + (1 lsl l))
+-        | Quot _ -> (max m 1, cnt + 2))
++        | Quot _ -> (max m 1, cnt + 2)
++        | Mutual _ -> CErrors.anomaly Pp.(str "unexpected unexpanded mutual entry"))
+       !entries (0, 0)
+   in
+   let nonarities =
+@@ -1871,6 +1779,7 @@
+       (fun _ entry cnt ->
+         match entry with
+         | Ax _ | Def _ | Quot _ -> cnt
++        | Mutual _ -> CErrors.anomaly Pp.(str "unexpected unexpanded mutual entry")
+         | Ind ind -> if is_arity ind.ty then cnt else cnt + 1)
+       !entries 0
+   in
+@@ -2058,13 +1967,14 @@
+ let pstate = Summary.ref ~name:"lean-parse-state" LeanParse.empty_state
+ 
+ let lean_obj =
+-  let cache (pstatev, setsv, declaredv, entriesv, squash_infov, heightv) =
++  let cache (pstatev, setsv, declaredv, entriesv, squash_infov, heightv, checkedv) =
+     pstate := pstatev;
+     sets := setsv;
+     declared := declaredv;
+     entries := entriesv;
+     squash_info := squash_infov;
+     height_cache := heightv;
++    checked_special := checkedv;
+     ()
+   in
+   let open Libobject in
+@@ -2107,4 +2017,130 @@
+   let old_pstatev =
+     match pstatev with OldParser pstatev -> pstatev | NdjsonParser _ -> !pstate
+   in
+-  Lib.add_leaf (lean_obj (old_pstatev, !sets, !declared, !entries, !squash_info, !height_cache))
++  Lib.add_leaf (lean_obj (old_pstatev, !sets, !declared, !entries, !squash_info, !height_cache, !checked_special))
++
++(* §AR-m4-routes.reporting.bridge: Check every exported signature and reduction. *)
++let register_nested name root_type root_prop list_type list_prop =
++  let flags = Global.typing_flags () in
++  if not (flags.check_guarded && flags.check_positive && flags.check_universes
++          && flags.check_eliminations) then
++    CErrors.user_err Pp.(str "nested recursor registration requires all kernel typing checks");
++  let n = N.append_list N.anon (String.split_on_char '.' name) in
++  let ind = match N.Map.find_opt n !entries with
++    | Some (Ind ind) -> ind
++    | _ -> CErrors.user_err Pp.(str "missing exported inductive " ++ N.pp n) in
++  let is_nested = ind.nested = 1 && ind.group = [] in
++  let is_mutual = ind.nested = 0 && List.length ind.group = 2 && N.equal (List.hd ind.group) n in
++  if (not is_nested && not is_mutual) || ind.params <> [] || ind.univs <> []
++     || List.length ind.recursors <> 2 then
++    CErrors.user_err Pp.(str "unsupported nested recursor group");
++  let secondary = if is_nested then None else
++    match N.Map.find_opt (List.nth ind.group 1) !entries with
++    | Some (Ind other) -> Some other
++    | _ -> CErrors.user_err Pp.(str "missing secondary mutual type") in
++  let recnames = [N.append n "rec"; (match secondary with None -> N.append n "rec_1"
++    | Some other -> N.append other.name "rec")] in
++  let helpers = [(List.nth recnames 0, root_type, root_prop);
++                 (List.nth recnames 1, list_type, list_prop)] in
++  let lookup rname = match List.find_opt (fun r -> N.equal r.rname rname) ind.recursors with
++    | Some r -> r | None -> CErrors.user_err Pp.(str "missing exported recursor") in
++  let expected_ctors rname = if N.equal rname (List.nth recnames 0)
++    then List.map fst ind.ctors
++    else match secondary with Some other -> List.map fst other.ctors
++    | None -> [N.append_list N.anon ["List";"nil"]; N.append_list N.anon ["List";"cons"]] in
++  let minor_count = List.length ind.ctors + (match secondary with None -> 2
++    | Some other -> List.length other.ctors) in
++  List.iter (fun r ->
++    let expected = expected_ctors r.rname in
++    let actual = List.map (fun rule -> rule.constructor) r.rules in
++    if List.length actual <> List.length expected ||
++       not (List.for_all (fun c -> List.length (List.filter (N.equal c) actual) = 1) expected) then
++      CErrors.user_err Pp.(str "missing or duplicate exported nested recursor reduction");
++    List.iter (fun rule ->
++      let uconv = start_uconv [] 0 in
++      let _, ctor = instantiate rule.constructor
++        (if List.exists (N.equal rule.constructor)
++          [N.append_list N.anon ["List";"nil"];N.append_list N.anon ["List";"cons"]]
++         then [U.Prop] else []) uconv in
++      let ((mind,packet),index),_ = Constr.destConstruct ctor in
++      let fields = (Global.lookup_mind mind).mind_packets.(packet).mind_consnrealargs.(index-1) in
++      if fields <> rule.fields then CErrors.user_err Pp.(str "exported nested recursor constructor arity differs")) r.rules
++  ) ind.recursors;
++  let helper_ref s = Nametab.locate (Libnames.qualid_of_string s) in
++  let check_signature (rname, type_name, prop_name) i =
++    Feedback.msg_notice Pp.(str "Checking signature " ++ N.pp rname ++ str " instance " ++ int i);
++    let r = lookup rname in
++    if List.length r.runivs <> 1 || r.nparams <> 0 || r.nmotives <> 2
++       || r.nminors <> minor_count then
++      CErrors.user_err Pp.(str "unsupported exported recursor arity");
++    let uconv = start_uconv r.runivs i in
++    let uconv, ty = to_constr empty_env r.rty uconv in
++    let levels = List.filter_map (fun u -> match N.Map.get u uconv.map with
++      | LSProp -> None | Level l -> Some l) r.runivs in
++    let href = helper_ref (if i = 0 then type_name else prop_name) in
++    let arity = UVars.AbstractContext.size (Environ.universes_of_global (Global.env ()) href) in
++    if arity <> (0,List.length levels) then
++      CErrors.user_err Pp.(str "helper universe arity differs from the exported recursor");
++    let helper = Constr.mkRef (href,
++        Instance.of_array ([||], Array.of_list levels)) in
++    let univs, algs = univ_entry uconv r.runivs in
++    let id = name_for (N.append rname "checked") i in
++    let ref = quickdef ~name:id ~types:(Some ty) ~univs helper in
++    add_declared rname i { ref; algs }
++  in
++  List.iter (fun h -> List.iter (check_signature h) [0;1]) helpers;
++  let check_rule r i rule =
++    Feedback.msg_notice Pp.(str "Checking reduction " ++ N.pp r.rname ++ str " constructor " ++ N.pp rule.constructor ++ str " instance " ++ int i);
++    let uconv = start_uconv r.runivs i in
++    let uconv, rhs = to_constr empty_env rule.rhs uconv in
++    let ctx, rhs = Term.decompose_lambda_decls rhs in
++    let base = r.nparams + r.nmotives + r.nminors in
++    if List.length ctx <> base + rule.fields then
++      CErrors.user_err Pp.(str "exported recursor rule lambda arity differs");
++    let nargs = List.length ctx in
++    let fields = Array.init rule.fields (fun k -> Constr.mkRel (rule.fields-k)) in
++    let list_ctor = N.equal rule.constructor (N.append_list N.anon ["List";"nil"])
++                 || N.equal rule.constructor (N.append_list N.anon ["List";"cons"]) in
++    let uconv, ctor = instantiate rule.constructor (if list_ctor then [U.Prop] else []) uconv in
++    let uconv, indref = instantiate n [] uconv in
++    let ctorargs = if list_ctor then Array.append [|indref|] fields else fields in
++    let ctor = if Array.length ctorargs = 0 then ctor else Constr.mkApp (ctor,ctorargs) in
++    let uconv, recursor = instantiate r.rname [U.UNamed (List.hd r.runivs)] uconv in
++    let allargs = Array.append (Array.init base (fun k -> Constr.mkRel(nargs-k))) [|ctor|] in
++    let lhs = Constr.mkApp (recursor,allargs) in
++    let env = Environ.push_rel_context ctx (Environ.set_universes uconv.graph (Global.env ())) in
++    let sigma = Evd.from_env env in
++    let ty = EConstr.to_constr sigma (Retyping.get_type_of env sigma (EConstr.of_constr lhs)) in
++    let eqref, reflref, levels = if i = 0 then
++      let level = match N.Map.get (List.hd r.runivs) uconv.map with Level u -> u | _ -> assert false in
++      (Rocqlib.lib_ref "lean.Eq", Nametab.locate (Libnames.qualid_of_string "Lean.eq_refl"), [|level|])
++    else (Rocqlib.lib_ref "lean.Eq_inst1", Nametab.locate (Libnames.qualid_of_string "Lean.eq_refl_inst1"), [||]) in
++    let ui = Instance.of_array ([||],levels) in
++    let expected = Constr.mkApp(Constr.mkRef(eqref,ui),[|ty;lhs;rhs|]) in
++    let proof = Constr.mkApp(Constr.mkRef(reflref,ui),[|ty;lhs|]) in
++    let expected = Term.it_mkProd_or_LetIn expected ctx in
++    let proof = Term.it_mkLambda_or_LetIn proof ctx in
++    let univs, _ = univ_entry uconv r.runivs in
++    let id = name_for (N.append (N.append r.rname "reduction") (N.to_coq_string rule.constructor)) i in
++    ignore (quickdef ~name:id ~types:(Some expected) ~univs proof)
++  in
++  List.iter (fun r -> List.iter (fun i -> List.iter (check_rule r i) r.rules) [0;1]) ind.recursors;
++  List.iter (fun r -> checked_special := N.Set.add r.rname !checked_special) ind.recursors;
++  Lib.add_leaf (lean_obj (!pstate, !sets, !declared, !entries, !squash_info, !height_cache, !checked_special));
++  Feedback.msg_notice Pp.(str "Kernel checked recursor signatures and all exported reductions for " ++ N.pp n)
++
++
++let assert_complete () =
++  let flags = Global.typing_flags () in
++  if not (flags.check_guarded && flags.check_positive && flags.check_universes
++          && flags.check_eliminations) || error_mode (Failure "completion") <> Fail
++          || skip_missing_quot () then
++    CErrors.user_err Pp.(str "import completion requires strict kernel and error checks");
++  N.Map.iter (fun _ -> function
++    | Ind ind when ind.nested > 0 || ind.group <> [] ->
++      if ind.recursors = [] then CErrors.user_err Pp.(str "missing exported recursor metadata");
++      List.iter (fun r -> if not (N.Set.mem r.rname !checked_special) then
++        CErrors.user_err Pp.(str "unchecked deferred recursor " ++ N.pp r.rname)) ind.recursors
++    | _ -> ()) !entries;
++  Feedback.msg_notice Pp.(str "All deferred recursor signatures and reduction rules are kernel checked")
++
+--- a/src/lean.mli
++++ b/src/lean.mli
+@@ -10,3 +10,9 @@
+ 
+ val import : from:int option -> until:int option -> string -> unit
+ (** [from] is inclusive (lines start at 1), [until] is exclusive *)
++
++val register_nested : string -> string -> string -> string -> string -> unit
++
++val assert_complete : unit -> unit
++
++
+--- a/src/g_lean.mlg
++++ b/src/g_lean.mlg
+@@ -18,3 +18,11 @@
+ VERNAC COMMAND EXTEND LeanImport CLASSIFIED AS SIDEFF
+ | [ "Lean" "Import" string(f) int_opt(from) int_opt(until) ] -> { Lean.import f ~from ~until }
+ END
++
++VERNAC COMMAND EXTEND LeanRegisterNested CLASSIFIED AS SIDEFF
++| [ "Lean" "Check" "Recursors" string(n) string(a) string(b) string(c) string(d) ] -> { Lean.register_nested n a b c d }
++END
++
++VERNAC COMMAND EXTEND LeanAssertComplete CLASSIFIED AS SIDEFF
++| [ "Lean" "Assert" "Complete" ] -> { Lean.assert_complete () }
++END

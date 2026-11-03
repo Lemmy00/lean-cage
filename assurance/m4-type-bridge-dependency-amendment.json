@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "scope": "Documentation inputs only; original route results and all proof/artifact fields are preserved.",
+  "before_archive_sha256": "97bfe77f210cb4c8ae06e5cce48162400008b5d1be785d9563691101e3b92e02",
+  "before_route_sha256": "1be15e7e75f5700ef1c909a884eb00a67e62694ef632525e06629139f27cb3fe",
+  "original_obligations_sha256": "77f760ca9447b8ee05ec0e24efc637b35ff6a62356657515ffc68f0999182064",
+  "files": {
+    "docs/architecture/AR-m4-routes.md": {
+      "before_sha256": "a19acf77befdb4599a1d5b534ac64ff986bf859ecd9e5dd17e679a3f2d99d21c",
+      "after_sha256": "7f0b77e3febd8c49e59eda0f38b24b9ec15c7d224f7562bd3d36fcf24cfa3d7a"
+    },
+    "docs/decisions/architectural/DA-m4-routes.md": {
+      "before_sha256": "7d7c3c62d9c8135a409a22459ee703defe623111f2d004a1f2f98746f51fe9f8",
+      "after_sha256": "291cd7183d72152c4043e544e62f17324b9b3b484afb2994c0d8c316ddf00e73"
+    },
+    "assurance/m4-route-feasibility.json": {
+      "before_sha256": "1be15e7e75f5700ef1c909a884eb00a67e62694ef632525e06629139f27cb3fe",
+      "after_sha256": "f0e5617b14aebec125887af9ee9065cf8e0af60eee59bed4cbe4ebb66ed367dd"
+    }
+  }
+}

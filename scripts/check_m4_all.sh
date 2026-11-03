@@ -25,7 +25,9 @@ run_check python3 -m unittest discover -s m4/review -p 'test_*.py' -v
 run_check python3 m4/parent/check.py
 # §AR-m4-routes.evidence: Reproduce failed central connections without weakening their goals.
 run_check python3 m4/routes/check.py
+# §AR-m4-routes.reporting.types: Check the recursive representations and native type relation.
+run_check ./scripts/check_m4_types.sh
 run_check python3 scripts/run_m3_vm.py --check-artifacts
 
-printf '\nImplemented M4 checkpoints, reviewed parent contract and early connection attempts replayed.\n'
+printf '\nImplemented M4 checkpoints, parent contract, connection attempts and type bridge replayed.\n'
 printf 'The original correspondence obligations remain open. No VM workloads were run.\n'

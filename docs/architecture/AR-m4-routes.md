@@ -75,3 +75,106 @@ These are reproducible failed connection attempts and a revised research route.
 They prove neither imported-semantics equivalence nor a Linux effect producer,
 compiler composition or a sandbox property. Do not extend dependent source
 proofs while describing those central missing connections as routine paperwork.
+
+## reporting: Continue through the original reporting closure chain
+
+The active target is the original `M4-m3-results` entry under
+[§FS-workspace.results](../functional-spec/FS-workspace.md#results-entry-cancellation-and-bounded-transport), including transport provenance, output bounds,
+authorized export and publication failure. The accepted source proofs are inputs
+to this target. Their count and replay status are not its closure criterion.
+
+### reporting.chain: Required producer-to-consumer chain
+
+Connect actual helper/controller execution and owned pipe/output/filesystem
+objects to the M3 observations consumed by `decodeResult`, `observe` and report
+publication. Preserve arbitrary permitted interference, short transfers, errors,
+partial user copies, loss, unknown entry/cleanup and failed publication. Include
+the actual runtime/ABI and identified executable chain. All connecting premises
+must have explicit producers; a theorem assuming the desired effect or reporting
+property does not discharge that edge.
+
+Track progress by the following connecting edges, retaining their dependencies
+on the other original obligations:
+
+1. An ordinary Lean semantics/security theorem connected to the exact source
+   transition system and original Lean computations.
+2. Actual pinned Linux reporting effects, descriptors, concurrency and memory
+   related to that source system, including the partial-copy fault branches.
+3. Helper/controller ordering and observation composition through capture,
+   export, report construction and failed publication.
+4. The compiler/runtime/loader realization needed for those identified sources
+   and deployment artifacts; preserve the separate original artifact obligations.
+
+### reporting.bridge: Repair the shared semantics bridge
+
+Start with the actual failed `CC.Step` import recorded by
+[§AR-m4-routes.lean](AR-m4-routes.md#lean-checked-semantics-route-and-its-current-blocker). The imported `CC.Ty` contains recursion through a list;
+its exported Lean eliminators include the secondary list motive and its cases.
+Generate and kernel-check the corresponding dependent recursors, their complete
+types and constructor reduction equations. A weak induction principle for only
+the outer type is insufficient. Unsupported nested or mutual forms must fail
+explicitly, and every generated declaration enters the checked inventory.
+
+Develop the importer repair in a separate project-local tool copy. Preserve the
+accepted importer, its strict patch, snapshots and dependency pins. Keep all
+guardedness, positivity, universes, conversion and elimination checks enabled;
+introduce no axioms or proof placeholders. Test the actual exported closure and
+compiled counterexamples as well as the smallest nested-type reproducer.
+
+The producer sought after import is a checked relation between the actual Lean
+semantics and pinned Rocq `Clight.step2`, with state, value, memory, ABI and event
+representations. Constructor reduction checks support that connection but do not
+replace its semantic proof. Continue along the chain after each prerequisite is
+discharged instead of treating a failed attempt as a completed obligation.
+
+### reporting.instances: Preserve the actual requested representations
+
+Use the exported `UInt32`, `Char` and supporting definitions from the inspected
+Lean version. Do not bind a newer field projection to an older primitive with a
+different representation. Demand individual universe instances of definitions;
+registering their metadata does not assert that every instance has been translated.
+An unsupported instance requested by the target must fail.
+
+Reduce `autoParam` and `optParam` type wrappers only after checking that the
+exported transparent body is exactly the two-argument projection of its first
+argument. This is source delta/beta reduction. Check the equations in the original
+Lean toolchain as well. Retain all actual target computations and proof premises;
+this reduction supplies no source-semantics or compiler correctness theorem.
+
+The strict accessibility test must continue to reject elimination from recursive
+strict propositions into computational types. An instance producing a strict
+proposition may use its kernel-checked small eliminator. Never enable unchecked
+elimination to bypass an unsupported computational instance.
+
+For noncomputational proof constants, a replacement Rocq proof may establish
+exactly the exported strict-proposition type. Kernel-check that entire type,
+including all parameters and hypotheses, and the replacement proof. Reject
+computational result sorts and unsupported universe instances. Proof irrelevance
+permits this replacement; it supplies neither an arbitrary proposition nor a
+replacement implementation. Audit the replacement's foundations and preserve the
+original Lean statement and evidence. Any numeric representation adapter also
+requires a checked value-equivalence proof.
+
+### reporting.types: Relate the actual type representations
+
+Use the imported actual `CC.Ty` and the pinned CompCert `Ctypes.type` to establish
+a total representation bijection. Cover every type constructor and both nested
+function-argument lists, positive identifiers, unbounded integer array lengths,
+optional alignment exponents, volatile flags and all calling-convention fields.
+Prove both round trips with no narrowing or extra validity premise. Use the
+checked exported nested recursor where its dependent list hypothesis is needed.
+
+This type relation is a producer for the state/expression/ABI relation in
+[§AR-m4-routes.reporting.bridge](AR-m4-routes.md#reportingbridge-repair-the-shared-semantics-bridge). It does not establish expression, memory, transition or compiler
+correspondence. Those connecting edges remain required by
+[§AR-m4-routes.reporting.chain](AR-m4-routes.md#reportingchain-required-producer-to-consumer-chain).
+
+### reporting.closure: Original ledger acceptance
+
+Close `M4-m3-results` only after the complete chain proves the original advertised
+property with ordinary Lean theorem terms under
+[§REQ-proof-integrity.kernel](../requirements/REQ-proof-integrity.md#kernel-kernel-checked-evidence). Audit full statements, foundations, deployment inputs and
+all transitive connecting assumptions; provide nonvacuity and independent replay.
+Update the original ledger with that closure evidence. Preserve the original
+meaning of its key, and distinguish any still-open shared artifact dependency.
+Hardware-channel confidentiality remains M5.
