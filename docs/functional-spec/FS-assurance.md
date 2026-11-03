@@ -47,6 +47,7 @@ These counts identify coverage and evidence, not a measure of security strength.
 | Local reporting source behavior | [§FS-workspace.results](FS-workspace.md#results-entry-cancellation-and-bounded-transport) | Conditional source/effect proofs and ordinary Lean reporting call connection | [§FS-assurance.native](FS-assurance.md#native-partial-m4-reporting-source-evidence) and [§FS-assurance.reporting](FS-assurance.md#reporting-current-helper-reporting-call-and-ordinary-lean-decoder); current complete helper program, checked call/byte interface and live decoder theorem | Whole-profile caller/capture/export composition, physical input ownership, Linux/compiler/runtime/executable correspondence |
 | Local reporting compiler model | [§FS-workspace.results](FS-workspace.md#results-entry-cancellation-and-bounded-transport) | Conditional assembly reporting proof with concrete compilation checked | [§FS-assurance.compiled](FS-assurance.md#compiled-conditional-assembly-reporting-connection); complete helper plus explicit logical runtime unit, identified assembly, source reporting and ordinary Lean publication consumer | Matched physical caller, actual TLS/runtime/Linux effects, partial-call loss and deployed binary chain |
 | Local input-validation source behavior | [§FS-workspace.policy](FS-workspace.md#policy-bounded-typed-request) | Accepted local input, initialization and parent composition results | [§FS-assurance.parent](FS-assurance.md#parent-parent-composition-repair-claim-record); numeric, string, argument, digest and initialization source certificates | Whole entry-to-setup composition, physical argv, ordinary Lean proof connection and Linux/compiler/runtime correspondence |
+| Shared guest-entry body | [§FS-entry.control](FS-entry.md#control-primitive-sequencing-and-failure) | Partial entry implementation; conditional body/argument proofs and separate VM route evidence | [§FS-assurance.entry](FS-assurance.md#entry-entry-worker-body-and-route-evidence); exact declarations and source-bound route inputs | Native handoff/handshake, physical syscall provenance, owned scope, adapter/caller binding and maintained public integration |
 | Functional confidentiality | [§FS-observations.logical](FS-observations.md#logical-functional-observations) | Planned | Observation requirements | Noninterference theorem and correspondence |
 | Hardware-aware confidentiality | [§FS-observations.hardware](FS-observations.md#hardware-software-observable-channels) | Planned | Scope and research obligations | Model, mechanisms, proof, deployed profile |
 | Deployed executable correctness | [§GOAL-end-to-end](../goals.md#goal-end-to-end-connect-the-policy-to-the-deployed-artifact) | Planned | Roadmap | Compiler/runtime/FFI and Linux correspondence |
@@ -56,6 +57,78 @@ driver. Its filter permits most syscalls and provides no full sandbox confinemen
 There are no certified native executables or supported production profiles.
 Model proofs, tested source mappings, Linux enforcement, and executable
 correspondence remain separate evidence boundaries.
+
+## entry: Entry worker body and route evidence
+
+**Scope:** partial work toward [§FS-linux-product.proofs.entry](FS-linux-product.md#proofsentry-establish-actual-state-at-workload-entry), under [§FS-entry](FS-entry.md#fs-entry-value-carrying-fail-closed-guest-admission).
+This does not complete the entry delivery or change the public bundle's assurance.
+The complete declarations, types, module inventory, source/toolchain identities
+and transitive logical axioms are recorded in `assurance/entry-claims.json` and
+checked by `python3 scripts/audit_entry.py`. New expectations require explicit
+statement review; `--propose` writes only an ignored review proposal.
+
+The ordinary Lean body theorem `LeanCage.Entry.admission_value_state` consumes
+the actual `admission` script, normal production mode, the pinned capability
+width and a physical `KernelTrace` over individually specified operations. It
+derives the exact ID/group/capability/filter/handle-object/root/cwd and exec
+argument values. `admission_at_exec` establishes the successful setup sequence
+from the executing program; it does not assume that sequence as the control
+conclusion. Failure/preflight prefix theorems exclude exec even when error writes
+or exit unexpectedly return. `worker_parse_exact` binds an accepted worker argv
+to the supplied strings, UID value, descriptor decoding and local validity
+checks. `worker_normal_control` binds production dispatch to the same script
+interpreter. The useful control witness is kernel checked.
+`inhabited_body_contract` also supplies a non-restricted initial state and an
+inhabited individual-effect model; it is distinct from physical Linux execution.
+
+`assurance/entry-arguments.json.gz` records the narrow strict import of the actual
+argument-byte computation and a Rocq proof of its bound proposition, including
+the exact checked type and definitional-UIP foundation. It does not prove the
+native argv-memory/value connection.
+`assurance/entry-native-values.json.gz` checks that the candidate helper's actual
+numeric source function is the accepted function and connects its successful
+source read to the imported worker decoder's positional value on the same bytes.
+It records the actual source, source AST, checked terms and transitive foundation.
+Producing those executions and the same owned bytes at the full native handoff
+remains an application obligation; the local callee result does not complete it.
+
+The primitive effect relation permits credential-induced capability and
+dumpability changes. Later explicit capset/dumpability operations must absorb
+them. Same-slot duplication, close-on-exec flags, ID sentinels/no-op behavior,
+mode masks, path-resolution context and signed argument/return widths are part
+of the model. Unsupported or intercepted results cannot supply a genuine
+successful effect. The theorem uses the existing proved filter bytes directly.
+
+The reviewed logical axiom allowance remains propositional extensionality,
+classical choice and quotient soundness; the manifest records actual per-term
+usage. No OS premise is introduced as a Lean axiom. Physical FFI/syscall state
+and memory laws are explicit theorem inputs, not kernel implementation proofs.
+The Rocq source connection inherits the accepted CompCert external-function and
+inline-assembly semantic parameters, classical decision functions and functional
+extensionality. Its exact six parameters and definitional-UIP dependencies are
+listed per declaration in `entry-native-values.json.gz`, under the preserved
+source profile in [§FS-assurance.native](FS-assurance.md#native-partial-m4-reporting-source-evidence). Actual caller/Linux effects still need their
+separate, explicit contracts.
+Finite-prefix safety is separate from syscall progress, scheduling and eventual
+termination.
+
+`assurance/entry-route-vm.json`, its compressed transcript/image inventory and
+source archive identify a separate disposable VM prototype. The normal route
+uses the production worker; fault injection selects the test worker through a
+test native build. The record includes useful entry, preflight, setup rejection,
+short/lost error reporting, inherited handles, check/run/report and death/cancel
+boundaries. It is test evidence for the runtime decision, not a source proof or
+a deployed entry guarantee. Compiler/libc/Lean runtime, Linux, QEMU/firmware and
+the identified VM configuration remain the explicit platform boundary.
+
+The remaining application producers are concrete: the native handoff must bind
+owned argument/descriptor memory; the local fork/stop/cgroup/tracer/resume path
+must supply genuine operation provenance and the process-scope projection; and
+the maintained image/build must invoke that proved interface. Prepared root,
+leased identity, policy interpretation and authorized object producers belong to
+the authority delivery. The native source/caller obligations are still open,
+including the physical useful witness. The public workflow continues using its
+accepted baseline while that integration is unfinished.
 
 ## decoder: M1.2 decoder claim record
 

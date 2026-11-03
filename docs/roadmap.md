@@ -395,7 +395,7 @@ commits back into `main` and push. Preserve other active work and never force-pu
 **Status: planned; none of the five deliveries below is complete.** Establish
 [§FS-linux-product.proofs.application](functional-spec/FS-linux-product.md#proofsapplication-the-complete-application-guarantee) across the host, VM init, Lean controller,
 native helper and returned artifacts. M5 is a verification stage with separate
-assignments, not one agent task. M4's elapsed time does not estimate this work:
+integrated deliveries. M4's elapsed time does not estimate this work:
 M4 integrated a working implementation; M5 proves its application behavior.
 
 | Delivery | Concrete guarantee and consumer | Dependencies and acceptance |
@@ -433,6 +433,12 @@ Deliver **M5.1 — proved guest entry**, using the full contract and execution
 instructions in [§AR-application-verification.next](architecture/AR-application-verification.md#next-first-assignment-and-early-route-decision) and the value-carrying target
 in [§FS-linux-product.proofs.entry](functional-spec/FS-linux-product.md#proofsentry-establish-actual-state-at-workload-entry). Preserve the working product at `92367a5` and
 reuse its matching-input validation evidence.
+
+The current assignment extends through all five deliveries in order: complete,
+validate and integrate each, then continue to the next without another permission
+step. Entry implementation is in progress under [§DA-entry-worker](decisions/architectural/DA-entry-worker.md#da-entry-worker-use-a-fresh-single-threaded-lean-entry-image).
+The fresh worker route has source-bound VM evidence and conditional body proofs;
+the native source/caller connection remains open. No M5 delivery is complete.
 
 The first four working hours bound the architecture investigation, not the
 complete assignment. Demonstrate an actual caller-to-entry/failure path and its

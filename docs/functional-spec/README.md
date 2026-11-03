@@ -21,3 +21,4 @@ the broader sandbox isolation guarantees that remain future work.
 | [§FS-compatibility](FS-compatibility.md#fs-compatibility-publish-an-explicit-supported-subset) | Supported workloads and Bubblewrap subset |
 | [§FS-filter-loading](FS-filter-loading.md#fs-filter-loading-prove-a-small-real-launch-boundary-first) | First executable verification slice |
 | [§FS-assurance](FS-assurance.md#fs-assurance-bind-every-advertised-guarantee-to-auditable-evidence) | Evidence, claim status, and assumption register |
+| [§FS-entry](FS-entry.md#fs-entry-value-carrying-fail-closed-guest-admission) | Value-carrying private entry interface and terminal setup failure |
