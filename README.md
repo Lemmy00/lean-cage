@@ -27,6 +27,7 @@ boundary is [specified here](docs/functional-spec/FS-linux-product.md).
 - [Current M4 continuation and review boundary](docs/roadmap.md#m4next-current-m4-continuation)
 - [M4 continuation assignment](M4-CONTINUE.md)
 - [Revised product and assurance plan](docs/decisions/architectural/DA-product-assurance.md)
+- [Planned seLe4n backend](docs/roadmap.md#m6sele4n-a-sele4n-backend-using-the-same-portable-contracts)
 - [Functional specification](docs/functional-spec/README.md)
 - [Architecture](docs/architecture/README.md)
 - [First filter and launch boundary](docs/architecture/AR-filter-slice.md)

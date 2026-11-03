@@ -1,4 +1,4 @@
-"""Preserve accepted proof evidence while extending the aggregate check command."""
+"""Preserve proof evidence across reviewed gate and foundation-input amendments."""
 # SPDX-License-Identifier: Apache-2.0
 # §AR-compiled-reporting.certificate: Check the exact operational fingerprint amendment.
 import base64
@@ -21,6 +21,31 @@ PATHS_AFTER = ("    paths += [ROOT/'verification/compiler/amendment.py',\n"
 VERIFY_BEFORE = "    if old != json.loads(gzip.decompress((ROOT/record).read_bytes())):"
 VERIFY_AFTER = ("    old = load(ROOT/'verification/compiler/amendment.py',\n"
                 "               'reporting_compiler_gate_amendment').adjust_source(old)\n"+VERIFY_BEFORE)
+
+# §AR-tooling.checks: Exact reviewed CI repair; other source or claim edits still fail.
+FOUNDATION_INPUTS = {
+    'assurance/filter-decoder.json': (
+        '31a86bf372affd26c59064289021b31c3d520b585528ed60f9fd1ccb6d671dde',
+        'c66ee0b5543aa6a7fbb80b59738471ece4fa6c5ed35ef7bd9a573d19022fbb8d'),
+    'assurance/m2-claims.json': (
+        'ff2ad12ac93f30dc7e644d1bcbd7c813dcf20b425cedc8f001c4ab1c87807922',
+        '50168b4d89615359ec49fdd32c181658675881746c5bdb4955e6c2755022676f'),
+    'assurance/m3-claims.json': (
+        'b8cb6e5302e4b62816861e064906a80e706612b696f0792f8a226b6777a2900e',
+        'cffcf981d41fd5e21a8ee67b9aafb30342dbfdd23b0d9cc70369e5074c4bd0e7'),
+    'tests/integration/test_output_capture.py': (
+        '67bafa3ba3213f658134f7b7c82406cf9db82e83849efba9ed72d9820b4085a4',
+        'd52f0393ac2ee6f9f55c19541ebeb03beb37f68a8dbc05b5390f821d894aab05'),
+    'scripts/check_foundation_inputs.py': (
+        None, '3b63d186cffef3e0de262ce0c25b26c1881154d8a399ef44b3c6394287b09f38'),
+    'tests/integration/test_foundation_inputs.py': (
+        None, '23c0a2f0c7b16526a62bfc96677837575213e283aebabce8e245ce551dcddf6a'),
+}
+FOUNDATION_PAYLOADS = {
+    'assurance/filter-decoder.json': '0052ba0e1c2435fc65326fa604a19d875115b2463254d8c2866d17e04ac59d5b',
+    'assurance/m2-claims.json': '197ab4d902493f8c2c390f7d34905bf86f3d8777cc0e3e0020f1abf0a910b8c0',
+    'assurance/m3-claims.json': '9c2816b985d3ad13babc0ba56563a65c50273b83b11e816e2decd3137e107855',
+}
 
 
 def sha(data):
@@ -45,8 +70,11 @@ def verify_code(saved):
     for marker in ['  run_check ./scripts/check_reporting.sh\n','run_check ./scripts/check_m4_types.sh\n']:
         indent = '  ' if marker.startswith('  ')else''
         aggregate = replace_once(aggregate,marker,marker+indent+'run_check ./scripts/check_reporting_compiler.sh\n')
+    marker = 'if python3 verification/reporting/check.py --current-profile; then\n'
+    aggregate = replace_once(aggregate, marker,
+                             marker+'  run_check python3 scripts/check_foundation_inputs.py\n')
     if (ROOT/AGGREGATE).read_text()!=aggregate:
-        raise ValueError('aggregate amendment changes more than the additional compiler gate')
+        raise ValueError('aggregate amendment exceeds the compiler and foundation input checks')
     checker = replace_once(saved[CHECKER].decode(),PATHS_BEFORE,PATHS_AFTER)
     checker = replace_once(checker,VERIFY_BEFORE,VERIFY_AFTER)
     if (ROOT/CHECKER).read_text()!=checker:
@@ -58,6 +86,15 @@ def source_after(saved):
     if result['inputs_sha256'][AGGREGATE]!=sha(saved[AGGREGATE]):
         raise ValueError('aggregate preimage differs from the accepted source record')
     result['inputs_sha256'][AGGREGATE]=sha((ROOT/AGGREGATE).read_bytes())
+    for name, (before, after) in FOUNDATION_INPUTS.items():
+        if result['inputs_sha256'].get(name)!=before or sha((ROOT/name).read_bytes())!=after:
+            raise ValueError('foundation input amendment bytes differ: '+name)
+        result['inputs_sha256'][name]=after
+    for name, expected in FOUNDATION_PAYLOADS.items():
+        payload = json.loads((ROOT/name).read_text())
+        del payload['source_sha256']
+        if sha(json.dumps(payload, sort_keys=True, separators=(',', ':')).encode())!=expected:
+            raise ValueError('foundation amendment changes theorem evidence: '+name)
     return result
 
 
@@ -86,7 +123,7 @@ def verify():
     saved = preimages()
     verify_code(saved)
     if source_after(saved)!=json.loads(gzip.decompress((ROOT/SOURCE).read_bytes())):
-        raise ValueError('compiler amendment changes more than one source-record fingerprint')
+        raise ValueError('source record differs beyond the reviewed gate/input fingerprints')
     if connection_after(saved)!=json.loads(gzip.decompress((ROOT/CONNECTION).read_bytes())):
         raise ValueError('compiler amendment changes reporting statements, foundations or artifacts')
     return True

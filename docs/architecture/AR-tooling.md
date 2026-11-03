@@ -51,6 +51,14 @@ dependencies and toolchain. Re-run after a relevant change or failure, for a new
 identified risk, or for an explicitly required independent replay. A new commit,
 agent or handoff alone does not invalidate a result.
 
+The reporting aggregate's reuse path first runs
+`python3 scripts/check_foundation_inputs.py`. It compares the current foundation
+source inventories with all three reviewed manifests and names any mismatch;
+it neither builds proofs nor updates expectations. Matching helper bytes alone
+cannot establish that the foundation's inputs still match. CI continues to run
+the full foundation gate. Tests that consume a dependent Lean package build that
+package explicitly, so they also work on a clean checkout.
+
 For prose/workflow-only changes, run `grund fmt --write`, `grund check --full`,
 `grund fmt --check` through the local wrapper, and `git diff --check`. Check any
 affected documentation fingerprints without rebuilding unchanged proofs. A change

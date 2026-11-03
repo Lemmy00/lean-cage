@@ -9,6 +9,12 @@ PROJECT = Path(__file__).resolve().parents[2]
 
 
 class OutputCapture(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        # §AR-tooling.checks: This test runs before the M3 audit on a fresh CI checkout.
+        subprocess.run(['lake', 'build', 'LeanCageM3'], cwd=PROJECT / 'm3',
+                       check=True, timeout=180)
+
     def test_partial_storage_failure_through_publication(self):
         with tempfile.TemporaryDirectory(prefix='capture-') as directory:
             work = Path(directory)

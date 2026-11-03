@@ -15,6 +15,7 @@ run_check() {
 
 # §AR-workspace.transport: The corrected helper has a separately checked source binding.
 if python3 verification/reporting/check.py --current-profile; then
+  run_check python3 scripts/check_foundation_inputs.py
   run_check ./scripts/grund.sh check --full .
   run_check ./scripts/grund.sh fmt --check
   run_check ./scripts/check_reporting.sh

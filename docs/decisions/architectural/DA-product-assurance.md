@@ -15,7 +15,7 @@ The revised roadmap gives each of these outcomes its own acceptance contract:
 - M5 completes application-level control/authority correspondence against
   published Linux/runtime contracts.
 - M6 reduces selected platform assumptions and develops hardware confidentiality
-  or an alternative backend as separately assigned research tracks.
+  and the named seLe4n backend as separately assigned tracks.
 - M7 packages and supports releases whose claims match the completed evidence;
   it can start after the M4 product gate.
 

@@ -38,7 +38,7 @@ below and [§FS-assurance.product](functional-spec/FS-assurance.md#product-produ
 | M0–M3, preserved | Existing specifications, filter/lifecycle proofs and offline VM workspace | Their accepted profile records remain inputs to the product |
 | M4 | Reusable Linux product with verified executable policy/reporting core | Caller-supplied shell/Python runs through root build/check/run/report, reusable library, functional layout, exact core proof inventory and trusted component manifest |
 | M5 | Complete application control-path verification | Maintained policy/launch, supervision/cancellation and publication code compose under explicit primitive OS/runtime contracts |
-| M6 | Selected platform and confidentiality upgrades | A specific trusted component is replaced by a checked producer, or a named leakage/backend property is established |
+| M6 | Platform proofs, confidentiality and the seLe4n backend | Selected Linux/runtime assumptions are replaced by proofs; a named leakage property or a separate seLe4n execution profile is established |
 | M7, starts after M4 | Supported releases and maintenance | Installable identified bundle, supported environment, update/recovery procedure, proof and test evidence matching its advertised claims |
 
 M4 can be delivered using the existing Linux kernel and compiler/runtime as
@@ -417,8 +417,7 @@ bounded feasibility decision. Candidate tracks are:
   including the relevant concurrency, errors and transitive dependencies.
 - Establish the hardware-aware observation/leakage property in
   [§FS-observations.hardware](functional-spec/FS-observations.md#hardware-software-observable-channels) for a named CPU/kernel/configuration.
-- Evaluate an alternative backend under [§DA-secondary-backend](decisions/architectural/DA-secondary-backend.md#da-secondary-backend-consider-sele4n-after-the-first-useful-linux-profile)
-  when a concrete portability or assurance benefit justifies it.
+- Deliver the separate seLe4n backend track in [§RM-roadmap.m6.sele4n](roadmap.md#m6sele4n-a-sele4n-backend-using-the-same-portable-contracts).
 
 **Exit for an assigned upgrade:** the replacement producer or leakage theorem is
 consumed by the profile's composed argument, and the profile's trusted-component
@@ -426,6 +425,29 @@ record is updated accordingly. Preserve the broader end-to-end destination.
 There is no requirement to complete every research track before releasing a
 useful Linux product. A hardware-confidentiality claim requires its own completed
 observation and mechanism proof.
+
+### m6.sele4n: A seLe4n backend using the same portable contracts
+
+seLe4n remains a named planned backend under
+[§DA-secondary-backend](decisions/architectural/DA-secondary-backend.md#da-secondary-backend-consider-sele4n-after-the-first-useful-linux-profile).
+It can start independently of the Linux application/platform proofs after the
+accepted M3 baseline. M4's component consolidation supplies a cleaner shared
+interface; finishing Linux implementation verification is not an entry requirement.
+
+The first delivery is a bounded native-workload execution profile that consumes
+the shared policy, authority and result interfaces. It must admit a useful allowed
+workload, reject an unauthorized operation, return bounded output and report its
+termination/cleanup. Select and publish its supported workload/ABI explicitly;
+do not assume the Linux shell/Python runtime is portable without additional work.
+
+Investigate the pinned kernel's actual boot, userspace, compiler/runtime and
+binding path first, with a bounded route decision. Then implement the capability
+adapter and connect its operations to the shared confinement and observation
+contracts. Acceptance requires a runnable isolated demonstration, a checked
+backend refinement for the advertised subset, and its own deployment/trust record.
+A kernel-model adapter alone is an intermediate result. If execution support is
+missing, identify and implement the needed integration, or present the concrete
+architecture decision that is needed to proceed.
 
 ## m7: Supported releases and maintenance
 

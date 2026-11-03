@@ -22,7 +22,7 @@ status and the model/native boundary are in [§FS-assurance.workspace](FS-assura
 | Network access, device access, broad option parity | Later extension | None | Denied until specified and verified |
 | Resource budgets | M3 | cgroup memory/tasks/CPU bandwidth, sampled budgets/deadlines, workspace/output caps | [§FS-workspace.resources](FS-workspace.md#resources-units-ownership-and-failure); accounting/progress assumptions and measured overshoot |
 | Hardware-aware confidentiality | M6 research | None | Exact supported hardware profile |
-| seLe4n backend | M6 | None | Separate backend and assumptions |
+| seLe4n backend | Separate M6 track, entry permitted after M3 | Planned | Shared policy/result contracts, explicit workload/ABI subset, runnable execution and separate backend refinement/trust record |
 
 ## interface: Versioned commands
 

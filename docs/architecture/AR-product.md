@@ -50,7 +50,7 @@ an integration task below, not an existing interface.
 | M3 | Current runnable policy/controller/helper/runtime/report path | Model composition plus native VM workflows; correspondence remains conditional |
 | M4 | Deliver the reusable Linux product and verified executable core | Root build, caller-policy VM workflow, library, functional layout and exact proof/trust manifest |
 | M5 | Verify the whole application control path | Actual controller/helper correspondence and composed authority/lifecycle/reporting properties over primitive platform contracts |
-| M6 | Strengthen selected platform or confidentiality guarantees | A checked replacement for a trusted component, named leakage property or justified alternative backend |
+| M6 | Strengthen platform/confidentiality guarantees and add seLe4n | Selected assumption replacements, named leakage properties, and the separate seLe4n execution/refinement track |
 | M7 | Package and support the integrated implementation | Releases may begin after M4; each claim determines its required application/platform evidence |
 
 The dependent Lake packages preserve useful earlier interfaces and proofs. M3
