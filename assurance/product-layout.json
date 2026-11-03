@@ -1,0 +1,21 @@
+{
+  "aliases": {
+    "m2": "lifecycle",
+    "m3": "workspace",
+    "native/leancage_m3.c": "linux/workspace.c",
+    "native/m3_artifacts.h": "linux/artifacts.h",
+    "native/m3_filter.h": "linux/filter.h",
+    "native/m3_sha256.h": "linux/sha256.h",
+    "profiles/m3": "profiles/offline-workspace",
+    "scripts/m3_elf.py": "scripts/elf_closure.py",
+    "scripts/m3_runtime.py": "scripts/workspace_runtime.py"
+  },
+  "baseline_commit": "d44c961",
+  "compatibility": "Historical Lean module/declaration names and private profile ABI paths retain their exact identities. Sources are maintained only in the functional homes.",
+  "internal_header_aliases": {
+    "linux/m3_artifacts.h": "linux/artifacts.h",
+    "linux/m3_filter.h": "linux/filter.h",
+    "linux/m3_sha256.h": "linux/sha256.h"
+  },
+  "schema_version": 1
+}

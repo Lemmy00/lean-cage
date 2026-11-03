@@ -35,3 +35,4 @@ end-to-end isolation remain explicit M4/M5 obligations.
 | [§AR-tooling](AR-tooling.md#ar-tooling-keep-development-reproducible-and-project-local) | Local tooling, pins, and development checks |
 | [§AR-reporting](AR-reporting.md#ar-reporting-connect-native-reporting-calls-to-the-live-lean-decoder) | Current complete-helper reporting call connected to the ordinary Lean decoder through checked byte and state observations |
 | [§AR-compiled-reporting](AR-compiled-reporting.md#ar-compiled-reporting-carry-reporting-observations-across-verified-compilation) | Concrete verified compilation consumed by the conditional assembly reporting argument |
+| [§AR-workspace-vm](AR-workspace-vm.md#ar-workspace-vm-own-the-caller-request-disposable-vm-and-returned-artifacts) | Caller snapshots, private VM transport, cancellation, bundle and source migration |
