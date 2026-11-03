@@ -14,61 +14,47 @@ properties of the named M3 profile. Generality grows by extending those explicit
 interfaces and proofs. Tests, hashes, or additional local lemmas cannot replace
 a missing connection. Hardware-channel confidentiality remains M5.
 
-## Current position and first assignment
+## Delivery rules for the next checkpoint
 
-M4.1 feasibility is recorded. M4.2 has substantial reporting/framing and imported
-computation proofs; translation faithfulness remains open. M4.3 has accepted local
-input-validation and initialization results through `2db87b4`. The parent/numeric
-composition at `80d4bbe` is a checked candidate, **not an accepted extension**.
-M4.4–M4.6 and all sixteen original correspondence obligations remain open.
+Apply this workflow at the running agent's next stable checkpoint. Continue its
+work in place. Read current acceptance records and [§RM-roadmap.m4.next](docs/roadmap.md#m4next-current-m4-continuation)
+before selecting an assignment. The original contract is preserved in the linked
+checkpoint review; accepted work must not be restarted for a new review cycle.
 
-The next implementation agent's objective is to continue this dependency plan
-toward full M4, beginning with a bounded package and preserving reviewable commits.
-The first package is **repair and independently accept the composed numeric,
-parent and initialization contract**. Finish at its existing post-policy-bounds
-continuation. Do not extend setup while its public interface is still incomplete.
-Read AGENTS.md, README.md, the proof-integrity requirement, both linked reviews,
-[§AR-m4-controller.initialization](docs/architecture/AR-m4-controller.md#initialization-actual-flag-and-pointer-initialization) and [§AR-m4-controller.composition](docs/architecture/AR-m4-controller.md#composition-remaining-controller-obligations).
+For each assignment, write one short delivery contract: the behavior or theorem
+that will work, the live implementation it describes, the existing consumer that
+will use it, and the command that checks that integration. State the relevant
+inputs and outputs explicitly. If a row below is too large for one assignment,
+split at an actual producer/consumer interface and name the integrated result.
+Keep one such delivery contract active per worker.
 
-1. Expose the actual execution history. For every execution reaching the
-   accepted initialization frontier, prove that its selected prefix contains the
-   parent observation used for admission and that its signed value equals the
-   parsed positive parent value. Preceding failures must make no observation;
-   mismatch must retain the actual differing observation. Describe loss and
-   waiting at their real boundaries. An existential admitted state independent
-   of this trace, or one successful matching run, is insufficient.
-2. Export the input-memory representation alongside allocated runs. Return the
-   owned strings, selected argv entries and numeric mappings establishing that
-   the supplied bytes inhabit the very initial memory used by the run. Reuse the
-   allocation facts already constructed internally. Keep physical process argv
-   provenance separate and preserve permitted aliases in universal contracts.
-3. Add complete-composition allocated examples: useful acceptance; numeric
-   rejection at early and late positions with earlier stores retained; invalid,
-   zero, overflowing and out-of-range parent values; mismatching observations;
-   export/digest/executable/argument/bounds rejection in the actual order; and
-   loss before and after each meaningful write/observation region. Assert the
-   exact first rejection and memory state, not only that some run exists.
-4. Add compiled negative controls changing the real parent guard, narrowing or
-   comparison, with an unchanged positive control. Add regressions for missing
-   statements, altered foundations/artifacts/exports, fabricated history, lost
-   input representation and receipt tampering. Harden Rocq declaration inventory
-   against unsupported qualified/attributed commands and proof-valued definitions:
-   enumerate the checked environment or reject unsupported syntax explicitly.
-5. Remove or justify `parent_getppid`, the unused `export` contract parameter,
-   and the self-chosen cost in `allocated_parent_decision`. Preserve the separate
-   independently derived source bound. No waiting/loss result implies a time
-   bound or unconditional termination.
-6. Review complete statements and transitive foundations, then promote through a
-   specific architecture/decision/claim record and a maintained gate. Preserve
-   the original candidate and initialization snapshots; do not rewrite them into
-   acceptance evidence. Record explicit documentation/dependency amendments and
-   prove that preserved statements, assumptions and compiled artifacts agree.
+Supporting translations, lemmas, witnesses and tests belong within that work.
+An assignment finishes when the result is integrated and its acceptance check
+passes. A failed experiment requires a diagnosed cause and a changed approach
+within the same assignment. Time-box uncertain route selection before building
+more work on it; investigate alternatives rather than repeatedly replaying the
+same failure. Estimates for the next delivery must come from that investigation,
+not from how quickly an earlier milestone finished.
 
-Suggested ownership: a new maintained parent package under `m4/parent/`, its
-checker/tests, additive `assurance/m4-parent-*` records, and parent-specific
-architecture/decision/review documents. Coordinate shared navigation/assurance
-edits. Keep `m4/parent-checkpoint/` as the frozen review input. Keep native code,
-toolchain pins and VM profiles unchanged unless a separately reviewed need arises.
+Report the actual result and its consumer, or the concrete action underway to
+reach it. Keep detailed assumptions and obligation mappings in their existing
+records. Do not repeat unchanged caveats or count supporting proof declarations
+as delivered features. Follow [§AR-tooling.checks](docs/architecture/AR-tooling.md#checks-one-development-gate) for validation and review.
+
+## Accepted input for continuation
+
+The repaired parent/numeric/initialization contract is accepted in
+`assurance/m4-parent-validation.json`, following the
+[repair review](docs/reviews/M4-parent-independent-review.md). Reuse it under
+[§AR-m4-parent.history](docs/architecture/AR-m4-parent.md#history-selected-execution-history)
+and [§AR-m4-parent.inputs](docs/architecture/AR-m4-parent.md#inputs-owned-input-representation).
+The original six repair requirements remain in the independent checkpoint review;
+they are completed prerequisite work, not the next agent's assignment.
+Preserve the original candidate and its archived evidence.
+
+Read the current roadmap and the active worker's checkpoint before choosing the
+next deliverable below. Keep current native code, toolchain pins and VM profiles
+unless a concrete implementation need justifies an explicit change.
 
 ## Work sequence toward full M4
 
@@ -80,20 +66,19 @@ percentages.
 
 | Order | Deliverable | Acceptance boundary |
 |---|---|---|
-| 1 | Parent composition repair and promotion | The six requirements above, with universal failures preserved and useful allocated witnesses. |
-| 2 | Whole input-validation region | Connect actual entry/profile/argc/mode/preflight, numeric/parent and initialization regions; connect rejection through existing reporting/finish proofs. Expose the owned-argv input contract and its still-open runtime producer. |
-| Early, alongside 1–2 | Lean proof-connection feasibility | State and check the relation between the original Lean computational closure and the imported representation. Establish a concrete checked-certificate or semantics route to the ordinary Lean security theorem required by [§REQ-proof-integrity.kernel](docs/requirements/REQ-proof-integrity.md#kernel-kernel-checked-evidence). Typed translated terms alone do not close this edge. |
-| Early, alongside 1–2 | Compiler-semantics compatibility | Relate the custom byte-aware/loss machine to the semantics required by the chosen compiler theorem, or prove the necessary compiler-pass extension. Keep frontend, headers, libc, linking and loader obligations explicit. Do not inherit stock CompCert correctness by name. |
-| 3 | Controller state/effect composition | Give one explicit relation from concrete helper memory/events to the M3 state and observations. Extend through arming, resource/namespace setup, guest entry, supervision, cancellation, export and cleanup. Preserve unknown entry/cleanup, partial writes and publication failure. |
-| Early feasibility, then 4 | Pinned Linux effects | Start with one complete reporting-channel path: endpoint ownership, bytes, short I/O/EINTR/EOF, loss, descriptors and concurrency. Connect the local effect contract to relevant pinned kernel source and dependencies. Continue with identities/arming, snapshotting, credentials, namespaces/VFS, filters, cgroups and teardown. |
-| 5 | Executable/runtime chain | Compose compiler, native/Lean runtimes, linking/loader and actual source-to-binary correspondence for the identified deployment artifacts. Reproducible identity accompanies the proof. |
-| 6 | Independent composed-profile review | Compose the advertised functional properties, replay independently, and discharge all sixteen original obligations and newly introduced connecting obligations for the retained profile. An open edge stays an explicit blocker to full M4 completion; a narrower result must be named separately. |
+| Next controller delivery | Whole input-validation region | Connect actual entry/profile/argc/mode/preflight, numeric/parent and initialization regions; connect rejection through existing reporting/finish proofs. Expose the owned-argv input contract and name its runtime producer. |
+| First uncertain dependency | Lean reporting proof connection | Produce an ordinary Lean theorem connecting the selected maintained helper reporting execution to the existing result decoder, with a checked relation to the semantics used by the source proof. The integrated reporting proof must consume it; importing another isolated datatype is supporting work. Identify the exact source/decoder declarations and acceptance command before implementation. |
+| Before relying on compiled behavior | Compiler-semantics connection | Prove the relation between the custom byte-aware/loss machine and the semantics required by the chosen compiler theorem, and apply it to the reporting path. The executable reporting argument must consume this relation. Identify the exact compiler theorem and any needed extension before implementing dependent work. |
+| After validation and its dependencies | Controller state/effect composition | Give one explicit relation from concrete helper memory/events to the M3 state and observations. Assign arming, setup, guest entry, supervision/cancellation and export/cleanup as successive integrated regions, each consumed by the next. Preserve unknown entry/cleanup, partial writes and publication failure. |
+| Investigate early; integrate by effect | Pinned Linux reporting transport, then other effects | Deliver the producer for the reporting path's actual descriptors and bytes, including short I/O/EINTR/EOF, partial-copy errors, loss and interference, from the pinned kernel and runtime source. Compose it with the reporting proof. Assign subsequent snapshot, credential, filesystem, filter and resource effects separately, each with a named controller consumer and integration check. |
+| After the constituent source/effect connections | Executable/runtime chain | Compose compiler, native/Lean runtimes, linking/loader and actual source-to-binary correspondence for the identified deployment artifacts. Reproducible identity accompanies the proof. |
+| Final acceptance | Composed-profile verification | Deliver the composed advertised functional properties for the retained profile, with every required premise supplied by the applicable implementation connection. Replay and review the integrated result once, reusing unchanged component evidence. |
 
-The early bridge/compiler/Linux tasks must produce a precise theorem interface
-and an actual checked connection attempt. If a route fails, retain the attempted
-goal and reproducible blocker, compare a concrete replacement, and revise the
-route explicitly. Do not keep expanding dependent source proofs while treating
-an unresolved central connection as routine future paperwork.
+The bridge/compiler/Linux assignments require the integrated connections in the
+table. Route experiments are work toward them. Record the evidence needed to
+choose a route once, then pursue the implementation. Resolve a central dependency
+before expanding work that relies on it. Any split must keep its consumer and
+acceptance check visible in the active delivery contract.
 
 ## Original obligation coverage
 
@@ -115,7 +100,8 @@ closed by this plan. The following is a planning map, not closure evidence.
 
 ## Replay, documentation and handoff
 
-On the prepared local toolchains, replay the complete implemented chain with:
+Use focused checks during implementation. When the affected scope requires the
+complete implemented chain, run this aggregate once on the final relevant inputs:
 
 ```sh
 ./scripts/check_m4_all.sh
@@ -127,17 +113,17 @@ It runs no hostile workloads on the host and performs no fresh VM replay. Hosted
 foundation CI alone does not run this M4 chain. Tool/bootstrap instructions remain
 in the individual package READMEs. Run checks sequentially because they share
 ignored build/report directories. Future packages must extend the aggregate gate.
+Reuse a recorded pass for matching inputs; do not run its constituent gates again
+just to produce another handoff. Documentation-only changes follow the lighter
+checks in [§AR-tooling.checks](docs/architecture/AR-tooling.md#checks-one-development-gate).
 
-The original README, AGENTS, development guide and roadmap entry still point to
-M4.1; some assurance/index summaries lag the accepted local work. They are bound
-into frozen evidence, including the candidate snapshot. This additive assignment
-supplies the current task without rewriting those historical fingerprints during
-independent review. During promotion, make a dedicated navigation amendment:
-add `RM-roadmap.m4.next`, retain `m4.entry` as the historical acceptance contract,
-correct the current status/index links, and record each changed documentation
-identity. Replay the frozen candidate at its preserved revision and the promoted
-package against the explicitly amended current inputs. Do not silently refresh
-the old candidate snapshot to accommodate navigation changes.
+Navigation now points to the current roadmap assignment. The preserved checkpoint
+and later documentation/dependency amendments retain the historical inputs.
+Workflow edits prepared during an active run must be integrated at its next stable
+checkpoint, with an explicit amendment for affected documentation identities.
+Preserve theorem statements, assumptions and compiled artifacts; check the
+fingerprint-only diff without rebuilding unchanged proofs. The planned product
+consolidation in [§AR-product.organization](docs/architecture/AR-product.md#organization-organize-the-maintained-product-by-responsibility) removes this operational-document coupling.
 
 Use scoped commits on `main` after validation, preserving concurrent changes.
 Work package by package toward full M4. Report a package as complete only after its

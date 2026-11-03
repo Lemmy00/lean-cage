@@ -48,6 +48,23 @@ Their interfaces must influence early work. If a proposed guarantee is infeasibl
 on a profile, document that result and investigate a suitable restricted profile;
 do not silently weaken the contract or count an assumption as a discharged proof.
 
+## organization: Product consolidation at the next stable integration point
+
+Prioritize [§AR-product.organization](architecture/AR-product.md#organization-organize-the-maintained-product-by-responsibility) after the active M4 run reaches a stable
+integration point, before expanding the next development phase. Preserve its
+current files while it runs. The deliverable is one product organized by
+responsibility, with root build/run entry points, updated consumers and
+preserved evidence. It also separates operational documentation from proof
+dependencies and eliminates redundant gate execution. This is a planned
+integration task; its acceptance criteria are in the linked product architecture.
+
+Every assignment must name a usable result, its existing consumer, and a concrete
+acceptance check. Break large goals into integrated functional results. Lemmas,
+test counts and repeated reviews are supporting work within those assignments.
+Investigate uncertain dependencies early and revise the implementation route
+when evidence calls for it; do not manufacture completion by replacing the
+assigned result with an easier internal task.
+
 ## m0: Specification and development foundation
 
 **Scope:** populate goals, specs, requirements, architecture, accepted decisions,
@@ -554,7 +571,10 @@ need coordination before parallel implementation. Follow [agent rules](../AGENTS
 
 ## validation: Validation across milestones
 
-Run the foundation checks on every handoff. As behavior appears, add targeted tests
+Select checks and reuse matching-input results under [§AR-tooling.checks](architecture/AR-tooling.md#checks-one-development-gate).
+Code/proof handoffs require the foundation and affected package gates once on the
+final relevant inputs; prose-only handoffs use documentation checks. An aggregate
+counts for its included prerequisites. As behavior appears, add targeted tests
 for malformed policies/filters, architecture mismatches, setup failures, descriptor
 leaks, symlink/rename races, privilege changes, fork/exec, cancellation, and limits.
 Use pinned differential tests for compatibility and tests of allowed behavior as

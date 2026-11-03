@@ -42,6 +42,28 @@ Extend and validate this configuration when adding a language.
 
 ## checks: One development gate
 
+Select checks by their inputs and the changed behavior. During implementation,
+run the focused check that answers the current question. At a code/proof handoff,
+run the foundation and affected package gates once on the final relevant inputs.
+When an aggregate includes a prerequisite, count that run; do not run the
+prerequisite again separately. Reuse a recorded pass with matching source,
+dependencies and toolchain. Re-run after a relevant change or failure, for a newly
+identified risk, or for an explicitly required independent replay. A new commit,
+agent or handoff alone does not invalidate a result.
+
+For prose/workflow-only changes, run `grund fmt --write`, `grund check --full`,
+`grund fmt --check` through the local wrapper, and `git diff --check`. Check any
+affected documentation fingerprints without rebuilding unchanged proofs. A change
+to a theorem contract, assurance claim, build input or tool configuration requires
+the corresponding focused checks. This distinction applies to the command lists
+in historical handoffs as well as current work.
+
+Review changed statements and code, resolve findings, then finish the assignment.
+Re-review the affected changes when resolving a finding; do not repeatedly review
+unchanged work. Add tests for meaningful behavioral risks, not to mirror code or
+produce another passing count. Required kernel checking and statement/assumption
+audits remain part of accepting a new proof result.
+
 `./scripts/check.sh` runs configuration validation, managed-guidance consistency,
 ordinary and full Grund checks, formatting checks, then
 `python3 scripts/audit_axioms.py` (including `lake build`), Python integration
