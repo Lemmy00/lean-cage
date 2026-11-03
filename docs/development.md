@@ -56,7 +56,7 @@ guidance. It runs from the repository root and downloads its own checksum-pinned
 release if missing.
 
 ```sh
-./scripts/grund.sh RM-roadmap.next --full
+./scripts/grund.sh RM-roadmap.m4.next --full
 ./scripts/grund.sh FS-filter-loading --toc
 ./scripts/grund.sh FS-filter-loading.input
 ./scripts/grund.sh refs FS-filter-loading --summary
@@ -292,5 +292,5 @@ run on the host because they never execute a workload.
 
 The profile is a conditional model result plus native VM test evidence. Review
 [the M3 handoff](reviews/M3-handoff.md) for full propositions, native mappings,
-limits and the open M4/M5 work. A reported unknown is never a zero-cost success,
+limits and the application/platform proof work. A reported unknown is never a zero-cost success,
 and an exit/cancellation does not imply completed resource release.

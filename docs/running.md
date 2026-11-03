@@ -77,15 +77,14 @@ does not execute guest workloads on the host. Normal VM replay without
 `--development` updates accepted evidence and therefore belongs to the reviewed
 workflow in [the development guide](development.md).
 
-## One product through the remaining milestones
+## Next product delivery
 
-The current convenient host entry point runs fixed acceptance workloads. A general
-host-side launcher for a caller's policy/input snapshots, returned captures/export
-and one staged build bundle is still planned. [§AR-product.integration](architecture/AR-product.md#integration-maintain-a-vertical-execution-path-during-the-proof-work) gives those
-bounded integration tasks alongside the proof work.
+The current host entry point runs fixed acceptance workloads. The next assignment
+adds a caller-policy VM workflow, returned captures/export, reusable library and
+one root build bundle under [§FS-linux-product.operation](functional-spec/FS-linux-product.md#operation-run-a-callers-workload-through-one-supported-interface).
+It also consolidates maintained product code into functional components.
 
-M4 connects the maintained controller/helper/Linux behavior to the models; M5 adds
-the stated hardware-observation argument; M7 packages the resulting supported
-profile. They extend the same product. The milestone directories preserve proof
-and regression boundaries. Current model proofs and VM tests retain the explicit
-native/Linux/compiler/hardware obligations in [§FS-assurance.workspace](functional-spec/FS-assurance.md#workspace-m3-workspace-model-and-vm-evidence).
+The [revised roadmap](roadmap.md) separates this M4 delivery from M5 application
+verification and M6 platform/confidentiality improvements. M7 supports releases
+whose declared proof and trust profile matches their evidence. The commands above
+remain the current executable interface until the product workflow is implemented.

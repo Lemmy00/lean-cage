@@ -21,7 +21,7 @@ status and the model/native boundary are in [§FS-assurance.workspace](FS-assura
 | Native shell and Python, offline I/O | M3 | Pinned Dash/Python, scripts/native code, bounded I/O and export | Named workflows, descendant model and VM cases in [§FS-workspace.profile](FS-workspace.md#profile-supported-environment-and-useful-workloads) |
 | Network access, device access, broad option parity | Later extension | None | Denied until specified and verified |
 | Resource budgets | M3 | cgroup memory/tasks/CPU bandwidth, sampled budgets/deadlines, workspace/output caps | [§FS-workspace.resources](FS-workspace.md#resources-units-ownership-and-failure); accounting/progress assumptions and measured overshoot |
-| Hardware-aware confidentiality | M5 | None | Exact supported hardware profile |
+| Hardware-aware confidentiality | M6 research | None | Exact supported hardware profile |
 | seLe4n backend | M6 | None | Separate backend and assumptions |
 
 ## interface: Versioned commands
@@ -32,6 +32,7 @@ result. [§FS-workspace.policy](FS-workspace.md#policy-bounded-typed-request) an
 These commands support the designated disposable VM only. The experimental `leancage-m1` and `leancage-m2`
 executables accept only their recorded VM test profiles; neither is a general
 sandbox CLI or an authenticated external result API.
+The caller-policy VM facade and root build are specified in [§FS-linux-product.operation](FS-linux-product.md#operation-run-a-callers-workload-through-one-supported-interface).
 Keep the core policy independent of CLI syntax; broaden this interface only with
 a versioned contract and renewed evidence.
 

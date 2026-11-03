@@ -1,6 +1,6 @@
 # M4 continuation: checked local effects, open correspondence
 
-This continuation follows [§RM-roadmap.m4.packages](../roadmap.md#m4packages-correspondence-work-after-the-reviewed-m3-baseline) and [§AR-m4-native.revision](../architecture/AR-m4-native.md#revision-byte-aware-effects-and-loss-before-the-lean-bridge).
+This continuation follows [§RM-roadmap.m4.packages](../roadmap.md#m4packages-integrated-product-deliveries) and [§AR-m4-native.revision](../architecture/AR-m4-native.md#revision-byte-aware-effects-and-loss-before-the-lean-bridge).
 It advances [§AR-m4-effects.memory](../architecture/AR-m4-effects.md#memory-local-byte-and-errno-contracts), [§AR-m4-effects.machine](../architecture/AR-m4-effects.md#machine-source-steps-blocked-calls-and-loss) and
 [§AR-m4-effects.lean](../architecture/AR-m4-effects.md#lean-exact-public-result-and-knowledge-endpoints). M4.2–M4.6 remain incomplete under [§REQ-proof-integrity.statement](../requirements/REQ-proof-integrity.md#statement-review-the-proposition)
 and [§FS-assurance.closure](../functional-spec/FS-assurance.md#closure-rules-for-stronger-claims). The implementation does not supply full native

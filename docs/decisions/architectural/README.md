@@ -2,6 +2,7 @@
 
 | Decision | Subject |
 |---|---|
+| [§DA-product-assurance](DA-product-assurance.md#da-product-assurance-deliver-the-linux-product-with-explicit-platform-trust) | Separate product delivery, application verification and platform research |
 | [§DA-lean-linux](DA-lean-linux.md#da-lean-linux-build-a-lean-replacement-with-linux-as-the-first-backend) | Lean replacement, Bubblewrap reference, Linux first |
 | [§DA-m1-filter-profile](DA-m1-filter-profile.md#da-m1-filter-profile-fix-the-first-filter-and-launch-boundary) | Canonical x86-64 M1 filter and explicit source/launch departures |
 | [§DA-m2-profile](DA-m2-profile.md#da-m2-profile-fresh-root-helper-and-owned-pid-namespace-for-m2) | Fresh root helper, sealed image and PID-namespace supervisor for M2 |

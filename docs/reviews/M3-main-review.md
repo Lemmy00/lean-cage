@@ -68,7 +68,7 @@ do not pre-empt the separate hosted CI result for the published commit.
 
 [§RM-roadmap.m4.entry](../roadmap.md#m4entry-next-assignment--m41-native-semantics-feasibility) defines the next worker's bounded M4.1
 native-semantics experiment, owned files and acceptance criteria.
-[§RM-roadmap.m4.packages](../roadmap.md#m4packages-correspondence-work-after-the-reviewed-m3-baseline) sequences the subsequent Lean connection,
+[§RM-roadmap.m4.packages](../roadmap.md#m4packages-integrated-product-deliveries) sequences the subsequent Lean connection,
 controller/helper composition, pinned Linux effects, executable/runtime chain
 and composed profile review. The original M2 and M3 correspondence ledgers stay
 open. An AST, source hash, differential test or Rocq result with an unchecked

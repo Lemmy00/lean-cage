@@ -5,19 +5,20 @@ isolation, and software-observable side-channel guarantees for named deployment
 profiles: [§GOAL-end-to-end](goals.md#goal-end-to-end-connect-the-policy-to-the-deployed-artifact), [§GOAL-native-isolation](goals.md#goal-native-isolation-contain-arbitrary-native-workloads), and [§GOAL-confidentiality](goals.md#goal-confidentiality-account-for-software-observable-leakage).
 Each milestone must leave reusable contracts and evidence for the next one.
 
-**Current stage: M1–M3 accepted for their stated conditional profiles.**
-The [M3 handoff](reviews/M3-handoff.md) records the useful offline workspace,
-checked model claims and fresh VM evidence. M4.1 feasibility and local M4.2/M4.3
-reporting, input-validation and initialization results are recorded. Parent
-composition repair is the current review boundary under [§RM-roadmap.m4.next](roadmap.md#m4next-current-m4-continuation).
-The full native/Lean/Linux/executable connection remains unproved.
-The source/ABI slice, pure decoder/bounds proofs, exact launch-order proofs,
-native Linux driver, and 13-case isolated VM demonstration are recorded under
-[§AR-filter-slice](architecture/AR-filter-slice.md#ar-filter-slice-m11-source-map-and-typed-contract-boundary), [§AR-filter-decoder](architecture/AR-filter-decoder.md#ar-filter-decoder-byte-decoder-proofs-and-executable-evidence-audit), and [§AR-m1-launch](architecture/AR-m1-launch.md#ar-m1-launch-launch-model-linux-driver-and-isolated-demonstration). The claim register
-[§FS-assurance.status](functional-spec/FS-assurance.md#status-initial-claim-register) separates model proofs, VM tests, and remaining
-native/Linux correspondence assumptions. Full confinement and hardware-channel
-security remain later milestones. The [independent M1 readiness review](reviews/M1-readiness.md)
-accepts this limited scope and defines the M2/M3 planning changes below.
+**Planning revision: 2026-11-03.** The product contract is now
+[§FS-linux-product](functional-spec/FS-linux-product.md#fs-linux-product-a-reusable-linux-workspace-with-an-explicit-trust-boundary), with the explicit trust decision
+[§DA-product-assurance](decisions/architectural/DA-product-assurance.md#da-product-assurance-deliver-the-linux-product-with-explicit-platform-trust).
+M1–M3 provide the tested offline workspace and reusable model/code proofs.
+The current implementation also includes the output-capture correction and the
+source/compiler reporting connection reviewed at `fe96f16`. The next delivery is
+one usable, functionally organized Linux product from that implementation.
+
+This revision separates product delivery, complete application verification and
+platform research. It does not mark the previous M4 contract complete. Earlier
+milestone references and proof ledgers retain their historical meaning; the
+[previous roadmap](https://github.com/Lemmy00/lean-cage/blob/fe96f1676f04907df8e398997fa6a9905e62c483/docs/roadmap.md)
+preserves that scope. Current assignments use the revised acceptance contracts
+below and [§FS-assurance.product](functional-spec/FS-assurance.md#product-product-assurance-levels-and-trusted-components).
 
 ## decisions: Accepted direction
 
@@ -30,29 +31,25 @@ accepts this limited scope and defines the M2/M3 planning changes below.
 - Trial Grund only in this project, with pinned tooling and canonical linked
   documentation: [§DA-grund](decisions/architectural/DA-grund.md#da-grund-trial-pinned-grund-inside-this-repository-only).
 
-## sequence: Milestones and dependencies
+## sequence: Delivery stages and dependencies
 
-| Milestone | Entry dependency | Deliverable | Assurance boundary |
-|---|---|---|---|
-| M0 | Project decisions | Specification, rules, pinned tooling/build | No runtime security claim |
-| M1 | M0 | Executable filter/launch proof slice | Abstract proof; Linux enforcement assumed |
-| M2 | M1 | Verified launcher lifecycle | OS contracts and binary correspondence still explicit |
-| M3 | M2 | Useful offline workspace sandbox | Native workloads; remaining Linux/runtime/hardware gaps listed |
-| M4 | M3, with contract research from M1 | Linux and executable correspondence | Relevant code and transitive dependencies connected |
-| M5 | Observer requirements from M0; deployed closure needs M4 | Hardware-aware isolation for a named profile | Hardware model fidelity remains explicit |
-| M6 | M3 | Optional seLe4n backend | Separate proof chain; can proceed alongside M4/M5 |
-| M7 | M4 and M5 for the advertised Linux profile | Supported production releases | Complete advertised chain and published foundational assumptions |
+| Stage | Deliverable | Completion evidence |
+|---|---|---|
+| M0–M3, preserved | Existing specifications, filter/lifecycle proofs and offline VM workspace | Their accepted profile records remain inputs to the product |
+| M4 | Reusable Linux product with verified executable policy/reporting core | Caller-supplied shell/Python runs through root build/check/run/report, reusable library, functional layout, exact core proof inventory and trusted component manifest |
+| M5 | Complete application control-path verification | Maintained policy/launch, supervision/cancellation and publication code compose under explicit primitive OS/runtime contracts |
+| M6 | Selected platform and confidentiality upgrades | A specific trusted component is replaced by a checked producer, or a named leakage/backend property is established |
+| M7, starts after M4 | Supported releases and maintenance | Installable identified bundle, supported environment, update/recovery procedure, proof and test evidence matching its advertised claims |
 
-M4 and M5 are substantial research programs, with no promised completion date.
-Their interfaces must influence early work. If a proposed guarantee is infeasible
-on a profile, document that result and investigate a suitable restricted profile;
-do not silently weaken the contract or count an assumption as a discharged proof.
+M4 can be delivered using the existing Linux kernel and compiler/runtime as
+published trusted components. M5 strengthens application guarantees. M6 research
+is selected per profile and does not gate a functional release. A release that
+advertises M5 or hardware guarantees must have that corresponding evidence.
 
 ## organization: Product consolidation at the next stable integration point
 
-Prioritize [§AR-product.organization](architecture/AR-product.md#organization-organize-the-maintained-product-by-responsibility) after the active M4 run reaches a stable
-integration point, before expanding the next development phase. Preserve its
-current files while it runs. The deliverable is one product organized by
+Carry out [§AR-product.organization](architecture/AR-product.md#organization-organize-the-maintained-product-by-responsibility) as part of the current M4 product delivery.
+Coordinate staged migrations with any active worker. The deliverable is one product organized by
 responsibility, with root build/run entry points, updated consumers and
 preserved evidence. It also separates operational documentation from proof
 dependencies and eliminates redundant gate execution. This is a planned
@@ -202,7 +199,8 @@ Preserve the original M1 profile and evidence.
 Keep resource mechanisms and scheduling premises explicit; a test timeout alone
 does not establish a workload limit. Once implemented, the M3 profile may claim
 its reviewed conditional model properties and tested native behavior. Full
-executable/Linux correspondence and hardware-aware confidentiality remain M4/M5.
+application/platform correspondence and hardware-aware confidentiality follow
+the revised M5/M6 tracks.
 
 **Reusable output:** the first useful Linux workspace profile, stable authority
 and backend contracts, and an evidence report. This remains the entry gate for
@@ -267,163 +265,50 @@ pass. Update the assurance register to distinguish these planned claims from the
 completed M2 result. M3.2–M3.7 have separate implementation and acceptance gates;
 the M3.1 contract alone does not complete workspace confinement.
 
-## m4: Linux and executable correspondence
+## m4: Reusable Linux product and verified executable core
 
-Close the gap from Lean semantics to the actual executable and Linux enforcement
-under [§AR-linux.correspondence](architecture/AR-linux.md#correspondence-reduce-the-linux-assumption) and [§AR-verification.artifacts](architecture/AR-verification.md#artifacts-bind-proofs-to-releases). Cover compilation,
-native runtime, loader, foreign bindings, ABI, relevant Linux code and its transitive
-dependencies, for a fixed kernel configuration.
+Implement [§FS-linux-product](functional-spec/FS-linux-product.md#fs-linux-product-a-reusable-linux-workspace-with-an-explicit-trust-boundary) using the existing controller, helper, runtime and
+profile. Publish the Linux/runtime/compiler assumptions from the start. The
+first supported environment remains the disposable VM; caller-supplied workloads
+must work through a public interface without editing the acceptance harness.
 
-Start the correspondence work during M2: inventory the C/FFI/runtime operations,
-choose the semantics and first concrete boundary to connect, and record which
-launch invariant each obligation supports. Each new M2/M3 feature must extend
-that ledger. Do not wait for a large launcher to accumulate before testing
-whether its implementation can be related to the model.
+**Exit:** the complete workflow in [§FS-linux-product.acceptance](functional-spec/FS-linux-product.md#acceptance-product-completion), with a reusable
+library, functional source organization, documented root build, returned artifacts,
+meaningful failure/cancellation handling and an inventory of proved properties
+of the executable core. This is the revised product milestone, not acceptance of
+the historical whole-platform verification contract.
 
-**Exit criteria:** an explicit refinement chain for the advertised properties;
-identified executable and kernel artifacts; all relevant obligations either
-discharged or visible as remaining limitations that prevent the stronger claim.
-Manual code maps and differential tests cannot substitute for a correspondence
-proof. Avoid claiming the entire kernel has been verified.
+### m4.packages: Integrated product deliveries
 
-**Reusable output:** semantics, proof connections, and reproducible artifact
-evidence that can support more features and maintained Linux profiles.
-
-### m4.packages: Correspondence work after the reviewed M3 baseline
-
-M4 is a research program, not one agent-sized implementation task. M4.1's
-bounded feasibility result is recorded in [the handoff](reviews/M4.1-handoff.md)
-and [§AR-m4-native.outcome](architecture/AR-m4-native.md#outcome-checked-pure-core-and-rejected-direct-effect-adapter). The direct silent/count-only effect route is rejected;
-the full simulation, whole-slice memory safety and checked Lean bridge are
-unproved. The [continuation record](reviews/M4-progress.md) adds a checked byte-aware
-effect/loss layer and Lean endpoint lemmas under [§AR-m4-effects](architecture/AR-m4-effects.md#ar-m4-effects-byte-aware-native-effects-and-asynchronous-loss). The [write-loop review](reviews/M4-writeall.md)
-completes a source submilestone under [§AR-m4-effects.writeall](architecture/AR-m4-effects.md#writeall-universal-source-loop-connection): universal finite-execution
-prefix safety, defined execution and exact returns for the maintained `write_all`,
-with arbitrary retry/wait/loss witnesses. The [reporting-primitives review](reviews/M4-primitives.md)
-adds universal source-prefix safety, exact returns and bounded execution for
-`error_number`, `get32` and `get64` under [§AR-m4-effects.errno](architecture/AR-m4-effects.md#errno-source-errno-normalization-and-bounded-execution) and
-[§AR-m4-effects.readers](architecture/AR-m4-effects.md#readers-universal-bounded-frame-reader-execution), with arbitrary caller continuations in the constructive
-paths and allocated arbitrary-value witnesses. The [writer review](reviews/M4-writers.md)
-adds every-prefix byte-store safety, unchanged outside memory/permissions,
-42/74-step source bounds, loss after the first store, and exact source codec
-round trips under [§AR-m4-effects.writers](architecture/AR-m4-effects.md#writers-byte-stores-and-source-codec-round-trips). The [library review](reviews/M4-library.md) adds local comparison/copy/close/exit contracts,
-universal preservation of earlier source proofs in the extended machine, and the
-complete `fault` source connection under [§AR-m4-library.source](architecture/AR-m4-library.md#source-source-connections-and-completion-boundary). The [structure review](reviews/M4-structures.md) adds complete `result_of` source
-execution, typed local allocation/stores/copy/free, exact fields, outside-memory
-preservation and every-prefix loss under [§AR-m4-structures.result](architecture/AR-m4-structures.md#result-complete-result-constructor). The [caller review](reviews/M4-callers.md) adds bidirectional actual call
-composition and the complete `fail_child` source: every-prefix ordinary progress,
-exact reporting prefixes, non-return, exit code 125 and owned success/drop/short/
-failed/lost executions under [§AR-m4-callers.failure](architecture/AR-m4-callers.md#failure-complete-child-failure-reporting). The [decoder review](reviews/M4-decoder.md) adds the complete `decode_frame` source from arbitrary owned 160-byte frames: exact header/payload/tag acceptance, early versus late rejection mutation, ordinary progress at every finite live prefix, outside-memory preservation and actual local free under [§AR-m4-decoder](architecture/AR-m4-decoder.md#ar-m4-decoder-complete-private-frame-decoding-from-owned-bytes). Its replay also repairs the historical caller import closure without changing preceding claims. The [sender/finish review](reviews/M4-sender.md) adds complete frame construction,
-ordered fault checks, exact publication results and actual frees, plus `finish`
-execution through both successful and failed publication under [§AR-m4-sender](architecture/AR-m4-sender.md#ar-m4-sender-complete-frame-sending-and-publication-return-behavior).
-The [receiver review](reviews/M4-receiver.md) adds the complete terminal-error read
-loop, exact classification from its actual read trace, ignored close failure,
-all copies/frees and allocated retry/error/loss executions under [§AR-m4-receiver](architecture/AR-m4-receiver.md#ar-m4-receiver-complete-terminal-error-receiver-from-owned-inputs).
-The [report-byte review](reviews/M4-wire.md) connects actual sender/decoder and
-child/receiver histories through exact observed bytes, with private acceptance,
-rejection mutation and allocated execution pairs under [§AR-m4-wire](architecture/AR-m4-wire.md#ar-m4-wire-source-connections-through-exact-report-bytes).
-The [public endpoint review](reviews/M4-public.md) adds exact acceptance for the
-live Lean parser, byte widths and an independent public encoder round trip under
-[§AR-m4-public](architecture/AR-m4-public.md#ar-m4-public-exact-live-public-result-endpoint), including accepted and rejected ordinary-kernel witnesses.
-The [strict bridge experiment](reviews/M4-bridge.md) adds exact decoder
-normalization, a checked import of the computational root, and universal
-32-bit/64-bit source-reader correspondence in an isolated profile under
-[§AR-m4-bridge](architecture/AR-m4-bridge.md#ar-m4-bridge-strict-imported-endpoint-and-source-byte-correspondence). The [complete imported-frame connection](reviews/M4-frames.md)
-adds exact fields, digest, header/error order, the full validity predicate and
-actual sender-execution composition under [§AR-m4-bridge.frames](architecture/AR-m4-bridge.md#frames-complete-imported-frame-operations). Translation
-faithfulness and whole-controller composition remain open; kernel acceptance
-alone does not close those edges.
-These are partial M4.2 results; translation faithfulness and the complete checked
-bridge remain open. The [first controller parser slice](reviews/M4-controller-number.md)
-advances M4.3 under [§AR-m4-controller.decimal](architecture/AR-m4-controller.md#decimal-native-unsigned-decimal-fields): exact unsigned decimal parsing,
-actual source paths, aliasing, rejection preservation and every-prefix loss are
-checked, with allocated accepted/rejected witnesses. The [live plan connection](reviews/M4-plan.md)
-adds exact argument layout, decimal UTF-8 bytes and imported numeric-parser/source
-agreement under [§AR-m4-controller.plan](architecture/AR-m4-controller.md#plan-live-lean-plan-fields-and-their-decimal-bytes). The [complete-helper numeric block](reviews/M4-main-input.md)
-checks the actual ten pointer initializers, parser calls and sequential stores
-under [§AR-m4-controller.main-inputs](architecture/AR-m4-controller.md#main-inputs-actual-main-routine-numeric-initialization), including first-rejection ordering and
-allocated interruption witnesses. The [policy-bound connection](reviews/M4-policy-bounds.md)
-checks the actual short-circuit validation block, unchanged memory, finite
-source paths and the strict imported live-policy predicate under
-[§AR-m4-controller.bounds](architecture/AR-m4-controller.md#bounds-actual-policy-bound-validation). The [argument-loop connection](reviews/M4-arguments.md)
-checks actual length accumulation, its `strlen` contract, arbitrary waiting/loss,
-strict imported length agreement and subsequent policy-block composition under
-[§AR-m4-controller.arguments](architecture/AR-m4-controller.md#arguments-actual-guest-argument-length-accumulation). The [digest recognizer connection](reviews/M4-digest.md)
-checks the complete native syntax recognizer, every isolated execution, strict
-imported byte agreement and actual live digest-field/plan representation under
-[§AR-m4-controller.digest](architecture/AR-m4-controller.md#digest-actual-lowercase-digest-text-validation). The [caller-string connection](reviews/M4-validation.md)
-checks actual mode, export, digest-option and executable validation, all
-comparison-result magnitudes, explicit region boundaries and executable/argument/
-bounds composition under [§AR-m4-controller.strings](architecture/AR-m4-controller.md#strings-actual-caller-string-checks).
-The [initialization connection](reviews/M4-initialization.md) connects actual
-flag and pointer stores, exact sequential memory, interruptions, imported/live
-flag values and continuous export-to-bounds validation under
-[§AR-m4-controller.initialization](architecture/AR-m4-controller.md#initialization-actual-flag-and-pointer-initialization). Actual argument provenance, entry reachability,
-parent identity, composition with preceding numeric validation and the remaining
-controller effects are still open. M4.4–M4.6
-remain planned, and none of these additions completes M4.
-
-| Package | Dependency | Deliverable and gate |
+| Delivery | Existing implementation to reuse | Acceptance |
 |---|---|---|
-| M4.1 Native-semantics feasibility | Reviewed M3 on `main` | Feasibility result recorded: 260-line maintained-source extraction, checked pure-reader executions, and refuted direct effect adapters; full reporting simulation unproved |
-| M4.2 Checked connection to Lean | M4.1 revised effect route | Byte-aware effects, asynchronous loss and exact Lean endpoints checked; local `write_all` source safety plus universal errno/frame-reader safety, exact returns and bounded execution checked under [§AR-m4-effects.writeall](architecture/AR-m4-effects.md#writeall-universal-source-loop-connection), [§AR-m4-effects.errno](architecture/AR-m4-effects.md#errno-source-errno-normalization-and-bounded-execution) and [§AR-m4-effects.readers](architecture/AR-m4-effects.md#readers-universal-bounded-frame-reader-execution); byte writers and exact source codec round trips checked under [§AR-m4-effects.writers](architecture/AR-m4-effects.md#writers-byte-stores-and-source-codec-round-trips); local library effects and the complete `fault` source selector checked under [§AR-m4-library.source](architecture/AR-m4-library.md#source-source-connections-and-completion-boundary); complete `result_of` construction and local storage checked under [§AR-m4-structures.result](architecture/AR-m4-structures.md#result-complete-result-constructor); actual caller composition and complete `fail_child` source checked under [§AR-m4-callers.failure](architecture/AR-m4-callers.md#failure-complete-child-failure-reporting); complete private-frame decoding and rejection mutation checked under [§AR-m4-decoder.source](architecture/AR-m4-decoder.md#source-actual-construction-and-validation); complete frame sending and `finish` publication/exit mapping checked under [§AR-m4-sender.reporting](architecture/AR-m4-sender.md#reporting-source-fault-checks-and-complete-writes) and [§AR-m4-sender.finish](architecture/AR-m4-sender.md#finish-exit-mapping-despite-publication-failure); complete terminal receiver, actual read-trace classification, nine-byte bound and local frees checked under [§AR-m4-receiver](architecture/AR-m4-receiver.md#ar-m4-receiver-complete-terminal-error-receiver-from-owned-inputs); exact sender/decoder and child/receiver observation connections checked under [§AR-m4-wire](architecture/AR-m4-wire.md#ar-m4-wire-source-connections-through-exact-report-bytes); exact live public parser and encoder round trip checked under [§AR-m4-public](architecture/AR-m4-public.md#ar-m4-public-exact-live-public-result-endpoint); strict imported computational decoder and primitive source-reader correspondence checked under [§AR-m4-bridge](architecture/AR-m4-bridge.md#ar-m4-bridge-strict-imported-endpoint-and-source-byte-correspondence); complete imported-frame parsing/validation and source-publication composition checked under [§AR-m4-bridge.frames](architecture/AR-m4-bridge.md#frames-complete-imported-frame-operations); translation faithfulness, whole-program ordering, Linux byte provenance, valid wait-status provenance and full C-to-Lean bridge still open |
-| M4.3 Controller and helper composition | M4.1–2 | Decimal source parsing checked under [§AR-m4-controller.decimal](architecture/AR-m4-controller.md#decimal-native-unsigned-decimal-fields); live plan layout and numeric-byte/source connection checked under [§AR-m4-controller.plan](architecture/AR-m4-controller.md#plan-live-lean-plan-fields-and-their-decimal-bytes); actual numeric initialization and loop checked under [§AR-m4-controller.main-inputs](architecture/AR-m4-controller.md#main-inputs-actual-main-routine-numeric-initialization); actual policy-bound validation and imported live-policy agreement checked under [§AR-m4-controller.bounds](architecture/AR-m4-controller.md#bounds-actual-policy-bound-validation); argument-length accumulation, strict imported length agreement and subsequent bounds composition checked under [§AR-m4-controller.arguments](architecture/AR-m4-controller.md#arguments-actual-guest-argument-length-accumulation); complete digest recognizer and live parser/plan byte connection checked under [§AR-m4-controller.digest](architecture/AR-m4-controller.md#digest-actual-lowercase-digest-text-validation); actual caller string checks, strict imported/live-plan agreement and executable/argument/bounds composition checked under [§AR-m4-controller.strings](architecture/AR-m4-controller.md#strings-actual-caller-string-checks); actual flag/pointer stores, sequential memory and continuous export-to-bounds composition checked under [§AR-m4-controller.initialization](architecture/AR-m4-controller.md#initialization-actual-flag-and-pointer-initialization); expand through native argument provenance and validation, memory/ABI, operation ordering, errors, asynchronous reports, supervision and cleanup; every local external effect gets a byte/memory/error contract and source connection; preserve partial decoder mutation and failed publication facts |
-| M4.4 Pinned Linux enforcement | Effect contracts from M4.3; research may overlap | Discharge the relevant VFS/mount/descriptor, process/credential, seccomp and cgroup obligations against the pinned kernel and transitive dependencies; track each original M2/M3 ledger entry separately, including the byte-aware I/O/errno contract and loss/progress premises exposed by M4.1 |
-| M4.5 Executable and runtime chain | M4.2–4 interfaces; artifact work may overlap | Connect compiler output, linking, Lean/native runtimes, loaders, runtime closure, kernel and deployed artifacts; review the actual assigned CompCert commit (VERSION 3.17 despite the earlier 3.18 label), licensing and any altered event semantics before applying compiler theorems; hashes alone do not prove correctness |
-| M4.6 Composed profile review | M4.3–5 | Compose the advertised functional properties for a named deployment profile, replay independently, and account for every remaining assumption; the M4.1 negative adapter result discharges no native security obligation; open correspondence gaps prevent a full M4 completion claim |
+| Root build and functional source layout | Current Lake packages, CLI, native helper and runtime lock | One root build stages the actual controller/helper/profile; maintained product files are organized by responsibility; old proof/profile identities have an explicit migration map |
+| Caller-policy VM workflow | `check`, `run`, `report` and the disposable VM tooling | A caller's policy/input snapshots produce its typed result, captures and permitted export; reject unsupported input and preserve safe cancellation/channel-loss behavior |
+| Verified core and library interface | Executable policy/filter/decoder definitions and existing theorem inventory | Library and CLI call the same definitions; exact acceptance/bounds, emitted-filter behavior and live result equations are checked and linked to the bundle |
+| Product acceptance | Existing VM cases, capture regression and proof gates | Useful Python and shell scenarios plus denial, cancellation, storage failure and lost-channel cases pass on the final changed inputs; unchanged proof evidence is reused |
 
-M5 retains timing/cache/contention/speculation work. M6 remains optional. Neither
-is a shortcut around the Linux/executable obligations or a reason to expand the
-VM profile while its correspondence is still unproved.
+These are parts of one product delivery, not new standalone success labels. The
+next agent carries the first workflow through acceptance. It does not start a
+Linux source translation or another compiler research package to build this product.
 
 ### m4.next: Current M4 continuation
 
-Follow [M4-CONTINUE.md](../M4-CONTINUE.md) and the
-[independent checkpoint review](reviews/M4-independent-review.md). The accepted
-local baseline is initialization commit `2db87b4`. The frozen parent candidate
-at `80d4bbe` is preserved. Its trace/input contract repairs live separately under
-[§AR-m4-parent.history](architecture/AR-m4-parent.md#history-selected-execution-history) and [§AR-m4-parent.inputs](architecture/AR-m4-parent.md#inputs-owned-input-representation), with the decision
-[§DA-m4-parent](decisions/architectural/DA-m4-parent.md#da-m4-parent-preserve-the-candidate-and-track-observations-in-composition). Promotion requires complete-composition cases, compiled negative
-controls, full statement/foundation review and the maintained gate. A new local
-lemma or a passing frozen-candidate replay does not accept that package.
+Follow [M4-CONTINUE.md](../M4-CONTINUE.md) for the next worker's complete assignment:
+**make a caller-supplied offline workspace runnable through one root interface,
+with reusable components and a declared trust boundary.**
 
-The repaired contract at `b961685` has now passed independent statement and
-focused replay review. Its six requirements are accepted conditional only on
-the corrected aggregate gate; `assurance/m4-parent-validation.json` records that
-outcome. The [repair review](reviews/M4-parent-independent-review.md) preserves
-the decision and exact evidence. Current navigation amendments preserve all 300
-reviewed type/foundation records and 51 compiled proof artifacts.
-
-The full implemented chain replays with `./scripts/check_m4_all.sh`. Documentation
-and dependency fingerprint amendments are explicit and preserve the frozen
-candidate and initialization snapshots, earlier statements and compiled
-identities. All sixteen original obligations remain open. Continue with whole
-input-validation composition and the early Lean/compiler/Linux feasibility edges
-in the assignment before extending setup.
-
-The early [semantics and Linux attempts](architecture/AR-m4-routes.md) expose
-reproducible blockers: strict import of the experimental Lean Clight step
-relation fails on a nested recursor, and the unchanged configured kernel pipe
-translation fails on `__int128`. [§DA-m4-routes](decisions/architectural/DA-m4-routes.md#da-m4-routes-expose-failed-central-connections-before-expanding-setup) records the replacement
-routes. Resolve the semantics/certificate and concurrent kernel source-refinement
-edges before treating further controller expansion as M4 completion work.
-
-The reporting call now connects the current complete helper program to the
-ordinary Lean decoder through [§AR-reporting.interface](architecture/AR-reporting.md#interface-preserve-the-complete-call-observation). The source theorem consumes
-the imported ordinary publication proof, with complete, failed and partial-loss
-executions. [§FS-assurance.reporting](functional-spec/FS-assurance.md#reporting-current-helper-reporting-call-and-ordinary-lean-decoder) records the checked boundary. Continue by
-supplying the compiler-semantics and pinned Linux effect producers required by
-`M4-CONTINUE.md`; the call interface does not supply those premises.
-
-The concrete compiler connection now supplies the selected Clight2-to-assembly
-pass relation to the reporting consumer under [§AR-compiled-reporting.connection](architecture/AR-compiled-reporting.md#connection-carry-the-reporting-argument-across-verified-compilation)
-and [§FS-assurance.compiled](functional-spec/FS-assurance.md#compiled-conditional-assembly-reporting-connection). The complete helper plus explicit logical errno unit
-has a checked compilation equation. Matched caller states, physical TLS/runtime
-and pinned Linux effects, partial-call loss and the retained binary chain remain
-unsupplied producers. Continue those connections and whole input-validation
-composition; the original ledger remains open.
+Reuse the accepted parent/input work, the native output-capture correction,
+[§AR-reporting.proof](architecture/AR-reporting.md#proof-check-the-interface-in-both-proof-environments) and [§AR-compiled-reporting.connection](architecture/AR-compiled-reporting.md#connection-carry-the-reporting-argument-across-verified-compilation).
+The [compiler/reporting review](reviews/compiler-reporting-review.md) explains what
+those results supply. The deeper compiler/runtime/kernel connections move to the
+application/platform tracks below; they are not prerequisites for the root VM
+workflow. Existing theorem statements and historical assurance records retain
+their exact scopes.
 
 ### m4.entry: Next assignment — M4.1 native-semantics feasibility
+
+**Historical contract, retained for existing citations and evidence.** New work
+uses [§RM-roadmap.m4.next](roadmap.md#m4next-current-m4-continuation).
 
 **Recorded feasibility outcome:** [M4.1 handoff](reviews/M4.1-handoff.md),
 [§AR-m4-native.outcome](architecture/AR-m4-native.md#outcome-checked-pure-core-and-rejected-direct-effect-adapter) and the additive `assurance/m4-*` register.
@@ -497,44 +382,64 @@ Keep completed work on `main`: start from its reviewed head, use a temporary
 branch/worktree only if isolation is needed, then integrate passing, reviewed
 commits back into `main` and push. Preserve other active work and never force-push.
 
-## m5: Hardware-aware isolation
+## m5: Verify the complete application control path
 
-Fulfill [§FS-observations.hardware](functional-spec/FS-observations.md#hardware-software-observable-channels) for a named CPU/kernel/configuration profile.
-Develop the observer model from M0 onward; investigate mechanisms such as resource
-partitioning, scheduling controls, and restrictions only as justified by that model.
-M2 must identify public launch/failure observations; M3 must identify workspace
-secrets and authorized output. These are inputs to the later hardware-aware
-argument, not early timing-confidentiality claims.
+Establish the application guarantee in [§FS-linux-product.proofs](functional-spec/FS-linux-product.md#proofs-useful-proofs-connected-to-shipped-code)
+against the published primitive Linux/runtime contracts. Deliver successive
+connected regions of the actual maintained program:
 
-**Exit criteria:** explicit timing/cache/contention/speculation observations and
-attacker powers; security theorem for the stated leakage property; connection to
-the deployed mechanisms and M4 chain; useful workload witnesses; supplemental
-leakage experiments; published hardware-model fidelity assumptions.
+1. Policy/input bytes through setup and guest admission: validated authority,
+   correct handle/credential/filter use, and fail-closed setup.
+2. Running guest through supervision, resource decisions and cancellation:
+   hostile transitions, descendant identity, signal/race/error cases and cleanup.
+3. Actual observations through output capture, export and stored report:
+   bounded bytes, observation provenance, interrupted publication and report loss.
 
-**Reusable output:** hardware-aware observation/refinement interfaces and supported
-profile evidence. VM tests alone cannot establish this milestone.
+Each region produces the inputs required by the next. Reuse the existing source
+proofs and ordinary Lean consumers. Prove the application-side memory, bytes,
+call ordering and state correspondence; OS assumptions describe individual
+primitive effects, not the intended confinement/reporting conclusion.
 
-## m6: Optional second backend
+**Exit:** one composed application contract for the supported profile, with
+inhabited inputs, actual call-site producers and explicit compiler/runtime/OS
+trust. Source proofs and executable Lean theorems must be connected to the code
+in the product bundle. The previous whole-platform ledger is a map of further
+trust-reduction work, not a reason to restart completed application components.
 
-After M3, evaluate the seLe4n track in [§DA-secondary-backend](decisions/architectural/DA-secondary-backend.md#da-secondary-backend-consider-sele4n-after-the-first-useful-linux-profile). Check toolchain and
-license compatibility before adding dependencies, and reuse the portable contracts.
+## m6: Platform trust reduction and confidentiality research
 
-**Exit criteria:** a separate backend refinement to the chosen kernel model;
-audited trusted hardware contracts, runtime and bindings; a useful workload and
-a separate evidence record. This does not discharge Linux obligations.
+Assign a particular improvement to a product profile, with its consumer and a
+bounded feasibility decision. Candidate tracks are:
 
-## m7: Supported production releases
+- Supply the physical runtime/TLS/caller producers and connect verified compiler
+  output to the deployed artifact where that improves the selected profile.
+- Prove a selected Linux effect implementation against its published contract,
+  including the relevant concurrency, errors and transitive dependencies.
+- Establish the hardware-aware observation/leakage property in
+  [§FS-observations.hardware](functional-spec/FS-observations.md#hardware-software-observable-channels) for a named CPU/kernel/configuration.
+- Evaluate an alternative backend under [§DA-secondary-backend](decisions/architectural/DA-secondary-backend.md#da-secondary-backend-consider-sele4n-after-the-first-useful-linux-profile)
+  when a concrete portability or assurance benefit justifies it.
 
-Release identified, reproducible artifacts for profiles whose advertised claims
-meet [§FS-assurance.closure](functional-spec/FS-assurance.md#closure-rules-for-stronger-claims). Publish supported policies/workloads, theorem and
-artifact evidence, residual foundational assumptions, operational prerequisites,
-and update/revalidation procedures.
+**Exit for an assigned upgrade:** the replacement producer or leakage theorem is
+consumed by the profile's composed argument, and the profile's trusted-component
+record is updated accordingly. Preserve the broader end-to-end destination.
+There is no requirement to complete every research track before releasing a
+useful Linux product. A hardware-confidentiality claim requires its own completed
+observation and mechanism proof.
 
-**Exit criteria:** independent replay of proof checks and reproducible artifact
-identification; no open obligation concealed inside a claimed guarantee; supported
-deployment procedure and regression process. Broaden platforms/features only with
-new or preserved contracts and evidence. M6 is required only for a claimed seLe4n
-release, not for a Linux release.
+## m7: Supported releases and maintenance
+
+Begin release engineering after the M4 product gate. Release identified bundles
+whose exact claims meet [§FS-assurance.product](functional-spec/FS-assurance.md#product-product-assurance-levels-and-trusted-components) and [§FS-assurance.closure](functional-spec/FS-assurance.md#closure-rules-for-stronger-claims).
+An initial release can advertise the tested Linux profile and its verified core;
+a later release can add M5 application verification or selected M6 upgrades.
+
+**Exit:** reproducible package and documented installation/run API, supported
+platform preflight, regression coverage, proof/evidence manifest, licenses,
+update/revalidation policy, recovery/quarantine behavior and a security-reporting
+process. Keep the first supported execution environment explicit; extending from
+VM execution to direct deployment requires a separate platform contract and tests.
+Only the claims actually advertised determine the required assurance upgrades.
 
 ## next: M1 work packages and next scope
 

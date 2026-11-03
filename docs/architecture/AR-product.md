@@ -6,6 +6,10 @@ supported deployment profile. The milestones organize development and evidence;
 they are not seven applications that a caller must assemble. The current Linux
 integration point is `m3/Main.lean`, which builds the executable `leancage`.
 
+The revised delivery contract is [§FS-linux-product](../functional-spec/FS-linux-product.md#fs-linux-product-a-reusable-linux-workspace-with-an-explicit-trust-boundary), with an explicit platform
+trust boundary. [§DA-product-assurance](../decisions/architectural/DA-product-assurance.md#da-product-assurance-deliver-the-linux-product-with-explicit-platform-trust) separates the initial product, complete
+application proofs and later platform/confidentiality research.
+
 ## execution: Current path from policy to workload and report
 
 The existing path implements [§FS-workspace.policy](../functional-spec/FS-workspace.md#policy-bounded-typed-request) and [§FS-workspace.results](../functional-spec/FS-workspace.md#results-entry-cancellation-and-bounded-transport):
@@ -44,10 +48,10 @@ an integration task below, not an existing interface.
 | M1 | Decoder, filter and launch foundations; preserved regression profile | Exact byte/ABI and launch claims at their stated boundaries |
 | M2 | Lifecycle, ownership, setup order and descendant foundations | The M3 successful receipt sequence projects to the M2 plan |
 | M3 | Current runnable policy/controller/helper/runtime/report path | Model composition plus native VM workflows; correspondence remains conditional |
-| M4 | Connect the live implementation, Linux effects and executable artifacts to the models | Checked source/semantics/Lean connections and a composed profile argument |
-| M5 | Extend the profile's observation and enforcement argument to hardware channels | A stated leakage property connected to the same executable/platform profile |
-| M6 | Optional alternative backend behind the portable contracts | A separate backend refinement; no dependency for the Linux release |
-| M7 | Package and support the integrated implementation and its completed advertised guarantees | Identified executable, runtime/kernel/platform, evidence and operating procedure |
+| M4 | Deliver the reusable Linux product and verified executable core | Root build, caller-policy VM workflow, library, functional layout and exact proof/trust manifest |
+| M5 | Verify the whole application control path | Actual controller/helper correspondence and composed authority/lifecycle/reporting properties over primitive platform contracts |
+| M6 | Strengthen selected platform or confidentiality guarantees | A checked replacement for a trusted component, named leakage property or justified alternative backend |
+| M7 | Package and support the integrated implementation | Releases may begin after M4; each claim determines its required application/platform evidence |
 
 The dependent Lake packages preserve useful earlier interfaces and proofs. M3
 invokes its own helper directly; it does not launch the M1 and M2 demonstration
@@ -64,10 +68,9 @@ refer to the actual maintained implementation and advertised observations.
 
 ## integration: Maintain a vertical execution path during the proof work
 
-Keep a runnable integration track alongside [§RM-roadmap.m4.packages](../roadmap.md#m4packages-correspondence-work-after-the-reviewed-m3-baseline), rather than
-deferring assembly until M7. It implements the existing interface and profile
-contracts, without changing the scope of the assigned native proof package.
-Assign these bounded tasks explicitly before implementing them:
+The current delivery in [§RM-roadmap.m4.packages](../roadmap.md#m4packages-integrated-product-deliveries)
+owns the runnable integration of the existing interface and profile contracts.
+Preserve the exact scopes of the source proofs it reuses. Its concrete tasks are:
 
 1. **Build entry point.** Provide one documented project-root build command for
    the public controller, native helper and profile manifests. Preserve the M1/M2
@@ -105,8 +108,9 @@ The maintained product must be understandable from its functionality. New source
 packages, namespaces, binaries, scripts and tests use responsibility-based names.
 Milestone labels remain useful in the roadmap and archived evidence. The current
 `m2/`, `m3/`, `m4/`, `LeanCageM*` and milestone-named native/script paths are
-temporary organization, with consolidation scheduled at the next stable
-integration point after the active M4 run. Do not rename files underneath it.
+temporary organization. Consolidation is part of the current product delivery.
+The compiler/reporting checkpoint is its preserved baseline. Coordinate any
+migration with active workers and keep their current inputs stable until integration.
 
 Consolidation has concrete acceptance criteria:
 
@@ -144,7 +148,7 @@ Removing a VM marker check alone cannot establish deployment support or security
 The installed product may contain a controller, helper and runtime dependencies;
 the caller uses the single versioned `leancage` interface.
 
-M4/M5 results and any changed enforcement mechanisms must be connected to that
+Core/application proofs and any changed enforcement mechanisms must be connected to that
 same release bundle. Unsupported profiles fail explicitly. Hardware observation
 claims remain [§FS-observations.hardware](../functional-spec/FS-observations.md#hardware-software-observable-channels) obligations until their exact chain is
 proved and reviewed.

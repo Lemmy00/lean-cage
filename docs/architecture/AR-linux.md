@@ -43,8 +43,14 @@ is not this reference; no host filter or kernel replacement is part of this work
 
 ## correspondence: Reduce the Linux assumption
 
-M4 must connect contracts to the relevant pinned Linux code and its transitive
-dependencies, together with compiler/runtime/FFI correspondence under
-[§FS-assurance.assumptions](../functional-spec/FS-assurance.md#assumptions-initial-assumption-and-obligation-register). Manual code review and conformance tests are useful
-evidence but cannot close these proof obligations by themselves. Scope each result
-to the actual supported configuration.
+The initial product uses the explicit platform contracts in
+[§FS-linux-product.trust](../functional-spec/FS-linux-product.md#trust-platform-assumptions-for-the-initial-product).
+M5 proves the application's use of those primitives, including actual arguments,
+ownership, ordering and failure handling. M6 can replace selected trusted effects
+with proofs about the pinned Linux implementation and its transitive dependencies.
+The original whole-platform correspondence targets remain recorded in
+[§FS-assurance.assumptions](../functional-spec/FS-assurance.md#assumptions-initial-assumption-and-obligation-register).
+
+Conformance tests and artifact identities validate the configured product profile;
+implementation proofs establish stronger claims when completed. Keep the selected
+kernel, runtime and deployment assumptions explicit for each property.

@@ -22,6 +22,12 @@ certification remains an obligation; the separate VM record below is test eviden
 
 ## status: Initial claim register
 
+The current delivery contract is [§FS-linux-product](FS-linux-product.md#fs-linux-product-a-reusable-linux-workspace-with-an-explicit-trust-boundary), adopted on 2026-11-03.
+The reusable product and its release profile are planned; the implementation and
+proofs below are their existing inputs. [§FS-assurance.product](FS-assurance.md#product-product-assurance-levels-and-trusted-components) defines the
+explicit product trust boundary and later assurance upgrades. Historical
+milestone/ledger entries retain the scope under which they were recorded.
+
 M1's handoff gate passed on 2026-10-30: 21 Python integration tests; 58 Lean
 guards (14 reference, 21 decoder, 23 launch); native compilation; archived VM
 evidence validation; and exact type/axiom checks of 43 authored claims within
@@ -40,7 +46,7 @@ These counts identify coverage and evidence, not a measure of security strength.
 | Bounded resources | [§FS-workspace.resources](FS-workspace.md#resources-units-ownership-and-failure) | Conditional model proofs; native VM limit cases | Scope/capture/reservation/sample proofs; charged memory/task/CPU/deadline observations | Linux accounting and progress/overshoot premises |
 | Local reporting source behavior | [§FS-workspace.results](FS-workspace.md#results-entry-cancellation-and-bounded-transport) | Conditional source/effect proofs and ordinary Lean reporting call connection | [§FS-assurance.native](FS-assurance.md#native-partial-m4-reporting-source-evidence) and [§FS-assurance.reporting](FS-assurance.md#reporting-current-helper-reporting-call-and-ordinary-lean-decoder); current complete helper program, checked call/byte interface and live decoder theorem | Whole-profile caller/capture/export composition, physical input ownership, Linux/compiler/runtime/executable correspondence |
 | Local reporting compiler model | [§FS-workspace.results](FS-workspace.md#results-entry-cancellation-and-bounded-transport) | Conditional assembly reporting proof with concrete compilation checked | [§FS-assurance.compiled](FS-assurance.md#compiled-conditional-assembly-reporting-connection); complete helper plus explicit logical runtime unit, identified assembly, source reporting and ordinary Lean publication consumer | Matched physical caller, actual TLS/runtime/Linux effects, partial-call loss and deployed binary chain |
-| Local input-validation source behavior | [§FS-workspace.policy](FS-workspace.md#policy-bounded-typed-request) | Accepted local M4.3 results through initialization; parent composition repair under review | [§FS-assurance.parent](FS-assurance.md#parent-parent-composition-repair-claim-record); numeric, string, argument, digest and initialization source certificates | Whole entry-to-setup composition, physical argv, ordinary Lean proof connection and Linux/compiler/runtime correspondence |
+| Local input-validation source behavior | [§FS-workspace.policy](FS-workspace.md#policy-bounded-typed-request) | Accepted local input, initialization and parent composition results | [§FS-assurance.parent](FS-assurance.md#parent-parent-composition-repair-claim-record); numeric, string, argument, digest and initialization source certificates | Whole entry-to-setup composition, physical argv, ordinary Lean proof connection and Linux/compiler/runtime correspondence |
 | Functional confidentiality | [§FS-observations.logical](FS-observations.md#logical-functional-observations) | Planned | Observation requirements | Noninterference theorem and correspondence |
 | Hardware-aware confidentiality | [§FS-observations.hardware](FS-observations.md#hardware-software-observable-channels) | Planned | Scope and research obligations | Model, mechanisms, proof, deployed profile |
 | Deployed executable correctness | [§GOAL-end-to-end](../goals.md#goal-end-to-end-connect-the-policy-to-the-deployed-artifact) | Planned | Roadmap | Compiler/runtime/FFI and Linux correspondence |
@@ -777,14 +783,39 @@ already meets a security claim. Every later theorem must list the subset it uses
 |---|---|---|---|
 | A-logic | Lean logic, kernel/checker and faithful checking execution | Foundational trust, pinned checker | Audit axioms and proof-checking provenance; remain explicit |
 | A-policy | Operator-selected policy, declared public/secret inputs and disclosures | Explicit environmental premise | Validate syntax/feasibility; cannot prove operator intent |
-| A-model | Abstract effects represent all relevant concrete behavior | Open obligation | M1–M4 refinement, failure and interference coverage |
-| A-entry | Trusted dedicated child, private stable filter/executable/argv/environment, no hostile writers/tracers/handlers or existing filters | Explicit M1 entry profile, checked/tested native setup where applicable | M2 extend to adversarial inheritance/aliases/races; M4 native correspondence |
-| A-linux | Relevant Linux enforcement, syscall semantics and transitive dependencies | Assumed in early Linux demonstrations | M4 connect contracts to pinned Linux implementation; expose remaining scope |
-| A-executable | Lean compiler, native runtime, FFI, bindings and loader preserve semantics | Assumed for early binaries | M4 artifact correspondence; no perpetual hidden runtime gap |
+| A-model | Abstract effects represent all relevant concrete behavior | Open obligation | M5 application refinement and M6 selected platform refinement, with failure/interference coverage |
+| A-entry | Trusted dedicated child, private stable filter/executable/argv/environment, no hostile writers/tracers/handlers or existing filters | Explicit M1 entry profile, checked/tested native setup where applicable | M2 models inheritance/aliases/races; M5 supplies native application correspondence |
+| A-linux | Relevant Linux enforcement, syscall semantics and transitive dependencies | Explicit trust in the initial Linux product | M6 replaces selected contracts with pinned Linux implementation proofs |
+| A-executable | Lean compiler, native runtime, FFI, bindings and loader preserve semantics | Explicit selected-toolchain/runtime trust in the product | M6 removes selected compiler/runtime/artifact assumptions; retain the exact list in each release |
 | A-platform | Boot, configuration, privilege setup, deployment and updates match the profile | Explicit deployment assumptions | Bind artifact identities and configuration; verify relevant software setup |
-| A-hardware | CPU/memory/device behavior matches the formal hardware model | Foundational fidelity assumption | M5 specify software-visible behavior; retain physical model fidelity openly |
-| A-observer | Observation model covers the stated attacker | Open modeling obligation | Logical traces first, hardware-aware traces in M5; no silent exclusions |
+| A-hardware | CPU/memory/device behavior matches the formal hardware model | Foundational fidelity assumption | M6 specifies software-visible leakage guarantees; retain physical model fidelity openly |
+| A-observer | Observation model covers the stated attacker | Open modeling obligation | Functional product observations first, hardware-aware traces in M6; no silent exclusions |
 | A-resources | Accounting/scheduling/termination implement each advertised bound | Assumed until established | Discharge per supported limit; otherwise narrow the claim |
+
+## product: Product assurance levels and trusted components
+
+Under [§FS-linux-product.trust](FS-linux-product.md#trust-platform-assumptions-for-the-initial-product), a release may deliberately trust the selected
+Linux implementation, toolchain/runtime and hardware/VM, and must enumerate any
+application adapter functions whose correspondence is still supplied as a contract.
+This is a versioned product boundary, separate from proving those implementations.
+
+| Level | What must be delivered | Current delivery status |
+|---|---|---|
+| Usable Linux product with verified core | Caller-policy workflow, library, functional layout, identified bundle and exact executable policy/filter/decoder proof bindings | Planned; existing VM implementation and proof components are inputs |
+| Application verified over platform contracts | Actual controller/helper code supplies the whole launch, supervision and publication argument; primitive OS/runtime assumptions are explicit | Planned; accepted source/reporting regions are inputs |
+| Platform-strengthened profile | Specified runtime/kernel/compiler or confidentiality results replace named assumptions in the composed product argument | Assigned per improvement |
+
+For each advertised property, list the actual implementation/definition, checked
+theorem, compiler/runtime and OS assumptions, trusted application adapters,
+artifact identities and conformance tests. Tests do not become theorem evidence.
+An assumption must describe primitive behavior and errors, not restate the desired
+security conclusion. Keep proofs of the executable core distinct from a complete
+application confinement claim.
+
+The original `assurance/m4-obligations.json` records the former whole-platform
+correspondence target. Its entries remain unchanged by this planning revision.
+Product acceptance uses the table above and [§FS-linux-product.acceptance](FS-linux-product.md#acceptance-product-completion);
+future proofs reduce the explicit trusted component list.
 
 ## closure: Rules for stronger claims
 
@@ -794,6 +825,11 @@ unproved assumptions. Reserve an end-to-end claim for a named profile whose
 advertised chain is established, leaving only explicitly accepted foundational
 assumptions. Do not reclassify unfinished Linux or compiler work as foundational
 trust merely to close a milestone.
+
+The explicit product-boundary revision in [§FS-assurance.product](FS-assurance.md#product-product-assurance-levels-and-trusted-components) permits
+releases with specified Linux/toolchain trust and named core proofs. Such a
+release must state that scope. It neither inherits the original stronger
+end-to-end claim nor turns a historical unproved obligation into a theorem.
 
 ## updates: Evidence expires with its dependencies
 

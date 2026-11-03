@@ -13,9 +13,9 @@ and software-observable hardware side channels.
 immutable runtime, private copied inputs, controlled I/O/export, confined
 descendants, cgroup limits and real check/run/report commands. Its model proofs
 and source-bound VM evidence are documented in the [M3 review](docs/reviews/M3-handoff.md).
-Native/Linux/compiler/loader correspondence remains M4; confidentiality and
-hardware-channel security remain later obligations. No production profile is
-certified by these conditional model results and tests.
+The current plan delivers a reusable product with explicit Linux/runtime trust,
+then strengthens application and platform proofs. The precise product and claim
+boundary is [specified here](docs/functional-spec/FS-linux-product.md).
 
 - [Run LeanCage: build, VM replay, and CLI commands](docs/running.md)
 - [How the milestones compose into one product](docs/architecture/AR-product.md)
@@ -26,6 +26,7 @@ certified by these conditional model results and tests.
 - [M3 main review and correction](docs/reviews/M3-main-review.md)
 - [Current M4 continuation and review boundary](docs/roadmap.md#m4next-current-m4-continuation)
 - [M4 continuation assignment](M4-CONTINUE.md)
+- [Revised product and assurance plan](docs/decisions/architectural/DA-product-assurance.md)
 - [Functional specification](docs/functional-spec/README.md)
 - [Architecture](docs/architecture/README.md)
 - [First filter and launch boundary](docs/architecture/AR-filter-slice.md)
@@ -55,13 +56,13 @@ Run the proof/build gate separately:
 ./scripts/check.sh
 ```
 
-The full implemented M4 chain has a separate gate, `./scripts/check_m4_all.sh`.
-M4.1 feasibility and local reporting/controller proofs through initialization
-are recorded. Parent composition repair has passed independent statement/focused
-review; its [acceptance record](assurance/m4-parent-validation.json) tracks the
-aggregate gate. Early Lean/Linux connection attempts expose reproducible blockers;
-full M4 remains open. See the [independent repair review](docs/reviews/M4-parent-independent-review.md)
-and [connection feasibility](docs/architecture/AR-m4-routes.md).
+The implemented reporting/compiler chain has a separate gate,
+`./scripts/check_m4_all.sh`, which reuses unchanged proof artifacts. The current
+code includes the output-capture correction, accepted input/parent contracts,
+and a source/compiler connection to the ordinary Lean decoder. The
+[integration review](docs/reviews/compiler-reporting-review.md) records its scope.
+The [next assignment](M4-CONTINUE.md) delivers the root build, caller-policy VM
+workflow and reusable component layout from this baseline.
 
 The first run downloads checksum-pinned Grund 0.20.0 into this repository's
 ignored `.tools/` directory and fetches the pinned Lean dependencies. No global

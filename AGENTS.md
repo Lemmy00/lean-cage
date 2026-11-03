@@ -2,20 +2,20 @@
 
 ## Start here
 
-Read [README](README.md), [§RM-roadmap](docs/roadmap.md#rm-roadmap-leancage-specification-and-staged-verification-plan), the assigned specification points, and
-[§REQ-proof-integrity](docs/requirements/REQ-proof-integrity.md#req-proof-integrity-never-substitute-a-weaker-claim-for-an-unfinished-proof) before changing code. M1.1 fixes the source and launch contract
-boundary in [§AR-filter-slice.contracts](docs/architecture/AR-filter-slice.md#contracts-lean-declarations-and-downstream-ownership); M1.2 supplies the decoder, proofs, and
-audit in [§AR-filter-decoder](docs/architecture/AR-filter-decoder.md#ar-filter-decoder-byte-decoder-proofs-and-executable-evidence-audit). M1.3–M1.5 add launch proofs, the VM-only native driver,
-and reviewed evidence under [§AR-m1-launch](docs/architecture/AR-m1-launch.md#ar-m1-launch-launch-model-linux-driver-and-isolated-demonstration). M2 extends that baseline with [§AR-lifecycle](docs/architecture/AR-lifecycle.md#ar-lifecycle-m2-controller-native-helper-and-evidence).
-M3 follows the contract [§FS-workspace](docs/functional-spec/FS-workspace.md#fs-workspace-m3-offline-workspace-contract-version-1) and architecture [§AR-workspace](docs/architecture/AR-workspace.md#ar-workspace-m3-authority-model-linux-realization-and-evidence-plan) in the
-package order [§RM-roadmap.m3.packages](docs/roadmap.md#m3packages-build-the-profile-in-reviewable-slices);
-read the [M2 handoff review](docs/reviews/M2-handoff.md) and accepted
-[M3 handoff review](docs/reviews/M3-handoff.md) and [main review](docs/reviews/M3-main-review.md)
-first. The current assignment is [§RM-roadmap.m4.next](docs/roadmap.md#m4next-current-m4-continuation)
-and [M4-CONTINUE.md](M4-CONTINUE.md). The historical M4.1 acceptance contract stays
-at [§RM-roadmap.m4.entry](docs/roadmap.md#m4entry-next-assignment--m41-native-semantics-feasibility).
-Follow the assigned package; M3 does not complete
-native/Linux correspondence or hardware confidentiality.
+Read [README](README.md), [§RM-roadmap.m4.next](docs/roadmap.md#m4next-current-m4-continuation),
+[§FS-linux-product](docs/functional-spec/FS-linux-product.md#fs-linux-product-a-reusable-linux-workspace-with-an-explicit-trust-boundary), the assigned contract, and
+[§REQ-proof-integrity](docs/requirements/REQ-proof-integrity.md#req-proof-integrity-never-substitute-a-weaker-claim-for-an-unfinished-proof) before changing code.
+[M4-CONTINUE.md](M4-CONTINUE.md) is the current product implementation assignment.
+The planning revision of 2026-11-03 separates the usable product, complete
+application verification and platform research under [§FS-assurance.product](docs/functional-spec/FS-assurance.md#product-product-assurance-levels-and-trusted-components).
+Use its explicit platform trust boundary. Do not restart kernel/compiler research
+as a prerequisite to the assigned product workflow.
+
+The accepted [M3 handoff](docs/reviews/M3-handoff.md), [main review](docs/reviews/M3-main-review.md)
+and [compiler/reporting review](docs/reviews/compiler-reporting-review.md) locate
+reusable implementation and proof evidence. Read historical M1/M2/M4 contracts
+when the affected component requires them; existing evidence keeps its original
+scope. The historical M4.1 contract stays at [§RM-roadmap.m4.entry](docs/roadmap.md#m4entry-next-assignment--m41-native-semantics-feasibility).
 
 All `grund` commands in the managed instructions below mean the repository-local
 `./scripts/grund.sh` wrapper, run from the project root. Never substitute the older
@@ -89,11 +89,10 @@ and [§AR-tooling](docs/architecture/AR-tooling.md#ar-tooling-keep-development-r
   interface. Do not copy a prior milestone into another parallel implementation.
   Use versions only for actual compatibility contracts.
 - Existing milestone directories are structural debt. Their consolidation is a
-  priority at the next stable integration point after the active M4 run; follow
+  part of the current product integration assignment; follow
   [§AR-product.organization](docs/architecture/AR-product.md#organization-organize-the-maintained-product-by-responsibility).
-  Leave the running agent's files and assigned paths intact now. New work must
-  have a functional home; preserve historical evidence and provenance during
-  the later migration.
+  Coordinate migrations with any active worker. New work must have a functional
+  home; preserve historical evidence and provenance during migration.
 
 ## Workspace and collaboration
 

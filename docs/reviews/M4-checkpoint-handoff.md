@@ -19,7 +19,7 @@ This handoff applies [§REQ-proof-integrity.statement](../requirements/REQ-proof
 | M5 | Hardware-channel confidentiality remains later work. |
 
 All sixteen entries in `assurance/m4-obligations.json` remain open. The milestone
-map is [§RM-roadmap.m4.packages](../roadmap.md#m4packages-correspondence-work-after-the-reviewed-m3-baseline). No proof count is a completion percentage.
+map is [§RM-roadmap.m4.packages](../roadmap.md#m4packages-integrated-product-deliveries). No proof count is a completion percentage.
 
 ## Accepted work to verify first
 
