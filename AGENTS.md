@@ -58,6 +58,43 @@ and [§AR-tooling](docs/architecture/AR-tooling.md#ar-tooling-keep-development-r
 - Preserve the hardware-channel destination in [§FS-observations.hardware](docs/functional-spec/FS-observations.md#hardware-software-observable-channels). Never
   market an early functional proof as end-to-end production security.
 
+## Deliver useful, integrated results
+
+- Before implementation, name the concrete result, its existing caller or proof
+  consumer, and the acceptance check. Split large assignments at functional
+  interfaces whose results can be integrated and used. Give each assignment an
+  observable before/after; a milestone label alone is not a workable assignment.
+- Supporting lemmas, translations, tests, audits and receipts are implementation
+  work within that deliverable. Do not turn them into new completion goals or
+  report counts of them as product progress. Finish the integration and acceptance
+  check before calling the assigned result done.
+- Investigate the hardest uncertain dependency early, with a stated effort limit
+  and a decision the investigation must resolve. On failure, diagnose it, change
+  the approach and continue toward the same result. Recording a failed attempt
+  does not finish an implementation assignment. Escalate only a concrete decision
+  that needs the user; supply the evidence, options and a recommendation.
+- Report what now works, what consumes it, and the next concrete action. Keep
+  detailed assumptions and obligation bookkeeping in the assurance records.
+  Avoid repeated "does not close M4" caveats, unchanged open-obligation counts,
+  and celebratory updates for internal substeps. State a material limitation when
+  it affects the user's decision or the accuracy of a claimed result.
+
+## Build one maintainable product
+
+- Name maintained modules, libraries, executables, scripts and tests after their
+  responsibility: policy, launch, workspace, supervision, reporting, Linux,
+  semantics or verification. Milestone numbers belong in planning and historical
+  evidence, not new product names or source/package boundaries.
+- Extend shared components and integrate them into the documented `leancage`
+  interface. Do not copy a prior milestone into another parallel implementation.
+  Use versions only for actual compatibility contracts.
+- Existing milestone directories are structural debt. Their consolidation is a
+  priority at the next stable integration point after the active M4 run; follow
+  [§AR-product.organization](docs/architecture/AR-product.md#organization-organize-the-maintained-product-by-responsibility).
+  Leave the running agent's files and assigned paths intact now. New work must
+  have a functional home; preserve historical evidence and provenance during
+  the later migration.
+
 ## Workspace and collaboration
 
 - Keep Grund and experimental tooling local to this repository. Preserve pinned
@@ -79,10 +116,24 @@ and [§AR-tooling](docs/architecture/AR-tooling.md#ar-tooling-keep-development-r
 
 ## Handoff gate
 
-Run `./scripts/check.sh` and the focused checks required by the changed behavior.
-For documentation edits run `./scripts/grund.sh fmt --write` first; for config
-changes run `./scripts/grund.sh init` first. Keep generated guidance and any
-section locks consistent; edit project-specific rules outside the managed block.
+Choose validation by the changed inputs under [§AR-tooling.checks](docs/architecture/AR-tooling.md#checks-one-development-gate).
+Use focused checks while implementing; at a code/proof handoff, run the required
+foundation and affected package checks once on the final relevant inputs. An
+aggregate check already covers its children. Reuse a recorded pass when its inputs,
+dependencies and toolchain match; a new agent, commit or handoff is not a reason
+to repeat it. Re-run for a relevant change, failure, newly identified risk, or
+explicit independent-replay requirement, and say which one applies.
+
+For documentation-only changes, use Grund formatting, consistency and whitespace
+checks, plus affected fingerprint checks where applicable. Run proof/build/VM
+checks only when the change affects their contracts or inputs. For config changes
+run `./scripts/grund.sh init` first and check the affected tooling. Keep generated
+guidance and section locks consistent; edit rules outside the managed block.
+
+Review the final relevant diff and changed theorem statements once; resolve
+findings and recheck the affected parts. Do not start successive reviews of the
+same unchanged work or add tests that merely repeat the implementation. Once the
+acceptance checks pass and findings are resolved, integrate and move on.
 
 Report the affected spec IDs, concrete changes, exact validation results, theorem
 and artifact evidence where applicable, and remaining assumptions/obligations.

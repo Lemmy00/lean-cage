@@ -81,22 +81,35 @@ of creating competing copies in task notes.
    implementation/artifact correspondence and open gaps under [§FS-assurance](functional-spec/FS-assurance.md#fs-assurance-bind-every-advertised-guarantee-to-auditable-evidence).
 5. Format, validate, and review the diff. Report checks and limitations separately.
 
+Define the delivered behavior or integrated theorem, its consumer and its
+acceptance check before implementing. Keep supporting lemmas and experiments
+inside that assignment. Name new code by responsibility and follow the planned
+consolidation in [§AR-product.organization](architecture/AR-product.md#organization-organize-the-maintained-product-by-responsibility).
+Updates should describe an observable result and the next action. Maintain the
+detailed assurance inventory in its existing records.
+
 Lean citations use standalone line comments, for example:
 
 ```lean
 -- §FS-filter-loading.input: Reject inputs outside the supported instruction bounds.
 ```
 
-After editing documentation or citation IDs:
+For documentation-only edits, apply [§AR-tooling.checks](architecture/AR-tooling.md#checks-one-development-gate):
 
 ```sh
 ./scripts/grund.sh fmt --write
-./scripts/check.sh
+./scripts/grund.sh check --full
+./scripts/grund.sh fmt --check
+git diff --check
 ```
 
 After editing `grund.toml`, also run `./scripts/grund.sh init` before those checks.
 Keep custom agent rules outside the managed block. Retain section locks produced
 by Grund; do not hand-edit them or drop citations to hide stale references.
+Check affected fingerprints when documentation is bound into evidence. Changes
+to proof contracts, assurance claims, code or build inputs also require their
+affected gates. Reuse matching-input results and avoid repeating an aggregate's
+prerequisite checks. Complete one review, resolve its findings and move on.
 
 ## Evidence and handoff
 

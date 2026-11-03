@@ -99,6 +99,41 @@ not implementation or new security evidence. The existing M3 executable and its
 VM acceptance suite remain the runnable baseline. Version any later relocation
 or refactor of that implementation and keep the proof input connected to it.
 
+## organization: Organize the maintained product by responsibility
+
+The maintained product must be understandable from its functionality. New source
+packages, namespaces, binaries, scripts and tests use responsibility-based names.
+Milestone labels remain useful in the roadmap and archived evidence. The current
+`m2/`, `m3/`, `m4/`, `LeanCageM*` and milestone-named native/script paths are
+temporary organization, with consolidation scheduled at the next stable
+integration point after the active M4 run. Do not rename files underneath it.
+
+Consolidation has concrete acceptance criteria:
+
+1. Map existing code into portable policy/lifecycle/workspace libraries, the
+   public CLI, Linux bindings, and verification components organized by the code
+   and semantics they verify. Reuse implementations and define their imports;
+   moving the same parallel copies into new folders is insufficient.
+2. Provide documented project-root build and run/check/report entry points. A
+   caller must not need milestone history or know which numbered directory to
+   enter. Keep demonstration/regression profiles separate from the product path.
+3. Update imports, build recipes, scripts, CI, examples and documentation together.
+   Preserve real versioned contracts; use temporary compatibility entry points
+   where existing consumers need them. Record the old-to-new mapping once.
+4. Keep archived proof inputs and receipts reproducible at their recorded
+   revisions. Map current evidence to the relocated live implementation and
+   check preserved statements, assumptions and artifact correspondence once.
+5. Make validation depend on actual component inputs. Separate operational prose
+   fingerprints from proof/build dependencies while retaining dependencies on
+   contracts and assurance claims. Routine agent-guidance edits must have a
+   lightweight integrity check. Deduplicate aggregate/prerequisite work using
+   matching-input results under [§AR-tooling.checks](AR-tooling.md#checks-one-development-gate).
+
+The migration is done when a newcomer can build and exercise the supported
+`leancage` workflow from the root, locate its implementation by responsibility,
+and replay the affected assurance checks without selecting a milestone package.
+Keep the supported execution environment and public behavior intact throughout.
+
 ## release: Deployment is an explicit final boundary
 
 M7 delivers an installable documented interface for supported Linux profiles under

@@ -20,6 +20,19 @@ def sha(data):
     return hashlib.sha256(data).hexdigest()
 
 
+def workflow_fingerprint(before, after):
+    """Accept only the separately checked workflow extension's exact fingerprints."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        'workflow_dependencies', ROOT / 'scripts/check_workflow_dependencies.py')
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    module.check()
+    record = json.loads((ROOT / 'assurance/workflow-dependency-amendment.json').read_text())
+    return (before, after) in {
+        (row['before_sha256'], row['after_sha256']) for row in record['files'].values()}
+
+
 def validate(record=None, original=None, root=ROOT):
     record = json.loads(RECORD.read_text()) if record is None else record
     original = json.loads(gzip.decompress(BEFORE.read_bytes())) if original is None else original
@@ -56,6 +69,8 @@ def validate(record=None, original=None, root=ROOT):
             if key in files and (before, after) == (files[key]['before_sha256'], files[key]['after_sha256']):
                 return
             if key in {'claims_sha256', 'manifest_sha256', 'decoder_baseline_manifest_sha256'} and (before, after) in digest_pairs:
+                return
+            if workflow_fingerprint(before, after):
                 return
         raise ValueError('navigation amendment alters a non-fingerprint value: ' + key)
 
@@ -103,6 +118,8 @@ def validate_candidate_sources(expected, actual, record):
         if expected[path] == actual[path]:
             continue
         row = record['files'].get(path)
+        if workflow_fingerprint(expected[path], actual[path]):
+            continue
         if row is None or (expected[path], actual[path]) != (row['before_sha256'], row['after_sha256']):
             raise ValueError('unamended frozen candidate source differs: ' + path)
 

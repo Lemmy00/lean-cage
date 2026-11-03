@@ -12,7 +12,7 @@
     "AGENTS.md": {
       "kind": "documentation",
       "before_sha256": "2b28ca65136a7f01f0cb4207cd5dfe069cc8cc05c8d13130e896e1a17815c619",
-      "after_sha256": "a2b58c0bce1bf3b86fdf77d286bbc467a087291dd482c19e36d5cfae8a3899c5"
+      "after_sha256": "571fa23c8409f54f8b24243a5ecaa55021bfc03e5e205bd46a69356071ff60f9"
     },
     "README.md": {
       "kind": "documentation",
@@ -37,122 +37,122 @@
     "assurance/m4-arguments-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "52774b7931e3a97df67b7d2a11f437d523d03abbaa909e3746f93ed54d971988",
-      "after_sha256": "da84d4f063528e1ae89fd64b3b7461de723a0f98d82a0a725a321b7c99c10280"
+      "after_sha256": "af0a19051f8acc0e379fda322b228e980db3f3bdf026c30a5546adac00499a60"
     },
     "assurance/m4-bridge-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "8f62ccd037df9cf1b5c15b9fbfefc4aae4eec7727ff2c0959e4591f5e33f0918",
-      "after_sha256": "e013c61bfa07e79dd013f6fa6715facddf05327232e2e95533f3c35c5d7a1a48"
+      "after_sha256": "dde7fe1cb27edbf78180b32f259e0572f53f3fd6a50b6f5bc761fe6ef8dbfc64"
     },
     "assurance/m4-callers-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "e89e636f4b190b767df06e6bffc9b7c5e7110926137349a24be74f59da78a0e1",
-      "after_sha256": "53a891469dd1c1abefa2e793c291505b8f306ac38761f2c5b709663860d013bb"
+      "after_sha256": "3ce5ee09bac89884325cd133d5b107eb17169c83a48b67cbcd77a4a9caacb42f"
     },
     "assurance/m4-claims.json": {
       "kind": "dependency_metadata",
       "before_sha256": "5e00efe1d5e70c35af9e5413b65791590c4f3004a61df38dcc95db042ee08dfe",
-      "after_sha256": "0b78cccc099967f9afa2a8359baafaefa775d24338768e3b949cbbaad96b1357"
+      "after_sha256": "c2a76c10a356f3e6b4932439c13e4e352055d55125a23fd0512092f0850f538e"
     },
     "assurance/m4-connection-claims.json": {
       "kind": "dependency_metadata",
       "before_sha256": "834f71a20138dc115a8453e511e8b364aa1caa1081136a4212b1421423b83ccb",
-      "after_sha256": "bcf19a8c8e25279296ff344f5b8c63d6ef03aa151bdaabbed43ac72528c0efac"
+      "after_sha256": "09448c8d14ab114de1bc3b9ff8b934e1b80d10f8efe6b7998c564d212dcd16af"
     },
     "assurance/m4-connection-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "d77e826146c45a4863e4058e039f8b417482bb63dd68d90d6394ebbc568647ba",
-      "after_sha256": "93a31b5d0eb4baf59a375c1aa116b5a8ee8ddc7b01c8ce5a1607b4d00036bd0d"
+      "after_sha256": "2dfd30ee3005a67cdc035855101c5697006e23ff96c528a68bc2f9b6b10c4e85"
     },
     "assurance/m4-controller-number-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "cb8f4e6ea3bd4f49d27808e1f4b16ff28e59328f51f4f037934356aef4e44f86",
-      "after_sha256": "a299f7d122aef43849ef38d2ce3d541166a4f1344baacca1c0e403b6f4c8def0"
+      "after_sha256": "3be947ab0e7b4e0d51e934e58f6113f98f8df778056d680ae7a14866bb316b44"
     },
     "assurance/m4-decoder-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "34766849df15bbac712e5369de7036c61b184a64e293dbc6bdacd041e722818d",
-      "after_sha256": "848c49855a146281d853d292e72c43daa74c6548dfa2c2ab29d23757ad3fa759"
+      "after_sha256": "49d53f867ea82e5d894f8771ad3201aed5808a3162ad51ec9a011aa4df051203"
     },
     "assurance/m4-digest-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "46560417c33874076e53480f611a0c1f1787aa4534d34047cc26ccf389f47d25",
-      "after_sha256": "2f1cbf81ca78fc48ccc68294ec06fbca06dc63c52ac02415c5d3b1e1366579c3"
+      "after_sha256": "f33e6df08249af174a86b7f70da249d108d93609154f7bab06b0cf263b2cc621"
     },
     "assurance/m4-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "5cac199687ac96ac0a5d7a4cd6f4b9d8f810895af5e783a855a2f6be8e94a828",
-      "after_sha256": "07c7a3d038278e4a9c26164788091b3a81cc35969ef8207f22592a860575b323"
+      "after_sha256": "00ba26777442a7eaa5ac5f74726549c7b7c72948550bff028ecbfe7df37ba77f"
     },
     "assurance/m4-initialization-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "9bf3d9e351c09aa86222362f28080c111f20b6a383fa546dbce8c242f0570cc4",
-      "after_sha256": "f0048f10751472071a45d3f320ee286e608ee3144c4a6f844b2c9ec1eb0a79bf"
+      "after_sha256": "7ef3072eadea2cbf1a0c46b738fa918f6c5d9b8d8f9883a9ccc6b6b65f49685b"
     },
     "assurance/m4-library-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "f28f916ec97544c3c033c1a00f8d2349760c261218e94dd2f3382653c879b7f2",
-      "after_sha256": "39faaad8536efc4176d8572112c84700d18f1703653e12e8d59809deff530490"
+      "after_sha256": "6184942c95a016a4f8d88d43cb314537d8913c4e7b6cd08321a22c88ead14837"
     },
     "assurance/m4-main-input-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "487c715424edc05d4f35fec0ed4c53591fc6972fc6a73924ec11174d15918382",
-      "after_sha256": "e9468e0f462eab68e8e74425b5e2db9cf5668a6834e96535d2e8567691b1b1d7"
+      "after_sha256": "938df3866093d90fb63bbbaf5bc9c8f4a0e8768ae7facee1c2d57137842a6c0f"
     },
     "assurance/m4-plan-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "07c245db7001cc02d79568892ae9affd6ce907930289453f74e13f14b7d91baf",
-      "after_sha256": "eb5b60af9b03e59e9ad20ea3a4e43f78c6a5cb3ef25ce684f75d221616d5182b"
+      "after_sha256": "634a738983b09bb3194c77e32b33ad5ec55c672d76f8e623461d885043f712e4"
     },
     "assurance/m4-policy-bounds-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "df26f62511cf101fdebd84ac316369fa0ae3f12536397b06760347aa1785b773",
-      "after_sha256": "8819e546827a19f88173983be4e2b20b63f317f0a8cb0511769ce9ba633a8510"
+      "after_sha256": "a0afa9277e4b66ee30861ab5b96003661c0ad5e01bafe4cda797396afb8fe996"
     },
     "assurance/m4-primitives-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "89ff84c10e834bce5785c5337e94add8bc2ebbdd6b50ec8a0304a21ac1ffaad2",
-      "after_sha256": "c2df746a4e3cac1bfa7889dc88bfb58f709f24ec1f6c53a98263841fed2baf9f"
+      "after_sha256": "7ef94022ef7dadfa460db6464b500841d43c1706e9e5dfa37357e34209737e59"
     },
     "assurance/m4-public-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "e5df8a89d2d272400b06444d979638f7512b6cbcc3105e6d94a62eb348289e3e",
-      "after_sha256": "ae8b8c0805c5521ef63ae2cebe20d4d744f0a0d88186fd6b307285c839322d16"
+      "after_sha256": "c6ea31e34581d06492da826ed07fcfb9fc094d7fef9295a0c87bd4602b1ff5ce"
     },
     "assurance/m4-receiver-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "c06a59360347e0194e7d7bf614369305830f2f1fa6cc18e1a5f9c19fb27ff9f3",
-      "after_sha256": "498542d568bd9f1f62664c1c7748b97a11d2fcfabfb14cf94ffb76caf8bd419c"
+      "after_sha256": "20298271de0c4caf594bc5b5dd8fc105bb146f1c80bbd144b8483bf19d6276c9"
     },
     "assurance/m4-sender-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "b398c41895d065a722c067b89b6d127380aca30c74d50a60a1e891cd3028d69b",
-      "after_sha256": "c646113985ba795ddb7894298dc28b75bb35bb9a5b0435f0f7a4624bde24d4be"
+      "after_sha256": "4f2a90228a591c99b3a83c18fc42eada3c7eaf7cdf6a2398ef891b51fd15d0d7"
     },
     "assurance/m4-structures-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "31ad16654e081ded18276282925d993bb8a2a9b8326a5995b9775043106d6898",
-      "after_sha256": "8d65c798f43cc15c407cb7ae0a6987e0862f8b1f05d19550b820e8736bed1c1c"
+      "after_sha256": "876aa4e1a99909859d53b594ef52f2d7df0f268be937b7b3175534b0379f0052"
     },
     "assurance/m4-validation-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "6e1dd245443ba4c485bb2245a383b6ad6d3e6b6d5d441f0269e02d4e0176b6d9",
-      "after_sha256": "56cb2b9905978c25197bf57229a665569aa990b68715273da6cb3e69564fa09a"
+      "after_sha256": "5d70ce59d422de6a36d64b192bacf6c8180bee654c1624c57d6e2d157c1296bb"
     },
     "assurance/m4-wire-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "70a861c830c544e5aa20ba27ee3951aa9336f71bb7319f0562a3b7211de36554",
-      "after_sha256": "6ef3a60aa48ff0cf775fd7f63818e4b72e5388513d2cdd1a9fba771da85bf7b5"
+      "after_sha256": "f12052c790f7f878642f9bc02db7caceb575d6cbcc1489bc1da6bb5c988d322c"
     },
     "assurance/m4-writeall-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "9f41d9d77a4ea953f9473cada722a0fb64a6960de11c9cf4f21b843cd7116229",
-      "after_sha256": "671c8939c5a75a93c299fcb28fc75dcb481ef23b4da2f2c9c4e0789b06e75bb3"
+      "after_sha256": "9feebd7ae17c9b8ee203b19bf393cd3885df410ed7e5b98e0b3f23b27c809ba9"
     },
     "assurance/m4-writers-evidence.json": {
       "kind": "dependency_metadata",
       "before_sha256": "67ee1710b11b15a65b60a7c31002457a5e901430db5bc6d05f12c2a59410111b",
-      "after_sha256": "0a74ae85dff1582692affcb15cc81d906b161cb08eabde551c414fa4cea21a6c"
+      "after_sha256": "757535dd9119fd6d8799a63b5c6c2d655fabd1e2f038bcb765fd3eb57a299f95"
     },
     "docs/architecture/README.md": {
       "kind": "documentation",
@@ -167,7 +167,7 @@
     "docs/development.md": {
       "kind": "documentation",
       "before_sha256": "d173006c3d3f57210d794371c45f5f50d00dc7e1f69e21ed1da226a28aefd791",
-      "after_sha256": "51ad6f895264a0502d5ae2c30e22413da0068e123e61d177d57e3ab5850f121a"
+      "after_sha256": "ba98f73d2ff9e88c9a2aac0f70bfaab6c66851462a27845dd31dd828b2125483"
     },
     "docs/functional-spec/FS-assurance.md": {
       "kind": "documentation",
@@ -177,7 +177,7 @@
     "docs/roadmap.md": {
       "kind": "documentation",
       "before_sha256": "f0807fffc18dd9c56d4a82f26ced4ead2384f5939df37296f53203b24bb035cb",
-      "after_sha256": "00f1b66cc808ec86899c724532926f7d0a66e7419a3fd18593c44b0868b3d63f"
+      "after_sha256": "fcfd1e48ef82607c713c29b6ccff67ee3d941b6453be877c93180e96e07a73b7"
     }
   }
 }

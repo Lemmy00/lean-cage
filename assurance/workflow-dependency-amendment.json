@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "baseline_revision": "9ee41cf54a5dd21eea1742f74952ad2d369d7a16",
+  "workflow_revision": "02c60d1b038db64c3f370a05e0054fc2236b4cba",
+  "scope": "Workflow documentation, its exact validation extension and dependency fingerprints only; complete preimages retained; theorem types, foundations, compiled artifacts, exports and frozen candidate/initialization snapshots unchanged.",
+  "before_archive_sha256": "9a6d04f5786a11f81cd0bf60ade68e268ed91324882eb62a306c15af828fd982",
+  "files": {
+    "AGENTS.md": {
+      "kind": "documentation",
+      "before_sha256": "a2b58c0bce1bf3b86fdf77d286bbc467a087291dd482c19e36d5cfae8a3899c5",
+      "after_sha256": "571fa23c8409f54f8b24243a5ecaa55021bfc03e5e205bd46a69356071ff60f9"
+    },
+    "M4-CONTINUE.md": {
+      "kind": "documentation",
+      "before_sha256": "f9ebad380d78b6318192298980a27daa3887984ed1b0632d2b82df17e130f7f8",
+      "after_sha256": "316154365f79ef8da58ffed542ac555eadbc292364a8493a9c11f5448819cbd7"
+    },
+    "assurance/m4-arguments-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "da84d4f063528e1ae89fd64b3b7461de723a0f98d82a0a725a321b7c99c10280",
+      "after_sha256": "af0a19051f8acc0e379fda322b228e980db3f3bdf026c30a5546adac00499a60"
+    },
+    "assurance/m4-bridge-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "e013c61bfa07e79dd013f6fa6715facddf05327232e2e95533f3c35c5d7a1a48",
+      "after_sha256": "dde7fe1cb27edbf78180b32f259e0572f53f3fd6a50b6f5bc761fe6ef8dbfc64"
+    },
+    "assurance/m4-callers-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "53a891469dd1c1abefa2e793c291505b8f306ac38761f2c5b709663860d013bb",
+      "after_sha256": "3ce5ee09bac89884325cd133d5b107eb17169c83a48b67cbcd77a4a9caacb42f"
+    },
+    "assurance/m4-claims.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "0b78cccc099967f9afa2a8359baafaefa775d24338768e3b949cbbaad96b1357",
+      "after_sha256": "c2a76c10a356f3e6b4932439c13e4e352055d55125a23fd0512092f0850f538e"
+    },
+    "assurance/m4-connection-claims.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "bcf19a8c8e25279296ff344f5b8c63d6ef03aa151bdaabbed43ac72528c0efac",
+      "after_sha256": "09448c8d14ab114de1bc3b9ff8b934e1b80d10f8efe6b7998c564d212dcd16af"
+    },
+    "assurance/m4-connection-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "93a31b5d0eb4baf59a375c1aa116b5a8ee8ddc7b01c8ce5a1607b4d00036bd0d",
+      "after_sha256": "2dfd30ee3005a67cdc035855101c5697006e23ff96c528a68bc2f9b6b10c4e85"
+    },
+    "assurance/m4-controller-number-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "a299f7d122aef43849ef38d2ce3d541166a4f1344baacca1c0e403b6f4c8def0",
+      "after_sha256": "3be947ab0e7b4e0d51e934e58f6113f98f8df778056d680ae7a14866bb316b44"
+    },
+    "assurance/m4-decoder-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "848c49855a146281d853d292e72c43daa74c6548dfa2c2ab29d23757ad3fa759",
+      "after_sha256": "49d53f867ea82e5d894f8771ad3201aed5808a3162ad51ec9a011aa4df051203"
+    },
+    "assurance/m4-digest-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "2f1cbf81ca78fc48ccc68294ec06fbca06dc63c52ac02415c5d3b1e1366579c3",
+      "after_sha256": "f33e6df08249af174a86b7f70da249d108d93609154f7bab06b0cf263b2cc621"
+    },
+    "assurance/m4-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "07c7a3d038278e4a9c26164788091b3a81cc35969ef8207f22592a860575b323",
+      "after_sha256": "00ba26777442a7eaa5ac5f74726549c7b7c72948550bff028ecbfe7df37ba77f"
+    },
+    "assurance/m4-initialization-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "f0048f10751472071a45d3f320ee286e608ee3144c4a6f844b2c9ec1eb0a79bf",
+      "after_sha256": "7ef3072eadea2cbf1a0c46b738fa918f6c5d9b8d8f9883a9ccc6b6b65f49685b"
+    },
+    "assurance/m4-library-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "39faaad8536efc4176d8572112c84700d18f1703653e12e8d59809deff530490",
+      "after_sha256": "6184942c95a016a4f8d88d43cb314537d8913c4e7b6cd08321a22c88ead14837"
+    },
+    "assurance/m4-main-input-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "e9468e0f462eab68e8e74425b5e2db9cf5668a6834e96535d2e8567691b1b1d7",
+      "after_sha256": "938df3866093d90fb63bbbaf5bc9c8f4a0e8768ae7facee1c2d57137842a6c0f"
+    },
+    "assurance/m4-parent-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "f00801a97fce3d14b042710efe38b253dcf7edfe91e6e9687658f6d66ba144a3",
+      "after_sha256": "5e779b2a91fbb38c43490fab4aa6c31580937171f2bd6bfb6bffd071c8b1f7d2"
+    },
+    "assurance/m4-parent-navigation.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "70433f477bd2bd1ee3263dd279a97b1067c722da4feba5177155f04256ce112f",
+      "after_sha256": "85f44ca72ebf77bd63be65bc4ad1b3e73861cc5c28e42ebfe92f564ce1d6fb8b"
+    },
+    "assurance/m4-parent-proof-output.json.gz": {
+      "kind": "dependency_metadata",
+      "before_sha256": "5d5db69cd79cebc32f735d7cf705147072509f4b7b82e1f1ca8f54f0ad2d8ae6",
+      "after_sha256": "9e52c441182f5810285910e0c86a6ae07d29ac1b385566cff324ecfe29a2ab51"
+    },
+    "assurance/m4-plan-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "eb5b60af9b03e59e9ad20ea3a4e43f78c6a5cb3ef25ce684f75d221616d5182b",
+      "after_sha256": "634a738983b09bb3194c77e32b33ad5ec55c672d76f8e623461d885043f712e4"
+    },
+    "assurance/m4-policy-bounds-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "8819e546827a19f88173983be4e2b20b63f317f0a8cb0511769ce9ba633a8510",
+      "after_sha256": "a0afa9277e4b66ee30861ab5b96003661c0ad5e01bafe4cda797396afb8fe996"
+    },
+    "assurance/m4-primitives-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "c2df746a4e3cac1bfa7889dc88bfb58f709f24ec1f6c53a98263841fed2baf9f",
+      "after_sha256": "7ef94022ef7dadfa460db6464b500841d43c1706e9e5dfa37357e34209737e59"
+    },
+    "assurance/m4-public-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "ae8b8c0805c5521ef63ae2cebe20d4d744f0a0d88186fd6b307285c839322d16",
+      "after_sha256": "c6ea31e34581d06492da826ed07fcfb9fc094d7fef9295a0c87bd4602b1ff5ce"
+    },
+    "assurance/m4-receiver-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "498542d568bd9f1f62664c1c7748b97a11d2fcfabfb14cf94ffb76caf8bd419c",
+      "after_sha256": "20298271de0c4caf594bc5b5dd8fc105bb146f1c80bbd144b8483bf19d6276c9"
+    },
+    "assurance/m4-sender-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "c646113985ba795ddb7894298dc28b75bb35bb9a5b0435f0f7a4624bde24d4be",
+      "after_sha256": "4f2a90228a591c99b3a83c18fc42eada3c7eaf7cdf6a2398ef891b51fd15d0d7"
+    },
+    "assurance/m4-structures-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "8d65c798f43cc15c407cb7ae0a6987e0862f8b1f05d19550b820e8736bed1c1c",
+      "after_sha256": "876aa4e1a99909859d53b594ef52f2d7df0f268be937b7b3175534b0379f0052"
+    },
+    "assurance/m4-validation-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "56cb2b9905978c25197bf57229a665569aa990b68715273da6cb3e69564fa09a",
+      "after_sha256": "5d70ce59d422de6a36d64b192bacf6c8180bee654c1624c57d6e2d157c1296bb"
+    },
+    "assurance/m4-wire-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "6ef3a60aa48ff0cf775fd7f63818e4b72e5388513d2cdd1a9fba771da85bf7b5",
+      "after_sha256": "f12052c790f7f878642f9bc02db7caceb575d6cbcc1489bc1da6bb5c988d322c"
+    },
+    "assurance/m4-writeall-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "671c8939c5a75a93c299fcb28fc75dcb481ef23b4da2f2c9c4e0789b06e75bb3",
+      "after_sha256": "9feebd7ae17c9b8ee203b19bf393cd3885df410ed7e5b98e0b3f23b27c809ba9"
+    },
+    "assurance/m4-writers-evidence.json": {
+      "kind": "dependency_metadata",
+      "before_sha256": "0a74ae85dff1582692affcb15cc81d906b161cb08eabde551c414fa4cea21a6c",
+      "after_sha256": "757535dd9119fd6d8799a63b5c6c2d655fabd1e2f038bcb765fd3eb57a299f95"
+    },
+    "docs/architecture/AR-product.md": {
+      "kind": "documentation",
+      "before_sha256": "8dd2258095f57ac1d8ceb10ca27d9808243f725c338750fb396dc7f8655079e6",
+      "after_sha256": "300a396791afe9dd8a2cdac4e6614b54e451abc70740780d84317ead0ae888ea"
+    },
+    "docs/architecture/AR-tooling.md": {
+      "kind": "documentation",
+      "before_sha256": "40c1ccf0fc26bf8132b8f08279ff29bab646d53d1b1483d8d1c1e887fdfbc682",
+      "after_sha256": "0e8dc58dc093682dd09f9e48a0005d222de15b537393d5ee3445fe7e945f9cca"
+    },
+    "docs/development.md": {
+      "kind": "documentation",
+      "before_sha256": "51ad6f895264a0502d5ae2c30e22413da0068e123e61d177d57e3ab5850f121a",
+      "after_sha256": "ba98f73d2ff9e88c9a2aac0f70bfaab6c66851462a27845dd31dd828b2125483"
+    },
+    "docs/roadmap.md": {
+      "kind": "documentation",
+      "before_sha256": "00f1b66cc808ec86899c724532926f7d0a66e7419a3fd18593c44b0868b3d63f",
+      "after_sha256": "fcfd1e48ef82607c713c29b6ccff67ee3d941b6453be877c93180e96e07a73b7"
+    },
+    "m4/parent/amendment.py": {
+      "kind": "validation_tooling",
+      "before_sha256": "c4d40b02e9169d27fe5a95e66c8fb396b84e1b230bd3692f6a9111693efcc5e3",
+      "after_sha256": "46943ff7ade9453b8cd7d9ed909e9ba4637a8e1484bd4f05e8cc8b5beb1e9d87"
+    }
+  }
+}
