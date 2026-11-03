@@ -1,5 +1,10 @@
 # Next assignment: deliver the reusable Linux workspace product
 
+**Delivered on 2026-11-03.** The [product handoff](docs/reviews/workspace-product-handoff.md)
+records the accepted root workflow, libraries, bundle/trust manifest and validation.
+The assignment below remains its acceptance contract. Further application
+verification follows [§RM-roadmap.m5](docs/roadmap.md#m5-verify-the-complete-application-control-path).
+
 The current plan is [§RM-roadmap.m4.next](docs/roadmap.md#m4next-current-m4-continuation), revised on 2026-11-03.
 Read [§FS-linux-product](docs/functional-spec/FS-linux-product.md#fs-linux-product-a-reusable-linux-workspace-with-an-explicit-trust-boundary),
 [§DA-product-assurance](docs/decisions/architectural/DA-product-assurance.md#da-product-assurance-deliver-the-linux-product-with-explicit-platform-trust),

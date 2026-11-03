@@ -54,3 +54,20 @@ Application proof assignments follow the actual policy/launch, supervision and
 publication boundaries of that product. Each one identifies the concrete code,
 primitive assumptions and consumer theorem before implementation. Research is
 assigned only with a specific assumption to remove and a bounded route decision.
+
+## delivery: Integrate the existing core through an owned VM transport
+
+The implemented delivery uses the pinned kernel's second 8250 UART for private
+control/results. It keeps boot logs and guest captures separate, transfers bounded
+content-addressed snapshots/exports, and binds each result to a fresh request and
+bundle identity. One request owns one disposable VM. Cancellation targets the
+controller's helper by pidfd with parent/executable checks; VM teardown remains a
+separate observation from helper cleanup. This needs no new kernel configuration.
+
+Maintain the core under `lifecycle/` and `workspace/`, native code under `linux/`,
+and host/typed interfaces under `python/leancage/` and `library/`. Compatibility
+symlinks and existing Lean declaration names preserve earlier evidence; there are
+no parallel implementation copies. The exact map, channel and bounds are
+[§AR-workspace-vm](../../architecture/AR-workspace-vm.md#ar-workspace-vm-own-the-caller-request-disposable-vm-and-returned-artifacts). The [product handoff](../../reviews/workspace-product-handoff.md)
+records completion of [§FS-linux-product.acceptance](../../functional-spec/FS-linux-product.md#acceptance-product-completion) and leaves the application
+and platform proof tracks at their original assurance levels.

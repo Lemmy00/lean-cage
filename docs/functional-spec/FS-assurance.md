@@ -23,7 +23,7 @@ certification remains an obligation; the separate VM record below is test eviden
 ## status: Initial claim register
 
 The current delivery contract is [§FS-linux-product](FS-linux-product.md#fs-linux-product-a-reusable-linux-workspace-with-an-explicit-trust-boundary), adopted on 2026-11-03.
-The reusable VM product is implemented and undergoing final acceptance; the
+The reusable VM product passed its M4 acceptance on 2026-11-03; the
 implementation and proofs below remain its scoped inputs. [§FS-assurance.product](FS-assurance.md#product-product-assurance-levels-and-trusted-components) defines the
 explicit product trust boundary and later assurance upgrades. Historical
 milestone/ledger entries retain the scope under which they were recorded.
@@ -801,7 +801,7 @@ This is a versioned product boundary, separate from proving those implementation
 
 | Level | What must be delivered | Current delivery status |
 |---|---|---|
-| Usable Linux product with verified core | Caller-policy workflow, library, functional layout, identified bundle and exact executable policy/filter/decoder proof bindings | Implemented; final public-workflow and handoff validation in progress |
+| Usable Linux product with verified core | Caller-policy workflow, library, functional layout, identified bundle and exact executable policy/filter/decoder proof bindings | Delivered; public caller suite and affected handoff checks passed on 2026-11-03 |
 | Application verified over platform contracts | Actual controller/helper code supplies the whole launch, supervision and publication argument; primitive OS/runtime assumptions are explicit | Planned; accepted source/reporting regions are inputs |
 | Platform-strengthened profile | Specified runtime/kernel/compiler or confidentiality results replace named assumptions in the composed product argument | Assigned per improvement |
 
@@ -848,6 +848,16 @@ explicit metadata-checker adapter to change. The adapter composes the earlier
 guard with its exact preserved preimage. The migration record freezes all
 original theorem/axiom/scope fields, native/Lean/Rocq proof inputs and checked
 cache identities. Normal checking never reapplies or refreshes expectations.
+
+Acceptance is recorded in `assurance/product-vm-evidence.json`: caller Python and
+shell workflows with private inputs/stdin, stdout/stderr, file export and report
+retrieval; invalid-policy and effect denial; bounded output and forged control
+bytes; VM and host storage failure; channel/VM loss; cancellation and confirmed
+descendant cleanup. The tested bundle is identified in that record and the
+[product handoff](../reviews/workspace-product-handoff.md). The foundation gate,
+new core/transport tests and preserved reporting/compiler checks passed. Subsequent
+status-document fingerprints reuse unchanged proof/runtime evidence under
+the development check policy.
 
 ## closure: Rules for stronger claims
 

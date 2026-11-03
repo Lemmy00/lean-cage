@@ -1,5 +1,5 @@
 {
-  "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+  "bundle_id": "909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6",
   "cases": [
     {
       "name": "python_check",
@@ -16,11 +16,11 @@
             "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
           }
         },
-        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "bundle_id": "909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6",
         "command": "check",
         "error": null,
         "exit_code": 0,
-        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/5ce44239a09e4f548c2729abb7c69940",
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6/4e6dc97a5279436193ddf4cfa678dcf7",
         "publication": "stored",
         "publication_error": null,
         "report": {
@@ -33,7 +33,7 @@
           "cpu_observed_overshoot_us": 0,
           "cpu_usage_us": 0,
           "detail": 0,
-          "elapsed_ms": 24,
+          "elapsed_ms": 20,
           "entry": "no",
           "export": "discarded",
           "export_digest": null,
@@ -65,7 +65,7 @@
           "wall_observed_overshoot_ms": 0,
           "wall_time_ms": 10000
         },
-        "request_id": "5ce44239a09e4f548c2729abb7c69940",
+        "request_id": "4e6dc97a5279436193ddf4cfa678dcf7",
         "schema": "leancage-workspace-v1",
         "status": "complete",
         "vm_cleanup": "complete"
@@ -107,11 +107,11 @@
             "sha256": "21201261d517ce0c096579d7f499f0a443cfbb05a7e9eecfe259412d8f54b11a"
           }
         },
-        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "bundle_id": "909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6",
         "command": "run",
         "error": null,
         "exit_code": 0,
-        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/cc0605f8e3de482badbf66153869f53b",
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6/18fc1e3b8f5e4857a132b0669cbc02dd",
         "publication": "stored",
         "publication_error": null,
         "report": {
@@ -122,9 +122,9 @@
           "cleanup": "complete",
           "cpu_budget_us": 2000000,
           "cpu_observed_overshoot_us": 0,
-          "cpu_usage_us": 1082877,
+          "cpu_usage_us": 1089764,
           "detail": 0,
-          "elapsed_ms": 2128,
+          "elapsed_ms": 2104,
           "entry": "yes",
           "export": "complete",
           "export_digest": "fbd4d1ec7628eb59eca78b179f99317702bcb1a4ba0715428f0585e52d023698",
@@ -160,7 +160,7 @@
           "wall_observed_overshoot_ms": 0,
           "wall_time_ms": 10000
         },
-        "request_id": "cc0605f8e3de482badbf66153869f53b",
+        "request_id": "18fc1e3b8f5e4857a132b0669cbc02dd",
         "schema": "leancage-workspace-v1",
         "status": "complete",
         "vm_cleanup": "complete"
@@ -181,11 +181,11 @@
             "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
           }
         },
-        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "bundle_id": "909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6",
         "command": "check",
         "error": null,
         "exit_code": 0,
-        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/3ae39824276e4e008242b5d09ee65a22",
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6/2aeaab1de13343b180a13740a6d244e8",
         "publication": "stored",
         "publication_error": null,
         "report": {
@@ -198,7 +198,7 @@
           "cpu_observed_overshoot_us": 0,
           "cpu_usage_us": 0,
           "detail": 0,
-          "elapsed_ms": 28,
+          "elapsed_ms": 20,
           "entry": "no",
           "export": "discarded",
           "export_digest": null,
@@ -230,7 +230,7 @@
           "wall_observed_overshoot_ms": 0,
           "wall_time_ms": 10000
         },
-        "request_id": "3ae39824276e4e008242b5d09ee65a22",
+        "request_id": "2aeaab1de13343b180a13740a6d244e8",
         "schema": "leancage-workspace-v1",
         "status": "complete",
         "vm_cleanup": "complete"
@@ -272,11 +272,11 @@
             "sha256": "d8c4585553ddd9db1a7c68fe23fe504b52fd46aa6522c414838003d4f2c16690"
           }
         },
-        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "bundle_id": "909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6",
         "command": "run",
         "error": null,
         "exit_code": 0,
-        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/f20d6b6f8e2b4c808ed5e1495bcfcca3",
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6/0877963a8383472daadc36d3c0566ab9",
         "publication": "stored",
         "publication_error": null,
         "report": {
@@ -287,9 +287,9 @@
           "cleanup": "complete",
           "cpu_budget_us": 2000000,
           "cpu_observed_overshoot_us": 0,
-          "cpu_usage_us": 24935,
+          "cpu_usage_us": 24637,
           "detail": 0,
-          "elapsed_ms": 40,
+          "elapsed_ms": 36,
           "entry": "yes",
           "export": "complete",
           "export_digest": "681afa93c285e852ddcdae380ede4f28129585ea3c4fa8d2babebf6e1dd198a1",
@@ -325,7 +325,7 @@
           "wall_observed_overshoot_ms": 0,
           "wall_time_ms": 10000
         },
-        "request_id": "f20d6b6f8e2b4c808ed5e1495bcfcca3",
+        "request_id": "0877963a8383472daadc36d3c0566ab9",
         "schema": "leancage-workspace-v1",
         "status": "complete",
         "vm_cleanup": "complete"
@@ -354,11 +354,11 @@
             "sha256": "da51d00fb1166a9340659f363b69927ca4d5be7c9241396bf56f93beb30623d5"
           }
         },
-        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "bundle_id": "909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6",
         "command": "run",
         "error": null,
         "exit_code": 0,
-        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/c8c49f8089b44771a844df01075c290c",
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6/0dcaaa7e4fd04043a567e7708179d4d3",
         "publication": "stored",
         "publication_error": null,
         "report": {
@@ -369,9 +369,9 @@
           "cleanup": "complete",
           "cpu_budget_us": 2000000,
           "cpu_observed_overshoot_us": 0,
-          "cpu_usage_us": 758439,
+          "cpu_usage_us": 754255,
           "detail": 0,
-          "elapsed_ms": 1476,
+          "elapsed_ms": 1448,
           "entry": "yes",
           "export": "complete",
           "export_digest": "cc907d1e419e7f7279080972e80e5946312cf078ed1017f284aa9e48a89b3754",
@@ -407,7 +407,7 @@
           "wall_observed_overshoot_ms": 0,
           "wall_time_ms": 10000
         },
-        "request_id": "c8c49f8089b44771a844df01075c290c",
+        "request_id": "0dcaaa7e4fd04043a567e7708179d4d3",
         "schema": "leancage-workspace-v1",
         "status": "complete",
         "vm_cleanup": "complete"
@@ -420,19 +420,19 @@
           "complete": true,
           "files": {},
           "stderr": {
-            "bytes": 32,
-            "sha256": "dfb417454d7432715ecfaa33d89abdaba4457c3b2cbd85a4a20620d0cd806da6"
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
           },
           "stdout": {
             "bytes": 64,
             "sha256": "ca699c774f7e05ea1ca1f814afe9de30398bbe96d6c970ce4f9af8ccf68ec194"
           }
         },
-        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "bundle_id": "909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6",
         "command": "run",
         "error": null,
-        "exit_code": 124,
-        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/cf4539d1707e4b0ab970fc3782d97d49",
+        "exit_code": 137,
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6/426fbea0364e484b9bd49e92ad7fbb79",
         "publication": "stored",
         "publication_error": null,
         "report": {
@@ -443,9 +443,9 @@
           "cleanup": "complete",
           "cpu_budget_us": 2000000,
           "cpu_observed_overshoot_us": 0,
-          "cpu_usage_us": 298606,
-          "detail": 0,
-          "elapsed_ms": 556,
+          "cpu_usage_us": 290504,
+          "detail": 9,
+          "elapsed_ms": 512,
           "entry": "yes",
           "export": "complete",
           "export_digest": "cc907d1e419e7f7279080972e80e5946312cf078ed1017f284aa9e48a89b3754",
@@ -468,20 +468,20 @@
           "schema": "leancage-result-v1",
           "stage": 0,
           "stderr_artifact": "/m3-results/1/stderr",
-          "stderr_bytes": 2048,
-          "stderr_captured_bytes": 32,
-          "stderr_truncated": true,
+          "stderr_bytes": 0,
+          "stderr_captured_bytes": 0,
+          "stderr_truncated": false,
           "stdout_artifact": "/m3-results/1/stdout",
           "stdout_bytes": 4104,
           "stdout_captured_bytes": 64,
           "stdout_truncated": true,
           "task_limit_events": 0,
-          "termination": "cancelled",
+          "termination": "signaled",
           "uid": 100000,
           "wall_observed_overshoot_ms": 0,
           "wall_time_ms": 10000
         },
-        "request_id": "cf4539d1707e4b0ab970fc3782d97d49",
+        "request_id": "426fbea0364e484b9bd49e92ad7fbb79",
         "schema": "leancage-workspace-v1",
         "status": "complete",
         "vm_cleanup": "complete"
@@ -502,11 +502,11 @@
             "sha256": "c734a80637e918514e4ef2c906c09b88cc2d42efa6d32e218784644cb6fd3eea"
           }
         },
-        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "bundle_id": "909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6",
         "command": "run",
         "error": null,
         "exit_code": 126,
-        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/96186982ffec4514a58965b5b1f36472",
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6/8bd604f0265a4dc28800a27a72ced322",
         "publication": "stored",
         "publication_error": null,
         "report": {
@@ -517,7 +517,7 @@
           "cleanup": "complete",
           "cpu_budget_us": 2000000,
           "cpu_observed_overshoot_us": 0,
-          "cpu_usage_us": 326139,
+          "cpu_usage_us": 325212,
           "detail": 0,
           "elapsed_ms": 860,
           "entry": "yes",
@@ -555,7 +555,7 @@
           "wall_observed_overshoot_ms": 0,
           "wall_time_ms": 10000
         },
-        "request_id": "96186982ffec4514a58965b5b1f36472",
+        "request_id": "8bd604f0265a4dc28800a27a72ced322",
         "schema": "leancage-workspace-v1",
         "status": "complete",
         "vm_cleanup": "complete"
@@ -576,13 +576,13 @@
             "sha256": "c734a80637e918514e4ef2c906c09b88cc2d42efa6d32e218784644cb6fd3eea"
           }
         },
-        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "bundle_id": "909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6",
         "command": "run",
         "error": null,
         "exit_code": 126,
         "output": null,
         "publication": "failed",
-        "publication_error": "[Errno 17] File exists: '/localhome/milikic/sandbox-formalization/.tools/product-acceptance-32f62a9r/blocked'",
+        "publication_error": "[Errno 17] File exists: '/localhome/milikic/sandbox-formalization/.tools/product-acceptance-4qvc3euy/blocked'",
         "report": {
           "accounting": "complete",
           "assurance": "conditional-model-and-VM-evidence; native/Linux correspondence and hardware channels open",
@@ -591,9 +591,9 @@
           "cleanup": "complete",
           "cpu_budget_us": 2000000,
           "cpu_observed_overshoot_us": 0,
-          "cpu_usage_us": 324338,
+          "cpu_usage_us": 344141,
           "detail": 0,
-          "elapsed_ms": 840,
+          "elapsed_ms": 908,
           "entry": "yes",
           "export": "complete",
           "export_digest": "cc907d1e419e7f7279080972e80e5946312cf078ed1017f284aa9e48a89b3754",
@@ -629,7 +629,7 @@
           "wall_observed_overshoot_ms": 0,
           "wall_time_ms": 10000
         },
-        "request_id": "094213ff86ac43908a301eb2ada2b8c9",
+        "request_id": "0a9e18d68f54460d8aa1eb59746298d9",
         "schema": "leancage-workspace-v1",
         "status": "complete",
         "vm_cleanup": "complete"
@@ -644,11 +644,11 @@
           "stderr": null,
           "stdout": null
         },
-        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "bundle_id": "909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6",
         "command": "run",
         "error": "incomplete VM result channel",
         "exit_code": 126,
-        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/878567d6c6924dba81222326f354cf90",
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6/a7119e76762845a194d74d99e31447a8",
         "publication": "stored",
         "publication_error": null,
         "report": {
@@ -659,9 +659,9 @@
           "cleanup": "complete",
           "cpu_budget_us": 2000000,
           "cpu_observed_overshoot_us": 0,
-          "cpu_usage_us": 332472,
+          "cpu_usage_us": 330743,
           "detail": 0,
-          "elapsed_ms": 868,
+          "elapsed_ms": 856,
           "entry": "yes",
           "export": "complete",
           "export_digest": "cc907d1e419e7f7279080972e80e5946312cf078ed1017f284aa9e48a89b3754",
@@ -697,7 +697,7 @@
           "wall_observed_overshoot_ms": 0,
           "wall_time_ms": 10000
         },
-        "request_id": "878567d6c6924dba81222326f354cf90",
+        "request_id": "a7119e76762845a194d74d99e31447a8",
         "schema": "leancage-workspace-v1",
         "status": "incomplete",
         "vm_cleanup": "complete"
@@ -712,15 +712,15 @@
           "stderr": null,
           "stdout": null
         },
-        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "bundle_id": "909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6",
         "command": "run",
         "error": "VM deadline or cancellation grace expired",
         "exit_code": 126,
-        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/0bb1579939af45a98aa05a793148a00a",
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6/5b74c3b0bf0047d0a8fa63f5bc3612a3",
         "publication": "stored",
         "publication_error": null,
         "report": null,
-        "request_id": "0bb1579939af45a98aa05a793148a00a",
+        "request_id": "5b74c3b0bf0047d0a8fa63f5bc3612a3",
         "schema": "leancage-workspace-v1",
         "status": "incomplete",
         "vm_cleanup": "complete"
@@ -741,11 +741,11 @@
             "sha256": "ed1a545bb85e55816bbf9566b028b2a0bc456b88f49f6f266c0401048824194b"
           }
         },
-        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "bundle_id": "909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6",
         "command": "run",
         "error": null,
         "exit_code": 124,
-        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/14b440ebada142038f1a92da274f973c",
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6/6561351767994227b17eb6910239b80e",
         "publication": "stored",
         "publication_error": null,
         "report": {
@@ -756,9 +756,9 @@
           "cleanup": "complete",
           "cpu_budget_us": 2000000,
           "cpu_observed_overshoot_us": 0,
-          "cpu_usage_us": 310277,
+          "cpu_usage_us": 309166,
           "detail": 0,
-          "elapsed_ms": 3428,
+          "elapsed_ms": 3328,
           "entry": "yes",
           "export": "complete",
           "export_digest": "cc907d1e419e7f7279080972e80e5946312cf078ed1017f284aa9e48a89b3754",
@@ -794,14 +794,14 @@
           "wall_observed_overshoot_ms": 0,
           "wall_time_ms": 60000
         },
-        "request_id": "14b440ebada142038f1a92da274f973c",
+        "request_id": "6561351767994227b17eb6910239b80e",
         "schema": "leancage-workspace-v1",
         "status": "complete",
         "vm_cleanup": "complete"
       }
     }
   ],
-  "elapsed_seconds": 64.547,
+  "elapsed_seconds": 64.416,
   "machine": {
     "acceleration": "tcg",
     "cpu": "max",
@@ -811,7 +811,7 @@
     "persistent_disks": [],
     "vcpus": 1
   },
-  "manifest_sha256": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+  "manifest_sha256": "909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6",
   "schema": "leancage-product-vm-evidence-v1",
   "source_sha256": {
     "LeanCage.lean": "fba8dcfc1ec544b4f7de73037e4786949023ed568e5b1594dbda5955a98472c9",

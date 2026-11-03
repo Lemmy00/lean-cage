@@ -267,6 +267,11 @@ the M3.1 contract alone does not complete workspace confinement.
 
 ## m4: Reusable Linux product and verified executable core
 
+**Completed 2026-11-03 for the revised product contract.** The root build,
+caller-policy VM workflow, Python/Lean libraries, functional source layout and
+proof/trust bundle are delivered. The [product handoff](reviews/workspace-product-handoff.md)
+and `assurance/product-vm-evidence.json` record acceptance and exact artifacts.
+
 Implement [§FS-linux-product](functional-spec/FS-linux-product.md#fs-linux-product-a-reusable-linux-workspace-with-an-explicit-trust-boundary) using the existing controller, helper, runtime and
 profile. Publish the Linux/runtime/compiler assumptions from the start. The
 first supported environment remains the disposable VM; caller-supplied workloads
@@ -287,15 +292,17 @@ the historical whole-platform verification contract.
 | Verified core and library interface | Executable policy/filter/decoder definitions and existing theorem inventory | Library and CLI call the same definitions; exact acceptance/bounds, emitted-filter behavior and live result equations are checked and linked to the bundle |
 | Product acceptance | Existing VM cases, capture regression and proof gates | Useful Python and shell scenarios plus denial, cancellation, storage failure and lost-channel cases pass on the final changed inputs; unchanged proof evidence is reused |
 
-These are parts of one product delivery, not new standalone success labels. The
-next agent carries the first workflow through acceptance. It does not start a
-Linux source translation or another compiler research package to build this product.
+These parts are integrated into the delivered workflow. Further application
+verification consumes this implementation under [§RM-roadmap.m5](roadmap.md#m5-verify-the-complete-application-control-path); it does not
+restart the completed product integration or accepted proof components.
 
 ### m4.next: Current M4 continuation
 
-Follow [M4-CONTINUE.md](../M4-CONTINUE.md) for the next worker's complete assignment:
-**make a caller-supplied offline workspace runnable through one root interface,
-with reusable components and a declared trust boundary.**
+[M4-CONTINUE.md](../M4-CONTINUE.md) preserves the fulfilled assignment:
+**a caller-supplied offline workspace is runnable through one root interface,
+with reusable components and a declared trust boundary.** The
+[product handoff](reviews/workspace-product-handoff.md) gives the working commands,
+library entries, exact evidence and validation.
 
 Reuse the accepted parent/input work, the native output-capture correction,
 [§AR-reporting.proof](architecture/AR-reporting.md#proof-check-the-interface-in-both-proof-environments) and [§AR-compiled-reporting.connection](architecture/AR-compiled-reporting.md#connection-carry-the-reporting-argument-across-verified-compilation).

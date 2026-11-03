@@ -9,7 +9,7 @@ grow a verified Lean implementation, using Velvet where it helps with imperative
 proofs. The roadmap extends through Linux enforcement, executable correspondence,
 and software-observable hardware side channels.
 
-**Status: M1–M3 accepted for their stated conditional profiles; M4 product validation in progress.** M3 adds an offline Dash/Python workspace,
+**Status: M1–M4 accepted for their stated conditional profiles and product contract.** M3 adds an offline Dash/Python workspace,
 immutable runtime, private copied inputs, controlled I/O/export, confined
 descendants, cgroup limits and real check/run/report commands. Its model proofs
 and source-bound VM evidence are documented in the [M3 review](docs/reviews/M3-handoff.md).

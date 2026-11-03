@@ -1,0 +1,79 @@
+{
+  "bundle_id": "909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6",
+  "bundle_manifest_sha256": "909c4cd2c1c742fe29fb106d50c61ab83bfab018a003e05f163b8316ab7f7ac6",
+  "checks": [
+    {
+      "command": "./scripts/build.sh --no-prepare",
+      "exit_code": 0,
+      "result": "Final source-bound execution bundle staged from checksum-verified pinned assets."
+    },
+    {
+      "command": "./scripts/check_product.sh",
+      "exit_code": 0,
+      "foundation_lean_guards": 168,
+      "foundation_python_tests": 79,
+      "preserved_theorem_inventories": [
+        445,
+        274,
+        419
+      ],
+      "product_boundary_tests": 17,
+      "product_core_declarations": 30,
+      "reuse": "Full product gate passed on the final inputs; unchanged historical proof artifacts are reused by the separate reporting/compiler aggregate."
+    },
+    {
+      "command": "python3 -m unittest discover -s tests/product -p 'test_*.py' -v",
+      "exit_code": 0,
+      "tests": 17
+    },
+    {
+      "command": "./scripts/check_m4_all.sh",
+      "exit_code": 0,
+      "proof_artifacts": "Matching source/compiler artifacts reused; original scope/type/axiom/cache payloads preserved.",
+      "retained_vm_artifact_checks": {
+        "api_checks": 3,
+        "cases": 60,
+        "death_cancel_boundaries": 6
+      }
+    },
+    {
+      "command": "python3 tests/product/acceptance.py",
+      "execution": "Actual final bundle in disposable QEMU VMs; root and staged CLI plus shared library",
+      "exit_code": 0,
+      "scenarios": 12
+    },
+    {
+      "commands": [
+        "./scripts/grund.sh check --full .",
+        "./scripts/grund.sh fmt --check",
+        "python3 scripts/check_foundation_inputs.py",
+        "python3 scripts/rebind_product_evidence.py",
+        "git diff --check"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "core_evidence_sha256": "8c09b326772e40479bddc3d176388bff3942e6dee0bf4fb02eb81aaed6be6df2",
+  "date": "2026-11-03",
+  "implementation_commit": "506337e",
+  "local_logs_sha256": {
+    ".tools/assurance/product-acceptance.log": "c0eaf84fe16db8b953af9f7968bda689373bf8b71bb364d1e78e6ae456845da4",
+    ".tools/assurance/product-boundary-check.log": "3eeb0b55f82346a268cf90f3cc357ec88a9bd65a9d97e7d19af5624fae9b45ab",
+    ".tools/assurance/product-build.log": "c76ad76b00873976d0f668e608f02a55f804ae1b495aff9fdbc85767d951000a",
+    ".tools/assurance/product-evidence-final.log": "ea9d6d15ede2ea16a0bd9642702b8fdd6e5d441054dc8a7f4576d1c1e50b71f7",
+    ".tools/assurance/product-handoff-check.log": "501d8124426b4d1049588c8a91f1932d10efa1677738247a360edfcffed1c6a6",
+    ".tools/assurance/product-reporting-check.log": "08df05a414f3fb632517aedeb4bfb2e856033c4d35e61f8dfd72c5cb7d81ce87"
+  },
+  "migration_evidence_sha256": "3c5bbc6443f075aa61fd9f29bc88834ea435097a1174c6a0367accf325994e88",
+  "schema": "leancage-product-validation-v1",
+  "scope": "M4 reusable Linux VM product and verified executable core. Whole application correspondence and platform/hardware upgrades remain M5/M6.",
+  "spec_ids": [
+    "FS-linux-product.operation",
+    "FS-linux-product.transport",
+    "FS-linux-product.proofs",
+    "FS-linux-product.acceptance",
+    "AR-workspace-vm"
+  ],
+  "status": "passed",
+  "vm_evidence_sha256": "8d1977801da3ff380f3962ed1d093cf7c33bffcdf909ab6e9ce2f8d013154e02"
+}
