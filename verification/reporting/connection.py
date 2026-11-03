@@ -466,6 +466,8 @@ def bindings():
               ROOT/'assurance/reporting-source.json.gz', ROOT/'assurance/reporting-connection-before.json.gz',
               ROOT/'assurance/m4-bridge-claims.json',
               ROOT/'assurance/m4-bridge-evidence.json']
+    paths += [ROOT/'verification/compiler/amendment.py',
+              ROOT/'assurance/reporting-compiler-before.json.gz']
     paths += [files[name] for name in order if name in files]
     sources = {str(path.relative_to(ROOT)): digest(path) for path in sorted(set(paths))}
     prior = json.loads(gzip.decompress((ROOT/'assurance/reporting-source.json.gz').read_bytes()))
@@ -509,6 +511,8 @@ def verify_metadata_amendment():
         if old['inputs_sha256'][name] != previous:
             raise ValueError('reporting metadata preimage differs')
         old['inputs_sha256'][name] = digest(ROOT/name)
+    old = load(ROOT/'verification/compiler/amendment.py',
+               'reporting_compiler_gate_amendment').adjust_source(old)
     if old != json.loads(gzip.decompress((ROOT/record).read_bytes())):
         raise ValueError('reporting amendment changes more than the gate and its documentation fingerprints')
 

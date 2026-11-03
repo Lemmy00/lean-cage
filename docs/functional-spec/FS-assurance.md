@@ -39,6 +39,7 @@ These counts identify coverage and evidence, not a measure of security strength.
 | Native workload confinement | [§FS-workspace.authority](FS-workspace.md#authority-objects-and-rights) | M3 model proofs, implementation and source-bound VM evidence; gate passed | [§FS-assurance.workspace](FS-assurance.md#workspace-m3-workspace-model-and-vm-evidence); object/handle/alias model and workspace helper | Native/Linux correspondence |
 | Bounded resources | [§FS-workspace.resources](FS-workspace.md#resources-units-ownership-and-failure) | Conditional model proofs; native VM limit cases | Scope/capture/reservation/sample proofs; charged memory/task/CPU/deadline observations | Linux accounting and progress/overshoot premises |
 | Local reporting source behavior | [§FS-workspace.results](FS-workspace.md#results-entry-cancellation-and-bounded-transport) | Conditional source/effect proofs and ordinary Lean reporting call connection | [§FS-assurance.native](FS-assurance.md#native-partial-m4-reporting-source-evidence) and [§FS-assurance.reporting](FS-assurance.md#reporting-current-helper-reporting-call-and-ordinary-lean-decoder); current complete helper program, checked call/byte interface and live decoder theorem | Whole-profile caller/capture/export composition, physical input ownership, Linux/compiler/runtime/executable correspondence |
+| Local reporting compiler model | [§FS-workspace.results](FS-workspace.md#results-entry-cancellation-and-bounded-transport) | Conditional assembly reporting proof with concrete compilation checked | [§FS-assurance.compiled](FS-assurance.md#compiled-conditional-assembly-reporting-connection); complete helper plus explicit logical runtime unit, identified assembly, source reporting and ordinary Lean publication consumer | Matched physical caller, actual TLS/runtime/Linux effects, partial-call loss and deployed binary chain |
 | Local input-validation source behavior | [§FS-workspace.policy](FS-workspace.md#policy-bounded-typed-request) | Accepted local M4.3 results through initialization; parent composition repair under review | [§FS-assurance.parent](FS-assurance.md#parent-parent-composition-repair-claim-record); numeric, string, argument, digest and initialization source certificates | Whole entry-to-setup composition, physical argv, ordinary Lean proof connection and Linux/compiler/runtime correspondence |
 | Functional confidentiality | [§FS-observations.logical](FS-observations.md#logical-functional-observations) | Planned | Observation requirements | Noninterference theorem and correspondence |
 | Hardware-aware confidentiality | [§FS-observations.hardware](FS-observations.md#hardware-software-observable-channels) | Planned | Scope and research obligations | Model, mechanisms, proof, deployed profile |
@@ -831,3 +832,42 @@ compiler/runtime/loader chain remain connecting obligations.
 `./scripts/check_reporting.sh` and the current M4 aggregate. Matching checked
 artifacts are reused under [the development check policy](../architecture/AR-tooling.md#checks-one-development-gate). Original proof sources and the
 sixteen original ledger entries retain their scope and status.
+
+## compiled: Conditional assembly reporting connection
+
+**Scope:** [§FS-workspace.results](FS-workspace.md#results-entry-cancellation-and-bounded-transport) and [§FS-assurance.reporting](FS-assurance.md#reporting-current-helper-reporting-call-and-ordinary-lean-decoder). The concrete
+`CompilerCertificate.current_compilation` equation identifies assembly produced
+from the complete maintained helper plus a public logical errno runtime unit.
+`current_assembly_reporting` consumes that equation and the existing source
+reporting/ordinary Lean publication argument. From an owned descriptor-1 reporting call, a
+compiler-matched target state and primitive runtime effects, every finite
+assembly trace emits a prefix of the outgoing frame; a successful return yields
+the existing normalized decoder result. Failed and short completed I/O calls
+remain covered. No successful publication follows from a prefix alone.
+
+The [compiler connection](../architecture/AR-compiled-reporting.md#connection-carry-the-reporting-argument-across-verified-compilation)
+uses Clight2 and eight required pinned pass proofs, with ELF x86-64 calling
+conventions and the complete original allocation validator. Clight lowering,
+allocation and code generation are ordinary kernel-checked computations. The
+record `assurance/reporting-compiler.json.gz` freezes full declaration types,
+transitive foundations, proof/dependency identities, an independent kernel check
+and rejection of corrupted allocation and an absent errno root.
+
+The recorded logical foundations include classical choice/decidability,
+functional extensionality, proof irrelevance/equality transport and the strict
+importer's definitional UIP. The stock external-function and inline-assembly
+relations and their properties remain compiler assumptions. No external allocator
+answer, unresolved ABI flag or unchecked native conversion supports the result.
+
+The errno root makes the logical thread-local address visible to compiler memory
+injections. Owned-call allocations witness source inputs in the composed global
+environment. Neither establishes native process startup, physical libc TLS or
+the compiler relation at the reporting call. Stock traces contain completed
+atomic external calls: asynchronous partial-call loss, pinned Linux/runtime
+effects and actual descriptor/byte provenance remain open. The C frontend,
+assembly printer/assembler/linker/loader, retained GCC artifact and controller
+export composition remain unconnected. This is conditional compiler-model
+evidence; all sixteen original obligations stay open.
+
+**Replay:** `./scripts/check_reporting_compiler.sh`, included in the M4 aggregate.
+Matching compilation, type/foundation audits and kernel receipts are reused.

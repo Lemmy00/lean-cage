@@ -18,6 +18,7 @@ if python3 verification/reporting/check.py --current-profile; then
   run_check ./scripts/grund.sh check --full .
   run_check ./scripts/grund.sh fmt --check
   run_check ./scripts/check_reporting.sh
+  run_check ./scripts/check_reporting_compiler.sh
   printf '\nCurrent reporting path and affected source consumers checked; unchanged evidence reused.\n'
   exit 0
 fi
@@ -35,6 +36,7 @@ run_check python3 m4/parent/check.py
 run_check python3 m4/routes/check.py
 # §AR-m4-routes.reporting.types: Check the recursive representations and native type relation.
 run_check ./scripts/check_m4_types.sh
+run_check ./scripts/check_reporting_compiler.sh
 run_check python3 scripts/run_m3_vm.py --check-artifacts
 
 printf '\nImplemented M4 checkpoints, parent contract, connection attempts and type bridge replayed.\n'

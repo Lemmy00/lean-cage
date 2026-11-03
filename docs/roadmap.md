@@ -415,6 +415,14 @@ executions. [§FS-assurance.reporting](functional-spec/FS-assurance.md#reporting
 supplying the compiler-semantics and pinned Linux effect producers required by
 `M4-CONTINUE.md`; the call interface does not supply those premises.
 
+The concrete compiler connection now supplies the selected Clight2-to-assembly
+pass relation to the reporting consumer under [§AR-compiled-reporting.connection](architecture/AR-compiled-reporting.md#connection-carry-the-reporting-argument-across-verified-compilation)
+and [§FS-assurance.compiled](functional-spec/FS-assurance.md#compiled-conditional-assembly-reporting-connection). The complete helper plus explicit logical errno unit
+has a checked compilation equation. Matched caller states, physical TLS/runtime
+and pinned Linux effects, partial-call loss and the retained binary chain remain
+unsupplied producers. Continue those connections and whole input-validation
+composition; the original ledger remains open.
+
 ### m4.entry: Next assignment — M4.1 native-semantics feasibility
 
 **Recorded feasibility outcome:** [M4.1 handoff](reviews/M4.1-handoff.md),
