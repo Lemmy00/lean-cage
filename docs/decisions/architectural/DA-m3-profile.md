@@ -39,6 +39,14 @@ Build a private authenticated-by-ownership result transport before shell/Python
 entry. Console strings cannot authenticate a result once the guest controls output.
 Keep entry, termination, cancellation and cleanup knowledge separate.
 
+After an output read or storage error, keep that stream's persistence disabled
+through final draining. A write may append a prefix and then fail; retrying capture
+after that failure could otherwise append a later chunk after a gap or reuse its
+quota. Preserve acknowledged read counts before writes and close and clear the
+destination descriptor on failure. Do not encode failure by fabricating a byte count. This implements
+the bounded-prefix and loss contract in [§FS-workspace.results](../../functional-spec/FS-workspace.md#results-entry-cancellation-and-bounded-transport) and
+[§AR-workspace.transport](../../architecture/AR-workspace.md#transport-private-events-and-public-result).
+
 Use cgroup v2 accounting and containment with supervision outside guest budgets.
 Expose the actual accounting, sampling and overshoot semantics. Reject demands for
 strict instantaneous memory or cumulative CPU/deadline ceilings that this profile

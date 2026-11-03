@@ -391,18 +391,27 @@ report:
     result.clean=1;(void)send_frame(report,sequence,result);if(fault("exit_cancel_race"))usleep(100000);close(report);_exit(0);
 }
 
-static int capture(int fd,int destination,uint64_t cap,uint64_t *count) {
+// §AR-workspace.transport: A failed stream stays closed to persistence through final draining.
+static int capture(int fd,int *destination,uint64_t cap,uint64_t *count) {
     unsigned char buffer[4096];int exceeded=0;
     for(int i=0;i<4;i++) {
-        ssize_t n=read(fd,buffer,sizeof(buffer));if(n<0&&(errno==EINTR||errno==EAGAIN))break;if(n<0)return -1;if(!n)break;
+        ssize_t n=read(fd,buffer,sizeof(buffer));if(n<0&&(errno==EINTR||errno==EAGAIN))break;
+        if(n<0)goto failed;
+        if(!n)break;
         size_t keep=*count<cap?(size_t)(cap-*count):0;if(keep>(size_t)n)keep=(size_t)n;
-        if(fault("output_fail")){errno=EIO;return -1;}
-        if(keep&&write_all(destination,buffer,keep))return -1;
-        if(*count>UINT64_MAX-(uint64_t)n)return -1;
+        if(*count>UINT64_MAX-(uint64_t)n){errno=EOVERFLOW;goto failed;}
         *count+=(uint64_t)n;
         if(*count>cap)exceeded=1;
+        if(*destination<0)continue;
+        if(fault("output_fail")){errno=EIO;goto failed;}
+        if(keep&&write_all(*destination,buffer,keep))goto failed;
     }
     return exceeded;
+failed: {
+    int saved=errno;
+    if(*destination>=0){(void)close(*destination);*destination=-1;}
+    errno=saved;return -1;
+    }
 }
 static int cleanup(void) {
     if(!identity_owned||!run_id||run_uid<100000||run_uid>100999)return -1;
@@ -489,7 +498,7 @@ int main(int argc,char **argv) {
                 used=0;
             }}else if(got<0&&errno!=EAGAIN&&errno!=EINTR)bad=1;
         }
-        for(int i=0;i<2;i++)if(fds[i+2].revents&(POLLIN|POLLHUP)){int captured=capture(streams[i+1][0],captures[i],i?policy.err:policy.out,&counts[i]);if(captured<0){bad=1;triggers|=OUTPUT;}else if(captured)triggers|=OUTPUT;}
+        for(int i=0;i<2;i++)if(fds[i+2].revents&(POLLIN|POLLHUP)){int captured=capture(streams[i+1][0],&captures[i],i?policy.err:policy.out,&counts[i]);if(captured<0){bad=1;triggers|=OUTPUT;}else if(captured)triggers|=OUTPUT;}
         if(fds[4].revents&POLLIN){struct signalfd_siginfo info;ssize_t got=read(signals,&info,sizeof(info));if(got!=(ssize_t)sizeof(info))bad=1;triggers|=REQUEST;}
         uint64_t now=now_ms();if(!now||now<last_time){bad=1;triggers|=ACCOUNTING;}last_time=now;
         if(admitted){if(now-admission>=policy.wall)triggers|=DEADLINE;uint64_t sample=0;if(cg_read("cpu.stat","usage_usec",&sample)||sample<cpu)triggers|=ACCOUNTING;else{cpu=sample;if(cpu>=policy.cpu)triggers|=CPU;}}
@@ -501,10 +510,12 @@ int main(int argc,char **argv) {
     if(bad){(void)cg_write("cgroup.kill","1");(void)syscall(SYS_pidfd_send_signal,initfd,SIGKILL,NULL,0);}
     int status;pid_t got;do{got=waitpid(init,&status,0);}while(got<0&&errno==EINTR);
     for(int i=0;i<2;i++){
-        while(1){uint64_t before=counts[i];int r=capture(streams[i+1][0],captures[i],i?policy.err:policy.out,&counts[i]);
+        while(1){uint64_t before=counts[i];int r=capture(streams[i+1][0],&captures[i],i?policy.err:policy.out,&counts[i]);
             if(r<0){bad=1;triggers|=OUTPUT;break;}if(r)triggers|=OUTPUT;if(before==counts[i])break;}
-        if(fault("output_close_fail"))close(captures[i]);
-        if(close(captures[i])){bad=1;triggers|=OUTPUT;}
+        if(captures[i]>=0){
+            if(fault("output_close_fail"))close(captures[i]);
+            if(close(captures[i])){bad=1;triggers|=OUTPUT;}
+        }
     }
     uint64_t final_cpu=cpu;
     if(cg_read("cpu.stat","usage_usec",&final_cpu)||final_cpu<cpu||cg_read("memory.peak",NULL,&peak)){bad=1;triggers|=ACCOUNTING;}

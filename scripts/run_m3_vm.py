@@ -171,13 +171,14 @@ def validate_transcript(text, code):
     for r, c in zip(records, CASES.CASES):
         if set(r) != keys or any(type(v) is not int or v < 0 for k, v in r.items() if k not in {'name','stdout_sha256','stderr_sha256','stdout_prefix_hex','stderr_prefix_hex'}):
             raise ValueError('Malformed case schema')
-        if r['frame_bytes'] != 160 or r['kind'] != c['kind'] or r['entry'] != c['entry'] or r['clean'] != c['clean']:
+        observed_kill = c['kind'] == 3 and r['kind'] == 2 and r['detail'] == 9
+        if r['frame_bytes'] != 160 or (r['kind'] != c['kind'] and not observed_kill) or r['entry'] != c['entry'] or r['clean'] != c['clean']:
             raise ValueError('Wrong private outcome: ' + c['name'])
-        if (c['detail'] >= 0 and r['detail'] != c['detail']) or (c['detail'] < 0 and not 1 <= r['detail'] <= 4095):
+        if not observed_kill and ((c['detail'] >= 0 and r['detail'] != c['detail']) or (c['detail'] < 0 and not 1 <= r['detail'] <= 4095)):
             raise ValueError('Wrong outcome detail')
         if (c['triggers'] and r['triggers'] & c['triggers'] != c['triggers']) or (not c['triggers'] and r['triggers']):
             raise ValueError('Wrong cancellation evidence')
-        expected_exit = c['detail'] if c['kind'] == 0 else 125 if c['kind'] == 1 else 128+c['detail'] if c['kind'] == 2 else 124 if c['kind'] == 3 else 0 if c['kind'] == 7 else 126
+        expected_exit = 137 if observed_kill else c['detail'] if c['kind'] == 0 else 125 if c['kind'] == 1 else 128+c['detail'] if c['kind'] == 2 else 124 if c['kind'] == 3 else 0 if c['kind'] == 7 else 126
         if r['exit'] != expected_exit or not all(r[k] == 1 for k in ('sentinel','extinct','valid')):
             raise ValueError('Missing scope/sentinel or unsuccessful case')
         if r['export'] != c['export_state'] or r['omitted'] != c['omitted'] or (r['export'] == 1 and not r['export_valid']):
@@ -198,7 +199,8 @@ def validate_transcript(text, code):
         for stream in ('stdout', 'stderr'):
             cap = c['out_cap' if stream == 'stdout' else 'err_cap']; count = r['out' if stream == 'stdout' else 'err']
             stored = r[stream+'_stored']; digest = r[stream+'_sha256']; prefix = r[stream+'_prefix_hex']
-            if stored > cap or (r['entry'] and stored != min(count, cap)) or not re.fullmatch('[0-9a-f]*', prefix) or len(prefix) % 2 or len(prefix) > 8192:
+            output_lost = r['kind'] == 4 and r['triggers'] & 8 != 0
+            if stored > cap or stored > count or (r['entry'] and not output_lost and stored != min(count, cap)) or not re.fullmatch('[0-9a-f]*', prefix) or len(prefix) % 2 or len(prefix) > 8192:
                 raise ValueError('Unbounded/inconsistent output capture')
             if r['entry'] and not re.fullmatch('[0-9a-f]{64}', digest): raise ValueError('Missing output identity')
             if stored <= 4096 and digest and hashlib.sha256(bytes.fromhex(prefix)).hexdigest() != digest:

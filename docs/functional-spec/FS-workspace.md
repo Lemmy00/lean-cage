@@ -272,6 +272,11 @@ outcome in its JSON. Preflight and results without an allocated run use
 Accounting failures produce null usage/peak/event/elapsed/overshoot fields in the
 public report. Output-storage failure produces null observed/captured byte and
 truncation fields; a partial file is not reported as a complete capture.
+An output-storage or read failure permanently stops persistence on that stream,
+including during final draining. A partial stored file must still be a bounded
+prefix: later successful writes cannot fill a gap or reuse the failed write's
+allowance. Count acknowledged reads before attempting persistence; bytes changed
+in a read buffer beyond the returned count are not acknowledged output.
 
 ## observations: Public information, secrets and proof boundary
 

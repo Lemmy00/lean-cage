@@ -74,19 +74,22 @@ static int run_case(const struct testcase *c) {
     close(reports[0]);int status;if(waitpid(child,&status,0)!=child)return 1;
     int exit_code=WIFEXITED(status)?WEXITSTATUS(status):WIFSIGNALED(status)?128+WTERMSIG(status):255;
     uint64_t run=get64(frame+8);unsigned uid=get32(frame+52),detail=get32(frame+36);
+    int observed_kill=c->kind==3&&frame[6]==2&&detail==SIGKILL;
     int valid=used==160&&!memcmp(frame,"LC3R",4)&&frame[4]==1&&frame[5]==0&&frame[7]==0&&
         get64(frame+16)==0&&get32(frame+24)==128&&!get32(frame+28)&&!get32(frame+156)&&
-        frame[6]==c->kind&&(c->detail<0?detail>0:detail==(unsigned)c->detail)&&get32(frame+40)==(unsigned)c->entry&&get32(frame+44)==(unsigned)c->clean&&
+        (frame[6]==c->kind||observed_kill)&&(observed_kill||(c->detail<0?detail>0:detail==(unsigned)c->detail))&&get32(frame+40)==(unsigned)c->entry&&get32(frame+44)==(unsigned)c->clean&&
         (c->triggers?(get32(frame+48)&c->triggers)==(unsigned)c->triggers:!get32(frame+48))&&
         get32(frame+96)==(unsigned)c->export_state&&get32(frame+100)==(unsigned)c->omitted&&
         (!c->oom||get64(frame+136)>0)&&(!c->pids||get64(frame+144)>0);
-    int expected_exit=c->kind==0?c->detail:c->kind==1?125:c->kind==2?128+c->detail:c->kind==3?124:c->kind==7?0:126;
+    int expected_exit=observed_kill?128+SIGKILL:c->kind==0?c->detail:c->kind==1?125:c->kind==2?128+c->detail:c->kind==3?124:c->kind==7?0:126;
     if(exit_code!=expected_exit)valid=0;
     char path[256],out_hash[65]="",err_hash[65]="",out_prefix[8193]="",err_prefix[8193]="";uint64_t out_size=0,err_size=0;
     if(run&&c->entry){
         snprintf(path,sizeof(path),"/m3-results/%"PRIu64"/stdout",run);if(file_hash(path,out_hash,out_prefix,&out_size))valid=0;
         snprintf(path,sizeof(path),"/m3-results/%"PRIu64"/stderr",run);if(file_hash(path,err_hash,err_prefix,&err_size))valid=0;
-        if(out_size>c->out_cap||err_size>c->err_cap||out_size!=(get64(frame+72)<c->out_cap?get64(frame+72):c->out_cap)||err_size!=(get64(frame+80)<c->err_cap?get64(frame+80):c->err_cap))valid=0;
+        int output_lost=frame[6]==4&&(get32(frame+48)&8);
+        if(out_size>c->out_cap||err_size>c->err_cap||out_size>get64(frame+72)||err_size>get64(frame+80)||
+           (!output_lost&&(out_size!=(get64(frame+72)<c->out_cap?get64(frame+72):c->out_cap)||err_size!=(get64(frame+80)<c->err_cap?get64(frame+80):c->err_cap))))valid=0;
         if(c->expected[0]){struct m3_sha h;unsigned char b[32];char expected[65];sha_init(&h);sha_update(&h,c->expected,strlen(c->expected));sha_final(&h,b);sha_hex(b,expected);if(strcmp(out_hash,expected))valid=0;}
     }
     int export_ok=0;

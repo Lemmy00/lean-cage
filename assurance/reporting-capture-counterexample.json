@@ -1,0 +1,7 @@
+{
+  "baseline_source_sha256": "fe20ad61706bb8e8463d32e5c9a1a9f3bf038ff52cc9f2ac40ba14c1a010d82c",
+  "harness_sha256": "6411877be2ca0ddffc533f74b9aa79623b1a36696e6727996e501e4f72cbee4e",
+  "return_code": -6,
+  "diagnostic": "legacy stored=6 cap=4 observed=4\nlegacy-capture: /localhome/milikic/sandbox-formalization/tests/reporting/capture.c:135: main: Assertion `stored<=4' failed.\n",
+  "scope": "Scripted standard short-write/error/recovery witness from the original maintained function; no guest or OS workload."
+}

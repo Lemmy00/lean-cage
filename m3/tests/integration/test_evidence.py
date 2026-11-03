@@ -32,13 +32,30 @@ class Evidence(unittest.TestCase):
         with self.assertRaises(ValueError):VM.validate_transcript(self.text,0)
 
     def mutate_result(self,name,key,value):
+        return self.mutate_fields(name,{key:value})
+
+    def mutate_fields(self,name,fields):
         result=[]
         for line in self.text.splitlines():
             if line.startswith('M3_RESULT '):
                 row=json.loads(line[len('M3_RESULT '):])
-                if row['name']==name:row[key]=value;line='M3_RESULT '+json.dumps(row)
+                if row['name']==name:row.update(fields);line='M3_RESULT '+json.dumps(row)
             result.append(line)
         return '\n'.join(result)+'\n'
+
+    def test_cancel_race_keeps_observed_kill_and_required_facts(self):
+        fields=dict(kind=2,detail=9,exit=137)
+        VM.validate_transcript(self.mutate_fields('both_streams',fields),33)
+        for changed in [dict(detail=15),dict(entry=0),dict(clean=0),dict(triggers=0),dict(exit=124)]:
+            with self.subTest(changed=changed),self.assertRaises(ValueError):
+                VM.validate_transcript(self.mutate_fields('both_streams',fields|changed),33)
+
+    def test_failed_storage_still_enforces_prefix_bounds(self):
+        VM.validate_transcript(self.mutate_result('fault_output_storage','out',6),33)
+        cap=next(c['out_cap'] for c in VM.CASES.CASES if c['name']=='fault_output_storage')
+        for fields in [dict(out=cap+2,stdout_stored=cap+1),dict(out=1,stdout_stored=2)]:
+            with self.subTest(fields=fields),self.assertRaises(ValueError):
+                VM.validate_transcript(self.mutate_fields('fault_output_storage',fields),33)
 
     def test_private_counters_and_scope_are_required(self):
         for name,key,value in [('shell','sentinel',0),('shell','extinct',0),('shell','clean',0),

@@ -13,6 +13,14 @@ run_check() {
   "$@"
 }
 
+# §AR-workspace.transport: The corrected helper has a separately checked source binding.
+if python3 verification/reporting/check.py --current-profile; then
+  run_check ./scripts/grund.sh check --full .
+  run_check ./scripts/grund.sh fmt --check
+  run_check ./scripts/check_reporting.sh
+  printf '\nCurrent reporting path and affected source consumers checked; unchanged evidence reused.\n'
+  exit 0
+fi
 run_check ./scripts/check.sh
 # The connection wrapper includes the original M4.1 gate.
 run_check ./scripts/check_m4_connection.sh

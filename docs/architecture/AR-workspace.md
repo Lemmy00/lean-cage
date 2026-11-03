@@ -146,6 +146,15 @@ must be outside the guest's memory limit with separate admission reservations.
 Every error path attempts owned teardown and reports available knowledge. Preserve
 the first observation of entry and every cancellation reason despite later races.
 
+The native collector closes and clears a failed stream's destination descriptor
+through supervision and final draining. Account every positive read before
+writing its bounded prefix. A failed or partial write disables further persistence
+on that stream; subsequent reads may only drain/discard. Check counter overflow
+before addition or persistence and report it as transport loss. The public report
+continues to suppress output measurements after output-storage failure. This also
+keeps bytes written by a partial user copy beyond a positive read's returned count
+outside the persisted prefix; a negative read never supplies persistable bytes.
+
 ## resources: Concrete accounting boundary
 
 Implement [§FS-workspace.resources](../functional-spec/FS-workspace.md#resources-units-ownership-and-failure) using a supervisor-owned cgroup v2 subtree,
