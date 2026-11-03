@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "profile": "linux-x86_64-offline-workspace-m3-v1",
+  "runtime_manifest_digest": "sha256:70bda1e795ded2a684ef9815955e05829b14ee5bb5c3eb2a940648e88f10fce9",
+  "workspace_input": null,
+  "stdin_input": null,
+  "argv": [
+    "/usr/local/bin/python3",
+    "/workspace/task.py"
+  ],
+  "export": "regular-files",
+  "limits": {
+    "memory_max_bytes": 268435456,
+    "tasks_max": 32,
+    "cpu_quota_us": 50000,
+    "cpu_period_us": 100000,
+    "cpu_budget_us": 2000000,
+    "wall_time_ms": 10000,
+    "workspace_max_bytes": 16777216,
+    "workspace_max_inodes": 1024,
+    "stdin_max_bytes": 1048576,
+    "stdout_max_bytes": 1048576,
+    "stderr_max_bytes": 1048576
+  }
+}

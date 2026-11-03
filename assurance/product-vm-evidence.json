@@ -1,0 +1,873 @@
+{
+  "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+  "cases": [
+    {
+      "name": "python_check",
+      "result": {
+        "artifacts": {
+          "complete": true,
+          "files": {},
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "command": "check",
+        "error": null,
+        "exit_code": 0,
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/5ce44239a09e4f548c2729abb7c69940",
+        "publication": "stored",
+        "publication_error": null,
+        "report": {
+          "accounting": "complete",
+          "assurance": "conditional-model-and-VM-evidence; native/Linux correspondence and hardware channels open",
+          "assurance_artifact": "/m3-assurance.json",
+          "cancellation_bits": 0,
+          "cleanup": "complete",
+          "cpu_budget_us": 2000000,
+          "cpu_observed_overshoot_us": 0,
+          "cpu_usage_us": 0,
+          "detail": 0,
+          "elapsed_ms": 24,
+          "entry": "no",
+          "export": "discarded",
+          "export_digest": null,
+          "export_errno": 0,
+          "export_omitted": 0,
+          "identity": null,
+          "memory_peak_bytes": 0,
+          "memory_semantics": "Linux cgroup charged memory; transient excess and preloaded charges excluded",
+          "oom_kill_events": 0,
+          "poll_target_ms": 10,
+          "profile": "linux-x86_64-offline-workspace-m3-v1",
+          "report_storage": "not_applicable",
+          "report_storage_error": null,
+          "run_id": 0,
+          "runtime_manifest_digest": "sha256:70bda1e795ded2a684ef9815955e05829b14ee5bb5c3eb2a940648e88f10fce9",
+          "schema": "leancage-result-v1",
+          "stage": 0,
+          "stderr_artifact": "/m3-results/0/stderr",
+          "stderr_bytes": 0,
+          "stderr_captured_bytes": 0,
+          "stderr_truncated": false,
+          "stdout_artifact": "/m3-results/0/stdout",
+          "stdout_bytes": 0,
+          "stdout_captured_bytes": 0,
+          "stdout_truncated": false,
+          "task_limit_events": 0,
+          "termination": "preflight_supported",
+          "uid": 0,
+          "wall_observed_overshoot_ms": 0,
+          "wall_time_ms": 10000
+        },
+        "request_id": "5ce44239a09e4f548c2729abb7c69940",
+        "schema": "leancage-workspace-v1",
+        "status": "complete",
+        "vm_cleanup": "complete"
+      }
+    },
+    {
+      "name": "python_run_and_report",
+      "result": {
+        "artifacts": {
+          "complete": true,
+          "files": {
+            "message.txt": {
+              "bytes": 17,
+              "sha256": "d35e28e8de5144d64df3735306307dca921670008cdb7394896c9f9a9595e5dd"
+            },
+            "numbers.txt": {
+              "bytes": 9,
+              "sha256": "db5e7f2dd797c6d3e641217d36c03b0d92ece9a680dca1a8b6bcdd4d4a748037"
+            },
+            "summary.json": {
+              "bytes": 37,
+              "sha256": "9a1b0b797e3dee2b413004db3eccc0d0c36312732a9f5692e828f6f35b95d950"
+            },
+            "task.py": {
+              "bytes": 331,
+              "sha256": "c97aaea9c0493a8647c171cc7e9f4f2ce8f9ed85e745454fa89b9123a2fa2d6d"
+            },
+            "task.sh": {
+              "bytes": 142,
+              "sha256": "a690ddb557db414dd67540afff77a453afa0b34789b855f340da4ab657d8c5bb"
+            }
+          },
+          "stderr": {
+            "bytes": 14,
+            "sha256": "3b9a9c6c2f4e850d755084abe4f8a0a622971bc637381d15b939bbbc97041934"
+          },
+          "stdout": {
+            "bytes": 16,
+            "sha256": "21201261d517ce0c096579d7f499f0a443cfbb05a7e9eecfe259412d8f54b11a"
+          }
+        },
+        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "command": "run",
+        "error": null,
+        "exit_code": 0,
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/cc0605f8e3de482badbf66153869f53b",
+        "publication": "stored",
+        "publication_error": null,
+        "report": {
+          "accounting": "complete",
+          "assurance": "conditional-model-and-VM-evidence; native/Linux correspondence and hardware channels open",
+          "assurance_artifact": "/m3-assurance.json",
+          "cancellation_bits": 0,
+          "cleanup": "complete",
+          "cpu_budget_us": 2000000,
+          "cpu_observed_overshoot_us": 0,
+          "cpu_usage_us": 1082877,
+          "detail": 0,
+          "elapsed_ms": 2128,
+          "entry": "yes",
+          "export": "complete",
+          "export_digest": "fbd4d1ec7628eb59eca78b179f99317702bcb1a4ba0715428f0585e52d023698",
+          "export_errno": 0,
+          "export_omitted": 0,
+          "identity": {
+            "filter_sha256": "c9c50808737ec7ba2f285a7aef7baa86de3aad984a3106f54d89b0002120e93e",
+            "plan_sha256": "0f4f637254c8ffcf1ab75a8ffeaeef9921d44309618ec4976683e2add0b96885",
+            "schema": "leancage-plan-identity-v1"
+          },
+          "memory_peak_bytes": 9924608,
+          "memory_semantics": "Linux cgroup charged memory; transient excess and preloaded charges excluded",
+          "oom_kill_events": 0,
+          "poll_target_ms": 10,
+          "profile": "linux-x86_64-offline-workspace-m3-v1",
+          "report_storage": "stored",
+          "report_storage_error": null,
+          "run_id": 1,
+          "runtime_manifest_digest": "sha256:70bda1e795ded2a684ef9815955e05829b14ee5bb5c3eb2a940648e88f10fce9",
+          "schema": "leancage-result-v1",
+          "stage": 0,
+          "stderr_artifact": "/m3-results/1/stderr",
+          "stderr_bytes": 14,
+          "stderr_captured_bytes": 14,
+          "stderr_truncated": false,
+          "stdout_artifact": "/m3-results/1/stdout",
+          "stdout_bytes": 16,
+          "stdout_captured_bytes": 16,
+          "stdout_truncated": false,
+          "task_limit_events": 0,
+          "termination": "exited",
+          "uid": 100000,
+          "wall_observed_overshoot_ms": 0,
+          "wall_time_ms": 10000
+        },
+        "request_id": "cc0605f8e3de482badbf66153869f53b",
+        "schema": "leancage-workspace-v1",
+        "status": "complete",
+        "vm_cleanup": "complete"
+      }
+    },
+    {
+      "name": "shell_check",
+      "result": {
+        "artifacts": {
+          "complete": true,
+          "files": {},
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "command": "check",
+        "error": null,
+        "exit_code": 0,
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/3ae39824276e4e008242b5d09ee65a22",
+        "publication": "stored",
+        "publication_error": null,
+        "report": {
+          "accounting": "complete",
+          "assurance": "conditional-model-and-VM-evidence; native/Linux correspondence and hardware channels open",
+          "assurance_artifact": "/m3-assurance.json",
+          "cancellation_bits": 0,
+          "cleanup": "complete",
+          "cpu_budget_us": 2000000,
+          "cpu_observed_overshoot_us": 0,
+          "cpu_usage_us": 0,
+          "detail": 0,
+          "elapsed_ms": 28,
+          "entry": "no",
+          "export": "discarded",
+          "export_digest": null,
+          "export_errno": 0,
+          "export_omitted": 0,
+          "identity": null,
+          "memory_peak_bytes": 0,
+          "memory_semantics": "Linux cgroup charged memory; transient excess and preloaded charges excluded",
+          "oom_kill_events": 0,
+          "poll_target_ms": 10,
+          "profile": "linux-x86_64-offline-workspace-m3-v1",
+          "report_storage": "not_applicable",
+          "report_storage_error": null,
+          "run_id": 0,
+          "runtime_manifest_digest": "sha256:70bda1e795ded2a684ef9815955e05829b14ee5bb5c3eb2a940648e88f10fce9",
+          "schema": "leancage-result-v1",
+          "stage": 0,
+          "stderr_artifact": "/m3-results/0/stderr",
+          "stderr_bytes": 0,
+          "stderr_captured_bytes": 0,
+          "stderr_truncated": false,
+          "stdout_artifact": "/m3-results/0/stdout",
+          "stdout_bytes": 0,
+          "stdout_captured_bytes": 0,
+          "stdout_truncated": false,
+          "task_limit_events": 0,
+          "termination": "preflight_supported",
+          "uid": 0,
+          "wall_observed_overshoot_ms": 0,
+          "wall_time_ms": 10000
+        },
+        "request_id": "3ae39824276e4e008242b5d09ee65a22",
+        "schema": "leancage-workspace-v1",
+        "status": "complete",
+        "vm_cleanup": "complete"
+      }
+    },
+    {
+      "name": "shell_run_and_report",
+      "result": {
+        "artifacts": {
+          "complete": true,
+          "files": {
+            "answer.txt": {
+              "bytes": 32,
+              "sha256": "db844be8cc5c5a94875ed902741204a24aa123dc60a17f1df45575f48c7742e9"
+            },
+            "message.txt": {
+              "bytes": 17,
+              "sha256": "d35e28e8de5144d64df3735306307dca921670008cdb7394896c9f9a9595e5dd"
+            },
+            "numbers.txt": {
+              "bytes": 9,
+              "sha256": "db5e7f2dd797c6d3e641217d36c03b0d92ece9a680dca1a8b6bcdd4d4a748037"
+            },
+            "task.py": {
+              "bytes": 331,
+              "sha256": "c97aaea9c0493a8647c171cc7e9f4f2ce8f9ed85e745454fa89b9123a2fa2d6d"
+            },
+            "task.sh": {
+              "bytes": 142,
+              "sha256": "a690ddb557db414dd67540afff77a453afa0b34789b855f340da4ab657d8c5bb"
+            }
+          },
+          "stderr": {
+            "bytes": 12,
+            "sha256": "b85f378055e7dd93427dabf9d435c2188295d290c2d1a65e13ef5b74e04ceba6"
+          },
+          "stdout": {
+            "bytes": 14,
+            "sha256": "d8c4585553ddd9db1a7c68fe23fe504b52fd46aa6522c414838003d4f2c16690"
+          }
+        },
+        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "command": "run",
+        "error": null,
+        "exit_code": 0,
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/f20d6b6f8e2b4c808ed5e1495bcfcca3",
+        "publication": "stored",
+        "publication_error": null,
+        "report": {
+          "accounting": "complete",
+          "assurance": "conditional-model-and-VM-evidence; native/Linux correspondence and hardware channels open",
+          "assurance_artifact": "/m3-assurance.json",
+          "cancellation_bits": 0,
+          "cleanup": "complete",
+          "cpu_budget_us": 2000000,
+          "cpu_observed_overshoot_us": 0,
+          "cpu_usage_us": 24935,
+          "detail": 0,
+          "elapsed_ms": 40,
+          "entry": "yes",
+          "export": "complete",
+          "export_digest": "681afa93c285e852ddcdae380ede4f28129585ea3c4fa8d2babebf6e1dd198a1",
+          "export_errno": 0,
+          "export_omitted": 0,
+          "identity": {
+            "filter_sha256": "c9c50808737ec7ba2f285a7aef7baa86de3aad984a3106f54d89b0002120e93e",
+            "plan_sha256": "790af4a330fb013579842d33aac3e16b82b2cc78624349bbbe38f8ca3416553e",
+            "schema": "leancage-plan-identity-v1"
+          },
+          "memory_peak_bytes": 262144,
+          "memory_semantics": "Linux cgroup charged memory; transient excess and preloaded charges excluded",
+          "oom_kill_events": 0,
+          "poll_target_ms": 10,
+          "profile": "linux-x86_64-offline-workspace-m3-v1",
+          "report_storage": "stored",
+          "report_storage_error": null,
+          "run_id": 1,
+          "runtime_manifest_digest": "sha256:70bda1e795ded2a684ef9815955e05829b14ee5bb5c3eb2a940648e88f10fce9",
+          "schema": "leancage-result-v1",
+          "stage": 0,
+          "stderr_artifact": "/m3-results/1/stderr",
+          "stderr_bytes": 12,
+          "stderr_captured_bytes": 12,
+          "stderr_truncated": false,
+          "stdout_artifact": "/m3-results/1/stdout",
+          "stdout_bytes": 14,
+          "stdout_captured_bytes": 14,
+          "stdout_truncated": false,
+          "task_limit_events": 0,
+          "termination": "exited",
+          "uid": 100000,
+          "wall_observed_overshoot_ms": 0,
+          "wall_time_ms": 10000
+        },
+        "request_id": "f20d6b6f8e2b4c808ed5e1495bcfcca3",
+        "schema": "leancage-workspace-v1",
+        "status": "complete",
+        "vm_cleanup": "complete"
+      }
+    },
+    {
+      "name": "policy_rejection",
+      "result": {
+        "entry": "no",
+        "error": "offset 36: duplicate JSON key",
+        "status": "rejected"
+      }
+    },
+    {
+      "name": "denied_effect",
+      "result": {
+        "artifacts": {
+          "complete": true,
+          "files": {},
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 20,
+            "sha256": "da51d00fb1166a9340659f363b69927ca4d5be7c9241396bf56f93beb30623d5"
+          }
+        },
+        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "command": "run",
+        "error": null,
+        "exit_code": 0,
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/c8c49f8089b44771a844df01075c290c",
+        "publication": "stored",
+        "publication_error": null,
+        "report": {
+          "accounting": "complete",
+          "assurance": "conditional-model-and-VM-evidence; native/Linux correspondence and hardware channels open",
+          "assurance_artifact": "/m3-assurance.json",
+          "cancellation_bits": 0,
+          "cleanup": "complete",
+          "cpu_budget_us": 2000000,
+          "cpu_observed_overshoot_us": 0,
+          "cpu_usage_us": 758439,
+          "detail": 0,
+          "elapsed_ms": 1476,
+          "entry": "yes",
+          "export": "complete",
+          "export_digest": "cc907d1e419e7f7279080972e80e5946312cf078ed1017f284aa9e48a89b3754",
+          "export_errno": 0,
+          "export_omitted": 0,
+          "identity": {
+            "filter_sha256": "c9c50808737ec7ba2f285a7aef7baa86de3aad984a3106f54d89b0002120e93e",
+            "plan_sha256": "aaae0f03b15e43cd058b7c846d0388d539ef2d19bc5c04d7cf7437fd0347b283",
+            "schema": "leancage-plan-identity-v1"
+          },
+          "memory_peak_bytes": 9486336,
+          "memory_semantics": "Linux cgroup charged memory; transient excess and preloaded charges excluded",
+          "oom_kill_events": 0,
+          "poll_target_ms": 10,
+          "profile": "linux-x86_64-offline-workspace-m3-v1",
+          "report_storage": "stored",
+          "report_storage_error": null,
+          "run_id": 1,
+          "runtime_manifest_digest": "sha256:70bda1e795ded2a684ef9815955e05829b14ee5bb5c3eb2a940648e88f10fce9",
+          "schema": "leancage-result-v1",
+          "stage": 0,
+          "stderr_artifact": "/m3-results/1/stderr",
+          "stderr_bytes": 0,
+          "stderr_captured_bytes": 0,
+          "stderr_truncated": false,
+          "stdout_artifact": "/m3-results/1/stdout",
+          "stdout_bytes": 20,
+          "stdout_captured_bytes": 20,
+          "stdout_truncated": false,
+          "task_limit_events": 0,
+          "termination": "exited",
+          "uid": 100000,
+          "wall_observed_overshoot_ms": 0,
+          "wall_time_ms": 10000
+        },
+        "request_id": "c8c49f8089b44771a844df01075c290c",
+        "schema": "leancage-workspace-v1",
+        "status": "complete",
+        "vm_cleanup": "complete"
+      }
+    },
+    {
+      "name": "bounded_output_and_forged_control_bytes",
+      "result": {
+        "artifacts": {
+          "complete": true,
+          "files": {},
+          "stderr": {
+            "bytes": 32,
+            "sha256": "dfb417454d7432715ecfaa33d89abdaba4457c3b2cbd85a4a20620d0cd806da6"
+          },
+          "stdout": {
+            "bytes": 64,
+            "sha256": "ca699c774f7e05ea1ca1f814afe9de30398bbe96d6c970ce4f9af8ccf68ec194"
+          }
+        },
+        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "command": "run",
+        "error": null,
+        "exit_code": 124,
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/cf4539d1707e4b0ab970fc3782d97d49",
+        "publication": "stored",
+        "publication_error": null,
+        "report": {
+          "accounting": "complete",
+          "assurance": "conditional-model-and-VM-evidence; native/Linux correspondence and hardware channels open",
+          "assurance_artifact": "/m3-assurance.json",
+          "cancellation_bits": 8,
+          "cleanup": "complete",
+          "cpu_budget_us": 2000000,
+          "cpu_observed_overshoot_us": 0,
+          "cpu_usage_us": 298606,
+          "detail": 0,
+          "elapsed_ms": 556,
+          "entry": "yes",
+          "export": "complete",
+          "export_digest": "cc907d1e419e7f7279080972e80e5946312cf078ed1017f284aa9e48a89b3754",
+          "export_errno": 0,
+          "export_omitted": 0,
+          "identity": {
+            "filter_sha256": "c9c50808737ec7ba2f285a7aef7baa86de3aad984a3106f54d89b0002120e93e",
+            "plan_sha256": "acf4bcf4321391a602548a272066f910cb46e1e55005aea83373827b1677373c",
+            "schema": "leancage-plan-identity-v1"
+          },
+          "memory_peak_bytes": 4046848,
+          "memory_semantics": "Linux cgroup charged memory; transient excess and preloaded charges excluded",
+          "oom_kill_events": 0,
+          "poll_target_ms": 10,
+          "profile": "linux-x86_64-offline-workspace-m3-v1",
+          "report_storage": "stored",
+          "report_storage_error": null,
+          "run_id": 1,
+          "runtime_manifest_digest": "sha256:70bda1e795ded2a684ef9815955e05829b14ee5bb5c3eb2a940648e88f10fce9",
+          "schema": "leancage-result-v1",
+          "stage": 0,
+          "stderr_artifact": "/m3-results/1/stderr",
+          "stderr_bytes": 2048,
+          "stderr_captured_bytes": 32,
+          "stderr_truncated": true,
+          "stdout_artifact": "/m3-results/1/stdout",
+          "stdout_bytes": 4104,
+          "stdout_captured_bytes": 64,
+          "stdout_truncated": true,
+          "task_limit_events": 0,
+          "termination": "cancelled",
+          "uid": 100000,
+          "wall_observed_overshoot_ms": 0,
+          "wall_time_ms": 10000
+        },
+        "request_id": "cf4539d1707e4b0ab970fc3782d97d49",
+        "schema": "leancage-workspace-v1",
+        "status": "complete",
+        "vm_cleanup": "complete"
+      }
+    },
+    {
+      "name": "vm_report_storage_failure",
+      "result": {
+        "artifacts": {
+          "complete": true,
+          "files": {},
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 16,
+            "sha256": "c734a80637e918514e4ef2c906c09b88cc2d42efa6d32e218784644cb6fd3eea"
+          }
+        },
+        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "command": "run",
+        "error": null,
+        "exit_code": 126,
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/96186982ffec4514a58965b5b1f36472",
+        "publication": "stored",
+        "publication_error": null,
+        "report": {
+          "accounting": "complete",
+          "assurance": "conditional-model-and-VM-evidence; native/Linux correspondence and hardware channels open",
+          "assurance_artifact": "/m3-assurance.json",
+          "cancellation_bits": 0,
+          "cleanup": "complete",
+          "cpu_budget_us": 2000000,
+          "cpu_observed_overshoot_us": 0,
+          "cpu_usage_us": 326139,
+          "detail": 0,
+          "elapsed_ms": 860,
+          "entry": "yes",
+          "export": "complete",
+          "export_digest": "cc907d1e419e7f7279080972e80e5946312cf078ed1017f284aa9e48a89b3754",
+          "export_errno": 0,
+          "export_omitted": 0,
+          "identity": {
+            "filter_sha256": "c9c50808737ec7ba2f285a7aef7baa86de3aad984a3106f54d89b0002120e93e",
+            "plan_sha256": "685a20f7692e174d9921b90cc192651cf23aef186ca24f57a33b1a8616cd3696",
+            "schema": "leancage-plan-identity-v1"
+          },
+          "memory_peak_bytes": 4042752,
+          "memory_semantics": "Linux cgroup charged memory; transient excess and preloaded charges excluded",
+          "oom_kill_events": 0,
+          "poll_target_ms": 10,
+          "profile": "linux-x86_64-offline-workspace-m3-v1",
+          "report_storage": "failed",
+          "report_storage_error": "inappropriate type (error code: 21, illegal operation on a directory)\n  file: /m3-results/1/report.json.tmp and/or /m3-results/1/report.json",
+          "run_id": 1,
+          "runtime_manifest_digest": "sha256:70bda1e795ded2a684ef9815955e05829b14ee5bb5c3eb2a940648e88f10fce9",
+          "schema": "leancage-result-v1",
+          "stage": 0,
+          "stderr_artifact": "/m3-results/1/stderr",
+          "stderr_bytes": 0,
+          "stderr_captured_bytes": 0,
+          "stderr_truncated": false,
+          "stdout_artifact": "/m3-results/1/stdout",
+          "stdout_bytes": 16,
+          "stdout_captured_bytes": 16,
+          "stdout_truncated": false,
+          "task_limit_events": 0,
+          "termination": "exited",
+          "uid": 100000,
+          "wall_observed_overshoot_ms": 0,
+          "wall_time_ms": 10000
+        },
+        "request_id": "96186982ffec4514a58965b5b1f36472",
+        "schema": "leancage-workspace-v1",
+        "status": "complete",
+        "vm_cleanup": "complete"
+      }
+    },
+    {
+      "name": "host_publication_failure",
+      "result": {
+        "artifacts": {
+          "complete": true,
+          "files": {},
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 16,
+            "sha256": "c734a80637e918514e4ef2c906c09b88cc2d42efa6d32e218784644cb6fd3eea"
+          }
+        },
+        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "command": "run",
+        "error": null,
+        "exit_code": 126,
+        "output": null,
+        "publication": "failed",
+        "publication_error": "[Errno 17] File exists: '/localhome/milikic/sandbox-formalization/.tools/product-acceptance-32f62a9r/blocked'",
+        "report": {
+          "accounting": "complete",
+          "assurance": "conditional-model-and-VM-evidence; native/Linux correspondence and hardware channels open",
+          "assurance_artifact": "/m3-assurance.json",
+          "cancellation_bits": 0,
+          "cleanup": "complete",
+          "cpu_budget_us": 2000000,
+          "cpu_observed_overshoot_us": 0,
+          "cpu_usage_us": 324338,
+          "detail": 0,
+          "elapsed_ms": 840,
+          "entry": "yes",
+          "export": "complete",
+          "export_digest": "cc907d1e419e7f7279080972e80e5946312cf078ed1017f284aa9e48a89b3754",
+          "export_errno": 0,
+          "export_omitted": 0,
+          "identity": {
+            "filter_sha256": "c9c50808737ec7ba2f285a7aef7baa86de3aad984a3106f54d89b0002120e93e",
+            "plan_sha256": "685a20f7692e174d9921b90cc192651cf23aef186ca24f57a33b1a8616cd3696",
+            "schema": "leancage-plan-identity-v1"
+          },
+          "memory_peak_bytes": 4042752,
+          "memory_semantics": "Linux cgroup charged memory; transient excess and preloaded charges excluded",
+          "oom_kill_events": 0,
+          "poll_target_ms": 10,
+          "profile": "linux-x86_64-offline-workspace-m3-v1",
+          "report_storage": "stored",
+          "report_storage_error": null,
+          "run_id": 1,
+          "runtime_manifest_digest": "sha256:70bda1e795ded2a684ef9815955e05829b14ee5bb5c3eb2a940648e88f10fce9",
+          "schema": "leancage-result-v1",
+          "stage": 0,
+          "stderr_artifact": "/m3-results/1/stderr",
+          "stderr_bytes": 0,
+          "stderr_captured_bytes": 0,
+          "stderr_truncated": false,
+          "stdout_artifact": "/m3-results/1/stdout",
+          "stdout_bytes": 16,
+          "stdout_captured_bytes": 16,
+          "stdout_truncated": false,
+          "task_limit_events": 0,
+          "termination": "exited",
+          "uid": 100000,
+          "wall_observed_overshoot_ms": 0,
+          "wall_time_ms": 10000
+        },
+        "request_id": "094213ff86ac43908a301eb2ada2b8c9",
+        "schema": "leancage-workspace-v1",
+        "status": "complete",
+        "vm_cleanup": "complete"
+      }
+    },
+    {
+      "name": "lost_result_channel_preserves_observations",
+      "result": {
+        "artifacts": {
+          "complete": false,
+          "files": {},
+          "stderr": null,
+          "stdout": null
+        },
+        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "command": "run",
+        "error": "incomplete VM result channel",
+        "exit_code": 126,
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/878567d6c6924dba81222326f354cf90",
+        "publication": "stored",
+        "publication_error": null,
+        "report": {
+          "accounting": "complete",
+          "assurance": "conditional-model-and-VM-evidence; native/Linux correspondence and hardware channels open",
+          "assurance_artifact": "/m3-assurance.json",
+          "cancellation_bits": 0,
+          "cleanup": "complete",
+          "cpu_budget_us": 2000000,
+          "cpu_observed_overshoot_us": 0,
+          "cpu_usage_us": 332472,
+          "detail": 0,
+          "elapsed_ms": 868,
+          "entry": "yes",
+          "export": "complete",
+          "export_digest": "cc907d1e419e7f7279080972e80e5946312cf078ed1017f284aa9e48a89b3754",
+          "export_errno": 0,
+          "export_omitted": 0,
+          "identity": {
+            "filter_sha256": "c9c50808737ec7ba2f285a7aef7baa86de3aad984a3106f54d89b0002120e93e",
+            "plan_sha256": "685a20f7692e174d9921b90cc192651cf23aef186ca24f57a33b1a8616cd3696",
+            "schema": "leancage-plan-identity-v1"
+          },
+          "memory_peak_bytes": 4042752,
+          "memory_semantics": "Linux cgroup charged memory; transient excess and preloaded charges excluded",
+          "oom_kill_events": 0,
+          "poll_target_ms": 10,
+          "profile": "linux-x86_64-offline-workspace-m3-v1",
+          "report_storage": "stored",
+          "report_storage_error": null,
+          "run_id": 1,
+          "runtime_manifest_digest": "sha256:70bda1e795ded2a684ef9815955e05829b14ee5bb5c3eb2a940648e88f10fce9",
+          "schema": "leancage-result-v1",
+          "stage": 0,
+          "stderr_artifact": "/m3-results/1/stderr",
+          "stderr_bytes": 0,
+          "stderr_captured_bytes": 0,
+          "stderr_truncated": false,
+          "stdout_artifact": "/m3-results/1/stdout",
+          "stdout_bytes": 16,
+          "stdout_captured_bytes": 16,
+          "stdout_truncated": false,
+          "task_limit_events": 0,
+          "termination": "exited",
+          "uid": 100000,
+          "wall_observed_overshoot_ms": 0,
+          "wall_time_ms": 10000
+        },
+        "request_id": "878567d6c6924dba81222326f354cf90",
+        "schema": "leancage-workspace-v1",
+        "status": "incomplete",
+        "vm_cleanup": "complete"
+      }
+    },
+    {
+      "name": "vm_loss_before_any_observation",
+      "result": {
+        "artifacts": {
+          "complete": false,
+          "files": {},
+          "stderr": null,
+          "stdout": null
+        },
+        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "command": "run",
+        "error": "VM deadline or cancellation grace expired",
+        "exit_code": 126,
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/0bb1579939af45a98aa05a793148a00a",
+        "publication": "stored",
+        "publication_error": null,
+        "report": null,
+        "request_id": "0bb1579939af45a98aa05a793148a00a",
+        "schema": "leancage-workspace-v1",
+        "status": "incomplete",
+        "vm_cleanup": "complete"
+      }
+    },
+    {
+      "name": "cli_cancellation_and_descendant_cleanup",
+      "result": {
+        "artifacts": {
+          "complete": true,
+          "files": {},
+          "stderr": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 6,
+            "sha256": "ed1a545bb85e55816bbf9566b028b2a0bc456b88f49f6f266c0401048824194b"
+          }
+        },
+        "bundle_id": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+        "command": "run",
+        "error": null,
+        "exit_code": 124,
+        "output": "/localhome/milikic/sandbox-formalization/.tools/product/acceptance/ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1/14b440ebada142038f1a92da274f973c",
+        "publication": "stored",
+        "publication_error": null,
+        "report": {
+          "accounting": "complete",
+          "assurance": "conditional-model-and-VM-evidence; native/Linux correspondence and hardware channels open",
+          "assurance_artifact": "/m3-assurance.json",
+          "cancellation_bits": 1,
+          "cleanup": "complete",
+          "cpu_budget_us": 2000000,
+          "cpu_observed_overshoot_us": 0,
+          "cpu_usage_us": 310277,
+          "detail": 0,
+          "elapsed_ms": 3428,
+          "entry": "yes",
+          "export": "complete",
+          "export_digest": "cc907d1e419e7f7279080972e80e5946312cf078ed1017f284aa9e48a89b3754",
+          "export_errno": 0,
+          "export_omitted": 0,
+          "identity": {
+            "filter_sha256": "c9c50808737ec7ba2f285a7aef7baa86de3aad984a3106f54d89b0002120e93e",
+            "plan_sha256": "5e0350451eac5fe5956e60c68ff2ad4118d4024ba569e266979eb9e6ab7a981e",
+            "schema": "leancage-plan-identity-v1"
+          },
+          "memory_peak_bytes": 4571136,
+          "memory_semantics": "Linux cgroup charged memory; transient excess and preloaded charges excluded",
+          "oom_kill_events": 0,
+          "poll_target_ms": 10,
+          "profile": "linux-x86_64-offline-workspace-m3-v1",
+          "report_storage": "stored",
+          "report_storage_error": null,
+          "run_id": 1,
+          "runtime_manifest_digest": "sha256:70bda1e795ded2a684ef9815955e05829b14ee5bb5c3eb2a940648e88f10fce9",
+          "schema": "leancage-result-v1",
+          "stage": 0,
+          "stderr_artifact": "/m3-results/1/stderr",
+          "stderr_bytes": 0,
+          "stderr_captured_bytes": 0,
+          "stderr_truncated": false,
+          "stdout_artifact": "/m3-results/1/stdout",
+          "stdout_bytes": 6,
+          "stdout_captured_bytes": 6,
+          "stdout_truncated": false,
+          "task_limit_events": 0,
+          "termination": "cancelled",
+          "uid": 100000,
+          "wall_observed_overshoot_ms": 0,
+          "wall_time_ms": 60000
+        },
+        "request_id": "14b440ebada142038f1a92da274f973c",
+        "schema": "leancage-workspace-v1",
+        "status": "complete",
+        "vm_cleanup": "complete"
+      }
+    }
+  ],
+  "elapsed_seconds": 64.547,
+  "machine": {
+    "acceleration": "tcg",
+    "cpu": "max",
+    "host_mounts": [],
+    "memory_mib": 2048,
+    "network_devices": [],
+    "persistent_disks": [],
+    "vcpus": 1
+  },
+  "manifest_sha256": "ef0fcff30e5e188f51bfb572bcb47935056f961c1b3b6efde17d626567a6f5f1",
+  "schema": "leancage-product-vm-evidence-v1",
+  "source_sha256": {
+    "LeanCage.lean": "fba8dcfc1ec544b4f7de73037e4786949023ed568e5b1594dbda5955a98472c9",
+    "LeanCage/Launch/Contract.lean": "caf279c2b18e0044504c7fe6c834b1e8a104afa39592ac19732f981a29f60c23",
+    "LeanCage/Launch/Model.lean": "b94e10cb509869ca51d96a8a1b73cf1034770569d825881f8c315d523e71f408",
+    "LeanCage/Linux/FilterContract.lean": "8fc35b0c1c3574853842b645907aed21c3661660fabf5856bb0f89c73f60592d",
+    "LeanCage/Linux/FilterDecoder.lean": "182af477b8b19855242c478ae65ec3dc90fbd225a2b2620fcf20fd18d230bb0a",
+    "LeanCage/Linux/Launch.lean": "c935a0c7336a4b6ff8ddec59acb92bd5d9f0717086c1bc086e5e4ce38be1af0c",
+    "LeanCage/Proofs/FilterDecoder.lean": "13f019e1037e493b3f2c8a2a9b8c15c2701b7e5551738a496011becb964378a1",
+    "LeanCage/Proofs/Launch.lean": "8c1f9fce1478bad6b54bc300bc1c742799cbe587bdcf97173ce12582105537a5",
+    "LeanCage/Proofs/LaunchInput.lean": "d151376c8c726370a96ace7419e0ec34be325eb0d62f454c0c681384c7cb9de9",
+    "lake-manifest.json": "a1dc0359a14712b9c7a399c3b4dec9bec6e12d162712272265271f10282f3ae9",
+    "lakefile.lean": "2addd6d9060c1622dec4572d5bb2f31db6bfc6f882b0e6cf00df868980ab4cdd",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "leancage": "9c3a83b74aaa7188d8c3a14e558cbf68531750fd6497f20a2c07b7ca783319b5",
+    "library/LeanCageWorkspace.lean": "ca04608b70b78f9fab89fa4377fb3c2f703eba29904138267ec06128c871aa94",
+    "library/lake-manifest.json": "6e612ef9157e1fcf48ce974425fa0afb5fb79f53abbd97aec9f982ea21432229",
+    "library/lakefile.lean": "7944bc019571781470615e947dc9ce30ed7c01cb71c3f20740bd048620a210f6",
+    "library/lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "lifecycle/LeanCageM2.lean": "78feb2bfb8a12bbe0f8a99e4ad70482ab1bb2496f75365fabb06253cf107ec5b",
+    "lifecycle/LeanCageM2/Filter.lean": "a9a3955657b84f93584401f30e6b51146370968da75e55f6b9a8cc3144ac06e3",
+    "lifecycle/LeanCageM2/Model.lean": "090dcca202cf482a6cb30cb8a1588ad0fb1162597b764aff32e69e5f2cd0eb05",
+    "lifecycle/LeanCageM2/Proofs.lean": "b58d7632f36826eb229544f3e84736585583dba2763adc0390a63b8c955313e4",
+    "lifecycle/lake-manifest.json": "493cd46b8d397cf5edf7c510dddadbed9a1ec4747a3af372f34c49f6dcdc0597",
+    "lifecycle/lakefile.lean": "9300a70f039cf8fc68f852df1184713f40f68044c8479024ebf78ba977e8c86a",
+    "lifecycle/lean-toolchain": "ead308ab4fc749eb2389819903fd7baa11bf06e490827f6896a8cbfe622fa703",
+    "linux/artifacts.h": "db22dbf6d013fd61110ba9bdffbf737a2087f6074b5b01ddb1bc1350d1bc8877",
+    "linux/filter.h": "1e470cf4d9c6ceb46b035384a8fe6d67f280fb197bd66cf8eb310405f2f930be",
+    "linux/sha256.h": "d75b7baadee7302732fa052ee2439707abdd04abf2fd5164cbe091fb0ab8e513",
+    "linux/vm_init.c": "7e8cc046628fd558e0cc0c0682d30461305b8d2a3ee11f234acc19ba2054517a",
+    "linux/workspace.c": "f69535a0d4d55680084751ce29766f42541346e50c29a3a3132515ce09ac746f",
+    "python/leancage/__init__.py": "fef0f0e42054d22a9500d1a4377ab316641d622186fc81e93d01956d087a5eb4",
+    "python/leancage/build.py": "67598d3167cdfe3bfe2a8cd99ed51fee7ac124bb77e34c3978179d7213ec327f",
+    "python/leancage/cli.py": "452f571f19be1a94cb4f6fccff0ae079e8dc5ddc221de4d9a0aefa6b2ac70234",
+    "python/leancage/protocol.py": "e6c7b388a414918813a629884aa643adc7376879c2dfb8ed0eb97bbbdb655c88",
+    "python/leancage/runner.py": "7e8703f1afb086a4c3c45250fe231d4595fe3c2c5fbc9b32eed74222d663e45f",
+    "python/leancage/snapshots.py": "92936f98f4a35899085f64aac8c0e435700abde0078fceb9032b514ef498ec66",
+    "scripts/build.sh": "2361c8c09dc9d9ddc968eaac0dc233b3b0ac7f85d67f2d0342093cf16b73bfd5",
+    "scripts/run_m1_vm.py": "9d092518750dd197febeac21a95061ec8f03de877d5091e38a2011931006687b",
+    "workspace/LeanCageM3.lean": "983e4a293c334daf25a7a78a8e9c590cef67e5a231f20d8b5728cf1ff533a0ad",
+    "workspace/LeanCageM3/API.lean": "e13fdb9a6fa2b5e761f9bd36c3999e71cdb66bc6411618976b331ff1d754abf0",
+    "workspace/LeanCageM3/Authority.lean": "a90d20ead1cc066c84b838b0a34105700f8eccd92ef7018765ab5cfceeee4f93",
+    "workspace/LeanCageM3/AuthorityProofs.lean": "22ec3d0bf6fe319533559853a3cf3cda546b746d4ca245bb5b29ec0b8531786e",
+    "workspace/LeanCageM3/Filter.lean": "b4ec91391cc3329388c4a955c960882f20eec7463927322bdd30a102a713a245",
+    "workspace/LeanCageM3/Lifecycle.lean": "4632ba9ebbfcc9e2ee32afc28d58cc0d0b34f8eb5ace7be273704c5ce5dda703",
+    "workspace/LeanCageM3/Policy.lean": "b80f2de75766175cccc0471d8da156cfbd0e1cb6e2dcfdc25158381776958f87",
+    "workspace/LeanCageM3/ProcessProofs.lean": "d903437db24e7eca7e6cb4c2e3dfc8a39757ab75d0734e178e74462516a2a6d6",
+    "workspace/LeanCageM3/Proofs.lean": "6490e71a6e6b1650ad1e4443b8e40a58abb200cc2681d68b04ea03f5bf1c260d",
+    "workspace/LeanCageM3/Resources.lean": "e00549817679440be1261831d3ec6a9ff7d72cfc79e17a4e329c9b3d732fa6c5",
+    "workspace/LeanCageM3/Results.lean": "7613e1e843d593a9f905524df5813df649f368ecd29d1e7b87ce720c58690e19",
+    "workspace/Main.lean": "fe1aa1d77a020edc3e07bff6747611524f214c5daf4fce7d382e181d00737714",
+    "workspace/lake-manifest.json": "89f36c3bbc48069c90a67fe5c7d91f4dc4df01023acf0d40d71c929bd7dd169b",
+    "workspace/lakefile.lean": "d6a6b35a67559740637087bc76a8ed1990b95e87424cd937461932ff1e734c92",
+    "workspace/lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+  },
+  "status": "passed",
+  "test_sha256": "1c573b80b207cba9bab53b5e33b7b41338a98aef22ac577ecd81076907115d0f",
+  "validation": "public CLI and shared library; real QEMU VMs; no host guest execution"
+}

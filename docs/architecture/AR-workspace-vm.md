@@ -11,9 +11,10 @@ validates its exact bytes with the shipped Lean controller. Optional workspace
 and stdin paths are copied through descriptor-relative, no-follow reads. Only
 directories and regular files are supported; reject links, special files, unsafe
 UTF-8 names, excessive depth, entries or bytes. Copy before boot, hash the copied
-bytes, and require their hashes to match the policy's input identities. The
-`snapshot` command constructs the existing LCTREE1 format and content-addressed
-blobs; it introduces no new policy language. Inputs are capped by the policy,
+bytes, and require their hashes to match any input identities already supplied
+by the policy. The `--workspace` and `--stdin` options bind previously null input
+identities to these frozen snapshots. The host constructs the existing LCTREE1
+format and content-addressed blobs. Inputs are capped by the policy,
 the 4 MiB tree format, 64 MiB stdin and 256 MiB workspace bounds.
 
 Each invocation has a random 128-bit request identity and the SHA-256 identity
@@ -52,7 +53,8 @@ to the request, bundle and locally returned artifacts. Boot text has no authorit
 
 The host owns the QEMU process group and socket. The init process owns its
 controller and all in-VM processes. A single `C` byte requests cancellation.
-Init identifies the controller's direct helper child, opens a pidfd, and waits
+Init finds the controller's direct helper through bounded `/proc` status/executable
+checks (the pinned kernel omits `CONFIG_PROC_CHILDREN`), opens a pidfd, and waits
 until its SIGTERM handler is armed before signaling it. Early cancellation is
 remembered. Cancellation remains a request until the helper reports its observed
 outcome and cleanup; an exit/cancel race may report the observed exit.

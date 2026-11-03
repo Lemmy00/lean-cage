@@ -9,7 +9,7 @@ grow a verified Lean implementation, using Velvet where it helps with imperative
 proofs. The roadmap extends through Linux enforcement, executable correspondence,
 and software-observable hardware side channels.
 
-**Status: M1–M3 accepted for their stated conditional profiles.** M3 adds an offline Dash/Python workspace,
+**Status: M1–M3 accepted for their stated conditional profiles; M4 product validation in progress.** M3 adds an offline Dash/Python workspace,
 immutable runtime, private copied inputs, controlled I/O/export, confined
 descendants, cgroup limits and real check/run/report commands. Its model proofs
 and source-bound VM evidence are documented in the [M3 review](docs/reviews/M3-handoff.md).
@@ -41,20 +41,24 @@ GNU coreutils, and a C compiler/Linux headers/static libc development files
 available on Linux x86-64:
 
 ```sh
-(cd m3 && lake build leancage)
-m3/.lake/build/bin/leancage validate-policy profiles/m3/example-policy.json
+./scripts/build.sh
+./leancage run examples/workspace/python-policy.json \
+  --workspace examples/workspace/input --stdin examples/workspace/stdin.txt
+./leancage report REQUEST_ID
 ```
 
-This builds the current CLI and checks a sample policy without executing guest
-code. On a prepared checkout, `python3 scripts/run_m3_vm.py --development` runs
-the assembled controller/helper and real shell/Python workloads in the disposable
-VM. The [running guide](docs/running.md) gives preparation and result paths.
-The supported `check`, `run` and `report` commands currently operate inside that VM.
+The root build stages the controller/helper, locked runtime, kernel and local VM
+tools. `check` and `run` accept caller policies and bounded snapshots, execute in
+the disposable VM and return reports, stdout/stderr and permitted exports.
+`report` retrieves the returned request and verifies its artifact identities. The
+[running guide](docs/running.md) includes shell/Python examples, cancellation,
+library use and bundle/trust manifests. The shared Python library is
+`python/leancage/`; the Lean interface is `library/LeanCageWorkspace.lean`.
 
 Run the proof/build gate separately:
 
 ```sh
-./scripts/check.sh
+./scripts/check_product.sh
 ```
 
 The implemented reporting/compiler chain has a separate gate,
@@ -62,8 +66,9 @@ The implemented reporting/compiler chain has a separate gate,
 code includes the output-capture correction, accepted input/parent contracts,
 and a source/compiler connection to the ordinary Lean decoder. The
 [integration review](docs/reviews/compiler-reporting-review.md) records its scope.
-The [next assignment](M4-CONTINUE.md) delivers the root build, caller-policy VM
-workflow and reusable component layout from this baseline.
+The [product contract](M4-CONTINUE.md) is implemented by the root build, caller-policy
+VM transport and functional component layout. Public acceptance runs with
+`python3 tests/product/acceptance.py` against the identified bundle.
 
 The first run downloads checksum-pinned Grund 0.20.0 into this repository's
 ignored `.tools/` directory and fetches the pinned Lean dependencies. No global

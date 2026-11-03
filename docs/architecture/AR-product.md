@@ -4,7 +4,9 @@ Implement the reusable interface in [§FS-compatibility.interface](../functional
 boundary in [§FS-assurance.closure](../functional-spec/FS-assurance.md#closure-rules-for-stronger-claims) as one maintained execution path for each
 supported deployment profile. The milestones organize development and evidence;
 they are not seven applications that a caller must assemble. The current Linux
-integration point is `m3/Main.lean`, which builds the executable `leancage`.
+integration point is `workspace/Main.lean`, staged by `scripts/build.sh`. The root
+`leancage` entry and `python/leancage/` library own caller snapshots, VM transport
+and returned artifacts under [§AR-workspace-vm](AR-workspace-vm.md#ar-workspace-vm-own-the-caller-request-disposable-vm-and-returned-artifacts).
 
 The revised delivery contract is [§FS-linux-product](../functional-spec/FS-linux-product.md#fs-linux-product-a-reusable-linux-workspace-with-an-explicit-trust-boundary), with an explicit platform
 trust boundary. [§DA-product-assurance](../decisions/architectural/DA-product-assurance.md#da-product-assurance-deliver-the-linux-product-with-explicit-platform-trust) separates the initial product, complete
@@ -35,11 +37,11 @@ and reports observed termination and cleanup. The mechanism and failure map is
 Conditional model claims and native test evidence are distinct in
 [§FS-assurance.workspace](../functional-spec/FS-assurance.md#workspace-m3-workspace-model-and-vm-evidence); this diagram does not close their correspondence gap.
 
-The current profile runs only inside its designated disposable VM. The harness
-installs the controller as `/leancage`, calls all three public commands, executes
-real workloads and powers off. [Running LeanCage](../running.md) documents the
-existing build and replay commands. A host-side arbitrary-policy VM launcher is
-an integration task below, not an existing interface.
+The current profile runs only inside its designated disposable VM. The host entry
+accepts caller policies/snapshots, invokes the in-VM controller, returns reports,
+captures/exports and owns VM teardown. [Running LeanCage](../running.md) documents
+the public root workflow and reusable library. Boot diagnostics and workload
+output never become trusted result frames.
 
 ## milestones: How the pieces compose
 
@@ -75,7 +77,7 @@ Preserve the exact scopes of the source proofs it reuses. Its concrete tasks are
 1. **Build entry point.** Provide one documented project-root build command for
    the public controller, native helper and profile manifests. Preserve the M1/M2
    packages as regression baselines. The current build command is documented in
-   [the running guide](../running.md); a new root build wrapper is still planned.
+   [the running guide](../running.md); `scripts/build.sh` stages the actual bundle.
 2. **Policy-driven VM entry point.** Extend the development experience beyond
    fixed acceptance cases: accept a reviewed policy and bounded input snapshots,
    execute through the same public CLI in the disposable VM, and return its typed
@@ -97,10 +99,10 @@ Preserve the exact scopes of the source proofs it reuses. Its concrete tasks are
    and review any changed profile or evidence identity. M4/M5 completion requires
    the applicable composed property, not a collection of unrelated passing lemmas.
 
-All five tasks are planned integration work; this document supplies their scope,
-not implementation or new security evidence. The existing M3 executable and its
-VM acceptance suite remain the runnable baseline. Version any later relocation
-or refactor of that implementation and keep the proof input connected to it.
+These tasks are implemented by `python/leancage/`, `linux/vm_init.c`, the root
+build, shared Lean library and `tests/product/acceptance.py`. Product evidence is
+[§FS-assurance.product](../functional-spec/FS-assurance.md#product-product-assurance-levels-and-trusted-components). The fixed-workload suite and source/compiler receipts keep
+their original meaning and unchanged implementation bytes.
 
 ## organization: Organize the maintained product by responsibility
 
@@ -132,6 +134,14 @@ Consolidation has concrete acceptance criteria:
    contracts and assurance claims. Routine agent-guidance edits must have a
    lightweight integrity check. Deduplicate aggregate/prerequisite work using
    matching-input results under [§AR-tooling.checks](AR-tooling.md#checks-one-development-gate).
+
+The migration map is [§AR-workspace-vm.migration](AR-workspace-vm.md#migration-preserve-proof-identities-while-moving-maintained-components) and `assurance/product-layout.json`.
+Canonical homes are `lifecycle/`, `workspace/`, `linux/`, `library/`,
+`python/leancage/` and the offline-workspace profile. Historical Lean declaration
+and import names remain compatibility interfaces preserving exact theorem terms;
+milestone-named paths are symlinks rather than implementation copies. Current
+reporting/compiler verification lives under `verification/`; historical `m4/`
+proof inputs remain regression material.
 
 The migration is done when a newcomer can build and exercise the supported
 `leancage` workflow from the root, locate its implementation by responsibility,

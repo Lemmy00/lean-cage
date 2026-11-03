@@ -1,0 +1,101 @@
+#!/usr/bin/env python3
+"""Audit the shipped core and public-library connection without changing expectations."""
+# §FS-linux-product.proofs: Query actual theorem types, axioms and executable consumers.
+import argparse
+import hashlib
+import importlib.util
+import json
+from pathlib import Path
+import subprocess
+import sys
+import tempfile
+
+ROOT = Path(__file__).resolve().parents[1]
+MANIFEST = ROOT / "assurance/product-core.json"
+CORE = ["LeanCageM3.validatePolicy_iff", "LeanCageM3.decodePolicy_iff", "LeanCageM3.decodePolicy_bounds",
+        "LeanCageM3.Filter.policy_filter_action", "LeanCageM3.decodeResult_valid"]
+
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def sources():
+    paths = [ROOT / "library/LeanCageWorkspace.lean", ROOT / "library/lakefile.lean",
+             ROOT / "library/lake-manifest.json", ROOT / "library/lean-toolchain", ROOT / "scripts/audit_product.py",
+             ROOT / "workspace/Main.lean", ROOT / "workspace/LeanCageM3.lean"]
+    paths += sorted((ROOT / "workspace/LeanCageM3").glob("*.lean"))
+    paths += sorted((ROOT / "lifecycle/LeanCageM2").rglob("*.lean"))
+    return {str(p.relative_to(ROOT)): sha(p) for p in paths}
+
+
+def check_layout():
+    layout = json.loads((ROOT / "assurance/product-layout.json").read_text())
+    for name, target in (layout["aliases"] | layout["internal_header_aliases"]).items():
+        alias = ROOT / name
+        if not alias.is_symlink() or alias.resolve() != (ROOT / target).resolve():
+            raise ValueError("layout compatibility alias differs: " + name)
+    print("Product layout has one canonical implementation for every compatibility path.")
+
+
+def query():
+    subprocess.run(["lake", "build"], cwd=ROOT / "library", check=True)
+    source = (ROOT / "scripts/m3_axiom_query.lean").read_text().replace("import LeanCageM3", "import LeanCageWorkspace")
+    source += "\n#audit_module LeanCageWorkspace\n" + "".join("#audit_decl " + name + "\n" for name in CORE)
+    with tempfile.TemporaryDirectory(prefix="product-query-", dir=ROOT / ".tools") as directory:
+        path = Path(directory) / "Query.lean"
+        path.write_text(source)
+        result = subprocess.run(["lake", "env", "lean", str(path)], cwd=ROOT / "library", capture_output=True, text=True, timeout=180)
+    if result.returncode:
+        raise ValueError("product theorem query failed:\n" + result.stdout + result.stderr)
+    records = [json.loads(line.split("LEANCAGE_AUDIT ", 1)[1]) for line in result.stdout.splitlines() if "LEANCAGE_AUDIT " in line]
+    return sorted([row for row in records if "name" in row], key=lambda r: r["name"])
+
+
+def audit(record=False):
+    check_layout()
+    spec = importlib.util.spec_from_file_location("product_m1_audit", ROOT / "scripts/audit_axioms.py")
+    base_audit = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(base_audit)
+    declarations = query()
+    if not declarations or not set(CORE) <= {row["name"] for row in declarations}:
+        raise ValueError("missing core theorem evidence")
+    previous = json.loads((ROOT / "assurance/m3-claims.json").read_text())
+    preserved = [row for row in previous["declarations"] if row["name"] in CORE]
+    base_audit.validate_declarations(preserved, [row for row in declarations if row["name"] in CORE])
+    for row in declarations:
+        if not row["is_theorem"] or set(row["axioms"]) - base_audit.LOGICAL_AXIOMS:
+            raise ValueError("unreviewed product theorem/axiom: " + row["name"])
+    fingerprints = sources()
+    if record:
+        if MANIFEST.exists():
+            raise ValueError("initial recording cannot overwrite a reviewed product manifest")
+        value = dict(schema="leancage-product-core-v1", spec="FS-linux-product.proofs", toolchain=(ROOT / "lean-toolchain").read_text().strip(),
+                     declarations=declarations, source_sha256=fingerprints,
+                     consumers={"policy": "workspace/Main.lean receives decodePolicy's validated Policy; host Workspace.validate executes the bundled controller on the same bytes; the typed library's execute checks validatePolicy before invoke",
+                                "filter": "workspace/LeanCageM3/Filter.lean:bytes; build compares every byte to linux/filter.h compiled into the bundled helper",
+                                "result": "workspace/LeanCageM3/API.lean:invoke calls decodeResult and detailedReport; the public library uses that identical invoke",
+                                "publication": "library/LeanCageWorkspace.lean checks the actual reportStorage/detailedReport projections; verification/reporting/Reporting.lean:live_publication covers the private sender-to-decoder equation"},
+                     assumptions={"logic": sorted({a for row in declarations for a in row["axioms"]}),
+                                  "platform": "Compiler/runtime/FFI, Linux effects, VM/hardware and the enumerated host/native adapters in the bundle manifest remain trusted; core theorems do not prove whole-application isolation",
+                                  "reporting": "Preserved conditional source and compiler statements/types/axioms are in assurance/reporting-{source,connection,compiler}.json.gz; their caller/runtime premises retain their original scope"},
+                     artifact_binding="The bundle manifest identifies the compiled controller, helper, filter, checked source inputs and this exact claim record; assurance/product-vm-evidence.json identifies the executed bundle.")
+        MANIFEST.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
+        print("Initial product core evidence recorded; review the full declarations before handoff.")
+    else:
+        expected = json.loads(MANIFEST.read_text())
+        if expected["source_sha256"] != fingerprints or expected["toolchain"] != (ROOT / "lean-toolchain").read_text().strip():
+            raise ValueError("product core inputs differ from the reviewed record")
+        base_audit.validate_declarations(expected["declarations"], declarations)
+        print(f"Product core audit passed: {len(declarations)} exact theorem types/axiom sets; prior core statements preserved.")
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--record", action="store_true", help="record the initial new product evidence once")
+    args = parser.parse_args()
+    try:
+        audit(args.record)
+    except (ValueError, OSError, subprocess.SubprocessError) as error:
+        print("Product audit failed: " + str(error), file=sys.stderr)
+        sys.exit(1)

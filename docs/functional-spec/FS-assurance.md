@@ -23,8 +23,8 @@ certification remains an obligation; the separate VM record below is test eviden
 ## status: Initial claim register
 
 The current delivery contract is [§FS-linux-product](FS-linux-product.md#fs-linux-product-a-reusable-linux-workspace-with-an-explicit-trust-boundary), adopted on 2026-11-03.
-The reusable product and its release profile are planned; the implementation and
-proofs below are their existing inputs. [§FS-assurance.product](FS-assurance.md#product-product-assurance-levels-and-trusted-components) defines the
+The reusable VM product is implemented and undergoing final acceptance; the
+implementation and proofs below remain its scoped inputs. [§FS-assurance.product](FS-assurance.md#product-product-assurance-levels-and-trusted-components) defines the
 explicit product trust boundary and later assurance upgrades. Historical
 milestone/ledger entries retain the scope under which they were recorded.
 
@@ -801,7 +801,7 @@ This is a versioned product boundary, separate from proving those implementation
 
 | Level | What must be delivered | Current delivery status |
 |---|---|---|
-| Usable Linux product with verified core | Caller-policy workflow, library, functional layout, identified bundle and exact executable policy/filter/decoder proof bindings | Planned; existing VM implementation and proof components are inputs |
+| Usable Linux product with verified core | Caller-policy workflow, library, functional layout, identified bundle and exact executable policy/filter/decoder proof bindings | Implemented; final public-workflow and handoff validation in progress |
 | Application verified over platform contracts | Actual controller/helper code supplies the whole launch, supervision and publication argument; primitive OS/runtime assumptions are explicit | Planned; accepted source/reporting regions are inputs |
 | Platform-strengthened profile | Specified runtime/kernel/compiler or confidentiality results replace named assumptions in the composed product argument | Assigned per improvement |
 
@@ -816,6 +816,38 @@ The original `assurance/m4-obligations.json` records the former whole-platform
 correspondence target. Its entries remain unchanged by this planning revision.
 Product acceptance uses the table above and [§FS-linux-product.acceptance](FS-linux-product.md#acceptance-product-completion);
 future proofs reduce the explicit trusted component list.
+
+The root build is `scripts/build.sh`; the public CLI is `leancage`; the shared
+host API is `python/leancage/`; the typed Lean API is
+`library/LeanCageWorkspace.lean`. The [VM architecture](../architecture/AR-workspace-vm.md#ar-workspace-vm-own-the-caller-request-disposable-vm-and-returned-artifacts) records the request/channel,
+snapshot, cancellation, publication and source-migration contracts. The supported
+profile remains VM-only, with the original policy/result versions.
+
+`assurance/product-core.json` records complete theorem types, transitive axioms,
+sources and actual consumers. It preserves `validatePolicy_iff`,
+`decodePolicy_iff`, `decodePolicy_bounds`, `Filter.policy_filter_action` and
+`decodeResult_valid` from the executable workspace core. The public typed
+execution guard rejects invalid limits/arguments before invoking the helper and
+uses that identical invocation for accepted values. Its publication theorems
+quantify over arbitrary result/policy/identity/status/error values and show that
+the actual JSON producer retains entry and cleanup fields through storage-status
+changes. The policy witness is an inhabited supported shell request. All proofs
+use ordinary kernel checking and only the recorded logical foundations.
+
+The bundle's `manifest.json` binds controller/helper/filter, VM init, runtime,
+kernel/configuration, emulator/firmware, checked Lean artifacts and proof records.
+It explicitly lists the trusted native, VM and host adapters. The conditional
+source/compiler reporting results remain at their recorded scopes; transport and
+whole native authority/supervision correspondence are not promoted to proved
+claims. M5 consumes these actual application components for further verification.
+
+The original evidence is preserved at the revision in
+`assurance/product-layout.json`. `scripts/rebind_product_evidence.py` permits only
+this operational product-status document, dependent receipt fingerprints and the
+explicit metadata-checker adapter to change. The adapter composes the earlier
+guard with its exact preserved preimage. The migration record freezes all
+original theorem/axiom/scope fields, native/Lean/Rocq proof inputs and checked
+cache identities. Normal checking never reapplies or refreshes expectations.
 
 ## closure: Rules for stronger claims
 

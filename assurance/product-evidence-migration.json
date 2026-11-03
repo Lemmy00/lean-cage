@@ -1,0 +1,107 @@
+{
+  "baseline_commit": "d44c96139da45d750e079da2007928d1bddb531b",
+  "entries": {
+    "assurance/filter-decoder.json": {
+      "amended_file_sha256": "79d23537dbc53a110f027e71a31eaf0d4f56dd9b5563beb508b980a25402b0eb",
+      "changes": {
+        "source_sha256": {
+          "docs/functional-spec/FS-assurance.md": {
+            "after": "a104174ac9ca3e7e9aec04b4edc84e1094f0199df7e0a4ffe623972e9bac0f2d",
+            "before": "d4383fc37239f6fb73f8801b0b8fc3cd513682e6e956b24da31b7059e0c3c73e"
+          }
+        }
+      },
+      "original_file_sha256": "c66ee0b5543aa6a7fbb80b59738471ece4fa6c5ed35ef7bd9a573d19022fbb8d",
+      "unchanged_payload_sha256": "c4d6136e336f62ccdb55b55a29eb36d7747a74f50bda94bc226e32807117e65e"
+    },
+    "assurance/m2-claims.json": {
+      "amended_file_sha256": "c24d6d7a85db136097444318f75d57dadf255e58de1b4f4417de60f9c1436c47",
+      "changes": {
+        "source_sha256": {
+          "docs/functional-spec/FS-assurance.md": {
+            "after": "a104174ac9ca3e7e9aec04b4edc84e1094f0199df7e0a4ffe623972e9bac0f2d",
+            "before": "d4383fc37239f6fb73f8801b0b8fc3cd513682e6e956b24da31b7059e0c3c73e"
+          }
+        }
+      },
+      "original_file_sha256": "50168b4d89615359ec49fdd32c181658675881746c5bdb4955e6c2755022676f",
+      "unchanged_payload_sha256": "44f8e212ff489b76f88ce8e16872e19ce62ff6484fea2f756bc978a2fd5929af"
+    },
+    "assurance/m3-claims.json": {
+      "amended_file_sha256": "2e0d162faa1a5c1aac69a0053dbb905d3f2f4cae215ad6d0f2fca4e8820456a7",
+      "changes": {
+        "source_sha256": {
+          "assurance/m2-claims.json": {
+            "after": "c24d6d7a85db136097444318f75d57dadf255e58de1b4f4417de60f9c1436c47",
+            "before": "50168b4d89615359ec49fdd32c181658675881746c5bdb4955e6c2755022676f"
+          },
+          "docs/functional-spec/FS-assurance.md": {
+            "after": "a104174ac9ca3e7e9aec04b4edc84e1094f0199df7e0a4ffe623972e9bac0f2d",
+            "before": "d4383fc37239f6fb73f8801b0b8fc3cd513682e6e956b24da31b7059e0c3c73e"
+          }
+        }
+      },
+      "original_file_sha256": "cffcf981d41fd5e21a8ee67b9aafb30342dbfdd23b0d9cc70369e5074c4bd0e7",
+      "unchanged_payload_sha256": "745d96beaf093f61ae58a36b37835cac27a566ca4042e8371376c778d105680e"
+    },
+    "assurance/reporting-compiler.json.gz": {
+      "amended_file_sha256": "11af2e529ecf0e4e1871582aa8099e7366849529ab6be59d1bc8797478c69f56",
+      "changes": {
+        "inputs_sha256": {
+          "assurance/reporting-connection.json.gz": {
+            "after": "6303f0f07bcd8fec559f1572e03247f8e8f396c157e0fe2cb6907803fff1e0f7",
+            "before": "46cefd8a5bd06f0fab1b360dcf3af135c77ca29a48515d6bb4049048afa78705"
+          },
+          "verification/compiler/amendment.py": {
+            "after": "933d8da0f5c9dddc9f2d9389ea3f11cd4d2ac6b5ae869eab8ab7e09066d37ea6",
+            "before": "ee26e090dc1ec4007191afbcfd92afeaea9dad0783c545aac868a116bdc07856"
+          }
+        }
+      },
+      "original_file_sha256": "812911ed9cd00ebeadb88267cc013a85adaa6c380579f585f372a731eea451e7",
+      "unchanged_payload_sha256": "76630675e2a6d41d9356c2388368c492a9bbdc4f5f1d02a226134d542c685e8b"
+    },
+    "assurance/reporting-connection.json.gz": {
+      "amended_file_sha256": "6303f0f07bcd8fec559f1572e03247f8e8f396c157e0fe2cb6907803fff1e0f7",
+      "changes": {
+        "source_sha256": {
+          "assurance/reporting-source.json.gz": {
+            "after": "fe1714e81b8a2e5cefb0a182df35363fd156af073a318bed9e36d4357602d6e0",
+            "before": "77cf45ef140cb7367d0be92db167290d80ff9ac32592f881d0ce7da3ad02c47f"
+          },
+          "verification/compiler/amendment.py": {
+            "after": "933d8da0f5c9dddc9f2d9389ea3f11cd4d2ac6b5ae869eab8ab7e09066d37ea6",
+            "before": "ee26e090dc1ec4007191afbcfd92afeaea9dad0783c545aac868a116bdc07856"
+          }
+        }
+      },
+      "original_file_sha256": "46cefd8a5bd06f0fab1b360dcf3af135c77ca29a48515d6bb4049048afa78705",
+      "unchanged_payload_sha256": "019a155adf011cd1c8f3d7eca4b2e39dc6daf9aa8beb0066784dbf7858f214ad"
+    },
+    "assurance/reporting-source.json.gz": {
+      "amended_file_sha256": "fe1714e81b8a2e5cefb0a182df35363fd156af073a318bed9e36d4357602d6e0",
+      "changes": {
+        "inputs_sha256": {
+          "assurance/filter-decoder.json": {
+            "after": "79d23537dbc53a110f027e71a31eaf0d4f56dd9b5563beb508b980a25402b0eb",
+            "before": "c66ee0b5543aa6a7fbb80b59738471ece4fa6c5ed35ef7bd9a573d19022fbb8d"
+          },
+          "assurance/m2-claims.json": {
+            "after": "c24d6d7a85db136097444318f75d57dadf255e58de1b4f4417de60f9c1436c47",
+            "before": "50168b4d89615359ec49fdd32c181658675881746c5bdb4955e6c2755022676f"
+          },
+          "assurance/m3-claims.json": {
+            "after": "2e0d162faa1a5c1aac69a0053dbb905d3f2f4cae215ad6d0f2fca4e8820456a7",
+            "before": "cffcf981d41fd5e21a8ee67b9aafb30342dbfdd23b0d9cc70369e5074c4bd0e7"
+          }
+        }
+      },
+      "original_file_sha256": "77cf45ef140cb7367d0be92db167290d80ff9ac32592f881d0ce7da3ad02c47f",
+      "unchanged_payload_sha256": "83808ac53f5e6aa0441b5500ed91a0cec35ede2aede8adad3db8559ca07c4274"
+    }
+  },
+  "migration_checker_sha256": "3997dcd8c21a12bd7f75f409cffc0a29df60d19605361b9f134699fde24b43d3",
+  "operational_checker_sha256": "933d8da0f5c9dddc9f2d9389ea3f11cd4d2ac6b5ae869eab8ab7e09066d37ea6",
+  "reason": "Product status and its operational metadata adapter change; existing theorem types, axioms, native/Lean/Rocq proof inputs, checked cache identities and original scope fields are preserved exactly.",
+  "schema": "leancage-product-evidence-migration-v1"
+}

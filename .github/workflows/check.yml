@@ -24,5 +24,5 @@ jobs:
           lint: "false"
           use-mathlib-cache: "false"
           use-github-cache: "false"
-      - name: Check documentation and Lean foundation
-        run: ./scripts/check.sh
+      - name: Check foundation and reusable product core
+        run: ./scripts/check_product.sh

@@ -1,0 +1,334 @@
+{
+  "artifact_binding": "The bundle manifest identifies the compiled controller, helper, filter, checked source inputs and this exact claim record; assurance/product-vm-evidence.json identifies the executed bundle.",
+  "assumptions": {
+    "logic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "platform": "Compiler/runtime/FFI, Linux effects, VM/hardware and the enumerated host/native adapters in the bundle manifest remain trusted; core theorems do not prove whole-application isolation",
+    "reporting": "Preserved conditional source and compiler statements/types/axioms are in assurance/reporting-{source,connection,compiler}.json.gz; their caller/runtime premises retain their original scope"
+  },
+  "consumers": {
+    "filter": "workspace/LeanCageM3/Filter.lean:bytes; build compares every byte to linux/filter.h compiled into the bundled helper",
+    "policy": "workspace/Main.lean receives decodePolicy's validated Policy; host Workspace.validate executes the bundled controller on the same bytes; the typed library's execute checks validatePolicy before invoke",
+    "publication": "library/LeanCageWorkspace.lean checks the actual reportStorage/detailedReport projections; verification/reporting/Reporting.lean:live_publication covers the private sender-to-decoder equation",
+    "result": "workspace/LeanCageM3/API.lean:invoke calls decodeResult and detailedReport; the public library uses that identical invoke"
+  },
+  "declarations": [
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "Lean.Json.getObjVal?.eq_1",
+      "type": "\u2200 (x : String) (kvs : Std.TreeMap.Raw.{0, 0} String Lean.Json Ord.compare.{0}),\n  Eq.{1} ((Lean.Json.obj kvs).getObjVal? x)\n    (match Std.TreeMap.Raw.get?.{0, 0} kvs x with\n    | Option.some.{0} v => Pure.pure.{0, 0} v\n    | Option.none.{0} =>\n      MonadExcept.throw.{0, 0, 0}\n        (HAppend.hAppend.{0, 0, 0} (ToString.toString.{0} \"property not found: \") (ToString.toString.{0} x)))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "Lean.Json.getObjVal?.eq_2",
+      "type": "\u2200 (x : Lean.Json) (x_1 : String),\n  (\u2200 (kvs : Std.TreeMap.Raw.{0, 0} String Lean.Json Ord.compare.{0}), Eq.{1} x (Lean.Json.obj kvs) \u2192 False) \u2192\n    Eq.{1} (x.getObjVal? x_1) (MonadExcept.throw.{0, 0, 0} \"object expected\")"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Workspace.accepted_policy_executes",
+      "type": "\u2200 (policy : LeanCage.Workspace.Policy) (preflight : Bool),\n  Eq.{1} (LeanCage.Workspace.validatePolicy policy) (Except.ok.{0, 0} policy) \u2192\n    Eq.{1} (LeanCage.Workspace.execute policy preflight) (LeanCageM3.invoke policy preflight)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Workspace.check_definition",
+      "type": "\u2200 (policy : LeanCage.Workspace.Policy),\n  Eq.{1} (LeanCage.Workspace.check policy) (LeanCage.Workspace.execute policy Bool.true)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Workspace.execute.eq_1",
+      "type": "\u2200 (policy : LeanCage.Workspace.Policy) (preflight : Bool),\n  Eq.{1} (LeanCage.Workspace.execute policy preflight)\n    (match LeanCage.Workspace.validatePolicy policy with\n    | Except.error.{0, 0} error => Pure.pure.{0, 0} (Except.error.{0, 0} error)\n    | Except.ok.{0, 0} accepted => LeanCageM3.invoke accepted preflight)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Workspace.filter_definition",
+      "type": "Eq.{1} LeanCage.Workspace.filterBytes LeanCageM3.Filter.bytes"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Workspace.policy_definition",
+      "type": "Eq.{1} LeanCage.Workspace.decodePolicy LeanCageM3.decodePolicy"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Workspace.publication_cleanup",
+      "type": "\u2200 (r : LeanCage.Workspace.Result) (p : LeanCage.Workspace.Policy) (identity : Lean.Json) (status : String)\n  (error : Option.{0} String),\n  Eq.{1} ((LeanCageM3.reportStorage (LeanCage.Workspace.report r p identity) status error).getObjVal? \"cleanup\")\n    (Except.ok.{0, 0} (Lean.ToJson.toJson.{0} (ite.{1} (Eq.{1} r.clean Bool.true) \"complete\" \"unknown\")))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Workspace.publication_entry",
+      "type": "\u2200 (r : LeanCage.Workspace.Result) (p : LeanCage.Workspace.Policy) (identity : Lean.Json) (status : String)\n  (error : Option.{0} String),\n  Eq.{1} ((LeanCageM3.reportStorage (LeanCage.Workspace.report r p identity) status error).getObjVal? \"entry\")\n    (Except.ok.{0, 0} (Lean.ToJson.toJson.{0} r.entry.label))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Workspace.rejected_policy_is_pure",
+      "type": "\u2200 (policy : LeanCage.Workspace.Policy) (preflight : Bool),\n  Eq.{1} (LeanCageM3.limitsValid policy.limits) Bool.false \u2228 Eq.{1} (LeanCageM3.argvValid policy.argv) Bool.false \u2192\n    Eq.{1} (LeanCage.Workspace.execute policy preflight)\n      (Pure.pure.{0, 0} (Except.error.{0, 0} \"policy exceeds supported bounds\"))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Workspace.result_definition",
+      "type": "Eq.{1} LeanCage.Workspace.decodeResult LeanCageM3.decodeResult"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Workspace.run_definition",
+      "type": "\u2200 (policy : LeanCage.Workspace.Policy),\n  Eq.{1} (LeanCage.Workspace.run policy) (LeanCage.Workspace.execute policy Bool.false)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Workspace.supported_policy_inhabited",
+      "type": "Exists.{1} fun policy =>\n  Eq.{1} policy.argv\n      (List.toArray.{0} (List.cons.{0} \"/bin/sh\" (List.cons.{0} \"-c\" (List.cons.{0} \"true\" List.nil.{0})))) \u2227\n    Eq.{1} (LeanCage.Workspace.validatePolicy policy) (Except.ok.{0, 0} policy)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Workspace.supported_policy_inhabited._simp_1_2",
+      "type": "\u2200 {\u03b1 : Type u_1} {p : \u03b1 \u2192 Bool} {as : Array.{u_1} \u03b1},\n  Eq.{1} (Array.all.{u_1} as p) (List.all.{u_1} (Array.toList.{u_1} as) p)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Workspace.supported_policy_inhabited._simp_1_3",
+      "type": "\u2200 {\u03b2 : Type u_1} {\u03b1 : Type u_2} (f : \u03b2 \u2192 \u03b1 \u2192 \u03b2) {init : \u03b2} {xs : Array.{u_2} \u03b1},\n  Eq.{u_1 + 1} (Array.foldl.{u_2, u_1} f init xs) (List.foldl.{u_1, u_2} f init (Array.toList.{u_2} xs))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM3.Filter.policy_filter_action",
+      "type": "\u2200 (arch nr low high : UInt32),\n  Eq.{1}\n    (LeanCageM3.Filter.run arch nr low high (HAdd.hAdd.{0, 0, 0} (List.length.{0} LeanCageM3.Filter.allowed) 20)\n      LeanCageM3.Filter.instructions 0)\n    (Option.some.{0} (LeanCageM3.Filter.action arch nr low high))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM3.Result.json.eq_1",
+      "type": "\u2200 (r : LeanCageM3.Result),\n  Eq.{1} r.json\n    (Lean.Json.mkObj\n      (List.cons.{0} (Prod.mk.{0, 0} \"schema\" (Lean.Json.str \"leancage-result-v1\"))\n        (List.cons.{0} (Prod.mk.{0, 0} \"profile\" (Lean.ToJson.toJson.{0} LeanCageM3.profile))\n          (List.cons.{0} (Prod.mk.{0, 0} \"runtime_manifest_digest\" (Lean.ToJson.toJson.{0} LeanCageM3.runtimeDigest))\n            (List.cons.{0} (Prod.mk.{0, 0} \"run_id\" (Lean.ToJson.toJson.{0} r.run))\n              (List.cons.{0}\n                (Prod.mk.{0, 0} \"termination\"\n                  (Lean.ToJson.toJson.{0}\n                    (match r.kind with\n                    | 0 => \"exited\"\n                    | 1 => \"setup_failed\"\n                    | 2 => \"signaled\"\n                    | 3 => \"cancelled\"\n                    | 7 => \"preflight_supported\"\n                    | x => \"unknown\")))\n                (List.cons.{0} (Prod.mk.{0, 0} \"stage\" (Lean.ToJson.toJson.{0} r.stage))\n                  (List.cons.{0} (Prod.mk.{0, 0} \"detail\" (Lean.ToJson.toJson.{0} r.detail))\n                    (List.cons.{0} (Prod.mk.{0, 0} \"entry\" (Lean.ToJson.toJson.{0} r.entry.label))\n                      (List.cons.{0}\n                        (Prod.mk.{0, 0} \"cleanup\"\n                          (Lean.ToJson.toJson.{0} (ite.{1} (Eq.{1} r.clean Bool.true) \"complete\" \"unknown\")))\n                        (List.cons.{0} (Prod.mk.{0, 0} \"cancellation_bits\" (Lean.ToJson.toJson.{0} r.triggers))\n                          (List.cons.{0} (Prod.mk.{0, 0} \"uid\" (Lean.ToJson.toJson.{0} r.uid))\n                            (List.cons.{0}\n                              (Prod.mk.{0, 0} \"cpu_usage_us\"\n                                (ite.{1} (Eq.{1} (bne.{0} (HAnd.hAnd.{0, 0, 0} r.triggers 16) 0) Bool.true)\n                                  Lean.Json.null (Lean.ToJson.toJson.{0} r.cpu)))\n                              (List.cons.{0}\n                                (Prod.mk.{0, 0} \"memory_peak_bytes\"\n                                  (ite.{1} (Eq.{1} (bne.{0} (HAnd.hAnd.{0, 0, 0} r.triggers 16) 0) Bool.true)\n                                    Lean.Json.null (Lean.ToJson.toJson.{0} r.peak)))\n                                (List.cons.{0}\n                                  (Prod.mk.{0, 0} \"stdout_bytes\"\n                                    (ite.{1}\n                                      (Eq.{1} (BEq.beq.{0} r.kind 4 && bne.{0} (HAnd.hAnd.{0, 0, 0} r.triggers 8) 0)\n                                        Bool.true)\n                                      Lean.Json.null (Lean.ToJson.toJson.{0} r.stdoutBytes)))\n                                  (List.cons.{0}\n                                    (Prod.mk.{0, 0} \"stderr_bytes\"\n                                      (ite.{1}\n                                        (Eq.{1} (BEq.beq.{0} r.kind 4 && bne.{0} (HAnd.hAnd.{0, 0, 0} r.triggers 8) 0)\n                                          Bool.true)\n                                        Lean.Json.null (Lean.ToJson.toJson.{0} r.stderrBytes)))\n                                    (List.cons.{0}\n                                      (Prod.mk.{0, 0} \"elapsed_ms\"\n                                        (ite.{1} (Eq.{1} (bne.{0} (HAnd.hAnd.{0, 0, 0} r.triggers 16) 0) Bool.true)\n                                          Lean.Json.null (Lean.ToJson.toJson.{0} r.elapsed)))\n                                      (List.cons.{0}\n                                        (Prod.mk.{0, 0} \"stdout_artifact\"\n                                          (Lean.ToJson.toJson.{0}\n                                            (HAppend.hAppend.{0, 0, 0}\n                                              (HAppend.hAppend.{0, 0, 0} (ToString.toString.{0} \"/m3-results/\")\n                                                (ToString.toString.{0} r.run))\n                                              (ToString.toString.{0} \"/stdout\"))))\n                                        (List.cons.{0}\n                                          (Prod.mk.{0, 0} \"stderr_artifact\"\n                                            (Lean.ToJson.toJson.{0}\n                                              (HAppend.hAppend.{0, 0, 0}\n                                                (HAppend.hAppend.{0, 0, 0} (ToString.toString.{0} \"/m3-results/\")\n                                                  (ToString.toString.{0} r.run))\n                                                (ToString.toString.{0} \"/stderr\"))))\n                                          (List.cons.{0}\n                                            (Prod.mk.{0, 0} \"export\"\n                                              (Lean.ToJson.toJson.{0}\n                                                (match r.exportState with\n                                                | 0 => \"discarded\"\n                                                | 1 => \"complete\"\n                                                | 2 => \"failed\"\n                                                | x => \"unavailable\")))\n                                            (List.cons.{0}\n                                              (Prod.mk.{0, 0} \"export_digest\"\n                                                (ite.{1} (Eq.{1} (BEq.beq.{0} r.exportState 1) Bool.true)\n                                                  (Lean.ToJson.toJson.{0} (LeanCageM3.hexBytes r.exportDigest))\n                                                  Lean.Json.null))\n                                              (List.cons.{0}\n                                                (Prod.mk.{0, 0} \"export_errno\" (Lean.ToJson.toJson.{0} r.exportError))\n                                                (List.cons.{0}\n                                                  (Prod.mk.{0, 0} \"export_omitted\" (Lean.ToJson.toJson.{0} r.omitted))\n                                                  (List.cons.{0}\n                                                    (Prod.mk.{0, 0} \"oom_kill_events\"\n                                                      (ite.{1}\n                                                        (Eq.{1} (bne.{0} (HAnd.hAnd.{0, 0, 0} r.triggers 16) 0)\n                                                          Bool.true)\n                                                        Lean.Json.null (Lean.ToJson.toJson.{0} r.oomKills)))\n                                                    (List.cons.{0}\n                                                      (Prod.mk.{0, 0} \"task_limit_events\"\n                                                        (ite.{1}\n                                                          (Eq.{1} (bne.{0} (HAnd.hAnd.{0, 0, 0} r.triggers 16) 0)\n                                                            Bool.true)\n                                                          Lean.Json.null (Lean.ToJson.toJson.{0} r.taskDenials)))\n                                                      (List.cons.{0}\n                                                        (Prod.mk.{0, 0} \"assurance\"\n                                                          (Lean.ToJson.toJson.{0}\n                                                            \"conditional-model-and-VM-evidence; native/Linux correspondence and hardware channels open\"))\n                                                        List.nil.{0}))))))))))))))))))))))))))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM3.argvValid.eq_1",
+      "type": "\u2200 (argv : Array.{0} String),\n  Eq.{1} (LeanCageM3.argvValid argv)\n    ((Decidable.decide (LT.lt.{0} 0 (Array.size.{0} argv)) && Decidable.decide (LE.le.{0} (Array.size.{0} argv) 64) &&\n          (BEq.beq.{0} (GetElem?.getElem?.{0, 0, 0} argv 0) (Option.some.{0} \"/bin/sh\") ||\n            BEq.beq.{0} (GetElem?.getElem?.{0, 0, 0} argv 0) (Option.some.{0} \"/usr/local/bin/python3\")) &&\n        Array.all.{0} argv fun s =>\n          !s.isEmpty && Decidable.decide (LE.le.{0} s.utf8ByteSize 4096) && !s.contains '\\x00') &&\n      Decidable.decide\n        (LE.le.{0} (Array.foldl.{0, 0} (fun n s => HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} n s.utf8ByteSize) 1) 0 argv)\n          16384))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM3.decodePolicy_bounds",
+      "type": "\u2200 (bytes : ByteArray) (policy : LeanCageM3.Policy),\n  Eq.{1} (LeanCageM3.decodePolicy bytes) (Except.ok.{0, 0} policy) \u2192\n    Eq.{1} (LeanCageM3.limitsValid policy.limits) Bool.true \u2227 Eq.{1} (LeanCageM3.argvValid policy.argv) Bool.true"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM3.decodePolicy_iff",
+      "type": "\u2200 (bytes : ByteArray) (policy : LeanCageM3.Policy),\n  Eq.{1} (LeanCageM3.decodePolicy bytes) (Except.ok.{0, 0} policy) \u2194\n    Eq.{1} (LeanCageM3.parsePolicy\u271d bytes) (Except.ok.{0, 0} policy) \u2227\n      Eq.{1} (LeanCageM3.limitsValid policy.limits) Bool.true \u2227 Eq.{1} (LeanCageM3.argvValid policy.argv) Bool.true"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCageM3.decodeResult_valid",
+      "type": "\u2200 (bytes : ByteArray) (result : LeanCageM3.Result),\n  Eq.{1} (LeanCageM3.decodeResult bytes) (Except.ok.{0, 0} result) \u2192 Eq.{1} (LeanCageM3.resultValid result) Bool.true"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM3.validatePolicy.eq_1",
+      "type": "\u2200 (policy : LeanCageM3.Policy),\n  Eq.{1} (LeanCageM3.validatePolicy policy)\n    (ite.{1} (Eq.{1} (LeanCageM3.limitsValid policy.limits && LeanCageM3.argvValid policy.argv) Bool.true)\n      (Except.ok.{0, 0} policy) (Except.error.{0, 0} \"policy exceeds supported bounds\"))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "LeanCageM3.validatePolicy_iff",
+      "type": "\u2200 (input output : LeanCageM3.Policy),\n  Eq.{1} (LeanCageM3.validatePolicy input) (Except.ok.{0, 0} output) \u2194\n    Eq.{1} output input \u2227\n      Eq.{1} (LeanCageM3.limitsValid input.limits) Bool.true \u2227 Eq.{1} (LeanCageM3.argvValid input.argv) Bool.true"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "_private.Lean.Data.Json.Basic.0.Lean.Json.beq'._sparseCasesOn_8.else_eq",
+      "type": "\u2200 {motive_1 : Lean.Json \u2192 Sort u} (t : Lean.Json)\n  (obj : (kvPairs : Std.TreeMap.Raw.{0, 0} String Lean.Json Ord.compare.{0}) \u2192 motive_1 (Lean.Json.obj kvPairs))\n  (\u00abelse\u00bb : Nat.hasNotBit 32 t.ctorIdx \u2192 motive_1 t) (h : Nat.hasNotBit 32 t.ctorIdx),\n  Eq.{u} (Lean.Json.beq'._sparseCasesOn_8\u271d.{u} t obj \u00abelse\u00bb) (\u00abelse\u00bb h)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCageWorkspace.0.Lean.Json.getObjVal?.match_3.eq_1",
+      "type": "\u2200 (motive : Lean.Json \u2192 String \u2192 Sort u_1) (kvs : Std.TreeMap.Raw.{0, 0} String Lean.Json Ord.compare.{0}) (k : String)\n  (h_1 : (kvs : Std.TreeMap.Raw.{0, 0} String Lean.Json Ord.compare.{0}) \u2192 (k : String) \u2192 motive (Lean.Json.obj kvs) k)\n  (h_2 : (x : Lean.Json) \u2192 (x_1 : String) \u2192 motive x x_1),\n  Eq.{u_1}\n    (match Lean.Json.obj kvs, k with\n    | Lean.Json.obj kvs, k => h_1 kvs k\n    | x, x_1 => h_2 x x_1)\n    (h_1 kvs k)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCageWorkspace.0.Lean.Json.getObjVal?.match_3.eq_2",
+      "type": "\u2200 (motive : Lean.Json \u2192 String \u2192 Sort u_1) (x : Lean.Json) (x_1 : String)\n  (h_1 : (kvs : Std.TreeMap.Raw.{0, 0} String Lean.Json Ord.compare.{0}) \u2192 (k : String) \u2192 motive (Lean.Json.obj kvs) k)\n  (h_2 : (x : Lean.Json) \u2192 (x_2 : String) \u2192 motive x x_2),\n  (\u2200 (kvs : Std.TreeMap.Raw.{0, 0} String Lean.Json Ord.compare.{0}), Eq.{1} x (Lean.Json.obj kvs) \u2192 False) \u2192\n    Eq.{u_1}\n      (match x, x_1 with\n      | Lean.Json.obj kvs, k => h_1 kvs k\n      | x, x_3 => h_2 x x_3)\n      (h_2 x x_1)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCageWorkspace.0.LeanCage.Workspace.extend_value",
+      "type": "\u2200 (tree : Std.TreeMap.Raw.{0, 0} String Lean.Json Ord.compare.{0}),\n  Std.TreeMap.Raw.WF.{0, 0} tree \u2192\n    \u2200 (more : List.{0} (Prod.{0, 0} String Lean.Json)) (key : String) (value : Lean.Json),\n      Eq.{1} ((Lean.Json.obj tree).getObjVal? key) (Except.ok.{0, 0} value) \u2192\n        Eq.{1} (List.contains.{0} (List.map.{0, 0} Prod.fst.{0, 0} more) key) Bool.false \u2192\n          Eq.{1}\n            ((Lean.Json.mkObj (HAppend.hAppend.{0, 0, 0} (Std.TreeMap.Raw.toList.{0, 0} tree) more)).getObjVal? key)\n            (Except.ok.{0, 0} value)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCageWorkspace.0.LeanCage.Workspace.object_lookup",
+      "type": "\u2200 (fields : List.{0} (Prod.{0, 0} String Lean.Json)) (key : String),\n  Eq.{1} ((Lean.Json.mkObj fields).getObjVal? key)\n    (match\n      List.findSomeRev?.{0, 0}\n        (fun pair =>\n          ite.{1} (Eq.{1} (Ord.compare.{0} (Prod.fst.{0, 0} pair) key) Ordering.eq)\n            (Option.some.{0} (Prod.snd.{0, 0} pair)) Option.none.{0})\n        fields with\n    | Option.some.{0} value => Except.ok.{0, 0} value\n    | Option.none.{0} =>\n      Except.error.{0, 0}\n        (HAppend.hAppend.{0, 0, 0} (ToString.toString.{0} \"property not found: \") (ToString.toString.{0} key)))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCageWorkspace.0.LeanCage.Workspace.object_lookup.match_1.eq_1",
+      "type": "\u2200 (motive : Option.{0} Lean.Json \u2192 Sort u_1) (value : Lean.Json)\n  (h_1 : (value : Lean.Json) \u2192 motive (Option.some.{0} value)) (h_2 : Unit \u2192 motive Option.none.{0}),\n  Eq.{u_1}\n    (match Option.some.{0} value with\n    | Option.some.{0} value => h_1 value\n    | Option.none.{0} => h_2 ())\n    (h_1 value)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "is_theorem": true,
+      "name": "_private.LeanCageWorkspace.0.LeanCage.Workspace.object_lookup.match_1.eq_2",
+      "type": "\u2200 (motive : Option.{0} Lean.Json \u2192 Sort u_1) (h_1 : (value : Lean.Json) \u2192 motive (Option.some.{0} value))\n  (h_2 : Unit \u2192 motive Option.none.{0}),\n  Eq.{u_1}\n    (match Option.none.{0} with\n    | Option.some.{0} value => h_1 value\n    | Option.none.{0} => h_2 ())\n    (h_2 ())"
+    }
+  ],
+  "schema": "leancage-product-core-v1",
+  "source_sha256": {
+    "library/LeanCageWorkspace.lean": "ca04608b70b78f9fab89fa4377fb3c2f703eba29904138267ec06128c871aa94",
+    "library/lake-manifest.json": "6e612ef9157e1fcf48ce974425fa0afb5fb79f53abbd97aec9f982ea21432229",
+    "library/lakefile.lean": "7944bc019571781470615e947dc9ce30ed7c01cb71c3f20740bd048620a210f6",
+    "library/lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "lifecycle/LeanCageM2/Filter.lean": "a9a3955657b84f93584401f30e6b51146370968da75e55f6b9a8cc3144ac06e3",
+    "lifecycle/LeanCageM2/Model.lean": "090dcca202cf482a6cb30cb8a1588ad0fb1162597b764aff32e69e5f2cd0eb05",
+    "lifecycle/LeanCageM2/Proofs.lean": "b58d7632f36826eb229544f3e84736585583dba2763adc0390a63b8c955313e4",
+    "scripts/audit_product.py": "6ca783b75572bce3c10585093db7c63e41d8db5eae82739d0aff997d61b3f8a6",
+    "workspace/LeanCageM3.lean": "983e4a293c334daf25a7a78a8e9c590cef67e5a231f20d8b5728cf1ff533a0ad",
+    "workspace/LeanCageM3/API.lean": "e13fdb9a6fa2b5e761f9bd36c3999e71cdb66bc6411618976b331ff1d754abf0",
+    "workspace/LeanCageM3/Authority.lean": "a90d20ead1cc066c84b838b0a34105700f8eccd92ef7018765ab5cfceeee4f93",
+    "workspace/LeanCageM3/AuthorityProofs.lean": "22ec3d0bf6fe319533559853a3cf3cda546b746d4ca245bb5b29ec0b8531786e",
+    "workspace/LeanCageM3/Filter.lean": "b4ec91391cc3329388c4a955c960882f20eec7463927322bdd30a102a713a245",
+    "workspace/LeanCageM3/Lifecycle.lean": "4632ba9ebbfcc9e2ee32afc28d58cc0d0b34f8eb5ace7be273704c5ce5dda703",
+    "workspace/LeanCageM3/Policy.lean": "b80f2de75766175cccc0471d8da156cfbd0e1cb6e2dcfdc25158381776958f87",
+    "workspace/LeanCageM3/ProcessProofs.lean": "d903437db24e7eca7e6cb4c2e3dfc8a39757ab75d0734e178e74462516a2a6d6",
+    "workspace/LeanCageM3/Proofs.lean": "6490e71a6e6b1650ad1e4443b8e40a58abb200cc2681d68b04ea03f5bf1c260d",
+    "workspace/LeanCageM3/Resources.lean": "e00549817679440be1261831d3ec6a9ff7d72cfc79e17a4e329c9b3d732fa6c5",
+    "workspace/LeanCageM3/Results.lean": "7613e1e843d593a9f905524df5813df649f368ecd29d1e7b87ce720c58690e19",
+    "workspace/Main.lean": "fe1aa1d77a020edc3e07bff6747611524f214c5daf4fce7d382e181d00737714"
+  },
+  "spec": "FS-linux-product.proofs",
+  "toolchain": "leanprover/lean4:v4.35.0"
+}

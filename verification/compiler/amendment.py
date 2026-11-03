@@ -5,6 +5,7 @@ import base64
 import copy
 import gzip
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
 
@@ -52,6 +53,15 @@ def sha(data):
     return hashlib.sha256(data).hexdigest()
 
 
+# §AR-workspace-vm.migration: Compose the later product-status amendment with this exact preimage.
+def product_evidence():
+    path = ROOT/'scripts/rebind_product_evidence.py'
+    spec = importlib.util.spec_from_file_location('product_evidence_amendment', path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def preimages():
     saved = json.loads(gzip.decompress((ROOT/ARCHIVE).read_bytes()))
     if set(saved)!={AGGREGATE,CHECKER,SOURCE,CONNECTION}:
@@ -87,7 +97,10 @@ def source_after(saved):
         raise ValueError('aggregate preimage differs from the accepted source record')
     result['inputs_sha256'][AGGREGATE]=sha((ROOT/AGGREGATE).read_bytes())
     for name, (before, after) in FOUNDATION_INPUTS.items():
-        if result['inputs_sha256'].get(name)!=before or sha((ROOT/name).read_bytes())!=after:
+        current = sha((ROOT/name).read_bytes())
+        if current != after and name in FOUNDATION_PAYLOADS:
+            current = product_evidence().original_file_hash(name)
+        if result['inputs_sha256'].get(name)!=before or current!=after:
             raise ValueError('foundation input amendment bytes differ: '+name)
         result['inputs_sha256'][name]=after
     for name, expected in FOUNDATION_PAYLOADS.items():
@@ -95,7 +108,7 @@ def source_after(saved):
         del payload['source_sha256']
         if sha(json.dumps(payload, sort_keys=True, separators=(',', ':')).encode())!=expected:
             raise ValueError('foundation amendment changes theorem evidence: '+name)
-    return result
+    return product_evidence().replay(SOURCE, result)
 
 
 def adjust_source(previous):
