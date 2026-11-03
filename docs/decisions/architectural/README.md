@@ -12,3 +12,4 @@
 | [§DA-m4-routes](DA-m4-routes.md#da-m4-routes-expose-failed-central-connections-before-expanding-setup) | Preserve failed central connection attempts and require checked replacements before setup expansion |
 | [§DA-grund](DA-grund.md#da-grund-trial-pinned-grund-inside-this-repository-only) | Project-local Grund trial |
 | [§DA-secondary-backend](DA-secondary-backend.md#da-secondary-backend-consider-sele4n-after-the-first-useful-linux-profile) | Optional seLe4n track after M3 |
+| [§DA-reporting-connection](DA-reporting-connection.md#da-reporting-connection-connect-reporting-through-a-checked-call-interface) | Whole-call source/Lean connection that preserves byte prefixes, raw fields and publication/loss status |

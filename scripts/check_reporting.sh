@@ -4,5 +4,6 @@ set -euo pipefail
 project_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 cd -- "$project_root"
 python3 verification/reporting/check.py "$@"
+./scripts/check_reporting_connection.sh
 python3 -m unittest discover -s tests/integration -p 'test_output_capture.py' -v
 python3 scripts/run_m3_vm.py --check-artifacts

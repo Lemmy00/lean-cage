@@ -408,6 +408,13 @@ translation fails on `__int128`. [§DA-m4-routes](decisions/architectural/DA-m4-
 routes. Resolve the semantics/certificate and concurrent kernel source-refinement
 edges before treating further controller expansion as M4 completion work.
 
+The reporting call now connects the current complete helper program to the
+ordinary Lean decoder through [§AR-reporting.interface](architecture/AR-reporting.md#interface-preserve-the-complete-call-observation). The source theorem consumes
+the imported ordinary publication proof, with complete, failed and partial-loss
+executions. [§FS-assurance.reporting](functional-spec/FS-assurance.md#reporting-current-helper-reporting-call-and-ordinary-lean-decoder) records the checked boundary. Continue by
+supplying the compiler-semantics and pinned Linux effect producers required by
+`M4-CONTINUE.md`; the call interface does not supply those premises.
+
 ### m4.entry: Next assignment — M4.1 native-semantics feasibility
 
 **Recorded feasibility outcome:** [M4.1 handoff](reviews/M4.1-handoff.md),

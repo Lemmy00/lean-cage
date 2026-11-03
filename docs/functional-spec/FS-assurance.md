@@ -38,7 +38,7 @@ These counts identify coverage and evidence, not a measure of security strength.
 | M2 owned lifecycle and filter action | [§FS-lifecycle.model](FS-lifecycle.md#model-executable-controller-and-effect-contracts) and [§FS-lifecycle.filter](FS-lifecycle.md#filter-general-action-of-the-preserved-m1-program) | Model-proved; VM-tested; handoff gate passed | [§FS-assurance.lifecycle](FS-assurance.md#lifecycle-m2-lifecycle-and-filter-semantics-claim-record); exact plan, ownership/inheritance and general bytecode action; source-bound VM evidence | Native/Linux correspondence; M3 authority; M5 hardware channels |
 | Native workload confinement | [§FS-workspace.authority](FS-workspace.md#authority-objects-and-rights) | M3 model proofs, implementation and source-bound VM evidence; gate passed | [§FS-assurance.workspace](FS-assurance.md#workspace-m3-workspace-model-and-vm-evidence); object/handle/alias model and workspace helper | Native/Linux correspondence |
 | Bounded resources | [§FS-workspace.resources](FS-workspace.md#resources-units-ownership-and-failure) | Conditional model proofs; native VM limit cases | Scope/capture/reservation/sample proofs; charged memory/task/CPU/deadline observations | Linux accounting and progress/overshoot premises |
-| Local reporting source behavior | [§FS-workspace.results](FS-workspace.md#results-entry-cancellation-and-bounded-transport) | Partial M4.2 source/effect proofs | [§FS-assurance.native](FS-assurance.md#native-partial-m4-reporting-source-evidence); maintained-source codecs, write loop, errno, selectors, result construction, child-failure reporting and complete private-frame decoding | Whole-slice framing/caller safety, checked C-to-Lean bridge, Linux/compiler/executable correspondence |
+| Local reporting source behavior | [§FS-workspace.results](FS-workspace.md#results-entry-cancellation-and-bounded-transport) | Conditional source/effect proofs and ordinary Lean reporting call connection | [§FS-assurance.native](FS-assurance.md#native-partial-m4-reporting-source-evidence) and [§FS-assurance.reporting](FS-assurance.md#reporting-current-helper-reporting-call-and-ordinary-lean-decoder); current complete helper program, checked call/byte interface and live decoder theorem | Whole-profile caller/capture/export composition, physical input ownership, Linux/compiler/runtime/executable correspondence |
 | Local input-validation source behavior | [§FS-workspace.policy](FS-workspace.md#policy-bounded-typed-request) | Accepted local M4.3 results through initialization; parent composition repair under review | [§FS-assurance.parent](FS-assurance.md#parent-parent-composition-repair-claim-record); numeric, string, argument, digest and initialization source certificates | Whole entry-to-setup composition, physical argv, ordinary Lean proof connection and Linux/compiler/runtime correspondence |
 | Functional confidentiality | [§FS-observations.logical](FS-observations.md#logical-functional-observations) | Planned | Observation requirements | Noninterference theorem and correspondence |
 | Hardware-aware confidentiality | [§FS-observations.hardware](FS-observations.md#hardware-software-observable-channels) | Planned | Scope and research obligations | Model, mechanisms, proof, deployed profile |
@@ -799,3 +799,35 @@ trust merely to close a milestone.
 Changes to specifications, theorem statements, code, toolchains, platform settings,
 or artifacts must trigger review and revalidation of affected claims. An update
 must not inherit an old certification merely because its version name is similar.
+
+## reporting: Current helper reporting call and ordinary Lean decoder
+
+**Scope:** [§FS-workspace.results](FS-workspace.md#results-entry-cancellation-and-bounded-transport), through the call interface in
+[the reporting interface](../architecture/AR-reporting.md#interface-preserve-the-complete-call-observation). `CurrentSource.current_sender_decodes` connects an owned
+`send_frame` call in the current complete `Main.prog` to the ordinary Lean
+publication theorem. The source producer establishes the emitted byte prefix,
+remaining suffix, status and raw frame-field equations. Its consumer is
+`LeanCage.Reporting.live_publication`, which uses the existing `decodeResult`.
+The imported `normalized_publication` proof term has no Lean axioms; the live
+endpoint proof uses the accepted `propext` and `Quot.sound` logical foundations.
+
+The full statements, per-declaration transitive assumptions, source/deployment
+boundaries and artifact identities are in `assurance/reporting-connection.json.gz`.
+The retained CompCert source foundations include its uninterpreted external
+relations and the previously declared classical/extensionality axioms; they are
+not implementations of Linux effects. Ordinary Lean, imported proof terms and
+the current source consumers are kernel checked. Named field/status equations
+and rejected entry/cleanup and loss-tag mutations check the representation edge.
+
+Independent source-input allocations and actual source executions witness
+complete publication, failed writes and one-byte output followed by loss after
+arbitrary waits. The theorem does not assert termination for every execution.
+These allocations establish nonvacuity of the owned-call premises; they do not
+supply full-process startup or descriptor provenance. Physical ownership, Linux
+transport and partial-copy behavior, controller/capture/export ordering and the
+compiler/runtime/loader chain remain connecting obligations.
+
+**Replay:** `./scripts/check_reporting_connection.sh`, included in
+`./scripts/check_reporting.sh` and the current M4 aggregate. Matching checked
+artifacts are reused under [the development check policy](../architecture/AR-tooling.md#checks-one-development-gate). Original proof sources and the
+sixteen original ledger entries retain their scope and status.
