@@ -454,6 +454,8 @@ bounded feasibility decision. Candidate tracks are:
 
 - Supply the physical runtime/TLS/caller producers and connect verified compiler
   output to the deployed artifact where that improves the selected profile.
+- Establish finite stack budgets and justified resource-exhaustion behavior under
+  [§RM-roadmap.m6.resources](roadmap.md#m6resources-finite-stack-budgets-and-resource-exhaustion), starting with the trusted guest-entry path.
 - Prove a selected Linux effect implementation against its published contract,
   including the relevant concurrency, errors and transitive dependencies.
 - Establish the hardware-aware observation/leakage property in
@@ -473,6 +475,70 @@ record is updated accordingly. Preserve the broader end-to-end destination.
 There is no requirement to complete every research track before releasing a
 useful Linux product. A hardware-confidentiality claim requires its own completed
 observation and mechanism proof.
+
+### m6.resources: Finite stack budgets and resource exhaustion
+
+**Status: planned follow-on after the M5 entry route stabilizes.** This is a named
+M6 assurance upgrade under [§FS-resources.limits](functional-spec/FS-resources.md#limits-precise-semantics) and [§FS-resources.availability](functional-spec/FS-resources.md#availability-restricted-availability-claims).
+The active M5 assignments keep their existing acceptance contracts. This track
+supplies a resource-availability premise for their deployed application argument;
+it applies to the C, Lean and runtime code actually selected by M5.
+
+**Reason:** the CompCert memory model used through Rocq has a total `Mem.alloc`
+operation without a finite total-memory budget. In the pinned source recorded
+by `m4/toolchain-lock.json`, Clight `alloc_variables` and x86 assembly-model
+`Pallocframe` use it. The [upstream memory documentation](https://compcert.org/doc/html/compcert.common.Memory.html)
+states this allocation abstraction explicitly. Existing source/assembly-model
+proofs therefore do not by themselves establish that a real process has enough
+stack. This is a semantics/deployment boundary, not a defect of Rocq's logic.
+Guest cgroup memory limits also do not establish the trusted controller/helper's
+own stack budget.
+
+**First delivery:** give the supported profile a checked usable-stack requirement
+for its actual guest-entry path, including the caller and transitive callees.
+Consume the M5.1 entry guarantee under that proved budget and tie the requirement
+to the shipped executable/runtime configuration. The before/after is an explicit
+available-stack premise becoming a justified admission condition for this path.
+Record the runtime, ABI, process/thread and interference assumptions that remain.
+
+Deliver the following within that assignment:
+
+1. **Account for real stack use.** Establish maximum simultaneously live stack
+   bytes, including caller frames, recursion, local arrays, alignment, saved
+   registers/spills, runtime/libc/FFI calls and any permitted signal/callback
+   frames. Account for usable mapped space, guards and required reserves. Source
+   call depth alone is insufficient; compilation can change frame sizes. Use a
+   checked conservative bound through compilation or validated binary costs;
+   compiler reports and measurements may propose bounds but do not prove them.
+2. **Distinguish stack space from fuel.** A stack budget is charged on entry and
+   released on return. Execution-step fuel bounds work and need not track peak
+   stack use. Fuel is an optional technique: if used, define what consumes it,
+   connect it to the executed program, prove adequacy and cover exhaustion.
+   Checking one chosen fuel value is only bounded evidence. General safety needs
+   a proof for all relevant prefixes or a proved/enforced input-derived bound.
+   Retain the separate scheduler/primitive-progress assumptions for liveness.
+3. **Connect finite execution and failure.** Prove the selected resource-aware
+   semantics agrees with the existing application semantics while budgets
+   suffice. Prove admitted executions fit the available stack; reject an
+   insufficient configuration before guest entry. Include allocation/worker-loss
+   outcomes where the platform permits them. Preserve justified observations
+   through an independently resourced supervisor or another proved mechanism;
+   do not assume an exhausted stack can execute its own cleanup/reporting code,
+   or represent exhaustion merely by deleting the failing transition.
+4. **Integrate and validate.** Publish the bound, input restrictions, binary and
+   runtime identities, checked theorem/assumptions and the platform admission
+   check. Show a useful admitted execution and insufficient-budget/failure
+   behavior in the disposable VM, with no forged entry or cleanup success.
+   Verify safe handling before claiming that an actual stack overflow behaves
+   like the existing process-loss abstraction.
+
+**Exit:** the identified guest-entry path consumes a checked finite-stack bound
+and its real admission/failure behavior satisfies the application contract.
+Expand afterward through separately assigned trusted supervision/reporting paths
+and heap/allocation budgets. State exactly which paths are covered; a finite
+stack result for one helper is not a whole-runtime memory or availability theorem.
+Any release advertising finite-resource guarantees must consume the corresponding
+completed evidence under [§RM-roadmap.m7](roadmap.md#m7-supported-releases-and-maintenance).
 
 ### m6.sele4n: A seLe4n backend using the same portable contracts
 
