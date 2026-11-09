@@ -6,6 +6,7 @@ import json
 import gzip
 import base64
 import hashlib
+import tempfile
 from pathlib import Path
 import unittest
 from unittest.mock import patch
@@ -136,13 +137,35 @@ class PreservedHistoricalInputs(unittest.TestCase):
                                             connection["cache_sha256"][name]))
             self.assertTrue(verifier.verify(self.amendment.COMPILER_RECORD, "inputs_sha256", name,
                                             evidence.CACHE_INPUTS[name]))
-        name = str(ROOT / self.amendment.HISTORICAL_HOST_SOURCE)
-        self.assertTrue(verifier.verify(self.amendment.CONNECTION, "host_inputs_sha256", name,
-                                        connection["host_inputs_sha256"][name]))
-        name = next(name for name in connection["cache_sha256"] if name.endswith(".vo"))
-        self.assertFalse(verifier.verify(self.amendment.CONNECTION, "cache_sha256", name,
-                                         connection["cache_sha256"][name]))
         self.assertTrue(verifier.used)
+
+    def test_original_host_source_key_keeps_its_exact_historical_spelling(self):
+        _, connection = evidence.original_record(self.amendment.CONNECTION)
+        name = next(name for name in connection['host_inputs_sha256']
+                    if name.endswith('/' + self.amendment.HISTORICAL_HOST_SOURCE))
+        original_root = Path(name).parents[1]
+        read_bytes = Path.read_bytes
+
+        def relocated(path):
+            if path.is_relative_to(original_root):
+                path = ROOT / path.relative_to(original_root)
+            return read_bytes(path)
+
+        with patch.object(self.amendment, 'ROOT', original_root), \
+                patch.object(self.amendment, 'product_evidence', return_value=evidence), \
+                patch.object(Path, 'read_bytes', relocated):
+            self.assertTrue(self.amendment.PreservedInputs().verify(
+                self.amendment.CONNECTION, 'host_inputs_sha256', name,
+                connection['host_inputs_sha256'][name]))
+
+    def test_matching_current_artifact_needs_no_historical_substitution(self):
+        with tempfile.TemporaryDirectory() as directory, \
+                patch.object(self.amendment, 'ROOT', Path(directory)):
+            path = Path(directory) / 'proof.vo'
+            path.write_bytes(b'exact current proof fixture')
+            self.assertFalse(self.amendment.PreservedInputs().verify(
+                self.amendment.CONNECTION, 'cache_sha256', 'proof.vo',
+                hashlib.sha256(path.read_bytes()).hexdigest()))
 
     def test_unapproved_key_record_group_and_expected_hash_are_rejected(self):
         verifier = self.amendment.PreservedInputs()
@@ -177,15 +200,15 @@ class PreservedHistoricalInputs(unittest.TestCase):
     def test_changed_proof_artifact_cannot_use_an_archived_input_binding(self):
         _, connection = evidence.original_record(self.amendment.CONNECTION)
         name = next(name for name in connection["cache_sha256"] if name.endswith(".vo"))
-        read_bytes = Path.read_bytes
-
-        def changed(path):
-            value = read_bytes(path)
-            return value + b"changed" if path == ROOT / name else value
-
-        with patch.object(Path, "read_bytes", changed), self.assertRaises(ValueError):
-            self.amendment.PreservedInputs().verify(self.amendment.CONNECTION, "cache_sha256", name,
-                                                    connection["cache_sha256"][name])
+        with tempfile.TemporaryDirectory() as directory, \
+                patch.object(self.amendment, 'ROOT', Path(directory)), \
+                patch.object(self.amendment, 'product_evidence', return_value=evidence):
+            path = Path(directory) / name
+            path.parent.mkdir(parents=True)
+            path.write_bytes(b'changed proof artifact fixture')
+            with self.assertRaises(ValueError):
+                self.amendment.PreservedInputs().verify(self.amendment.CONNECTION, 'cache_sha256', name,
+                                                        connection['cache_sha256'][name])
 
     def test_other_reporting_and_compiler_checker_edits_fail_exact_code_guards(self):
         read_text = Path.read_text

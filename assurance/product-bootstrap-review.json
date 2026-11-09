@@ -1,0 +1,26 @@
+{
+  "cause": "Shallow checkout omitted the accepted Git baseline; metadata guard and tests additionally assumed local compiler/proof caches and a fixed checkout root.",
+  "original_run": "https://github.com/Lemmy00/lean-cage/actions/runs/42540179500",
+  "repair": "Fetch accepted history; freeze expected generated/external hashes without requiring those artifacts in a metadata check; keep actual artifact gates strict; make test inputs hermetic.",
+  "schema": "leancage-product-bootstrap-review-v1",
+  "source_binding_amendment": {
+    "all_other_fields_and_kernel_checked_artifacts_unchanged": true,
+    "changed_inputs": {
+      "scripts/rebind_product_evidence.py": {
+        "after": "0e8e71d784a576f6a81eb1b5a026635395b6c90586f2583a1091db7daf9a7983",
+        "before": "956c50a0e007be708420b0500bcf49efdc5a6353123d79822026638a8a80c4b4"
+      }
+    },
+    "current_sha256": "93ee472be4390d7cc637cb8ed62b4dca55ce87226a724087e230a1c2ff6d3d24",
+    "previous_sha256": "5edc56bcdebe6fe294d93c1aaf837e5886cefd7dab340ee05aa5f100b85195db"
+  },
+  "status": "reviewed",
+  "validation": {
+    "final_product_tests": 32,
+    "final_product_tests_status": "passed",
+    "fresh_foundation_and_product_core": "passed before two product fixture failures",
+    "github": "pending",
+    "grund": "passed",
+    "static_vm_init": "passed"
+  }
+}

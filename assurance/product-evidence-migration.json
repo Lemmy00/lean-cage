@@ -272,7 +272,7 @@
       }
     }
   },
-  "migration_checker_sha256": "956c50a0e007be708420b0500bcf49efdc5a6353123d79822026638a8a80c4b4",
+  "migration_checker_sha256": "0e8e71d784a576f6a81eb1b5a026635395b6c90586f2583a1091db7daf9a7983",
   "operational_checker_sha256": "dd5f2a5b817d7907e1e4af45e53472637bfdead7b43d0f2f6fa85f63b8809eac",
   "predecessor": {
     "archive": "assurance/workspace-baseline.json.gz",

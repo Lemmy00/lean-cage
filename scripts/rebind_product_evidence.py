@@ -94,10 +94,37 @@ def preserved_caches():
                        baseline_commit=BASELINE, baseline_record=CACHE_RECORD, files_sha256=CACHE_INPUTS)
 
 
-def current_fingerprints(name, original, preserved, caches, historical, historical_caches):
+def current_fingerprints(name, original, preserved, caches, historical, historical_caches,
+                         cache_observations=None):
     def fingerprint(key):
-        actual = sha((ROOT / key).read_bytes())
         before = next((original[group][key] for group in GROUPS if key in original.get(group, {})), None)
+        # §AR-workspace-vm.migration: Metadata integrity does not require a local proof-tool cache.
+        generated = (key.startswith('.tools/') or '/.lake/' in key or key.startswith('.lake/')
+                     or Path(key).is_absolute())
+        if generated:
+            if name == CACHE_RECORD and key in CACHE_INPUTS:
+                if sha(caches[key]) != before:
+                    raise ValueError('sealed historical compiled identity differs: ' + key)
+                if cache_observations is None:
+                    path = ROOT / key
+                    actual = sha(path.read_bytes()) if path.is_file() else before
+                    if actual != before:
+                        historical_caches.setdefault(name, {})[key] = dict(
+                            preserved_sha256=before, current_sha256=actual)
+                else:
+                    binding = cache_observations.get(name, {}).get(key)
+                    if binding is not None:
+                        observed = binding.get('current_sha256', '')
+                        if (set(binding) != {'preserved_sha256', 'current_sha256'}
+                                or binding['preserved_sha256'] != before
+                                or len(observed) != 64
+                                or any(c not in '0123456789abcdef' for c in observed)):
+                            raise ValueError('invalid historical cache observation: ' + key)
+                        historical_caches.setdefault(name, {})[key] = binding
+            # The original manifest digest stays frozen. Its owning proof gate
+            # separately rebuilds or checks actual artifacts; no artifact pass is claimed here.
+            return before
+        actual = sha((ROOT / key).read_bytes())
         if actual != before and key in HISTORICAL:
             if key not in preserved or sha(preserved[key]) != before:
                 raise ValueError("historical proof input lacks its exact predecessor bytes: " + key)
@@ -155,12 +182,14 @@ def apply():
     check_operational_consumers()
     preserved, predecessor = preserved_inputs()
     caches, compiled_predecessor = preserved_caches()
+    observations = json.loads(RECORD.read_text()).get('historical_caches', {}) if RECORD.exists() else {}
     entries, historical, historical_caches = {}, {}, {}
     for name in FILES:
         raw, original = original_record(name)
         # Permit the status document, its receipt hashes and the exact metadata adapter.
         # Native/Lean/Rocq proof inputs, declarations and axiom sets cannot be amended.
-        fingerprint = current_fingerprints(name, original, preserved, caches, historical, historical_caches)
+        fingerprint = current_fingerprints(name, original, preserved, caches, historical, historical_caches,
+                                           observations)
         updated, changes = amended(original, fingerprint)
         current = decode(name, (ROOT / name).read_bytes())
         # An earlier application may have different approved status-document hashes.
@@ -202,7 +231,8 @@ def check():
         current = decode(name, raw)
         original_raw, original = original_record(name)
         expected, changes = amended(original,
-            current_fingerprints(name, original, preserved, caches, historical, historical_caches))
+            current_fingerprints(name, original, preserved, caches, historical, historical_caches,
+                                 record.get('historical_caches', {})))
         if (entry["original_file_sha256"] != sha(original_raw) or current != expected
                 or entry["changes"] != changes or mask(original, changes) != mask(current, changes)):
             raise ValueError("accepted proof payload or exact baseline/current mapping differs: " + name)

@@ -103,6 +103,13 @@ API and Main Lean artifacts named by the accepted reporting/compiler record at
 keeps its original cache fingerprints; current rebuilt artifacts are recorded
 separately. This preserves the workspace predecessor archive and its existing
 VM bindings unchanged.
+The metadata migration check can run before any generated proof cache exists.
+It freezes every original artifact/SDK digest in the manifest and validates the
+sealed historical cache bytes; recorded current-cache hashes are past local
+observations. Actual artifact availability/content belongs to the corresponding
+proof gate, which still rebuilds or checks those artifacts. Maintained sources,
+approved operational amendments and original theorem/axiom/scope payloads remain
+checked. CI fetches the accepted Git history needed to validate those preimages.
 The migration record checks every alias against its canonical target and records
 the original revision. Preserve theorem statements and axiom sets exactly;
 amend only reviewed operational-document/evidence fingerprints when needed.
