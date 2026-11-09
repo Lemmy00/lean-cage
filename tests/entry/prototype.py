@@ -24,7 +24,9 @@ TRANSCRIPT = ROOT / "assurance/entry-route-transcript.log.gz"
 INVENTORY = ROOT / "assurance/entry-route-image.json.gz"
 SOURCES = ROOT / "assurance/entry-route-sources.tar.gz"
 SELECTED = ("shell", "python", "preflight", "fault_nnp_fail", "fault_filter_fail", "fault_exec_fail",
-            "fault_credentials_fail", "fault_handles_fail", "fault_error_drop", "fault_error_short", "inherited_handles")
+            "fault_credentials_fail", "fault_handles_fail", "fault_error_drop", "fault_error_short", "inherited_handles",
+            "fault_release_eof", "fault_release_bad", "fault_release_detach", "fault_parent_reap_fail",
+            "fault_admission_clock_fail", "fault_launch_clock_fail", "fault_admission_open_fail")
 
 
 def selected_vm():
@@ -40,6 +42,8 @@ def inputs(vm):
     paths = [ROOT / name for name in vm.source_identities()]
     paths += [ROOT / name for name in (
         "linux/workspace.c", "linux/entry_handoff.h", "linux/entry_primitives.c",
+        "linux/entry_decimal.h", "linux/entry_decimal.c", "linux/entry_handles.c", "linux/process_primitives.h",
+        "linux/process_primitives.c",
         "linux/artifacts.h", "linux/filter.h", "linux/sha256.h", "python/leancage/build.py",
         "scripts/workspace_runtime.py", "profiles/offline-workspace/example-policy.json",
         "launch/lakefile.lean", "launch/lean-toolchain", "launch/lake-manifest.json",
@@ -99,39 +103,10 @@ def run(record_evidence=False):
     source_archive = archive_sources(sources)
     subprocess.run(["lake", "build", "leancage-entry", "leancage-entry-test"], cwd=ROOT / "launch", check=True)
     subprocess.run(["lake", "build", "leancage"], cwd=ROOT / "workspace", check=True)
+    # The public build and this focused check consume the same maintained helper.
     source = (ROOT / "linux/workspace.c").read_text()
-    start = source.index("static _Noreturn void guest(")
-    end = source.index("// §FS-workspace.results: Trusted init", start)
-    source = source[:start] + '#include "entry_handoff.h"\n\n' + source[end:]
-    # Replace the preflight duplication inside this isolated candidate image as well.
-    start = source.index("    if(preflight&&!error){")
-    end = source.index("    int pipefd[2];", start)
-    source = source[:start] + source[end:]
-    injection = '    const char *injected=getenv("LEANCAGE_M3_TEST_MODE");if(injected)mode=injected;'
-    if source.count(injection) != 1:
-        raise ValueError("entry prototype's test-selector source cut changed")
-    source = source.replace(injection, "#ifdef LEANCAGE_ENTRY_TEST\n" + injection + "\n#endif")
-    start = source.index("static int credentials(void)")
-    end = source.index("// §FS-workspace.authority:", start)
-    source = source[:start] + source[end:]
-    source = source.replace("if(!bad&&send_frame(report,sequence++,admission))bad=1;",
-                            "if(!bad&&!preflight&&send_frame(report,sequence++,admission))bad=1;")
-    source = source.replace("    if(!bad&&!entered&&used==8&&get32(failure_bytes)>=1",
-                            "    if(!bad&&preflight&&!entered&&used==8&&!get32(failure_bytes)&&!get32(failure_bytes+4)&&leader_done&&WIFEXITED(leader_status)&&!WEXITSTATUS(leader_status))\n"
-                            "        result=result_of(PREFLIGHT,0,0,0);\n"
-                            "    else if(!bad&&!entered&&used==8&&get32(failure_bytes)>=1")
     (WORK / "workspace.c").write_text(source)
     harness = (ROOT / "tests/m3/init.c").read_text()
-    ordinary = 'char *const environment[]={"LC_ALL=C",mode,NULL};execve(args[0],args,environment);'
-    controlled = 'char *const environment[]={"LC_ALL=C",mode,NULL};execve(c->fault[0]&&strcmp(c->fault,"normal")?"/leancage-m3-helper-test":args[0],args,environment);'
-    death = 'NULL};execve(args[0],args,environment);_exit(121);'
-    owned_death = 'NULL};execve(early||controller_death==2?"/leancage-m3-helper-test":args[0],args,environment);_exit(121);'
-    if harness.count(ordinary) != 1:
-        raise ValueError("entry prototype's helper-selection source cuts changed")
-    harness = harness.replace(ordinary, controlled)
-    if harness.count(death) != 1:
-        raise ValueError("entry prototype's death-helper selection source cut changed")
-    harness = harness.replace(death, owned_death)
     (WORK / "init.c").write_text(harness)
     cases = vm.CASES.CASES
     header = "static const struct testcase cases[]={\n"
@@ -145,6 +120,9 @@ def run(record_evidence=False):
         command = ["cc", "-std=c11", "-O2", "-Wall", "-Wextra", "-Werror", "-static", "-no-pie", *flags,
                    "-I", str(WORK), "-I", str(ROOT / "tests/m3"), "-I", str(ROOT / "native"),
                    "-I", str(ROOT / "linux"), str(path), "-o", str(WORK / name)]
+        if name != "init":
+            command[-2:-2] = [str(ROOT / "linux/entry_decimal.c"), str(ROOT / "linux/entry_handles.c"),
+                              str(ROOT / "linux/process_primitives.c")]
         subprocess.run(command, check=True)
         compile_commands.append(command)
     runtime = vm.RUNTIME.load_entries()

@@ -41,3 +41,4 @@ current roadmap and application-verification contract for assignments.
 | [§AR-compiled-reporting](AR-compiled-reporting.md#ar-compiled-reporting-carry-reporting-observations-across-verified-compilation) | Concrete verified compilation consumed by the conditional assembly reporting argument |
 | [§AR-workspace-vm](AR-workspace-vm.md#ar-workspace-vm-own-the-caller-request-disposable-vm-and-returned-artifacts) | Caller snapshots, private VM transport, cancellation, bundle and source migration |
 | [§AR-entry](AR-entry.md#ar-entry-shared-executable-guest-admission-over-primitive-operations) | Shared entry worker and explicit native caller/effect proof obligations |
+| [§AR-metadata](AR-metadata.md#ar-metadata-execute-bounded-metadata-control-over-individual-operations) | Shared metadata control and its per-operation handle/state proof |

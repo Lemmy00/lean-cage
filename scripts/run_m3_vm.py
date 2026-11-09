@@ -20,6 +20,7 @@ PROJECT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT / 'scripts'))
 import m3_runtime as RUNTIME
 import m3_elf as ELF
+import workspace_evidence as PREDECESSOR
 SPEC = importlib.util.spec_from_file_location('m3_m1_helpers', PROJECT / 'scripts/run_m1_vm.py')
 M1 = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(M1)
@@ -43,27 +44,23 @@ def build_image():
     for case in CASES.CASES:
         header += "{" + ",".join("." + key + "=" + (json.dumps(case[key], ensure_ascii=True) if isinstance(case[key], str) else str(case[key])) for key in fields) + "},\n"
     (WORK / 'cases.h').write_text(header + "};\n")
-    for name, source in [('init', 'tests/m3/init.c'), ('leancage-m3-helper', 'native/leancage_m3.c')]:
-        subprocess.run(['cc', '-std=c11', '-O2', '-Wall', '-Wextra', '-Werror', '-static', '-no-pie', '-I', str(WORK), str(PROJECT / source), '-o', str(WORK / name)], check=True)
+    # §FS-entry.runtime: Test selectors are available only in explicitly separate VM test images.
+    primitives = [str(PROJECT / 'linux' / name) for name in
+                  ('entry_decimal.c', 'entry_handles.c', 'process_primitives.c')]
+    for name, source, extra, flags in [
+            ('init', 'tests/m3/init.c', [], []),
+            ('leancage-m3-helper', 'linux/workspace.c', primitives, []),
+            ('leancage-m3-helper-test', 'linux/workspace.c', primitives, ['-DLEANCAGE_ENTRY_TEST=1'])]:
+        subprocess.run(['cc', '-std=c11', '-O2', '-Wall', '-Wextra', '-Werror', '-static', '-no-pie',
+                        '-I', str(WORK), *flags, str(PROJECT / source), *extra, '-o', str(WORK / name)], check=True)
     runtime = RUNTIME.load_entries()
     if ELF.inventory(runtime,RUNTIME.resolve) != json.loads((PROJECT/"profiles/m3/elf-closure.json").read_text()):
         raise ValueError("Runtime ELF closure differs from reviewed inventory")
-    # Explicit profile overlays are recorded as guest-image bytes, not changes to the upstream lock.
-    for prefix in ('tmp', 'var/tmp', 'run', 'dev', 'proc', 'sys', 'workspace', 'etc/machine-id'):
-        runtime = {name: entry for name, entry in runtime.items() if name != prefix and not name.startswith(prefix + '/')}
-    for name in ('run', 'dev', 'proc', 'sys', 'workspace'):
-        runtime[name] = {'kind': 'directory', 'mode': 0o755, 'data': b''}
-    for name in ('tmp', 'var/tmp'):
-        runtime[name] = {'kind': 'symlink', 'mode': 0o777, 'data': b'/workspace/.tmp'}
-    for name in ('passwd', 'group', 'hostname', 'hosts', 'resolv.conf'):
-        runtime['etc/' + name] = {'kind': 'file', 'mode': 0o444, 'data': b''}
-    runtime['.leancage-runtime'] = {'kind': 'file', 'mode': 0o444, 'data': RUNTIME.load_lock()['manifest_digest'].encode()}
-    entries = []
-    for name in ('dev', 'proc', 'sys', 'm3-runs', 'm3-results', 'm3-inputs', 'm3-runtime'):
-        entries.append((name, stat.S_IFDIR | (0o700 if name in ('m3-runs', 'm3-results', 'm3-inputs') else 0o755), b'', 0, 0))
-    for name, entry in sorted(runtime.items(), key=lambda item: (item[0].count('/'), item[0])):
-        kind = {'directory': stat.S_IFDIR, 'file': stat.S_IFREG, 'symlink': stat.S_IFLNK}[entry['kind']]
-        entries.append(('m3-runtime/' + name, kind | entry['mode'], entry['data'], 0, 0))
+    spec = importlib.util.spec_from_file_location('workspace_public_image', PROJECT / 'python/leancage/build.py')
+    public_build = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(public_build)
+    entries = public_build.image_entries(runtime)
+    subprocess.run(['lake', 'build', 'leancage-entry', 'leancage-entry-test'], cwd=PROJECT / 'launch', check=True)
     subprocess.run(['lake', 'build', 'leancage'], cwd=PROJECT / 'm3', check=True)
     launcher = PROJECT / 'm3/.lake/build/bin/leancage'
     subprocess.run([str(launcher),'emit-filter',str(WORK/'filter.bin')],check=True)
@@ -72,7 +69,9 @@ def build_image():
     entries.append(('filter.bin',stat.S_IFREG | 0o444,(WORK/'filter.bin').read_bytes(),0,0))
     entries.append(('leancage', stat.S_IFREG | 0o555, launcher.read_bytes(), 0, 0))
     directories = set()
-    for library in M1.dependencies(launcher):
+    libraries = {path for image in (launcher, PROJECT/'launch/.lake/build/bin/leancage-entry',
+                                    PROJECT/'launch/.lake/build/bin/leancage-entry-test') for path in M1.dependencies(image)}
+    for library in sorted(libraries):
         name = str(library).lstrip('/')
         directories.update(str(p) for p in Path(name).parents if str(p) != '.')
         entries.append((name, stat.S_IFREG | 0o555, library.read_bytes(), 0, 0))
@@ -87,8 +86,10 @@ def build_image():
         entries.append(('m3-inputs/' + kind, stat.S_IFDIR | 0o700, b'', 0, 0))
         for digest, data in artifacts.items():
             entries.append(('m3-inputs/' + kind + '/' + digest, stat.S_IFREG | 0o400, data, 0, 0))
-    for name in ('init', 'leancage-m3-helper'):
+    for name in ('init', 'leancage-m3-helper', 'leancage-m3-helper-test'):
         entries.append((name, stat.S_IFREG | 0o555, (WORK / name).read_bytes(), 0, 0))
+    for name in ('leancage-entry', 'leancage-entry-test'):
+        entries.append((name, stat.S_IFREG | 0o555, (PROJECT/'launch/.lake/build/bin'/name).read_bytes(), 0, 0))
     assurance = {'schema': 'leancage-m3-assurance-v1', 'source_sha256': source_identities(),
                  'helper_sha256': M1.sha256(WORK / 'leancage-m3-helper'), 'controller_sha256': M1.sha256(launcher),
                  'assumptions': ASSUMPTIONS}
@@ -105,9 +106,9 @@ def build_image():
 
 
 CONFIG = PROJECT / 'tests/m3/linux-6.18.59.config'
-EVIDENCE = PROJECT / 'assurance/m3-vm-evidence.json'
-TRANSCRIPT = PROJECT / 'assurance/m3-vm-transcript.log'
-INVENTORY = PROJECT / 'assurance/m3-image-inventory.json'
+EVIDENCE = PROJECT / 'assurance/workspace-vm-evidence.json'
+TRANSCRIPT = PROJECT / 'assurance/workspace-vm-transcript.log'
+INVENTORY = PROJECT / 'assurance/workspace-vm-image.json'
 PROFILE = 'linux-x86_64-offline-workspace-m3-v1'
 MACHINE = dict(acceleration='tcg', cpu='max', vcpus=1, memory_mib=2048,
                host_mounts=[], network_devices=[], persistent_disks=[])
@@ -130,6 +131,16 @@ def source_identities():
         paths += [p for p in (PROJECT / directory).rglob('*') if p.is_file() and p.suffix in suffixes
                   and '.lake' not in p.parts and '__pycache__' not in p.parts]
     paths += sorted((PROJECT / 'native').glob('*m3*'))
+    # §AR-workspace.acceptance: Reuse the complete maintained executable source closure.
+    spec = importlib.util.spec_from_file_location('workspace_vm_native_inputs', PROJECT / 'python/leancage/build.py')
+    public_build = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(public_build)
+    paths += [PROJECT / name for name in public_build.source_inventory()]
+    paths += [PROJECT / name for name in ('scripts/workspace_evidence.py', 'assurance/workspace-baseline.json.gz',
+        'python/leancage/build.py', 'linux/entry_handoff.h', 'linux/entry_decimal.h', 'linux/entry_decimal.c',
+        'linux/entry_handles.c', 'linux/process_primitives.h', 'linux/process_primitives.c', 'linux/entry_primitives.c',
+        'launch/lakefile.lean', 'launch/lake-manifest.json', 'launch/lean-toolchain')]
+    paths += [path for path in (PROJECT/'launch').rglob('*.lean') if '.lake' not in path.parts]
     paths += [PROJECT / p for p in ['m2/LeanCageM2.lean', 'm2/lakefile.lean', 'm2/lake-manifest.json', 'm2/lean-toolchain', 'LeanCage.lean', 'm3/lean-toolchain']]
     return {str(p.relative_to(PROJECT)): M1.sha256(p) for p in sorted(set(paths))}
 
@@ -207,6 +218,12 @@ def validate_transcript(text, code):
                 raise ValueError('Output prefix differs from identity')
         if c['expected'] and r['stdout_sha256'] != hashlib.sha256(c['expected'].encode()).hexdigest():
             raise ValueError('Useful workload output differs')
+        if 'stage' in c and r['stage'] != c['stage']:
+            raise ValueError('Wrong setup stage')
+        # §FS-entry.control: These failure workloads print before doing anything else.
+        if c['name'] in {'fault_admission_clock_fail', 'fault_launch_clock_fail', 'fault_admission_open_fail'} and any(
+                r[key] for key in ('out', 'err', 'stdout_stored', 'stderr_stored')):
+            raise ValueError('Setup gate failure executed a workload')
         if r['ended'] < r['began']: raise ValueError('Nonmonotonic harness timestamps')
     a,b = records[-2:]
     if a['uid'] == b['uid'] or max(a['began'],b['began']) >= min(a['ended'],b['ended']):
@@ -265,18 +282,31 @@ def artifact_paths():
         'qemu_rom_kvmvapic':root/'usr/share/qemu/kvmvapic.bin','qemu_rom_linuxboot':root/'usr/share/qemu/linuxboot_dma.bin',
         'kernel':WORK/'linux-6.18.59/arch/x86/boot/bzImage','kernel_config':WORK/'linux-6.18.59/.config',
         'initramfs':WORK/'initramfs.cpio.gz','init':WORK/'init','helper':WORK/'leancage-m3-helper',
-        'controller':PROJECT/'m3/.lake/build/bin/leancage','filter':WORK/'filter.bin','lean':prefix/'bin/lean','clang':prefix/'bin/clang',
+        'controller':PROJECT/'m3/.lake/build/bin/leancage','helper_test':WORK/'leancage-m3-helper-test',
+        'entry':PROJECT/'launch/.lake/build/bin/leancage-entry','entry_test':PROJECT/'launch/.lake/build/bin/leancage-entry-test',
+        'filter':WORK/'filter.bin','lean':prefix/'bin/lean','clang':prefix/'bin/clang',
         'leanrt':prefix/'lib/lean/libleanrt.a','cc':Path(shutil.which('cc')).resolve()}
     for path in M1.dependencies(paths['qemu'],environment()): paths['qemu_library:'+path.name] = path
     for path in M1.dependencies(paths['controller']): paths['controller_library:'+path.name] = path
+    for path in M1.dependencies(paths['entry']): paths['entry_library:'+path.name] = path
+    if set(paths) != artifact_labels():
+        raise ValueError('current workspace runtime dependency labels differ from the supported profile')
     return paths
+
+
+def artifact_labels():
+    original = set(json.loads((PROJECT/'profiles/m3/artifact-labels.json').read_text()))
+    return original | {'helper_test', 'entry', 'entry_test'} | {name.replace('controller_library:', 'entry_library:', 1)
+        for name in original if name.startswith('controller_library:')}
 
 
 def validate_evidence(e, transcript=TRANSCRIPT, inventory=INVENTORY):
     expected = {'schema_version','status','profile','kernel','machine','command','return_code','timeout_seconds','observations',
-                'source_sha256','artifacts_sha256','inventory_sha256','transcript_sha256','tools','assumptions','environment'}
-    if set(e) != expected or e['schema_version'] != 1 or e['status'] != 'passed' or e['profile'] != PROFILE:
-        raise ValueError('Unsupported/incomplete M3 evidence schema')
+                'source_sha256','artifacts_sha256','inventory_sha256','transcript_sha256','tools','assumptions','environment','predecessor'}
+    if set(e) != expected or e['schema_version'] != 2 or e['status'] != 'passed' or e['profile'] != PROFILE:
+        raise ValueError('Unsupported/incomplete current workspace evidence schema')
+    if e['predecessor'] != PREDECESSOR.binding():
+        raise ValueError('current workspace predecessor binding differs')
     pins = json.loads(M1.PINS.read_text())
     kernel = {'version':pins['kernel_version'],'commit':pins['kernel_commit'],'archive_sha256':pins['kernel_archive_sha256'],'config_sha256':M1.sha256(CONFIG)}
     if e['kernel'] != kernel or e['machine'] != MACHINE or e['command'] != command_for(Path('{project}')) or e['timeout_seconds'] != 300:
@@ -286,7 +316,7 @@ def validate_evidence(e, transcript=TRANSCRIPT, inventory=INVENTORY):
     if e['environment'] != environment_record(): raise ValueError('Changed or mixed-root emulator environment')
     if e['observations'] != validate_transcript(transcript.read_text(),e['return_code']): raise ValueError('Structured observations differ')
     artifacts=e['artifacts_sha256']; needed={'qemu','firmware','qemu_accel','qemu_rom_kvmvapic','qemu_rom_linuxboot','kernel','kernel_config','initramfs','init','helper','controller','lean','clang','leanrt','cc'}
-    if set(artifacts) != set(json.loads((PROJECT/'profiles/m3/artifact-labels.json').read_text())) or not needed <= artifacts.keys() or not all(re.fullmatch('[0-9a-f]{64}',v) for v in artifacts.values()) or artifacts['kernel_config'] != M1.sha256(CONFIG):
+    if set(artifacts) != artifact_labels() or not needed <= artifacts.keys() or not all(re.fullmatch('[0-9a-f]{64}',v) for v in artifacts.values()) or artifacts['kernel_config'] != M1.sha256(CONFIG):
         raise ValueError('Missing/malformed artifact identities')
     files=json.loads(inventory.read_text())
     for name,record in files.items():
@@ -297,8 +327,15 @@ def validate_evidence(e, transcript=TRANSCRIPT, inventory=INVENTORY):
     lock=RUNTIME.load_lock()
     for entry in lock['entrypoints'].values():
         if files['/m3-runtime'+entry['resolved_path']]['sha256'] != entry['sha256']: raise ValueError('Runtime executable/loader receipt differs')
-    for name,key in [('/init','init'),('/leancage','controller'),('/leancage-m3-helper','helper'),('/filter.bin','filter')]:
+    for name,key in [('/init','init'),('/leancage','controller'),('/leancage-m3-helper','helper'),('/leancage-m3-helper-test','helper_test'),
+                     ('/leancage-entry','entry'),('/leancage-entry-test','entry_test'),('/filter.bin','filter')]:
         if files[name]['sha256'] != artifacts[key]: raise ValueError('Image binary differs from compiled artifact')
+    for label in artifact_labels():
+        if label.startswith('entry_library:'):
+            name = label.split(':', 1)[1]
+            path = '/lib64/' + name if name.startswith('ld-linux-') else '/lib/x86_64-linux-gnu/' + name
+            if path not in files or files[path]['sha256'] != artifacts[label]:
+                raise ValueError('entry runtime dependency image identity differs: ' + name)
     tools=e['tools']
     if set(tools) != {'qemu','cc','libc','lean','host_distribution'} or not all(tools.values()) or '8.2.2' not in tools['qemu'] or '4.35.0' not in tools['lean'] or e['assumptions'] != ASSUMPTIONS:
         raise ValueError('Incomplete tool or assumption record')
@@ -340,7 +377,7 @@ def main():
     for key,cmd in {'qemu':[command[0],'--version'],'cc':['cc','--version'],'libc':['getconf','GNU_LIBC_VERSION'],'lean':['lake','env','lean','--version']}.items():
         tools[key]=subprocess.run(cmd,cwd=PROJECT,env=env,capture_output=True,text=True,check=True).stdout.strip()
     tools['host_distribution']=platform.freedesktop_os_release(); pins=json.loads(M1.PINS.read_text())
-    evidence={'schema_version':1,'status':'passed','profile':PROFILE,
+    evidence={'schema_version':2,'status':'passed','profile':PROFILE,'predecessor':PREDECESSOR.binding(),
         'kernel':{'version':pins['kernel_version'],'commit':pins['kernel_commit'],'archive_sha256':pins['kernel_archive_sha256'],'config_sha256':M1.sha256(CONFIG)},
         'machine':MACHINE,'command':command_for(Path('{project}')),'environment':environment_record(),'return_code':result.returncode,'timeout_seconds':300,
         'observations':observations,'source_sha256':sources,'artifacts_sha256':{key:M1.sha256(path) for key,path in artifact_paths().items()},

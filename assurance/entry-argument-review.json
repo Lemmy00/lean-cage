@@ -1,0 +1,31 @@
+{
+  "changed_inputs": {
+    "verification/reporting/connection.py": {
+      "after": "6d75433ca2957c0813f188751558ea4d2bbc5419a5375fb765e522c62999416d",
+      "before": "08bd0bda40e8e59433ed9ff16505a55942d39e56f7ac9b1997f3c5200f7a71c4"
+    }
+  },
+  "current_record_sha256": "69bceabf2ead5a925db76a32e498b7c0eba81f27d3ea453cc8cca01b597015a4",
+  "exact_whole_checker_amendment_guard_passed": true,
+  "foundation_and_export_checker_function_bodies_unchanged": true,
+  "ordinary_inputs": {
+    "assurance/entry-arguments.json.gz": {
+      "after": "69bceabf2ead5a925db76a32e498b7c0eba81f27d3ea453cc8cca01b597015a4",
+      "before": "d6d3293e0f9db8ba58ea73001b27230ec850c5808ae9f74c2b997165a6aa576d"
+    },
+    "assurance/entry-process.json.gz": {
+      "after": "b252994534919d315670185937e93c0e800523086516db816d0ea7cc8821fc58",
+      "before": "1cede688a46fec58fc610d4db83d82f5ef9715889413d8fe2d47eb178aaebdf3"
+    }
+  },
+  "previous_record_sha256": "d6d3293e0f9db8ba58ea73001b27230ec850c5808ae9f74c2b997165a6aa576d",
+  "process_inputs": {
+    "assurance/entry-arguments.json.gz": {
+      "after": "69bceabf2ead5a925db76a32e498b7c0eba81f27d3ea453cc8cca01b597015a4",
+      "before": "d6d3293e0f9db8ba58ea73001b27230ec850c5808ae9f74c2b997165a6aa576d"
+    }
+  },
+  "proof_artifacts_and_types_unchanged": true,
+  "schema": "leancage-entry-argument-metadata-review-v1",
+  "status": "reviewed"
+}

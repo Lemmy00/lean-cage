@@ -54,7 +54,10 @@ def build():
     export = WORK / "arguments-code.ndjson"
     with export.open("w") as out:
         subprocess.run(["lake", "-d", "launch", "env", str(exporter), "WorkerConnection",
-                        "--", "LeanCage.Entry.Arguments.unsigned", "LeanCage.Entry.ArgumentMeaning.decimalValue"],
+                        "--", "LeanCage.Entry.Arguments.unsigned", "LeanCage.Entry.ArgumentMeaning.decimalValue",
+                        "LeanCage.Entry.ArgumentMeaning.byteValues", "LeanCage.Entry.ArgumentMeaning.nativeValues",
+                        "LeanCage.Entry.PhysicalHandoff.binding", "LeanCage.Entry.PhysicalHandoff.objectCode",
+                        "LeanCage.Entry.PhysicalHandoff.grantBeforeRead"],
                        cwd=ROOT, stdout=out, check=True)
     # Reject exported axioms before invoking the pinned, strict importer.
     CONNECTION.export_records(export)
@@ -68,7 +71,12 @@ def build():
             raise
         (WORK / (name + ".log")).write_text(run.stdout)
     names = ["ArgumentConnection.imported_unsigned_bound", "ArgumentConnection.unsigned_bound_checked_type",
-             "ArgumentValues.argument_unsigned_value", "ArgumentValues.imported_unsigned_value"]
+             "ArgumentValues.argument_unsigned_value", "ArgumentValues.imported_unsigned_value",
+             "ArgumentsImport.LeanCage_Entry_ArgumentMeaning_byteValues",
+             "ArgumentsImport.LeanCage_Entry_ArgumentMeaning_nativeValues",
+             "ArgumentsImport.LeanCage_Entry_PhysicalHandoff_binding",
+             "ArgumentsImport.LeanCage_Entry_PhysicalHandoff_objectCode",
+             "ArgumentsImport.LeanCage_Entry_PhysicalHandoff_grantBeforeRead"]
     query = ["From LeanImport Require Import Lean.", "Require Import ArgumentConnection ArgumentValues."]
     for index, name in enumerate(names):
         query += [f'Redirect "type-{index}" Check {name}.',

@@ -100,8 +100,9 @@ theorem setup_no_exec (p : Inputs) :
       simp
     · simp [cmd]
   · simp only [handshake, List.mem_append, List.mem_cons, List.not_mem_nil, or_false] at h
-    rcases h with h | rfl | rfl
+    rcases h with h | rfl | rfl | rfl
     · split at h <;> simp_all [cmd]
+    · simp [cmd]
     · simp [cmd]
     · simp [cmd]
   · simp only [handleSetup, List.mem_cons, List.not_mem_nil, or_false] at h
@@ -230,5 +231,37 @@ theorem failed_command_terminal (p : Inputs) (command : Command) (rest : List Co
     funext response
     split <;> rfl
   · simp [failed, pure]
+
+theorem accepted_command_reply {commands : List Command} {trace : List (Request × Reply)}
+    (accepted : Accepted commands trace) (command : Command) (member : command ∈ commands) :
+    ∃ reply, (command.request, reply) ∈ trace ∧ command.expected.accepts reply = true := by
+  induction accepted with
+  | nil => contradiction
+  | cons first reply good remaining ih =>
+    rcases List.mem_cons.mp member with same | rest
+    · subst command
+      exact ⟨reply, by simp, good⟩
+    · obtain ⟨response, present, accepted⟩ := ih rest
+      exact ⟨response, List.mem_cons_of_mem _ present, accepted⟩
+
+-- §FS-entry.release: Actual exec requires a successful read of the supervisor's exact byte.
+theorem admission_requires_release (p : Inputs)
+    {trace : List (Request × Reply)} {request : Request}
+    (control : AtExec (admission p) trace request) :
+    ∃ reply, ({ op := Op.readByte, a := p.failure.toUInt64 }, reply) ∈ trace ∧
+      reply.1 = 1 ∧ reply.2 = (⟨#[165]⟩ : ByteArray) := by
+  have accepted := (admission_at_exec p control).2.1
+  let release := cmd p 1 { op := .readByte, a := p.failure.toUInt64 } (.byte 165) true
+  have member : release ∈ setup p := by
+    simp only [setup, List.mem_append, handshake, List.mem_cons, List.not_mem_nil, or_false]
+    simp only [release, or_true, true_or]
+  obtain ⟨reply, present, read⟩ := accepted_command_reply accepted release member
+  refine ⟨reply, present, ?_⟩
+  have checked : reply.1 = 1 ∧ (reply.2 == (⟨#[165]⟩ : ByteArray)) = true := by
+    simpa [release, cmd, Expected.accepts] using read
+  refine ⟨checked.1, ?_⟩
+  apply ByteArray.ext
+  have bytes : (reply.2.data == #[165]) = true := checked.2
+  simpa only [beq_iff_eq] using bytes
 
 end LeanCage.Entry

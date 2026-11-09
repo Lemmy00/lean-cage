@@ -392,7 +392,7 @@ commits back into `main` and push. Preserve other active work and never force-pu
 
 ## m5: Verify the complete application control path
 
-**Status: planned; none of the five deliveries below is complete.** Establish
+**Status: M5.1 complete; M5.2 is the current delivery.** Establish
 [§FS-linux-product.proofs.application](functional-spec/FS-linux-product.md#proofsapplication-the-complete-application-guarantee) across the host, VM init, Lean controller,
 native helper and returned artifacts. M5 is a verification stage with separate
 integrated deliveries. M4's elapsed time does not estimate this work:
@@ -400,7 +400,7 @@ M4 integrated a working implementation; M5 proves its application behavior.
 
 | Delivery | Concrete guarantee and consumer | Dependencies and acceptance |
 |---|---|---|
-| M5.1 — Proved guest entry | The actual launch path reaches exec only with the required credentials, handles, filter and arguments; failure prevents entry. Consumed by the full authority/lifetime argument. | Start now. Settle the execution/proof route early; prove all entry/preflight paths and real caller connection under explicit prepared-run inputs. [§AR-application-verification.admission](architecture/AR-application-verification.md#admission-fail-closed-native-guest-admission) |
+| M5.1 — Proved guest entry | The actual launch path reaches exec only with the required credentials, handles, filter and arguments; failure prevents entry. Consumed by the full authority/lifetime argument. | Complete, 2026-11-09: same-source caller/worker proof, closed useful execution, audited strict connection and identified public acceptance. Prepared-run producers retain their assigned scopes. [§AR-application-verification.admission](architecture/AR-application-verification.md#admission-fail-closed-native-guest-admission) |
 | M5.2 — Safe host boundary | Host snapshots and publication stay within owned paths and bounds for arbitrary VM output; accepted transport has consistent request/artifact identities. Consumed by every caller and later composition. | Independent of inner-VM correctness. Prove the executable decisions and their effect adapter; cover malformed bytes, unsafe paths and storage loss. [§AR-application-verification.host](architecture/AR-application-verification.md#host-safe-host-boundary-for-arbitrary-vm-output) |
 | M5.3 — Policy-authorized setup | Caller bytes determine the actual argv, limits, snapshots, objects and run authority established before entry. Supplies M5.1's preparation premises. | Uses M5.1/M5.2. Prove byte interpretation, controller/VM handoff, native workspace construction and real argument/ownership producers. [§AR-application-verification.authority](architecture/AR-application-verification.md#authority-policy-authorized-workspace-construction) |
 | M5.4 — Owned lifetime and limits | Supervision/cancellation targets only owned scopes, enforces the stated limits and justifies exit/cleanup observations across helper, VM and host. | Uses M5.3. Prove hostile interleavings and failure/loss safety; state progress assumptions separately. [§AR-application-verification.lifetime](architecture/AR-application-verification.md#lifetime-owned-descendants-limits-and-cancellation) |
@@ -429,23 +429,25 @@ does not promise that all five have equal difficulty or fit one session.
 
 ### m5.next: Current assignment
 
-Deliver **M5.1 — proved guest entry**, using the full contract and execution
-instructions in [§AR-application-verification.next](architecture/AR-application-verification.md#next-first-assignment-and-early-route-decision) and the value-carrying target
-in [§FS-linux-product.proofs.entry](functional-spec/FS-linux-product.md#proofsentry-establish-actual-state-at-workload-entry). Preserve the working product at `92367a5` and
-reuse its matching-input validation evidence.
+Deliver **M5.2 — safe host boundary**, using the complete contract in
+[§AR-application-verification.host](architecture/AR-application-verification.md#host-safe-host-boundary-for-arbitrary-vm-output). Preserve the public product and the accepted
+entry proof in [§FS-assurance.entry](functional-spec/FS-assurance.md#entry-entry-worker-body-and-route-evidence); reuse matching-input validation evidence.
 
 The current assignment extends through all five deliveries in order: complete,
 validate and integrate each, then continue to the next without another permission
-step. Entry implementation is in progress under [§DA-entry-worker](decisions/architectural/DA-entry-worker.md#da-entry-worker-use-a-fresh-single-threaded-lean-entry-image).
-The fresh worker route has source-bound VM evidence and conditional body proofs;
-the native source/caller connection remains open. No M5 delivery is complete.
+step. M5.1's accepted source/ordinary records and integrated checks are identified
+in `assurance/entry-acceptance.json`. The final public bundle is
+`77298fb97001ec611c9941962725c0e118046b35558b48d58b8b2352944ccda6`.
+Its complete entry guarantee is conditional on the explicit prepared-run and
+primitive platform contracts; policy preparation, lifetime and public observation
+producers remain assigned to M5.3–M5.5. M5.2–M5.5 are not complete.
 
-The first four working hours bound the architecture investigation, not the
-complete assignment. Demonstrate an actual caller-to-entry/failure path and its
-checked proof connection, choose the implementation route, then finish the
-complete entry interface, integration and acceptance. A failed prototype must
-change the approach; it is not a substitute delivery. The host, authority,
-lifetime and observation assignments remain explicit next work.
+The entry route decision under [§DA-entry-worker](decisions/architectural/DA-entry-worker.md#da-entry-worker-use-a-fresh-single-threaded-lean-entry-image) was made within the first four
+working hours and carried through the complete entry acceptance. For the host,
+resolve the actual caller/adapter connection with a bounded real round trip before
+expanding a rewrite. Keep arbitrary VM bytes, filesystem interference, complete
+framing, bounded storage, failure and retrieval inside its acceptance. A failed
+prototype changes the approach; it is not a substitute delivery.
 
 ## m6: Platform trust reduction and confidentiality research
 

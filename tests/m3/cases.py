@@ -71,6 +71,19 @@ case('stderr_cap', "while :; do printf '1234567890' >&2; done",exe='/bin/sh',err
 case('both_streams', "import os\nwhile True: os.write(1,b'x'*4096); os.write(2,b'y'*4096)",out_cap=8192,err_cap=8192,kind=3,triggers=8)
 case('output_boundary', "printf 12345678",exe='/bin/sh',out_cap=8,expected='12345678')
 case('preflight', 'raise AssertionError("must not execute")',check=1,kind=7,entry=0)
+# §FS-entry.provenance: Failure to retain the child PID must prevent the local fork.
+case('fault_parent_reap_fail', 'print("unexpected-workload",flush=True); raise AssertionError("must not execute")',
+     fault='parent_reap_fail',kind=1,detail=5,entry=0)
+# §FS-entry.control: Clock setup failure must prevent releasing or creating the entry child.
+case('fault_admission_clock_fail', 'print("unexpected-workload",flush=True); raise AssertionError("must not execute")',
+     fault='admission_clock_fail',kind=4,detail=71,entry=2)
+case('fault_launch_clock_fail', 'print("unexpected-workload",flush=True); raise AssertionError("must not execute")',
+     fault='launch_clock_fail',kind=1,detail=5,entry=0)
+# §FS-entry.release: Failure to open the child-owned cgroup authority cannot start entry.
+case('fault_admission_open_fail', 'print("unexpected-workload",flush=True); raise AssertionError("must not execute")',
+     fault='admission_open_fail',kind=1,stage=2,detail=5,entry=0)
+for fault in ['release_eof', 'release_bad', 'release_detach']:
+    case('fault_'+fault, 'raise AssertionError("must not execute")',fault=fault,kind=1,detail=71,entry=0)
 for fault in ['namespace_fail','mount_fail','credentials_fail','nnp_fail','filter_fail','exec_fail']:
     case('fault_'+fault, 'raise AssertionError("must not execute")',fault=fault,kind=1,detail=-1,entry=0)
 for fault in ['error_drop', 'error_short']:

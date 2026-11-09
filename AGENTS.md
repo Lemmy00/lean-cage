@@ -5,9 +5,11 @@
 Read [README](README.md), [§RM-roadmap.m5.next](docs/roadmap.md#m5next-current-assignment),
 [§FS-linux-product](docs/functional-spec/FS-linux-product.md#fs-linux-product-a-reusable-linux-workspace-with-an-explicit-trust-boundary), the assigned contract, and
 [§REQ-proof-integrity](docs/requirements/REQ-proof-integrity.md#req-proof-integrity-never-substitute-a-weaker-claim-for-an-unfinished-proof) before changing code.
-The current assignment is the first application guarantee in
-[§AR-application-verification.next](docs/architecture/AR-application-verification.md#next-first-assignment-and-early-route-decision). The reusable product at `92367a5` is its
-working baseline; [M4-CONTINUE.md](M4-CONTINUE.md) preserves that completed contract.
+The current assignment is the host boundary guarantee in
+[§AR-application-verification.host](docs/architecture/AR-application-verification.md#host-safe-host-boundary-for-arbitrary-vm-output), followed automatically by the remaining M5
+deliveries. The accepted entry guarantee is recorded in [§FS-assurance.entry](docs/functional-spec/FS-assurance.md#entry-entry-worker-body-and-route-evidence) and
+`assurance/entry-acceptance.json`. The reusable product at `92367a5` is the working
+baseline; [M4-CONTINUE.md](M4-CONTINUE.md) preserves that completed contract.
 The planning revision of 2026-11-03 separates the usable product, complete
 application verification and platform research under [§FS-assurance.product](docs/functional-spec/FS-assurance.md#product-product-assurance-levels-and-trusted-components).
 Use its explicit platform trust boundary. M5 subparts are integrated guarantees

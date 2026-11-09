@@ -33,9 +33,40 @@ def sha(path):
     return h.hexdigest()
 
 
+def native_source_paths(translation_units=None):
+    """Return the actual maintained C units and their quoted header closure."""
+    if translation_units is None:
+        translation_units = ("linux/workspace.c", "linux/vm_init.c", "linux/entry_decimal.c",
+                             "linux/entry_handles.c", "linux/process_primitives.c", "linux/entry_primitives.c",
+                             "linux/metadata_primitives.c")
+    pending = [ROOT / name for name in translation_units]
+    found, visited = set(), set()
+    while pending:
+        path = Path(os.path.abspath(pending.pop()))
+        target = path.resolve()
+        if not target.is_relative_to(ROOT) or not path.is_file():
+            raise ValueError("external or missing maintained native input: " + str(path))
+        if path in visited:
+            continue
+        visited.add(path)
+        found.add(path)
+        # Retain the compiler's included spelling and its canonical target.
+        found.add(target)
+        for name in re.findall(r'^\s*#\s*include\s*"([^"\n]+)"', path.read_text(), re.M):
+            candidates = (path.parent / name, ROOT / "native" / name, ROOT / "linux" / name)
+            include = next((candidate for candidate in candidates if candidate.is_file()), None)
+            if include is None:
+                raise ValueError("unresolved maintained native include: " + name)
+            pending.append(include)
+    return found
+
+
 def source_inventory():
     paths = [ROOT / name for name in ("linux/workspace.c", "linux/vm_init.c", "linux/artifacts.h",
-             "linux/filter.h", "linux/sha256.h", "scripts/build.sh", "scripts/run_m1_vm.py", "leancage",
+             "linux/filter.h", "linux/sha256.h", "linux/entry_handoff.h", "linux/entry_decimal.h",
+             "linux/entry_decimal.c", "linux/entry_handles.c", "linux/entry_primitives.c", "linux/process_primitives.c", "linux/process_primitives.h",
+             "launch/lakefile.lean", "launch/lake-manifest.json", "launch/lean-toolchain",
+             "scripts/build.sh", "scripts/run_m1_vm.py", "scripts/workspace_evidence.py", "leancage",
              "lean-toolchain", "lakefile.lean", "lake-manifest.json", "LeanCage.lean",
              "workspace/Main.lean", "workspace/LeanCageM3.lean", "workspace/lakefile.lean",
              "workspace/lake-manifest.json", "workspace/lean-toolchain", "lifecycle/LeanCageM2.lean",
@@ -44,9 +75,20 @@ def source_inventory():
     paths += sorted((ROOT / "LeanCage").rglob("*.lean"))
     paths += sorted((ROOT / "python/leancage").glob("*.py"))
     paths += sorted((ROOT / "library").glob("*.lean"))
+    paths += sorted((ROOT / "launch").glob("*.lean"))
+    paths += sorted((ROOT / "launch/LeanCageEntry").rglob("*.lean"))
     paths += sorted((ROOT / "workspace/LeanCageM3").glob("*.lean"))
     paths += sorted((ROOT / "lifecycle/LeanCageM2").rglob("*.lean"))
-    return {str(p.relative_to(ROOT)): sha(p) for p in paths}
+    # §AR-product.organization: Bind maintained packages and their nested sources.
+    for package in ("library", "lifecycle", "workspace", "launch"):
+        paths += [path for path in (ROOT / package).rglob("*.lean") if ".lake" not in path.parts]
+        paths += [ROOT / package / name for name in ("lakefile.lean", "lake-manifest.json", "lean-toolchain")]
+    paths += sorted(native_source_paths())
+    # Compatibility spellings and their actual maintained targets both remain visible.
+    canonical = {path.resolve() for path in paths}
+    if any(not path.is_relative_to(ROOT) for path in canonical):
+        raise ValueError("source inventory contains an external compatibility target")
+    return {str(p.relative_to(ROOT)): sha(p) for p in sorted(set(paths) | canonical)}
 
 
 def image_entries(runtime):
@@ -92,6 +134,8 @@ def build(destination=DEFAULT_BUNDLE, prepare=True):
         raise ValueError("runtime ELF closure differs from the reviewed profile")
     subprocess.run(["lake", "build", "leancage"], cwd=ROOT / "workspace", check=True)
     subprocess.run(["lake", "build"], cwd=ROOT / "library", check=True)
+    # §FS-entry.runtime: Only the fresh production entry image belongs in the public bundle.
+    subprocess.run(["lake", "build", "leancage-entry"], cwd=ROOT / "launch", check=True)
     destination = Path(destination).absolute()
     destination.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="bundle-", dir=destination.parent) as directory:
@@ -107,16 +151,22 @@ def build(destination=DEFAULT_BUNDLE, prepare=True):
         (stage / "bin/leancage").write_text('#!/usr/bin/env python3\nfrom pathlib import Path\nimport sys\nsys.path.insert(0, str(Path(__file__).resolve().parents[1] / "python"))\nfrom leancage.cli import main\nraise SystemExit(main(["--bundle", str(Path(__file__).resolve().parents[1]), *sys.argv[1:]]))\n')
         (stage / "bin/leancage").chmod(0o755)
         for name, source in (("helper", "linux/workspace.c"), ("init", "linux/vm_init.c")):
+            primitive_sources = [str(ROOT / "linux" / name) for name in
+                                 ("entry_decimal.c", "entry_handles.c", "process_primitives.c")] if name == "helper" else []
             subprocess.run(["cc", "-std=c11", "-O2", "-Wall", "-Wextra", "-Werror", "-static", "-no-pie",
-                            str(ROOT / source), "-o", str(stage / "bin" / name)], check=True)
+                            str(ROOT / source), *primitive_sources, "-o", str(stage / "bin" / name)], check=True)
         controller = ROOT / "workspace/.lake/build/bin/leancage"
         shutil.copy2(controller, stage / "bin/controller")
+        entry_worker = ROOT / "launch/.lake/build/bin/leancage-entry"
+        shutil.copy2(entry_worker, stage / "bin/entry")
         subprocess.run([str(controller), "emit-filter", str(stage / "profile/filter.bin")], check=True)
         if (ROOT / "linux/filter.h").read_text() != vm.filter_header((stage / "profile/filter.bin").read_bytes()):
             raise ValueError("native filter differs from the proved Lean filter bytes")
         entries = image_entries(runtime)
         directories = set()
-        for library in bootstrap.dependencies(controller):
+        libraries = {library for executable in (controller, entry_worker)
+                     for library in bootstrap.dependencies(executable)}
+        for library in sorted(libraries):
             name = str(library).lstrip("/")
             directories.update(str(p) for p in Path(name).parents if str(p) != ".")
             entries.append((name, stat.S_IFREG | 0o555, library.read_bytes(), 0, 0))
@@ -125,7 +175,8 @@ def build(destination=DEFAULT_BUNDLE, prepare=True):
             shutil.copy2(library, target)
         entries[:0] = [(n, stat.S_IFDIR | 0o755, b"", 0, 0) for n in sorted(directories, key=lambda p: (p.count("/"), p))]
         for image_name, staged in (("init", "bin/init"), ("leancage", "bin/controller"),
-                                   ("leancage-m3-helper", "bin/helper"), ("filter.bin", "profile/filter.bin")):
+                                   ("leancage-m3-helper", "bin/helper"), ("leancage-entry", "bin/entry"),
+                                   ("filter.bin", "profile/filter.bin")):
             entries.append((image_name, stat.S_IFREG | 0o555, (stage / staged).read_bytes(), 0, 0))
         entries.extend([
             ("leancage-m3-disposable-vm", stat.S_IFREG | 0o444, b"LeanCage-M3-root-VM-v1", 0, 0),
@@ -161,12 +212,14 @@ def build(destination=DEFAULT_BUNDLE, prepare=True):
             if not target.exists():
                 shutil.copy2(source, target)
         for name in ("product-layout.json", "filter-decoder.json", "m2-claims.json", "m3-claims.json",
-                     "reporting-source.json.gz", "reporting-connection.json.gz", "reporting-compiler.json.gz", "product-core.json"):
+                     "reporting-source.json.gz", "reporting-connection.json.gz", "reporting-compiler.json.gz", "product-core.json",
+                     "entry-claims.json", "entry-arguments.json.gz", "entry-process.json.gz", "entry-native-values.json.gz",
+                     "workspace-claims.json", "workspace-source.json.gz", "workspace-baseline.json.gz"):
             source = ROOT / "assurance" / name
             if source.exists():
                 shutil.copy2(source, stage / "assurance" / name)
         checked_artifacts = {}
-        for package in ("", "lifecycle", "workspace", "library"):
+        for package in ("", "lifecycle", "workspace", "library", "launch"):
             directory = ROOT / package / ".lake/build/lib/lean"
             for path in directory.rglob("*.olean"):
                 checked_artifacts[str(path.relative_to(ROOT))] = sha(path)
@@ -189,8 +242,14 @@ def build(destination=DEFAULT_BUNDLE, prepare=True):
                 "platform": vm.ASSUMPTIONS,
                 "native_adapter": {"source": "linux/workspace.c", "functions": {
                     name: re.findall(r"^(?:static )?(?:_Noreturn )?(?:struct \w+|int|void|uint64_t|uint32_t) (\w+)\(", (ROOT / name).read_text(), re.M)
-                    for name in ("linux/workspace.c", "linux/artifacts.h", "linux/sha256.h")},
+                    for name in ("linux/workspace.c", "linux/entry_handoff.h", "linux/entry_decimal.h",
+                                 "linux/entry_decimal.c", "linux/entry_handles.c", "linux/entry_primitives.c", "linux/metadata_primitives.c", "linux/process_primitives.c", "linux/process_primitives.h",
+                                 "linux/artifacts.h", "linux/sha256.h")},
                                    "evidence": "review, existing VM suite, capture regression; complete source correspondence remains an application-verification task"},
+                "entry_runtime": {"source": ["launch", "linux/entry_primitives.c", "linux/metadata_primitives.c"],
+                                  "executable": "bin/entry", "image_path": "/leancage-entry",
+                                  "contract": "FS-entry.runtime",
+                                  "evidence": "assurance/entry-claims.json states its exact checked scope; caller and complete admission claims require their integrated acceptance"},
                 "vm_adapter": {"source": "linux/vm_init.c", "functions": ["profile", "command", "helper_child", "cancel_helper", "send_file", "exports", "scopes_extinct", "main"],
                                "evidence": "public-interface acceptance and bounded protocol tests"},
                 "host_adapter": {"source": "python/leancage", "evidence": "snapshot, framing, identity, publication and VM lifetime tests"}},

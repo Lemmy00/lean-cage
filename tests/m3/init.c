@@ -67,7 +67,7 @@ static int run_case(const struct testcase *c) {
         close(reports[0]);close(reports[1]);
         char mode[128];snprintf(mode,sizeof(mode),"LEANCAGE_M3_TEST_MODE=%s",c->fault[0]?c->fault:"normal");
         char *const args[]={"/leancage-m3-helper",c->check?"M3CHECK1":"M3PLAN1",numbers[0],numbers[1],numbers[2],numbers[3],numbers[4],numbers[5],numbers[6],numbers[7],numbers[8],numbers[9],parent,c->export_state?"regular-files":"discard",(char *)c->tree,(char *)c->stdin,(char *)c->exe,"-c",(char *)c->code,NULL};
-        char *const environment[]={"LC_ALL=C",mode,NULL};execve(args[0],args,environment);_exit(121);
+        char *const environment[]={"LC_ALL=C",mode,NULL};execve(c->fault[0]&&strcmp(c->fault,"normal")?"/leancage-m3-helper-test":args[0],args,environment);_exit(121);
     }
     close(reports[1]);unsigned char frame[161]={0};size_t used=0;
     while(used<sizeof(frame)){ssize_t n=read(reports[0],frame+used,sizeof(frame)-used);if(n<0&&errno==EINTR)continue;if(n<=0)break;used+=(size_t)n;}
@@ -116,7 +116,7 @@ static int death_case(const char *name,int controller_death,int early,int cancel
         pid_t helper=fork();if(helper<0)_exit(120);
         if(!helper){if(dup2(report[1],1)<0)_exit(120);close(report[1]);close(identity[1]);
             char *const args[]={"/leancage-m3-helper","M3PLAN1","268435456","32","100000","10000000","10000","16777216","1024","0","1048576","1048576",parent,"discard","none","none","/bin/sh","-c","printf ready; sleep 100",NULL};
-            char *const environment[]={"LC_ALL=C",early?(controller_death==1?"LEANCAGE_M3_TEST_MODE=pause_before_arm":"LEANCAGE_M3_TEST_MODE=pause_before_fork"):controller_death==2?"LEANCAGE_M3_TEST_MODE=expose_init_pid":"LEANCAGE_M3_TEST_MODE=normal",NULL};execve(args[0],args,environment);_exit(121);
+            char *const environment[]={"LC_ALL=C",early?(controller_death==1?"LEANCAGE_M3_TEST_MODE=pause_before_arm":"LEANCAGE_M3_TEST_MODE=pause_before_fork"):controller_death==2?"LEANCAGE_M3_TEST_MODE=expose_init_pid":"LEANCAGE_M3_TEST_MODE=normal",NULL};execve(early||controller_death==2?"/leancage-m3-helper-test":args[0],args,environment);_exit(121);
         }
         if(write(identity[1],&helper,sizeof(helper))!=sizeof(helper))_exit(120);
         close(identity[1]);close(report[1]);int status;if(waitpid(helper,&status,0)!=helper)_exit(120);_exit(0);
@@ -144,6 +144,12 @@ static int death_case(const char *name,int controller_death,int early,int cancel
         usleep(10000);
     }
     int private_ok=controller_death==2?(used==160&&frame[6]==4&&get32(frame+40)==1&&get32(frame+44)==1):cancel?(used==160&&frame[6]==3&&get32(frame+40)==1&&get32(frame+44)==1&&(get32(frame+48)&1)):(used==0||(early&&controller_death&&used==160&&frame[6]==1&&get32(frame+40)==0&&get64(frame+8)==0));
+    if(!private_ok){
+        /* §FS-observations.evidence: Retain bounded bytes when a private frame is rejected. */
+        printf("M3_DEATH_FRAME {\"name\":\"%s\",\"frame_bytes\":%zu,\"hex\":\"",name,used);
+        for(size_t i=0;i<used&&i<sizeof(frame);i++)printf("%02x",(unsigned)frame[i]);
+        printf("\"}\n");
+    }
     int alive=sentinel_alive();failed|=!extinct||!private_ok||!alive;
     printf("M3_DEATH {\"name\":\"%s\",\"ready\":%d,\"frame_bytes\":%zu,\"run\":%"PRIu64",\"extinct\":%d,\"quarantined\":%d,\"sentinel\":%d,\"private_ok\":%d,\"valid\":%d}\n",name,ready,used,run,extinct,quarantined,alive,private_ok,!failed);
     return failed;

@@ -1,4 +1,5 @@
 import LeanCageEntry
+import LeanCageEntry.Startup
 import LeanCageM3.API
 
 namespace LeanCage.Entry.Worker
@@ -62,15 +63,24 @@ theorem normal_builds_agree (p : Inputs) (normal : p.fault = "normal") :
     executeAllowed false p = executeAllowed true p := by
   simp [executeAllowed, enabled, normal]
 
--- §FS-entry.runtime: This image is only started by the designated VM's native helper.
-def run (allowTestModes : Bool) (args : List String) : IO UInt32 := do
-  let marker ← LeanCageM3.readBounded "/leancage-m3-disposable-vm" 64
+-- §FS-entry.runtime: Startup and setup share the same executable control used by the proof.
+def startup (allowTestModes : Bool) (args : List String) : Startup UInt32 := do
+  let .ok marker ← Startup.read "/leancage-m3-disposable-vm" 64 | return 125
   if marker != "LeanCage-M3-root-VM-v1".toUTF8 then return 125
-  let status ← LeanCageM3.readBounded "/proc/self/status" 8192
+  let .ok status ← Startup.read "/proc/self/status" 8192 | return 125
   let some status := String.fromUTF8? status | return 125
   if !(status.splitOn "\n").contains "Threads:\t1" then return 125
   match parse args with
   | none => return 125
-  | some p => return ← executeAllowed allowTestModes p
+  | some p =>
+    if enabled allowTestModes p then Startup.admission (admission p) else return 125
+
+-- §AR-metadata.frame: Startup uses the same bounded owned-handle control as public reads.
+def inspect (path : String) (limit : Nat) : IO (Except IO.Error ByteArray) :=
+  LeanCageM3.Metadata.inspect path limit
+
+-- §FS-entry.runtime: Main calls this interpreter; no independent startup model is executed.
+def run (allowTestModes : Bool) (args : List String) : IO UInt32 :=
+  (startup allowTestModes args).interpret inspect (fun request => Linux.call request)
 
 end LeanCage.Entry.Worker

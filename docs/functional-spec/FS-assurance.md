@@ -47,7 +47,7 @@ These counts identify coverage and evidence, not a measure of security strength.
 | Local reporting source behavior | [§FS-workspace.results](FS-workspace.md#results-entry-cancellation-and-bounded-transport) | Conditional source/effect proofs and ordinary Lean reporting call connection | [§FS-assurance.native](FS-assurance.md#native-partial-m4-reporting-source-evidence) and [§FS-assurance.reporting](FS-assurance.md#reporting-current-helper-reporting-call-and-ordinary-lean-decoder); current complete helper program, checked call/byte interface and live decoder theorem | Whole-profile caller/capture/export composition, physical input ownership, Linux/compiler/runtime/executable correspondence |
 | Local reporting compiler model | [§FS-workspace.results](FS-workspace.md#results-entry-cancellation-and-bounded-transport) | Conditional assembly reporting proof with concrete compilation checked | [§FS-assurance.compiled](FS-assurance.md#compiled-conditional-assembly-reporting-connection); complete helper plus explicit logical runtime unit, identified assembly, source reporting and ordinary Lean publication consumer | Matched physical caller, actual TLS/runtime/Linux effects, partial-call loss and deployed binary chain |
 | Local input-validation source behavior | [§FS-workspace.policy](FS-workspace.md#policy-bounded-typed-request) | Accepted local input, initialization and parent composition results | [§FS-assurance.parent](FS-assurance.md#parent-parent-composition-repair-claim-record); numeric, string, argument, digest and initialization source certificates | Whole entry-to-setup composition, physical argv, ordinary Lean proof connection and Linux/compiler/runtime correspondence |
-| Shared guest-entry body | [§FS-entry.control](FS-entry.md#control-primitive-sequencing-and-failure) | Partial entry implementation; conditional body/argument proofs and separate VM route evidence | [§FS-assurance.entry](FS-assurance.md#entry-entry-worker-body-and-route-evidence); exact declarations and source-bound route inputs | Native handoff/handshake, physical syscall provenance, owned scope, adapter/caller binding and maintained public integration |
+| Prepared guest entry | [§FS-entry.control](FS-entry.md#control-primitive-sequencing-and-failure) | Kernel-checked construction; advertised only on matching integrated receipts | [§FS-assurance.entry](FS-assurance.md#entry-entry-worker-body-and-route-evidence); same-source scope producer, complete worker, actual public consumer and useful execution | Policy preparation, later lifetime and public observation producers; precise primitive platform/compiler/runtime contracts |
 | Functional confidentiality | [§FS-observations.logical](FS-observations.md#logical-functional-observations) | Planned | Observation requirements | Noninterference theorem and correspondence |
 | Hardware-aware confidentiality | [§FS-observations.hardware](FS-observations.md#hardware-software-observable-channels) | Planned | Scope and research obligations | Model, mechanisms, proof, deployed profile |
 | Deployed executable correctness | [§GOAL-end-to-end](../goals.md#goal-end-to-end-connect-the-policy-to-the-deployed-artifact) | Planned | Roadmap | Compiler/runtime/FFI and Linux correspondence |
@@ -60,12 +60,45 @@ correspondence remain separate evidence boundaries.
 
 ## entry: Entry worker body and route evidence
 
-**Scope:** partial work toward [§FS-linux-product.proofs.entry](FS-linux-product.md#proofsentry-establish-actual-state-at-workload-entry), under [§FS-entry](FS-entry.md#fs-entry-value-carrying-fail-closed-guest-admission).
-This does not complete the entry delivery or change the public bundle's assurance.
+**Scope:** prepared-root guest admission under
+[§FS-linux-product.proofs.entry](FS-linux-product.md#proofsentry-establish-actual-state-at-workload-entry)
+and [§FS-entry](FS-entry.md#fs-entry-value-carrying-fail-closed-guest-admission).
+The source/worker construction is accepted only when its reviewed source and
+ordinary records match the current inputs and identified public-bundle
+acceptance passes. Delivery completion is tracked in [§RM-roadmap.m5](../roadmap.md#m5-verify-the-complete-application-control-path); component
+compilation alone does not complete M5.1.
 The complete declarations, types, module inventory, source/toolchain identities
 and transitive logical axioms are recorded in `assurance/entry-claims.json` and
 checked by `python3 scripts/audit_entry.py`. New expectations require explicit
 statement review; `--propose` writes only an ignored review proposal.
+
+`NamespaceScopeFactory.actual_prepared_source_scope_from_raw` proves the actual
+local socket/fork/child-handoff and stop/placement/options/close/resume/grant
+connection from the maintained `namespace_init` prepared statement. It derives
+the ordinary Lean `SourceScopeProducer` consumed at the actual release read by
+`production_source_workspace`. It does not assume admission, a private-channel
+invariant, an already authorized read or the final scope as an application
+premise. Individual Linux/runtime operations keep their explicit contracts.
+
+`ProcessEntryAcceptance.actual_entry_acceptance` constructs one source tuple,
+process schedule, capability history, queue, journal, IO and placement records.
+Its `EntryAcceptance` also retains the actual argument-memory equality,
+source-label checks, parent slice and derived scope producer.
+`ProcessEntryTickBridge.entry_runtime_ticks_ordinary` identifies that complete
+tick list with the exact list used by the ordinary Lean consumer, including the
+successful image-replacement operation. The useful public consumer
+`CallerWitness.useful_public_source_workspace` derives the argument meanings
+internally on those same source-bound bytes and establishes restricted image,
+stdio, cgroup, namespace and workspace-task properties. Image replacement is
+the endpoint; the new image may still be at its exec stop.
+
+The source graph and its full statement/interface/assumption records belong in
+`assurance/entry-process.json.gz`; the integrated ordinary/source binding belongs
+in `assurance/entry-claims.json`. The separate statement reviews are retained in
+`assurance/entry-useful-review.json` and `assurance/entry-primitive-review.json`.
+Whole-tick equality binds the operation and before state. Actual descriptor
+after states additionally use the checked complete-frame equalities and table
+chain; they are not inferred from a tick that omits the after map.
 
 The ordinary Lean body theorem `LeanCage.Entry.admission_value_state` consumes
 the actual `admission` script, normal production mode, the pinned capability
@@ -89,8 +122,8 @@ native argv-memory/value connection.
 numeric source function is the accepted function and connects its successful
 source read to the imported worker decoder's positional value on the same bytes.
 It records the actual source, source AST, checked terms and transitive foundation.
-Producing those executions and the same owned bytes at the full native handoff
-remains an application obligation; the local callee result does not complete it.
+That preserved local record does not establish the whole handoff. The composed
+source producer above supplies the actual executions and owned bytes.
 
 The primitive effect relation permits credential-induced capability and
 dumpability changes. Later explicit capset/dumpability operations must absorb
@@ -107,8 +140,9 @@ The Rocq source connection inherits the accepted CompCert external-function and
 inline-assembly semantic parameters, classical decision functions and functional
 extensionality. Its exact six parameters and definitional-UIP dependencies are
 listed per declaration in `entry-native-values.json.gz`, under the preserved
-source profile in [§FS-assurance.native](FS-assurance.md#native-partial-m4-reporting-source-evidence). Actual caller/Linux effects still need their
-separate, explicit contracts.
+source profile in [§FS-assurance.native](FS-assurance.md#native-partial-m4-reporting-source-evidence).
+The composed source producer retains explicit primitive Linux/runtime
+contracts and derives application ordering and ownership itself.
 Finite-prefix safety is separate from syscall progress, scheduling and eventual
 termination.
 
@@ -121,14 +155,14 @@ boundaries. It is test evidence for the runtime decision, not a source proof or
 a deployed entry guarantee. Compiler/libc/Lean runtime, Linux, QEMU/firmware and
 the identified VM configuration remain the explicit platform boundary.
 
-The remaining application producers are concrete: the native handoff must bind
-owned argument/descriptor memory; the local fork/stop/cgroup/tracer/resume path
-must supply genuine operation provenance and the process-scope projection; and
-the maintained image/build must invoke that proved interface. Prepared root,
-leased identity, policy interpretation and authorized object producers belong to
-the authority delivery. The native source/caller obligations are still open,
-including the physical useful witness. The public workflow continues using its
-accepted baseline while that integration is unfinished.
+The remaining application inputs are assigned explicitly. Policy bytes, leased
+identity, prepared root and object bindings, the actual prologue/error guards
+that reach the prepared statement, and earlier VM-ancestor authority belong to
+the policy-authorized setup delivery. Later supervision, cancellation and
+cleanup observations belong to the lifetime delivery; public result and
+artifact provenance belong to the host/result deliveries. The M4 workflow stays
+usable while those further guarantees are implemented. Linux/compiler/runtime
+implementation verification remains the separately scoped platform track.
 
 ## decoder: M1.2 decoder claim record
 

@@ -1,0 +1,313 @@
+{
+  "format_version": 1,
+  "scope": "One focused implementation-side full-statement and transitive-assumption review of the actual native/metadata descriptor connection and exact public tick-list coupling. The aggregate entry acceptance and independent platform verification are separate checks.",
+  "specification": [
+    "\u00a7AR-entry.acceptance",
+    "\u00a7AR-entry.caller.origin",
+    "\u00a7AR-entry.caller.receipt",
+    "\u00a7REQ-proof-integrity.statement",
+    "\u00a7REQ-proof-integrity.kernel"
+  ],
+  "review_status": "passed",
+  "open_findings": [],
+  "source_sha256": {
+    "verification/launch/ProcessNativeCapabilities.v": "463e2b5f62beca27c68b8c6e044597eb362b9e6e26a698e3763627ee720aa315",
+    "verification/launch/ProcessPrimitiveWitness.v": "ba10bd98dc3b13368291ee74dc0bcfaa081c3f488a65a4637b7b02358a4475cd",
+    "verification/launch/ProcessPrimitiveHistory.v": "a8e26e88af4d5e4ee005767a2df6747ac18c2637a1faa837d7a17e4e538fac3d",
+    "verification/launch/ProcessPrimitivePrefix.v": "2a6b3f146bc4021474d865e824f5c41754fd894083fa7e08a1e19424deb8dda1",
+    "verification/launch/ProcessEntryTickBridge.v": "3c35a77345aa992962c65c750a48f2d248491b671a536b4f43d1ccce078e55df",
+    "verification/launch/ProcessPrimitiveData.v": "bc4ce9fd3e7caa4c28026d90dd77a99e54c5aa025076107e329d9c69e7cdad84",
+    "verification/launch/ProcessPrimitiveRuns.v": "16eef16237b14916f330027dbabd0f7645dc686dfff0eafa63ae891498606aab",
+    "verification/launch/ProcessEntryQueue.v": "190641d47f850e6b737b8e72255279c8191fa9c0583c32c4f981292a6b2ca7a7",
+    "verification/launch/ProcessEntryObservationsRuntime.v": "9658c3ebe18a35773ba6470ca3d45adafef283c247d1ed2537e75d553a09dcdc",
+    "verification/launch/MetadataWitness.lean": "4f640d68bfff9a7afe12e62287b82edaef48f88c5a7631129d95a37390c776ce",
+    "verification/launch/CallerRecording.lean": "5fb8e4e66ab3b01b4ef3ea3238066e3059700f10c34269cc3b3de76735b542c5",
+    "verification/launch/MetadataRecording.lean": "356e96091136da4dea930e623c71084be1082ba8fc6d35a58ab14c8fd82b2ba0",
+    "verification/launch/ProcessImport.v": "c55e290084ca24a805022aec23b17e35298fa05db512117078b3a3eedc9a2c11",
+    "verification/reporting/connection.py": "08bd0bda40e8e59433ed9ff16505a55942d39e56f7ac9b1997f3c5200f7a71c4"
+  },
+  "checked_declarations": [
+    {
+      "name": "EntryProcess.ProcessNativeCapabilities.recorded_native_capability_contract",
+      "type": "recorded_native_capability_contract\n     : forall (observation : PrimitiveDescriptorObservation) (ticks : list ProcessImport.LeanCage_Entry_CallerPhysical_Tick) (can_acquire : nat -> nat -> Prop) (owner child : ProcessImport.LeanCage_Entry_ProcessIdentity), ProcessCapabilityRecording.NativeCapabilityContract (RecordedNativeCapability observation ticks can_acquire owner child) can_acquire owner child",
+      "assumptions": "Axioms:\nLean.eq relies on definitional UIP.\nProcessImport.True relies on definitional UIP.\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P",
+      "assumption_names": [
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "Lean.eq",
+        "ProcessImport.True"
+      ],
+      "matching_compiled_cache": "/localhome/milikic/sandbox-formalization/.tools/launch/origins/process/ProcessNativeCapabilities.vo"
+    },
+    {
+      "name": "EntryProcess.ProcessNativeCapabilities.recorded_metadata_capability_contract",
+      "type": "recorded_metadata_capability_contract\n     : forall (observation : PrimitiveDescriptorObservation) (ticks : list ProcessImport.LeanCage_Entry_CallerPhysical_Tick) (can_acquire : nat -> nat -> Prop) (owner child : ProcessImport.LeanCage_Entry_ProcessIdentity), ProcessCapabilityRecording.MetadataCapabilityContract (RecordedMetadataCapability observation ticks can_acquire owner child) can_acquire owner child",
+      "assumptions": "Axioms:\nLean.eq relies on definitional UIP.\nProcessImport.True relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "Lean.eq",
+        "ProcessImport.True"
+      ],
+      "matching_compiled_cache": "/localhome/milikic/sandbox-formalization/.tools/launch/origins/process/ProcessNativeCapabilities.vo"
+    },
+    {
+      "name": "EntryProcess.ProcessPrimitiveWitness.entry_primitive_native_capability",
+      "type": "entry_primitive_native_capability\n     : forall (observation : nat -> nat -> ProcessImport.Bool -> ProcessImport.LeanCage_Entry_CallerPhysical_Tick -> (Lean.Nat -> ProcessImport.Option_inst1 Lean.Nat) -> (Lean.Nat -> ProcessImport.Bool) -> (Lean.Nat -> ProcessImport.Option_inst1 Lean.Nat) -> (Lean.Nat -> ProcessImport.Bool) -> Prop) (ticks : list ProcessImport.LeanCage_Entry_CallerPhysical_Tick) (tables : nat -> NamespaceObjects.DescriptorTable) (before : ProcessImport.LeanCage_Entry_CallerPhysical_Context) (action : ProcessImport.LeanCage_Entry_CallerPhysical_Action) (after : ProcessImport.LeanCage_Entry_CallerPhysical_Context) (frame : EntryPrimitiveFrame) (position : nat) (can_acquire : nat -> nat -> Prop), (forall actor : nat, ProcessLaunchWitness.launch_nonnegative_table (tables actor)) -> List.nth_error ticks position = Some (entry_primitive_tick ProcessImport.LeanCage_Entry_CallerPhysical_PrimitiveFamily_native tables before action after frame) -> observation position (Lean.nat_of_Nat (ProcessImport.LeanCage_Entry_CallerWitness_FDData_Frame_code frame)) ProcessImport.Bool_true (entry_primitive_tick ProcessImport.LeanCage_Entry_CallerPhysical_PrimitiveFamily_native tables before action after frame) (ProcessImport.LeanCage_Entry_CallerWitness_FDData_objects (ProcessImport.LeanCage_Entry_CallerWitness_FDData_Frame_before frame)) (ProcessImport.LeanCage_Entry_CallerWitness_FDData_flags (ProcessImport.LeanCage_Entry_CallerWitness_FDData_Frame_before frame)) (ProcessImport.LeanCage_Entry_CallerWitness_FDData_objects (ProcessImport.LeanCage_Entry_CallerWitness_FDData_Frame_after frame)) (ProcessImport.LeanCage_Entry_CallerWitness_FDData_flags (ProcessImport.LeanCage_Entry_CallerWitness_FDData_Frame_after frame)) -> ProcessImport.LeanCage_Entry_CallerWitness_DescriptorObjectsFrom (ProcessImport.LeanCage_Entry_CallerWitness_FDData_objects (ProcessImport.LeanCage_Entry_CallerWitness_FDData_Frame_before frame)) (ProcessImport.LeanCage_Entry_CallerWitness_FDData_objects (ProcessImport.LeanCage_Entry_CallerWitness_FDData_Frame_after frame)) -> RecordedNativeCapability observation ticks can_acquire ProcessParentRecordingWitness.launch_recording_owner ProcessParentRecordingWitness.launch_recording_child (Lean.nat_of_Nat (ProcessImport.LeanCage_Entry_CallerWitness_FDData_Frame_code frame)) ProcessImport.Bool_true (entry_primitive_capabilities tables (entry_frame_before frame)) (entry_primitive_tick ProcessImport.LeanCage_Entry_CallerPhysical_PrimitiveFamily_native tables before action after frame) (NamespaceCapabilities.capability_local 2) (entry_primitive_capabilities tables (entry_frame_after frame))",
+      "assumptions": "Axioms:\nLean.eq relies on definitional UIP.\nProcessImport.True relies on definitional UIP.\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g",
+      "assumption_names": [
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "Lean.eq",
+        "ProcessImport.True"
+      ],
+      "matching_compiled_cache": "/localhome/milikic/sandbox-formalization/.tools/launch/origins/process/ProcessPrimitiveWitness.vo"
+    },
+    {
+      "name": "EntryProcess.ProcessPrimitiveWitness.entry_primitive_metadata_capability",
+      "type": "entry_primitive_metadata_capability\n     : forall (observation : nat -> nat -> ProcessImport.Bool -> ProcessImport.LeanCage_Entry_CallerPhysical_Tick -> (Lean.Nat -> ProcessImport.Option_inst1 Lean.Nat) -> (Lean.Nat -> ProcessImport.Bool) -> (Lean.Nat -> ProcessImport.Option_inst1 Lean.Nat) -> (Lean.Nat -> ProcessImport.Bool) -> Prop) (ticks : list ProcessImport.LeanCage_Entry_CallerPhysical_Tick) (tables : nat -> NamespaceObjects.DescriptorTable) (before : ProcessImport.LeanCage_Entry_CallerPhysical_Context) (action : ProcessImport.LeanCage_Entry_CallerPhysical_Action) (after : ProcessImport.LeanCage_Entry_CallerPhysical_Context) (frame : EntryPrimitiveFrame) (position : nat) (can_acquire : nat -> nat -> Prop), (forall actor : nat, ProcessLaunchWitness.launch_nonnegative_table (tables actor)) -> List.nth_error ticks position = Some (entry_primitive_tick ProcessImport.LeanCage_Entry_CallerPhysical_PrimitiveFamily_metadata tables before action after frame) -> observation position (Lean.nat_of_Nat (ProcessImport.LeanCage_Entry_CallerWitness_FDData_Frame_code frame)) ProcessImport.Bool_true (entry_primitive_tick ProcessImport.LeanCage_Entry_CallerPhysical_PrimitiveFamily_metadata tables before action after frame) (ProcessImport.LeanCage_Entry_CallerWitness_FDData_objects (ProcessImport.LeanCage_Entry_CallerWitness_FDData_Frame_before frame)) (ProcessImport.LeanCage_Entry_CallerWitness_FDData_flags (ProcessImport.LeanCage_Entry_CallerWitness_FDData_Frame_before frame)) (ProcessImport.LeanCage_Entry_CallerWitness_FDData_objects (ProcessImport.LeanCage_Entry_CallerWitness_FDData_Frame_after frame)) (ProcessImport.LeanCage_Entry_CallerWitness_FDData_flags (ProcessImport.LeanCage_Entry_CallerWitness_FDData_Frame_after frame)) -> ProcessImport.LeanCage_Entry_CallerWitness_DescriptorCapabilityEffect (ProcessImport.LeanCage_Entry_CallerWitness_FDData_objects (ProcessImport.LeanCage_Entry_CallerWitness_FDData_Frame_before frame)) (ProcessImport.LeanCage_Entry_CallerWitness_FDData_objects (ProcessImport.LeanCage_Entry_CallerWitness_FDData_Frame_after frame)) (ProcessImport.LeanCage_Entry_CallerWitness_FDData_flags (ProcessImport.LeanCage_Entry_CallerWitness_FDData_Frame_before frame)) (ProcessImport.LeanCage_Entry_CallerWitness_FDData_flags (ProcessImport.LeanCage_Entry_CallerWitness_FDData_Frame_after frame)) -> exists effect : NamespaceCapabilities.CapabilityAction, RecordedMetadataCapability observation ticks can_acquire ProcessParentRecordingWitness.launch_recording_owner ProcessParentRecordingWitness.launch_recording_child (Lean.nat_of_Nat (ProcessImport.LeanCage_Entry_CallerWitness_FDData_Frame_code frame)) ProcessImport.Bool_true (entry_primitive_capabilities tables (entry_frame_before frame)) (entry_primitive_tick ProcessImport.LeanCage_Entry_CallerPhysical_PrimitiveFamily_metadata tables before action after frame) effect (entry_primitive_capabilities tables (entry_frame_after frame))",
+      "assumptions": "Axioms:\nLean.eq relies on definitional UIP.\nProcessImport.True relies on definitional UIP.\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P",
+      "assumption_names": [
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "Lean.eq",
+        "ProcessImport.True"
+      ],
+      "matching_compiled_cache": "/localhome/milikic/sandbox-formalization/.tools/launch/origins/process/ProcessPrimitiveWitness.vo"
+    },
+    {
+      "name": "EntryProcess.ProcessPrimitiveHistory.entry_native_plan_history",
+      "type": "entry_native_plan_history\n     : forall (plan : list (option (ProcessImport.LeanCage_Entry_CallerPhysical_PrimitiveFamily * EntryPrimitiveFrame))) (global_ticks : list ProcessImport.LeanCage_Entry_CallerPhysical_Tick) (tables : nat -> NamespaceObjects.DescriptorTable) (context : ProcessImport.LeanCage_Entry_CallerPhysical_Context) (frames : list EntryPrimitiveFrame) (first last : NamespaceObjects.DescriptorTable), PrimitiveTableChain first frames last -> (forall actor : nat, ProcessLaunchWitness.launch_nonnegative_table (tables actor)) -> ProcessImport.LeanCage_Entry_CallerPhysical_ContextSafe ProcessParentRecordingWitness.launch_recording_owner context -> (forall frame : EntryPrimitiveFrame, List.In frame frames -> ProcessPrimitiveRuns.primitive_frame_code frame <= 27) -> (forall frame : EntryPrimitiveFrame, List.In frame frames -> ProcessPrimitiveData.PrimitiveRetained frame) -> forall (prefix suffix : list ProcessImport.LeanCage_Entry_CallerPhysical_Tick) (plan_prefix plan_suffix : list (option (ProcessImport.LeanCage_Entry_CallerPhysical_PrimitiveFamily * EntryPrimitiveFrame))) (can_acquire : nat -> nat -> Prop) (metadata : nat -> ProcessImport.Bool -> NamespaceCapabilities.CapabilityWorld -> ProcessImport.LeanCage_Entry_CallerPhysical_Tick -> NamespaceCapabilities.CapabilityAction -> NamespaceCapabilities.CapabilityWorld -> Prop) (external : NamespaceCapabilities.CapabilityWorld -> ProcessImport.LeanCage_Entry_CallerPhysical_Tick -> NamespaceCapabilities.CapabilityAction -> NamespaceCapabilities.CapabilityWorld -> Prop) (runs : list ProcessJournal.CallerSourceRun), global_ticks = (prefix ++ ProcessPrimitiveRuns.entry_primitive_ticks ProcessImport.LeanCage_Entry_CallerPhysical_PrimitiveFamily_native tables context frames ++ suffix)%list -> plan = (plan_prefix ++ primitive_plan ProcessImport.LeanCage_Entry_CallerPhysical_PrimitiveFamily_native frames ++ plan_suffix)%list -> length plan_prefix = length prefix -> ProcessCapabilityRecording.CapabilityHistory ProcessLaunchWitness.launch_operation ProcessLaunchWitness.launch_group_objects runs (RecordedNativeCapability (entry_descriptor_observation plan ProcessImport.LeanCage_Entry_CallerPhysical_PrimitiveFamily_native) global_ticks can_acquire ProcessParentRecordingWitness.launch_recording_owner ProcessParentRecordingWitness.launch_recording_child) metadata external can_acquire ProcessParentRecordingWitness.launch_recording_owner ProcessParentRecordingWitness.launch_recording_child (entry_primitive_capabilities tables first) (ProcessPrimitiveRuns.entry_primitive_ticks ProcessImport.LeanCage_Entry_CallerPhysical_PrimitiveFamily_native tables context frames) (entry_primitive_capabilities tables last)",
+      "assumptions": "Axioms:\nLean.eq relies on definitional UIP.\nProcessImport.True relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec : forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nEvents.inline_assembly_sem : String.string -> AST.signature -> Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nEvents.external_functions_sem : String.string -> AST.signature -> Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "Lean.eq",
+        "ProcessImport.True"
+      ],
+      "matching_compiled_cache": "/localhome/milikic/sandbox-formalization/.tools/launch/origins/process/ProcessPrimitiveHistory.vo"
+    },
+    {
+      "name": "EntryProcess.ProcessPrimitiveHistory.entry_metadata_plan_history",
+      "type": "entry_metadata_plan_history\n     : forall (plan : list (option (ProcessImport.LeanCage_Entry_CallerPhysical_PrimitiveFamily * EntryPrimitiveFrame))) (global_ticks : list ProcessImport.LeanCage_Entry_CallerPhysical_Tick) (tables : nat -> NamespaceObjects.DescriptorTable) (context : ProcessImport.LeanCage_Entry_CallerPhysical_Context) (frames : list EntryPrimitiveFrame) (first last : NamespaceObjects.DescriptorTable), PrimitiveTableChain first frames last -> (forall actor : nat, ProcessLaunchWitness.launch_nonnegative_table (tables actor)) -> ProcessImport.LeanCage_Entry_CallerPhysical_ContextSafe ProcessParentRecordingWitness.launch_recording_owner context -> (forall frame : EntryPrimitiveFrame, List.In frame frames -> ProcessPrimitiveRuns.primitive_metadata_frame frame) -> (forall frame : EntryPrimitiveFrame, List.In frame frames -> ProcessPrimitiveData.PrimitiveInspection frame) -> forall (prefix suffix : list ProcessImport.LeanCage_Entry_CallerPhysical_Tick) (plan_prefix plan_suffix : list (option (ProcessImport.LeanCage_Entry_CallerPhysical_PrimitiveFamily * EntryPrimitiveFrame))) (can_acquire : nat -> nat -> Prop) (native : nat -> ProcessImport.Bool -> NamespaceCapabilities.CapabilityWorld -> ProcessImport.LeanCage_Entry_CallerPhysical_Tick -> NamespaceCapabilities.CapabilityAction -> NamespaceCapabilities.CapabilityWorld -> Prop) (external : NamespaceCapabilities.CapabilityWorld -> ProcessImport.LeanCage_Entry_CallerPhysical_Tick -> NamespaceCapabilities.CapabilityAction -> NamespaceCapabilities.CapabilityWorld -> Prop) (runs : list ProcessJournal.CallerSourceRun), global_ticks = (prefix ++ ProcessPrimitiveRuns.entry_primitive_ticks ProcessImport.LeanCage_Entry_CallerPhysical_PrimitiveFamily_metadata tables context frames ++ suffix)%list -> plan = (plan_prefix ++ primitive_plan ProcessImport.LeanCage_Entry_CallerPhysical_PrimitiveFamily_metadata frames ++ plan_suffix)%list -> length plan_prefix = length prefix -> ProcessCapabilityRecording.CapabilityHistory ProcessLaunchWitness.launch_operation ProcessLaunchWitness.launch_group_objects runs native (RecordedMetadataCapability (entry_descriptor_observation plan ProcessImport.LeanCage_Entry_CallerPhysical_PrimitiveFamily_metadata) global_ticks can_acquire ProcessParentRecordingWitness.launch_recording_owner ProcessParentRecordingWitness.launch_recording_child) external can_acquire ProcessParentRecordingWitness.launch_recording_owner ProcessParentRecordingWitness.launch_recording_child (entry_primitive_capabilities tables first) (ProcessPrimitiveRuns.entry_primitive_ticks ProcessImport.LeanCage_Entry_CallerPhysical_PrimitiveFamily_metadata tables context frames) (entry_primitive_capabilities tables last)",
+      "assumptions": "Axioms:\nLean.eq relies on definitional UIP.\nProcessImport.True relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec : forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nEvents.inline_assembly_sem : String.string -> AST.signature -> Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nEvents.external_functions_sem : String.string -> AST.signature -> Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "Lean.eq",
+        "ProcessImport.True"
+      ],
+      "matching_compiled_cache": "/localhome/milikic/sandbox-formalization/.tools/launch/origins/process/ProcessPrimitiveHistory.vo"
+    },
+    {
+      "name": "EntryProcess.ProcessPrimitiveHistory.entry_worker_tail_capabilities",
+      "type": "entry_worker_tail_capabilities\n     : forall (child_ticks parent_ticks : list ProcessImport.LeanCage_Entry_CallerPhysical_Tick) (prefix_tables : NamespaceCapabilities.TaskTables) (tail_tables : nat -> NamespaceObjects.DescriptorTable) (can_acquire : nat -> nat -> Prop) (external : NamespaceCapabilities.CapabilityWorld -> ProcessImport.LeanCage_Entry_CallerPhysical_Tick -> NamespaceCapabilities.CapabilityAction -> NamespaceCapabilities.CapabilityWorld -> Prop) (runs : list ProcessJournal.CallerSourceRun), (forall actor : nat, ProcessLaunchWitness.launch_nonnegative_table (tail_tables actor)) -> ProcessCapabilityRecording.CapabilityHistory ProcessLaunchWitness.launch_operation ProcessLaunchWitness.launch_group_objects runs (entry_runtime_native child_ticks parent_ticks prefix_tables tail_tables can_acquire) (entry_runtime_metadata child_ticks parent_ticks prefix_tables tail_tables can_acquire) external can_acquire ProcessParentRecordingWitness.launch_recording_owner ProcessParentRecordingWitness.launch_recording_child (entry_primitive_capabilities tail_tables (primitive_snapshot_table 0)) (ProcessPrimitiveRuns.entry_worker_tail tail_tables) (entry_primitive_capabilities tail_tables (primitive_snapshot_table 7))",
+      "assumptions": "Axioms:\nLean.eq relies on definitional UIP.\nProcessImport.True relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec : forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nEvents.inline_assembly_sem : String.string -> AST.signature -> Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nEvents.external_functions_sem : String.string -> AST.signature -> Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "Lean.eq",
+        "ProcessImport.True"
+      ],
+      "matching_compiled_cache": "/localhome/milikic/sandbox-formalization/.tools/launch/origins/process/ProcessPrimitiveHistory.vo"
+    },
+    {
+      "name": "EntryProcess.ProcessEntryTickBridge.entry_runtime_ticks_ordinary",
+      "type": "entry_runtime_ticks_ordinary\n     : forall (child_ticks parent_ticks : list ProcessImport.LeanCage_Entry_CallerPhysical_Tick) (prefix_tables tail_tables : NamespaceCapabilities.TaskTables), ProcessJournal.tick_values (entry_runtime_ticks child_ticks parent_ticks prefix_tables tail_tables) = ProcessImport.LeanCage_Entry_CallerWitness_usefulEntryTicks ProcessParentRecordingWitness.launch_recording_owner ProcessParentRecordingWitness.launch_recording_child (entry_primitive_other_objects prefix_tables) (entry_primitive_other_objects tail_tables) (entry_primitive_other_flags prefix_tables) (entry_primitive_other_flags tail_tables) (ProcessJournal.tick_values child_ticks) (ProcessJournal.tick_values parent_ticks) (ProcessPrimitiveRuns.primitive_context true ProcessOwnership.task_running (Integers.Int64.repr (BinInt.Z.pos (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))))))))))))))))))) (Some 1))",
+      "assumptions": "Axioms:\nLean.eq relies on definitional UIP.",
+      "assumption_names": [],
+      "definitional_uip": [
+        "Lean.eq"
+      ],
+      "matching_compiled_cache": "/localhome/milikic/sandbox-formalization/.tools/launch/origins/process/ProcessEntryTickBridge.vo"
+    },
+    {
+      "name": "EntryProcess.ProcessPrimitivePrefix.entry_worker_prefix_capabilities",
+      "type": "entry_worker_prefix_capabilities\n     : forall (child_ticks parent_ticks : list ProcessImport.LeanCage_Entry_CallerPhysical_Tick) (prefix_tables : nat -> NamespaceObjects.DescriptorTable) (tail_tables : NamespaceCapabilities.TaskTables) (can_acquire : nat -> nat -> Prop) (external : NamespaceCapabilities.CapabilityWorld -> ProcessImport.LeanCage_Entry_CallerPhysical_Tick -> NamespaceCapabilities.CapabilityAction -> NamespaceCapabilities.CapabilityWorld -> Prop) (runs : list ProcessJournal.CallerSourceRun), (forall actor : nat, ProcessLaunchWitness.launch_nonnegative_table (prefix_tables actor)) -> ProcessCapabilityRecording.CapabilityHistory ProcessLaunchWitness.launch_operation ProcessLaunchWitness.launch_group_objects runs (ProcessPrimitiveHistory.entry_runtime_native child_ticks parent_ticks prefix_tables tail_tables can_acquire) (ProcessPrimitiveHistory.entry_runtime_metadata child_ticks parent_ticks prefix_tables tail_tables can_acquire) external can_acquire ProcessParentRecordingWitness.launch_recording_owner ProcessParentRecordingWitness.launch_recording_child (ProcessPrimitiveWitness.entry_primitive_capabilities prefix_tables (ProcessPrimitiveHistory.primitive_snapshot_table 0)) (ProcessPrimitiveRuns.entry_worker_prefix prefix_tables) (ProcessPrimitiveWitness.entry_primitive_capabilities prefix_tables (ProcessPrimitiveHistory.primitive_snapshot_table 0))",
+      "assumptions": "Axioms:\nLean.eq relies on definitional UIP.\nProcessImport.True relies on definitional UIP.\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec : forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nEvents.inline_assembly_sem : String.string -> AST.signature -> Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep : forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nEvents.external_functions_sem : String.string -> AST.signature -> Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P",
+      "assumption_names": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "Lean.eq",
+        "ProcessImport.True"
+      ],
+      "matching_compiled_cache": "/localhome/milikic/sandbox-formalization/.tools/launch/primitive-history/EntryProcess/ProcessPrimitivePrefix.vo"
+    }
+  ],
+  "logical_axiom_union": [
+    "ClassicalDedekindReals.sig_forall_dec",
+    "ClassicalDedekindReals.sig_not_dec",
+    "Classical_Prop.classic",
+    "Events.external_functions_sem",
+    "Events.inline_assembly_sem",
+    "FunctionalExtensionality.functional_extensionality_dep"
+  ],
+  "definitional_uip_union": [
+    "Lean.eq",
+    "ProcessImport.True"
+  ],
+  "foundation_result": "All reported Rocq axioms and SProp definitional UIP are within the unchanged accepted M4 bridge baseline; no new axiom, admission, skipped quotient, parsing-only import or compiler-trust proof shortcut was introduced.",
+  "actual_operation_review": [
+    "PrimitiveDescriptorSample retains an actual global position, nth_error on the fixed full journal, exact native/metadata family + opcode + genuine/intercepted label, before table/flags and the corresponding after actor row.",
+    "The generic constructor keeps its explicit indexed observation parameter. Its concrete entry_descriptor_observation chooses the full Frame at THAT plan ordinal and fixes code, origin and before/after object/flag functions; it does not choose a code only from a numeric upper bound.",
+    "The native and metadata plan folds advance both the global tick prefix and plan prefix by exactly one operation. Both selected prefixes have equal length; duplicate/equal Tick values cannot substitute a differently labelled call or another plan ordinal.",
+    "The ordinary recordedNative/recordedMetadata relations preserve actual Request, Reply, State, origin and ordinal. Their recording label laws refer to every selected Tick at that same ordinal.",
+    "entry_runtime_ticks_ordinary is premise-free and identifies the complete source/worker journal with usefulEntryTicks, including the actual final execFrame. MetadataWitness full-frame exactness identifies the same literal data with computed native/metadata effects."
+  ],
+  "after_map_review": [
+    "Tick does not encode Frame.after. After-map correspondence is therefore not inferred merely from equal Tick values: signal_frames_exact, tail_frames_exact, marker_frames_exact, status_frames_exact and useful_exec_frame_exact prove equality of FULL frames computed from the actual maintained execution.",
+    "Native descriptor effects permit closure, aliasing/duplication and flags changes while retaining object provenance from any previous owned descriptor. The native adapter forces the raw after world to retable only the same child row.",
+    "Metadata DescriptorCapabilityEffect correlates a successful fresh open descriptor, object identity, object-map update and FlagsOutside at the SAME descriptor. The strict-to-raw converter reconstructs an actual capability open/local step; it does not pair unrelated existential descriptors.",
+    "PrimitiveTableChain composes actual frame.before/frame.after tables: metadata 0->1->0 twice; signal/TRACEME/STOP at table0; setup 0->2->3->4->5->6; actual exec 6->7. Segment appends preserve the identical full middle world and empty ancillary-rights message list of this useful execution."
+  ],
+  "hypothesis_review": [
+    "Generic folds expose exact global/plan slice equalities, per-operation effects, concrete ContextSafe, table chaining and nonnegative descriptor decoding. They do not assume private-channel absence, a private invariant, no placement over a whole interval or the entry result.",
+    "Concrete prefix/tail constructors discharge those generic frame/code/context and slice obligations from literal data and actual operation order; only nonnegative base task tables remain, supplied by the checked same-source world builders.",
+    "The initial decoded descriptor snapshot is proved equal to the actual same-fork C worker table. Out-of-support descriptors and negative machine descriptors decode to no binding; INTMAX bounds remain explicit.",
+    "Complete foreign-cgroup observations additionally expose the base foreign-row equality. The useful world suppliers establish it from the same source fixture; it is not a general denial of privileged acquisition."
+  ],
+  "hostile_case_review": [
+    "The broad RecordedNativeCapability and RecordedMetadataCapability retain untrusted constructors with arbitrary permitted CapabilityEffect when safe/genuine/supported conjunction fails. Broader Step unsafe/intercepted actions, parent detach/loss and source error outcomes were not removed.",
+    "Safe/genuine local classification is conditional. General primitive adapters are not universal no-write claims. The concrete useful worker trace has no native write call; actual source parent grant/committed-loss handling and same-queue read provenance remain separately proved by ProcessQueueWitness and ProcessEntryQueue.",
+    "No private-invariant or stable-scope conclusion is hidden in the concrete observation relation. Capability privacy follows by induction from the same fresh-pair/fork birth; source scope is a subsequent consumer of actual recorded placements and table authority."
+  ],
+  "ordinary_frame_evidence_record": "assurance/entry-useful-review.json",
+  "ordinary_frame_evidence": [
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.marker_frames_exact",
+      "type": "Eq.{1}\n  (LeanCage.Entry.CallerWitness.FDData.metadataFrames LeanCage.Entry.MetadataWitness.initial\n    (LeanCage.Entry.MetadataWitness.contentTrace \"/leancage-m3-disposable-vm\" 64 LeanCage.Entry.MetadataWitness.marker))\n  LeanCage.Entry.CallerWitness.FDData.inspectionFrames"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.metadata_ticks_sample",
+      "type": "\u2200 (child : LeanCage.Entry.ProcessIdentity) (otherObjects : Nat \u2192 Nat \u2192 Option.{0} Nat) (otherFlags : Nat \u2192 Nat \u2192 Bool)\n  (context : LeanCage.Entry.CallerPhysical.Context) (state : LeanCage.Entry.State)\n  (trace : List.{0} (Prod.{0, 0} LeanCageM3.Metadata.Request LeanCageM3.Metadata.Reply)),\n  LeanCage.Entry.CallerWitness.FDData.Supported state.handles \u2192\n    Eq.{1} (LeanCage.Entry.CallerWitness.metadataTicks child otherObjects otherFlags context state trace)\n      (LeanCage.Entry.CallerWitness.FDData.ticks LeanCage.Entry.CallerPhysical.PrimitiveFamily.metadata child\n        otherObjects otherFlags context (LeanCage.Entry.CallerWitness.FDData.metadataFrames state trace))"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.native_ticks_sample",
+      "type": "\u2200 (child : LeanCage.Entry.ProcessIdentity) (otherObjects : Nat \u2192 Nat \u2192 Option.{0} Nat) (otherFlags : Nat \u2192 Nat \u2192 Bool)\n  (context : LeanCage.Entry.CallerPhysical.Context) (state : LeanCage.Entry.State)\n  (trace : List.{0} (Prod.{0, 0} LeanCage.Entry.Request LeanCage.Entry.Reply)),\n  LeanCage.Entry.CallerWitness.FDData.Supported state.handles \u2192\n    (\u2200 (pair : Prod.{0, 0} LeanCage.Entry.Request LeanCage.Entry.Reply),\n        Membership.mem.{0, 0} trace pair \u2192\n          Eq.{1} (Prod.fst.{0, 0} pair).op LeanCage.Entry.Op.dup2 \u2228\n              Eq.{1} (Prod.fst.{0, 0} pair).op LeanCage.Entry.Op.dup3 \u2192\n            Membership.mem.{0, 0} LeanCage.Entry.CallerWitness.FDData.descriptors\n              (Prod.fst.{0, 0} pair).b.toUInt32.toNat) \u2192\n      Eq.{1}\n        (LeanCage.Entry.CallerWitness.kernelTicks LeanCage.Entry.exampleFilesystem child otherObjects otherFlags context\n          state trace)\n        (LeanCage.Entry.CallerWitness.FDData.ticks LeanCage.Entry.CallerPhysical.PrimitiveFamily.native child\n          otherObjects otherFlags context (LeanCage.Entry.CallerWitness.FDData.nativeFrames state trace))"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.sampled_flags",
+      "type": "\u2200 (state : LeanCage.Entry.State),\n  LeanCage.Entry.CallerWitness.FDData.Supported state.handles \u2192\n    Eq.{1} (LeanCage.Entry.CallerWitness.FDData.flags (LeanCage.Entry.CallerWitness.FDData.sample state))\n      (LeanCage.Entry.CallerWitness.stateFlags state)"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.sampled_objects",
+      "type": "\u2200 (state : LeanCage.Entry.State),\n  LeanCage.Entry.CallerWitness.FDData.Supported state.handles \u2192\n    Eq.{1} (LeanCage.Entry.CallerWitness.FDData.objects (LeanCage.Entry.CallerWitness.FDData.sample state))\n      (LeanCage.Entry.CallerWitness.stateObjects state)"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.signal_frames_exact",
+      "type": "Eq.{1}\n  (LeanCage.Entry.CallerWitness.FDData.nativeFrames LeanCage.Entry.MetadataWitness.initial\n    LeanCage.Entry.CallerWitness.signalTrace)\n  LeanCage.Entry.CallerWitness.FDData.signalFrames"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.status_frames_exact",
+      "type": "Eq.{1}\n  (LeanCage.Entry.CallerWitness.FDData.metadataFrames LeanCage.Entry.MetadataWitness.initial\n    (LeanCage.Entry.MetadataWitness.contentTrace \"/proc/self/status\" 8192 LeanCage.Entry.MetadataWitness.status))\n  LeanCage.Entry.CallerWitness.FDData.inspectionFrames"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.tail_frames_exact",
+      "type": "Eq.{1}\n  (LeanCage.Entry.CallerWitness.FDData.nativeFrames LeanCage.Entry.CallerWitness.FDData.signalState\n    LeanCage.Entry.CallerWitness.tailTrace)\n  LeanCage.Entry.CallerWitness.FDData.tailFrames"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.useful_exec_descriptor_data",
+      "type": "Eq.{1} (LeanCage.Entry.CallerWitness.stateObjects LeanCage.Entry.CallerWitness.usefulFinalState)\n    (LeanCage.Entry.CallerWitness.FDData.objects LeanCage.Entry.CallerWitness.FDData.execFrame.before) \u2227\n  Eq.{1} (LeanCage.Entry.CallerWitness.stateFlags LeanCage.Entry.CallerWitness.usefulFinalState)\n      (LeanCage.Entry.CallerWitness.FDData.flags LeanCage.Entry.CallerWitness.FDData.execFrame.before) \u2227\n    Eq.{1}\n        (LeanCage.Entry.CallerWitness.stateObjects\n          (LeanCage.Entry.execState LeanCage.Entry.CallerWitness.usefulFinalState 1))\n        (LeanCage.Entry.CallerWitness.FDData.objects LeanCage.Entry.CallerWitness.FDData.execFrame.after) \u2227\n      Eq.{1}\n        (LeanCage.Entry.CallerWitness.stateFlags\n          (LeanCage.Entry.execState LeanCage.Entry.CallerWitness.usefulFinalState 1))\n        (LeanCage.Entry.CallerWitness.FDData.flags LeanCage.Entry.CallerWitness.FDData.execFrame.after)"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.useful_exec_frame_exact",
+      "type": "Eq.{1}\n  { code := (LeanCage.Entry.execRequest LeanCage.Entry.MetadataWitness.inputs).op.code.toNat,\n    before := LeanCage.Entry.CallerWitness.FDData.sample LeanCage.Entry.CallerWitness.usefulFinalState,\n    after :=\n      LeanCage.Entry.CallerWitness.FDData.sample\n        (LeanCage.Entry.execState LeanCage.Entry.CallerWitness.usefulFinalState 1),\n    read := Option.none.{0} }\n  LeanCage.Entry.CallerWitness.FDData.execFrame"
+    }
+  ],
+  "strict_export": {
+    "prior_count": 314,
+    "current_count": 319,
+    "prior_fingerprints_unchanged": true,
+    "added": [
+      "LeanCage.Entry.CallerWitness.FDData.execFrame",
+      "LeanCage.Entry.CallerWitness.tracedContext",
+      "LeanCage.Entry.CallerWitness.usefulEntryTicks",
+      "LeanCage.Entry.CallerWitness.usefulWorkerPrefix",
+      "LeanCage.Entry.CallerWitness.usefulWorkerTail"
+    ],
+    "sha256": "e809fbedcbe2fa16adf9c698e9d0310025cd403652ae3dc3703f0ff67af84c67"
+  },
+  "validation": [
+    "Read existing compiled proofs with exact maintained source matches; queried full theorem types and transitive assumptions only. No full canonical gate or repeated component build was run for this review.",
+    "Origins current319 supplied NativeCapabilities, PrimitiveWitness, History and TickBridge. The unchanged Prefix source used its coherent checked primitive-history cache; all 314 declarations it imports have identical current319 fingerprints.",
+    "Existing ordinary review evidence was reused only after confirming exact current MetadataWitness source hash; its full-frame and sampled-map theorem types/axioms are copied here.",
+    "Final canonical source/type/foundation replay and integrated EntryAcceptance review are the remaining acceptance consumer checks, owned by the delivery integrator."
+  ]
+}

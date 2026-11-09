@@ -25,6 +25,7 @@
 #include <sys/prctl.h>
 #include <sys/ptrace.h>
 #include <sys/signalfd.h>
+#include <sys/socket.h>
 #include <sys/stat.h>
 #include <sys/statvfs.h>
 #include <sys/syscall.h>
@@ -34,6 +35,8 @@
 #include <time.h>
 #include <unistd.h>
 #include "m3_filter.h"
+#include "process_primitives.h"
+#include "entry_decimal.h"
 
 #if !defined(__x86_64__)
 #error "M3 supports Linux x86-64 only"
@@ -49,11 +52,19 @@ struct policy { uint64_t memory,tasks,quota,cpu,wall,space,inodes,in,out,err; in
 static struct policy policy;
 static uint64_t run_id;
 static int workspace_mounted,preflight,identity_owned,guest_entered;
+static int admission_cgroup=-1;
 static const char *tree_digest,*stdin_digest;
 static unsigned run_uid;
 static char run_path[128],workspace[160],root_path[160],cgroup[160],result_path[160];
 static const char *mode="normal";
-static int fault(const char *name) { return strcmp(mode,name)==0; }
+// §FS-entry.inputs: Production cannot select test effects through the environment.
+static int fault(const char *name) {
+#ifdef LEANCAGE_ENTRY_TEST
+    return strcmp(mode,name)==0;
+#else
+    (void)name;return 0;
+#endif
+}
 static int error_number(void) { return errno>0 && errno<=4095?errno:EIO; }
 static uint64_t now_ms(void) { struct timespec t; if(clock_gettime(CLOCK_MONOTONIC,&t)||t.tv_sec<0||(uint64_t)t.tv_sec>UINT64_MAX/1000-1)return 0; return (uint64_t)t.tv_sec*1000+(uint64_t)t.tv_nsec/1000000; }
 static int write_all(int fd,const void *data,size_t count) {
@@ -169,33 +180,12 @@ static int check_profile(void) {
     return 0;
 }
 static int reset_signals(void) {
-    uint64_t mask=UINT64_MAX;
-    if(syscall(SYS_rt_sigprocmask,SIG_SETMASK,&mask,NULL,8))return error_number();
-    struct { uintptr_t handler,flags,restorer;uint64_t mask; } action={0};
+    if(entry_signal_mask(UINT64_MAX))return error_number();
     for(int signal=1;signal<=64;signal++)if(signal!=SIGKILL&&signal!=SIGSTOP&&
-        syscall(SYS_rt_sigaction,signal,&action,NULL,8))return error_number();
-    mask=0;return syscall(SYS_rt_sigprocmask,SIG_SETMASK,&mask,NULL,8)?error_number():0;
+        entry_signal_default(signal))return error_number();
+    return entry_signal_mask(0)?error_number():0;
 }
 static int parent_alive(int fd) { struct pollfd p={fd,POLLIN,0};int n=poll(&p,1,0);return n==0?0:n<0?error_number():ECHILD; }
-static int credentials(void) {
-    if(prctl(PR_SET_SECUREBITS,SECBIT_NOROOT|SECBIT_NOROOT_LOCKED|SECBIT_NO_SETUID_FIXUP|SECBIT_NO_SETUID_FIXUP_LOCKED,0,0,0))return error_number();
-    for(unsigned cap=0;cap<64;cap++) {
-        int present=prctl(PR_CAPBSET_READ,cap,0,0,0);if(present<0&&errno==EINVAL)break;
-        if(present<0||prctl(PR_CAPBSET_DROP,cap,0,0,0))return error_number();
-    }
-    if(prctl(PR_CAP_AMBIENT,PR_CAP_AMBIENT_CLEAR_ALL,0,0,0)||setgroups(0,NULL)||
-       setresgid(run_uid,run_uid,run_uid)||setresuid(run_uid,run_uid,run_uid))return error_number();
-    struct __user_cap_header_struct header={_LINUX_CAPABILITY_VERSION_3,0};
-    struct __user_cap_data_struct caps[2]={{0},{0}};
-    if(syscall(SYS_capset,&header,caps)||syscall(SYS_capget,&header,caps))return error_number();
-    for(int i=0;i<2;i++)if(caps[i].effective||caps[i].permitted||caps[i].inheritable)return EPROTO;
-    uid_t r,e,s;gid_t gr,ge,gs;
-    if(getresuid(&r,&e,&s)||getresgid(&gr,&ge,&gs)||getgroups(0,NULL)||
-       r!=run_uid||e!=run_uid||s!=run_uid||gr!=run_uid||ge!=run_uid||gs!=run_uid||
-       (uid_t)setfsuid((uid_t)-1)!=run_uid||(gid_t)setfsgid((gid_t)-1)!=run_uid)return EPROTO;
-    return prctl(PR_SET_DUMPABLE,0,0,0,0)?error_number():0;
-}
-
 // §FS-workspace.authority: A durable monotonic run identity and exclusive UID lease precede
 // allocation.
 static uint64_t reservation_bytes(void) { return policy.memory+policy.space*(policy.export_files?2:1)+policy.in+16777216; }
@@ -268,6 +258,9 @@ static int prepare_resources(void) {
     return 0;
 }
 
+// §FS-entry.release: The init child opens this attachment path after the outer clone.
+static const char *const admission_path_format="%s/cgroup.procs";
+
 #include "m3_artifacts.h"
 
 // §FS-workspace.results: Identity describes the exact normalized native plan, excluding transient
@@ -307,82 +300,118 @@ static int construct_root(void) {
     if(mount(NULL,root_path,NULL,MS_BIND|MS_REMOUNT|MS_RDONLY|MS_NOSUID|MS_NODEV,NULL))return -1;
     return sethostname("sandbox",7);
 }
-static _Noreturn void guest(int input,int output,int errors,int failure) {
-    int error=reset_signals();if(error)fail_child(failure,1,error);
-    if(fault("pause_setup"))sleep(2);
+#include "entry_handoff.h"
 
-    if(ptrace(PTRACE_TRACEME,0,NULL,NULL)||raise(SIGSTOP))fail_child(failure,1,error_number());
-    if(fault("handles_fail"))fail_child(failure,3,EBADF);
-    if(dup2(input,0)<0||dup2(output,1)<0||dup2(errors,2)<0||dup3(failure,3,O_CLOEXEC)<0||
-       syscall(SYS_close_range,4u,UINT32_MAX,0u))fail_child(3,3,error_number());
-    if(chroot(root_path)||chdir("/workspace")||setsid()<0)fail_child(3,2,error_number());
-    umask(077);error=credentials();if(error||fault("credentials_fail"))fail_child(3,4,error?error:EINVAL);
-    if(prctl(PR_GET_SECCOMP,0,0,0,0)!=0)fail_child(3,5,ENOTSUP);
-    char *const env[]={"PATH=/usr/local/bin:/usr/bin:/bin","LANG=C.UTF-8","LC_ALL=C.UTF-8",
-        "HOME=/workspace","TMPDIR=/workspace/.tmp","TZ=UTC","PYTHONDONTWRITEBYTECODE=1","PYTHONNOUSERSITE=1",NULL};
-    if(fault("error_drop")||fault("error_short"))fail_child(3,6,EINVAL);
-    if(prctl(PR_SET_NO_NEW_PRIVS,fault("nnp_fail")?2:1,0,0,0))fail_child(3,6,error_number());
-    struct sock_fprog program={(unsigned short)(sizeof(m3_filter)/sizeof(m3_filter[0])),(struct sock_filter *)m3_filter};
-    if(fault("filter_fail"))program.len=0;
-    if(prctl(PR_SET_SECCOMP,SECCOMP_MODE_FILTER,&program,0,0))fail_child(3,7,error_number());
-    execve(fault("exec_fail")?"/nonexistent":policy.args[0],policy.args,env);
-    fail_child(3,8,error_number());
+// §AR-entry.caller: This source interface owns the stopped-child placement/options handshake.
+static int admit_child(pid_t child,int cgfd,int *status) {
+    pid_t got;
+    do { got=waitpid(child,status,0); }while(got<0&&errno==EINTR);
+    if(got!=child)return -1;
+    if(!WIFSTOPPED(*status))return -1;
+    if(WSTOPSIG(*status)!=SIGSTOP)return -1;
+    char pidtext[32];int pidlength=entry_decimal(pidtext,(uint64_t)child);uint64_t encoded_pid;
+    if(pidlength<=0)return -1;
+    if((size_t)pidlength>=sizeof(pidtext))return -1;
+    if(pidtext[0]=='0')return -1;
+    if(number(pidtext,&encoded_pid))return -1;
+    if(encoded_pid!=(uint64_t)child)return -1;
+    if(write_all(cgfd,pidtext,(size_t)pidlength))return -1;
+    if(entry_ptrace4(PTRACE_SETOPTIONS,child,NULL,(void *)(uintptr_t)(PTRACE_O_TRACEEXEC|PTRACE_O_EXITKILL)))return -1;
+    return 0;
+}
+
+// §AR-entry.caller: This source helper owns the local channel, fork and child handoff.
+static int create_entry_child(int input,int output,int errors,int *peer,pid_t *child) {
+    int pair[2];
+    if(socketpair(AF_UNIX,SOCK_STREAM|SOCK_CLOEXEC,0,pair))return error_number();
+    int failure=entry_duplicate_above(pair[1],60);close(pair[1]);
+    if(failure<0){close(pair[0]);return error_number();}
+    if(entry_signal_mask(UINT64_MAX)){int error=error_number();close(failure);close(pair[0]);return error;}
+    // §AR-entry.caller: Keep this child's PID leased until the sole parent explicitly waits.
+#ifdef LEANCAGE_ENTRY_TEST
+    long reap_reply;
+    if(fault("parent_reap_fail")){errno=EIO;reap_reply=-1;}
+    else reap_reply=entry_signal_default(SIGCHLD);
+    if(reap_reply)
+#else
+    if(entry_signal_default(SIGCHLD))
+#endif
+    {int error=error_number();close(failure);close(pair[0]);return error;}
+    *peer=pair[0];
+    pid_t forked=fork();*child=forked;
+    if(forked==0)guest(input,output,errors,failure);
+    close(failure);
+    return 0;
+}
+
+// §FS-entry.release: This application helper checks resume before emitting the private byte.
+static int release_child(pid_t child,int peer) {
+    unsigned char grant=0xa5;
+#ifdef LEANCAGE_ENTRY_TEST
+    int release_eof=fault("release_eof")||fault("release_detach");
+    int release_detach=fault("release_detach");
+    if(fault("release_bad"))grant=0;
+    if(release_eof&&shutdown(peer,SHUT_WR))return -1;
+    if(release_detach&&entry_ptrace4(PTRACE_DETACH,child,NULL,NULL))return -1;
+    if(!release_detach&&entry_ptrace4(PTRACE_CONT,child,0,0))return -1;
+    if(!release_eof&&write(peer,&grant,1)!=1)return -1;
+#else
+    if(entry_ptrace4(PTRACE_CONT,child,0,0))return -1;
+    if(write(peer,&grant,1)!=1)return -1;
+#endif
+    return 0;
 }
 
 // §FS-workspace.results: Trusted init establishes entry from TRACEEXEC, never a guest-controlled
 // string.
 static _Noreturn void namespace_init(int parentfd,int report,int input,int output,int errors) {
     struct result result=result_of(SETUP,2,0,0);uint64_t sequence=0;
-    int error=reset_signals();if(!error&&prctl(PR_SET_PDEATHSIG,SIGKILL,0,0,0))error=error_number();
+    int error=reset_signals();if(!error&&entry_prctl5(PR_SET_PDEATHSIG,SIGKILL,0,0,0))error=error_number();
     if(!error)error=parent_alive(parentfd);
-    if(!error&&(prctl(PR_SET_DUMPABLE,0,0,0,0)||construct_root()))error=error_number();
-    if(preflight&&!error){
-        int saved=fcntl(report,F_DUPFD_CLOEXEC,60);unsigned stage=3;
-        if(saved<0)error=error_number();else report=saved;
-        if(!error&&(dup2(input,0)<0||dup2(output,1)<0||dup2(errors,2)<0||dup3(report,3,O_CLOEXEC)<0))error=error_number();
-        if(!error){report=3;if(syscall(SYS_close_range,4u,UINT32_MAX,0u))error=error_number();}
-        if(!error){stage=2;if(chroot(root_path)||chdir("/workspace")||setsid()<0)error=error_number();}
-        if(!error){stage=4;error=credentials();}
-        if(!error){stage=5;if(prctl(PR_GET_SECCOMP,0,0,0,0)!=0)error=ENOTSUP;}
-        if(!error){stage=6;if(prctl(PR_SET_NO_NEW_PRIVS,1,0,0,0))error=error_number();}
-        struct sock_fprog program={(unsigned short)(sizeof(m3_filter)/sizeof(m3_filter[0])),(struct sock_filter *)m3_filter};
-        if(!error){stage=7;if(prctl(PR_SET_SECCOMP,SECCOMP_MODE_FILTER,&program,0,0))error=error_number();}
-        result=result_of(error?SETUP:PREFLIGHT,error?stage:0,error,0);goto report;
-    }
-    int pipefd[2];if(!error&&pipe2(pipefd,O_CLOEXEC))error=error_number();
+    if(!error&&(entry_prctl5(PR_SET_DUMPABLE,0,0,0,0)||construct_root()))error=error_number();
+    // §FS-entry.provenance: The duplex endpoint carries a private release byte and child failures.
+    int pipefd[2]={-1,-1};pid_t child=-1;
+    if(!error)error=create_entry_child(input,output,errors,&pipefd[0],&child);
     if(error){result.detail=(unsigned)error;goto report;}
-    int failure=fcntl(pipefd[1],F_DUPFD_CLOEXEC,60);close(pipefd[1]);
-    if(failure<0){close(pipefd[0]);result.detail=(unsigned)error_number();goto report;}
-    uint64_t mask=UINT64_MAX;
-    if(syscall(SYS_rt_sigprocmask,SIG_SETMASK,&mask,NULL,8)){result.detail=(unsigned)error_number();close(failure);close(pipefd[0]);goto report;}
-    pid_t child=fork();if(child==0)guest(input,output,errors,failure);
-    close(failure);close(input);close(output);close(errors);close(parentfd);
+    close(input);close(output);close(errors);close(parentfd);
     if(child<0){close(pipefd[0]);result.detail=(unsigned)error_number();goto report;}
     int status=0,entered=0,leader_done=0,bad=0;pid_t got;
-    do { got=waitpid(child,&status,0); }while(got<0&&errno==EINTR);
-    char pidtext[32];snprintf(pidtext,sizeof(pidtext),"%d",child);
-    if(got!=child||!WIFSTOPPED(status)||WSTOPSIG(status)!=SIGSTOP||cg_write("cgroup.procs",pidtext)||
-       ptrace(PTRACE_SETOPTIONS,child,0,PTRACE_O_TRACEEXEC|PTRACE_O_EXITKILL))bad=1;
-    struct result admission=result_of(ADMITTED,0,0,0);admission.elapsed=now_ms();
-    if(!bad&&send_frame(report,sequence++,admission))bad=1;
-    if(!bad&&ptrace(PTRACE_CONT,child,0,0))bad=1;
+    // §FS-entry.release: Retain the selected identities across every admission callback.
+    const pid_t launch_child=child;
+    const int launch_peer=pipefd[0],launch_cgroup=admission_cgroup,launch_check=preflight;
+    if(admit_child(launch_child,launch_cgroup,&status))bad=1;
+    if(close(launch_cgroup))bad=1;
+    admission_cgroup=-1;
+    struct result admission=result_of(ADMITTED,0,0,0);
+    /* §FS-entry.control: A failed clock cannot authorize release. */
+#ifdef LEANCAGE_ENTRY_TEST
+    uint64_t admission_clock=now_ms();
+    if(fault("admission_clock_fail"))admission_clock=0;
+    if(!(admission.elapsed=admission_clock))bad=1;
+#else
+    if(!(admission.elapsed=now_ms()))bad=1;
+#endif
+    if(!bad&&!launch_check&&send_frame(report,sequence++,admission))bad=1;
+    if(!bad&&release_child(launch_child,launch_peer))bad=1;
     while(!bad&&!leader_done) {
         do { got=waitpid(-1,&status,__WALL); }while(got<0&&errno==EINTR);
-        if(got<0){bad=1;break;}if(got!=child)continue;
+        if(got<0){bad=1;break;}if(got!=launch_child)continue;
         if(WIFEXITED(status)||WIFSIGNALED(status)){leader_done=1;break;}
         if(!WIFSTOPPED(status)){bad=1;break;}
         unsigned event=(unsigned)status>>16;
-        if(!event&&WSTOPSIG(status)==SIGSTOP){siginfo_t info;if(ptrace(PTRACE_GETSIGINFO,child,0,&info)&&errno==EINVAL)continue;}
+        if(!event&&WSTOPSIG(status)==SIGSTOP){siginfo_t info;if(entry_ptrace4(PTRACE_GETSIGINFO,launch_child,0,&info)&&errno==EINVAL)continue;}
         if(event==PTRACE_EVENT_EXEC&&!entered){entered=1;if(send_frame(report,sequence++,result_of(ENTERED,8,0,1))){bad=1;break;}}
-        if(ptrace(PTRACE_CONT,child,0,event==PTRACE_EVENT_EXEC?0:WSTOPSIG(status)))bad=1;
+        if(entry_ptrace4(PTRACE_CONT,launch_child,NULL,(void *)(uintptr_t)(event==PTRACE_EVENT_EXEC?0:WSTOPSIG(status))))bad=1;
     }
     int leader_status=status;
     if(kill(-1,SIGKILL)&&errno!=ESRCH)bad=1;
     for(;;){got=waitpid(-1,&status,__WALL);if(got>0)continue;if(got<0&&errno==EINTR)continue;if(got<0&&errno==ECHILD)break;bad=1;break;}
     unsigned char failure_bytes[9];size_t used=0;
-    while(used<sizeof(failure_bytes)){ssize_t n=read(pipefd[0],failure_bytes+used,sizeof(failure_bytes)-used);if(n<0&&errno==EINTR)continue;if(n<0){bad=1;break;}if(!n)break;used+=(size_t)n;}
-    close(pipefd[0]);
-    if(!bad&&!entered&&used==8&&get32(failure_bytes)>=1&&get32(failure_bytes)<=8&&get32(failure_bytes+4)>0&&get32(failure_bytes+4)<=4095)
+    while(used<sizeof(failure_bytes)){ssize_t n=read(launch_peer,failure_bytes+used,sizeof(failure_bytes)-used);if(n<0&&errno==EINTR)continue;if(n<0){bad=1;break;}if(!n)break;used+=(size_t)n;}
+    close(launch_peer);
+    if(!bad&&launch_check&&!entered&&used==8&&!get32(failure_bytes)&&!get32(failure_bytes+4)&&leader_done&&WIFEXITED(leader_status)&&!WEXITSTATUS(leader_status))
+        result=result_of(PREFLIGHT,0,0,0);
+    else if(!bad&&!entered&&used==8&&get32(failure_bytes)>=1&&get32(failure_bytes)<=8&&get32(failure_bytes+4)>0&&get32(failure_bytes+4)<=4095)
         result=result_of(SETUP,get32(failure_bytes),get32(failure_bytes+4),0);
     else if(!bad&&entered&&!used&&leader_done&&WIFEXITED(leader_status))result=result_of(EXITED,0,WEXITSTATUS(leader_status),1);
     else if(!bad&&entered&&!used&&leader_done&&WIFSIGNALED(leader_status))result=result_of(SIGNALLED,0,WTERMSIG(leader_status),1);
@@ -414,6 +443,7 @@ failed: {
     }
 }
 static int cleanup(void) {
+    if(admission_cgroup>=0){if(close(admission_cgroup))return -1;admission_cgroup=-1;}
     if(!identity_owned||!run_id||run_uid<100000||run_uid>100999)return -1;
     if(access(cgroup,F_OK)==0){uint64_t populated;if(cg_read("cgroup.events","populated",&populated)||populated)return -1;if(rmdir(cgroup))return -1;}
     else if(errno!=ENOENT)return -1;
@@ -475,8 +505,29 @@ int main(int argc,char **argv) {
     unsigned long flags=CLONE_NEWPID|CLONE_NEWNS|CLONE_NEWNET|CLONE_NEWIPC|CLONE_NEWUTS|SIGCHLD;
     if(fault("namespace_fail"))flags|=CLONE_THREAD;
     uint64_t launch_started=now_ms();
+    // §FS-entry.control: Reject an unavailable measurement before creating the run's init.
+#ifdef LEANCAGE_ENTRY_TEST
+    if(fault("launch_clock_fail"))launch_started=0;
+#endif
+    if(!launch_started)return setup_failure(2,EIO);
     pid_t init=(pid_t)syscall(SYS_clone,flags,NULL,NULL,NULL,0);
-    if(!init){close(signals);for(int i=0;i<3;i++)close(streams[i][0]);namespace_init(self,streams[0][1],input,streams[1][1],streams[2][1]);}
+    if(!init){
+        close(signals);for(int i=0;i<3;i++)close(streams[i][0]);
+        // §FS-entry.release: Keep the writable attachment handle out of the outer supervisor.
+        snprintf(path,sizeof(path),admission_path_format,cgroup);
+        admission_cgroup=open(path,O_WRONLY|O_CLOEXEC|O_NOFOLLOW);
+#ifdef LEANCAGE_ENTRY_TEST
+        if(fault("admission_open_fail")){
+            if(admission_cgroup>=0)close(admission_cgroup);
+            admission_cgroup=-1;errno=EIO;
+        }
+#endif
+        if(admission_cgroup<0){
+            struct result failure=result_of(SETUP,2,(unsigned)error_number(),0);
+            (void)send_frame(streams[0][1],0,failure);close(streams[0][1]);_exit(0);
+        }
+        namespace_init(self,streams[0][1],input,streams[1][1],streams[2][1]);
+    }
     close(self);close(input);for(int i=0;i<3;i++)close(streams[i][1]);
     if(init<0)return setup_failure(2,error_number());
     int initfd=(int)syscall(SYS_pidfd_open,init,0);if(initfd<0){kill(init,SIGKILL);waitpid(init,NULL,0);return finish(result_of(UNKNOWN,9,error_number(),2));}

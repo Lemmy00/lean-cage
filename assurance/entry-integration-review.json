@@ -1,0 +1,227 @@
+{
+  "accepted_claim_record_sha256": "5659af5fe7c0ecb7b03e25738214e71558b7a008491103bd16c48d0156467bd0",
+  "actual_production_body_review": [
+    "EntryMain.main invokes Worker.run false on the real argv",
+    "Worker.run interprets Worker.startup with the maintained metadata/native adapters",
+    "The same Startup controls metadata guards, parser, setup, failure and preflight",
+    "The actual release read is used to instantiate the strictly shared SourceScopeProducer",
+    "The closed source acceptance retains exact public tick equality and the actual source labels",
+    "Full returned descriptor frames, not before-only Tick equality, justify after maps"
+  ],
+  "application_interface": {
+    "acceptance_factory": "EntryProcess.ProcessEntryAcceptance.actual_entry_acceptance",
+    "acceptance_receipt": "EntryProcess.ProcessEntryAcceptance.EntryAcceptance",
+    "consumer": "LeanCage.Entry.production_source_workspace",
+    "consumer_type_sha256": "ccb1fe599e0a787d08b4a1103897b9a21809f8bc13220bc66ecd8cb5dbad0c7c",
+    "source_factory": "EntryNamespace.NamespaceScopeFactory.actual_prepared_source_scope_from_raw",
+    "source_projection": "EntryNamespace.NamespaceScopeFactory.source_scope_produced",
+    "source_receipt": "EntryNamespace.NamespaceScopeFactory.SourceScopeProduction",
+    "source_record_sha256": "3cd6ac3ce6824f77b433d3e86e6e808adb5a2326e62b6785d8465942df672bf6",
+    "source_type_sha256": {
+      "EntryNamespace.NamespaceScopeFactory.SourceScopeProduction": "3ffa699508bbb866e9201ac2fa042ce2b63722f011cb765298a2a4210d7750e6",
+      "EntryNamespace.NamespaceScopeFactory.actual_prepared_source_scope_from_raw": "a67627f996e8fedb6cc2aea1c2d675254141f862b9bbd032adca82a3e8eebc77",
+      "EntryNamespace.NamespaceScopeFactory.source_scope_produced": "bf844557a6c318ca345608ec5299694d327cc584c69c67bb2ecd41aeee897778",
+      "EntryProcess.ProcessEntryAcceptance.EntryAcceptance": "eee21af9d357a588f50ffcd685d14fdfb9b2e72a63942dd92e0489cdf56521f6",
+      "EntryProcess.ProcessEntryAcceptance.actual_entry_acceptance": "873188dfbda14960486ebd66b397ffb07cc82f092e14c8296d84020d5efa2c12",
+      "EntryProcess.ProcessEntryTickBridge.entry_runtime_ticks_ordinary": "eb23fbd5d4b3b33980d351d5044341e6e5651be990eff9e16a0c620df035e97f",
+      "EntryProcess.ProcessImport.LeanCage_Entry_SourceScopeProducer": "cd1c64fc1ece40a342e46c6d782e381407e12c791bac3685eff1608281654a7b"
+    },
+    "strict_predicate": "EntryProcess.ProcessImport.LeanCage_Entry_SourceScopeProducer",
+    "tick_bridge": "EntryProcess.ProcessEntryTickBridge.entry_runtime_ticks_ordinary",
+    "useful_consumer": "LeanCage.Entry.CallerWitness.useful_public_source_workspace",
+    "useful_consumer_type_sha256": "af5910d2ea08009a97763217bdd3877f80169adb8707498848da03c0bb739eef"
+  },
+  "input_binding_amendments": [
+    {
+      "changed_inputs": [
+        "assurance/entry-process.json.gz"
+      ],
+      "current_source_record_sha256": "7f6b8fa057158add26b6ebc4b831e1d8e3a834092c228ab832228e466816aebe",
+      "previous_claim_record_sha256": "6058b2a4f899ebafad22653a0ac6ed86838c23dab6e8286fd9f74c5696a049d9",
+      "previous_source_record_sha256": "ef2834a71688889d10c927182ee50e1f31c75c844eee07d689f246a68a2b6cb2",
+      "reason": "Bind corrected same-typed generated-local source checker; all ordinary theorem types, assumptions, module inventory, definition bodies and source-interface type hashes remain byte-identical."
+    },
+    {
+      "changed_inputs": {
+        "assurance/entry-process.json.gz": {
+          "after": "1cede688a46fec58fc610d4db83d82f5ef9715889413d8fe2d47eb178aaebdf3",
+          "before": "7f6b8fa057158add26b6ebc4b831e1d8e3a834092c228ab832228e466816aebe"
+        },
+        "docs/architecture/AR-application-verification.md": {
+          "after": "f5351918900a5bf51cb3bced9637679f1d8255a9bf7fd663f8d3d8e7b26e558f",
+          "before": "6417e62ac98e0416543863b3aa50dedfd1592a15946cce2e08cc1c34c9895a73"
+        }
+      },
+      "current_source_record_sha256": "1cede688a46fec58fc610d4db83d82f5ef9715889413d8fe2d47eb178aaebdf3",
+      "previous_claim_record_sha256": "abf2374f90643bba5fac5b39e2a6f39b6000cd6202e212d3d43a3e9a35688189",
+      "previous_source_record_sha256": "7f6b8fa057158add26b6ebc4b831e1d8e3a834092c228ab832228e466816aebe",
+      "reason": "Fresh ordinary query reproduces all theorem types, foundations, executable bodies and source-interface types; bind the reviewed preservation-checker dependency amendment and editorial status pointer to the roadmap. Acceptance contracts are unchanged."
+    },
+    {
+      "changed_inputs": {
+        "assurance/entry-arguments.json.gz": {
+          "after": "69bceabf2ead5a925db76a32e498b7c0eba81f27d3ea453cc8cca01b597015a4",
+          "before": "d6d3293e0f9db8ba58ea73001b27230ec850c5808ae9f74c2b997165a6aa576d"
+        },
+        "assurance/entry-process.json.gz": {
+          "after": "b252994534919d315670185937e93c0e800523086516db816d0ea7cc8821fc58",
+          "before": "1cede688a46fec58fc610d4db83d82f5ef9715889413d8fe2d47eb178aaebdf3"
+        }
+      },
+      "current_source_record_sha256": "b252994534919d315670185937e93c0e800523086516db816d0ea7cc8821fc58",
+      "previous_claim_record_sha256": "587b34fd827ae5747ba58513de993ebd4d5a4ba9328f029ae3664f2d9c9b6228",
+      "previous_source_record_sha256": "1cede688a46fec58fc610d4db83d82f5ef9715889413d8fe2d47eb178aaebdf3",
+      "reason": "Bind the strict argument checker metadata dependency. Every audited compiled Lean artifact, theorem/body/foundation/interface payload remains identical; the final acceptance check is resumed on these inputs."
+    },
+    {
+      "changed_inputs": {
+        "assurance/entry-process.json.gz": {
+          "after": "3cd6ac3ce6824f77b433d3e86e6e808adb5a2326e62b6785d8465942df672bf6",
+          "before": "b252994534919d315670185937e93c0e800523086516db816d0ea7cc8821fc58"
+        },
+        "verification/launch/NamespaceAdmissionProjection.v": {
+          "after": "3e2f50fe3f339b53f24424e3daf92d0a82f4fa6f4177b3b0d46e960fbf8eb1d2",
+          "before": "a36ddbcfced3f18a6343b9f76c401db2cf00a99d5ab521518ef30b397f8fe838"
+        },
+        "verification/launch/NamespaceAfterFork.v": {
+          "after": "aef5a3a7a91caf619bc2bc8aa02b2e70b201ec7873421ea3149fe25c5f5ad11e",
+          "before": "fa1d4c4df8ed0d5e4c8ea84e814d24ad2742034277ef1ca619af585813d1d3fd"
+        },
+        "verification/launch/NamespaceChannel.v": {
+          "after": "35c120e7a567fbe5921eb9fdbae9c531c19ec4be1eb97a01bc49f401cb83b567",
+          "before": "efdd53fcd18a9288fd58616739a74d5456023b1cb90b469b7bbaa3cbd9510a35"
+        },
+        "verification/launch/NamespaceChildImage.v": {
+          "after": "48f23ef94fc186691ad54f3bfff205b063d5ea2428c58d02b9a80968af532bd3",
+          "before": "522897f61b2935d1a5e2e558a9ef6ccda017a6d2fc7e4480f2648e7447bf3e15"
+        },
+        "verification/launch/NamespaceClosure.v": {
+          "after": "76cf3df125c1ec9ead427b2ad9e9080d6e24e34d6928f89b6d206a6e0d09ca70",
+          "before": "09d2a14ba10ca2b82ea6dadc7e79e78ecf525fe330f6edaed83f0e802fcd2471"
+        },
+        "verification/launch/NamespaceContexts.v": {
+          "after": "0478c6dcf02ad5c5ed41035c36b4946ad9c70e4ccefbc9023788f28b80d1eb6d",
+          "before": "d616690df0dafdbdbe25ea2b0fd0e35a9123e96ca2f4da0bec59edd4b78216e5"
+        },
+        "verification/launch/NamespaceGrant.v": {
+          "after": "8dcbb031f9a36eb2e6b3a9874b322d0279ebd109695a1f8f9f3f8ae14d49d338",
+          "before": "97c3572e9bef0ed616b4571660760b3cc39a82c62de9b62664b364824dbc602d"
+        },
+        "verification/launch/NamespaceHandoff.v": {
+          "after": "ede5346d4216f8dd596b5e396473e55ed095f4c50f64b4ca738a97292c867a06",
+          "before": "62cefe83e10c315822000985721dc87bd2b74ed533d8c2b2e61555aaa92175fd"
+        },
+        "verification/launch/NamespaceLaunch.v": {
+          "after": "2f336a77e20982e95c6ba5cd5c00da4218a1ab81cad96ba659501d86177e27f1",
+          "before": "507630b5edfc9240720d4418b56044ded647767d15aa554dcfba3e64ca6bcc4b"
+        },
+        "verification/launch/NamespaceParentEntry.v": {
+          "after": "cc8883d72e0c3aef357bd284a27c9a9aa0c37663c4bce97166f4dfd46c6d48ad",
+          "before": "3109460e9ab723262f2421b9b2f3da72826605b7bb3ca4c86088f6191f545536"
+        },
+        "verification/launch/NamespaceParentFrame.v": {
+          "after": "535e551f5d09539cdef825a04c37ad566cc88a5535e95161b59ed1daa1c5cfff",
+          "before": "6c322c83f123b74c37d174adf2e63d3adf381df21b7d2ee6ea09e965b1a1d701"
+        },
+        "verification/launch/NamespaceTailDescriptor.v": {
+          "after": "fd03f189b794e7bdc098c5e9eacdbf0098bc15fc364e953be2da66d50b5237f5",
+          "before": "d2adb56c190cc0efa6c2efb1938aceeb085617ca438c28ab5e61d8aae80e65f6"
+        },
+        "verification/launch/NativeHandoffConnection.v": {
+          "after": "9167c1ee1ba19a2329e5b05d15946fa6d0a4bd3bf633fdaaabced3db65507610",
+          "before": "fb06d4ccba3c6bb9fe645eab54b812acdb6c44c48e6243ed15adaf3fd107c7c0"
+        },
+        "verification/launch/ProcessCallee.v": {
+          "after": "70ad3734dc722783ad17fe7d3da40ebd8872e4ceb6867fc4f8cd976b8e03bbd0",
+          "before": "de07e9e4231616d1ed923ffd565832ae3747ca2fef751605d8a536dca25cfd4d"
+        },
+        "verification/launch/ProcessClock.v": {
+          "after": "c2185d887415b214ef6d977ed2c71e959028e098ac9b79330821ab86cc18f5df",
+          "before": "cbae4af6fda8dc09c57b6a585bcd16c5183081f9fda3447913e1fce820334055"
+        },
+        "verification/launch/ProcessClockRun.v": {
+          "after": "07b6bc9dc5d42dd26bfc2674644846bec1cc055b68531f77331e1c1f65f1d1df",
+          "before": "f3d63194760ade3957e61391fc0dfb6efbe445f3ed8748323d87530866bb4122"
+        },
+        "verification/launch/ProcessWait.v": {
+          "after": "19cd71c637c5c4f163bdf53afb6e4326c2d8cd5feab0bbe00cb3f7f1f4994461",
+          "before": "11f86e71bdca71bdc135e1f156eb37152c0363e57687e81de533502786d97496"
+        }
+      },
+      "current_source_record_sha256": "3cd6ac3ce6824f77b433d3e86e6e808adb5a2326e62b6785d8465942df672bf6",
+      "previous_claim_record_sha256": "9d0b182e67bec6ad2c66bd624079df3f7a99a27bac0eed0a9a4ed081b933632e",
+      "previous_source_record_sha256": "b252994534919d315670185937e93c0e800523086516db816d0ea7cc8821fc58",
+      "reason": "EOF-only proof-source normalization; all recompiled source proof objects and all audited ordinary compiled artifacts/types/definitions/foundations are byte-identical."
+    }
+  ],
+  "input_producers": {
+    "AR-application-verification.authority": [
+      "Actual namespace_init preparation and error guards reach namespace_tail 9 with canonical locals",
+      "Caller policy bytes bind the leased UID, root, argv and immutable argument storage",
+      "Ordinary input/capture/cgroup/report objects have their observed identities and descriptor modes",
+      "Owned VM ancestors' actual source issues no debugger or private-descriptor acquisition operation",
+      "The named cgroup and namespace objects denote the requested run"
+    ],
+    "AR-application-verification.composition": [
+      "Public fields and artifacts consume authenticated observations of this request"
+    ],
+    "AR-application-verification.lifetime": [
+      "Owned supervision and cancellation establish later exit, population and cleanup observations"
+    ]
+  },
+  "logical_axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "predecessor": {
+    "original_sha256": "4da0f8961e86a94d750eb1024049740f22023ca92baf932b0364cd958ac1ffb7",
+    "path": "assurance/entry-body-claims.json.gz",
+    "revision": "be541b134bd339fb053f07c491e04ec995d564f8",
+    "sha256": "8e726e8cd6b210ab27b21d0920a56bf2d3203ae602fdb51a6d718be9a10f74f2"
+  },
+  "preserved_security_theorem_types": true,
+  "proposal_sha256": "5659af5fe7c0ecb7b03e25738214e71558b7a008491103bd16c48d0156467bd0",
+  "regenerated_private_or_equation_rows": {
+    "changed": [
+      "LeanCage.Entry.handshake.eq_1",
+      "LeanCage.Entry.successfulReturn._sparseCasesOn_1.else_eq",
+      "LeanCage.Entry.successfulReturn.eq_1",
+      "_private.Witnesses.0.LeanCage.Entry.Expected.witness.match_1.eq_1",
+      "_private.Witnesses.0.LeanCage.Entry.Expected.witness.match_1.eq_2",
+      "_private.Witnesses.0.LeanCage.Entry.Expected.witness.match_1.eq_3",
+      "_private.Witnesses.0.LeanCage.Entry.Expected.witness.match_1.eq_4",
+      "_private.Witnesses.0.LeanCage.Entry.successfulReturn.match_1.eq_1",
+      "_private.Witnesses.0.LeanCage.Entry.successfulReturn.match_1.eq_10",
+      "_private.Witnesses.0.LeanCage.Entry.successfulReturn.match_1.eq_11",
+      "_private.Witnesses.0.LeanCage.Entry.successfulReturn.match_1.eq_12",
+      "_private.Witnesses.0.LeanCage.Entry.successfulReturn.match_1.eq_13",
+      "_private.Witnesses.0.LeanCage.Entry.successfulReturn.match_1.eq_14",
+      "_private.Witnesses.0.LeanCage.Entry.successfulReturn.match_1.eq_15",
+      "_private.Witnesses.0.LeanCage.Entry.successfulReturn.match_1.eq_2",
+      "_private.Witnesses.0.LeanCage.Entry.successfulReturn.match_1.eq_3",
+      "_private.Witnesses.0.LeanCage.Entry.successfulReturn.match_1.eq_4",
+      "_private.Witnesses.0.LeanCage.Entry.successfulReturn.match_1.eq_5",
+      "_private.Witnesses.0.LeanCage.Entry.successfulReturn.match_1.eq_6",
+      "_private.Witnesses.0.LeanCage.Entry.successfulReturn.match_1.eq_7",
+      "_private.Witnesses.0.LeanCage.Entry.successfulReturn.match_1.eq_8",
+      "_private.Witnesses.0.LeanCage.Entry.successfulReturn.match_1.eq_9"
+    ],
+    "missing": [
+      "LeanCage.Entry.setup_guards_sound._simp_1_13",
+      "_private.Effects.0.LeanCage.Entry.Expected.accepts.match_1.eq_1",
+      "_private.Effects.0.LeanCage.Entry.Expected.accepts.match_1.eq_2",
+      "_private.Effects.0.LeanCage.Entry.Expected.accepts.match_1.eq_3",
+      "_private.Effects.0.LeanCage.Entry.Expected.accepts.match_1.eq_4"
+    ],
+    "reason": "The handshake now requires the exact release read; Expected.byte/Op.readByte add the corresponding equations and internal match branches. Other existing public security theorem types and axiom sets are unchanged."
+  },
+  "related_reviews": {
+    "assurance/entry-primitive-review.json": "bef48a41b4cb5a5cc19ee924aeccd3467135b857edeaa5e92884fffaf5113173",
+    "assurance/entry-source-review.json": "964902d513c0e2ca2af4cd0d777ce6a4bc53f25f694c37a59bfe255d866e7bf4",
+    "assurance/entry-useful-review.json": "7e9c8e2be7cf5a033ad50fcfe3f15d5765a992f6c6cdf887af1d355f2a06bcb5"
+  },
+  "schema": "leancage-entry-integration-review-v1",
+  "scope": "Guest admission from the maintained prepared-root launch statement through the actual local fork, native handoff and fresh Lean worker, under the enumerated Linux/runtime contracts; policy/workspace preparation, lifetime and public observation producers retain their separately assigned application obligations.",
+  "status": "reviewed"
+}

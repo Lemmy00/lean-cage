@@ -116,6 +116,7 @@ LEAN_EXPORT lean_obj_res leancage_entry_primitive(uint32_t op, uint64_t a, uint6
         struct timespec time = {(time_t)(a / 1000), (long)(a % 1000) * 1000000};
         value = syscall(SYS_nanosleep, &time, NULL); break;
     }
+    case 27: value = syscall(SYS_read, a, output, 1); used = value == 1 ? 1 : 0; break;
     default: errno = EINVAL; break;
     }
 done:

@@ -306,7 +306,13 @@
       "type": "\u2200 (motive : Option.{0} Lean.Json \u2192 Sort u_1) (h_1 : (value : Lean.Json) \u2192 motive (Option.some.{0} value))\n  (h_2 : Unit \u2192 motive Option.none.{0}),\n  Eq.{u_1}\n    (match Option.none.{0} with\n    | Option.some.{0} value => h_1 value\n    | Option.none.{0} => h_2 ())\n    (h_2 ())"
     }
   ],
-  "schema": "leancage-product-core-v1",
+  "predecessor": {
+    "archive": "assurance/product-core-baseline.json.gz",
+    "archive_sha256": "cbd07061af42a8dccb72b207f68c57d07d088e69b9a18cf5bd9e4b4eb52728e6",
+    "record_sha256": "8c09b326772e40479bddc3d176388bff3942e6dee0bf4fb02eb81aaed6be6df2",
+    "revision": "506337e48a2bac4fc46bb4d7bea3b88fb4f10c47"
+  },
+  "schema": "leancage-product-core-v2",
   "source_sha256": {
     "library/LeanCageWorkspace.lean": "ca04608b70b78f9fab89fa4377fb3c2f703eba29904138267ec06128c871aa94",
     "library/lake-manifest.json": "6e612ef9157e1fcf48ce974425fa0afb5fb79f53abbd97aec9f982ea21432229",
@@ -315,13 +321,14 @@
     "lifecycle/LeanCageM2/Filter.lean": "a9a3955657b84f93584401f30e6b51146370968da75e55f6b9a8cc3144ac06e3",
     "lifecycle/LeanCageM2/Model.lean": "090dcca202cf482a6cb30cb8a1588ad0fb1162597b764aff32e69e5f2cd0eb05",
     "lifecycle/LeanCageM2/Proofs.lean": "b58d7632f36826eb229544f3e84736585583dba2763adc0390a63b8c955313e4",
-    "scripts/audit_product.py": "6ca783b75572bce3c10585093db7c63e41d8db5eae82739d0aff997d61b3f8a6",
+    "scripts/audit_product.py": "eed531fff2fbf61365478ae0ffaee4dc94987e621f17961188da7bb6925eff0c",
     "workspace/LeanCageM3.lean": "983e4a293c334daf25a7a78a8e9c590cef67e5a231f20d8b5728cf1ff533a0ad",
-    "workspace/LeanCageM3/API.lean": "e13fdb9a6fa2b5e761f9bd36c3999e71cdb66bc6411618976b331ff1d754abf0",
+    "workspace/LeanCageM3/API.lean": "07743a9568febf3507d532bbc7db9af15401555d48c62c89181fcabc357c4795",
     "workspace/LeanCageM3/Authority.lean": "a90d20ead1cc066c84b838b0a34105700f8eccd92ef7018765ab5cfceeee4f93",
     "workspace/LeanCageM3/AuthorityProofs.lean": "22ec3d0bf6fe319533559853a3cf3cda546b746d4ca245bb5b29ec0b8531786e",
     "workspace/LeanCageM3/Filter.lean": "b4ec91391cc3329388c4a955c960882f20eec7463927322bdd30a102a713a245",
     "workspace/LeanCageM3/Lifecycle.lean": "4632ba9ebbfcc9e2ee32afc28d58cc0d0b34f8eb5ace7be273704c5ce5dda703",
+    "workspace/LeanCageM3/Metadata.lean": "cb4510947423aaaec099f725eba2d64c4870cd9a2fe1acc1d42aec4f96d7ee14",
     "workspace/LeanCageM3/Policy.lean": "b80f2de75766175cccc0471d8da156cfbd0e1cb6e2dcfdc25158381776958f87",
     "workspace/LeanCageM3/ProcessProofs.lean": "d903437db24e7eca7e6cb4c2e3dfc8a39757ab75d0734e178e74462516a2a6d6",
     "workspace/LeanCageM3/Proofs.lean": "6490e71a6e6b1650ad1e4443b8e40a58abb200cc2681d68b04ea03f5bf1c260d",

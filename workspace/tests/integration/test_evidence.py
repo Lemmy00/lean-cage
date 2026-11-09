@@ -78,6 +78,7 @@ class Evidence(unittest.TestCase):
         e=copy.deepcopy(self.evidence);del e['artifacts_sha256']['qemu_accel'];variants.append(e)
         e=copy.deepcopy(self.evidence);e['artifacts_sha256']['helper']='0'*64;variants.append(e)
         e=copy.deepcopy(self.evidence);e['assumptions']=[];variants.append(e)
+        e=copy.deepcopy(self.evidence);e['predecessor']['archive_sha256']='0'*64;variants.append(e)
         for e in variants:
             with self.subTest(),self.assertRaises(ValueError):VM.validate_evidence(e)
 
@@ -89,7 +90,7 @@ class Evidence(unittest.TestCase):
     def test_moved_checkout_without_original_artifacts(self):
         with tempfile.TemporaryDirectory(prefix='leancage-m3-relocated-') as directory:
             root=Path(directory)
-            paths=set(self.evidence['source_sha256'])|{'assurance/m3-vm-evidence.json','assurance/m3-vm-transcript.log','assurance/m3-image-inventory.json'}
+            paths=set(self.evidence['source_sha256'])|{str(path.relative_to(PROJECT)) for path in (VM.EVIDENCE,VM.TRANSCRIPT,VM.INVENTORY)}
             for name in paths:
                 target=root/name;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(PROJECT/name,target)
             result=subprocess.run(['python3',str(root/'scripts/run_m3_vm.py'),'--check-evidence'],cwd=root,capture_output=True,text=True,timeout=30)

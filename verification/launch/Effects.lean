@@ -8,6 +8,7 @@ def successfulReturn (request : Request) (reply : Reply) : Bool :=
   | .dup2 | .dup3 => request.b ≤ 2147483647 && reply.1 == request.b
   | .setsid => 1 ≤ reply.1 && reply.1 ≤ 2147483647
   | .umask => reply.1 ≤ 511
+  | .readByte => reply.1 == 1
   | .fsuid | .fsgid => request.a == 4294967295
   | .capget | .getresuid | .getresgid | .getgroups => true
   | .prctl =>
@@ -87,10 +88,15 @@ theorem setup_guards_sound (p : Inputs) (normal : p.fault = "normal") : ∀ comm
       simp [GuardSound, primitiveInput, successfulReturn, Expected.accepts]
     · simp [GuardSound, primitiveInput, cmd, successfulReturn, Expected.accepts]
   · simp only [handshake, List.mem_append, List.mem_cons, List.not_mem_nil, or_false] at h
-    rcases h with h | rfl | rfl
+    rcases h with h | rfl | rfl | rfl
     · simp [normal] at h
     · simp [GuardSound, primitiveInput, cmd, successfulReturn, Expected.accepts]
     · simp [GuardSound, primitiveInput, cmd, successfulReturn, Expected.accepts]
+    · simp only [GuardSound, primitiveInput, cmd, successfulReturn, Expected.accepts]
+      refine ⟨True.intro, ?_⟩
+      intro reply accepted
+      simp only [Bool.and_eq_true] at accepted
+      exact accepted.1
   · simp only [handleSetup, List.mem_cons, List.not_mem_nil, or_false] at h
     rcases h with rfl | rfl | rfl | rfl | rfl <;>
       simp [GuardSound, primitiveInput, cmd, successfulReturn, Expected.accepts]

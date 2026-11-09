@@ -1,8 +1,8 @@
 # AR-application-verification: Prove the application through integrated security guarantees
 
 Implement [§FS-linux-product.proofs.application](../functional-spec/FS-linux-product.md#proofsapplication-the-complete-application-guarantee) on the delivered public workflow.
-This is the M5 implementation plan; all deliveries below are planned. The
-baseline is `92367a5`, with accepted evidence in the
+This is the M5 implementation plan; delivery status is recorded in [§RM-roadmap.m5](../roadmap.md#m5-verify-the-complete-application-control-path).
+The baseline is `92367a5`, with accepted evidence in the
 [product handoff](../reviews/workspace-product-handoff.md). The roadmap owns
 sequencing under [§RM-roadmap.m5](../roadmap.md#m5-verify-the-complete-application-control-path); this document owns proof boundaries, code
 coverage and acceptance. Keep the existing policy, result and VM interfaces.

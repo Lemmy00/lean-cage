@@ -33,7 +33,7 @@ inductive Op where
   | dup2 | dup3 | closeRange | chroot | chdir | setsid | umask
   | prctl | setgroups | setresgid | setresuid | capset | capget
   | getresuid | getresgid | getgroups | fsuid | fsgid | filter | exec
-  | write | exit | pause
+  | write | exit | pause | readByte
   deriving Repr, DecidableEq, BEq
 
 def Op.code : Op → UInt32
@@ -43,7 +43,7 @@ def Op.code : Op → UInt32
   | .setresgid => 13 | .setresuid => 14 | .capset => 15 | .capget => 16
   | .getresuid => 17 | .getresgid => 18 | .getgroups => 19 | .fsuid => 20
   | .fsgid => 21 | .filter => 22 | .exec => 23 | .write => 24 | .exit => 25
-  | .pause => 26
+  | .pause => 26 | .readByte => 27
 
 structure Request where
   op : Op
@@ -61,12 +61,14 @@ inductive Expected where
   | processId
   | fileMode
   | bytes (value : ByteArray)
+  | byte (value : UInt8)
 
 def Expected.accepts : Expected → Reply → Bool
   | .exact value, (ret, _) => ret == value
   | .processId, (ret, _) => 1 ≤ ret && ret ≤ 2147483647
   | .fileMode, (ret, _) => ret ≤ 511
   | .bytes value, (ret, output) => ret == 0 && output == value
+  | .byte value, (ret, output) => ret == 1 && output == (⟨#[value]⟩ : ByteArray)
 
 structure Command where
   request : Request
@@ -113,10 +115,12 @@ def signalSetup (p : Inputs) : List Command :=
       some (early { op := .signalDefault, a := signal.toUInt64 })) ++
   [early { op := .signalMask }]
 
+-- §FS-entry.release: A resumed stop alone never authorizes setup or workload execution.
 def handshake (p : Inputs) : List Command :=
   let early := cmd p 1 (beforeHandles := true)
   (if p.fault == "pause_setup" then [early { op := .pause, a := 2000 }] else []) ++
-  [early { op := .traceMe }, early { op := .stop }]
+  [early { op := .traceMe }, early { op := .stop },
+   cmd p 1 { op := .readByte, a := p.failure.toUInt64 } (.byte 165) true]
 
 def handleSetup (p : Inputs) : List Command :=
   [cmd p 3 { op := .dup2, a := if p.fault == "handles_fail" then 4294967295 else p.input.toUInt64, b := 0 } (.exact 0) true,

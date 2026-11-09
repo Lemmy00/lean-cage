@@ -94,6 +94,15 @@ packages; `native/leancage_m3.c` and its three headers point to `linux/`;
 `profiles/m3` points to the supported profile. Runtime/ELF script compatibility
 names point to responsibility-named scripts. There are no parallel implementation
 copies. Historical milestone test harnesses and proof snapshots stay in place.
+When the maintained helper changes, `assurance/workspace-baseline.json.gz`
+preserves the predecessor's actual source bytes and scoped receipts; a historical
+path in that archive does not identify the current helper through its alias.
+The separate sealed `assurance/product-cache-baseline.json.gz` retains the exact
+API and Main Lean artifacts named by the accepted reporting/compiler record at
+`d44c961`. The migration checker validates their bytes against that record and
+keeps its original cache fingerprints; current rebuilt artifacts are recorded
+separately. This preserves the workspace predecessor archive and its existing
+VM bindings unchanged.
 The migration record checks every alias against its canonical target and records
 the original revision. Preserve theorem statements and axiom sets exactly;
 amend only reviewed operational-document/evidence fingerprints when needed.

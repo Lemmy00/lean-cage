@@ -12,7 +12,11 @@ lean_lib LeanCageEntry
 
 lean_lib EntryVerification where
   srcDir := "../verification/launch"
-  roots := #[`Admission, `StateProofs, `Witnesses, `Effects, `WorkerConnection]
+  roots := #[`Admission, `StateProofs, `Witnesses, `Effects, `WorkerConnection, `Execution,
+    `StartupProofs, `CallerState, `ProcessProvenance, `CallerProvenance, `EntryGuarantee,
+    `MetadataControl, `MetadataFrame, `MetadataStartup, `MetadataOrigins, `MetadataWitness,
+    `CallerPhysical, `CallerRecording, `ChannelProofs, `ChannelExecution, `MetadataRecording,
+    `StartupExecution]
 
 extern_lib entryPrimitives pkg := do
   let source ← inputFile (pkg.dir / ".." / "linux" / "entry_primitives.c") true
@@ -22,13 +26,13 @@ extern_lib entryPrimitives pkg := do
   buildStaticLib (pkg.staticLibDir / nameToStaticLib "entry_primitives") #[object]
 
 lean_exe «leancage-entry» where
-  root := `Main
+  root := `EntryMain
   moreLinkArgs := #["-Wl,-z,now", "-Wl,--wrap=initialize_libuv",
     "-Wl,--wrap=lean_init_task_manager", "-Wl,--wrap=lean_run_main",
     "-Wl,--wrap=pthread_create"]
 
 lean_exe «leancage-entry-test» where
-  root := `TestMain
+  root := `EntryTestMain
   moreLinkArgs := #["-Wl,-z,now", "-Wl,--wrap=initialize_libuv",
     "-Wl,--wrap=lean_init_task_manager", "-Wl,--wrap=lean_run_main",
     "-Wl,--wrap=pthread_create"]

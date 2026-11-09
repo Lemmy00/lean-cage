@@ -16,3 +16,4 @@
 | [§DA-reporting-connection](DA-reporting-connection.md#da-reporting-connection-connect-reporting-through-a-checked-call-interface) | Whole-call source/Lean connection that preserves byte prefixes, raw fields and publication/loss status |
 | [§DA-compiled-reporting](DA-compiled-reporting.md#da-compiled-reporting-instantiate-and-consume-the-reporting-compiler-proof) | Concrete compiler choices and a preserved runtime errno root for the reporting consumer |
 | [§DA-entry-worker](DA-entry-worker.md#da-entry-worker-use-a-fresh-single-threaded-lean-entry-image) | Fresh single-threaded Lean worker, real VM route evidence and remaining caller proofs |
+| [§DA-metadata-handles](DA-metadata-handles.md#da-metadata-handles-make-the-bounded-readers-descriptor-lifetime-executable) | Explicit metadata open/read/close without finalizer ownership assumptions |

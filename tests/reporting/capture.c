@@ -5,14 +5,21 @@
 #define write reporting_write
 #define close reporting_close
 #define main unused_helper_main
+// §FS-entry.runtime: Enable scripted test faults; the helper's VM entry is never invoked here.
+#define LEANCAGE_ENTRY_TEST 1
 #ifndef HELPER_SOURCE
-#define HELPER_SOURCE "../../native/leancage_m3.c"
+#define HELPER_SOURCE "../../linux/workspace.c"
 #endif
 #include HELPER_SOURCE
 #undef main
 #undef write
 #undef read
 #undef close
+#ifndef LEGACY_CAPTURE
+#include "../../linux/entry_decimal.c"
+#include "../../linux/entry_handles.c"
+#include "../../linux/process_primitives.c"
+#endif
 #include <assert.h>
 
 struct read_event { const char *bytes; ssize_t result; int error; size_t touched; };

@@ -1,0 +1,634 @@
+{
+  "accepted_source_record_sha256": "3cd6ac3ce6824f77b433d3e86e6e808adb5a2326e62b6785d8465942df672bf6",
+  "declarations": {
+    "EntryNamespace.NamespaceScopeFactory.actual_prepared_source_scope_from_raw": {
+      "assumptions": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "Lean.eq",
+        "ProcessImport.True"
+      ],
+      "type_sha256": "2f6ea5c39eeb1ea4df2cfd365b4a0b7bc37a77f408f85d4673f39d1fda3eb635"
+    },
+    "EntryProcess.ProcessClockMemory.clock_value_loads": {
+      "assumptions": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "type_sha256": "6e931f3fdc130c518048d13910764af47b9616cbc668d06a3f27d09eacecaf96"
+    },
+    "EntryProcess.ProcessEntryAcceptance.actual_entry_acceptance": {
+      "assumptions": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "Lean.eq",
+        "Lean.eq_inst1",
+        "ProcessImport.True",
+        "True"
+      ],
+      "type_sha256": "91e0ad78e74221451c53f93987aa86e00a453dd016b9d2f07c8ddb9b943d4c33"
+    },
+    "EntryProcess.ProcessEntryAcceptance.entry_complete_scope": {
+      "assumptions": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "HEq_inst1",
+        "Lean.eq",
+        "Lean.eq_inst1",
+        "ProcessImport.True",
+        "True"
+      ],
+      "type_sha256": "f5d3654b71d40e83a59cd9e7d63597bbaa33716c25243ccab6d4c51c4142eb8c"
+    },
+    "EntryProcess.ProcessEntryTickBridge.entry_runtime_ticks_ordinary": {
+      "assumptions": [],
+      "definitional_uip": [
+        "Lean.eq"
+      ],
+      "type_sha256": "28612eebd7e12da27e4348db99269937512d516159c35d04c204bbdee773529e"
+    },
+    "EntryProcess.ProcessPrimitiveHistory.entry_worker_tail_capabilities": {
+      "assumptions": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "Lean.eq",
+        "ProcessImport.True"
+      ],
+      "type_sha256": "3016aabced55f561917dd9318e0a0290351478ee5c0c34b3e47da71edb24c4de"
+    },
+    "EntryProcess.ProcessPrimitivePrefix.entry_worker_prefix_capabilities": {
+      "assumptions": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [
+        "Lean.eq",
+        "ProcessImport.True"
+      ],
+      "type_sha256": "e4c159e8dea73cd69c6db6f92c1b80cb2318009a08f610ba7cf8ae32eafb5fca"
+    }
+  },
+  "findings": [
+    "The raw prepared-root source producer derives local allocation, fork ownership, admission, close and release facts; no SourceScopeProducer or authorized read is assumed.",
+    "actual_entry_acceptance is closed and inhabited. Its constructor retains one source tuple and the same process/capability/queue/journal/IO/scope history, actual source labels and exact public tick equality.",
+    "The ordinary public consumer derives fixed native values on the same source-bound argument bytes. Exact full-frame facts, in addition to Tick equality, bind after descriptor maps.",
+    "Clock byte loads were reproved from the copied bytes without whole-memory equality. All 58 affected theorem types are unchanged; only Axioms.proof_irr was removed.",
+    "Unsafe/intercepted operations, foreign authority, failures and loss remain in the universal relations. Useful finite execution and finite-prefix safety do not assume termination.",
+    "Prepared policy/root/identity/object and earlier ancestor producers remain assigned to authority; later supervision and public observation producers remain separately assigned."
+  ],
+  "input_binding_amendments": [
+    {
+      "after": "9b3011c9ec1135d6debf908ca910ced2816cf6b48acd7bd22dc5e900f8d0283f",
+      "all_entry_proof_text_AST_objects_types_foundations_exports_unchanged": true,
+      "before": "cae42e2134cdaaa304715e27fc7a580702f3b9bcf5c6eced1c924364abcac601",
+      "changed_input": "verification/reporting/source.py",
+      "previous_source_record_sha256": "ef2834a71688889d10c927182ee50e1f31c75c844eee07d689f246a68a2b6cb2",
+      "reason": "The current-source checker now accepts only injective, registered, same-typed compiler result-slot renaming; full prefix/global checks and actual consumer replay are preserved.",
+      "validation_log_sha256": "68203a8a63f783834fb125ce1298553e5a2a4907654a4d86780473445a075e6b"
+    },
+    {
+      "all_entry_proof_text_AST_objects_types_foundations_exports_unchanged": true,
+      "changed_inputs": {
+        "assurance/reporting-connection.json.gz": {
+          "after": "9d602e73770e833ca1346acfd36da0c7030e9dde5aa08090925a3c1ba898aa19",
+          "before": "6d811bf7f9bc7dc26a986d82a1294e4e99ef836271ff5df6e56390b925f92187"
+        },
+        "verification/reporting/connection.py": {
+          "after": "6d75433ca2957c0813f188751558ea4d2bbc5419a5375fb765e522c62999416d",
+          "before": "08bd0bda40e8e59433ed9ff16505a55942d39e56f7ac9b1997f3c5200f7a71c4"
+        }
+      },
+      "previous_source_record_sha256": "7f6b8fa057158add26b6ebc4b831e1d8e3a834092c228ab832228e466816aebe",
+      "reason": "Exact legacy reporting-checker changes read original archived inputs and sealed caches; current entry proofs, source mapping, interfaces and kernel-checked artifacts are unchanged."
+    },
+    {
+      "all_entry_proof_text_AST_objects_types_foundations_exports_unchanged": true,
+      "changed_inputs": {
+        "assurance/entry-arguments.json.gz": {
+          "after": "69bceabf2ead5a925db76a32e498b7c0eba81f27d3ea453cc8cca01b597015a4",
+          "before": "d6d3293e0f9db8ba58ea73001b27230ec850c5808ae9f74c2b997165a6aa576d"
+        }
+      },
+      "previous_source_record_sha256": "1cede688a46fec58fc610d4db83d82f5ef9715889413d8fe2d47eb178aaebdf3",
+      "reason": "The strict argument record binds the same exact legacy-checker amendment; its proof objects, types, foundations, exports and all source/interface artifacts are unchanged."
+    },
+    {
+      "all_entry_proof_objects_types_foundations_exports_unchanged": true,
+      "changed_inputs": {
+        "verification/launch/NamespaceAdmissionProjection.v": {
+          "after": "3e2f50fe3f339b53f24424e3daf92d0a82f4fa6f4177b3b0d46e960fbf8eb1d2",
+          "before": "a36ddbcfced3f18a6343b9f76c401db2cf00a99d5ab521518ef30b397f8fe838"
+        },
+        "verification/launch/NamespaceAfterFork.v": {
+          "after": "aef5a3a7a91caf619bc2bc8aa02b2e70b201ec7873421ea3149fe25c5f5ad11e",
+          "before": "fa1d4c4df8ed0d5e4c8ea84e814d24ad2742034277ef1ca619af585813d1d3fd"
+        },
+        "verification/launch/NamespaceChannel.v": {
+          "after": "35c120e7a567fbe5921eb9fdbae9c531c19ec4be1eb97a01bc49f401cb83b567",
+          "before": "efdd53fcd18a9288fd58616739a74d5456023b1cb90b469b7bbaa3cbd9510a35"
+        },
+        "verification/launch/NamespaceChildImage.v": {
+          "after": "48f23ef94fc186691ad54f3bfff205b063d5ea2428c58d02b9a80968af532bd3",
+          "before": "522897f61b2935d1a5e2e558a9ef6ccda017a6d2fc7e4480f2648e7447bf3e15"
+        },
+        "verification/launch/NamespaceClosure.v": {
+          "after": "76cf3df125c1ec9ead427b2ad9e9080d6e24e34d6928f89b6d206a6e0d09ca70",
+          "before": "09d2a14ba10ca2b82ea6dadc7e79e78ecf525fe330f6edaed83f0e802fcd2471"
+        },
+        "verification/launch/NamespaceContexts.v": {
+          "after": "0478c6dcf02ad5c5ed41035c36b4946ad9c70e4ccefbc9023788f28b80d1eb6d",
+          "before": "d616690df0dafdbdbe25ea2b0fd0e35a9123e96ca2f4da0bec59edd4b78216e5"
+        },
+        "verification/launch/NamespaceGrant.v": {
+          "after": "8dcbb031f9a36eb2e6b3a9874b322d0279ebd109695a1f8f9f3f8ae14d49d338",
+          "before": "97c3572e9bef0ed616b4571660760b3cc39a82c62de9b62664b364824dbc602d"
+        },
+        "verification/launch/NamespaceHandoff.v": {
+          "after": "ede5346d4216f8dd596b5e396473e55ed095f4c50f64b4ca738a97292c867a06",
+          "before": "62cefe83e10c315822000985721dc87bd2b74ed533d8c2b2e61555aaa92175fd"
+        },
+        "verification/launch/NamespaceLaunch.v": {
+          "after": "2f336a77e20982e95c6ba5cd5c00da4218a1ab81cad96ba659501d86177e27f1",
+          "before": "507630b5edfc9240720d4418b56044ded647767d15aa554dcfba3e64ca6bcc4b"
+        },
+        "verification/launch/NamespaceParentEntry.v": {
+          "after": "cc8883d72e0c3aef357bd284a27c9a9aa0c37663c4bce97166f4dfd46c6d48ad",
+          "before": "3109460e9ab723262f2421b9b2f3da72826605b7bb3ca4c86088f6191f545536"
+        },
+        "verification/launch/NamespaceParentFrame.v": {
+          "after": "535e551f5d09539cdef825a04c37ad566cc88a5535e95161b59ed1daa1c5cfff",
+          "before": "6c322c83f123b74c37d174adf2e63d3adf381df21b7d2ee6ea09e965b1a1d701"
+        },
+        "verification/launch/NamespaceTailDescriptor.v": {
+          "after": "fd03f189b794e7bdc098c5e9eacdbf0098bc15fc364e953be2da66d50b5237f5",
+          "before": "d2adb56c190cc0efa6c2efb1938aceeb085617ca438c28ab5e61d8aae80e65f6"
+        },
+        "verification/launch/NativeHandoffConnection.v": {
+          "after": "9167c1ee1ba19a2329e5b05d15946fa6d0a4bd3bf633fdaaabced3db65507610",
+          "before": "fb06d4ccba3c6bb9fe645eab54b812acdb6c44c48e6243ed15adaf3fd107c7c0"
+        },
+        "verification/launch/ProcessCallee.v": {
+          "after": "70ad3734dc722783ad17fe7d3da40ebd8872e4ceb6867fc4f8cd976b8e03bbd0",
+          "before": "de07e9e4231616d1ed923ffd565832ae3747ca2fef751605d8a536dca25cfd4d"
+        },
+        "verification/launch/ProcessClock.v": {
+          "after": "c2185d887415b214ef6d977ed2c71e959028e098ac9b79330821ab86cc18f5df",
+          "before": "cbae4af6fda8dc09c57b6a585bcd16c5183081f9fda3447913e1fce820334055"
+        },
+        "verification/launch/ProcessClockRun.v": {
+          "after": "07b6bc9dc5d42dd26bfc2674644846bec1cc055b68531f77331e1c1f65f1d1df",
+          "before": "f3d63194760ade3957e61391fc0dfb6efbe445f3ed8748323d87530866bb4122"
+        },
+        "verification/launch/ProcessWait.v": {
+          "after": "19cd71c637c5c4f163bdf53afb6e4326c2d8cd5feab0bbe00cb3f7f1f4994461",
+          "before": "11f86e71bdca71bdc135e1f156eb37152c0363e57687e81de533502786d97496"
+        }
+      },
+      "previous_source_record_sha256": "b252994534919d315670185937e93c0e800523086516db816d0ea7cc8821fc58",
+      "reason": "Removed only trailing blank lines. All seventeen changed proof sources were recompiled at their canonical paths and produced byte-identical kernel-checked objects. Actual C AST, strict exports, type/interface/axiom queries and inherited proofs are unchanged."
+    }
+  ],
+  "interfaces": {
+    "EntryNamespace.NamespaceAdmissionGuarantee.RecordedForkAdmission": {
+      "definition_sha256": "0679f5e250ef8057b60f2455a4f513cb6445ea7768d3b7219a643db21f412f8a",
+      "type_sha256": "dc1fdb4d0fa8e85150cb95943145c6a489f163d1b3f4f97407b3978ee3ec6fd9"
+    },
+    "EntryNamespace.NamespaceAdmissionSlices.RecordedAdmissionSource": {
+      "definition_sha256": "87bd39ef14f416e942ed9b956b9c1e015f621d26a66c7b5335c1a94fb47763aa",
+      "type_sha256": "f8628954fbfa79062d2d7a11bc45bc2b060c02841ce4602b4129e2889ca1e459"
+    },
+    "EntryNamespace.NamespaceApplicationPositions.ApplicationPositions": {
+      "definition_sha256": "7c75cf47293ae908d5e0ed1ddd8dfbb0e249da0700a1caa0b045fe1ffb0fdbd2",
+      "type_sha256": "4bee317b80acead11d960395de6ba3898366c876ff381a042b732566a4f0ef3a"
+    },
+    "EntryNamespace.NamespaceCgroupAuthority.PreparedCgroupHandles": {
+      "definition_sha256": "9328a5353ad3b172b0426fae7aeee4c1de4409afd4109e659f4e3e8bbed4ce17",
+      "type_sha256": "59bdf7c7441beb118c119a30d00af5041729f321e1a91b431eb7db573e9191f1"
+    },
+    "EntryNamespace.NamespaceDescriptorOrigin.SourceDescriptorOrigin": {
+      "definition_sha256": "35a9b5cd7a4f4ac87cdabd46861ebfd512b93fba1989a035b6289cbe8f9fa3fd",
+      "type_sha256": "e2adedc6bf56a5470468dc9a7c80d193ea73c410d9a4bbf94b6853c80eb5c8a5"
+    },
+    "EntryNamespace.NamespaceGrantInputs.ParentPreparedInput": {
+      "definition_sha256": "3ddfd04a7b6f2ad52403abacb1f4e12337cd3316f3edf35cf7768983f81de819",
+      "type_sha256": "84da5ca21c21ddd0689046852864f9c6b122f91bb0cb672e439389aa0f041d74"
+    },
+    "EntryNamespace.NamespacePublicReceipt.PublicSourceReceipt": {
+      "definition_sha256": "88fc831edad9145d3a7cd798a9e34fe221e4e6396df484af9c52f5daa6d8b3ac",
+      "type_sha256": "e87e0255e9ff67822c0e55564cb42526991e71da89d836abc5e7c76e88fb5a56"
+    },
+    "EntryNamespace.NamespaceScopeBridge.public_scope_inputs": {
+      "definition_sha256": "6372f1b9e03ebd0026b9ce8aada4fdb3c941f73db75994edaaa880d79748d267",
+      "type_sha256": "4f442d66202f0ee4714ff44c2200269e122967252bf7abf8d6bd4294258b6b48"
+    },
+    "EntryNamespace.NamespaceScopeFactory.SourceScopeProduction": {
+      "definition_sha256": "747d69806d16475050bf3a592ec69ac4dab37e7052713439ad9fb1158e41ce31",
+      "type_sha256": "e3480e803a278b21060408113905b0ebe3c138d6495d3832c489f841e07e14fe"
+    },
+    "EntryNamespace.NamespaceScopeFactory.source_scope_produced": {
+      "definition_sha256": "13c13fc5823d491662a4f27218541651af039b007c9b0556af105d4c5c4ffdb7",
+      "type_sha256": "9b82d78a7b7f45587c477a0436842b6e8bdc5dfdda73aa542f4459e492adce80"
+    },
+    "EntryNamespace.NamespaceSourceFork.ActualSourceFork": {
+      "definition_sha256": "87431ad2c95044d2876e000599db87b54b6696177e4095ef7df081acc6304208",
+      "type_sha256": "c27ef65a668ef06be6b10167aefc8c29682bbf716828382ff348276195a9bb2b"
+    },
+    "EntryProcess.ProcessCapabilityBirth.CapabilityBirth": {
+      "definition_sha256": "6f6c71e4aa81a8ab70832debd915f8762ebc6360d8f8c9bbdcad7d1660bedf95",
+      "type_sha256": "40bed9f447643daf760d5f5034766cb37b87afdf0738f5cdb429fe03c371fb77"
+    },
+    "EntryProcess.ProcessCapabilityBirth.CapabilityPreparation": {
+      "definition_sha256": "6caa42f7aba9eb6d10b0f98da4ddba8d2eded69c24b112f33d415cfd213a5433",
+      "type_sha256": "68f70441ae84021b9260289fcb6354fd68a25955009430d4d2904ca9c8e124df"
+    },
+    "EntryProcess.ProcessCapabilityBirth.ForkCapabilityContract": {
+      "definition_sha256": "7a74c67fc5909ef6b62fb9e08f44333c78b6ade4e004e79c772b09b71c570ca4",
+      "type_sha256": "cf232c0c24ed57ee75e89a05842e4dac912d3fa0f2d8fa27b024c399412d2066"
+    },
+    "EntryProcess.ProcessCapabilityBirth.PairCapabilityContract": {
+      "definition_sha256": "36091fcabaae6c8f5d2e9ae1d64c911d258167514107f67c53268a75a9b9da6e",
+      "type_sha256": "9b4a593ea6f71f1bca577ebb1378a2d2c88b1795f868051367db143900d8d100"
+    },
+    "EntryProcess.ProcessCapabilityBirth.SourceForkOccurrence": {
+      "definition_sha256": "7a5d4e4ae72dcf2c68b62e1ad9606b1588638dce903bf9bc387709cf1b6ea70e",
+      "type_sha256": "1c274b3996fdf86dd5fe1254a94e15c49c8a0f8dbe9f86ebf0e1e594c5cdb1e0"
+    },
+    "EntryProcess.ProcessCapabilityBirth.SourcePairOccurrence": {
+      "definition_sha256": "ecc3f0721cd2539809fc1a483041b9d1d48bf503f12b1cce819b37456fb7680f",
+      "type_sha256": "bbb1048594e3d7a87442c59b0cf55aa3733037108ffa84ee3714439acf1048ba"
+    },
+    "EntryProcess.ProcessCapabilityRecording.CapabilityHistory": {
+      "definition_sha256": "dcf8b968ba43ebc95eb04fd5df18f515f74d4942a091a620ce7e76a0f3015c90",
+      "type_sha256": "f5761d38e7710db97bdbfd6e51737a18625c933b6c5fd05275c7a8a40618263f"
+    },
+    "EntryProcess.ProcessCapabilityRecording.MetadataCapabilityContract": {
+      "definition_sha256": "252ae9272af79d61a63285eaf0f108177a6d37c52aec9e1752f7b1bd1705171b",
+      "type_sha256": "d6cafca7d2fefabb0e90e36b10ffa4eec376dd4fbb380a04a9bcf813c49de7e9"
+    },
+    "EntryProcess.ProcessCapabilityRecording.NativeCapabilityContract": {
+      "definition_sha256": "edb0277208529651010ae5f641d8de93b79a791b4d5d1cc82b68f9f0105e5ef9",
+      "type_sha256": "6be958c15ae89296167a2ecd6321dab7813f9a072f976c80df47f3781c440020"
+    },
+    "EntryProcess.ProcessCapabilityRecording.RecordedCapabilityStep": {
+      "definition_sha256": "441bd289c7fef390d95312feb5ca891516f82981be828a00e7e46de0d0c5c2f4",
+      "type_sha256": "4445fc541464a6f7121468f485fcdb05d5a1333aca9bf16fdb1d1e6ac400e0af"
+    },
+    "EntryProcess.ProcessEntryAcceptance.ActualEntrySources": {
+      "definition_sha256": "f34c2de7cc95d5b294d3b581ae797230a4925695b147772e27bd27de76cc18ed",
+      "type_sha256": "e84bdd21f3b9073471c5dc1bf2dc2d9e13cdd5b923a5e057d366221e04f81de5"
+    },
+    "EntryProcess.ProcessEntryAcceptance.Build_ActualEntrySources": {
+      "definition_sha256": "f34c2de7cc95d5b294d3b581ae797230a4925695b147772e27bd27de76cc18ed",
+      "type_sha256": "3dd2e256e9d95c1ae04e392bab1f6176e55024b964cf2d6a9dbcf0fc91045ba4"
+    },
+    "EntryProcess.ProcessEntryAcceptance.Build_EntryAcceptance": {
+      "definition_sha256": "dbf1061e0e02e830e1e49c4d046a9237e39b4ee39182d663680cdc4bfab8dbe1",
+      "type_sha256": "8e28e2902567b41b1d5916faf7ec4623030158f1f722f366d15571287f5abd06"
+    },
+    "EntryProcess.ProcessEntryAcceptance.EntryAcceptance": {
+      "definition_sha256": "dbf1061e0e02e830e1e49c4d046a9237e39b4ee39182d663680cdc4bfab8dbe1",
+      "type_sha256": "e159ffd8c32697553c8f7c01f2ce0303ac736eea180ade857996b4b7293e1de3"
+    },
+    "EntryProcess.ProcessEntryAcceptance.entry_child_labels": {
+      "definition_sha256": "c8c310759dd3ee6e288f10634f1fdda11c12ad4a58f4b09b08ad7fda5b7375a8",
+      "type_sha256": "2d0c94519953a512acdd6dc21c6acc169d184724f66469497cd690698d8c271d"
+    },
+    "EntryProcess.ProcessEntryAcceptance.entry_common_labels": {
+      "definition_sha256": "49829407ffe0066e7c5039c815808fe10a1f8d688fcda038f26179d5a9ae9b43",
+      "type_sha256": "c4cdb1a66712cbe70c01a2791627b669b921176efd40a82bf6218a7200083de9"
+    },
+    "EntryProcess.ProcessEntryAcceptance.entry_complete_capabilities": {
+      "definition_sha256": "146e4475de84bbc345292e6aa56b3fbb63cd31ff3f6fc47231aa673359a65e70",
+      "type_sha256": "634733f926b00157c3062e3c708e2d68839ca3af5b1204eef149506a6920e3f7"
+    },
+    "EntryProcess.ProcessEntryAcceptance.entry_complete_context": {
+      "definition_sha256": "851d3b1eeec0237317b633bc32f9a11f84cce697365cf77481a8be5bb0cce52e",
+      "type_sha256": "0bd0dcec9e3f1fcfb6905f3b0e5a97192192980bd3b0b5cb969d4fd17a2f97aa"
+    },
+    "EntryProcess.ProcessEntryAcceptance.entry_complete_external": {
+      "definition_sha256": "146f03288dbc4e16ebd33c897db1ea06cfab27893b9208e0e0a8c06c39041284",
+      "type_sha256": "f33ccd654ffae62bb8a25b1c22ccc51650e58b9308627cf02130b8ccea86a5cc"
+    },
+    "EntryProcess.ProcessEntryAcceptance.entry_complete_metadata": {
+      "definition_sha256": "522013c19fad8d6d598d918c133a8718964579da4c48be75f82cf9cd9c70169c",
+      "type_sha256": "6f93abfaa9d5f9d38e39ae821777a0bdfbd0de96f875d815a011add89b540525"
+    },
+    "EntryProcess.ProcessEntryAcceptance.entry_complete_native": {
+      "definition_sha256": "035fb30b6cb437937273b00ae128895f73582aa81167147cfbaa4435cdc31584",
+      "type_sha256": "cd00fc98c4a4396177e72600c77557051710d3ee484775d31817767fc5cd9491"
+    },
+    "EntryProcess.ProcessEntryAcceptance.entry_complete_ticks": {
+      "definition_sha256": "9254c20a067dbd3307e35c87a04fb85e2b3f9209fd63913b7de9fc723fbf1b72",
+      "type_sha256": "7c33222d26aa72ef22f3d41421e1c6904af5f6a9d2030c9ab51579a8b5694ecb"
+    },
+    "EntryProcess.ProcessEntryAcceptance.entry_exec_offset": {
+      "definition_sha256": "d6902e60847ce0dbb2fc37f6a184f8f0ac81532a6bd4f473f0246ff9ec74c541",
+      "type_sha256": "bc1e767b032c5b5c6468fccf1ddf0834e933136dfa9e0f9d852955b800ec3a1f"
+    },
+    "EntryProcess.ProcessEntryAcceptance.entry_ordinary_ticks": {
+      "definition_sha256": "29c9e4db5ecf68c25a46be47494a181d48159cdad49d3fb4b5c3cb7e79385dac",
+      "type_sha256": "ade64c9bfeb6353808f3dbe2bc6b85e8a037a0d7d8073114073af82f809eb235"
+    },
+    "EntryProcess.ProcessEntryAcceptance.entry_prefix_tables": {
+      "definition_sha256": "c4fca24a7d014e5ade55d97dec311ca33e7ecf5509cdf7cf95068faea7329b35",
+      "type_sha256": "d5cc7f4e649e2d7ee0e3679d2e64cc16813260f29d1e6d8d3238d32c1815b9c5"
+    },
+    "EntryProcess.ProcessEntryAcceptance.entry_tail_tables": {
+      "definition_sha256": "3d1987b692bf790a0deea6408e447c6b8e7b01c823a33f516d03bddccda15024",
+      "type_sha256": "f95d8e0f000ae26064597c6228377c6895c4e51962c5a21697cb323cbd308906"
+    },
+    "EntryProcess.ProcessEntryComposition.EntryIORecording": {
+      "definition_sha256": "15ba2c89c33d60702d42f3fef35c8c92b670883c4d418563bfed89ba40e6646d",
+      "type_sha256": "148965d56eb20ab1ebd08ac3a1f273e6b0675c7a4ec3c6d57f5619533ebb59ba"
+    },
+    "EntryProcess.ProcessEntryComposition.EntryRecordedComposition": {
+      "definition_sha256": "3be12c0e0d67682b1c3c3ed5429671e93af30c576d6f69355b8d66c52bbb112a",
+      "type_sha256": "2511e25916ed08197f00ff01bba2c7a5396fd66ba5ceac599c9ebe2cefa168d9"
+    },
+    "EntryProcess.ProcessImport.LeanCage_Entry_CallerPhysical_PrimitiveLabel": {
+      "definition_sha256": "e2b4386d6951b1e58795831fd023db36ade2bc09daaa6fffcb84d6bfac53d5d3",
+      "type_sha256": "53950df1b140007156de1a0ce92f57ede6930c52ebf4455f1b26bbd02fc2f2f4"
+    },
+    "EntryProcess.ProcessImport.LeanCage_Entry_CallerPhysical_Tick": {
+      "definition_sha256": "9384fe48d7dfeb0e822be905ea4ecfb8b0e1a8b1809f7f12343b93dd50f110ad",
+      "type_sha256": "9a35d6e03ed0be41b443566ff39793d139a5e23cbd26c1f760c5a25655bc72e9"
+    },
+    "EntryProcess.ProcessImport.LeanCage_Entry_CallerPhysical_Tick_mk": {
+      "definition_sha256": "9384fe48d7dfeb0e822be905ea4ecfb8b0e1a8b1809f7f12343b93dd50f110ad",
+      "type_sha256": "afe7381f0ddea0a82c89bcf9ea7ded105151ba1a589b837f629c487699167cc3"
+    },
+    "EntryProcess.ProcessImport.LeanCage_Entry_CallerPhysical_Tick_primitive": {
+      "definition_sha256": "769c11bb9804eb80f0205a183e01f60a9be129a437d1b00d3d4eeb37ed2a942d",
+      "type_sha256": "32aac70ab430e3fd2f99ae9fc149350a0d7fafd78d7bfffa504e1b4ee70dbf3f"
+    },
+    "EntryProcess.ProcessImport.LeanCage_Entry_CallerWitness_DescriptorCapabilityEffect": {
+      "definition_sha256": "c6e8caf05ca96c8e8ea384e8dc14c3b564300aff9432ca5f2a9e968d7675a862",
+      "type_sha256": "b4c6f04e5494ef716a494b8b9ae7c5975df30e6c85a6850440b65443e7ce9996"
+    },
+    "EntryProcess.ProcessImport.LeanCage_Entry_CallerWitness_FDData_Frame": {
+      "definition_sha256": "92699717a7ca34519f4bd10227f709efabdca54d57578a200fa5fe3202045e79",
+      "type_sha256": "de5f2099d2ed1464ae81e3e466972a640dfc36bfc999d94c5c0d7459709d74c7"
+    },
+    "EntryProcess.ProcessImport.LeanCage_Entry_CallerWitness_FDData_flags": {
+      "definition_sha256": "5632e42e309bc456de7f2290f0f702e7d78d97a282abed42ab213c50ddeff50a",
+      "type_sha256": "0897ab199325bfd4c6142052a185f7b461e037a88b5939196e019f33d0a7a7be"
+    },
+    "EntryProcess.ProcessImport.LeanCage_Entry_CallerWitness_FDData_objects": {
+      "definition_sha256": "2fe8f31e6a79aa731dcb86464af9a43b5e71fefa980a4248f7dde7107809b06c",
+      "type_sha256": "24c7c99faf4dbc7a3304eea5cfd9b9fc357c3736655c385601c2eef893b17a23"
+    },
+    "EntryProcess.ProcessImport.LeanCage_Entry_CallerWitness_FDData_tick": {
+      "definition_sha256": "2f77405213ad0f931cb3eba318928c62a7ff719c349d81a2a038b8a678762fcc",
+      "type_sha256": "1f2adf025f8825b41e45973d65059f6c89e1d1c37299ee9fb57c2b181446f88c"
+    },
+    "EntryProcess.ProcessImport.LeanCage_Entry_SourceScopeInputs": {
+      "definition_sha256": "636266793e9bdb81f5d5e6e62ba282a2beb980a691ec3294bd26269e014de636",
+      "type_sha256": "0a94cbc6d473b19958f495cb803ddba790fecb77e55ea6a26b0b58b1a4f6747d"
+    },
+    "EntryProcess.ProcessImport.LeanCage_Entry_SourceScopeInputs_mk": {
+      "definition_sha256": "636266793e9bdb81f5d5e6e62ba282a2beb980a691ec3294bd26269e014de636",
+      "type_sha256": "9a8b3e2dcfeed57380c2f59c951798a3aee12542379cd9a4926411ceeffa6945"
+    },
+    "EntryProcess.ProcessImport.LeanCage_Entry_SourceScopeProducer": {
+      "definition_sha256": "c58f6a99e85ff2440c7c33153c34b14aff517cf8ce98b397c7a643545de562a2",
+      "type_sha256": "a32bea9f5c704c61d35e666202407a5ed0448c4edf5f8a0f3899805e1816c3b9"
+    },
+    "EntryProcess.ProcessJournal.CallerSourceRun": {
+      "definition_sha256": "ec63696d098a2ac28be9b577e7b097c7d3c55a25c4592a7248c605d0b2ebbca0",
+      "type_sha256": "609056a567c8d5f8e4cab852f72a2bea2af995593a987e603c9d55b375e26d48"
+    },
+    "EntryProcess.ProcessJournal.SourceProgramOwner": {
+      "definition_sha256": "758ebf2a2419c71212f0cb1a5dedc5dbeaef3be9c9e1b4ba75f2ca0048348d9e",
+      "type_sha256": "2abd656742ec17ddbba34bc7bf06fbf50e29a8b8035dfec569b2d697261550a2"
+    },
+    "EntryProcess.ProcessLaunchRecordingWitness.ActualForkCallerRuns": {
+      "definition_sha256": "0968b469ecc9206285a20e4eb9022a3050784921ffcda98b4a3a2d3b152ede08",
+      "type_sha256": "fe6145a19c8fca559d18c8a51a73d1fa4e09f74c6a6322b5488a96851d3adb77"
+    },
+    "EntryProcess.ProcessLaunchRecordingWitness.OwnedProgramRecording": {
+      "definition_sha256": "08df3a1450f5646500055ec1dcb5b447720367d5f79db8d4c0f37f53b13a3a9e",
+      "type_sha256": "e79c52f42f6a466d1d4e773fb5178bda09d0c6027155acdfb5fb8d945599c3c9"
+    },
+    "EntryProcess.ProcessLaunchRecordingWitness.ProgramRecording": {
+      "definition_sha256": "bafa71f4222dcaf414c3a475ac9dfff554a5c9a76a29726010239b77dceebc94",
+      "type_sha256": "be839c4bc0cbe9d90d327a03aff51e929a8fdd7b01913774e2fea63e463c9b0d"
+    },
+    "EntryProcess.ProcessLaunchRecordingWitness.actual_fork_caller_runs": {
+      "definition_sha256": "ec08f6478034588d9a55fbb00292dd2563077e1045b02a228f7fa339fecae1a5",
+      "type_sha256": "b327697b93b6baf902b52204a870681c6858f38c87a07cc07debda90ff8a74d7"
+    },
+    "EntryProcess.ProcessLaunchWitness.LaunchFileRecording": {
+      "definition_sha256": "f2725bd7298b1e897f5925c040b45f1b9d66b94557169f07818ef7c73ad85a58",
+      "type_sha256": "da2553f2add9a06ef5e14b36baccffa7b812f4418cf06c55c3f1eea1f51f74bb"
+    },
+    "EntryProcess.ProcessLaunchWitness.LaunchNamespaceRecording": {
+      "definition_sha256": "986de1ca8d48384226e0b8626f2f0feb334cc3438878b958e5094666efc640a5",
+      "type_sha256": "059911d3976cece34bf204963b261e64831548fd92b1aa66c8c6cb59cc6ddb17"
+    },
+    "EntryProcess.ProcessLaunchWitness.LaunchSteps": {
+      "definition_sha256": "a2a99ebd1c2ccd45d176d93284fcce2f23e56258940bce0ee8981afe2acc450e",
+      "type_sha256": "87e2cd4a99170ad282b991664d13bd1de71d81d39080a14e2ef0f7c47052c14e"
+    },
+    "EntryProcess.ProcessLaunchWitness.launch_operation": {
+      "definition_sha256": "407d0a7aec748fe5f39e46fa5a2fded73a8e9b73a36a0ba9535b6ebebf9ac870",
+      "type_sha256": "bcbcc2926cf036d92903711882a71ea76447b3cc9d33883bd4cec2bf28af30e1"
+    },
+    "EntryProcess.ProcessNativeCapabilities.PrimitiveDescriptorSample": {
+      "definition_sha256": "a73b7f443be7f6bd49af89b1740642ba037f364cf9ae0aa77db90d03534844ec",
+      "type_sha256": "1fe08d340830728e0ff7a5668acef77000cfbb515bbf93a796d9d8e19897eae6"
+    },
+    "EntryProcess.ProcessNativeCapabilities.RecordedMetadataCapability": {
+      "definition_sha256": "a4e610ffcdc87fb9591b8badd0b191e29736e96daee825794d51ccafb70f5598",
+      "type_sha256": "90e22ea01617e3beea597888c0636d43d6b0467c786b002c211d377b9841afb1"
+    },
+    "EntryProcess.ProcessNativeCapabilities.RecordedNativeCapability": {
+      "definition_sha256": "db930c2b7718c2002672c6061abc13702cb1589d5be7ea4dced720550a3c65f6",
+      "type_sha256": "1e821614e981eb5d5be5a4dd483713bb2e6132ce0ed3b34e1fe8bb64574c0030"
+    },
+    "EntryProcess.ProcessOwnership.Build_LinuxProcessContract": {
+      "definition_sha256": "7ee52fe26e7c8711458f8ae691254baf6d71bbc89640449c4730650e8b3f9e8b",
+      "type_sha256": "c58ecd53da08468a026b73bc93f29cd7f9ee6afdaefa4e925bfc1a4cbb931251"
+    },
+    "EntryProcess.ProcessOwnership.LinuxProcessContract": {
+      "definition_sha256": "7ee52fe26e7c8711458f8ae691254baf6d71bbc89640449c4730650e8b3f9e8b",
+      "type_sha256": "e8434e623ceda7daf4cd09f2b413f28d16ec45e364cd4b639e1c9d65ac8fb73d"
+    },
+    "EntryProcess.ProcessParentRecordingWitness.ParentRecording": {
+      "definition_sha256": "e40f26c3cc19fc2fddcbea654f844796e4cef4cff2e0e95a856f98c75c45caad",
+      "type_sha256": "1463d8f3a124648ab244019c7b8227a03b1e8b4d418c53291bad43f11c6f3ac2"
+    },
+    "EntryProcess.ProcessPrimitiveHistory.PrimitiveTableChain": {
+      "definition_sha256": "c4906b7b600398ea115eb6947ab74fc1efeabc7ea289b1f886e7c8b77f9c98d1",
+      "type_sha256": "b792636400c2428da761f6cb7232d42c993cce8505a6ba7312a7ae3aa0d08375"
+    },
+    "EntryProcess.ProcessPrimitiveHistory.entry_descriptor_observation": {
+      "definition_sha256": "79c747b71f33c6975081da423ff8493426c3eef5fe2bdbf54b73baefcf1dd7b1",
+      "type_sha256": "e2091d2f1978d9a06a496552c836bb59ad25b8f5ec8269887b86f48a62f7ebc7"
+    },
+    "EntryProcess.ProcessPrimitiveHistory.entry_primitive_plan": {
+      "definition_sha256": "c1c879603e7795ce813164222c50e8dafdb20dd8727b5701f5b1468b4237a868",
+      "type_sha256": "49a85d14afa9ed7cb2bd5923d5c1f432988f2df4e5cf679e84978b0ad4c7db80"
+    },
+    "EntryProcess.ProcessPrimitiveHistory.entry_runtime_metadata": {
+      "definition_sha256": "ade89cabb145910168dc0193a0e50f02fb226fd02fa66ff310069a4cb085b3b4",
+      "type_sha256": "5119dd9bd6526881118b483acb8e7b2e3bfaf2693ca803ff56116cb8f7d3561f"
+    },
+    "EntryProcess.ProcessPrimitiveHistory.entry_runtime_native": {
+      "definition_sha256": "2cd51c91b577905f22643dbca761f43900036d884dcc1e64fa2ba55044b4d3b7",
+      "type_sha256": "3c8b8483606a9dc8038fe490b426ae4507526d59091a38c58d977c17f7867d60"
+    },
+    "EntryProcess.ProcessPrimitiveHistory.entry_runtime_ticks": {
+      "definition_sha256": "9df1be276852d1b683f7cb749a9fdf5c19cef84f383e361f022baeff4f6a7b8b",
+      "type_sha256": "e7bb8dccdb2a5cb8ab4fefb74d85b823206134119eb1f2575bdd3007636ba61b"
+    },
+    "EntryProcess.ProcessPrimitiveRuns.entry_worker_prefix": {
+      "definition_sha256": "b3822b5b6aaf3fab553623856f49ef8d1b605313cffc913eafdf9480db58875d",
+      "type_sha256": "9f69d7f0eb41b8d29f55aa0c6266caf20a077bcde55214cfe0b004189fdb80f1"
+    },
+    "EntryProcess.ProcessPrimitiveRuns.entry_worker_tail": {
+      "definition_sha256": "d0e823efa8455cc788277cdec428f4035c072bedea9444f0e4005fc8f6805855",
+      "type_sha256": "e104a82116101694276ee46ec496e400fba7b7ec8adc0779ce068ef26eb3087c"
+    },
+    "EntryProcess.ProcessPrimitiveWitness.entry_primitive_descriptor_sample": {
+      "definition_sha256": "ac343be331516d59807a6dd63e8280d3af0484adf26c9d31faa52dfc69023088",
+      "type_sha256": "42337c2955fc915ecdf958b04ac4ca734cd86f2f99c8826dbd148e639812245c"
+    },
+    "EntryProcess.ProcessPrimitiveWitness.entry_primitive_metadata_capability": {
+      "definition_sha256": "a3bd824465279f244599182c75e1964da61f89015972da876c08bb18ceb1c114",
+      "type_sha256": "da5ac9851e0cbb22631ba665f9cc9b368e7bf932db98996f5984b4bd7676d0e1"
+    },
+    "EntryProcess.ProcessPrimitiveWitness.entry_primitive_native_capability": {
+      "definition_sha256": "2002bf2b70ae581e0d25c83c0cb7068dab93934cfb9ac0113ee2b98b907f396c",
+      "type_sha256": "26fcf7b64da3153453dac5d4f950135b8cd6437b4e7f9c85b341715d06cc7772"
+    },
+    "EntryProcess.ProcessSourceAdmission.SourceOptionsAt": {
+      "definition_sha256": "c35d8968bd4d4d860e6ca6d2389ca93375a200d6eeefe12f98980a00400f49e0",
+      "type_sha256": "eb8d08a6a290db8f45166dbcf8a59ba4a9472347fd221dd7e259ebe34b97f628"
+    },
+    "EntryProcess.ProcessSourceRecording.SourceEventSchedule": {
+      "definition_sha256": "4b4d092f9aca98003627d8b7768d3578cb77c0a8dc952ebcdb125601916cc767",
+      "type_sha256": "900699c760199d01beafb7e8bc579e6085625efdbf0ec3f18d3c506e7932f56a"
+    },
+    "EntryProcess.ProcessSourceRecording.SourcePrimitive": {
+      "definition_sha256": "ad2179baea51076b27534e687119c832029bacd7c0986735b7f762b54f59a899",
+      "type_sha256": "5b9b1506936a3b35d1d614cba397334e87b5195c97f6a6aa3a27f1d5d162f49a"
+    },
+    "EntryProcess.ProcessSourceRecording.SourceProcessView": {
+      "definition_sha256": "e09e4dad6da92e7ddd8c8ccf9c4363a2c346326393406f526d3f753a51dd01fd",
+      "type_sha256": "c25b33e7703d477c5f01370a3cdcc6b4e14809e77ee79130ccfcf68bcf0be073"
+    },
+    "EntryProcess.ProcessSourceRecording.SourceSnapshot": {
+      "definition_sha256": "6d5262c67d996aa0ac6ffd500dcaf8294e1a5ba8f32d2db4e43c5631b2e2d664",
+      "type_sha256": "53f3c4d7054ea52a2825166a99b47aff8d77806ae8c505884a159e21fa097fd2"
+    },
+    "EntryProcess.ProcessSourceTables.SourceTableSchedule": {
+      "definition_sha256": "9dbe6f95a5606daac2416eb7ff302021c97ad0dbf342d9655e5502d44917bec5",
+      "type_sha256": "7c9d1594242aadc7068ba8a6819a8b0b896dff23792adaf68acaf38798e7d5ab"
+    },
+    "EntryProcess.ProcessSourceWorlds.SourceOtherAuthority": {
+      "definition_sha256": "094eecd173174464b110dd9305ed8e3256a429dfc964402e297df3022ab80511",
+      "type_sha256": "40f79634945886917c57b0ccac887aa0c8669b49ab84509eeefa7d97dbeb01a5"
+    },
+    "EntryProcess.ProcessSourceWorlds.SourceOtherContract": {
+      "definition_sha256": "4f5d3c5a3b674338974c0ad4320dcb4b43ada7d2446663a7bf1dfd5146025df3",
+      "type_sha256": "2c7bfa7c77cf714ddb69a92eecfc33b76ce941722aa05b4bf01ec8968df993b4"
+    },
+    "EntryProcess.ProcessSourceWorlds.SourceProcessSchedule": {
+      "definition_sha256": "902f14e29801db3a8aa62b6090101fea60892e6088bf4c113eafc0d8c6e5394b",
+      "type_sha256": "39fd5a8ccd9aacecd69193b9b5cd4dec7231eee25e215667a74a185368a3cf8b"
+    }
+  },
+  "proposal_sha256": "76f8a4a2ac01b7e1a5616bfc23939a1944915fa88fc88871efaf26d9956ff8ec",
+  "related_reviews": {
+    "assurance/entry-primitive-review.json": "bef48a41b4cb5a5cc19ee924aeccd3467135b857edeaa5e92884fffaf5113173",
+    "assurance/entry-useful-review.json": "7e9c8e2be7cf5a033ad50fcfe3f15d5765a992f6c6cdf887af1d355f2a06bcb5"
+  },
+  "schema": "leancage-entry-source-review-v1",
+  "scope": "Prepared-root actual source fork, private channel, child handoff and owned placement/options/resume source producer, connected to the ordinary Lean SourceScopeProducer through the same runtime, capability, queue and journal history. This source component composes with the worker body and public consumer in entry-claims.json; policy preparation, later lifetime and public observation producers retain their assigned contracts.",
+  "source_replay": {
+    "audit_partition": {
+      "aggregate_source_sha256": "3ffb462da6120d49f24ca164fdda0e39624812b2ead98cd20229604f0041e72d",
+      "aggregate_vo_sha256": "65d862cd5dcd22e4ca7575aab1914c984e2c7f3ba09f541ddd9022ac2921cb2a",
+      "all_foundations_passed": true,
+      "clock_source_sha256": "b9ccde49f4d9d4384657d4c5a46ad50f458ba7ce5d8061fd20e71cf645ecd1de",
+      "completed": true,
+      "declarations": 2863,
+      "driver_sha256": "8eb990e6028dd54a100edc6a5cdd9e0955c94cdf5d34fb0db6cf3225e2bc4ba1",
+      "elapsed_seconds": 194.261,
+      "exact_original_queries_preserved": true,
+      "interfaces": 87,
+      "max_workers": 4,
+      "modules_reused": 323,
+      "output_bytes": 3713163,
+      "output_files": 5987,
+      "outputs_with_ellipsis": [],
+      "part_source_sha256": {
+        "ProcessAudit0.v": "cfd55c60c4419fb05f33a81f7422959eca91cf5b8be5837784bf3ecd9fcb4767",
+        "ProcessAudit1.v": "685124d7a0b520b8cc64415535f07c007deb68310a1a1a472211a2909c6672a1",
+        "ProcessAudit2.v": "4474c976e5d50cc8bd2484074f6546945991dc90eb27c6710e96ef6d5f549b60",
+        "ProcessAudit3.v": "6863465c36288edd6c6dbda646b035f2e63b6ef0e2c7e32d69b7606579f5b1d1"
+      },
+      "part_timeout_seconds": 1800,
+      "part_vo_sha256": {
+        "ProcessAudit0.vo": "36836a180b3b5fcb2513fb91643a85fbbcc98b1c6bc5ee249fbc388df6896fb1",
+        "ProcessAudit1.vo": "c8ee9a13b9ba31c1cd4d000a8ce830cb84848d995de7e2a10500f5164f2cb5a7",
+        "ProcessAudit2.vo": "f9611090901f29d6b09d69f7f9b69c1e7db12b2b7159b5f2539416a3c31f44ab",
+        "ProcessAudit3.vo": "715353cae14d03aca95525e01da4979b6132dce9e3f96fbecdbbddecc666ae7c"
+      },
+      "proof_modules_unchanged_during_audit": true,
+      "queries": 5987,
+      "started_unix": 1794178360.2582533
+    },
+    "canonical_frontend": true,
+    "clock_repair": {
+      "all_foundations_passed": true,
+      "all_types_unchanged": true,
+      "audit_source_sha256": "b003618ea6f4648c9cc3747a3a70c32f4b25e2406001e212cbe9d0e008c7c8ab",
+      "audit_vo_sha256": "bfef9913a75672c8651e4c282dc7f81a650c4f0d617df9604c77803f96b9f423",
+      "axioms_added": [],
+      "axioms_removed": [
+        "Axioms.proof_irr"
+      ],
+      "clock_source_sha256": "b9ccde49f4d9d4384657d4c5a46ad50f458ba7ce5d8061fd20e71cf645ecd1de",
+      "declarations": 58,
+      "elapsed_seconds": 87.113,
+      "queries": 116,
+      "removed_axiom": "Axioms.proof_irr"
+    },
+    "compiled_components_receipt_sha256": "1e0111acc463069565dabe9f9e5292aca1b6366b1fed122aa742e76a0c271917",
+    "independent_kernel_check_log_sha256": "e186919e3cab8e270ba5ee4c706cdc12b3e956734cbfd0dabe11ac601c5baf97"
+  },
+  "status": "reviewed"
+}

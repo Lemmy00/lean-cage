@@ -1,0 +1,535 @@
+{
+  "format_version": 1,
+  "scope": "Focused implementation-side full-statement and transitive-axiom review of the useful recorded entry/public consumer. This is not the aggregate admission acceptance or an independent external review.",
+  "specification": [
+    "§AR-entry.acceptance",
+    "§AR-entry.caller.receipt",
+    "§FS-entry.provenance",
+    "§REQ-proof-integrity.kernel",
+    "§REQ-proof-integrity.statement"
+  ],
+  "reviewed_declaration": "LeanCage.Entry.CallerWitness.useful_public_source_workspace",
+  "consumes": "LeanCage.Entry.production_source_workspace",
+  "implementation": "verification/launch/MetadataWitness.lean",
+  "source_sha256": {
+    "verification/launch/MetadataWitness.lean": "4f640d68bfff9a7afe12e62287b82edaef48f88c5a7631129d95a37390c776ce",
+    "verification/launch/EntryGuarantee.lean": "79c33897f631d63657dafcc1a5efc892622648d7e96b42626cdc0fe70576fb0c",
+    "verification/launch/CallerProvenance.lean": "5cba8da782df4679a69ee3ae36c0445aa6aa312e2d4714c27501269f10a81bb0",
+    "verification/launch/CallerPhysical.lean": "cf988aa5c9f5c676702863db46a34aa731bfeefee4559a03146b3d07fba58150",
+    "verification/launch/CallerRecording.lean": "5fb8e4e66ab3b01b4ef3ea3238066e3059700f10c34269cc3b3de76735b542c5",
+    "verification/launch/MetadataRecording.lean": "356e96091136da4dea930e623c71084be1082ba8fc6d35a58ab14c8fd82b2ba0",
+    "verification/launch/StartupExecution.lean": "e6abb5c1cae3806731b80eb55a46e74c82e518c3ac9176a9dc8ef33f8f214078",
+    "verification/launch/EntryGuarantee/ScopeReceipt.lean": "665c82db0080efaf538aee53b973f93927ef568a685e00a6dd7870cad53c3129",
+    "verification/launch/ProcessPrimitiveRuns.v": "16eef16237b14916f330027dbabd0f7645dc686dfff0eafa63ae891498606aab",
+    "verification/launch/ProcessPrimitiveWitness.v": "ba10bd98dc3b13368291ee74dc0bcfaa081c3f488a65a4637b7b02358a4475cd",
+    "verification/launch/ProcessPrimitiveData.v": "bc4ce9fd3e7caa4c28026d90dd77a99e54c5aa025076107e329d9c69e7cdad84",
+    "launch/lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "launch/lake-manifest.json": "4c3c7099b2150e3e16464c9531507a30c1a94ec47567ba8778cbf93b5669dad7"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.35.0",
+  "logical_axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "forbidden_or_unfinished_axioms": [],
+  "review_status": "Focused statement/dependency review passed. Aggregate gate and same-source joint producer acceptance remain recorded by the entry claim manifest.",
+  "reviewed_hypotheses": [
+    "One full concat child source ticks, metadata/signal/TRACEME/STOP prefix, actual parent ticks, setup tail, and actual successful exec tick.",
+    "One born(1,None) Journal, matching source request history and same indexed parent SupervisorSlice; child is live at the selected successful exec.",
+    "Every same-journal write has source or foreign-actor provenance; real native argument values bind UID100000, FDs4/5/6/60, run mode, owned root and /bin/sh argv.",
+    "Every same-journal write has source or foreign-actor provenance. Exact source argumentBytes are tied to the actual C image by the source package; useful_native_values now derives their fixed UID100000, FDs4/5/6/60, run mode, root and /bin/sh values without a values premise.",
+    "Checked common and child labels must be supplied by the same actual source prefix/fork/child package; the ordinary theorem does not itself parse Rocq source traces."
+  ],
+  "lineage_review": [
+    "usefulLineage boots only the given owner. No child boot or unrelated detached snapshot is used.",
+    "Installed filter lists are framed only when CallerLineageAllowed holds. Other requests retain arbitrary changes, subject to the one-operation identity law.",
+    "Ancestry follows actual common source labels at owner, the selected fork tag0 owner-to-child, actual child source labels including image replacement, then pinned runtime-start tag4.",
+    "The legal useful model witnesses the platform laws. Correctness of Linux boot/runtime primitive implementations remains in the declared platform contract."
+  ],
+  "descriptor_review": [
+    "Finite-slot data are related to full descriptor functions through Supported, sampled_lookup, sampled_objects and sampled_flags; descriptors outside the actual supported set are absent.",
+    "Full Tick-list equality, actual opcodes/origins and before/after sampled tables are proved against actual metadata and kernel state transitions. No whole readBounded or whole native body frame is assumed.",
+    "Pure lookup and pack use structural atD. Every queried pure FDData export definition is axiom-free; no generic GetElem/propext closure or importer relaxation supports that data bridge.",
+    "Useful execFrame23 binds actual pre-exec handles and full post-exec objects/flags to execState. recordedImage consumes the exact request, task and selected Tick; the exec Tick is not a label-only sentinel."
+  ],
+  "conclusion_review": [
+    "The result derives exact parsed/native inputs, ImageRestricted, ImageStdio, actual cgroup1, namespace1 and the maintained LeanCageM3.taskSafe predicate for the same computed image.",
+    "Useful initial state includes root credentials and capabilities; the useful image is not assumed restricted at entry.",
+    "The theorem is conditional partial correctness with an inhabited useful model. It does not claim whole-function termination, resumed post-exec workload execution, Linux-kernel/hardware verification, or the separately assigned preparation/lifetime/public-result guarantees.",
+    "The public source helper no longer assumes nativeValues. The closed useful_native_values theorem decomposes every byteValues parse of the same argumentBytes, identifies all positions, and kernel-reduces the bounded numeric decoder. No native_decide or new export is used."
+  ],
+  "integration_requirements": [
+    "Bind commonLabels to caller_lineage_values(source_fork_common sameFork), and childLabels to caller_lineage_values(source_events sameChildRun), checked by caller_source_labels_ordinary_Lean.",
+    "Obtain Journal, requests, IO provenance, same parent Slice, nativeValues and SourceScopeProducer from the same actual source/fork/physical/capability/queue package.",
+    "Keep the prepared-root namespace_tail9 boundary explicit; the actual policy/root/identity preparation producer remains assigned to application authority.",
+    "Retain entry_source_native_input / namespace_worker_ordinary_input equality tying actual handoff_argv_bytes to the same argumentBytes. The closed literal semantics theorem is applied through that equality; it is not a second fixture."
+  ],
+  "validation": {
+    "matching_build": "lake -d launch build MetadataWitness (changed module rebuilt; all other dependencies cached; .tools/launch/metadata-native-values-build.log)",
+    "focused_query": "lake -d launch env lean .tools/launch/caller/ReviewUseful.lean (passed; no rebuild of the full target)",
+    "rocq_process_segments": "python3 .tools/launch/caller/focus.py ProcessPrimitiveRuns (passed current314 data; .tools/launch/caller/primitive-runs-build.log)",
+    "query_lean": "import Lean\nimport MetadataWitness\n\nopen Lean Elab Command\n\n\nprivate def declarationRecord (name : Name) : CommandElabM Json := do\n  let info ← getConstInfo name\n  let axioms ← collectAxioms name\n  let type ← liftTermElabM <| withOptions\n    (fun options => options.setBool `pp.fullNames true |>.setBool `pp.universes true) do\n      return (← Meta.ppExpr info.type).pretty\n  return Json.mkObj [\n    (\"name\", toJson name.toString),\n    (\"type\", toJson type),\n    (\"is_theorem\", toJson info.isTheorem),\n    (\"axioms\", toJson (axioms.map Name.toString))]\n\nelab \"#audit_decl \" name:ident : command => do\n  logInfo m!\"LEANCAGE_AUDIT {(← declarationRecord name.getId).compress}\"\n\n-- §AR-workspace.proofs: Enumerating project modules prevents an omitted theorem passing.\nelab \"#audit_module \" moduleName:ident : command => do\n  let env ← getEnv\n  if !env.header.moduleNames.contains moduleName.getId then\n    throwError \"Module is not imported: {moduleName.getId}\"\n  let names := env.constants.fold (init := #[]) fun names name info =>\n    let fromModule := match env.getModuleIdxFor? name with\n      | none => false\n      | some index => env.header.moduleNames[index]! == moduleName.getId\n    if info.isTheorem && fromModule then names.push name else names\n  let inventory := Json.mkObj [\n    (\"module\", toJson moduleName.getId.toString),\n    (\"declarations\", toJson (names.map Name.toString))]\n  logInfo m!\"LEANCAGE_AUDIT {inventory.compress}\"\n  for name in names do\n    logInfo m!\"LEANCAGE_AUDIT {(← declarationRecord name).compress}\"\n\nelab \"#audit_body \" name:ident : command => do\n  let info ← getConstInfo name.getId\n  let some expression := info.value? | throwError \"Missing definition body: {name.getId}\"\n  let body ← liftTermElabM <| withOptions\n    (fun options => options.setBool `pp.fullNames true |>.setBool `pp.universes true) do\n      return (← Meta.ppExpr expression).pretty\n  logInfo m!\"LEANCAGE_BODY {(Json.mkObj [(\"name\", toJson name.getId.toString),\n    (\"body\", toJson body)]).compress}\"\n\n\n#audit_decl LeanCage.Entry.CallerWitness.useful_public_source_workspace\n\n#audit_decl LeanCage.Entry.CallerWitness.useful_public_workspace\n\n#audit_decl LeanCage.Entry.CallerWitness.useful_source_recorded_entry\n\n#audit_decl LeanCage.Entry.CallerWitness.useful_startup_on_concatenated_ticks_with_suffix\n\n#audit_decl LeanCage.Entry.CallerWitness.useful_startup_on_pure_ticks\n\n#audit_decl LeanCage.Entry.CallerWitness.useful_source_lineage\n\n#audit_decl LeanCage.Entry.CallerWitness.lineage_frames\n\n#audit_decl LeanCage.Entry.CallerWitness.lineage_effects_append\n\n#audit_decl LeanCage.Entry.CallerWitness.lineage_labels_append\n\n#audit_decl LeanCage.Entry.CallerWitness.useful_exec_frame_exact\n\n#audit_decl LeanCage.Entry.CallerWitness.useful_exec_descriptor_data\n\n#audit_decl LeanCage.Entry.CallerWitness.useful_image_tick_exact\n\n#audit_decl LeanCage.Entry.CallerWitness.useful_recorded_image\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.native_ticks_sample\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.metadata_ticks_sample\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.signal_frames_exact\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.tail_frames_exact\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.marker_frames_exact\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.status_frames_exact\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.signal_ticks_exact\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.tail_ticks_exact\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.marker_ticks_exact\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.status_ticks_exact\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.trace_tick_exact\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.stop_tick_exact\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.sampled_lookup\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.sampled_objects\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.sampled_flags\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.computed_state_supported\n\n#audit_decl LeanCage.Entry.CallerWitness.usefulLineage\n\n#audit_decl LeanCage.Entry.CallerWitness.usefulSourceLabels\n\n#audit_decl LeanCage.Entry.CallerWitness.usefulEntryTicks\n\n#audit_decl LeanCage.Entry.CallerWitness.recordedImage\n\n#audit_decl LeanCage.Entry.CallerWitness.recordedNative\n\n#audit_decl LeanCage.Entry.CallerWitness.recordedMetadata\n\n#audit_decl LeanCage.Entry.CallerWitness.runtime\n\n#audit_decl LeanCage.Entry.CallerWitness.metadataRuntime\n\n#audit_decl LeanCage.Entry.CallerWitness.primitiveNative\n\n#audit_decl LeanCage.Entry.CallerWitness.primitiveMetadata\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.atD\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.lookup\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.pack\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.tick\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.ticks\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.sample\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.Supported\n\n#audit_decl LeanCage.Entry.CallerWitness.FDData.execFrame\n\n#audit_decl LeanCage.Entry.CallerWitness.nativeTick\n\n#audit_decl LeanCage.Entry.CallerWitness.metadataTick\n\n#audit_decl LeanCage.Entry.CallerWitness.kernelState\n\n#audit_decl LeanCage.Entry.CallerWitness.metadataState\n\n#audit_body LeanCage.Entry.CallerWitness.usefulLineage\n\n#audit_body LeanCage.Entry.CallerWitness.usefulSourceLabels\n\n#audit_body LeanCage.Entry.CallerWitness.usefulEntryTicks\n\n#audit_body LeanCage.Entry.CallerWitness.recordedImage\n\n#audit_body LeanCage.Entry.CallerWitness.recordedNative\n\n#audit_body LeanCage.Entry.CallerWitness.recordedMetadata\n\n#audit_body LeanCage.Entry.CallerWitness.runtime\n\n#audit_body LeanCage.Entry.CallerWitness.metadataRuntime\n\n#audit_body LeanCage.Entry.CallerWitness.primitiveNative\n\n#audit_body LeanCage.Entry.CallerWitness.primitiveMetadata\n\n#audit_body LeanCage.Entry.CallerWitness.FDData.atD\n\n#audit_body LeanCage.Entry.CallerWitness.FDData.lookup\n\n#audit_body LeanCage.Entry.CallerWitness.FDData.pack\n\n#audit_body LeanCage.Entry.CallerWitness.FDData.tick\n\n#audit_body LeanCage.Entry.CallerWitness.FDData.ticks\n\n#audit_body LeanCage.Entry.CallerWitness.FDData.sample\n\n#audit_body LeanCage.Entry.CallerWitness.FDData.Supported\n\n#audit_body LeanCage.Entry.CallerWitness.FDData.execFrame\n\n#audit_body LeanCage.Entry.CallerWitness.nativeTick\n\n#audit_body LeanCage.Entry.CallerWitness.metadataTick\n\n#audit_body LeanCage.Entry.CallerWitness.kernelState\n\n#audit_body LeanCage.Entry.CallerWitness.metadataState\n\n#audit_decl LeanCage.Entry.CallerWitness.useful_native_values\n",
+    "query_sha256": "d74484be29d02b909c0050bfe96b066de1b952463629df0f9d177a7a1bf63f48"
+  },
+  "declarations": [
+    {
+      "axioms": [],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.FDData.Supported",
+      "type": "(UInt32 → Option.{0} LeanCage.Entry.Handle) → Prop",
+      "body": "fun handles =>\n  ∀ (fd : UInt32) (handle : LeanCage.Entry.Handle),\n    Eq.{1} (handles fd) (Option.some.{0} handle) →\n      Membership.mem.{0, 0} LeanCage.Entry.CallerWitness.FDData.descriptors fd.toNat"
+    },
+    {
+      "axioms": [],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.FDData.atD",
+      "type": "{α : Type} → α → List.{0} α → Nat → α",
+      "body": "fun {α} fallback x x_1 =>\n  List.brecOn.{1, 0} (motive := fun x => Nat → α) x (LeanCage.Entry.CallerWitness.FDData.atD._f fallback) x_1"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.computed_state_supported",
+      "type": "∀ (state : LeanCage.Entry.State) (trace : List.{0} (Prod.{0, 0} LeanCage.Entry.Request LeanCage.Entry.Reply)),\n  LeanCage.Entry.CallerWitness.FDData.Supported state.handles →\n    (∀ (pair : Prod.{0, 0} LeanCage.Entry.Request LeanCage.Entry.Reply),\n        Membership.mem.{0, 0} trace pair →\n          Eq.{1} (Prod.fst.{0, 0} pair).op LeanCage.Entry.Op.dup2 ∨\n              Eq.{1} (Prod.fst.{0, 0} pair).op LeanCage.Entry.Op.dup3 →\n            Membership.mem.{0, 0} LeanCage.Entry.CallerWitness.FDData.descriptors\n              (Prod.fst.{0, 0} pair).b.toUInt32.toNat) →\n      LeanCage.Entry.CallerWitness.FDData.Supported\n        (LeanCage.Entry.CallerWitness.FDData.computedState state trace).handles"
+    },
+    {
+      "axioms": [],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.FDData.execFrame",
+      "type": "LeanCage.Entry.CallerWitness.FDData.Frame",
+      "body": "LeanCage.Entry.CallerWitness.FDData.pack 23 6 7"
+    },
+    {
+      "axioms": [],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.FDData.lookup",
+      "type": "List.{0} LeanCage.Entry.CallerWitness.FDData.Slot → Nat → LeanCage.Entry.CallerWitness.FDData.Slot",
+      "body": "fun slots fd =>\n  ite.{1} (Eq.{1} fd 0) (LeanCage.Entry.CallerWitness.FDData.atD Option.none.{0} slots 0)\n    (ite.{1} (Eq.{1} fd 1) (LeanCage.Entry.CallerWitness.FDData.atD Option.none.{0} slots 1)\n      (ite.{1} (Eq.{1} fd 2) (LeanCage.Entry.CallerWitness.FDData.atD Option.none.{0} slots 2)\n        (ite.{1} (Eq.{1} fd 3) (LeanCage.Entry.CallerWitness.FDData.atD Option.none.{0} slots 3)\n          (ite.{1} (Eq.{1} fd 4) (LeanCage.Entry.CallerWitness.FDData.atD Option.none.{0} slots 4)\n            (ite.{1} (Eq.{1} fd 5) (LeanCage.Entry.CallerWitness.FDData.atD Option.none.{0} slots 5)\n              (ite.{1} (Eq.{1} fd 6) (LeanCage.Entry.CallerWitness.FDData.atD Option.none.{0} slots 6)\n                (ite.{1} (Eq.{1} fd 60) (LeanCage.Entry.CallerWitness.FDData.atD Option.none.{0} slots 7)\n                  Option.none.{0})))))))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.marker_frames_exact",
+      "type": "Eq.{1}\n  (LeanCage.Entry.CallerWitness.FDData.metadataFrames LeanCage.Entry.MetadataWitness.initial\n    (LeanCage.Entry.MetadataWitness.contentTrace \"/leancage-m3-disposable-vm\" 64 LeanCage.Entry.MetadataWitness.marker))\n  LeanCage.Entry.CallerWitness.FDData.inspectionFrames"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.marker_ticks_exact",
+      "type": "∀ (child : LeanCage.Entry.ProcessIdentity) (otherObjects : Nat → Nat → Option.{0} Nat) (otherFlags : Nat → Nat → Bool)\n  (context : LeanCage.Entry.CallerPhysical.Context),\n  Eq.{1}\n    (LeanCage.Entry.CallerWitness.metadataTicks child otherObjects otherFlags context\n      LeanCage.Entry.MetadataWitness.initial\n      (LeanCage.Entry.MetadataWitness.contentTrace \"/leancage-m3-disposable-vm\" 64\n        LeanCage.Entry.MetadataWitness.marker))\n    (LeanCage.Entry.CallerWitness.FDData.ticks LeanCage.Entry.CallerPhysical.PrimitiveFamily.metadata child otherObjects\n      otherFlags context LeanCage.Entry.CallerWitness.FDData.inspectionFrames)"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.metadata_ticks_sample",
+      "type": "∀ (child : LeanCage.Entry.ProcessIdentity) (otherObjects : Nat → Nat → Option.{0} Nat) (otherFlags : Nat → Nat → Bool)\n  (context : LeanCage.Entry.CallerPhysical.Context) (state : LeanCage.Entry.State)\n  (trace : List.{0} (Prod.{0, 0} LeanCageM3.Metadata.Request LeanCageM3.Metadata.Reply)),\n  LeanCage.Entry.CallerWitness.FDData.Supported state.handles →\n    Eq.{1} (LeanCage.Entry.CallerWitness.metadataTicks child otherObjects otherFlags context state trace)\n      (LeanCage.Entry.CallerWitness.FDData.ticks LeanCage.Entry.CallerPhysical.PrimitiveFamily.metadata child\n        otherObjects otherFlags context (LeanCage.Entry.CallerWitness.FDData.metadataFrames state trace))"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.native_ticks_sample",
+      "type": "∀ (child : LeanCage.Entry.ProcessIdentity) (otherObjects : Nat → Nat → Option.{0} Nat) (otherFlags : Nat → Nat → Bool)\n  (context : LeanCage.Entry.CallerPhysical.Context) (state : LeanCage.Entry.State)\n  (trace : List.{0} (Prod.{0, 0} LeanCage.Entry.Request LeanCage.Entry.Reply)),\n  LeanCage.Entry.CallerWitness.FDData.Supported state.handles →\n    (∀ (pair : Prod.{0, 0} LeanCage.Entry.Request LeanCage.Entry.Reply),\n        Membership.mem.{0, 0} trace pair →\n          Eq.{1} (Prod.fst.{0, 0} pair).op LeanCage.Entry.Op.dup2 ∨\n              Eq.{1} (Prod.fst.{0, 0} pair).op LeanCage.Entry.Op.dup3 →\n            Membership.mem.{0, 0} LeanCage.Entry.CallerWitness.FDData.descriptors\n              (Prod.fst.{0, 0} pair).b.toUInt32.toNat) →\n      Eq.{1}\n        (LeanCage.Entry.CallerWitness.kernelTicks LeanCage.Entry.exampleFilesystem child otherObjects otherFlags context\n          state trace)\n        (LeanCage.Entry.CallerWitness.FDData.ticks LeanCage.Entry.CallerPhysical.PrimitiveFamily.native child\n          otherObjects otherFlags context (LeanCage.Entry.CallerWitness.FDData.nativeFrames state trace))"
+    },
+    {
+      "axioms": [],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.FDData.pack",
+      "type": "Nat →\n  Nat →\n    Nat →\n      optParam.{1} (Option.{0} (Prod.{0, 0} Nat (List.{0} Nat))) Option.none.{0} →\n        LeanCage.Entry.CallerWitness.FDData.Frame",
+      "body": "fun code before after read =>\n  { code := code,\n    before := LeanCage.Entry.CallerWitness.FDData.atD List.nil.{0} LeanCage.Entry.CallerWitness.FDData.snapshots before,\n    after := LeanCage.Entry.CallerWitness.FDData.atD List.nil.{0} LeanCage.Entry.CallerWitness.FDData.snapshots after,\n    read := read }"
+    },
+    {
+      "axioms": [],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.FDData.sample",
+      "type": "LeanCage.Entry.State → List.{0} LeanCage.Entry.CallerWitness.FDData.Slot",
+      "body": "fun state =>\n  List.map.{0, 0}\n    (fun fd =>\n      Option.map.{0, 0} (fun handle => Prod.mk.{0, 0} handle.object handle.cloexec) (state.handles fd.toUInt32))\n    LeanCage.Entry.CallerWitness.FDData.descriptors"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.sampled_flags",
+      "type": "∀ (state : LeanCage.Entry.State),\n  LeanCage.Entry.CallerWitness.FDData.Supported state.handles →\n    Eq.{1} (LeanCage.Entry.CallerWitness.FDData.flags (LeanCage.Entry.CallerWitness.FDData.sample state))\n      (LeanCage.Entry.CallerWitness.stateFlags state)"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.sampled_lookup",
+      "type": "∀ (state : LeanCage.Entry.State),\n  LeanCage.Entry.CallerWitness.FDData.Supported state.handles →\n    ∀ (fd : Nat),\n      Eq.{1} (LeanCage.Entry.CallerWitness.FDData.lookup (LeanCage.Entry.CallerWitness.FDData.sample state) fd)\n        (LeanCage.Entry.CallerWitness.FDData.stateSlot state fd)"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.sampled_objects",
+      "type": "∀ (state : LeanCage.Entry.State),\n  LeanCage.Entry.CallerWitness.FDData.Supported state.handles →\n    Eq.{1} (LeanCage.Entry.CallerWitness.FDData.objects (LeanCage.Entry.CallerWitness.FDData.sample state))\n      (LeanCage.Entry.CallerWitness.stateObjects state)"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.signal_frames_exact",
+      "type": "Eq.{1}\n  (LeanCage.Entry.CallerWitness.FDData.nativeFrames LeanCage.Entry.MetadataWitness.initial\n    LeanCage.Entry.CallerWitness.signalTrace)\n  LeanCage.Entry.CallerWitness.FDData.signalFrames"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.signal_ticks_exact",
+      "type": "∀ (child : LeanCage.Entry.ProcessIdentity) (otherObjects : Nat → Nat → Option.{0} Nat) (otherFlags : Nat → Nat → Bool)\n  (context : LeanCage.Entry.CallerPhysical.Context),\n  Eq.{1}\n    (LeanCage.Entry.CallerWitness.kernelTicks LeanCage.Entry.exampleFilesystem child otherObjects otherFlags context\n      LeanCage.Entry.MetadataWitness.initial LeanCage.Entry.CallerWitness.signalTrace)\n    (LeanCage.Entry.CallerWitness.FDData.ticks LeanCage.Entry.CallerPhysical.PrimitiveFamily.native child otherObjects\n      otherFlags context LeanCage.Entry.CallerWitness.FDData.signalFrames)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.status_frames_exact",
+      "type": "Eq.{1}\n  (LeanCage.Entry.CallerWitness.FDData.metadataFrames LeanCage.Entry.MetadataWitness.initial\n    (LeanCage.Entry.MetadataWitness.contentTrace \"/proc/self/status\" 8192 LeanCage.Entry.MetadataWitness.status))\n  LeanCage.Entry.CallerWitness.FDData.inspectionFrames"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.status_ticks_exact",
+      "type": "∀ (child : LeanCage.Entry.ProcessIdentity) (otherObjects : Nat → Nat → Option.{0} Nat) (otherFlags : Nat → Nat → Bool)\n  (context : LeanCage.Entry.CallerPhysical.Context),\n  Eq.{1}\n    (LeanCage.Entry.CallerWitness.metadataTicks child otherObjects otherFlags context\n      LeanCage.Entry.MetadataWitness.initial\n      (LeanCage.Entry.MetadataWitness.contentTrace \"/proc/self/status\" 8192 LeanCage.Entry.MetadataWitness.status))\n    (LeanCage.Entry.CallerWitness.FDData.ticks LeanCage.Entry.CallerPhysical.PrimitiveFamily.metadata child otherObjects\n      otherFlags context LeanCage.Entry.CallerWitness.FDData.inspectionFrames)"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.stop_tick_exact",
+      "type": "∀ (child : LeanCage.Entry.ProcessIdentity) (otherObjects : Nat → Nat → Option.{0} Nat) (otherFlags : Nat → Nat → Bool)\n  (context : LeanCage.Entry.CallerPhysical.Context),\n  Eq.{1}\n    (LeanCage.Entry.CallerWitness.nativeTick child otherObjects otherFlags context\n      LeanCage.Entry.CallerPhysical.Action.native context LeanCage.Entry.CallerWitness.FDData.signalState\n      { op := LeanCage.Entry.Op.stop } (Prod.mk.{0, 0} 0 ByteArray.empty))\n    (LeanCage.Entry.CallerWitness.FDData.tick LeanCage.Entry.CallerPhysical.PrimitiveFamily.native child otherObjects\n      otherFlags context LeanCage.Entry.CallerPhysical.Action.native context\n      (LeanCage.Entry.CallerWitness.FDData.pack 3 0 0))"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.tail_frames_exact",
+      "type": "Eq.{1}\n  (LeanCage.Entry.CallerWitness.FDData.nativeFrames LeanCage.Entry.CallerWitness.FDData.signalState\n    LeanCage.Entry.CallerWitness.tailTrace)\n  LeanCage.Entry.CallerWitness.FDData.tailFrames"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.tail_ticks_exact",
+      "type": "∀ (child : LeanCage.Entry.ProcessIdentity) (otherObjects : Nat → Nat → Option.{0} Nat) (otherFlags : Nat → Nat → Bool)\n  (context : LeanCage.Entry.CallerPhysical.Context),\n  Eq.{1}\n    (LeanCage.Entry.CallerWitness.kernelTicks LeanCage.Entry.exampleFilesystem child otherObjects otherFlags context\n      LeanCage.Entry.CallerWitness.FDData.signalState LeanCage.Entry.CallerWitness.tailTrace)\n    (LeanCage.Entry.CallerWitness.FDData.ticks LeanCage.Entry.CallerPhysical.PrimitiveFamily.native child otherObjects\n      otherFlags context LeanCage.Entry.CallerWitness.FDData.tailFrames)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.FDData.tick",
+      "type": "LeanCage.Entry.CallerPhysical.PrimitiveFamily →\n  LeanCage.Entry.ProcessIdentity →\n    (Nat → Nat → Option.{0} Nat) →\n      (Nat → Nat → Bool) →\n        LeanCage.Entry.CallerPhysical.Context →\n          LeanCage.Entry.CallerPhysical.Action →\n            LeanCage.Entry.CallerPhysical.Context →\n              LeanCage.Entry.CallerWitness.FDData.Frame → LeanCage.Entry.CallerPhysical.Tick",
+      "body": "fun family child otherObjects otherFlags before action after frame =>\n  { before := before, action := action, after := after,\n    objects := fun actor fd =>\n      ite.{1} (Eq.{1} actor (LeanCage.Entry.CallerPhysical.taskKey child))\n        (LeanCage.Entry.CallerWitness.FDData.objects frame.before fd) (otherObjects actor fd),\n    cloexec := fun actor fd =>\n      ite.{1} (Eq.{1} actor (LeanCage.Entry.CallerPhysical.taskKey child))\n        (LeanCage.Entry.CallerWitness.FDData.flags frame.before fd) (otherFlags actor fd),\n    socket := LeanCage.Entry.CallerWitness.FDData.socket child frame.read, source := Option.none.{0},\n    primitive := Option.some.{0} { family := family, code := frame.code, kernel := Bool.true } }"
+    },
+    {
+      "axioms": [],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.FDData.ticks",
+      "type": "LeanCage.Entry.CallerPhysical.PrimitiveFamily →\n  LeanCage.Entry.ProcessIdentity →\n    (Nat → Nat → Option.{0} Nat) →\n      (Nat → Nat → Bool) →\n        LeanCage.Entry.CallerPhysical.Context →\n          List.{0} LeanCage.Entry.CallerWitness.FDData.Frame → List.{0} LeanCage.Entry.CallerPhysical.Tick",
+      "body": "fun family child otherObjects otherFlags context frames =>\n  List.map.{0, 0}\n    (LeanCage.Entry.CallerWitness.FDData.tick family child otherObjects otherFlags context\n      LeanCage.Entry.CallerPhysical.Action.native context)\n    frames"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.FDData.trace_tick_exact",
+      "type": "∀ (child : LeanCage.Entry.ProcessIdentity) (otherObjects : Nat → Nat → Option.{0} Nat) (otherFlags : Nat → Nat → Bool)\n  (before after : LeanCage.Entry.CallerPhysical.Context),\n  Eq.{1}\n    (LeanCage.Entry.CallerWitness.nativeTick child otherObjects otherFlags before\n      LeanCage.Entry.CallerPhysical.Action.traceMe after LeanCage.Entry.CallerWitness.FDData.signalState\n      { op := LeanCage.Entry.Op.traceMe } (Prod.mk.{0, 0} 0 ByteArray.empty))\n    (LeanCage.Entry.CallerWitness.FDData.tick LeanCage.Entry.CallerPhysical.PrimitiveFamily.native child otherObjects\n      otherFlags before LeanCage.Entry.CallerPhysical.Action.traceMe after\n      (LeanCage.Entry.CallerWitness.FDData.pack 2 0 0))"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.kernelState",
+      "type": "LeanCage.Entry.Filesystem → LeanCage.Entry.State → LeanCage.Entry.Request → LeanCage.Entry.Reply → LeanCage.Entry.State",
+      "body": "fun fs state request reply =>\n  ite.{1} (Eq.{1} (LeanCage.Entry.successfulReturn request reply) Bool.true) (LeanCage.Entry.update fs request state)\n    state"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.lineage_effects_append",
+      "type": "∀ {runtime : LeanCage.Entry.CallerLineageContract} {before middle after : LeanCage.Entry.ProcessIdentity}\n  {initial changed final : List.{0} ByteArray} {first last : List.{0} LeanCage.Entry.LineageLabel},\n  LeanCage.Entry.CallerPhysical.LineageEffects runtime before initial first middle changed →\n    LeanCage.Entry.CallerPhysical.LineageEffects runtime middle changed last after final →\n      LeanCage.Entry.CallerPhysical.LineageEffects runtime before initial (HAppend.hAppend.{0, 0, 0} first last) after\n        final"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.lineage_frames",
+      "type": "∀ (bootTask task : LeanCage.Entry.ProcessIdentity) (installed : List.{0} ByteArray)\n  (labels : List.{0} LeanCage.Entry.LineageLabel),\n  LeanCage.Entry.CallerPhysical.LineageEffects (LeanCage.Entry.CallerWitness.usefulLineage bootTask) task installed\n    labels task installed"
+    },
+    {
+      "axioms": [],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.lineage_labels_append",
+      "type": "∀ {first last : List.{0} LeanCage.Entry.LineageLabel},\n  LeanCage.Entry.CallerLabelsAllowed first →\n    LeanCage.Entry.CallerLabelsAllowed last → LeanCage.Entry.CallerLabelsAllowed (HAppend.hAppend.{0, 0, 0} first last)"
+    },
+    {
+      "axioms": [],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.metadataRuntime",
+      "type": "LeanCage.Entry.MetadataOriginContract LeanCage.Entry.MetadataWitness.platform",
+      "body": "{ returns := LeanCage.Entry.CallerWitness.MetadataRuntimeReturns,\n  erases := LeanCage.Entry.CallerWitness.metadataRuntime._proof_1,\n  unmediated := LeanCage.Entry.CallerWitness.metadataRuntime._proof_2 }"
+    },
+    {
+      "axioms": [],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.metadataState",
+      "type": "LeanCage.Entry.State → LeanCageM3.Metadata.Request → LeanCageM3.Metadata.Reply → LeanCage.Entry.State",
+      "body": "fun state request reply =>\n  match request.op with\n  | LeanCageM3.Metadata.Op.open =>\n    ite.{1} (Eq.{1} (Prod.fst.{0, 0} reply) 1)\n      (LeanCage.Entry.MetadataFrame.opened state 1 LeanCage.Entry.MetadataWitness.handle) state\n  | LeanCageM3.Metadata.Op.read => state\n  | LeanCageM3.Metadata.Op.close => LeanCage.Entry.MetadataFrame.closed state request.fd"
+    },
+    {
+      "axioms": [],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.metadataTick",
+      "type": "LeanCage.Entry.ProcessIdentity →\n  (Nat → Nat → Option.{0} Nat) →\n    (Nat → Nat → Bool) →\n      LeanCage.Entry.CallerPhysical.Context →\n        LeanCage.Entry.State → LeanCageM3.Metadata.Request → LeanCage.Entry.CallerPhysical.Tick",
+      "body": "fun child otherObjects otherFlags context state request =>\n  have __src :=\n    LeanCage.Entry.CallerWitness.stateTick child otherObjects otherFlags context\n      LeanCage.Entry.CallerPhysical.Action.native context state LeanCage.Entry.CallerPhysical.SocketObservation.none;\n  { before := __src.before, action := __src.action, after := __src.after, objects := __src.objects,\n    cloexec := __src.cloexec, socket := __src.socket, source := __src.source,\n    primitive :=\n      Option.some.{0}\n        { family := LeanCage.Entry.CallerPhysical.PrimitiveFamily.metadata,\n          code := LeanCage.Entry.CallerPhysical.metadataCode request.op, kernel := Bool.true } }"
+    },
+    {
+      "axioms": [],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.nativeTick",
+      "type": "LeanCage.Entry.ProcessIdentity →\n  (Nat → Nat → Option.{0} Nat) →\n    (Nat → Nat → Bool) →\n      LeanCage.Entry.CallerPhysical.Context →\n        LeanCage.Entry.CallerPhysical.Action →\n          LeanCage.Entry.CallerPhysical.Context →\n            LeanCage.Entry.State → LeanCage.Entry.Request → LeanCage.Entry.Reply → LeanCage.Entry.CallerPhysical.Tick",
+      "body": "fun child otherObjects otherFlags before action after state request reply =>\n  have __src :=\n    LeanCage.Entry.CallerWitness.stateTick child otherObjects otherFlags before action after state\n      (LeanCage.Entry.CallerWitness.nativeSocket child request reply);\n  { before := __src.before, action := __src.action, after := __src.after, objects := __src.objects,\n    cloexec := __src.cloexec, socket := __src.socket, source := __src.source,\n    primitive :=\n      Option.some.{0}\n        { family := LeanCage.Entry.CallerPhysical.PrimitiveFamily.native, code := request.op.code.toNat,\n          kernel := Bool.true } }"
+    },
+    {
+      "axioms": [],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.primitiveMetadata",
+      "type": "{platform : LeanCage.Entry.MetadataFrame.PrimitiveContract} →\n  (originRuntime : LeanCage.Entry.MetadataOriginContract platform) →\n    (mayTrace : LeanCage.Entry.ProcessIdentity → Prop) →\n      (owner child : LeanCage.Entry.ProcessIdentity) →\n        LeanCage.Entry.CallerPhysical.MetadataContract originRuntime mayTrace owner child",
+      "body": "fun {platform} originRuntime mayTrace owner child =>\n  { returned := LeanCage.Entry.CallerWitness.MetadataOperation originRuntime owner child, live := ⋯, projection := ⋯ }"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.primitiveNative",
+      "type": "{fs : LeanCage.Entry.Filesystem} →\n  {platform : LeanCage.Entry.PrimitiveContract fs} →\n    (originRuntime : LeanCage.Entry.OriginContract platform) →\n      (mayTrace : LeanCage.Entry.ProcessIdentity → Prop) →\n        (owner child : LeanCage.Entry.ProcessIdentity) →\n          LeanCage.Entry.CallerPhysical.NativeContract originRuntime mayTrace owner child",
+      "body": "fun {fs} {platform} originRuntime mayTrace owner child =>\n  { returned := LeanCage.Entry.CallerWitness.NativeOperation originRuntime mayTrace owner child, live := ⋯, effect := ⋯,\n    projection := ⋯, scope := ⋯ }"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.recordedImage",
+      "type": "(owner child : LeanCage.Entry.ProcessIdentity) →\n  (Nat → Nat → Option.{0} Nat) →\n    (Nat → Nat → Bool) →\n      (start : Nat) →\n        (ticks : List.{0} LeanCage.Entry.CallerPhysical.Tick) →\n          LeanCage.Entry.CallerPhysical.ImageContract LeanCage.Entry.MetadataWitness.execution owner child start ticks",
+      "body": "fun owner child otherObjects otherFlags start ticks =>\n  {\n    replaced := fun position before state request task after image =>\n      Eq.{1} request.op LeanCage.Entry.Op.exec ∧\n        Eq.{1} task child ∧\n          Eq.{1} after before ∧\n            Eq.{1} before.childAlive Bool.true ∧\n              Eq.{1} image\n                  { state := LeanCage.Entry.execState state 1, executable := request.text, argv := request.args,\n                    environment := request.data } ∧\n                Exists.{1} fun offset =>\n                  Eq.{1} position (HAdd.hAdd.{0, 0, 0} start offset) ∧\n                    LeanCage.Entry.CallerPhysical.TickAt ticks offset\n                      (LeanCage.Entry.CallerWitness.imageTick child otherObjects otherFlags before state request),\n    effect := ⋯, occurrence := ⋯, identity := ⋯, live := ⋯, scope := ⋯, noSocketWrite := ⋯ }"
+    },
+    {
+      "axioms": [],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.recordedMetadata",
+      "type": "{platform : LeanCage.Entry.MetadataFrame.PrimitiveContract} →\n  {runtime : LeanCage.Entry.MetadataOriginContract platform} →\n    {mayTrace : LeanCage.Entry.ProcessIdentity → Prop} →\n      {owner child : LeanCage.Entry.ProcessIdentity} →\n        LeanCage.Entry.CallerPhysical.MetadataContract runtime mayTrace owner child →\n          Nat →\n            List.{0} LeanCage.Entry.CallerPhysical.Tick →\n              LeanCage.Entry.CallerPhysical.MetadataContract runtime mayTrace owner child",
+      "body": "fun {platform} {runtime} {mayTrace} {owner child} base start ticks =>\n  {\n    returned := fun position before origin state request reply after result =>\n      base.returned position before origin state request reply after result ∧\n        Exists.{1} fun offset =>\n          Exists.{1} fun tick =>\n            Eq.{1} position (HAdd.hAdd.{0, 0, 0} start offset) ∧\n              LeanCage.Entry.CallerPhysical.TickAt ticks offset tick ∧\n                Eq.{1} tick.before before ∧\n                  Eq.{1} tick.after after ∧\n                    (Eq.{1} origin LeanCage.Entry.ReturnOrigin.kernel →\n                        (LeanCage.Entry.CallerPhysical.control owner child before).nonSubstituting →\n                          Eq.{1} tick.action LeanCage.Entry.CallerPhysical.Action.native) ∧\n                      LeanCage.Entry.CallerPhysical.NativeTable child state tick ∧\n                        runtime.returns (LeanCage.Entry.CallerPhysical.control owner child before) origin state request\n                            reply result ∧\n                          (Eq.{1} origin LeanCage.Entry.ReturnOrigin.kernel →\n                              (LeanCage.Entry.CallerPhysical.control owner child before).nonSubstituting →\n                                ∀ (actor : LeanCage.Entry.ProcessIdentity) (fd : Nat) (bytes : List.{0} Nat)\n                                  (lost : Bool),\n                                  Ne.{1} tick.socket\n                                    (LeanCage.Entry.CallerPhysical.SocketObservation.wrote actor fd bytes lost)) ∧\n                            Eq.{1} tick.primitive\n                              (Option.some.{0}\n                                { family := LeanCage.Entry.CallerPhysical.PrimitiveFamily.metadata,\n                                  code := LeanCage.Entry.CallerPhysical.metadataCode request.op,\n                                  kernel := Decidable.decide (Eq.{1} origin LeanCage.Entry.ReturnOrigin.kernel) }),\n    live := ⋯, projection := ⋯ }"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.recordedNative",
+      "type": "{fs : LeanCage.Entry.Filesystem} →\n  {platform : LeanCage.Entry.PrimitiveContract fs} →\n    {runtime : LeanCage.Entry.OriginContract platform} →\n      {mayTrace : LeanCage.Entry.ProcessIdentity → Prop} →\n        {owner child : LeanCage.Entry.ProcessIdentity} →\n          LeanCage.Entry.CallerPhysical.NativeContract runtime mayTrace owner child →\n            Nat →\n              List.{0} LeanCage.Entry.CallerPhysical.Tick →\n                LeanCage.Entry.CallerPhysical.NativeContract runtime mayTrace owner child",
+      "body": "fun {fs} {platform} {runtime} {mayTrace} {owner child} base start ticks =>\n  {\n    returned := fun position before origin state request reply after result =>\n      base.returned position before origin state request reply after result ∧\n        Exists.{1} fun offset =>\n          Exists.{1} fun tick =>\n            Eq.{1} position (HAdd.hAdd.{0, 0, 0} start offset) ∧\n              LeanCage.Entry.CallerPhysical.TickAt ticks offset tick ∧\n                Eq.{1} tick.before before ∧\n                  Eq.{1} tick.after after ∧\n                    (Eq.{1} tick.action LeanCage.Entry.CallerPhysical.Action.native ∨\n                        Eq.{1} tick.action LeanCage.Entry.CallerPhysical.Action.traceMe ∧\n                            Eq.{1} request.op LeanCage.Entry.Op.traceMe ∧\n                              Eq.{1} origin LeanCage.Entry.ReturnOrigin.kernel ∧ Eq.{1} (Prod.fst.{0, 0} reply) 0 ∨\n                          Exists.{1} fun group =>\n                            Eq.{1} tick.action (LeanCage.Entry.CallerPhysical.Action.placement group) ∧\n                              (Eq.{1} request.op LeanCage.Entry.Op.write ∨\n                                Eq.{1} origin LeanCage.Entry.ReturnOrigin.intercepted ∨\n                                  ¬(LeanCage.Entry.CallerPhysical.control owner child before).nonSubstituting)) ∧\n                      LeanCage.Entry.CallerPhysical.NativeTable child state tick ∧\n                        LeanCage.Entry.CallerPhysical.NativeSocket\n                            (LeanCage.Entry.CallerPhysical.control owner child before) child origin request reply\n                            tick.socket ∧\n                          Eq.{1} tick.primitive\n                            (Option.some.{0}\n                              { family := LeanCage.Entry.CallerPhysical.PrimitiveFamily.native,\n                                code := request.op.code.toNat,\n                                kernel := Decidable.decide (Eq.{1} origin LeanCage.Entry.ReturnOrigin.kernel) }),\n    live := ⋯, effect := ⋯, projection := ⋯, scope := ⋯ }"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.runtime",
+      "type": "(fs : LeanCage.Entry.Filesystem) → LeanCage.Entry.OriginContract (LeanCage.Entry.witnessPlatform fs)",
+      "body": "fun fs => { returns := LeanCage.Entry.CallerWitness.RuntimeReturns fs, erases := ⋯, unmediated := ⋯ }"
+    },
+    {
+      "axioms": [],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.usefulEntryTicks",
+      "type": "LeanCage.Entry.ProcessIdentity →\n  LeanCage.Entry.ProcessIdentity →\n    (Nat → Nat → Option.{0} Nat) →\n      (Nat → Nat → Option.{0} Nat) →\n        (Nat → Nat → Bool) →\n          (Nat → Nat → Bool) →\n            List.{0} LeanCage.Entry.CallerPhysical.Tick →\n              List.{0} LeanCage.Entry.CallerPhysical.Tick →\n                LeanCage.Entry.CallerPhysical.Context → List.{0} LeanCage.Entry.CallerPhysical.Tick",
+      "body": "fun owner child beforeObjects afterObjects beforeFlags afterFlags childTicks parentTicks afterContext =>\n  HAppend.hAppend.{0, 0, 0}\n    (HAppend.hAppend.{0, 0, 0}\n      (HAppend.hAppend.{0, 0, 0}\n        (HAppend.hAppend.{0, 0, 0} childTicks\n          (LeanCage.Entry.CallerWitness.usefulWorkerPrefix owner child beforeObjects beforeFlags))\n        parentTicks)\n      (LeanCage.Entry.CallerWitness.usefulWorkerTail child afterObjects afterFlags afterContext))\n    (List.cons.{0}\n      (LeanCage.Entry.CallerWitness.FDData.tick LeanCage.Entry.CallerPhysical.PrimitiveFamily.native child afterObjects\n        afterFlags afterContext LeanCage.Entry.CallerPhysical.Action.native afterContext\n        LeanCage.Entry.CallerWitness.FDData.execFrame)\n      List.nil.{0})"
+    },
+    {
+      "axioms": [],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.usefulLineage",
+      "type": "LeanCage.Entry.ProcessIdentity → LeanCage.Entry.CallerLineageContract",
+      "body": "fun bootTask =>\n  { booted := fun task filters => Eq.{1} task bootTask ∧ Eq.{1} filters List.nil.{0},\n    step := fun kind request before after installed changed =>\n      (Eq.{1} kind 0 ∨ Eq.{1} after before) ∧\n        (LeanCage.Entry.CallerLineageAllowed kind request → Eq.{1} changed installed),\n    linuxBoot := ⋯, primitiveFrame := LeanCage.Entry.CallerWitness.usefulLineage._proof_2,\n    primitiveIdentity := LeanCage.Entry.CallerWitness.usefulLineage._proof_3 }"
+    },
+    {
+      "axioms": [],
+      "is_theorem": false,
+      "name": "LeanCage.Entry.CallerWitness.usefulSourceLabels",
+      "type": "List.{0} LeanCage.Entry.LineageLabel → List.{0} LeanCage.Entry.LineageLabel → List.{0} LeanCage.Entry.LineageLabel",
+      "body": "fun common child =>\n  HAppend.hAppend.{0, 0, 0} common\n    (List.cons.{0} { kind := 0, request := 0 }\n      (HAppend.hAppend.{0, 0, 0} child (List.cons.{0} { kind := 4, request := 0 } List.nil.{0})))"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.useful_exec_descriptor_data",
+      "type": "Eq.{1} (LeanCage.Entry.CallerWitness.stateObjects LeanCage.Entry.CallerWitness.usefulFinalState)\n    (LeanCage.Entry.CallerWitness.FDData.objects LeanCage.Entry.CallerWitness.FDData.execFrame.before) ∧\n  Eq.{1} (LeanCage.Entry.CallerWitness.stateFlags LeanCage.Entry.CallerWitness.usefulFinalState)\n      (LeanCage.Entry.CallerWitness.FDData.flags LeanCage.Entry.CallerWitness.FDData.execFrame.before) ∧\n    Eq.{1}\n        (LeanCage.Entry.CallerWitness.stateObjects\n          (LeanCage.Entry.execState LeanCage.Entry.CallerWitness.usefulFinalState 1))\n        (LeanCage.Entry.CallerWitness.FDData.objects LeanCage.Entry.CallerWitness.FDData.execFrame.after) ∧\n      Eq.{1}\n        (LeanCage.Entry.CallerWitness.stateFlags\n          (LeanCage.Entry.execState LeanCage.Entry.CallerWitness.usefulFinalState 1))\n        (LeanCage.Entry.CallerWitness.FDData.flags LeanCage.Entry.CallerWitness.FDData.execFrame.after)"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.useful_exec_frame_exact",
+      "type": "Eq.{1}\n  { code := (LeanCage.Entry.execRequest LeanCage.Entry.MetadataWitness.inputs).op.code.toNat,\n    before := LeanCage.Entry.CallerWitness.FDData.sample LeanCage.Entry.CallerWitness.usefulFinalState,\n    after :=\n      LeanCage.Entry.CallerWitness.FDData.sample\n        (LeanCage.Entry.execState LeanCage.Entry.CallerWitness.usefulFinalState 1),\n    read := Option.none.{0} }\n  LeanCage.Entry.CallerWitness.FDData.execFrame"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.useful_image_tick_exact",
+      "type": "∀ (child : LeanCage.Entry.ProcessIdentity) (otherObjects : Nat → Nat → Option.{0} Nat) (otherFlags : Nat → Nat → Bool)\n  (context : LeanCage.Entry.CallerPhysical.Context),\n  Eq.{1}\n    (LeanCage.Entry.CallerWitness.imageTick child otherObjects otherFlags context\n      LeanCage.Entry.CallerWitness.usefulFinalState (LeanCage.Entry.execRequest LeanCage.Entry.MetadataWitness.inputs))\n    (LeanCage.Entry.CallerWitness.FDData.tick LeanCage.Entry.CallerPhysical.PrimitiveFamily.native child otherObjects\n      otherFlags context LeanCage.Entry.CallerPhysical.Action.native context\n      LeanCage.Entry.CallerWitness.FDData.execFrame)"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.useful_native_values",
+      "type": "LeanCage.Entry.ArgumentMeaning.nativeValues 100000 4 5 6 60 (Array.toList.{0} \"run\".toUTF8.data)\n  (Array.toList.{0} \"/m3-runs/100000/root\".toUTF8.data) (Array.toList.{0} \"normal\".toUTF8.data)\n  (List.cons.{0} (Array.toList.{0} \"/bin/sh\".toUTF8.data) List.nil.{0}) LeanCage.Entry.CallerWitness.argumentBytes"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.useful_public_source_workspace",
+      "type": "∀ (mayTrace : LeanCage.Entry.ProcessIdentity → Prop) (owner child : LeanCage.Entry.ProcessIdentity)\n  (history : List.{0} Nat) (beforeObjects afterObjects : Nat → Nat → Option.{0} Nat)\n  (beforeFlags afterFlags : Nat → Nat → Bool) (childTicks parentTicks : List.{0} LeanCage.Entry.CallerPhysical.Tick)\n  (afterContext : LeanCage.Entry.CallerPhysical.Context),\n  Eq.{1} afterContext.childAlive Bool.true →\n    LeanCage.Entry.CallerWitness.SupervisorSlice mayTrace owner child\n        (LeanCage.Entry.CallerWitness.usefulEntryTicks owner child beforeObjects afterObjects beforeFlags afterFlags\n          childTicks parentTicks afterContext)\n        (HAdd.hAdd.{0, 0, 0} (List.length.{0} childTicks) 74)\n        (LeanCage.Entry.CallerWitness.tracedContext owner (LeanCage.Entry.CallerPhysical.born 1 Option.none.{0}))\n        (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (List.length.{0} childTicks) 74) (List.length.{0} parentTicks))\n        afterContext →\n      LeanCage.Entry.CallerPhysical.Journal mayTrace owner child history\n          (LeanCage.Entry.CallerPhysical.born 1 Option.none.{0})\n          (LeanCage.Entry.CallerWitness.usefulEntryTicks owner child beforeObjects afterObjects beforeFlags afterFlags\n            childTicks parentTicks afterContext)\n          afterContext →\n        LeanCage.Entry.CallerRequestsAllowed history →\n          (∀ (offset : Nat) (tick : LeanCage.Entry.CallerPhysical.Tick),\n              LeanCage.Entry.CallerPhysical.TickAt\n                  (LeanCage.Entry.CallerWitness.usefulEntryTicks owner child beforeObjects afterObjects beforeFlags\n                    afterFlags childTicks parentTicks afterContext)\n                  offset tick →\n                LeanCage.Entry.CallerPhysical.WriteSourceOrExternal owner child tick) →\n            ∀ (cgroupFiles : Nat → Option.{0} Nat),\n              LeanCage.Entry.SourceScopeProducer owner child 0\n                  (HAdd.hAdd.{0, 0, 0}\n                    (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (List.length.{0} childTicks) 74)\n                      (List.length.{0} parentTicks))\n                    68)\n                  (LeanCage.Entry.CallerWitness.usefulEntryTicks owner child beforeObjects afterObjects beforeFlags\n                    afterFlags childTicks parentTicks afterContext)\n                  1 60 182 cgroupFiles →\n                ∀ (commonLabels childLabels : List.{0} LeanCage.Entry.LineageLabel),\n                  LeanCage.Entry.CallerLabelsAllowed commonLabels →\n                    LeanCage.Entry.CallerLabelsAllowed childLabels →\n                      Exists.{1} fun p =>\n                        LeanCage.Entry.ParsedHandoff LeanCage.Entry.MetadataWitness.args p ∧\n                          LeanCage.Entry.NativeInputValues p 100000 4 5 6 60 (Array.toList.{0} \"run\".toUTF8.data)\n                              (Array.toList.{0} \"/m3-runs/100000/root\".toUTF8.data)\n                              (Array.toList.{0} \"normal\".toUTF8.data)\n                              (List.cons.{0} (Array.toList.{0} \"/bin/sh\".toUTF8.data) List.nil.{0}) ∧\n                            LeanCage.Entry.ImageRestricted LeanCage.Entry.exampleFilesystem p\n                                LeanCage.Entry.MetadataWitness.initial\n                                LeanCage.Entry.CallerWitness.usefulWorkspaceImage ∧\n                              LeanCage.Entry.ImageStdio p LeanCage.Entry.MetadataWitness.initial\n                                  LeanCage.Entry.CallerWitness.usefulWorkspaceImage ∧\n                                Eq.{1} afterContext.cgroup (Option.some.{0} 1) ∧\n                                  Eq.{1} afterContext.namespaceId 1 ∧\n                                    LeanCageM3.taskSafe LeanCage.Entry.CallerWitness.usefulWorkspace\n                                      (LeanCage.Entry.workspaceTask LeanCage.Entry.CallerWitness.usefulWorkspaceObjects\n                                        (LeanCage.Entry.physicalProcessContext 1\n                                          LeanCage.Entry.CallerWitness.usefulWorkspace.run (fun x => 1) afterContext)\n                                        LeanCage.Entry.CallerWitness.usefulWorkspaceImage)"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.useful_public_workspace",
+      "type": "∀ (lineageRuntime : LeanCage.Entry.CallerLineageContract) (mayTrace : LeanCage.Entry.ProcessIdentity → Prop)\n  (owner child : LeanCage.Entry.ProcessIdentity) (history : List.{0} Nat)\n  (beforeObjects afterObjects : Nat → Nat → Option.{0} Nat) (beforeFlags afterFlags : Nat → Nat → Bool)\n  (childTicks parentTicks : List.{0} LeanCage.Entry.CallerPhysical.Tick)\n  (afterContext : LeanCage.Entry.CallerPhysical.Context),\n  Eq.{1} afterContext.childAlive Bool.true →\n    LeanCage.Entry.CallerWitness.SupervisorSlice mayTrace owner child\n        (LeanCage.Entry.CallerWitness.usefulEntryTicks owner child beforeObjects afterObjects beforeFlags afterFlags\n          childTicks parentTicks afterContext)\n        (HAdd.hAdd.{0, 0, 0} (List.length.{0} childTicks) 74)\n        (LeanCage.Entry.CallerWitness.tracedContext owner (LeanCage.Entry.CallerPhysical.born 1 Option.none.{0}))\n        (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (List.length.{0} childTicks) 74) (List.length.{0} parentTicks))\n        afterContext →\n      LeanCage.Entry.CallerPhysical.Journal mayTrace owner child history\n          (LeanCage.Entry.CallerPhysical.born 1 Option.none.{0})\n          (LeanCage.Entry.CallerWitness.usefulEntryTicks owner child beforeObjects afterObjects beforeFlags afterFlags\n            childTicks parentTicks afterContext)\n          afterContext →\n        LeanCage.Entry.CallerRequestsAllowed history →\n          (∀ (offset : Nat) (tick : LeanCage.Entry.CallerPhysical.Tick),\n              LeanCage.Entry.CallerPhysical.TickAt\n                  (LeanCage.Entry.CallerWitness.usefulEntryTicks owner child beforeObjects afterObjects beforeFlags\n                    afterFlags childTicks parentTicks afterContext)\n                  offset tick →\n                LeanCage.Entry.CallerPhysical.WriteSourceOrExternal owner child tick) →\n            LeanCage.Entry.ArgumentMeaning.nativeValues 100000 4 5 6 60 (Array.toList.{0} \"run\".toUTF8.data)\n                (Array.toList.{0} \"/m3-runs/100000/root\".toUTF8.data) (Array.toList.{0} \"normal\".toUTF8.data)\n                (List.cons.{0} (Array.toList.{0} \"/bin/sh\".toUTF8.data) List.nil.{0})\n                LeanCage.Entry.CallerWitness.argumentBytes →\n              ∀ (cgroupFiles : Nat → Option.{0} Nat),\n                LeanCage.Entry.SourceScopeProducer owner child 0\n                    (HAdd.hAdd.{0, 0, 0}\n                      (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (List.length.{0} childTicks) 74)\n                        (List.length.{0} parentTicks))\n                      68)\n                    (LeanCage.Entry.CallerWitness.usefulEntryTicks owner child beforeObjects afterObjects beforeFlags\n                      afterFlags childTicks parentTicks afterContext)\n                    1 60 182 cgroupFiles →\n                  ∀ {ancestorTask : LeanCage.Entry.ProcessIdentity} {ancestorInstalled installed : List.{0} ByteArray}\n                    {labels : List.{0} LeanCage.Entry.LineageLabel},\n                    LeanCage.Entry.CallerLineage lineageRuntime ancestorTask ancestorInstalled →\n                      LeanCage.Entry.CallerPhysical.LineageEffects lineageRuntime ancestorTask ancestorInstalled labels\n                          child installed →\n                        LeanCage.Entry.CallerLabelsAllowed labels →\n                          Exists.{1} fun p =>\n                            LeanCage.Entry.ParsedHandoff LeanCage.Entry.MetadataWitness.args p ∧\n                              LeanCage.Entry.NativeInputValues p 100000 4 5 6 60 (Array.toList.{0} \"run\".toUTF8.data)\n                                  (Array.toList.{0} \"/m3-runs/100000/root\".toUTF8.data)\n                                  (Array.toList.{0} \"normal\".toUTF8.data)\n                                  (List.cons.{0} (Array.toList.{0} \"/bin/sh\".toUTF8.data) List.nil.{0}) ∧\n                                LeanCage.Entry.ImageRestricted LeanCage.Entry.exampleFilesystem p\n                                    LeanCage.Entry.MetadataWitness.initial\n                                    LeanCage.Entry.CallerWitness.usefulWorkspaceImage ∧\n                                  LeanCage.Entry.ImageStdio p LeanCage.Entry.MetadataWitness.initial\n                                      LeanCage.Entry.CallerWitness.usefulWorkspaceImage ∧\n                                    Eq.{1} afterContext.cgroup (Option.some.{0} 1) ∧\n                                      Eq.{1} afterContext.namespaceId 1 ∧\n                                        LeanCageM3.taskSafe LeanCage.Entry.CallerWitness.usefulWorkspace\n                                          (LeanCage.Entry.workspaceTask\n                                            LeanCage.Entry.CallerWitness.usefulWorkspaceObjects\n                                            (LeanCage.Entry.physicalProcessContext 1\n                                              LeanCage.Entry.CallerWitness.usefulWorkspace.run (fun x => 1)\n                                              afterContext)\n                                            LeanCage.Entry.CallerWitness.usefulWorkspaceImage)"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.useful_recorded_image",
+      "type": "∀ (owner child : LeanCage.Entry.ProcessIdentity) (otherObjects : Nat → Nat → Option.{0} Nat)\n  (otherFlags : Nat → Nat → Bool) (start offset : Nat) (ticks : List.{0} LeanCage.Entry.CallerPhysical.Tick)\n  (context : LeanCage.Entry.CallerPhysical.Context),\n  Eq.{1} context.childAlive Bool.true →\n    LeanCage.Entry.CallerPhysical.TickAt ticks offset\n        (LeanCage.Entry.CallerWitness.FDData.tick LeanCage.Entry.CallerPhysical.PrimitiveFamily.native child\n          otherObjects otherFlags context LeanCage.Entry.CallerPhysical.Action.native context\n          LeanCage.Entry.CallerWitness.FDData.execFrame) →\n      (LeanCage.Entry.CallerWitness.recordedImage owner child otherObjects otherFlags start ticks).replaced\n        (HAdd.hAdd.{0, 0, 0} start offset) context LeanCage.Entry.CallerWitness.usefulFinalState\n        (LeanCage.Entry.execRequest LeanCage.Entry.MetadataWitness.inputs) child context\n        { state := LeanCage.Entry.execState LeanCage.Entry.CallerWitness.usefulFinalState 1,\n          executable := (LeanCage.Entry.execRequest LeanCage.Entry.MetadataWitness.inputs).text,\n          argv := (LeanCage.Entry.execRequest LeanCage.Entry.MetadataWitness.inputs).args,\n          environment := (LeanCage.Entry.execRequest LeanCage.Entry.MetadataWitness.inputs).data }"
+    },
+    {
+      "axioms": [
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.useful_source_lineage",
+      "type": "∀ (owner child : LeanCage.Entry.ProcessIdentity) (commonLabels childLabels : List.{0} LeanCage.Entry.LineageLabel),\n  LeanCage.Entry.CallerLabelsAllowed commonLabels →\n    LeanCage.Entry.CallerLabelsAllowed childLabels →\n      LeanCage.Entry.CallerLineage (LeanCage.Entry.CallerWitness.usefulLineage owner) owner List.nil.{0} ∧\n        LeanCage.Entry.CallerPhysical.LineageEffects (LeanCage.Entry.CallerWitness.usefulLineage owner) owner\n            List.nil.{0} (LeanCage.Entry.CallerWitness.usefulSourceLabels commonLabels childLabels) child List.nil.{0} ∧\n          LeanCage.Entry.CallerLabelsAllowed (LeanCage.Entry.CallerWitness.usefulSourceLabels commonLabels childLabels)"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.useful_source_recorded_entry",
+      "type": "∀ (mayTrace : LeanCage.Entry.ProcessIdentity → Prop) (owner child : LeanCage.Entry.ProcessIdentity)\n  (history : List.{0} Nat) (beforeObjects afterObjects : Nat → Nat → Option.{0} Nat)\n  (beforeFlags afterFlags : Nat → Nat → Bool) (start : Nat)\n  (childTicks parentTicks : List.{0} LeanCage.Entry.CallerPhysical.Tick)\n  (afterContext : LeanCage.Entry.CallerPhysical.Context),\n  Eq.{1} afterContext.childAlive Bool.true →\n    LeanCage.Entry.CallerWitness.SupervisorSlice mayTrace owner child\n        (HAppend.hAppend.{0, 0, 0}\n          (HAppend.hAppend.{0, 0, 0}\n            (HAppend.hAppend.{0, 0, 0}\n              (HAppend.hAppend.{0, 0, 0} childTicks\n                (LeanCage.Entry.CallerWitness.usefulWorkerPrefix owner child beforeObjects beforeFlags))\n              parentTicks)\n            (LeanCage.Entry.CallerWitness.usefulWorkerTail child afterObjects afterFlags afterContext))\n          (List.cons.{0}\n            (LeanCage.Entry.CallerWitness.FDData.tick LeanCage.Entry.CallerPhysical.PrimitiveFamily.native child\n              afterObjects afterFlags afterContext LeanCage.Entry.CallerPhysical.Action.native afterContext\n              LeanCage.Entry.CallerWitness.FDData.execFrame)\n            List.nil.{0}))\n        (HAdd.hAdd.{0, 0, 0} (List.length.{0} childTicks) 74)\n        (LeanCage.Entry.CallerWitness.tracedContext owner (LeanCage.Entry.CallerPhysical.born 1 Option.none.{0}))\n        (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (List.length.{0} childTicks) 74) (List.length.{0} parentTicks))\n        afterContext →\n      have ticks :=\n        HAppend.hAppend.{0, 0, 0}\n          (HAppend.hAppend.{0, 0, 0}\n            (HAppend.hAppend.{0, 0, 0}\n              (HAppend.hAppend.{0, 0, 0} childTicks\n                (LeanCage.Entry.CallerWitness.usefulWorkerPrefix owner child beforeObjects beforeFlags))\n              parentTicks)\n            (LeanCage.Entry.CallerWitness.usefulWorkerTail child afterObjects afterFlags afterContext))\n          (List.cons.{0}\n            (LeanCage.Entry.CallerWitness.FDData.tick LeanCage.Entry.CallerPhysical.PrimitiveFamily.native child\n              afterObjects afterFlags afterContext LeanCage.Entry.CallerPhysical.Action.native afterContext\n              LeanCage.Entry.CallerWitness.FDData.execFrame)\n            List.nil.{0});\n      have supervisor := LeanCage.Entry.CallerWitness.recordedSupervisor mayTrace owner child start ticks;\n      have native :=\n        LeanCage.Entry.CallerWitness.recordedNative\n          (LeanCage.Entry.CallerWitness.primitiveNative\n            (LeanCage.Entry.CallerWitness.runtime LeanCage.Entry.exampleFilesystem) mayTrace owner child)\n          start ticks;\n      have metadata :=\n        LeanCage.Entry.CallerWitness.recordedMetadata\n          (LeanCage.Entry.CallerWitness.primitiveMetadata LeanCage.Entry.CallerWitness.metadataRuntime mayTrace owner\n            child)\n          start ticks;\n      have image :=\n        { state := LeanCage.Entry.execState LeanCage.Entry.CallerWitness.usefulFinalState 1,\n          executable := (LeanCage.Entry.execRequest LeanCage.Entry.MetadataWitness.inputs).text,\n          argv := (LeanCage.Entry.execRequest LeanCage.Entry.MetadataWitness.inputs).args,\n          environment := (LeanCage.Entry.execRequest LeanCage.Entry.MetadataWitness.inputs).data };\n      LeanCage.Entry.CallerPhysical.StartupExecution supervisor native metadata\n          (LeanCage.Entry.Worker.startup Bool.false LeanCage.Entry.MetadataWitness.args)\n          { position := HAdd.hAdd.{0, 0, 0} start (List.length.{0} childTicks),\n            context := LeanCage.Entry.CallerPhysical.born 1 Option.none.{0},\n            state := LeanCage.Entry.MetadataWitness.initial }\n          (LeanCage.Entry.MetadataWitness.trace (LeanCage.Entry.setup LeanCage.Entry.MetadataWitness.inputs))\n          (LeanCage.Entry.execRequest LeanCage.Entry.MetadataWitness.inputs)\n          {\n            position :=\n              HAdd.hAdd.{0, 0, 0} start\n                (HAdd.hAdd.{0, 0, 0}\n                  (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (List.length.{0} childTicks) 74)\n                    (List.length.{0} parentTicks))\n                  68),\n            context := afterContext, state := LeanCage.Entry.CallerWitness.usefulFinalState } ∧\n        (LeanCage.Entry.CallerWitness.recordedImage owner child afterObjects afterFlags start ticks).replaced\n          (HAdd.hAdd.{0, 0, 0} start\n            (HAdd.hAdd.{0, 0, 0}\n              (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (List.length.{0} childTicks) 74) (List.length.{0} parentTicks))\n              68))\n          afterContext LeanCage.Entry.CallerWitness.usefulFinalState\n          (LeanCage.Entry.execRequest LeanCage.Entry.MetadataWitness.inputs) child afterContext image"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.useful_startup_on_concatenated_ticks_with_suffix",
+      "type": "∀ (mayTrace : LeanCage.Entry.ProcessIdentity → Prop) (owner child : LeanCage.Entry.ProcessIdentity)\n  (history : List.{0} Nat) (beforeObjects afterObjects : Nat → Nat → Option.{0} Nat)\n  (beforeFlags afterFlags : Nat → Nat → Bool) (start : Nat)\n  (childTicks parentTicks suffixTicks : List.{0} LeanCage.Entry.CallerPhysical.Tick)\n  (afterContext : LeanCage.Entry.CallerPhysical.Context),\n  Eq.{1} afterContext.childAlive Bool.true →\n    LeanCage.Entry.CallerWitness.SupervisorSlice mayTrace owner child\n        (HAppend.hAppend.{0, 0, 0}\n          (HAppend.hAppend.{0, 0, 0}\n            (HAppend.hAppend.{0, 0, 0}\n              (HAppend.hAppend.{0, 0, 0} childTicks\n                (LeanCage.Entry.CallerWitness.usefulWorkerPrefix owner child beforeObjects beforeFlags))\n              parentTicks)\n            (LeanCage.Entry.CallerWitness.usefulWorkerTail child afterObjects afterFlags afterContext))\n          suffixTicks)\n        (HAdd.hAdd.{0, 0, 0} (List.length.{0} childTicks) 74)\n        (LeanCage.Entry.CallerWitness.tracedContext owner (LeanCage.Entry.CallerPhysical.born 1 Option.none.{0}))\n        (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (List.length.{0} childTicks) 74) (List.length.{0} parentTicks))\n        afterContext →\n      have ticks :=\n        HAppend.hAppend.{0, 0, 0}\n          (HAppend.hAppend.{0, 0, 0}\n            (HAppend.hAppend.{0, 0, 0}\n              (HAppend.hAppend.{0, 0, 0} childTicks\n                (LeanCage.Entry.CallerWitness.usefulWorkerPrefix owner child beforeObjects beforeFlags))\n              parentTicks)\n            (LeanCage.Entry.CallerWitness.usefulWorkerTail child afterObjects afterFlags afterContext))\n          suffixTicks;\n      have supervisor := LeanCage.Entry.CallerWitness.recordedSupervisor mayTrace owner child start ticks;\n      have native :=\n        LeanCage.Entry.CallerWitness.recordedNative\n          (LeanCage.Entry.CallerWitness.primitiveNative\n            (LeanCage.Entry.CallerWitness.runtime LeanCage.Entry.exampleFilesystem) mayTrace owner child)\n          start ticks;\n      have metadata :=\n        LeanCage.Entry.CallerWitness.recordedMetadata\n          (LeanCage.Entry.CallerWitness.primitiveMetadata LeanCage.Entry.CallerWitness.metadataRuntime mayTrace owner\n            child)\n          start ticks;\n      LeanCage.Entry.CallerPhysical.StartupExecution supervisor native metadata\n        (LeanCage.Entry.Worker.startup Bool.false LeanCage.Entry.MetadataWitness.args)\n        { position := HAdd.hAdd.{0, 0, 0} start (List.length.{0} childTicks),\n          context := LeanCage.Entry.CallerPhysical.born 1 Option.none.{0},\n          state := LeanCage.Entry.MetadataWitness.initial }\n        (LeanCage.Entry.MetadataWitness.trace (LeanCage.Entry.setup LeanCage.Entry.MetadataWitness.inputs))\n        (LeanCage.Entry.execRequest LeanCage.Entry.MetadataWitness.inputs)\n        {\n          position :=\n            HAdd.hAdd.{0, 0, 0} start\n              (HAdd.hAdd.{0, 0, 0}\n                (HAdd.hAdd.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (List.length.{0} childTicks) 74)\n                  (List.length.{0} parentTicks))\n                68),\n          context := afterContext,\n          state :=\n            LeanCage.Entry.after LeanCage.Entry.exampleFilesystem\n              (LeanCage.Entry.setup LeanCage.Entry.MetadataWitness.inputs) LeanCage.Entry.MetadataWitness.initial }"
+    },
+    {
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "is_theorem": true,
+      "name": "LeanCage.Entry.CallerWitness.useful_startup_on_pure_ticks",
+      "type": "∀ (mayTrace : LeanCage.Entry.ProcessIdentity → Prop) (owner child : LeanCage.Entry.ProcessIdentity)\n  (history : List.{0} Nat) (beforeObjects afterObjects : Nat → Nat → Option.{0} Nat)\n  (beforeFlags afterFlags : Nat → Nat → Bool) (start metadataOffset tailOffset : Nat)\n  (ticks : List.{0} LeanCage.Entry.CallerPhysical.Tick) (afterContext : LeanCage.Entry.CallerPhysical.Context),\n  Eq.{1} afterContext.childAlive Bool.true →\n    LeanCage.Entry.CallerWitness.Embedded\n        (LeanCage.Entry.CallerWitness.FDData.ticks LeanCage.Entry.CallerPhysical.PrimitiveFamily.metadata child\n          beforeObjects beforeFlags (LeanCage.Entry.CallerPhysical.born 1 Option.none.{0})\n          LeanCage.Entry.CallerWitness.FDData.inspectionFrames)\n        metadataOffset ticks →\n      LeanCage.Entry.CallerWitness.Embedded\n          (LeanCage.Entry.CallerWitness.FDData.ticks LeanCage.Entry.CallerPhysical.PrimitiveFamily.metadata child\n            beforeObjects beforeFlags (LeanCage.Entry.CallerPhysical.born 1 Option.none.{0})\n            LeanCage.Entry.CallerWitness.FDData.inspectionFrames)\n          (HAdd.hAdd.{0, 0, 0} metadataOffset 4) ticks →\n        LeanCage.Entry.CallerWitness.Embedded\n            (LeanCage.Entry.CallerWitness.FDData.ticks LeanCage.Entry.CallerPhysical.PrimitiveFamily.native child\n              beforeObjects beforeFlags (LeanCage.Entry.CallerPhysical.born 1 Option.none.{0})\n              LeanCage.Entry.CallerWitness.FDData.signalFrames)\n            (HAdd.hAdd.{0, 0, 0} metadataOffset 8) ticks →\n          LeanCage.Entry.CallerPhysical.TickAt ticks (HAdd.hAdd.{0, 0, 0} metadataOffset 72)\n              (LeanCage.Entry.CallerWitness.FDData.tick LeanCage.Entry.CallerPhysical.PrimitiveFamily.native child\n                beforeObjects beforeFlags (LeanCage.Entry.CallerPhysical.born 1 Option.none.{0})\n                LeanCage.Entry.CallerPhysical.Action.traceMe\n                (LeanCage.Entry.CallerWitness.tracedContext owner\n                  (LeanCage.Entry.CallerPhysical.born 1 Option.none.{0}))\n                (LeanCage.Entry.CallerWitness.FDData.pack 2 0 0)) →\n            LeanCage.Entry.CallerPhysical.TickAt ticks (HAdd.hAdd.{0, 0, 0} metadataOffset 73)\n                (LeanCage.Entry.CallerWitness.FDData.tick LeanCage.Entry.CallerPhysical.PrimitiveFamily.native child\n                  beforeObjects beforeFlags\n                  (LeanCage.Entry.CallerWitness.tracedContext owner\n                    (LeanCage.Entry.CallerPhysical.born 1 Option.none.{0}))\n                  LeanCage.Entry.CallerPhysical.Action.native\n                  (LeanCage.Entry.CallerWitness.tracedContext owner\n                    (LeanCage.Entry.CallerPhysical.born 1 Option.none.{0}))\n                  (LeanCage.Entry.CallerWitness.FDData.pack 3 0 0)) →\n              LeanCage.Entry.CallerWitness.SupervisorSlice mayTrace owner child ticks\n                  (HAdd.hAdd.{0, 0, 0} metadataOffset 74)\n                  (LeanCage.Entry.CallerWitness.tracedContext owner\n                    (LeanCage.Entry.CallerPhysical.born 1 Option.none.{0}))\n                  tailOffset afterContext →\n                LeanCage.Entry.CallerWitness.Embedded\n                    (LeanCage.Entry.CallerWitness.FDData.ticks LeanCage.Entry.CallerPhysical.PrimitiveFamily.native\n                      child afterObjects afterFlags afterContext LeanCage.Entry.CallerWitness.FDData.tailFrames)\n                    tailOffset ticks →\n                  have supervisor := LeanCage.Entry.CallerWitness.recordedSupervisor mayTrace owner child start ticks;\n                  have native :=\n                    LeanCage.Entry.CallerWitness.recordedNative\n                      (LeanCage.Entry.CallerWitness.primitiveNative\n                        (LeanCage.Entry.CallerWitness.runtime LeanCage.Entry.exampleFilesystem) mayTrace owner child)\n                      start ticks;\n                  have metadata :=\n                    LeanCage.Entry.CallerWitness.recordedMetadata\n                      (LeanCage.Entry.CallerWitness.primitiveMetadata LeanCage.Entry.CallerWitness.metadataRuntime\n                        mayTrace owner child)\n                      start ticks;\n                  LeanCage.Entry.CallerPhysical.StartupExecution supervisor native metadata\n                    (LeanCage.Entry.Worker.startup Bool.false LeanCage.Entry.MetadataWitness.args)\n                    { position := HAdd.hAdd.{0, 0, 0} start metadataOffset,\n                      context := LeanCage.Entry.CallerPhysical.born 1 Option.none.{0},\n                      state := LeanCage.Entry.MetadataWitness.initial }\n                    (LeanCage.Entry.MetadataWitness.trace (LeanCage.Entry.setup LeanCage.Entry.MetadataWitness.inputs))\n                    (LeanCage.Entry.execRequest LeanCage.Entry.MetadataWitness.inputs)\n                    { position := HAdd.hAdd.{0, 0, 0} start (HAdd.hAdd.{0, 0, 0} tailOffset 68),\n                      context := afterContext,\n                      state :=\n                        LeanCage.Entry.after LeanCage.Entry.exampleFilesystem\n                          (LeanCage.Entry.setup LeanCage.Entry.MetadataWitness.inputs)\n                          LeanCage.Entry.MetadataWitness.initial }"
+    }
+  ],
+  "review_revisions": [
+    {
+      "reason": "Close the already fixed actual argument byte semantics and remove the corresponding values assumption from the strongest public useful consumer.",
+      "previous_review_sha256": "4dde73625ece067160174e1e538b9c1c5201208c14ae2cc6d0d5ddf73b355beb",
+      "previous_MetadataWitness_sha256": "2d622e39c43591e17a05b3e4341f25214a5f6383485ce115fde56aecdadf1415",
+      "changed_declarations": [
+        "LeanCage.Entry.CallerWitness.useful_native_values",
+        "LeanCage.Entry.CallerWitness.useful_public_source_workspace"
+      ],
+      "source_change_scope": "Only MetadataWitness.lean: closed native value theorem and strengthened public helper. All other previously reviewed input hashes unchanged.",
+      "validation": "Focused MetadataWitness rebuild passed; cached dependencies reused. Focused two-declaration type/axiom review passed; unrelated prior rows retained.",
+      "delta_query_lean": "import Lean\nimport MetadataWitness\n\nopen Lean Elab Command\n\n\nprivate def declarationRecord (name : Name) : CommandElabM Json := do\n  let info ← getConstInfo name\n  let axioms ← collectAxioms name\n  let type ← liftTermElabM <| withOptions\n    (fun options => options.setBool `pp.fullNames true |>.setBool `pp.universes true) do\n      return (← Meta.ppExpr info.type).pretty\n  return Json.mkObj [\n    (\"name\", toJson name.toString),\n    (\"type\", toJson type),\n    (\"is_theorem\", toJson info.isTheorem),\n    (\"axioms\", toJson (axioms.map Name.toString))]\n\nelab \"#audit_decl \" name:ident : command => do\n  logInfo m!\"LEANCAGE_AUDIT {(← declarationRecord name.getId).compress}\"\n\n-- §AR-workspace.proofs: Enumerating project modules prevents an omitted theorem passing.\nelab \"#audit_module \" moduleName:ident : command => do\n  let env ← getEnv\n  if !env.header.moduleNames.contains moduleName.getId then\n    throwError \"Module is not imported: {moduleName.getId}\"\n  let names := env.constants.fold (init := #[]) fun names name info =>\n    let fromModule := match env.getModuleIdxFor? name with\n      | none => false\n      | some index => env.header.moduleNames[index]! == moduleName.getId\n    if info.isTheorem && fromModule then names.push name else names\n  let inventory := Json.mkObj [\n    (\"module\", toJson moduleName.getId.toString),\n    (\"declarations\", toJson (names.map Name.toString))]\n  logInfo m!\"LEANCAGE_AUDIT {inventory.compress}\"\n  for name in names do\n    logInfo m!\"LEANCAGE_AUDIT {(← declarationRecord name).compress}\"\n\n\n#audit_decl LeanCage.Entry.CallerWitness.useful_native_values\n\n#audit_decl LeanCage.Entry.CallerWitness.useful_public_source_workspace\n",
+      "delta_query_sha256": "cea29bb69fc4f61372fca6bb0156a66bae0021db8639b345c86d331b84377fa6"
+    }
+  ]
+}

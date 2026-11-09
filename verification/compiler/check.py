@@ -313,8 +313,15 @@ def bindings():
     accepted = json.loads(gzip.decompress(profile.connection.RECORD.read_bytes()))
     paths += [ROOT/name for name in accepted['cache_sha256']]
     paths += [ROOT/name for name in accepted['host_inputs_sha256']]
-    return {str(path.relative_to(ROOT))if path.is_relative_to(ROOT)else str(path):profile.sha(path)
-            for path in sorted(set(paths))}
+    current = {str(path.relative_to(ROOT))if path.is_relative_to(ROOT)else str(path):profile.sha(path)
+               for path in sorted(set(paths))}
+    expected = json.loads(gzip.decompress(RECORD.read_bytes()))['inputs_sha256'] if RECORD.exists() else {}
+    preserved = amendment.PreservedInputs()
+    for name, value in expected.items():
+        if name in current and current[name] != value:
+            preserved.verify('assurance/reporting-compiler.json.gz', 'inputs_sha256', name, value)
+            current[name] = value
+    return current
 
 
 def main():

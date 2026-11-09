@@ -2,6 +2,8 @@
 """Audit the shipped core and public-library connection without changing expectations."""
 # §FS-linux-product.proofs: Query actual theorem types, axioms and executable consumers.
 import argparse
+import copy
+import gzip
 import hashlib
 import importlib.util
 import json
@@ -12,6 +14,9 @@ import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "assurance/product-core.json"
+PREDECESSOR = ROOT / "assurance/product-core-baseline.json.gz"
+PREDECESSOR_SHA256 = "8c09b326772e40479bddc3d176388bff3942e6dee0bf4fb02eb81aaed6be6df2"
+PREDECESSOR_REVISION = "506337e48a2bac4fc46bb4d7bea3b88fb4f10c47"
 CORE = ["LeanCageM3.validatePolicy_iff", "LeanCageM3.decodePolicy_iff", "LeanCageM3.decodePolicy_bounds",
         "LeanCageM3.Filter.policy_filter_action", "LeanCageM3.decodeResult_valid"]
 
@@ -52,7 +57,30 @@ def query():
     return sorted([row for row in records if "name" in row], key=lambda r: r["name"])
 
 
-def audit(record=False):
+def predecessor():
+    raw = gzip.decompress(PREDECESSOR.read_bytes())
+    if hashlib.sha256(raw).hexdigest() != PREDECESSOR_SHA256:
+        raise ValueError("preserved product core payload differs")
+    previous = json.loads(raw)
+    if previous["schema"] != "leancage-product-core-v1":
+        raise ValueError("unsupported product core predecessor")
+    binding = dict(archive=str(PREDECESSOR.relative_to(ROOT)), archive_sha256=sha(PREDECESSOR),
+                   record_sha256=PREDECESSOR_SHA256, revision=PREDECESSOR_REVISION)
+    return previous, binding
+
+
+def validate_current_record(current):
+    previous, binding = predecessor()
+    if set(current) != set(previous) | {"predecessor"} or current["schema"] != "leancage-product-core-v2":
+        raise ValueError("unsupported current product core record")
+    if current["predecessor"] != binding:
+        raise ValueError("product core predecessor binding differs")
+    for field in set(previous) - {"schema", "source_sha256"}:
+        if current[field] != previous[field]:
+            raise ValueError("preserved product core field differs: " + field)
+
+
+def audit(record=False, propose=False):
     check_layout()
     spec = importlib.util.spec_from_file_location("product_m1_audit", ROOT / "scripts/audit_axioms.py")
     base_audit = importlib.util.module_from_spec(spec)
@@ -67,7 +95,17 @@ def audit(record=False):
         if not row["is_theorem"] or set(row["axioms"]) - base_audit.LOGICAL_AXIOMS:
             raise ValueError("unreviewed product theorem/axiom: " + row["name"])
     fingerprints = sources()
-    if record:
+    if propose:
+        previous, binding = predecessor()
+        base_audit.validate_declarations(previous["declarations"], declarations)
+        value = copy.deepcopy(previous)
+        value.update(schema="leancage-product-core-v2", predecessor=binding, source_sha256=fingerprints)
+        validate_current_record(value)
+        proposal = ROOT / ".tools/assurance/product-core-proposal.json"
+        proposal.parent.mkdir(parents=True, exist_ok=True)
+        proposal.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
+        print("Current product core proposal written; exact predecessor types/axioms/claims preserved: " + str(proposal))
+    elif record:
         if MANIFEST.exists():
             raise ValueError("initial recording cannot overwrite a reviewed product manifest")
         value = dict(schema="leancage-product-core-v1", spec="FS-linux-product.proofs", toolchain=(ROOT / "lean-toolchain").read_text().strip(),
@@ -84,6 +122,8 @@ def audit(record=False):
         print("Initial product core evidence recorded; review the full declarations before handoff.")
     else:
         expected = json.loads(MANIFEST.read_text())
+        if expected["schema"] == "leancage-product-core-v2":
+            validate_current_record(expected)
         if expected["source_sha256"] != fingerprints or expected["toolchain"] != (ROOT / "lean-toolchain").read_text().strip():
             raise ValueError("product core inputs differ from the reviewed record")
         base_audit.validate_declarations(expected["declarations"], declarations)
@@ -93,9 +133,12 @@ def audit(record=False):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--record", action="store_true", help="record the initial new product evidence once")
+    parser.add_argument("--propose", action="store_true", help="propose current inputs while preserving every predecessor claim/type/axiom")
     args = parser.parse_args()
     try:
-        audit(args.record)
+        if args.record and args.propose:
+            raise ValueError("choose initial recording or a current-input proposal")
+        audit(args.record, args.propose)
     except (ValueError, OSError, subprocess.SubprocessError) as error:
         print("Product audit failed: " + str(error), file=sys.stderr)
         sys.exit(1)

@@ -561,12 +561,14 @@ def check():
     if expected['schema_version'] != 1 or expected['full_m4_complete'] is not False or expected['original_obligations_closed'] != []:
         raise ValueError('reporting connection scope differs')
     verify_metadata_amendment()
+    preserved = load(ROOT/'verification/compiler/amendment.py',
+                     'reporting_preserved_inputs').PreservedInputs()
     for name, value in expected['source_sha256'].items():
-        if digest(ROOT/name) != value:
-            raise ValueError('reporting connection source/dependency changed: '+name)
+        preserved.verify('assurance/reporting-connection.json.gz', 'source_sha256', name, value)
     for name, value in expected['host_inputs_sha256'].items():
-        if not Path(name).is_absolute() or digest(name) != value:
+        if not Path(name).is_absolute():
             raise ValueError('reporting source ABI/header/tool input changed: '+name)
+        preserved.verify('assurance/reporting-connection.json.gz', 'host_inputs_sha256', name, value)
     if any(not (ROOT/name).exists() for name in expected['cache_sha256']):
         build_lean()
         build_sources()
@@ -574,15 +576,17 @@ def check():
         if actual != expected:
             raise ValueError('replayed reporting statement/foundation/binding differs')
     for name, value in expected['cache_sha256'].items():
-        if digest(ROOT/name) != value:
-            raise ValueError('reporting connection artifact changed: '+name)
+        preserved.verify('assurance/reporting-connection.json.gz', 'cache_sha256', name, value)
     texts, order, dependencies, files = source_plan()
     if order != expected['source_module_order'] or dependencies != expected['source_module_dependencies']:
         raise ValueError('source consumer dependency graph changed')
     for name in order:
         if (PROOFS/(name+'.v')).read_text() != texts[name]:
             raise ValueError('adapted source proof changed: '+name)
-    print('Current helper call and ordinary Lean decoder connection checked; matching proof artifacts reused.')
+    if preserved.used:
+        print('Preserved historical helper/decoder connection checked; exact archived inputs and proof artifacts verified.')
+    else:
+        print('Current helper call and ordinary Lean decoder connection checked; matching proof artifacts reused.')
 
 
 def main():

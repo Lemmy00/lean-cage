@@ -1,105 +1,125 @@
-# M5 continuation: finish entry integration, then continue through all five deliveries
+# M5 continuation: finish the host boundary, then continue through M5.5
 
-The user has assigned M5.1 through M5.5 in order and authorized integration and
-push to `main` after each completed, validated delivery, with no permission step
-between deliveries. The full acceptance criteria remain in
-[§AR-application-verification](docs/architecture/AR-application-verification.md#ar-application-verification-prove-the-application-through-integrated-security-guarantees).
-Do not reduce them to the partial results below.
+The user assigned all five integrated deliveries, validated integration and push
+to `main` after each, and explicitly rejected stopping at partial implementation.
+Continue automatically. This file records state and does not authorize stopping.
+The acceptance authority is [§AR-application-verification](docs/architecture/AR-application-verification.md#ar-application-verification-prove-the-application-through-integrated-security-guarantees) and the current delivery
+is [§RM-roadmap.m5.next](docs/roadmap.md#m5next-current-assignment).
 
-**Status:** no M5 delivery is complete. M5.1 is in progress on
-`milikic/proved-entry`, based on latest `main` at `69734d3`. The public product
-continues using its accepted M4 implementation; `linux/workspace.c` and the root
-build/image paths have not yet been switched to the new worker. Keep this partial
-work isolated until its complete caller/source guarantee is integrated. M5.2–M5.5
-have not started.
+**Status, 2026-11-09:** M5.1 is complete. M5.2 is current; M5.3–M5.5 have not
+started. Final entry acceptance is `assurance/entry-acceptance.json`. The public
+bundle `77298fb97001ec611c9941962725c0e118046b35558b48d58b8b2352944ccda6`
+passed all 12 CLI/library scenarios. Integration started from `69734d3`,
+preserved earlier work at `be541b1`, and safely merged latest `main` `cf63751`
+at `23e0d20`. The working M4 product and historical proofs retain their scopes.
 
-The runtime route was selected within the four-working-hour investigation bound:
-start 2026-11-03 20:05 UTC, decision 21:58 UTC. See
-[§DA-entry-worker](docs/decisions/architectural/DA-entry-worker.md#da-entry-worker-use-a-fresh-single-threaded-lean-entry-image).
-Do not restart the runtime/general-importer investigation. The worker is a fresh
-single-threaded Lean image; the native child executes it before Lean initialization.
-The worker itself never forks. Task workers, libuv initialization and the extra
-main thread are disabled explicitly; the worker also checks `Threads: 1`.
+## Completed entry guarantee
 
-The current pieces are implementation work within M5.1:
+The maintained prepared-root launch statement establishes actual restricted
+credentials, stdio/failure handles, filter, exact arguments and owned entry
+scope before workload image replacement. Setup errors cannot fall through to
+execution; preflight has a separate no-workload path. Actual source control and
+the fresh Lean worker compose under the explicit Linux/runtime contracts.
 
-- `launch/LeanCageEntry/Program.lean` and `Script.lean` define the actual setup,
-  failure/preflight behavior and exec request. `Worker.lean` is the real parser
-  and dispatcher; `Main.lean` rejects test modes and `TestMain.lean` enables them.
-- `linux/entry_primitives.c` marshals the enumerated primitive effects.
-  `linux/entry_handoff.h` is the candidate native handoff. It is used by the
-  prototype's derived helper, not the canonical public build.
-- `verification/launch/Admission.lean`, `StateProofs.lean`, `Effects.lean`,
-  `Witnesses.lean` and `WorkerConnection.lean` check the shared body, physical
-  authority projection under explicit primitive effects, failure prefixes,
-  preflight, argument meanings and an inhabited non-restricted starting state.
-  Credential operations permit collateral capability/dumpability changes;
-  later explicit operations must reset them.
-- `ArgumentConnection.v` and `ArgumentValues.v` strictly check the actual imported
-  byte computation and the complete ordinary-Lean bound/value propositions.
-  `NativeArguments.v` and `NativeValues.v` reuse the accepted numeric source
-  semantics in the actual candidate helper and connect successful numeric reads
-  to the worker decoder on the same owned bytes.
-- `assurance/entry-{claims,arguments,native-values}` records exact types,
-  transitive foundations and source identities. The compressed records retain
-  their `.json.gz` suffixes. No source/caller completion is implied by these.
-- `assurance/entry-route-vm.json` and its source/transcript/image archives bind
-  the exercised caller-to-entry route. Normal native cases and the Lean API use
-  production helper/worker images; injected cases use separate test images.
-  The cohort has 11 native cases, check/run/report and six death/cancel boundaries.
+- `verification/launch/process.py` owns the canonical C source graph, strict
+  ordinary-Lean imports, full type/assumption/interface audit and independent
+  kernel check. `assurance/entry-process.json.gz` records its checked artifacts.
+- `NamespaceScopeFactory.actual_prepared_source_scope_from_raw` derives the
+  source scope producer from actual preparation, fork, parent admission and
+  private-channel source events. It assumes no local scope, admission,
+  authorization, checkpoint, private invariant or whole-interval stability.
+- Closed `ProcessEntryAcceptance.actual_entry_acceptance` retains one source
+  tuple and its process, capability, queue, journal, IO, descriptor and source
+  label history. `entry_runtime_ticks_ordinary` identifies its complete tick list
+  with the exact worker/startup/image consumer. Full frame equalities additionally
+  establish descriptor after maps; before-only ticks cannot establish them.
+- `EntryGuarantee.production_source_workspace` consumes that producer at the
+  actual release read. `CallerWitness.useful_public_source_workspace` derives
+  native argument meanings internally from the same source-bound bytes, actual
+  fork ancestry and complete worker execution. It supplies an inhabited useful
+  restricted image and workspace task. Image replacement can still be at its
+  exec stop; later supervision is M5.4.
+- `assurance/entry-claims.json` binds executable bodies, full theorem types,
+  transitive assumptions and source interfaces. The original body record remains
+  preserved. Reviews are under `assurance/entry-*-review.json`.
 
-**Exact next action:** extend the native source proof from the numeric call to
-the complete `guest` handoff in the archived production helper. Prove the owned
-stack objects, UID/descriptor formatting and read-back comparisons, alias checks,
-argv table/terminator, mode/path binding and all error continuations. Produce the
-same owned bytes consumed by `worker_parse_exact`; do not assume that connection.
-The actual source AST is regenerated as `.tools/launch/source/EntrySource.v` by
-`verification/launch/native.py`. Reuse `current_number_worker_value` and the
-accepted numeric/memory certificates; keep all strict importer/kernel checks on.
+The initial route investigation started 2026-11-03 20:05 UTC and selected the
+fresh single-threaded worker at 21:58 UTC, within four working hours. See
+[§DA-entry-worker](docs/decisions/architectural/DA-entry-worker.md#da-entry-worker-use-a-fresh-single-threaded-lean-entry-image). Native code executes a new Lean image before Lean initialization;
+effectful Lean never resumes inherited runtime state after fork. Preserve the
+bounded thread/runtime checks, strict narrow byte bridge, production/test-image
+separation and failure/loss cases.
 
-Then prove the relevant `namespace_init` fork/stop/cgroup-attach/tracer/options/
-resume prefix, with actual process identities, argument memory, errors, waiting
-and loss. The `KernelTrace` premise in the body theorem is still an application
-producer obligation. It cannot be inferred from raw success values: inherited
-filters/tracers can forge them. The body-state projection also does not establish
-the process-scope/resource projection or successful exec inheritance by itself.
-Use [§AR-entry.work](docs/architecture/AR-entry.md#work-remaining-integration-within-the-entry-delivery) for the remaining entry acceptance map.
+The final canonical audit caught and removed `Axioms.proof_irr` from clock-memory
+loads without changing theorem types. It is partitioned without omitting queries,
+and full independent kernel checking passed. Matching proof objects, exports,
+ASTs, full types and foundations survived the final metadata-only amendments.
+Do not replay them merely because of a handoff.
 
-Prepared root/identity/policy producers are explicitly assigned to M5.3. Local
-fork/handshake/argument binding stays in M5.1. Full supervision and truthful
-cleanup/report provenance stay in M5.4/M5.5. No whole application component may
-remain an unexplained trusted operation in the final composition.
+Earlier reporting evidence reads exact archived source inputs and sealed original
+API/Main caches under an exact amendment/code guard. It is explicitly historical;
+current source consumers and entry have separate records. See
+`assurance/reporting-preservation-review.json`. Never substitute current cache
+identities into the accepted old receipts.
 
-Once the caller/source proof closes, integrate the worker into the single
-maintained helper/build/image path, preserve/rebind historical proof evidence at
-its actual scope, and run the complete affected acceptance. Only then mark M5.1
-complete, integrate and push `main`, and proceed automatically to M5.2. The current
-checks below validate partial work and do not replace that acceptance.
+## Current host work and exact next action
 
-```sh
-./scripts/check_entry.sh
-python3 tests/entry/prototype.py --check-evidence
-```
+Finish [§AR-application-verification.host](docs/architecture/AR-application-verification.md#host-safe-host-boundary-for-arbitrary-vm-output): safe snapshots, per-run image/bundle
+checks, bounded arbitrary VM framing, artifact validation, private publication
+and retrieval, through CLI and reusable `Workspace`. Later deliveries supply
+policy authority, owned lifetime and truthful inner observations. Keep those
+producer obligations explicit; no whole application adapter may remain assumed
+secure in the final M5.5 composition.
 
-The first command includes the archived VM-record validation, strict source/value
-connection and Lean declaration/axiom audit. It reuses unchanged foundation input
-and proof identities. A fresh prototype VM is needed only after relevant runtime,
-native, image, harness or input changes:
+The read-only host map found these actual-source obligations: directory listing
+materializes all names before its inode check; startup failure reads the entire
+diagnostic before shortening it; run-zero artifact validation is incomplete;
+export parsing can escape the transport error handler; retrieval does not recheck
+aggregate policy bounds and follows ancestors. Diagnostic polling permits size
+overshoot. Resolve them in the actual source-connected host path; a standalone
+parser or plan is supporting work, not the delivery.
 
-```sh
-python3 tests/entry/prototype.py --record
-```
+The isolated route prototype lives under ignored `.tools/host/prototype`. An
+abi3 CPython C gateway calls a separate Lean image through `posix_spawn`, with
+exact request/response bytes and bounded errors. The pinned Clight frontend
+accepts the actual limited-API Python headers; gateway source and strict
+ordinary-Lean interface compile. A real native `Workspace.run(bytes, UnicodePath)`
+reaches the compiled Lean engine. Finish its checked accepted/error caller
+connection, then record the route decision and host contract before moving it
+into maintained code.
 
-For changed proof statements, `scripts/audit_entry.py --propose`,
-`verification/launch/arguments.py --propose` and `verification/launch/native.py
---propose` write ignored proposals. Review changed types/definitions/foundations
-before amending expectations. The public baseline's status-document amendment is
-checked by `scripts/rebind_product_evidence.py`; it freezes original theorem,
-axiom, native/Lean/Rocq source and checked-cache payloads. Never amend those hashes
-merely to suppress a failure after a real implementation change.
+Prefer shared executable Lean control owning security effect sequencing. Python
+must not remain an unchecked multi-operation plan interpreter. Account for the
+small C gateway's CPython primitive marshaling, copied memory, actual ABI and
+interpreter, GIL, signals, owned cancellation handles and spawn errors. Do not
+embed an inherited Lean runtime or introduce an unassigned Python-verifier project.
 
-The failed full-entry import, earlier runtime sources/probes and prior route
-record are retained under `.tools/launch/`. The general import failed on the
-pinned importer's old `UInt32` representation; the bounded byte interface works.
-Hostile programs have run only in the designated disposable QEMU VM. No unrelated
-project, global agent setting or shared host kernel was changed.
+The host needs a total bounded byte/JSON parser for arbitrary reports. The old
+policy `StrictJson` is partial; its accepted-value bounds theorem does not prove
+interpretation. Reuse the total parser for M5.3 after it serves the actual host
+caller. Preserve policy versions, supported Unicode/escapes, useful executions
+and failure/loss. Distinguish native raw-byte export names from the host's current
+UTF-8 materialization restriction explicitly.
+
+Freeze owned files/interfaces before parallel implementation. Keep maintained
+modules responsibility-named. Run hostile workloads only in the designated VM.
+Use focused checks, then the required affected gate once on final inputs; reuse
+matching accepted evidence. Integrate and push each complete delivery to `main`,
+then proceed automatically.
+
+## Preserved subtleties for the remaining producers
+
+- The entry cut is the actual allocated `State` at `namespace_tail 9`, not an
+  uninhabited whole-`namespace_init` `Callstate`. M5.3 supplies its real prologue,
+  root, identity, argv, object classification and ancestor producers.
+- Retain actual fork incarnation/PID leases, descriptor aliases, widths, bytes,
+  errors, arbitrary external steps and loss. A receipt label is not authority.
+- Do not normalize `taskKey` by unrestricted computation: its multiplication can
+  expand enormously. Rewrite the checked concrete actor keys first.
+- An earlier rare cancellation failure remains under
+  `.tools/launch/diagnostics/cancel-after-entry/failed`; retain it for M5.4.
+  Later successful runs do not erase it or establish a lifetime proof.
+- Detailed contracts and obligations are in [§AR-entry](docs/architecture/AR-entry.md#ar-entry-shared-executable-guest-admission-over-primitive-operations), [§FS-entry](docs/functional-spec/FS-entry.md#fs-entry-value-carrying-fail-closed-guest-admission),
+  [§FS-assurance.entry](docs/functional-spec/FS-assurance.md#entry-entry-worker-body-and-route-evidence) and the reviewed claims. Compiler/runtime, precise Linux
+  primitives, crypto identities and configured platform remain named assumptions.
+  Kernel/hardware implementation research is the separate M6 track.

@@ -1,17 +1,12 @@
 import LeanCageM3.Results
+import LeanCageM3.Metadata
 
 namespace LeanCageM3
 open Lean
 
--- §FS-workspace.policy: Bound reads before allocating; report one byte over the cap as rejection.
+-- §FS-metadata.bounds: Interpret the shared bounded open/read/close program.
 def readBounded (path : System.FilePath) (limit : Nat) : IO ByteArray :=
-  IO.FS.withFile path .read fun handle => do
-    let mut bytes := ByteArray.empty
-    while bytes.size ≤ limit do
-      let chunk ← handle.read (min 4096 (limit + 1 - bytes.size)).toUSize
-      if chunk.isEmpty then break
-      bytes := bytes ++ chunk
-    return bytes
+  Metadata.readBounded path limit
 
 def planArgs (policy : Policy) (parentPid : Nat) (preflight : Bool) : Array String :=
   let l := policy.limits

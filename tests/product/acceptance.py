@@ -16,15 +16,41 @@ import time
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "python"))
 from leancage import Workspace, Cancellation
-from leancage.build import DEFAULT_BUNDLE, sha
+from leancage.build import DEFAULT_BUNDLE, sha, source_inventory
+
+CASES = ["python_check", "python_run_and_report", "shell_check", "shell_run_and_report",
+         "policy_rejection", "denied_effect", "bounded_output_and_forged_control_bytes",
+         "vm_report_storage_failure", "host_publication_failure",
+         "lost_result_channel_preserves_observations", "vm_loss_before_any_observation",
+         "cli_cancellation_and_descendant_cleanup"]
+
+
+def check_evidence(api, path):
+    """Reuse the passed public run only for its exact bundle, sources and scenarios."""
+    evidence = json.loads(path.read_text())
+    if (evidence.get("schema") != "leancage-product-vm-evidence-v1" or
+            evidence.get("status") != "passed" or evidence.get("bundle_id") != api.bundle_id or
+            evidence.get("manifest_sha256") != sha(api.bundle / "manifest.json") or
+            evidence.get("machine") != api.manifest["machine"] or
+            evidence.get("source_sha256") != api.manifest["source_sha256"] or
+            source_inventory() != api.manifest["source_sha256"] or
+            evidence.get("test_sha256") != sha(Path(__file__)) or
+            [row.get("name") for row in evidence.get("cases", [])] != CASES):
+        raise ValueError("public acceptance receipt differs from the current bundle, inputs or scenarios")
+    print("Passed public CLI/library acceptance receipt matches the current identified bundle.", flush=True)
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--bundle", type=Path, default=DEFAULT_BUNDLE)
     parser.add_argument("--record", type=Path, default=ROOT / "assurance/product-vm-evidence.json")
+    parser.add_argument("--check-evidence", action="store_true",
+                        help="verify the existing passed receipt without repeating its VM executions")
     args = parser.parse_args()
     api = Workspace(args.bundle)
+    if args.check_evidence:
+        check_evidence(api, args.record)
+        return
     records = []
     base = json.loads((ROOT / "profiles/offline-workspace/example-policy.json").read_text())
     began = time.monotonic()
@@ -142,6 +168,8 @@ def main():
         # Exercise the staged, relocatable entry as well as the repository entry.
         bundled = subprocess.run([str(args.bundle / "bin/leancage"), "bundle"], capture_output=True, text=True, check=True)
         assert json.loads(bundled.stdout)["bundle_id"] == api.bundle_id
+    if [row["name"] for row in records] != CASES or source_inventory() != api.manifest["source_sha256"]:
+        raise ValueError("public acceptance scenarios or bundle sources changed during the run")
     evidence = dict(schema="leancage-product-vm-evidence-v1", status="passed", bundle_id=api.bundle_id,
                     manifest_sha256=sha(args.bundle / "manifest.json"), elapsed_seconds=round(time.monotonic()-began, 3),
                     cases=records, machine=api.manifest["machine"], source_sha256=api.manifest["source_sha256"],

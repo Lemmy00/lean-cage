@@ -8,6 +8,7 @@ def Expected.witness : Expected → Reply
   | .processId => (42, .empty)
   | .fileMode => (0, .empty)
   | .bytes output => (0, output)
+  | .byte value => (1, ⟨#[value]⟩)
 
 theorem expected_witness (expected : Expected) : expected.accepts expected.witness = true := by
   cases expected with
@@ -16,6 +17,9 @@ theorem expected_witness (expected : Expected) : expected.accepts expected.witne
   | fileMode => decide
   | bytes output =>
     change (output.data == output.data) = true
+    simp
+  | byte value =>
+    change ((⟨#[value]⟩ : ByteArray).data == (⟨#[value]⟩ : ByteArray).data) = true
     simp
 
 def acceptedTrace (commands : List Command) : List (Request × Reply) :=
@@ -177,7 +181,7 @@ def exampleInitial : State where
   handles := fun fd => if fd = 4 then some ⟨100, true, false, false⟩
     else if fd = 5 then some ⟨101, false, true, false⟩
     else if fd = 6 then some ⟨102, false, true, false⟩
-    else if fd = 60 then some ⟨103, false, true, true⟩
+    else if fd = 60 then some ⟨103, true, true, true⟩
     else some ⟨999, true, true, false⟩
   uid := IDs.leased 0
   gid := IDs.leased 0

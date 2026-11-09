@@ -1,0 +1,152 @@
+{
+  "accepted_utc": "2026-11-09",
+  "bundle_id": "77298fb97001ec611c9941962725c0e118046b35558b48d58b8b2352944ccda6",
+  "bundle_machine": {
+    "acceleration": "tcg",
+    "cpu": "max",
+    "host_mounts": [],
+    "memory_mib": 2048,
+    "network_devices": [],
+    "persistent_disks": [],
+    "vcpus": 1
+  },
+  "bundle_profile": "linux-x86_64-offline-workspace-m3-v1",
+  "consumers": {
+    "acceptance_factory": "EntryProcess.ProcessEntryAcceptance.actual_entry_acceptance",
+    "acceptance_receipt": "EntryProcess.ProcessEntryAcceptance.EntryAcceptance",
+    "consumer": "LeanCage.Entry.production_source_workspace",
+    "consumer_type_sha256": "ccb1fe599e0a787d08b4a1103897b9a21809f8bc13220bc66ecd8cb5dbad0c7c",
+    "source_factory": "EntryNamespace.NamespaceScopeFactory.actual_prepared_source_scope_from_raw",
+    "source_projection": "EntryNamespace.NamespaceScopeFactory.source_scope_produced",
+    "source_receipt": "EntryNamespace.NamespaceScopeFactory.SourceScopeProduction",
+    "source_record_sha256": "b252994534919d315670185937e93c0e800523086516db816d0ea7cc8821fc58",
+    "source_type_sha256": {
+      "EntryNamespace.NamespaceScopeFactory.SourceScopeProduction": "3ffa699508bbb866e9201ac2fa042ce2b63722f011cb765298a2a4210d7750e6",
+      "EntryNamespace.NamespaceScopeFactory.actual_prepared_source_scope_from_raw": "a67627f996e8fedb6cc2aea1c2d675254141f862b9bbd032adca82a3e8eebc77",
+      "EntryNamespace.NamespaceScopeFactory.source_scope_produced": "bf844557a6c318ca345608ec5299694d327cc584c69c67bb2ecd41aeee897778",
+      "EntryProcess.ProcessEntryAcceptance.EntryAcceptance": "eee21af9d357a588f50ffcd685d14fdfb9b2e72a63942dd92e0489cdf56521f6",
+      "EntryProcess.ProcessEntryAcceptance.actual_entry_acceptance": "873188dfbda14960486ebd66b397ffb07cc82f092e14c8296d84020d5efa2c12",
+      "EntryProcess.ProcessEntryTickBridge.entry_runtime_ticks_ordinary": "eb23fbd5d4b3b33980d351d5044341e6e5651be990eff9e16a0c620df035e97f",
+      "EntryProcess.ProcessImport.LeanCage_Entry_SourceScopeProducer": "cd1c64fc1ece40a342e46c6d782e381407e12c791bac3685eff1608281654a7b"
+    },
+    "strict_predicate": "EntryProcess.ProcessImport.LeanCage_Entry_SourceScopeProducer",
+    "tick_bridge": "EntryProcess.ProcessEntryTickBridge.entry_runtime_ticks_ordinary",
+    "useful_consumer": "LeanCage.Entry.CallerWitness.useful_public_source_workspace",
+    "useful_consumer_type_sha256": "af5910d2ea08009a97763217bdd3877f80169adb8707498848da03c0bb739eef"
+  },
+  "delivery": "M5.1",
+  "evidence_sha256": {
+    "assurance/entry-argument-review.json": "5d99906760fe6c7c56559919a40a930bb40651fd4dfd7c192db5f9d418969929",
+    "assurance/entry-arguments.json.gz": "69bceabf2ead5a925db76a32e498b7c0eba81f27d3ea453cc8cca01b597015a4",
+    "assurance/entry-claims.json": "5659af5fe7c0ecb7b03e25738214e71558b7a008491103bd16c48d0156467bd0",
+    "assurance/entry-integration-review.json": "a439879ae0ffe567e65f3b54bb36b3573deab749ee87c7d6c5b21ba7ee65cbfa",
+    "assurance/entry-primitive-review.json": "bef48a41b4cb5a5cc19ee924aeccd3467135b857edeaa5e92884fffaf5113173",
+    "assurance/entry-process.json.gz": "3cd6ac3ce6824f77b433d3e86e6e808adb5a2326e62b6785d8465942df672bf6",
+    "assurance/entry-source-review.json": "964902d513c0e2ca2af4cd0d777ce6a4bc53f25f694c37a59bfe255d866e7bf4",
+    "assurance/entry-source-whitespace-review.json": "cf2dbd6864b37f53e4113b163696616f2c2d9903a0ecb396ed8d9a0b967bd4eb",
+    "assurance/entry-useful-review.json": "7e9c8e2be7cf5a033ad50fcfe3f15d5765a992f6c6cdf887af1d355f2a06bcb5",
+    "assurance/product-vm-evidence.json": "4f78352bfceabc4fd98f0097bd71b6263eed3dd29da39556850409f142b40f9e",
+    "assurance/reporting-preservation-review.json": "02dd5b2826b43d3c1cf27741f2f3ca1d0d5a7d607e606f5a251bcc08cabe7178",
+    "assurance/workspace-claims.json": "d8ab24f4e5041b1213440b752330c853e083b85352579fd7b7e6d234ce8fc6e1",
+    "assurance/workspace-source.json.gz": "5edc56bcdebe6fe294d93c1aaf837e5886cefd7dab340ee05aa5f100b85195db",
+    "assurance/workspace-vm-evidence.json": "d99a503c1295bd3ac9df552eac71296794cca72ad59aaee85e60182ce3f7fd01"
+  },
+  "gate": {
+    "command": "./scripts/check_entry.sh",
+    "identifier_tests": 12,
+    "product_unit_tests": 26,
+    "public_cases": 12,
+    "reason": "Initial integrated gate exposed fixture and historical-binding failures. Each was repaired and its affected checks rerun. Unchanged foundation, product-core, source/kernel and VM evidence was reused; no failing stage is represented as an uninterrupted aggregate pass. Final staged whitespace normalization affected seventeen proof files; each was recompiled to a byte-identical object. Source bindings, the ordinary/native gates and public acceptance were rechecked for the final identified bundle.",
+    "result": "passed by matching-input affected-check resumption",
+    "script_sha256": "7d651d52fb9b1cc8b760a5c1384a05e4f4b71bcc7d7bdfd1ecdeb079c74dba64",
+    "stage_log_sha256": {
+      ".tools/launch/caller/compiler-preservation-check.log": "ed0e78993d18d79a0e027a29d4831452bc52da54bf0f3f118480d52c1bc2528b",
+      ".tools/launch/caller/reporting-preservation-check.log": "42a9a25aea6ff7b8a9fd377b574bd1cabe526165383b86858a232cafbc268ed5",
+      ".tools/launch/final-argument-metadata-binding.log": "1d9b5b03246098a53e3b50c022a93faa95963ca0d811e947d9a18d886e54d6e7",
+      ".tools/launch/final-bundle-build.log": "51803a21bcd92119ffdc679b356ead580c20e5f63b189e59157b9ac7396f3edb",
+      ".tools/launch/final-bundle-formatted-build.log": "51803a21bcd92119ffdc679b356ead580c20e5f63b189e59157b9ac7396f3edb",
+      ".tools/launch/final-capture-fixture.log": "4430625ef3e8660acc7fd1a6565cca3c59199370588f7d5a24e6248640f751e5",
+      ".tools/launch/final-entry-gate-bound.log": "5e5e3a70ff50db5c39988be6972ea879dcecf9ba5faa4f3ff2ffad598b7c67a0",
+      ".tools/launch/final-entry-gate-final-tail.log": "765b57456a478457489659be509224be556879aee9c7752735f11cbb3a1f53dc",
+      ".tools/launch/final-entry-gate-resumed.log": "e943f2a10a3272d9f1ebbb23019192f179dc60026de9314569e0691d2097f813",
+      ".tools/launch/final-entry-gate.log": "f31986c4023eaf70864f4d8988aea42b6db3b252e0d8cda644c520c07818f043",
+      ".tools/launch/final-entry-ordinary-bound.log": "a4e215dec249321794c146cd048e415e00a56e59742d7cc8d1cda16aceabad56",
+      ".tools/launch/final-entry-ordinary-formatted.log": "a4e215dec249321794c146cd048e415e00a56e59742d7cc8d1cda16aceabad56",
+      ".tools/launch/final-eof-binding.log": "c69baefaf5420a88fc89c66ed20af1e18b68d5647a1b47bb2c17e806b4415be0",
+      ".tools/launch/final-eof-compilation.log": "f38b85b89f074049c8c9f39bbaa9dd830f90cd597f095a4de6946b985b77ff03",
+      ".tools/launch/final-formatted-grund-check.log": "81b2bd4ea98c8db66554fbc8d7637a1a69a130f331feb732b75caab4c4868fd5",
+      ".tools/launch/final-formatted-grund-format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      ".tools/launch/final-identifier-tests.log": "a37c38bcd0e1524a8de8fa8e7d6ce90d1192008a836a2752b7f8ed6110cda926",
+      ".tools/launch/final-native-source-bound.log": "241d6610c871ba54b065be09e740ad97bcaf0537ded8e7f3f4097d7baeef4f39",
+      ".tools/launch/final-native-source-formatted.log": "241d6610c871ba54b065be09e740ad97bcaf0537ded8e7f3f4097d7baeef4f39",
+      ".tools/launch/final-public-acceptance-formatted.log": "2b066fa155b70575771c8681d1014f7d883b75787d9432d2a244cc3709b45c8b",
+      ".tools/launch/final-public-acceptance-identified.log": "ddb88c48c2f97a058e982c11f7b399acdf08599e47e797fc592aff47348fd7e7",
+      ".tools/launch/final-public-formatted-receipt.log": "e61b7075a7d39a6f7465f001fb07c69ef2eb8488cb2dc18dbf2f5f4cbc938bc0",
+      ".tools/launch/final-public-receipt.log": "e61b7075a7d39a6f7465f001fb07c69ef2eb8488cb2dc18dbf2f5f4cbc938bc0",
+      ".tools/launch/final-status-grund-check.log": "81b2bd4ea98c8db66554fbc8d7637a1a69a130f331feb732b75caab4c4868fd5",
+      ".tools/launch/final-status-grund-format-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      ".tools/launch/final-workspace-source-bound.log": "9bb19c6e52a8f205ac6d1b8b663ddb3984076b2292ee39616412739d4e19943c",
+      ".tools/launch/final-workspace-vm-receipt.log": "b6f9acf1182120855aa84a4f036805dda77022b5d5a6002fac71b2760368b0d8"
+    },
+    "stage_logs": {
+      "current_workspace_source_consumers": ".tools/launch/final-workspace-source-bound.log",
+      "eof_only_binding_review": ".tools/launch/final-eof-binding.log",
+      "eof_only_recompilation": ".tools/launch/final-eof-compilation.log",
+      "final_documentation_consistency": ".tools/launch/final-formatted-grund-check.log",
+      "final_documentation_format": ".tools/launch/final-formatted-grund-format.log",
+      "final_identified_bundle_build": ".tools/launch/final-bundle-formatted-build.log",
+      "final_native_source_and_arguments": ".tools/launch/final-native-source-formatted.log",
+      "final_ordinary_entry_audit": ".tools/launch/final-entry-ordinary-formatted.log",
+      "final_product_unit_suite": ".tools/launch/final-entry-gate-bound.log",
+      "focused_capture_fixture_fix": ".tools/launch/final-capture-fixture.log",
+      "foundation_and_original_failure": ".tools/launch/final-entry-gate.log",
+      "identifier_guard_negatives": ".tools/launch/final-identifier-tests.log",
+      "legacy_compiler_connection": ".tools/launch/caller/compiler-preservation-check.log",
+      "legacy_reporting_connection": ".tools/launch/caller/reporting-preservation-check.log",
+      "public_acceptance": ".tools/launch/final-public-acceptance-formatted.log",
+      "public_acceptance_receipt_check": ".tools/launch/final-public-formatted-receipt.log",
+      "remaining_foundation_and_product_core": ".tools/launch/final-entry-gate-resumed.log",
+      "static_vm_init_and_source_consumers": ".tools/launch/final-entry-gate-final-tail.log",
+      "strict_argument_metadata_amendment": ".tools/launch/final-argument-metadata-binding.log",
+      "workspace_vm_matching_input_receipt": ".tools/launch/final-workspace-vm-receipt.log"
+    },
+    "workspace_api_cases": 3,
+    "workspace_death_cancel_boundaries": 6,
+    "workspace_vm_cases": 67
+  },
+  "guarantee": "Guest admission from the maintained prepared-root launch statement through the actual local fork, native handoff and fresh Lean worker, under the enumerated Linux/runtime contracts; policy/workspace preparation, lifetime and public observation producers retain their separately assigned application obligations.",
+  "implementation_revision_binding": "This receipt is committed with the implementation. Its complete source inventories and checked artifact hashes identify the final inputs without a self-referential commit hash.",
+  "platform_assumptions": "Exact primitive Linux, runtime/FFI, compiler, crypto identity and configured VM contracts recorded by the full theorem types and bundle; kernel/hardware implementation proofs retain their separate scope.",
+  "remaining_application_producers": {
+    "AR-application-verification.authority": [
+      "Actual namespace_init preparation and error guards reach namespace_tail 9 with canonical locals",
+      "Caller policy bytes bind the leased UID, root, argv and immutable argument storage",
+      "Ordinary input/capture/cgroup/report objects have their observed identities and descriptor modes",
+      "Owned VM ancestors' actual source issues no debugger or private-descriptor acquisition operation",
+      "The named cgroup and namespace objects denote the requested run"
+    ],
+    "AR-application-verification.composition": [
+      "Public fields and artifacts consume authenticated observations of this request"
+    ],
+    "AR-application-verification.lifetime": [
+      "Owned supervision and cancellation establish later exit, population and cleanup observations"
+    ]
+  },
+  "route_decision": {
+    "approach": "Fresh single-threaded Lean image; actual native source control and strict ordinary-Lean connection; no Lean continuation after fork.",
+    "chosen_utc": "2026-11-03 21:58",
+    "contract": "DA-entry-worker",
+    "started_utc": "2026-11-03 20:05",
+    "within_four_working_hours": true
+  },
+  "schema": "leancage-entry-acceptance-v1",
+  "spec_ids": [
+    "FS-linux-product.proofs.entry",
+    "FS-entry.control",
+    "FS-assurance.entry",
+    "AR-application-verification.admission",
+    "AR-entry.acceptance"
+  ],
+  "status": "passed",
+  "toolchain": "leanprover/lean4:v4.35.0"
+}

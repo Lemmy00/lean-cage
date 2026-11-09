@@ -1,0 +1,85 @@
+{
+  "current_binding_deltas": {
+    "assurance/entry-process.json.gz": {
+      "assurance/reporting-connection.json.gz": {
+        "after": "9d602e73770e833ca1346acfd36da0c7030e9dde5aa08090925a3c1ba898aa19",
+        "before": "6d811bf7f9bc7dc26a986d82a1294e4e99ef836271ff5df6e56390b925f92187"
+      },
+      "verification/reporting/connection.py": {
+        "after": "6d75433ca2957c0813f188751558ea4d2bbc5419a5375fb765e522c62999416d",
+        "before": "08bd0bda40e8e59433ed9ff16505a55942d39e56f7ac9b1997f3c5200f7a71c4"
+      }
+    },
+    "assurance/workspace-source.json.gz": {
+      "scripts/rebind_product_evidence.py": {
+        "after": "956c50a0e007be708420b0500bcf49efdc5a6353123d79822026638a8a80c4b4",
+        "before": "3bf0fd96bbc159b28e0f22fef37b778dc379799a7dda9fc4a3e3037cdbaf2bc5"
+      }
+    }
+  },
+  "files_sha256": {
+    "assurance/filter-decoder.json": "79fbf6ca5771733764260ce07cd62ec5330238be967e6600129ae2cdb6ddcc15",
+    "assurance/m2-claims.json": "020c8b9afd0b5878262e07b4319cb6eedb74efff58977b17bcb686073b999302",
+    "assurance/m3-claims.json": "cb99223dd6ef3866a06d4b466cd73dcea4b72688051a0cfbc9a773dd5387172e",
+    "assurance/product-cache-baseline.json.gz": "5c31d32c9d26a8f060f1743ee1c337e79234e5194e393cff68b5367c2b882372",
+    "assurance/product-evidence-migration.json": "70e2347efe2d0e1b91a5a5fcc6560385295bff0f73e2feace5398bc4289d3af8",
+    "assurance/reporting-compiler.json.gz": "538b1f77ee188c5b27d736405ea4b1c72ff5b0ef29b13f80a65d8a4c148fd605",
+    "assurance/reporting-connection.json.gz": "9d602e73770e833ca1346acfd36da0c7030e9dde5aa08090925a3c1ba898aa19",
+    "assurance/reporting-source.json.gz": "12d547f0c8ca62428e7e31ae13c58b0c09db084f6e3fcd3374583bf0c7320e30",
+    "assurance/workspace-baseline.json.gz": "612ba6256ab4e48b5efb2146aed414b60182b2633625b75a86c150958f6c950d",
+    "scripts/rebind_product_evidence.py": "956c50a0e007be708420b0500bcf49efdc5a6353123d79822026638a8a80c4b4",
+    "tests/product/test_evidence.py": "460d771a626bddef69989b9b566a0392de234eb37d7a24602684090df0e5626c",
+    "verification/compiler/amendment.py": "dd5f2a5b817d7907e1e4af45e53472637bfdead7b43d0f2f6fa85f63b8809eac",
+    "verification/compiler/check.py": "64e7bc7154f7f29d9dde0a6e952a42c0e0715650946883b766a2b3aed84867d4",
+    "verification/reporting/connection.py": "6d75433ca2957c0813f188751558ea4d2bbc5419a5375fb765e522c62999416d"
+  },
+  "preserved_payloads": {
+    "assurance/filter-decoder.json": {
+      "non_fingerprint_fields_equal": true,
+      "sha256": "0052ba0e1c2435fc65326fa604a19d875115b2463254d8c2866d17e04ac59d5b"
+    },
+    "assurance/m2-claims.json": {
+      "non_fingerprint_fields_equal": true,
+      "sha256": "197ab4d902493f8c2c390f7d34905bf86f3d8777cc0e3e0020f1abf0a910b8c0"
+    },
+    "assurance/m3-claims.json": {
+      "non_fingerprint_fields_equal": true,
+      "sha256": "9c2816b985d3ad13babc0ba56563a65c50273b83b11e816e2decd3137e107855"
+    },
+    "assurance/reporting-compiler.json.gz": {
+      "non_fingerprint_fields_equal": true,
+      "sha256": "03143075572ea5d829d86f03d89c7fd0fdbd5d9ccb2edb22f3426dd51b080831"
+    },
+    "assurance/reporting-connection.json.gz": {
+      "non_fingerprint_fields_equal": true,
+      "sha256": "2099dfaa25999762973abf0047866203881f66e5f7736ad801cde867c6ba8ab2"
+    },
+    "assurance/reporting-source.json.gz": {
+      "non_fingerprint_fields_equal": true,
+      "sha256": "143008677e2f8aa6ec791c8fac41f70c440dc0e619395bf86640fb39e6020784"
+    }
+  },
+  "schema": "leancage-reporting-preservation-review-v1",
+  "spec_ids": [
+    "AR-workspace-vm.migration",
+    "REQ-proof-integrity.statement"
+  ],
+  "status": "reviewed",
+  "validation": {
+    "compiler_connection": "passed",
+    "focused_tests": 11,
+    "migration": "passed",
+    "reporting_connection": "passed"
+  },
+  "workspace_amendment": {
+    "all_other_fields_and_checked_artifacts_unchanged": true,
+    "changed_inputs": {
+      "scripts/rebind_product_evidence.py": {
+        "after": "956c50a0e007be708420b0500bcf49efdc5a6353123d79822026638a8a80c4b4",
+        "before": "3bf0fd96bbc159b28e0f22fef37b778dc379799a7dda9fc4a3e3037cdbaf2bc5"
+      }
+    },
+    "current_sha256": "5edc56bcdebe6fe294d93c1aaf837e5886cefd7dab340ee05aa5f100b85195db",
+    "previous_sha256": "75353e4783b501c284397b785cbe044a618af88d474fc5142704c66ff6bdaed8"
+  }
+}

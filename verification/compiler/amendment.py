@@ -8,6 +8,7 @@ import hashlib
 import importlib.util
 import json
 from pathlib import Path
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[2]
 ARCHIVE = 'assurance/reporting-compiler-before.json.gz'
@@ -16,12 +17,51 @@ CHECKER = 'verification/reporting/connection.py'
 SOURCE = 'assurance/reporting-source.json.gz'
 CONNECTION = 'assurance/reporting-connection.json.gz'
 ADAPTER = 'verification/compiler/amendment.py'
+COMPILER = 'verification/compiler/check.py'
+COMPILER_RECORD = 'assurance/reporting-compiler.json.gz'
+HISTORICAL_METADATA = 'verification/reporting/README.md'
+HISTORICAL_HOST_SOURCE = 'native/leancage_m3.c'
 PATHS_BEFORE = "    paths += [files[name] for name in order if name in files]"
 PATHS_AFTER = ("    paths += [ROOT/'verification/compiler/amendment.py',\n"
                "              ROOT/'assurance/reporting-compiler-before.json.gz']\n"+PATHS_BEFORE)
 VERIFY_BEFORE = "    if old != json.loads(gzip.decompress((ROOT/record).read_bytes())):"
 VERIFY_AFTER = ("    old = load(ROOT/'verification/compiler/amendment.py',\n"
                 "               'reporting_compiler_gate_amendment').adjust_source(old)\n"+VERIFY_BEFORE)
+SOURCE_CHECK_BEFORE = """    for name, value in expected['source_sha256'].items():
+        if digest(ROOT/name) != value:
+            raise ValueError('reporting connection source/dependency changed: '+name)"""
+SOURCE_CHECK_AFTER = """    preserved = load(ROOT/'verification/compiler/amendment.py',
+                     'reporting_preserved_inputs').PreservedInputs()
+    for name, value in expected['source_sha256'].items():
+        preserved.verify('assurance/reporting-connection.json.gz', 'source_sha256', name, value)"""
+CACHE_CHECK_BEFORE = """    for name, value in expected['cache_sha256'].items():
+        if digest(ROOT/name) != value:
+            raise ValueError('reporting connection artifact changed: '+name)"""
+CACHE_CHECK_AFTER = """    for name, value in expected['cache_sha256'].items():
+        preserved.verify('assurance/reporting-connection.json.gz', 'cache_sha256', name, value)"""
+HOST_CHECK_BEFORE = """    for name, value in expected['host_inputs_sha256'].items():
+        if not Path(name).is_absolute() or digest(name) != value:
+            raise ValueError('reporting source ABI/header/tool input changed: '+name)"""
+HOST_CHECK_AFTER = """    for name, value in expected['host_inputs_sha256'].items():
+        if not Path(name).is_absolute():
+            raise ValueError('reporting source ABI/header/tool input changed: '+name)
+        preserved.verify('assurance/reporting-connection.json.gz', 'host_inputs_sha256', name, value)"""
+REPORT_BEFORE = "    print('Current helper call and ordinary Lean decoder connection checked; matching proof artifacts reused.')"
+REPORT_AFTER = """    if preserved.used:
+        print('Preserved historical helper/decoder connection checked; exact archived inputs and proof artifacts verified.')
+    else:
+        print('Current helper call and ordinary Lean decoder connection checked; matching proof artifacts reused.')"""
+COMPILER_BINDINGS_BEFORE = """    return {str(path.relative_to(ROOT))if path.is_relative_to(ROOT)else str(path):profile.sha(path)
+            for path in sorted(set(paths))}"""
+COMPILER_BINDINGS_AFTER = """    current = {str(path.relative_to(ROOT))if path.is_relative_to(ROOT)else str(path):profile.sha(path)
+               for path in sorted(set(paths))}
+    expected = json.loads(gzip.decompress(RECORD.read_bytes()))['inputs_sha256'] if RECORD.exists() else {}
+    preserved = amendment.PreservedInputs()
+    for name, value in expected.items():
+        if name in current and current[name] != value:
+            preserved.verify('assurance/reporting-compiler.json.gz', 'inputs_sha256', name, value)
+            current[name] = value
+    return current"""
 
 # §AR-tooling.checks: Exact reviewed CI repair; other source or claim edits still fail.
 FOUNDATION_INPUTS = {
@@ -87,8 +127,72 @@ def verify_code(saved):
         raise ValueError('aggregate amendment exceeds the compiler and foundation input checks')
     checker = replace_once(saved[CHECKER].decode(),PATHS_BEFORE,PATHS_AFTER)
     checker = replace_once(checker,VERIFY_BEFORE,VERIFY_AFTER)
+    for before, after in [(SOURCE_CHECK_BEFORE, SOURCE_CHECK_AFTER),
+                          (CACHE_CHECK_BEFORE, CACHE_CHECK_AFTER), (HOST_CHECK_BEFORE, HOST_CHECK_AFTER),
+                          (REPORT_BEFORE, REPORT_AFTER)]:
+        checker = replace_once(checker, before, after)
     if (ROOT/CHECKER).read_text()!=checker:
         raise ValueError('reporting checker amendment exceeds the fingerprint adapter')
+    migration = product_evidence()
+    compiler = subprocess.run(['git', 'show', migration.BASELINE+':'+COMPILER], cwd=ROOT,
+                              check=True, capture_output=True).stdout
+    _, original = migration.original_record(COMPILER_RECORD)
+    if sha(compiler)!=original['inputs_sha256'][COMPILER]:
+        raise ValueError('compiler checker preimage differs from its accepted identity')
+    compiler = replace_once(compiler.decode(), COMPILER_BINDINGS_BEFORE, COMPILER_BINDINGS_AFTER)
+    if (ROOT/COMPILER).read_text()!=compiler:
+        raise ValueError('compiler checker amendment exceeds the archived input verifier')
+
+
+# §AR-workspace-vm.migration: A mismatch requires the sealed baseline and full migration check.
+class PreservedInputs:
+    def __init__(self):
+        self.migration = None
+        self.used = False
+        self.originals = {}
+
+    def verify(self, record, group, name, expected):
+        actual = sha((ROOT/name).read_bytes())
+        if actual == expected:
+            return False
+        path = Path(name)
+        key = name
+        if (record==CONNECTION and group=='host_inputs_sha256'
+                and name==str(ROOT/HISTORICAL_HOST_SOURCE)):
+            key = HISTORICAL_HOST_SOURCE
+        elif path.is_absolute() or str(path)!=name or '..' in path.parts:
+            raise ValueError('historical input is not an exact repository key: '+name)
+        if self.migration is None:
+            migration = product_evidence()
+            migration.check()
+            self.bindings = json.loads(migration.RECORD.read_text())
+            self.sources, _ = migration.preserved_inputs()
+            self.caches, _ = migration.preserved_caches()
+            self.migration = migration
+        if record not in (CONNECTION, COMPILER_RECORD):
+            raise ValueError('unapproved historical evidence record: '+record)
+        if record not in self.originals:
+            _, self.originals[record] = self.migration.original_record(record)
+        if self.originals[record].get(group, {}).get(name)!=expected:
+            raise ValueError('historical input differs from the accepted baseline: '+name)
+        binding = dict(preserved_sha256=expected, current_sha256=actual)
+        source_binding = self.bindings['historical_inputs'].get(record, {}).get(key)
+        cache_binding = self.bindings['historical_caches'].get(self.migration.CACHE_RECORD, {}).get(key)
+        source_group = group in ('source_sha256', 'inputs_sha256') or (
+            record==CONNECTION and group=='host_inputs_sha256' and key==HISTORICAL_HOST_SOURCE)
+        if source_group and source_binding is not None:
+            valid = (key in self.migration.HISTORICAL and key in self.sources
+                     and sha(self.sources[key])==expected and source_binding==binding)
+        elif ((record, group) in ((CONNECTION, 'cache_sha256'), (COMPILER_RECORD, 'inputs_sha256'))
+              and name in self.migration.CACHE_INPUTS):
+            valid = (self.migration.CACHE_INPUTS[name]==expected
+                     and sha(self.caches[name])==expected and cache_binding==binding)
+        else:
+            valid = False
+        if not valid:
+            raise ValueError('input has no exact validated historical binding: '+name)
+        self.used = True
+        return True
 
 
 def source_after(saved):
@@ -114,7 +218,22 @@ def source_after(saved):
 def adjust_source(previous):
     saved = preimages()
     verify_code(saved)
-    if previous!=json.loads(gzip.decompress(saved[SOURCE])):
+    expected = json.loads(gzip.decompress(saved[SOURCE]))
+    normalized = copy.deepcopy(previous)
+    # §AR-workspace-vm.migration: Undo only the earlier adapter's current README fingerprint.
+    if normalized['inputs_sha256'].get(HISTORICAL_METADATA)!=expected['inputs_sha256'][HISTORICAL_METADATA]:
+        migration = product_evidence()
+        migration.check()
+        preserved, _ = migration.preserved_inputs()
+        current = sha((ROOT/HISTORICAL_METADATA).read_bytes())
+        historical = sha(preserved[HISTORICAL_METADATA])
+        bindings = json.loads(migration.RECORD.read_text())['historical_inputs'].get(SOURCE, {})
+        if (normalized['inputs_sha256'].get(HISTORICAL_METADATA)!=current
+                or expected['inputs_sha256'][HISTORICAL_METADATA]!=historical
+                or bindings.get(HISTORICAL_METADATA)!=dict(preserved_sha256=historical, current_sha256=current)):
+            raise ValueError('historical reporting README preimage differs')
+        normalized['inputs_sha256'][HISTORICAL_METADATA] = historical
+    if normalized!=expected:
         raise ValueError('earlier reporting metadata amendment preimage differs')
     return source_after(saved)
 
