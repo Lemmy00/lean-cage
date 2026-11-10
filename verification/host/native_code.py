@@ -11,6 +11,9 @@ import gateway
 TARGETS = tuple("LeanCage.Host.NativeCode." + name for name in
                 ("Operation", "Product", "Reply", "References", "Credentials", "SourceKey", "CallRow"))
 TARGETS += ("LeanCage.Host.NativeChannels.Evidence",)
+TARGETS += tuple("LeanCage.Host.ChannelCode." + name for name in
+                 ("PairKind", "Invocation", "Invocation.WellFormed", "Invocation.storage",
+                  "ReferenceAt", "PairUse", "PairUse.Consistent", "ReceiveUse", "ReceiveUse.Consistent"))
 
 
 def reviewed_encryption_amendment(exported, pending, source, changed):
@@ -160,19 +163,56 @@ def reviewed_channels_extension(exported, pending, source, changed):
     )
 
 
-def prepare(amend_encryption_policy=False, amend_path_metadata=False, extend_source_rows=False, extend_channels=False):
-    if sum((amend_encryption_policy, amend_path_metadata, extend_source_rows, extend_channels)) > 1:
+def reviewed_invocations_extension(exported, pending, source, changed):
+    preserved = gateway.WORK / "native-data-before-invocations"
+    before_source = preserved / "NativeCode.lean"
+    before_export = preserved / "native-code.ndjson"
+    invocations = gateway.HERE / "GatewayChannelCode.lean"
+    if gateway.sha(before_source) != "2e29ec519029d540f7c436efa146e3d91e726ae804e63528e711555392d5410a":
+        raise ValueError("source invocation extension native baseline does not match")
+    if gateway.sha(before_export) != "f6bb9b8b88cd7e99d6438a3b8fba82a4eb6688e3d5825073f3a04f66a57f16d2":
+        raise ValueError("source invocation extension export baseline does not match")
+    if source.read_bytes() != before_source.read_bytes() or gateway.sha(exported) != gateway.sha(before_export):
+        raise ValueError("source invocation extension changes its Native127 baseline")
+    if gateway.sha(invocations) != "602fa489467a021bca0c757e439cab3e01e5aa82037dee2fd02f38938ca952b8":
+        raise ValueError("source invocation extension differs from the reviewed pure interface")
+    if changed:
+        raise ValueError("source invocation extension changes existing declarations")
+    previous = gateway.CONNECTION.export_fingerprints(exported)
+    current = gateway.CONNECTION.export_fingerprints(pending)
+    added = sorted(current.keys() - previous.keys())
+    prefixes = ("LeanCage.Host.ChannelCode.", "LeanCage.Host.NativeCode.CallRow.",
+                "LeanCage.Host.NativeCode.SourceKey.", "LeanCage.Host.NativeCode.Handle.",
+                "Exists", "LE", "LT", "Nat.le", "Nat.lt", "Or", "instLENat", "instLTNat")
+    if not added or any(not name.startswith(prefixes) for name in added):
+        raise ValueError("source invocation extension adds unexpected dependencies: " + ", ".join(added))
+    return dict(
+        reason="Bind source allocation lifetimes and exact pair/read rows without a private-role assumption",
+        preserved=str(preserved.relative_to(gateway.ROOT)),
+        before_source_sha256=gateway.sha(before_source), after_source_sha256=gateway.sha(source),
+        invocation_source_sha256=gateway.sha(invocations),
+        before_export_sha256=gateway.sha(exported), after_export_sha256=gateway.sha(pending),
+        changed=changed, added=added,
+        review="Native127 bytes preserved and all127 fingerprints unchanged; raw consistency supplies no channel authority",
+    )
+
+
+def prepare(amend_encryption_policy=False, amend_path_metadata=False, extend_source_rows=False, extend_channels=False,
+            extend_invocations=False):
+    if sum((amend_encryption_policy, amend_path_metadata, extend_source_rows, extend_channels, extend_invocations)) > 1:
         raise ValueError("select one explicit native interface amendment")
     source = gateway.HERE / "NativeCode.lean"
     before = gateway.sha(source)
     channels = gateway.HERE / "NativeChannelCode.lean"
     channels_before = gateway.sha(channels)
-    subprocess.run(["lake", "build", "NativeChannelCode"], cwd=gateway.ROOT / "host", check=True)
+    invocations = gateway.HERE / "GatewayChannelCode.lean"
+    invocations_before = gateway.sha(invocations)
+    subprocess.run(["lake", "build", "GatewayChannelCode"], cwd=gateway.ROOT / "host", check=True)
     exporter = gateway.PROFILE.WORK / "lean4export/.lake/build/bin/lean4export"
     pending = gateway.WORK / "native-code.pending.ndjson"
     exported = gateway.WORK / "native-code.ndjson"
     with pending.open("w") as output:
-        subprocess.run(["lake", "env", str(exporter), "NativeChannelCode", "--", *TARGETS],
+        subprocess.run(["lake", "env", str(exporter), "GatewayChannelCode", "--", *TARGETS],
                        cwd=gateway.ROOT / "host", stdout=output, check=True)
     records = gateway.CONNECTION.export_records(pending)
     fingerprints = gateway.CONNECTION.export_fingerprints(pending)
@@ -181,7 +221,9 @@ def prepare(amend_encryption_policy=False, amend_path_metadata=False, extend_sou
         previous = gateway.CONNECTION.export_fingerprints(exported)
         changed = [name for name, value in previous.items() if fingerprints.get(name) != value]
         added = fingerprints.keys() - previous.keys()
-        if extend_channels:
+        if extend_invocations:
+            amendment = reviewed_invocations_extension(exported, pending, source, changed)
+        elif extend_channels:
             amendment = reviewed_channels_extension(exported, pending, source, changed)
         elif extend_source_rows:
             amendment = reviewed_source_rows_extension(exported, pending, source, changed)
@@ -193,15 +235,17 @@ def prepare(amend_encryption_policy=False, amend_path_metadata=False, extend_sou
             raise ValueError("native event proof interface changed: " + ", ".join(changed))
         elif added:
             raise ValueError("native event proof interface adds unreviewed declarations: " + ", ".join(sorted(added)))
-    elif amend_encryption_policy or amend_path_metadata or extend_source_rows or extend_channels:
+    elif amend_encryption_policy or amend_path_metadata or extend_source_rows or extend_channels or extend_invocations:
         raise ValueError("native amendment requires its preserved export baseline")
-    if gateway.sha(source) != before or gateway.sha(channels) != channels_before:
+    if (gateway.sha(source) != before or gateway.sha(channels) != channels_before or
+            gateway.sha(invocations) != invocations_before):
         raise ValueError("native event source changed during export")
     pending.replace(exported)
     gateway.compile_file("GatewayNativeImport")
     if amendment is not None:
         amendment["strict_import"] = "checked without importer relaxation"
-        amendment_name = ("native-channels-extension.json" if extend_channels else
+        amendment_name = ("native-invocations-extension.json" if extend_invocations else
+                          "native-channels-extension.json" if extend_channels else
                           "native-source-rows-extension.json" if extend_source_rows else
                           "native-path-metadata-amendment.json" if amend_path_metadata else
                           "native-encryption-amendment.json")
@@ -210,7 +254,8 @@ def prepare(amend_encryption_policy=False, amend_path_metadata=False, extend_sou
     (gateway.WORK / "native-export.json").write_text(json.dumps(dict(
         targets=TARGETS, source_sha256=before, export_sha256=gateway.sha(exported),
         inputs={str(source.relative_to(gateway.ROOT)): before,
-                str(channels.relative_to(gateway.ROOT)): channels_before},
+                str(channels.relative_to(gateway.ROOT)): channels_before,
+                str(invocations.relative_to(gateway.ROOT)): invocations_before},
         declarations=sum(len(names) for _, names in records), fingerprints=fingerprints,
         amendment=amendment,
     ), indent=2, sort_keys=True) + "\n")
@@ -227,11 +272,15 @@ def main():
                         help="add only reviewed source-key/full-row records, preserving Native94")
     parser.add_argument("--extend-channels", action="store_true",
                         help="add reviewed pure channel observers, preserving all Native100 declarations")
+    parser.add_argument("--extend-invocations", action="store_true",
+                        help="add reviewed actual source/pair/read data, preserving all Native127 declarations")
     parser.add_argument("modules", nargs="*")
     arguments = parser.parse_args()
     if arguments.prepare:
-        prepare(arguments.amend_encryption_policy, arguments.amend_path_metadata, arguments.extend_source_rows, arguments.extend_channels)
-    elif arguments.amend_encryption_policy or arguments.amend_path_metadata or arguments.extend_source_rows or arguments.extend_channels:
+        prepare(arguments.amend_encryption_policy, arguments.amend_path_metadata, arguments.extend_source_rows,
+                arguments.extend_channels, arguments.extend_invocations)
+    elif (arguments.amend_encryption_policy or arguments.amend_path_metadata or arguments.extend_source_rows or
+          arguments.extend_channels or arguments.extend_invocations):
         parser.error("native amendments require --prepare")
     for module in arguments.modules:
         gateway.compile_file(module)

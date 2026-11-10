@@ -2,6 +2,7 @@ import FilesystemCryptography
 import FilesystemPrimitivePhases
 import FilesystemPrimitiveObservations
 import FilesystemPublicationHandles
+import FilesystemPrimitiveKeyDigest
 
 namespace LeanCage.Host.Kernel
 open Filesystem
@@ -53,7 +54,7 @@ structure PrimitiveCommitAuthentication {kernel : Contract} (runtime : Primitive
 
 -- §FS-host-boundary.publication: Source argument construction and ordering are derived
 -- from the real publisher. The crypto premise interprets only its one actual raw MAC call.
-theorem primitive_commit_authentication {kernel : Contract} {runtime : PrimitiveActorRuntime kernel}
+theorem primitive_commit_authentication_with_key_digest {kernel : Contract} {runtime : PrimitiveActorRuntime kernel}
     {sha256 : ByteArray → ByteArray} {hmac : ByteArray → ByteArray → ByteArray}
     (crypto : CryptographicContract kernel sha256 hmac)
     {initial : World} {final : Population} {all : List (ActorTick runtime)}
@@ -62,17 +63,18 @@ theorem primitive_commit_authentication {kernel : Contract} {runtime : Primitive
     {request : Request} {observed : Option Reply} (selected : all[position]? = some tick)
     (present : tick.before.actors actor = some engine)
     (adapter : PrimitiveAdapterAt runtime initial all tick actor engine request observed)
-    (moving : request.op = .renameNew) :
-    Nonempty (PrimitiveCommitAuthentication runtime initial all position tick actor engine request observed hmac) := by
-  have primary := PrimitiveFilesystem.filesystem_occurrence_primary adapter.occurrence
-    (by intro wrong; rw [moving] at wrong; cases wrong)
-    (by intro wrong; rw [moving] at wrong; cases wrong)
-    (by intro wrong; rw [moving] at wrong; cases wrong)
-  have logical : Program.Prefix Entrypoint.run
-      (adapter.occurrence.logicalBefore ++ [Program.filesystemPrefixEvent (request, none)]) := by
-    simpa only [← primary, Program.filesystemPrefixEvent] using
-      PrimitiveFilesystem.filesystem_occurrence_logical adapter.occurrence
-  obtain ⟨source⟩ := entrypoint_commit_call logical moving
+    (source : HostCommitCall adapter.occurrence.logicalBefore request none) :
+    ∃ receipt : PrimitiveCommitAuthentication runtime initial all position tick actor engine request observed hmac,
+      Nonempty (PrimitiveKeyDigestAt runtime initial all tick actor engine
+        source.invocation.authenticated.bundle receipt.key sha256) ∧
+      HEq receipt.source source ∧
+      receipt.source.source.commit.stage = source.source.commit.stage ∧
+      receipt.marker.rawAfter = adapter.occurrence.inside.map Program.filesystemPrefixEvent ∧
+      ∃ markerInput markerOutput,
+        receipt.markerTick.before.actors actor = some markerInput ∧
+        receipt.markerTick.after.actors actor = some markerOutput ∧
+        receipt.marker.before = receipt.markerTick.before.project markerInput ∧
+        receipt.marker.after = receipt.markerTick.after.project markerOutput := by
   obtain ⟨candidate, policyDigest, json, tag, hashing, authenticating, filling, markerReply,
     prepareTrace, hashed, rendered, jsonBound, wireBound, authentication, filled, markerZero, markerEmpty⟩ :=
       Publication.prepare_source _ _ _ _ _ _ _ source.source.commit.prepared
@@ -101,13 +103,28 @@ theorem primitive_commit_authentication {kernel : Contract} {runtime : Primitive
       simp only [context, message, Publication.markerWire, markerRequest, List.map_append, List.map_cons, List.map_nil,
         Program.filesystemEvent, List.cons_append, List.nil_append, List.append_assoc])))
   obtain ⟨mac⟩ := primitive_observation adapter macTrace rfl
+  have keyTrace : adapter.occurrence.logicalBefore =
+      (source.selectingContext ++ (source.source.commit.selecting ++ source.source.commit.creating ++ hashing).map
+        Program.filesystemEvent) ++ keyEvents.map Program.filesystemEvent ++
+      .returned (.filesystem {op := .authenticate, left := message, right := key}) macReply ::
+        (filling ++ [(markerRequest, markerReply)]).map Program.filesystemEvent := by
+    simpa only [context, List.map_append, List.append_assoc] using macTrace
+  obtain ⟨keyDigest⟩ := primitive_key_digest_at crypto adapter loaded keyTrace
   have markerTrace : adapter.occurrence.logicalBefore =
       (context ++ [.returned (.filesystem {op := .authenticate, left := message, right := key}) macReply] ++
         filling.map Program.filesystemEvent) ++ .returned (.filesystem markerRequest) markerReply :: [] := by
     exact macTrace.trans (by
       simp only [List.map_append, List.map_cons, List.map_nil, Program.filesystemEvent, List.append_assoc,
         List.cons_append, List.nil_append])
-  obtain ⟨marker⟩ := primitive_observation adapter markerTrace rfl
+  obtain ⟨marked⟩ := primitive_observation_chunked adapter markerTrace rfl
+  let marker := marked.observation
+  have markerTail : marker.rawAfter = adapter.occurrence.inside.map Program.filesystemPrefixEvent := by
+    have empty : marked.rawTail = [] := by
+      have chunks := marked.chunks
+      generalize rawEq : marked.rawTail = raw at chunks ⊢
+      cases chunks
+      rfl
+    simpa only [empty, List.nil_append] using marked.suffix
   obtain ⟨macPosition, macTick, macEngine, afterMac, macSelected, macAction, macPresent,
     afterMacPresent, macCount, macBefore, macAfter⟩ := mac.sampled
   obtain ⟨markerPosition, markerTick, markerEngine, afterMarker, markerSelected, markerAction, markerPresent,
@@ -147,8 +164,60 @@ theorem primitive_commit_authentication {kernel : Contract} {runtime : Primitive
     markerSelected
     markerAction
     markerEarlier := source_ordinal_orders_positions journal markerSelected selected actor markerEngine engine markerPresent present markerLess
-    markerAccepted := ⟨markerZero, markerEmpty⟩ }⟩
+    markerAccepted := ⟨markerZero, markerEmpty⟩ }, ⟨keyDigest⟩, HEq.rfl, rfl, markerTail,
+      ⟨markerEngine, afterMarker, markerPresent, afterMarkerPresent, markerBefore, markerAfter⟩⟩
 
+-- §AR-host-boundary.interfaces: The old consumer keeps its exact statement; the
+-- stronger sibling additionally retains this same publisher's actual key digest.
+theorem primitive_commit_authentication_at_source {kernel : Contract} {runtime : PrimitiveActorRuntime kernel}
+    {sha256 : ByteArray → ByteArray} {hmac : ByteArray → ByteArray → ByteArray}
+    (crypto : CryptographicContract kernel sha256 hmac)
+    {initial : World} {final : Population} {all : List (ActorTick runtime)}
+    (journal : ActorJournal runtime (Population.empty initial) all final)
+    {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState}
+    {request : Request} {observed : Option Reply} (selected : all[position]? = some tick)
+    (present : tick.before.actors actor = some engine)
+    (adapter : PrimitiveAdapterAt runtime initial all tick actor engine request observed)
+    (source : HostCommitCall adapter.occurrence.logicalBefore request none) :
+    ∃ receipt : PrimitiveCommitAuthentication runtime initial all position tick actor engine request observed hmac,
+      HEq receipt.source source ∧
+      receipt.source.source.commit.stage = source.source.commit.stage ∧
+      receipt.marker.rawAfter = adapter.occurrence.inside.map Program.filesystemPrefixEvent ∧
+      ∃ markerInput markerOutput,
+        receipt.markerTick.before.actors actor = some markerInput ∧
+        receipt.markerTick.after.actors actor = some markerOutput ∧
+        receipt.marker.before = receipt.markerTick.before.project markerInput ∧
+        receipt.marker.after = receipt.markerTick.after.project markerOutput := by
+  obtain ⟨receipt, _, original⟩ := primitive_commit_authentication_with_key_digest crypto journal selected present adapter source
+  exact ⟨receipt, original⟩
+
+
+-- §AR-host-boundary.interfaces: Keep the original actual-commit authentication consumer.
+-- §FS-host-boundary.publication: Source argument construction and ordering are derived
+-- from the real publisher. The crypto premise interprets only its one actual raw MAC call.
+theorem primitive_commit_authentication {kernel : Contract} {runtime : PrimitiveActorRuntime kernel}
+    {sha256 : ByteArray → ByteArray} {hmac : ByteArray → ByteArray → ByteArray}
+    (crypto : CryptographicContract kernel sha256 hmac)
+    {initial : World} {final : Population} {all : List (ActorTick runtime)}
+    (journal : ActorJournal runtime (Population.empty initial) all final)
+    {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState}
+    {request : Request} {observed : Option Reply} (selected : all[position]? = some tick)
+    (present : tick.before.actors actor = some engine)
+    (adapter : PrimitiveAdapterAt runtime initial all tick actor engine request observed)
+    (moving : request.op = .renameNew) :
+    Nonempty (PrimitiveCommitAuthentication runtime initial all position tick actor engine request observed hmac) := by
+  have primary := PrimitiveFilesystem.filesystem_occurrence_primary adapter.occurrence
+    (by intro wrong; rw [moving] at wrong; cases wrong)
+    (by intro wrong; rw [moving] at wrong; cases wrong)
+    (by intro wrong; rw [moving] at wrong; cases wrong)
+  have logical : Program.Prefix Entrypoint.run
+      (adapter.occurrence.logicalBefore ++ [Program.filesystemPrefixEvent (request, none)]) := by
+    simpa only [← primary, Program.filesystemPrefixEvent] using
+      PrimitiveFilesystem.filesystem_occurrence_logical adapter.occurrence
+  obtain ⟨source⟩ := entrypoint_commit_call logical moving
+  obtain ⟨receipt, sameSource, sameStage, markerTail, markerSample⟩ := primitive_commit_authentication_at_source crypto journal
+    selected present adapter source
+  exact ⟨receipt⟩
 -- §FS-host-boundary.publication: Exposure is an actual committed raw namespace effect,
 -- independent of errno/acknowledgement and without assuming lifetime injectivity of inode IDs.
 structure CommitExposure (before after : World) (request : Request) (tag : ByteArray) where

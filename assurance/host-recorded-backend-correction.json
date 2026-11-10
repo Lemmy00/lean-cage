@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "status": "checked-supporting-implementation",
+  "delivery": "M5.2",
+  "accepted_security_delivery": false,
+  "contracts": [
+    "FS-host-boundary.ownership",
+    "FS-host-boundary.publication",
+    "FS-host-boundary.snapshot",
+    "AR-host-boundary.primitives",
+    "AR-host-boundary.coverage"
+  ],
+  "problem": "The old universal backend authority predicate classified arbitrary alternate ChildCallAt witnesses on an equal foreign tick; it could not be derived from the actual stored child source/ledger.",
+  "correction": "Each consumer now uses NativeAuthorityJournal of the exact recording. Structural selectNativeCut projection retains the same prefix/current/suffix calls. actual_recorded_program_authority constructs it from actual raw births, source roles, metadata reader prefixes and individual SDK/VMM observations.",
+  "predecessor": {
+    "path": "assurance/host-recorded-backend-predecessor.json.gz",
+    "sha256": "cbe0bf1b0017446a1fb0dc1bb0a3b0130fc55276269f8c148859160ac6bba3d9",
+    "preserved_declarations": 27,
+    "scope": "Exact original source, full types and transitive-axiom query; never silently rebound to the corrected hypothesis."
+  },
+  "current": {
+    "path": "assurance/host-recorded-backend-current.json.gz",
+    "sha256": "7752816033750c63b692a7c5b2f51fa2ad32a54eced5cb6936fdef1ac2316c50",
+    "changed_consumer_declarations": 27,
+    "changed_consumer_modules": 18,
+    "source_hashes": {
+      "verification/application/ControllerPrimitiveSource.lean": "4869e218360017b872c8022617f1c6962eb5e45fdea345c59578260b0a8caf45",
+      "verification/application/lakefile.lean": "9ce5f2182a7e98c074f2381eb4e526bcae376fa09888846eb1223c40f6112451",
+      "verification/host/FilesystemByteNamespaces.lean": "ad63be9b90c9615529a4e2834811fc093dfc424de13c08d31fb2b332bde82d59",
+      "verification/host/FilesystemCheckedParents.lean": "575d5d39c7bcad759a039c2db47d348d5217bcc76747554c29a01ba467152bde",
+      "verification/host/FilesystemCommitAcknowledgement.lean": "f8c13f02c1df0d5d6cee5e0d453a3462fe93741d9f5806e9e5e4fd49be8f7540",
+      "verification/host/FilesystemCommitCustody.lean": "49eea9cc32a645e68725d4f7953a4cb9c4fb3a548deaab9d0f1af7d690d30d97",
+      "verification/host/FilesystemCommitExposure.lean": "0ce978b95f07350c9dffdd9c9d5f8ce79ddb5251e31c4fa83e7259cd25391aa1",
+      "verification/host/FilesystemCommitGuarantee.lean": "fa290fbc266603c1f63a2f125db148a381171efce9451f88cfecb5e3840e5ec4",
+      "verification/host/FilesystemCommitMarker.lean": "2df5897126929d9c6b1577b21892133cf08fff973bf0b81eb40f14d1f54aa93a",
+      "verification/host/FilesystemCommitMarkerSurvival.lean": "87a4021eede93f136e794775e58424b57281e6ba26ea7df2cb0bf13119a22dfc",
+      "verification/host/FilesystemCommittedAuthentication.lean": "6f96324280fcca42b65451db7be93895259ec228181fcab5144fe7cffd280456",
+      "verification/host/FilesystemCommittedKeyIdentity.lean": "557bc7b5f82c0160b601fb2defb7e8a20f5b05f9619ceb9f5f69ec8ca88eeca7",
+      "verification/host/FilesystemCreationOwnership.lean": "2e899e031c84d37499b4b243b098ab263e8fb3880a3416ac4c17e8b7d12c7004",
+      "verification/host/FilesystemCreationPrefix.lean": "323b4e0c51eeec77131f48e45b815709960dad3575770d0cae79b4a3c91e189b",
+      "verification/host/FilesystemCreationStateJoin.lean": "282cabc9ac6dd65cda30b7b18988034cc374d585f2539aa5b0d60c6bc35b09df",
+      "verification/host/FilesystemForeignCustody.lean": "b34add8e6212a735d11699b709397091ed5da5dcc23b35b39cc8e7d04cc65f96",
+      "verification/host/FilesystemInstalledAuthentication.lean": "25677a49c8be62edad90fb9afba0ce7471002abf5e7b721ef6122342483e311a",
+      "verification/host/FilesystemInstalledExposure.lean": "cc6caceb9f1c1c7771859519194f3c2473fa5c9e7fb2c0d844613efb6383ce3c",
+      "verification/host/FilesystemKeyDigest.lean": "6df0a231b1f39c82e8ac49a29b980e47ba7bb9425409f77ec05b7e1ea9480a5c",
+      "verification/host/FilesystemNativeMarkerLifetime.lean": "a50779ae1b43f5b8eb526bce825995bb1fd2afa40440d372e1f31376cdc0b085",
+      "verification/host/FilesystemParentComparison.lean": "8ee6484111a6d4fa0e42873a616c26e3105d1a0c2f5560abda0e391beb69c8dd",
+      "verification/host/FilesystemParentState.lean": "dd0dd22bcc6a3e63af99d4c7cb2afccd39d90e591e32b1dfc6174ee0deeb9f14",
+      "verification/host/FilesystemPrimitiveBackend.lean": "8f809190cd7c084e7ff3545edaa48c537c05c62f2a5ac1a5110dbc9b275b4d80",
+      "verification/host/FilesystemPrimitiveKeyDigest.lean": "7d166ebf5f5b5ab80077b27d422880d8cc03dba2cc866ce46188a89772551390",
+      "verification/host/FilesystemPrimitiveParentAuthority.lean": "298e8cf4762bf774a055f083bada47d9c52b9f90590dd439d7222c6f34b4bd66",
+      "verification/host/FilesystemPrimitivePublication.lean": "da8fa454aa59a4bd7806c2b789aa1d5e5a4c330bda70191c7aeb165d8b552eff",
+      "verification/host/FilesystemPublicationProgress.lean": "da40c111abd55ebab27e0cd69954097f53224bcd4c5609f6236ef6fa8ca84515",
+      "verification/host/FilesystemRecordedAuthority.lean": "224cb180060dd92cbdd0831b40507beb2c46d9633fe852ccda71dcb6a34b5147",
+      "verification/host/FilesystemRecordedBackend.lean": "e8324522e5f49e2bfe2efa8980644a5c2a2ac868da32bd8397f617d24a8441b3",
+      "verification/host/FilesystemRegisteredLifecycle.lean": "f63315e0622cbdb0120c114b84df1a4571fb710e5b1ae7dc830a716424a72441",
+      "verification/host/FilesystemRetirementCustody.lean": "69e3029a13182b7748bb199a020bf5be654ee6c66a44eef62eee86e7d789b887",
+      "verification/host/FilesystemRunCreation.lean": "4ab0866098da648ef9d21b448783952d5b604b46bd47e49b4cb829ab1884e17f",
+      "verification/host/FilesystemStagingAuthority.lean": "0f464a8ca4812949cedc975dbd4bf59b0c2d1e1f83d31b384b2e1b521723eb01",
+      "verification/host/FilesystemTraversalAuthority.lean": "32aeb22a3e61b826418e28b4440d6ff7d89596e52397c51a71535566cc50c3e3",
+      "verification/host/SnapshotProofs/Hex.lean": "0f2f7cba173f0ee9c64e8033c36cabcd3b288ed148b7674f9b7bfc3ae8b53e26"
+    },
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "review": [
+    "Reviewed complete printed hypotheses and quantifiers. The exact recording value appears in the authority premise and selected-cut projection. No alternate-call witness is substituted by tick equality.",
+    "Lost/error source branches remain represented. Process birth is from the actual earlier raw spawn, not a future status0 or an independent logical execution.",
+    "InstalledPublicationKey identifies the selected protected root, manifest inventory, physical key lifetime and its initial bytes. Actual source SHA gives fixed-secret equality or an explicit 32-byte digest collision, never global hash injectivity.",
+    "Actual publisher and retrieved answer use the same copied-key/MAC/comparison/source receipts. Only a physical committed exposure enters the query set; an error/lost acknowledgement may commit.",
+    "The successful rename acknowledgement contract is one syscall and forces the actual target binding; it contains no no-commit-on-error/loss assertion.",
+    "PublicationReleaseJournal is application induction evidence. Keeping it alongside custody avoids assuming cleanup is nondestructive.",
+    "Kernel/runtime/crypto laws remain typed parameters, not axioms or a whole HostSafe/SnapshotSafe/ChildSafe premise."
+  ],
+  "validation": {
+    "focused_changed_cone": "18 modules PASS; exact source hashes and order preserved in current archive",
+    "full_type_and_axiom_queries": "27 changed consumers plus 19 critical supporting definitions/theorems and 4 controller consumers PASS",
+    "foundations": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "runtime_native_export_changes": false,
+    "aggregate_gate": "pending integrated final consumer; no repeat of matching historical native/VM evidence"
+  },
+  "remaining": [
+    "Construct the cumulative RegisteredPublicationState/RegisteredCustodyExecution from every actual source/native/ordinary/child/lifecycle step. Complete private subtree create/open/cleanup source cases; do not assume the result.",
+    "Derive child namespace/reference operands from the same actual validator/QEMU spawn/run lifetime, including exact path resolution and real wait/reap/no-later-child-action observations.",
+    "Supply root-owned C/public selected bundle/manifest and executable catalogue binding; explicit selections may differ from the native default root.",
+    "Join initialized key object marker protection and native/source read exclusion to the complete lifetime exposure history, then compose final RequestGuarantee and useful joint history.",
+    "Run required affected integrated acceptance on final inputs; M5.2 remains incomplete."
+  ]
+}

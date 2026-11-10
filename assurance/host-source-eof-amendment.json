@@ -1,0 +1,37 @@
+{
+  "accepted_security_delivery": false,
+  "schema": "leancage-host-source-eof-amendment-v1",
+  "scope": "Remove only surplus terminal LF bytes. Source tokens, statement structure and all earlier byte offsets are identical. Retain each original reviewed source separately.",
+  "sources": {
+    "verification/host/GatewayBuiltinTypeSource.v": {
+      "after_sha256": "4e92f41db9f6d5db4667781415f242687586df406ece76ed9a4599f717a19896",
+      "before_artifact": "assurance/host-source-eof-before-GatewayBuiltinTypeSource.v.gz",
+      "before_sha256": "c9a1442a4af796cd61016556027801c9ebba674132e7b69093190add825314df"
+    },
+    "verification/host/GatewayOutcomeEntry.v": {
+      "after_sha256": "6b4b6e2f833438bd089d5d97f9e142eb7fcbffdfc5141c91cd5a662f78843449",
+      "before_artifact": "assurance/host-source-eof-before-GatewayOutcomeEntry.v.gz",
+      "before_sha256": "915ab9d0e220cca155d89a3ad1d60a114bc0da94726090fe26e38742bb1fe78b"
+    },
+    "verification/host/GatewayOutcomeGetterSource.v": {
+      "after_sha256": "744219b8a0b3d953ebd389dbcd6ad9879c78a724fd69d7e5f61ddba427cac828",
+      "before_artifact": "assurance/host-source-eof-before-GatewayOutcomeGetterSource.v.gz",
+      "before_sha256": "035a7c86af465a27e301c42a30fc6a23a9adea2058590fd07dc3e615ee9381c4"
+    },
+    "verification/host/GatewayOutcomeValidationPaths.v": {
+      "after_sha256": "3b01048ee654708f785e7ba2b7a2e8b4b7128e73957b65ee6f8f860137ad69a6",
+      "before_artifact": "assurance/host-source-eof-before-GatewayOutcomeValidationPaths.v.gz",
+      "before_sha256": "c4fdfae56b52912a2738353808dc44e36319ea3ac924ee1346edb1769a8689f5"
+    },
+    "verification/host/GatewaySourceFraming.v": {
+      "after_sha256": "b3a7a1d1e5092d87ccbf5d18bb130c90c1f7c43aa28f70b72984d03554ad6041",
+      "before_artifact": "assurance/host-source-eof-before-GatewaySourceFraming.v.gz",
+      "before_sha256": "6b600321d561ee456697d265b79dc34323f344b57b01043d8ff5064db5b179bf"
+    },
+    "verification/host/PositionalCopyNative.lean": {
+      "after_sha256": "fad72c3c8dafdb07cf9cbad1a35231e2ea59494e119871b9576962ac88ff8979",
+      "before_artifact": "assurance/host-source-eof-before-PositionalCopyNative.lean.gz",
+      "before_sha256": "7ed02dbde16d4e8d52a2408780a19367c4affe4c1062f661b6f33e72baf544cb"
+    }
+  }
+}

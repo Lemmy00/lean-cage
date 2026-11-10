@@ -1,0 +1,1215 @@
+{
+  "accepted_security_delivery": false,
+  "current_c_sha256": "ed97460f47b86fee5970d9311f25caf51133d753f06aea222263198e1a794224",
+  "current_clight_sha256": "636015762585214458cf4ab68eef02df799e545f8c3b61d8c3b4226ad2708a9f",
+  "declarations": [
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerOrigins",
+      "name": "gateway_cast_pointer_origin",
+      "type": "gateway_cast_pointer_origin\n     : forall (memory : Memory.Mem.mem) (value : Values.val) (source target : Ctypes.type) \n         (object : Values.block) (offset : Integers.Ptrofs.int),\n       Cop.sem_cast value source target memory = Some (Values.Vptr object offset) ->\n       exists original : Integers.Ptrofs.int, value = Values.Vptr object original\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerOrigins",
+      "name": "gateway_binarith_pointer_origin",
+      "type": "gateway_binarith_pointer_origin\n     : forall (sem_int : Ctypes.signedness -> Integers.Int.int -> Integers.Int.int -> option Values.val)\n         (sem_long : Ctypes.signedness -> Integers.Int64.int -> Integers.Int64.int -> option Values.val)\n         (sem_float : Floats.float -> Floats.float -> option Values.val)\n         (sem_single : Floats.float32 -> Floats.float32 -> option Values.val) (first : Values.val)\n         (first_type : Ctypes.type) (second : Values.val) (second_type : Ctypes.type) (memory : Memory.Mem.mem)\n         (object : Values.block) (offset : Integers.Ptrofs.int),\n       (forall (sign : Ctypes.signedness) (left right : Integers.Int.int),\n        sem_int sign left right <> Some (Values.Vptr object offset)) ->\n       (forall (sign : Ctypes.signedness) (left right : Integers.Int64.int),\n        sem_long sign left right <> Some (Values.Vptr object offset)) ->\n       (forall left right : Floats.float, sem_float left right <> Some (Values.Vptr object offset)) ->\n       (forall left right : Floats.float32, sem_single left right <> Some (Values.Vptr object offset)) ->\n       Cop.sem_binarith sem_int sem_long sem_float sem_single first first_type second second_type memory <>\n       Some (Values.Vptr object offset)\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerOrigins",
+      "name": "gateway_unary_pointer_impossible",
+      "type": "gateway_unary_pointer_impossible\n     : forall (operation : Cop.unary_operation) (value : Values.val) (source : Ctypes.type) \n         (memory : Memory.Mem.mem) (object : Values.block) (offset : Integers.Ptrofs.int),\n       Cop.sem_unary_operation operation value source memory <> Some (Values.Vptr object offset)\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerOrigins",
+      "name": "gateway_add_pointer_origin",
+      "type": "gateway_add_pointer_origin\n     : forall (environment : Ctypes.composite_env) (first : Values.val) (first_type : Ctypes.type)\n         (second : Values.val) (second_type : Ctypes.type) (memory : Memory.Mem.mem) (object : Values.block)\n         (offset : Integers.Ptrofs.int),\n       Cop.sem_add environment first first_type second second_type memory = Some (Values.Vptr object offset) ->\n       (exists original : Integers.Ptrofs.int, first = Values.Vptr object original) \\/\n       exists original : Integers.Ptrofs.int, second = Values.Vptr object original\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerOrigins",
+      "name": "gateway_sub_pointer_origin",
+      "type": "gateway_sub_pointer_origin\n     : forall (environment : Ctypes.composite_env) (first : Values.val) (first_type : Ctypes.type)\n         (second : Values.val) (second_type : Ctypes.type) (memory : Memory.Mem.mem) (object : Values.block)\n         (offset : Integers.Ptrofs.int),\n       Cop.sem_sub environment first first_type second second_type memory = Some (Values.Vptr object offset) ->\n       exists original : Integers.Ptrofs.int, first = Values.Vptr object original\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerOrigins",
+      "name": "gateway_comparison_pointer_impossible",
+      "type": "gateway_comparison_pointer_impossible\n     : forall (comparison : Integers.comparison) (first : Values.val) (first_type : Ctypes.type) \n         (second : Values.val) (second_type : Ctypes.type) (memory : Memory.Mem.mem) (object : Values.block)\n         (offset : Integers.Ptrofs.int),\n       Cop.sem_cmp comparison first first_type second second_type memory <> Some (Values.Vptr object offset)\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerOrigins",
+      "name": "gateway_binary_pointer_origin",
+      "type": "gateway_binary_pointer_origin\n     : forall (environment : Ctypes.composite_env) (operation : Cop.binary_operation) (first : Values.val)\n         (first_type : Ctypes.type) (second : Values.val) (second_type : Ctypes.type) (memory : Memory.Mem.mem)\n         (object : Values.block) (offset : Integers.Ptrofs.int),\n       Cop.sem_binary_operation environment operation first first_type second second_type memory =\n       Some (Values.Vptr object offset) ->\n       (exists original : Integers.Ptrofs.int, first = Values.Vptr object original) \\/\n       exists original : Integers.Ptrofs.int, second = Values.Vptr object original\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerOrigins",
+      "name": "gateway_pointer_avoids",
+      "type": "gateway_pointer_avoids\n     : (Values.block -> Prop) -> Values.val -> Prop\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerOrigins",
+      "name": "gateway_cast_avoids",
+      "type": "gateway_cast_avoids\n     : forall (private : Values.block -> Prop) (memory : Memory.Mem.mem) (value : Values.val)\n         (source target : Ctypes.type) (result : Values.val),\n       gateway_pointer_avoids private value ->\n       Cop.sem_cast value source target memory = Some result -> gateway_pointer_avoids private result\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerOrigins",
+      "name": "gateway_binary_avoids",
+      "type": "gateway_binary_avoids\n     : forall (private : Values.block -> Prop) (environment : Ctypes.composite_env) (operation : Cop.binary_operation)\n         (first : Values.val) (first_type : Ctypes.type) (second : Values.val) (second_type : Ctypes.type)\n         (memory : Memory.Mem.mem) (result : Values.val),\n       gateway_pointer_avoids private first ->\n       gateway_pointer_avoids private second ->\n       Cop.sem_binary_operation environment operation first first_type second second_type memory = Some result ->\n       gateway_pointer_avoids private result\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_memval_avoids",
+      "type": "gateway_memval_avoids\n     : (Values.block -> Prop) -> Memdata.memval -> Prop\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_memory_avoids",
+      "type": "gateway_memory_avoids\n     : (Values.block -> Prop) -> Memory.Mem.mem -> Prop\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_load_result_avoids",
+      "type": "gateway_load_result_avoids\n     : forall (private : Values.block -> Prop) (chunk : AST.memory_chunk) (value : Values.val),\n       gateway_pointer_avoids private value -> gateway_pointer_avoids private (Values.Val.load_result chunk value)\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_shape_avoids",
+      "type": "gateway_shape_avoids\n     : forall (private : Values.block -> Prop) (chunk : AST.memory_chunk) (bytes : list Memdata.memval)\n         (value : Values.val),\n       Memdata.shape_decoding chunk bytes value ->\n       ListDef.Forall (gateway_memval_avoids private) bytes -> gateway_pointer_avoids private value\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_decode_avoids",
+      "type": "gateway_decode_avoids\n     : forall (private : Values.block -> Prop) (chunk : AST.memory_chunk) (bytes : list Memdata.memval),\n       ListDef.Forall (gateway_memval_avoids private) bytes ->\n       gateway_pointer_avoids private (Memdata.decode_val chunk bytes)\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_getN_avoids",
+      "type": "gateway_getN_avoids\n     : forall (private : Values.block -> Prop) (count : nat) (offset : BinNums.Z)\n         (contents : Maps.ZMap.t Memdata.memval),\n       (forall position : Maps.ZIndexed.t, gateway_memval_avoids private (Maps.ZMap.get position contents)) ->\n       ListDef.Forall (gateway_memval_avoids private) (Memory.Mem.getN count offset contents)\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_load_avoids",
+      "type": "gateway_load_avoids\n     : forall (private : Values.block -> Prop) (memory : Memory.Mem.mem) (chunk : AST.memory_chunk)\n         (object : Values.block) (offset : BinNums.Z) (value : Values.val),\n       gateway_memory_avoids private memory ->\n       Memory.Mem.load chunk memory object offset = Some value -> gateway_pointer_avoids private value\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_loadv_avoids",
+      "type": "gateway_loadv_avoids\n     : forall (private : Values.block -> Prop) (memory : Memory.Mem.mem) (chunk : AST.memory_chunk)\n         (address value : Values.val),\n       gateway_memory_avoids private memory ->\n       Memory.Mem.loadv chunk memory address = Some value -> gateway_pointer_avoids private value\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_loadbytes_avoids",
+      "type": "gateway_loadbytes_avoids\n     : forall (private : Values.block -> Prop) (memory : Memory.Mem.mem) (object : Values.block)\n         (offset count : BinNums.Z) (bytes : list Memdata.memval),\n       gateway_memory_avoids private memory ->\n       Memory.Mem.loadbytes memory object offset count = Some bytes ->\n       ListDef.Forall (gateway_memval_avoids private) bytes\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_bytes_avoid",
+      "type": "gateway_bytes_avoid\n     : forall (private : Values.block -> Prop) (bytes : list Integers.Byte.int),\n       ListDef.Forall (gateway_memval_avoids private) (Memdata.inj_bytes bytes)\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_fragments_avoid",
+      "type": "gateway_fragments_avoid\n     : forall (private : Values.block -> Prop) (count : nat) (value : Values.val) (quantity : Memdata.quantity),\n       gateway_pointer_avoids private value ->\n       ListDef.Forall (gateway_memval_avoids private) (Memdata.inj_value_rec count value quantity)\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_undefined_avoid",
+      "type": "gateway_undefined_avoid\n     : forall (private : Values.block -> Prop) (count : nat),\n       ListDef.Forall (gateway_memval_avoids private) (ListDef.repeat Memdata.Undef count)\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_encode_avoids",
+      "type": "gateway_encode_avoids\n     : forall (private : Values.block -> Prop) (chunk : AST.memory_chunk) (value : Values.val),\n       gateway_pointer_avoids private value ->\n       ListDef.Forall (gateway_memval_avoids private) (Memdata.encode_val chunk value)\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_setN_avoids",
+      "type": "gateway_setN_avoids\n     : forall (private : Values.block -> Prop) (bytes : list Memdata.memval) (offset : BinNums.Z)\n         (contents : Maps.ZMap.t Memdata.memval),\n       ListDef.Forall (gateway_memval_avoids private) bytes ->\n       (forall position : Maps.ZIndexed.t, gateway_memval_avoids private (Maps.ZMap.get position contents)) ->\n       forall position : Maps.ZIndexed.t,\n       gateway_memval_avoids private (Maps.ZMap.get position (Memory.Mem.setN bytes offset contents))\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_store_avoids",
+      "type": "gateway_store_avoids\n     : forall (private : Values.block -> Prop) (before after : Memory.Mem.mem) (chunk : AST.memory_chunk)\n         (object : Values.block) (offset : BinNums.Z) (value : Values.val),\n       gateway_memory_avoids private before ->\n       gateway_pointer_avoids private value ->\n       Memory.Mem.store chunk before object offset value = Some after -> gateway_memory_avoids private after\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_storev_avoids",
+      "type": "gateway_storev_avoids\n     : forall (private : Values.block -> Prop) (before after : Memory.Mem.mem) (chunk : AST.memory_chunk)\n         (address value : Values.val),\n       gateway_memory_avoids private before ->\n       gateway_pointer_avoids private value ->\n       Memory.Mem.storev chunk before address value = Some after -> gateway_memory_avoids private after\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_storebytes_avoids",
+      "type": "gateway_storebytes_avoids\n     : forall (private : Values.block -> Prop) (before after : Memory.Mem.mem) (object : Values.block)\n         (offset : BinNums.Z) (bytes : list Memdata.memval),\n       gateway_memory_avoids private before ->\n       ListDef.Forall (gateway_memval_avoids private) bytes ->\n       Memory.Mem.storebytes before object offset bytes = Some after -> gateway_memory_avoids private after\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_alloc_avoids",
+      "type": "gateway_alloc_avoids\n     : forall (private : Values.block -> Prop) (before : Memory.Mem.mem) (after : Memory.Mem.mem')\n         (object : Values.block) (low high : BinNums.Z),\n       gateway_memory_avoids private before ->\n       Memory.Mem.alloc before low high = (after, object) -> gateway_memory_avoids private after\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_free_avoids",
+      "type": "gateway_free_avoids\n     : forall (private : Values.block -> Prop) (before after : Memory.Mem.mem) (object : Values.block)\n         (low high : BinNums.Z),\n       gateway_memory_avoids private before ->\n       Memory.Mem.free before object low high = Some after -> gateway_memory_avoids private after\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerMemory",
+      "name": "gateway_free_list_avoids",
+      "type": "gateway_free_list_avoids\n     : forall (private : Values.block -> Prop) (before after : Memory.Mem.mem)\n         (bindings : list (Values.block * BinNums.Z * BinNums.Z)),\n       gateway_memory_avoids private before ->\n       Memory.Mem.free_list before bindings = Some after -> gateway_memory_avoids private after\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerExpressions",
+      "name": "gateway_global_address_allowed",
+      "type": "gateway_global_address_allowed\n     : (AST.ident -> bool) -> AST.ident -> bool\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerExpressions",
+      "name": "gateway_expression_addresses",
+      "type": "gateway_expression_addresses\n     : (AST.ident -> bool) -> Clight.expr -> bool\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerExpressions",
+      "name": "gateway_lvalue_addresses",
+      "type": "gateway_lvalue_addresses\n     : (AST.ident -> bool) -> Clight.expr -> bool\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerExpressions",
+      "name": "gateway_reference_expression_addresses",
+      "type": "gateway_reference_expression_addresses\n     : forall (ge : Clight.genv) (environment : Clight.env) (temporaries : Clight.temp_env) \n         (memory : Memory.Mem.mem) (private_name : AST.ident -> bool) (expression : Clight.expr)\n         (object : Values.block) (offset : Integers.Ptrofs.int) (field : Ctypes.bitfield),\n       Clight.eval_lvalue ge environment temporaries memory expression object offset field ->\n       Ctypes.access_mode (Clight.typeof expression) = Ctypes.By_reference \\/\n       Ctypes.access_mode (Clight.typeof expression) = Ctypes.By_copy ->\n       gateway_expression_addresses private_name expression = true ->\n       gateway_lvalue_addresses private_name expression = true\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerExpressions",
+      "name": "gateway_expression_lvalue_avoids",
+      "type": "gateway_expression_lvalue_avoids\n     : forall (ge : Clight.genv) (environment : Clight.env) (temporaries : Clight.temp_env) \n         (memory : Memory.Mem.mem) (private : Values.block -> Prop) (private_name : AST.ident -> bool),\n       (forall (identifier : BinNums.positive) (object : Values.block) (ty : Ctypes.type),\n        Maps.PTree.get identifier environment = Some (object, ty) -> ~ private object) ->\n       (forall (identifier : AST.ident) (object : Values.block),\n        Globalenvs.Genv.find_symbol (Clight.genv_genv ge) identifier = Some object ->\n        gateway_global_address_allowed private_name identifier = true -> ~ private object) ->\n       (forall (identifier : BinNums.positive) (value : Values.val),\n        Maps.PTree.get identifier temporaries = Some value -> gateway_pointer_avoids private value) ->\n       gateway_memory_avoids private memory ->\n       (forall (expression : Clight.expr) (value : Values.val),\n        Clight.eval_expr ge environment temporaries memory expression value ->\n        gateway_expression_addresses private_name expression = true -> gateway_pointer_avoids private value) /\\\n       (forall (expression : Clight.expr) (object : Values.block) (offset : Integers.Ptrofs.int)\n          (field : Ctypes.bitfield),\n        Clight.eval_lvalue ge environment temporaries memory expression object offset field ->\n        gateway_lvalue_addresses private_name expression = true -> ~ private object)\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayGlobalAddresses",
+      "name": "gateway_private_cell_name",
+      "type": "gateway_private_cell_name\n     : BinNums.positive -> bool\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayGlobalAddresses",
+      "name": "gateway_private_cell",
+      "type": "gateway_private_cell\n     : Clight.genv -> Values.block -> Prop\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayGlobalAddresses",
+      "name": "gateway_private_cell_initializers",
+      "type": "gateway_private_cell_initializers\n     : forall identifier : BinNums.positive,\n       gateway_private_cell_name identifier = true ->\n       exists variable : AST.globvar Ctypes.type,\n         GatewayRegistry.gateway_program_definition identifier GatewaySource.global_definitions =\n         Some (AST.Gvar variable) /\\\n         AST.gvar_volatile variable = false /\\\n         BinInt.Z.lt BinNums.Z0 (AST.init_data_list_size (AST.gvar_init variable))\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayGlobalAddresses",
+      "name": "gateway_loaded_private_cells_valid",
+      "type": "gateway_loaded_private_cells_valid\n     : forall (ge : Clight.genv) (memory : Memory.Mem.mem),\n       GatewayLoaderRegions.gateway_native_loader_boundary ge memory ->\n       forall object : Values.block, gateway_private_cell ge object -> Memory.Mem.valid_block memory object\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayGlobalAddresses",
+      "name": "gateway_nonprivate_symbol",
+      "type": "gateway_nonprivate_symbol\n     : forall (ge : Clight.genv) (identifier : AST.ident) (object : Values.block),\n       Globalenvs.Genv.find_symbol (Clight.genv_genv ge) identifier = Some object ->\n       gateway_global_address_allowed gateway_private_cell_name identifier = true -> ~ gateway_private_cell ge object\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayGlobalAddresses",
+      "name": "gateway_assignment_address_inputs",
+      "type": "gateway_assignment_address_inputs\n     : Clight.expr -> bool\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayGlobalAddresses",
+      "name": "gateway_statement_addresses",
+      "type": "gateway_statement_addresses\n     : Clight.statement -> bool\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayGlobalAddresses",
+      "name": "gateway_source_addresses",
+      "type": "gateway_source_addresses\n     : AST.ident * AST.globdef (Ctypes.fundef Clight.function) Ctypes.type -> bool\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayGlobalAddresses",
+      "name": "actual_gateway_private_address_inventory",
+      "type": "actual_gateway_private_address_inventory\n     : List.forallb gateway_source_addresses GatewaySource.global_definitions = true\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayGlobalAddresses",
+      "name": "gateway_actual_function_address_inventory",
+      "type": "gateway_actual_function_address_inventory\n     : forall (identifier : AST.ident) (function : Clight.function),\n       List.In (identifier, AST.Gfun (Ctypes.Internal function)) GatewaySource.global_definitions ->\n       GatewayInitializationInventory.initialization_statement_any\n         (fun body : Clight.statement => negb (gateway_statement_addresses body)) (Clight.fn_body function) =\n       false\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayGlobalAddresses",
+      "name": "gateway_actual_initializer_address_absent",
+      "type": "gateway_actual_initializer_address_absent\n     : forall (identifier : AST.ident) (variable : AST.globvar Ctypes.type) (offset : Integers.Ptrofs.int)\n         (private : BinNums.positive),\n       List.In (identifier, AST.Gvar variable) GatewaySource.global_definitions ->\n       gateway_private_cell_name private = true -> ~ List.In (AST.Init_addrof private offset) (AST.gvar_init variable)\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayGlobalAddresses",
+      "name": "gateway_private_arguments",
+      "type": "gateway_private_arguments\n     : forall (ge : Clight.genv) (environment : Clight.env) (temporaries : Clight.temp_env) \n         (memory : Memory.Mem.mem) (expressions : list Clight.expr) (types : list Ctypes.type)\n         (values : list Values.val),\n       (forall (identifier : BinNums.positive) (object : Values.block) (ty : Ctypes.type),\n        Maps.PTree.get identifier environment = Some (object, ty) -> ~ gateway_private_cell ge object) ->\n       (forall (identifier : BinNums.positive) (value : Values.val),\n        Maps.PTree.get identifier temporaries = Some value -> gateway_pointer_avoids (gateway_private_cell ge) value) ->\n       gateway_memory_avoids (gateway_private_cell ge) memory ->\n       ListDef.Forall\n         (fun expression : Clight.expr => gateway_expression_addresses gateway_private_cell_name expression = true)\n         expressions ->\n       Clight.eval_exprlist ge environment temporaries memory expressions types values ->\n       ListDef.Forall (gateway_pointer_avoids (gateway_private_cell ge)) values\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayGlobalAddresses",
+      "name": "gateway_assignment_private_target",
+      "type": "gateway_assignment_private_target\n     : forall (ge : Clight.genv) (environment : Clight.env) (temporaries : Clight.temp_env) \n         (memory : Memory.Mem.mem) (expression : Clight.expr) (object : Values.block) (offset : Integers.Ptrofs.int)\n         (field : Ctypes.bitfield),\n       (forall (identifier : BinNums.positive) (object0 : Values.block) (ty : Ctypes.type),\n        Maps.PTree.get identifier environment = Some (object0, ty) -> ~ gateway_private_cell ge object0) ->\n       (forall (identifier : BinNums.positive) (value : Values.val),\n        Maps.PTree.get identifier temporaries = Some value -> gateway_pointer_avoids (gateway_private_cell ge) value) ->\n       gateway_memory_avoids (gateway_private_cell ge) memory ->\n       gateway_assignment_address_inputs expression = true ->\n       Clight.eval_lvalue ge environment temporaries memory expression object offset field ->\n       gateway_private_cell ge object ->\n       exists (identifier : AST.ident) (ty : Ctypes.type),\n         expression = Clight.Evar identifier ty /\\\n         gateway_private_cell_name identifier = true /\\\n         Maps.PTree.get identifier environment = None /\\\n         Globalenvs.Genv.find_symbol (Clight.genv_genv ge) identifier = Some object\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerEntry",
+      "name": "gateway_locals_avoid",
+      "type": "gateway_locals_avoid\n     : (Values.block -> Prop) -> Clight.env -> Prop\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerEntry",
+      "name": "gateway_temporaries_avoid",
+      "type": "gateway_temporaries_avoid\n     : (Values.block -> Prop) -> Clight.temp_env -> Prop\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerEntry",
+      "name": "gateway_temporaries_store",
+      "type": "gateway_temporaries_store\n     : forall (private : Values.block -> Prop) (temporaries : Clight.temp_env) (identifier : BinNums.positive)\n         (value : Values.val),\n       gateway_temporaries_avoid private temporaries ->\n       gateway_pointer_avoids private value ->\n       gateway_temporaries_avoid private (Maps.PTree.set identifier value temporaries)\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerEntry",
+      "name": "gateway_undef_temporaries_avoid",
+      "type": "gateway_undef_temporaries_avoid\n     : forall (private : Values.block -> Prop) (declarations : list (AST.ident * Ctypes.type)),\n       gateway_temporaries_avoid private (Clight.create_undef_temps declarations)\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerEntry",
+      "name": "gateway_bind_temporaries_avoid",
+      "type": "gateway_bind_temporaries_avoid\n     : forall (private : Values.block -> Prop) (formals : list (AST.ident * Ctypes.type)) (arguments : list Values.val)\n         (before after : Clight.temp_env),\n       gateway_temporaries_avoid private before ->\n       ListDef.Forall (gateway_pointer_avoids private) arguments ->\n       Clight.bind_parameter_temps formals arguments before = Some after -> gateway_temporaries_avoid private after\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerEntry",
+      "name": "gateway_assign_avoids",
+      "type": "gateway_assign_avoids\n     : forall (private : Values.block -> Prop) (ge : Ctypes.composite_env) (ty : Ctypes.type) \n         (before : Memory.Mem.mem) (object : Values.block) (offset : Integers.Ptrofs.int) (field : Ctypes.bitfield)\n         (value : Values.val) (after : Memory.Mem.mem),\n       gateway_memory_avoids private before ->\n       gateway_pointer_avoids private value ->\n       Clight.assign_loc ge ty before object offset field value after -> gateway_memory_avoids private after\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerEntry",
+      "name": "gateway_storev_blocks",
+      "type": "gateway_storev_blocks\n     : forall (before after : Memory.Mem.mem) (chunk : AST.memory_chunk) (address value : Values.val),\n       Memory.Mem.storev chunk before address value = Some after ->\n       forall object : Values.block, Memory.Mem.valid_block before object -> Memory.Mem.valid_block after object\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerEntry",
+      "name": "gateway_assign_blocks",
+      "type": "gateway_assign_blocks\n     : forall (ge : Ctypes.composite_env) (ty : Ctypes.type) (before : Memory.Mem.mem) (object : Values.block)\n         (offset : Integers.Ptrofs.int) (field : Ctypes.bitfield) (value : Values.val) (after : Memory.Mem.mem),\n       Clight.assign_loc ge ty before object offset field value after ->\n       forall candidate : Values.block,\n       Memory.Mem.valid_block before candidate -> Memory.Mem.valid_block after candidate\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerEntry",
+      "name": "gateway_free_list_blocks",
+      "type": "gateway_free_list_blocks\n     : forall (before after : Memory.Mem.mem) (bindings : list (Values.block * BinNums.Z * BinNums.Z)),\n       Memory.Mem.free_list before bindings = Some after ->\n       forall object : Values.block, Memory.Mem.valid_block before object -> Memory.Mem.valid_block after object\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerEntry",
+      "name": "gateway_allocate_variables_avoid",
+      "type": "gateway_allocate_variables_avoid\n     : forall (private : Values.block -> Prop) (ge : Clight.genv) (environment : Clight.env) \n         (before : Memory.Mem.mem) (declarations : list (AST.ident * Ctypes.type)) (final : Clight.env)\n         (after : Memory.Mem.mem),\n       (forall object : Values.block, private object -> Memory.Mem.valid_block before object) ->\n       gateway_memory_avoids private before ->\n       gateway_locals_avoid private environment ->\n       Clight.alloc_variables ge environment before declarations final after ->\n       gateway_memory_avoids private after /\\\n       gateway_locals_avoid private final /\\\n       (forall object : Values.block, private object -> Memory.Mem.valid_block after object)\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerEntry",
+      "name": "gateway_function_entry_avoids",
+      "type": "gateway_function_entry_avoids\n     : forall (private : Values.block -> Prop) (ge : Clight.genv) (function : Clight.function)\n         (arguments : list Values.val) (before : Memory.Mem.mem) (environment : Clight.env)\n         (temporaries : Clight.temp_env) (after : Memory.Mem.mem),\n       (forall object : Values.block, private object -> Memory.Mem.valid_block before object) ->\n       gateway_memory_avoids private before ->\n       ListDef.Forall (gateway_pointer_avoids private) arguments ->\n       Clight.function_entry2 ge function arguments before environment temporaries after ->\n       gateway_memory_avoids private after /\\\n       gateway_locals_avoid private environment /\\\n       gateway_temporaries_avoid private temporaries /\\\n       (forall object : Values.block, private object -> Memory.Mem.valid_block after object)\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerControl",
+      "name": "gateway_pointer_statement",
+      "type": "gateway_pointer_statement\n     : Clight.statement -> bool\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerControl",
+      "name": "gateway_pointer_branches",
+      "type": "gateway_pointer_branches\n     : Clight.labeled_statements -> bool\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerControl",
+      "name": "gateway_pointer_definition",
+      "type": "gateway_pointer_definition\n     : Ctypes.fundef Clight.function -> bool\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerControl",
+      "name": "gateway_pointer_definition_entry",
+      "type": "gateway_pointer_definition_entry\n     : AST.ident * AST.globdef (Ctypes.fundef Clight.function) Ctypes.type -> bool\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerControl",
+      "name": "actual_gateway_pointer_control",
+      "type": "actual_gateway_pointer_control\n     : List.forallb gateway_pointer_definition_entry GatewaySource.global_definitions = true\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerControl",
+      "name": "gateway_actual_pointer_function",
+      "type": "gateway_actual_pointer_function\n     : forall (value : Values.val) (definition : Clight.fundef),\n       Globalenvs.Genv.find_funct (Clight.genv_genv (Clight.globalenv GatewaySource.prog)) value = Some definition ->\n       gateway_pointer_definition definition = true\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerControl",
+      "name": "gateway_pointer_switch_sequence",
+      "type": "gateway_pointer_switch_sequence\n     : forall branches : Clight.labeled_statements,\n       gateway_pointer_branches branches = true ->\n       gateway_pointer_statement (Clight.seq_of_labeled_statement branches) = true\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerControl",
+      "name": "gateway_pointer_switch_default",
+      "type": "gateway_pointer_switch_default\n     : forall branches : Clight.labeled_statements,\n       gateway_pointer_branches branches = true ->\n       gateway_pointer_branches (Clight.select_switch_default branches) = true\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerControl",
+      "name": "gateway_pointer_switch_case",
+      "type": "gateway_pointer_switch_case\n     : forall (selector : BinNums.Z) (branches selected : Clight.labeled_statements),\n       gateway_pointer_branches branches = true ->\n       Clight.select_switch_case selector branches = Some selected -> gateway_pointer_branches selected = true\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerControl",
+      "name": "gateway_pointer_switch",
+      "type": "gateway_pointer_switch\n     : forall (selector : BinNums.Z) (branches : Clight.labeled_statements),\n       gateway_pointer_branches branches = true ->\n       gateway_pointer_statement (Clight.seq_of_labeled_statement (Clight.select_switch selector branches)) = true\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerControl",
+      "name": "gateway_pointer_cont",
+      "type": "gateway_pointer_cont\n     : (Values.block -> Prop) -> Clight.cont -> Prop\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerControl",
+      "name": "gateway_pointer_call_cont",
+      "type": "gateway_pointer_call_cont\n     : forall (private : Values.block -> Prop) (continuation : Clight.cont),\n       gateway_pointer_cont private continuation -> gateway_pointer_cont private (Clight.call_cont continuation)\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerControl",
+      "name": "gateway_pointer_source",
+      "type": "gateway_pointer_source\n     : Clight.genv -> Clight.state -> Prop\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerLabels",
+      "name": "gateway_pointer_find_label",
+      "type": "gateway_pointer_find_label\n     : forall (private : Values.block -> Prop) (label : Clight.label) (body : Clight.statement)\n         (continuation : Clight.cont) (found : Clight.statement) (rest : Clight.cont),\n       gateway_pointer_statement body = true ->\n       gateway_pointer_cont private continuation ->\n       Clight.find_label label body continuation = Some (found, rest) ->\n       gateway_pointer_statement found = true /\\ gateway_pointer_cont private rest\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerLabels",
+      "name": "gateway_pointer_find_label_branches",
+      "type": "gateway_pointer_find_label_branches\n     : forall (private : Values.block -> Prop) (label : Clight.label) (branches : Clight.labeled_statements)\n         (continuation : Clight.cont) (found : Clight.statement) (rest : Clight.cont),\n       gateway_pointer_branches branches = true ->\n       gateway_pointer_cont private continuation ->\n       Clight.find_label_ls label branches continuation = Some (found, rest) ->\n       gateway_pointer_statement found = true /\\ gateway_pointer_cont private rest\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerExecution",
+      "name": "gateway_pointer_expression",
+      "type": "gateway_pointer_expression\n     : forall (environment : Clight.env) (temporaries : Clight.temp_env) (memory : Memory.Mem.mem)\n         (expression : Clight.expr) (value : Values.val),\n       gateway_locals_avoid (gateway_private_cell (Clight.globalenv GatewaySource.prog)) environment ->\n       gateway_temporaries_avoid (gateway_private_cell (Clight.globalenv GatewaySource.prog)) temporaries ->\n       gateway_memory_avoids (gateway_private_cell (Clight.globalenv GatewaySource.prog)) memory ->\n       gateway_expression_addresses gateway_private_cell_name expression = true ->\n       Clight.eval_expr (Clight.globalenv GatewaySource.prog) environment temporaries memory expression value ->\n       gateway_pointer_avoids (gateway_private_cell (Clight.globalenv GatewaySource.prog)) value\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayPointerExecution",
+      "name": "gateway_opttemp_avoids",
+      "type": "gateway_opttemp_avoids\n     : forall (private : Values.block -> Prop) (temporaries : Clight.temp_env) (destination : option AST.ident)\n         (value : Values.val),\n       gateway_temporaries_avoid private temporaries ->\n       gateway_pointer_avoids private value ->\n       gateway_temporaries_avoid private (Clight.set_opttemp destination value temporaries)\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nEvents.inline_assembly_sem : String.string -> AST.signature -> Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nEvents.external_functions_sem : String.string -> AST.signature -> Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayPointerExecution",
+      "name": "gateway_internal_pointer_source",
+      "type": "gateway_internal_pointer_source\n     : forall (source : Clight.state) (observed : Events.trace) (target : Clight.state),\n       Machine.internal_state source ->\n       gateway_pointer_source (Clight.globalenv GatewaySource.prog) source ->\n       Clight.step2 (Clight.globalenv GatewaySource.prog) source observed target ->\n       gateway_pointer_source (Clight.globalenv GatewaySource.prog) target\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayInitializerOwnedStores",
+      "name": "gateway_initializer_owning_store",
+      "type": "@gateway_initializer_owning_store\n     : forall World Event : Type, GatewayReferenceHistory.gateway_history_selector World Event\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nEvents.inline_assembly_sem : String.string -> AST.signature -> Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nEvents.external_functions_sem : String.string -> AST.signature -> Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayInitializerOwnedStores",
+      "name": "gateway_initializer_owned_pointer_store",
+      "type": "@gateway_initializer_owned_pointer_store\n     : forall (World Event : Type) (backend : GatewayMachine.gateway_backend World Event)\n         (python : World -> GatewayPython.python_world) (ge : Clight.genv) (global : AST.ident)\n         (temporary : BinNums.positive) (symbol object : Values.block) (offset : Integers.Ptrofs.int)\n         (parameters : Maps.PTree.tree Values.val) (continuation : Clight.cont) (before : Memory.Mem.mem)\n         (trace : Events.trace) (target : Clight.state) (world : World) (position : nat)\n         (ledger : GatewayReferenceLedger.gateway_reference_ledger)\n         (retired : list GatewayReferenceHistory.gateway_abandoned_reference) (ticket : nat),\n       Globalenvs.Genv.find_symbol (Clight.genv_genv ge) global = Some symbol ->\n       Maps.PTree.get temporary parameters = Some (Values.Vptr object offset) ->\n       GatewayReferenceAbandon.gateway_history_well_formed position ledger retired ->\n       GatewayReferenceAbandon.gateway_history_counts_fit ledger retired (python world) ->\n       GatewayReferenceLedger.gateway_reference_owns ledger\n         (GatewayReferenceLedger.gateway_reference_temporary\n            (GatewayReferencePlaces.gateway_reference_depth continuation) temporary)\n         ticket (Values.Vptr object offset) ->\n       Clight.step2 ge\n         (Clight.State GatewaySource.f_host_initialize\n            (GatewayInitializerGlobalStores.initializer_pointer_assignment global temporary) continuation\n            Clight.empty_env parameters before)\n         trace target ->\n       exists\n         (after : Memory.Mem.mem) (final : GatewayReferenceLedger.gateway_reference_ledger) \n       (archived : list GatewayReferenceHistory.gateway_abandoned_reference),\n         trace = Events.E0 /\\\n         target =\n         Clight.State GatewaySource.f_host_initialize Clight.Sskip continuation Clight.empty_env parameters after /\\\n         Memory.Mem.store AST.Mptr before symbol BinNums.Z0 (Values.Vptr object offset) = Some after /\\\n         Memory.Mem.load AST.Mptr after symbol BinNums.Z0 = Some (Values.Vptr object offset) /\\\n         GatewayReferenceHistory.gateway_history_execution backend ge gateway_initializer_owning_store position\n           (GatewayMachine.gateway_live\n              (Clight.State GatewaySource.f_host_initialize\n                 (GatewayInitializerGlobalStores.initializer_pointer_assignment global temporary) continuation\n                 Clight.empty_env parameters before)\n              world)\n           {|\n             GatewayReferenceHistory.gateway_history_active := GatewayReferenceLedger.gateway_reference_valid ledger;\n             GatewayReferenceHistory.gateway_history_abandoned := retired\n           |} (GatewayMachine.gateway_source Events.E0 :: nil) (GatewayMachine.gateway_live target world)\n           {|\n             GatewayReferenceHistory.gateway_history_active := GatewayReferenceLedger.gateway_reference_valid final;\n             GatewayReferenceHistory.gateway_history_abandoned := archived\n           |} /\\\n         GatewayReferenceAbandon.gateway_history_well_formed (S position) final archived /\\\n         GatewayReferenceAbandon.gateway_history_counts_fit final archived (python world) /\\\n         GatewayReferenceLedger.gateway_reference_owns final (GatewayReferenceLedger.gateway_reference_global global)\n           ticket (Values.Vptr object offset) /\\\n         GatewayReferencePlaces.gateway_reference_place_value ge target\n           (GatewayReferenceLedger.gateway_reference_global global) (Values.Vptr object offset) /\\\n         (forall pointer : Values.val,\n          GatewayReferenceAbandon.gateway_history_total_count final archived pointer =\n          GatewayReferenceAbandon.gateway_history_total_count ledger retired pointer)\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nEvents.inline_assembly_sem : String.string -> AST.signature -> Events.extcall_sem\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nEvents.external_functions_sem : String.string -> AST.signature -> Events.extcall_sem\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "Events.external_functions_sem",
+        "Events.inline_assembly_sem",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayInitializerOwnedStores",
+      "name": "gateway_initializer_null_pointer_store",
+      "type": "@gateway_initializer_null_pointer_store\n     : forall (World Event : Type) (backend : GatewayMachine.gateway_backend World Event)\n         (python : World -> GatewayPython.python_world) (ge : Clight.genv) (global : AST.ident)\n         (temporary : BinNums.positive) (symbol : Values.block) (parameters : Maps.PTree.tree Values.val)\n         (continuation : Clight.cont) (before : Memory.Mem.mem) (trace : Events.trace) (target : Clight.state)\n         (world : World) (position : nat) (ledger : GatewayReferenceLedger.gateway_reference_ledger)\n         (retired : list GatewayReferenceHistory.gateway_abandoned_reference),\n       Globalenvs.Genv.find_symbol (Clight.genv_genv ge) global = Some symbol ->\n       Maps.PTree.get temporary parameters = Some Values.Vnullptr ->\n       GatewayReferenceAbandon.gateway_history_well_formed position ledger retired ->\n       GatewayReferenceAbandon.gateway_history_counts_fit ledger retired (python world) ->\n       Clight.step2 ge\n         (Clight.State GatewaySource.f_host_initialize\n            (GatewayInitializerGlobalStores.initializer_pointer_assignment global temporary) continuation\n            Clight.empty_env parameters before)\n         trace target ->\n       exists\n         (after : Memory.Mem.mem) (final : GatewayReferenceLedger.gateway_reference_ledger) \n       (archived : list GatewayReferenceHistory.gateway_abandoned_reference),\n         trace = Events.E0 /\\\n         target =\n         Clight.State GatewaySource.f_host_initialize Clight.Sskip continuation Clight.empty_env parameters after /\\\n         Memory.Mem.store AST.Mptr before symbol BinNums.Z0 Values.Vnullptr = Some after /\\\n         Memory.Mem.load AST.Mptr after symbol BinNums.Z0 = Some Values.Vnullptr /\\\n         GatewayReferenceHistory.gateway_history_execution backend ge gateway_initializer_owning_store position\n           (GatewayMachine.gateway_live\n              (Clight.State GatewaySource.f_host_initialize\n                 (GatewayInitializerGlobalStores.initializer_pointer_assignment global temporary) continuation\n                 Clight.empty_env parameters before)\n              world)\n           {|\n             GatewayReferenceHistory.gateway_history_active := GatewayReferenceLedger.gateway_reference_valid ledger;\n             GatewayReferenceHistory.gateway_history_abandoned := retired\n           |} (GatewayMachine.gateway_source Events.E0 :: nil) (GatewayMachine.gateway_live target world)\n           {|\n             GatewayReferenceHistory.gateway_history_active := GatewayReferenceLedger.gateway_reference_valid final;\n             GatewayReferenceHistory.gateway_history_abandoned := archived\n           |} /\\\n         GatewayReferenceAbandon.gateway_history_well_formed (S position) final archived /\\\n         GatewayReferenceAbandon.gateway_history_counts_fit final archived (python world) /\\\n         GatewayReferenceLedger.gateway_reference_take (GatewayReferenceLedger.gateway_reference_global global)\n           (GatewayReferenceLedger.gateway_reference_entries final) =\n         None /\\\n         (forall pointer : Values.val,\n          GatewayReferenceAbandon.gateway_history_total_count final archived pointer =\n          GatewayReferenceAbandon.gateway_history_total_count ledger retired pointer)\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayObservationSourceRepair",
+      "name": "gateway_observation_repaired_identifier",
+      "type": "gateway_observation_repaired_identifier\n     : BinNums.positive -> bool\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayObservationSourceRepair",
+      "name": "gateway_observation_retained_definition",
+      "type": "gateway_observation_retained_definition\n     : AST.ident * AST.globdef (Ctypes.fundef Clight.function) Ctypes.type -> bool\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayObservationSourceRepair",
+      "name": "gateway_observation_other_definitions_preserved",
+      "type": "gateway_observation_other_definitions_preserved\n     : List.filter gateway_observation_retained_definition GatewayObservationBeforeSource.global_definitions =\n       List.filter gateway_observation_retained_definition GatewayObservationAfterSource.global_definitions\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayObservationSourceRepair",
+      "name": "gateway_observation_other_public_identifiers_preserved",
+      "type": "gateway_observation_other_public_identifiers_preserved\n     : List.filter\n         (fun identifier : BinNums.positive =>\n          negb (BinPos.Pos.eqb identifier GatewayObservationAfterSource._PyDict_GetItemWithError))\n         GatewayObservationBeforeSource.public_idents =\n       List.filter\n         (fun identifier : BinNums.positive =>\n          negb (BinPos.Pos.eqb identifier GatewayObservationAfterSource._PyDict_GetItemWithError))\n         GatewayObservationAfterSource.public_idents\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayObservationSourceRepair",
+      "name": "gateway_observation_composites_preserved",
+      "type": "gateway_observation_composites_preserved\n     : GatewayObservationBeforeSource.composites = GatewayObservationAfterSource.composites\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayObservationSourceRepair",
+      "name": "gateway_observation_old_getter_identifier_preserved",
+      "type": "gateway_observation_old_getter_identifier_preserved\n     : GatewayObservationBeforeSource._host_outcome_observation =\n       GatewayObservationAfterSource._host_outcome_observation\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayObservationSourceRepair",
+      "name": "gateway_observation_added_dictionary_abi",
+      "type": "gateway_observation_added_dictionary_abi\n     : List.In\n         (GatewayObservationAfterSource._PyDict_GetItemWithError,\n          AST.Gfun\n            (Ctypes.External\n               (AST.EF_external\n                  (String.String (Ascii.Ascii false false false false true false true false)\n                     (String.String (Ascii.Ascii true false false true true true true false)\n                        (String.String (Ascii.Ascii false false true false false false true false)\n                           (String.String (Ascii.Ascii true false false true false true true false)\n                              (String.String (Ascii.Ascii true true false false false true true false)\n                                 (String.String (Ascii.Ascii false false true false true true true false)\n                                    (String.String (Ascii.Ascii true true true true true false true false)\n                                       (String.String (Ascii.Ascii true true true false false false true false)\n                                          (String.String (Ascii.Ascii true false true false false true true false)\n                                             (String.String (Ascii.Ascii false false true false true true true false)\n                                                (String.String\n                                                   (Ascii.Ascii true false false true false false true false)\n                                                   (String.String\n                                                      (Ascii.Ascii false false true false true true true false)\n                                                      (String.String\n                                                         (Ascii.Ascii true false true false false true true false)\n                                                         (String.String\n                                                            (Ascii.Ascii true false true true false true true false)\n                                                            (String.String\n                                                               (Ascii.Ascii true true true false true false true false)\n                                                               (String.String\n                                                                  (Ascii.Ascii true false false true false true true\n                                                                     false)\n                                                                  (String.String\n                                                                     (Ascii.Ascii false false true false true true true\n                                                                        false)\n                                                                     (String.String\n                                                                        (Ascii.Ascii false false false true false true\n                                                                           true false)\n                                                                        (String.String\n                                                                           (Ascii.Ascii true false true false false\n                                                                              false true false)\n                                                                           (String.String\n                                                                              (Ascii.Ascii false true false false true\n                                                                                 true true false)\n                                                                              (String.String\n                                                                                 (Ascii.Ascii false true false false\n                                                                                    true true true false)\n                                                                                 (String.String\n                                                                                    (Ascii.Ascii true true true true\n                                                                                       false true true false)\n                                                                                    (String.String\n                                                                                       (Ascii.Ascii false true false\n                                                                                          false true true true false)\n                                                                                       String.EmptyString)))))))))))))))))))))))\n                  {|\n                    AST.sig_args := AST.Xptr :: AST.Xptr :: nil; AST.sig_res := AST.Xptr; AST.sig_cc := AST.cc_default\n                  |})\n               (Ctypesdefs.tptr (Ctypes.Tstruct GatewayObservationAfterSource.__object Ctypes.noattr)\n                :: Ctypesdefs.tptr (Ctypes.Tstruct GatewayObservationAfterSource.__object Ctypes.noattr) :: nil)\n               (Ctypesdefs.tptr (Ctypes.Tstruct GatewayObservationAfterSource.__object Ctypes.noattr)) AST.cc_default))\n         GatewayObservationAfterSource.global_definitions\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayOutcomeSourceRepair",
+      "name": "gateway_outcome_repaired_identifier",
+      "type": "gateway_outcome_repaired_identifier\n     : BinNums.positive -> bool\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayOutcomeSourceRepair",
+      "name": "gateway_outcome_retained_definition",
+      "type": "gateway_outcome_retained_definition\n     : AST.ident * AST.globdef (Ctypes.fundef Clight.function) Ctypes.type -> bool\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayOutcomeSourceRepair",
+      "name": "gateway_outcome_other_definitions_preserved",
+      "type": "gateway_outcome_other_definitions_preserved\n     : List.filter gateway_outcome_retained_definition GatewayOutcomeBeforeSource.global_definitions =\n       List.filter gateway_outcome_retained_definition GatewayOutcomeAfterSource.global_definitions\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayOutcomeSourceRepair",
+      "name": "gateway_outcome_public_identifiers_preserved",
+      "type": "gateway_outcome_public_identifiers_preserved\n     : GatewayOutcomeBeforeSource.public_idents = GatewayOutcomeAfterSource.public_idents\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayOutcomeSourceRepair",
+      "name": "gateway_outcome_composites_preserved",
+      "type": "gateway_outcome_composites_preserved\n     : GatewayOutcomeBeforeSource.composites = GatewayOutcomeAfterSource.composites\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayOutcomeSourceRepair",
+      "name": "gateway_outcome_function_identifiers_preserved",
+      "type": "gateway_outcome_function_identifiers_preserved\n     : GatewayOutcomeBeforeSource._host_outcome_from = GatewayOutcomeAfterSource._host_outcome_from /\\\n       GatewayOutcomeBeforeSource._host_outcome_json = GatewayOutcomeAfterSource._host_outcome_json\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayOutcomeSourceRepair",
+      "name": "gateway_outcome_variable_definition",
+      "type": "gateway_outcome_variable_definition\n     : AST.ident * AST.globdef (Ctypes.fundef Clight.function) Ctypes.type -> bool\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayOutcomeSourceRepair",
+      "name": "gateway_outcome_global_initializers_preserved",
+      "type": "gateway_outcome_global_initializers_preserved\n     : List.filter gateway_outcome_variable_definition GatewayOutcomeBeforeSource.global_definitions =\n       List.filter gateway_outcome_variable_definition GatewayOutcomeAfterSource.global_definitions\n"
+    }
+  ],
+  "interfaces": {
+    "gateway_assignment_address_inputs": "gateway_assignment_address_inputs =\nfun expression : Clight.expr =>\nmatch expression with\n| Clight.Evar _ _ => true\n| Clight.Ederef nested _ | Clight.Efield nested _ _ => gateway_expression_addresses gateway_private_cell_name nested\n| _ => false\nend\n     : Clight.expr -> bool\n\nArguments gateway_assignment_address_inputs expression\n",
+    "gateway_expression_addresses": "gateway_expression_addresses =\nfix gateway_expression_addresses (private_name : AST.ident -> bool) (expression : Clight.expr) {struct expression} :\n    bool :=\n  match expression with\n  | Clight.Evar identifier ty =>\n      match Ctypes.access_mode ty with\n      | Ctypes.By_value _ => true\n      | _ => gateway_global_address_allowed private_name identifier\n      end\n  | Clight.Eaddrof nested _ => gateway_lvalue_addresses private_name nested\n  | Clight.Ebinop _ first second _ =>\n      (gateway_expression_addresses private_name first && gateway_expression_addresses private_name second)%bool\n  | Clight.Ederef nested _ | Clight.Eunop _ nested _ | Clight.Ecast nested _ | Clight.Efield nested _ _ =>\n      gateway_expression_addresses private_name nested\n  | _ => true\n  end\nwith gateway_lvalue_addresses (private_name : AST.ident -> bool) (expression : Clight.expr) {struct expression} :\n    bool :=\n  match expression with\n  | Clight.Evar identifier _ => gateway_global_address_allowed private_name identifier\n  | Clight.Ederef nested _ | Clight.Efield nested _ _ => gateway_expression_addresses private_name nested\n  | _ => false\n  end\nfor\ngateway_expression_addresses\n     : (AST.ident -> bool) -> Clight.expr -> bool\n\nArguments gateway_expression_addresses private_name%_function_scope expression\n",
+    "gateway_initializer_owning_store": "gateway_initializer_owning_store =\nfun (World Event : Type) (_ : nat) (first : GatewayMachine.gateway_state World)\n  (observed : GatewayMachine.gateway_event Event) (_ : GatewayMachine.gateway_state World)\n  (_ : GatewayReferenceHistory.gateway_reference_history) =>\nmatch first with\n| GatewayMachine.gateway_live\n  (Clight.State _ (Clight.Sassign (Clight.Evar global _) (Clight.Etempvar temporary _)) continuation _ parameters _) _ =>\n    match observed with\n    | GatewayMachine.gateway_source _ =>\n        match Maps.PTree.get temporary parameters with\n        | Some value =>\n            if Values.Val.eq value Values.Vnullptr is left _\n            then GatewayReferenceHistory.gateway_history_clear (GatewayReferenceLedger.gateway_reference_global global)\n            else\n             GatewayReferenceHistory.gateway_history_assign\n               (GatewayReferenceLedger.gateway_reference_temporary\n                  (GatewayReferencePlaces.gateway_reference_depth continuation) temporary)\n               (GatewayReferenceLedger.gateway_reference_global global)\n        | None => GatewayReferenceHistory.gateway_history_current GatewayReferenceLedger.gateway_reference_unclassified\n        end\n    | _ => GatewayReferenceHistory.gateway_history_current GatewayReferenceLedger.gateway_reference_keep\n    end\n| GatewayMachine.gateway_live (Clight.State _ (Clight.Sassign (Clight.Evar global _) (Clight.Econst_int _ _)) _ _ _ _)\n  _ |\n  GatewayMachine.gateway_live\n  (Clight.State _ (Clight.Sassign (Clight.Evar global _) (Clight.Econst_float _ _)) _ _ _ _) _ |\n  GatewayMachine.gateway_live\n  (Clight.State _ (Clight.Sassign (Clight.Evar global _) (Clight.Econst_single _ _)) _ _ _ _) _ |\n  GatewayMachine.gateway_live (Clight.State _ (Clight.Sassign (Clight.Evar global _) (Clight.Econst_long _ _)) _ _ _ _)\n  _ |\n  GatewayMachine.gateway_live (Clight.State _ (Clight.Sassign (Clight.Evar global _) (Clight.Evar _ _)) _ _ _ _) _ |\n  GatewayMachine.gateway_live (Clight.State _ (Clight.Sassign (Clight.Evar global _) (Clight.Ederef _ _)) _ _ _ _) _ |\n  GatewayMachine.gateway_live (Clight.State _ (Clight.Sassign (Clight.Evar global _) (Clight.Eaddrof _ _)) _ _ _ _) _ |\n  GatewayMachine.gateway_live (Clight.State _ (Clight.Sassign (Clight.Evar global _) (Clight.Eunop _ _ _)) _ _ _ _) _ |\n  GatewayMachine.gateway_live (Clight.State _ (Clight.Sassign (Clight.Evar global _) (Clight.Ebinop _ _ _ _)) _ _ _ _)\n  _ |\n  GatewayMachine.gateway_live (Clight.State _ (Clight.Sassign (Clight.Evar global _) (Clight.Ecast _ _)) _ _ _ _) _ |\n  GatewayMachine.gateway_live (Clight.State _ (Clight.Sassign (Clight.Evar global _) (Clight.Efield _ _ _)) _ _ _ _) _ |\n  GatewayMachine.gateway_live (Clight.State _ (Clight.Sassign (Clight.Evar global _) (Clight.Esizeof _ _)) _ _ _ _) _ |\n  GatewayMachine.gateway_live (Clight.State _ (Clight.Sassign (Clight.Evar global _) (Clight.Ealignof _ _)) _ _ _ _) _ =>\n    GatewayReferenceHistory.gateway_history_current GatewayReferenceLedger.gateway_reference_keep\n| _ => GatewayReferenceHistory.gateway_history_current GatewayReferenceLedger.gateway_reference_keep\nend\n     : forall {World Event : Type}, GatewayReferenceHistory.gateway_history_selector World Event\n\nArguments gateway_initializer_owning_store {World Event}%_type_scope _ _ _ _ _\n",
+    "gateway_lvalue_addresses": "gateway_lvalue_addresses =\nfix gateway_expression_addresses (private_name : AST.ident -> bool) (expression : Clight.expr) {struct expression} :\n    bool :=\n  match expression with\n  | Clight.Evar identifier ty =>\n      match Ctypes.access_mode ty with\n      | Ctypes.By_value _ => true\n      | _ => gateway_global_address_allowed private_name identifier\n      end\n  | Clight.Eaddrof nested _ => gateway_lvalue_addresses private_name nested\n  | Clight.Ebinop _ first second _ =>\n      (gateway_expression_addresses private_name first && gateway_expression_addresses private_name second)%bool\n  | Clight.Ederef nested _ | Clight.Eunop _ nested _ | Clight.Ecast nested _ | Clight.Efield nested _ _ =>\n      gateway_expression_addresses private_name nested\n  | _ => true\n  end\nwith gateway_lvalue_addresses (private_name : AST.ident -> bool) (expression : Clight.expr) {struct expression} :\n    bool :=\n  match expression with\n  | Clight.Evar identifier _ => gateway_global_address_allowed private_name identifier\n  | Clight.Ederef nested _ | Clight.Efield nested _ _ => gateway_expression_addresses private_name nested\n  | _ => false\n  end\nfor\ngateway_lvalue_addresses\n     : (AST.ident -> bool) -> Clight.expr -> bool\n\nArguments gateway_lvalue_addresses private_name%_function_scope expression\n",
+    "gateway_memory_avoids": "gateway_memory_avoids =\nfun (private : Values.block -> Prop) (memory : Memory.Mem.mem) =>\nforall (object : BinNums.positive) (offset : Maps.ZIndexed.t),\ngateway_memval_avoids private (Maps.ZMap.get offset (Maps.PMap.get object (Memory.Mem.mem_contents memory)))\n     : (Values.block -> Prop) -> Memory.Mem.mem -> Prop\n\nArguments gateway_memory_avoids private%_function_scope memory\n",
+    "gateway_memval_avoids": "gateway_memval_avoids =\nfun (private : Values.block -> Prop) (value : Memdata.memval) =>\nmatch value with\n| Memdata.Fragment original _ _ => gateway_pointer_avoids private original\n| _ => True\nend\n     : (Values.block -> Prop) -> Memdata.memval -> Prop\n\nArguments gateway_memval_avoids private%_function_scope value\n",
+    "gateway_observation_repaired_identifier": "gateway_observation_repaired_identifier =\nfun identifier : BinNums.positive =>\n(BinPos.Pos.eqb identifier GatewayObservationAfterSource._host_outcome_observation\n || BinPos.Pos.eqb identifier GatewayObservationAfterSource._PyDict_GetItemWithError)%bool\n     : BinNums.positive -> bool\n\nArguments gateway_observation_repaired_identifier identifier%_positive_scope\n",
+    "gateway_observation_retained_definition": "gateway_observation_retained_definition =\nfun entry : AST.ident * AST.globdef (Ctypes.fundef Clight.function) Ctypes.type =>\nnegb (gateway_observation_repaired_identifier (fst entry))\n     : AST.ident * AST.globdef (Ctypes.fundef Clight.function) Ctypes.type -> bool\n\nArguments gateway_observation_retained_definition entry\n",
+    "gateway_outcome_repaired_identifier": "gateway_outcome_repaired_identifier =\nfun identifier : BinNums.positive =>\n(BinPos.Pos.eqb identifier GatewayOutcomeAfterSource._host_outcome_from\n || BinPos.Pos.eqb identifier GatewayOutcomeAfterSource._host_outcome_json)%bool\n     : BinNums.positive -> bool\n\nArguments gateway_outcome_repaired_identifier identifier%_positive_scope\n",
+    "gateway_outcome_retained_definition": "gateway_outcome_retained_definition =\nfun entry : AST.ident * AST.globdef (Ctypes.fundef Clight.function) Ctypes.type =>\nnegb (gateway_outcome_repaired_identifier (fst entry))\n     : AST.ident * AST.globdef (Ctypes.fundef Clight.function) Ctypes.type -> bool\n\nArguments gateway_outcome_retained_definition entry\n",
+    "gateway_outcome_variable_definition": "gateway_outcome_variable_definition =\nfun entry : AST.ident * AST.globdef (Ctypes.fundef Clight.function) Ctypes.type =>\nmatch snd entry with\n| AST.Gfun _ => false\n| AST.Gvar _ => true\nend\n     : AST.ident * AST.globdef (Ctypes.fundef Clight.function) Ctypes.type -> bool\n\nArguments gateway_outcome_variable_definition entry\n",
+    "gateway_pointer_avoids": "gateway_pointer_avoids =\nfun (private : Values.block -> Prop) (value : Values.val) =>\nmatch value with\n| Values.Vptr object _ => ~ private object\n| _ => True\nend\n     : (Values.block -> Prop) -> Values.val -> Prop\n\nArguments gateway_pointer_avoids private%_function_scope value\n",
+    "gateway_pointer_cont": "gateway_pointer_cont =\nfix gateway_pointer_cont (private : Values.block -> Prop) (continuation : Clight.cont) {struct continuation} : Prop :=\n  match continuation with\n  | Clight.Kstop => True\n  | Clight.Kseq body rest => gateway_pointer_statement body = true /\\ gateway_pointer_cont private rest\n  | Clight.Kloop1 first second rest | Clight.Kloop2 first second rest =>\n      gateway_pointer_statement first = true /\\\n      gateway_pointer_statement second = true /\\ gateway_pointer_cont private rest\n  | Clight.Kswitch rest => gateway_pointer_cont private rest\n  | Clight.Kcall _ function environment temporaries rest =>\n      gateway_pointer_statement (Clight.fn_body function) = true /\\\n      gateway_locals_avoid private environment /\\\n      gateway_temporaries_avoid private temporaries /\\ gateway_pointer_cont private rest\n  end\n     : (Values.block -> Prop) -> Clight.cont -> Prop\n\nArguments gateway_pointer_cont private%_function_scope continuation\n",
+    "gateway_pointer_definition": "gateway_pointer_definition =\nfun definition : Ctypes.fundef Clight.function =>\nmatch definition with\n| Ctypes.Internal function => gateway_pointer_statement (Clight.fn_body function)\n| Ctypes.External _ _ _ _ => true\nend\n     : Ctypes.fundef Clight.function -> bool\n\nArguments gateway_pointer_definition definition\n",
+    "gateway_pointer_definition_entry": "gateway_pointer_definition_entry =\nfun entry : AST.ident * AST.globdef (Ctypes.fundef Clight.function) Ctypes.type =>\nmatch snd entry with\n| AST.Gfun definition => gateway_pointer_definition definition\n| AST.Gvar _ => true\nend\n     : AST.ident * AST.globdef (Ctypes.fundef Clight.function) Ctypes.type -> bool\n\nArguments gateway_pointer_definition_entry entry\n",
+    "gateway_pointer_source": "gateway_pointer_source =\nfun (ge : Clight.genv) (source : Clight.state) =>\nlet private := gateway_private_cell ge in\ngateway_memory_avoids private (Machine.memory_of source) /\\\n(forall object : Values.block, private object -> Memory.Mem.valid_block (Machine.memory_of source) object) /\\\nmatch source with\n| Clight.State function body continuation environment temporaries _ =>\n    gateway_pointer_statement (Clight.fn_body function) = true /\\\n    gateway_pointer_statement body = true /\\\n    gateway_pointer_cont private continuation /\\\n    gateway_locals_avoid private environment /\\ gateway_temporaries_avoid private temporaries\n| Clight.Callstate definition arguments continuation _ =>\n    gateway_pointer_definition definition = true /\\\n    gateway_pointer_cont private continuation /\\ ListDef.Forall (gateway_pointer_avoids private) arguments\n| Clight.Returnstate value continuation _ =>\n    gateway_pointer_cont private continuation /\\ gateway_pointer_avoids private value\nend\n     : Clight.genv -> Clight.state -> Prop\n\nArguments gateway_pointer_source ge source\n",
+    "gateway_pointer_statement": "gateway_pointer_statement =\nfix gateway_pointer_statement (body : Clight.statement) : bool :=\n  (gateway_statement_addresses body &&\n   match body with\n   | Clight.Ssequence first second | Clight.Sifthenelse _ first second | Clight.Sloop first second =>\n       gateway_pointer_statement first && gateway_pointer_statement second\n   | Clight.Sswitch _ branches => gateway_pointer_branches branches\n   | Clight.Slabel _ nested => gateway_pointer_statement nested\n   | _ => true\n   end)%bool\nwith gateway_pointer_branches (branches : Clight.labeled_statements) : bool :=\n  match branches with\n  | Clight.LSnil => true\n  | Clight.LScons _ body rest => (gateway_pointer_statement body && gateway_pointer_branches rest)%bool\n  end\nfor\ngateway_pointer_statement\n     : Clight.statement -> bool\n\nArguments gateway_pointer_statement body\n",
+    "gateway_private_cell": "gateway_private_cell =\nfun (ge : Clight.genv) (object : Values.block) =>\nexists identifier : BinNums.positive,\n  gateway_private_cell_name identifier = true /\\\n  Globalenvs.Genv.find_symbol (Clight.genv_genv ge) identifier = Some object\n     : Clight.genv -> Values.block -> Prop\n\nArguments gateway_private_cell ge object\n",
+    "gateway_private_cell_name": "gateway_private_cell_name =\nfun identifier : BinNums.positive =>\nList.existsb (BinPos.Pos.eqb identifier)\n  (GatewaySource._host_path_class\n   :: GatewaySource._host_cancellation_class\n      :: GatewaySource._host_outcome_class\n         :: GatewaySource._host_initializing :: GatewaySource._host_initialized :: nil)\n     : BinNums.positive -> bool\n\nArguments gateway_private_cell_name identifier%_positive_scope\n",
+    "gateway_source_addresses": "gateway_source_addresses =\nfun entry : AST.ident * AST.globdef (Ctypes.fundef Clight.function) Ctypes.type =>\nmatch snd entry with\n| AST.Gfun (Ctypes.Internal function) =>\n    negb\n      (GatewayInitializationInventory.initialization_statement_any\n         (fun body : Clight.statement => negb (gateway_statement_addresses body)) (Clight.fn_body function))\n| AST.Gfun (Ctypes.External _ _ _ _) => true\n| AST.Gvar variable =>\n    negb\n      (List.existsb\n         (fun datum : AST.init_data =>\n          match datum with\n          | AST.Init_addrof identifier _ => gateway_private_cell_name identifier\n          | _ => false\n          end)\n         (AST.gvar_init variable))\nend\n     : AST.ident * AST.globdef (Ctypes.fundef Clight.function) Ctypes.type -> bool\n\nArguments gateway_source_addresses entry\n",
+    "gateway_statement_addresses": "gateway_statement_addresses =\nfun body : Clight.statement =>\nmatch body with\n| Clight.Sassign lhs rhs =>\n    (gateway_assignment_address_inputs lhs && gateway_expression_addresses gateway_private_cell_name rhs)%bool\n| Clight.Scall _ function arguments =>\n    (gateway_expression_addresses gateway_private_cell_name function &&\n     List.forallb (gateway_expression_addresses gateway_private_cell_name) arguments)%bool\n| Clight.Sbuiltin _ _ _ arguments => List.forallb (gateway_expression_addresses gateway_private_cell_name) arguments\n| Clight.Sset _ expression | Clight.Sifthenelse expression _ _ | Clight.Sreturn (Some expression) |\n  Clight.Sswitch expression _ => gateway_expression_addresses gateway_private_cell_name expression\n| _ => true\nend\n     : Clight.statement -> bool\n\nArguments gateway_statement_addresses body\n"
+  },
+  "kernel_check": {
+    "command": [
+      "rocq",
+      "check",
+      "-silent",
+      "-Q",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/rocq-lean-import/src",
+      "LeanImport",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/lib",
+      "compcert.lib",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/common",
+      "compcert.common",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/x86_64",
+      "compcert.x86_64",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/x86",
+      "compcert.x86",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/backend",
+      "compcert.backend",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/cfrontend",
+      "compcert.cfrontend",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/driver",
+      "compcert.driver",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/cparser",
+      "compcert.cparser",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/export",
+      "compcert.export",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/flocq",
+      "Flocq",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/MenhirLib",
+      "MenhirLib",
+      "-Q",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/source",
+      "",
+      "-Q",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/proofs",
+      "",
+      "-Q",
+      "/localhome/milikic/sandbox-formalization/.tools/host/gateway",
+      "HostGateway",
+      "HostGateway.GatewaySourceEpochQuery"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "remaining": [
+    "Actual loaded/native/managed input producers and expanded SDK callback history must produce the initial and per-call pointer scopes.",
+    "Linked runtime visitor capabilities require the actual source-aligned environment and typed indirect-call adapter; the canonical unit environment is not a full CPython image.",
+    "Active/completed source guards and exact callback entries must derive global-write exclusion and the full initializer context.",
+    "The complete host public caller, transport and filesystem guarantee remains assigned; this is supporting source evidence."
+  ],
+  "replay": {
+    "inputs_sha256": "f4426b964ccf8a8df2d4d34acee425d0055bd36ce03f6df8792d69996570395f",
+    "path": ".tools/host/source-replay-20261110T132756738420Z/result.json",
+    "sha256": "31741f9654d0f96d6d6bfcfc09c6a62d3141245d7004baa92aebfe4682b2e267"
+  },
+  "result": "Actual Clight expression, assignment, entry and internal control steps preserve private-cell address provenance from explicit input origins; exact source inventories identify the private cells and exposed addresses. Actual owning stores conserve current plus retired credits. Both source repairs retain their precisely identified unaffected definitions.",
+  "schema": "leancage-host-source-provenance-review-v1",
+  "source_objects": {
+    "GatewayCallPath": {
+      "object": "309aba39279a50f62c4595d2a9ae3a6e2255544d876d4c30fd978ab192d7c2af",
+      "reused_from": ".tools/host/source-replay-20261110T125354280324Z/result.json",
+      "source": "27ae74398e7d0f2ac2e1af83e714a209ba1e639fa40d46a62d9c4c587f2a12ac"
+    },
+    "GatewayCancellationInputs": {
+      "object": "c580299b158cf88f39ad07117039bbe5439e04477f582bc82c61332dcfe1d871",
+      "source": "935449d781994006db027215ba3af7b0ca72e4b2a712ddd7659e759a9cb8de1e"
+    },
+    "GatewayContexts": {
+      "object": "c2b371e36c3000a3d543842c27d7ecae0e71eb39481d1aa2f5e8ca6ae6d2925d",
+      "reused_from": ".tools/host/source-replay-20261110T125354280324Z/result.json",
+      "source": "79603bee3b62946a44c2a5161abfdeeabf1f1fc0602261578a61a6832af2d9db"
+    },
+    "GatewayErrorRuntime": {
+      "object": "3a9655b0870e7bbdbb482e7fbeab88a4e8ba7780d8aa0c128588e0a63d794ff9",
+      "source": "5975faee38f22f7271de18a90fc988afa8a16cb9e2958646e8ea3f8653b62502"
+    },
+    "GatewayFrames": {
+      "object": "be6ef26aaf9ee647024d74fe6edb4fc36c9ed6f4ecbba0c3ecce0951c3085fea",
+      "reused_from": ".tools/host/source-replay-20261110T125354280324Z/result.json",
+      "source": "351b657254217f3945b864727315eb4e1838e09e3223159082338eb55e1f3e2a"
+    },
+    "GatewayGlobalAddresses": {
+      "object": "226a3a9c05057bbe0cb921b6708fba4326c4058cf00986cb6ea0b0e4fd91adbb",
+      "source": "eb88dcb152db47b375d289de85542b4a442370a32128af6dbd2e49a4d7925b2e"
+    },
+    "GatewayGlobals": {
+      "object": "1f16227ddb1243f808c8bd581aae5fb6f434551ddae87c0c9e75a3cd39521a4a",
+      "source": "c70644ef50dc4fd11e5739d228173dac77f8cfb27342f6093658a131efeb9b54"
+    },
+    "GatewayInitializationInventory": {
+      "object": "777879b91084e40f4c5f5dd333d1a9cb84dbc4404096bc228f4e0eaf1a78d069",
+      "source": "fbf4200d77b6841bf3579ef2e08c02958c797ef9af33b40b8e6243d84ff38271"
+    },
+    "GatewayInitializerGlobalStores": {
+      "object": "bfc1826759bfa63cd72ea6fedcba394d4e98a853aefb69603f700173daef7a04",
+      "source": "bfce682c5b7ca24d11ccd5868a7a0d1aa0bd071b1b6d4ce1a2ff3195b156741a"
+    },
+    "GatewayInitializerOwnedStores": {
+      "object": "31d736cbe21a32031fc654290b67ff8b367d16811b626840a4981208fd971636",
+      "source": "c4b4179214b19e393fc7592715361aa3d0e4fef44b54abd5f6a54375dbda6692"
+    },
+    "GatewayInstructions": {
+      "object": "a976bd0308f818cf1a499333232d855134a3ef1ccd0663a61161284cff6c4514",
+      "reused_from": ".tools/host/source-replay-20261110T125354280324Z/result.json",
+      "source": "504e1d000fef388807c5c461a9eba142a1fa6532170bf1e53e3ef64463df17bb"
+    },
+    "GatewayLoaderRegions": {
+      "object": "a67c14d9611e6a862cb3201aa0506c5b35e086a41ffc4b7c71befbca4d81d763",
+      "source": "8e6a092e2791fdfbb5dd3724b0a9dfcac1afe0207650624eab9019e5cd00d395"
+    },
+    "GatewayMachine": {
+      "object": "b76b2310511ef7f4fc747432d94cecc6cdf594ae5f6cabb9b50ccbecb98c7470",
+      "reused_from": ".tools/host/source-replay-20261110T125354280324Z/result.json",
+      "source": "f6a3adf7af06c12c42c1bf4649a964160cd3dc70615dc273f2957bfa0bbea355"
+    },
+    "GatewayObjects": {
+      "object": "a7274aafb97a652468738e7bc2acfbfc6e90d542a605dab2180eec7716ebf2d9",
+      "source": "f806fddad8200f22a978081f97e3ba74eeb25e9bda108f06ce5f0b454c51be12"
+    },
+    "GatewayObservationAfterSource": {
+      "object": "a4cdbf16b0c004bb5a69beb5c95d7c3fcc30ed796a425dd9ba79a03cd2ba6953",
+      "reused_from": ".tools/host/source-replay-20261110T125354280324Z/result.json",
+      "source": "db117a9df6130d16698bc08c0c034dea82163df277fcc30f3e1ab4227e49b947"
+    },
+    "GatewayObservationBeforeSource": {
+      "object": "7ea4dca9c4e547f5e523193542f9e4e80be30bafaeb59b8a4ee3bb3844d72ef7",
+      "reused_from": ".tools/host/source-replay-20261110T125354280324Z/result.json",
+      "source": "2fce74e393b9211504531aa0cf31d10ac9bce73ef6c38dcd30bf720e10880eb5"
+    },
+    "GatewayObservationSourceRepair": {
+      "object": "4ad2f2863c95313b242d768585bf67ae193c053947bf4f7b29e5c11d4746a5dd",
+      "source": "1031c0f1de2f74532db9b85490c7a7d1f414049485425025d95cd310a98de281"
+    },
+    "GatewayOutcomeAfterSource": {
+      "object": "bedbe0ac57bf556f4f19515d341782aed782629a74b715387783218bc6813ba3",
+      "source": "636015762585214458cf4ab68eef02df799e545f8c3b61d8c3b4226ad2708a9f"
+    },
+    "GatewayOutcomeBeforeSource": {
+      "object": "2bf20d71c4e58c0eae701e08f9f15be64632b6f7683e22b1263a99e79e25d875",
+      "source": "db117a9df6130d16698bc08c0c034dea82163df277fcc30f3e1ab4227e49b947"
+    },
+    "GatewayOutcomeSourceRepair": {
+      "object": "a6f393a701f81b1d986269891042096de5d673354e27f9f1865f27419012b55a",
+      "source": "2dfa8d9a7c2f6c9dbc69801b8245ea82df1509b41c467135f60c06e5a165bfd5"
+    },
+    "GatewayPointerControl": {
+      "object": "c3e07a3d2f46a78123bc3d87162b0b68a9940a37e5e5c0824b33e47ca8722a43",
+      "source": "5c8fec01015acd43391f724082826833e65ab20b801729b461a8b0a237917185"
+    },
+    "GatewayPointerEntry": {
+      "object": "1151f78b5095d74029686c54dca6c2aeca1530eee3ebc4245471bdfc00ea66dd",
+      "reused_from": ".tools/host/source-replay-20261110T125354280324Z/result.json",
+      "source": "74e6bc2b266f11a1b788634d60019010af8aa4b72cb5b8278409f1e77b6db12f"
+    },
+    "GatewayPointerExecution": {
+      "object": "9324bec9ec8ade3da65283a4029e8e94ebaacf56d697710555a6a7c071db2704",
+      "source": "dcb021e8f06e551ea33571659785765b2c20894cee396d59a9305fc800c573a1"
+    },
+    "GatewayPointerExpressions": {
+      "object": "298ed731b9ad4a4ccedc19fe8072db6b0240153a07a0dc90b04b9bd38b89baab",
+      "reused_from": ".tools/host/source-replay-20261110T125354280324Z/result.json",
+      "source": "9da23305ae520ec231d1b8525143a2b6185e5131a089dd130d72fbf997e5e04c"
+    },
+    "GatewayPointerLabels": {
+      "object": "bc16abc6548ff3f538d27f3fb239807e31f57defcb907ef2aefdf576b97c842a",
+      "source": "c8c363cb5bffbd1cecf41f9c51ada1356450597186e73739bc5c142b27e651a7"
+    },
+    "GatewayPointerMemory": {
+      "object": "6ae1f19451d1159d666cccc084ffb9ba4be48eb29b59b77b368a0c1d2b617b7f",
+      "reused_from": ".tools/host/source-replay-20261110T125354280324Z/result.json",
+      "source": "22e4c3e8ef7671987f9c7aec7d653902f91a7670c5ff843cd025ecb81c52c748"
+    },
+    "GatewayPointerOrigins": {
+      "object": "51c2175b59cba79f24e60fd8ce888db6edfcca375b9a8e8328f86334611cde84",
+      "reused_from": ".tools/host/source-replay-20261110T125354280324Z/result.json",
+      "source": "25f67b3b4c793757bfd2dee19d0b0e6246e9a35f8467424f58d23a21adb9e0db"
+    },
+    "GatewayPure": {
+      "object": "6864c789d183e871e609b200b184d283368d98f06c989d28490cef0755a160a9",
+      "reused_from": ".tools/host/source-replay-20261110T125354280324Z/result.json",
+      "source": "9f4aad50a738fa0e76a89242b2690540523b2b699ede43b0ecd25bf5d055fea0"
+    },
+    "GatewayPython": {
+      "object": "cff2358430b6c4732951a6350493fa86765664b244d284415fcf640ad3f4f52c",
+      "source": "6f5ea85efd25d404ef9d8a4b9a313e12711f13f9c8fdbf9299908d523802b041"
+    },
+    "GatewayReferenceAbandon": {
+      "object": "df55ce89bd3c544968816caf81b6f9347590605d9906ad7caa52875013a288a5",
+      "source": "d86032fb041a8fe9c488022989624a6cc873e09b543156619781d97dd64ca515"
+    },
+    "GatewayReferenceAccounting": {
+      "object": "44b420828550bea65d2d9295d6102951ec838a9c919f9e2ccd54b92c9b0d8a13",
+      "source": "c72307c7f6f96d411b090dd229c97c188d28f5ce64ed250639ef7b37565f4934"
+    },
+    "GatewayReferenceHistory": {
+      "object": "41a48ae5aa0a503536242bda3518757eacd0874b97096a239770f3d5866ad47c",
+      "reused_from": ".tools/host/source-replay-20261110T125354280324Z/result.json",
+      "source": "ccc232b63a314ab4a5c90009579bc3e7648c3d5ec55dbe49909f12b3d18ecd85"
+    },
+    "GatewayReferenceLedger": {
+      "object": "3868a0782e8afa41a4be0d420f4143e19d22c1e2d34ca468a1f393953c13a50b",
+      "reused_from": ".tools/host/source-replay-20261110T125354280324Z/result.json",
+      "source": "7c5435e0da7c8b3332ee6ef29779af2345088f3db5d84637f7fad37174733764"
+    },
+    "GatewayReferenceOverwrite": {
+      "object": "b67dce47edba581f917ef619f4e477f6e9d4ee35749cc1e8b6f9748dbd044ee6",
+      "source": "61ee157e45b4cc33162b4fd4ff1204df4b6166c474ee0861b83314cdd5946e34"
+    },
+    "GatewayReferencePlaces": {
+      "object": "0719bf1ec84d43d4381ffae7e630b6e0c6228148ffa3e5070be441574ec742f3",
+      "reused_from": ".tools/host/source-replay-20261110T125354280324Z/result.json",
+      "source": "ca3eeb7a200c5efe71d98deb2230ce820a2d714048244fac12c943804ccbb62c"
+    },
+    "GatewayReferences": {
+      "object": "177f2c5995cd5bc1148f14686e1f29c5ed68b82b9214344e026879ada6f30f90",
+      "source": "87fab195cdff9673f4f88a826a20d5b821936afb8697ceac3812b7343373c71b"
+    },
+    "GatewayRegistry": {
+      "object": "e39c9167a45fe0014650352320febc4657112ee560f4e14f89c4aee02c4e3e5f",
+      "source": "54a3602e71d2b6626056f2f1ac410604962a1c5e142e44642c95db68bbc27b00"
+    },
+    "GatewayRuntime": {
+      "object": "edccb82694559d462f9ee36db6262c23b1acb83db15d88bfc3dfbc890554ff1d",
+      "source": "efd036908691500c07c74e4494df6b9a9108cf9d2708c47ee3cd562204e9602c"
+    },
+    "GatewayRuntimeABI": {
+      "object": "02436c04a90d1c0bd96ca5677924683a3172c520dc8c6229e8ef3fe38d9c5685",
+      "source": "9d9b33e60ccd74d2063f29b7a855839c216d36841faba24afdd0122e71e6298a"
+    },
+    "GatewaySource": {
+      "object": "a13d38a9745b6674d937f226070553b98b19fac69c5ce085cd062cc404816051",
+      "source": "636015762585214458cf4ab68eef02df799e545f8c3b61d8c3b4226ad2708a9f"
+    },
+    "GatewayStreamInterface": {
+      "object": "9db35688f8b937ab2df002af16a0c21d6d2b852d661657a82b7730f23cdcee08",
+      "source": "2fbe68117758e070d8d76b109e883fba2cfdfc94fcdf3e254f6e03a1d5f18cf5"
+    },
+    "GatewayThreadRuntime": {
+      "object": "ec5c9ddd203a20068f169bc76a1018c15dbbfccf2a48dea2dd1e5bcdc8164094",
+      "source": "f59b2ed2e649a70d0a4a8e524ba46148b352330d95846e13345cfabdb009191f"
+    }
+  },
+  "tool_sha256": "f565cfa0be1069f846c9d5253be9915729d33c0ad4eff946ebb82e0cfcf894ad"
+}

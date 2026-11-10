@@ -74,7 +74,10 @@ LEAN_EXPORT lean_obj_res leancage_host_primitive(uint32_t op, uint64_t first,
         break;
     case 1:
         if (!host_fd(first) || second < 1 || second > sizeof(buffer)) { errno = EINVAL; break; }
-        value = syscall(SYS_read, (int)first, buffer, (size_t)second);
+        // §FS-host-boundary.snapshot: Zero selects streams; file copies carry offset plus one.
+        if (third > (UINT64_C(1) << 63)) { errno = EOVERFLOW; break; }
+        value = third ? syscall(SYS_pread64, (int)first, buffer, (size_t)second, (off_t)(third - 1)) :
+                        syscall(SYS_read, (int)first, buffer, (size_t)second);
         if (value >= 0 && (uint64_t)value <= second) count = (size_t)value;
         break;
     case 2:
@@ -133,7 +136,9 @@ LEAN_EXPORT lean_obj_res leancage_host_primitive(uint32_t op, uint64_t first,
         break;
     }
     case 11:
-        if (!first) { errno = EINVAL; break; }
+        // §AR-host-boundary.primitives: A cursor may retire only its retained expected FD.
+        if (!first || !host_fd(second)) { errno = EINVAL; break; }
+        if (dirfd((DIR *)(uintptr_t)first) != (int)second) { errno = EINVAL; break; }
         value = closedir((DIR *)(uintptr_t)first);
         break;
     case 12:

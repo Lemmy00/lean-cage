@@ -1,0 +1,42 @@
+{
+  "accepted_security_delivery": false,
+  "artifacts": {
+    "assurance/host-validation-source-aggregate-kernel.gz": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+    "assurance/host-validation-source-inputs.gz": "4cb36cd42556a668793a0e32639b31bb31f705db967abf68209ffc05281a7b62",
+    "assurance/host-validation-source-kernel.gz": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+    "assurance/host-validation-source-query-log.gz": "b059c3876680760ee008d6df22e2a98906ceebfc712b6b41403c85f4c1015701",
+    "assurance/host-validation-source-query.gz": "29794f79dcb1ee3ea7f51db1f202a398d25be26ca22fe1e72be12addd1f7201d",
+    "assurance/host-validation-source-replay.gz": "4aa097fb52ab6639c2dd2c32364fa6c552d50c85d1703513c895eea6ca536aed"
+  },
+  "axioms": [
+    "ClassicalDedekindReals.sig_forall_dec",
+    "ClassicalDedekindReals.sig_not_dec",
+    "Classical_Prop.classic",
+    "Events.external_functions_sem",
+    "Events.inline_assembly_sem",
+    "FunctionalExtensionality.functional_extensionality_dep"
+  ],
+  "declarations": 114,
+  "eof_amendment": {
+    "fixture_executable": "0a849fb5de9aa527ccfbe8f911b61116e80c772bebed897d13f18dfa38d304e1 unchanged after final source rebuild; matching owned runtime fixture reused.",
+    "path": "assurance/host-source-eof-amendment.json",
+    "result": "All114 declaration types/assumptions and11 interface bodies compare exactly equal to the preserved predecessor; only surplus terminal LF source bytes changed. Complete1295-source replay and independent kernel check passed.",
+    "sha256": "88027f353b65c26b6be23ee9fd2d9e5bec193b2977b82c0820281590ec768121"
+  },
+  "extra_invariant_review": "Generic check adapters retain an extra invariant only through explicit individual observer/ambient effects. GatewayValidationSlots supplies those effects for the actual caller C cells; no whole helper or callback frame is assumed.",
+  "interfaces": 11,
+  "new_primitive_review": "One actual rooted private builtin PyDict_Next observes a retained graph/reference state before its three explicit native output stores. EOF is not used as an iteration-completeness premise. Positions are signed64 sparse opaque cursors; actual locals/access/arguments remain application proofs.",
+  "remaining": [
+    "The original decoded caller and source-region history must supply the validation entry inputs.",
+    "The complete fourteen-field/JSON/files iteration must produce readiness at the SAME actual private-copy call.",
+    "That call must consume the maintained copy/Path/owned-Outcome and original Workspace return proofs.",
+    "Physical channel provenance, global filesystem custody, public caller integration and final identified VM acceptance remain M5.2 work."
+  ],
+  "review": {
+    "path": "assurance/host-validation-source-review.json",
+    "sha256": "691c3b7ca71f488582494c07b795ca6547c28a1c80ddbd4e91a4e478530ebadc"
+  },
+  "reviewed_statement_scope": "Actual source entry, relocated names, required/optional helper execution, conditional normal-state preservation, explicit DictNext outputs and missing-lookup rejection. The original complete validation-to-Copy/Path/public return remains open.",
+  "schema": "leancage-host-validation-source-evidence-v1",
+  "source_object_closure": 141
+}

@@ -117,21 +117,21 @@ private theorem walk_acquired_pair (fuel : Nat) :
                   returns_bind_split _ _ rest
                 cases listing with
                 | error error =>
-                  have impossible := closeDirectory_value _ _ afterListing
+                  have impossible := closeDirectory_value _ _ _ afterListing
                   cases impossible
                 | ok names =>
                   obtain ⟨childEvents, result, finalEvents, childRun, finished, childShape⟩ :=
                     returns_bind_split _ _ afterListing
                   cases result with
                   | error error =>
-                    have impossible := closeDirectory_value _ _ finished
+                    have impossible := closeDirectory_value _ _ _ finished
                     cases impossible
                   | ok next =>
                     obtain ⟨finalReply, closedEvents, finalShape, closedRun⟩ := returns_call_split finished
                     split at closedRun
-                    · have impossible := closeDirectory_value _ _ closedRun
+                    · have impossible := closeDirectory_value _ _ _ closedRun
                       cases impossible
-                    · have same := closeDirectory_value _ _ closedRun
+                    · have same := closeDirectory_value _ _ _ closedRun
                       split at same
                       · cases same
                         have observed := ih.2 _ _ _ _ _ _ _ prefixPublic childRun

@@ -14,6 +14,13 @@
     },
     "sha256": "73e25f7d4de6394795fc0c475d2881e8f5753480bf16695f1dd88bb504236375"
   },
+  "canonicalFraming": {
+    "record": "assurance/host-framing-review.json",
+    "recordSha256": "b2c938cf84a1264c49f559c40e6ad271f93912239d1fc5318c7b8068ada3fdc5",
+    "scope": "Canonical typed framing uniqueness is no longer a mathematical gap. Same physical private channel/committed payload/read provenance remains the separate caller integration obligation.",
+    "status": "mathematical-and-actual-parser-connection-checked",
+    "theorem": "GatewayDecodedFraming.gateway_reference_decoded_writer"
+  },
   "checked": [
     {
       "declaration": "GatewayWordSource.gateway_word_actual_decode",
@@ -268,6 +275,167 @@
       "sourceBinding": "linux/host_python.c current8dc2; current actual SDK/source/strict374 cache; underlying actual ready/read source is consumed through repaired scoped thread adapters."
     }
   ],
+  "currentSourceConstruction": {
+    "acceptance": "No complete M5.2 delivery or default-route switch follows. Full changed-type/foundation review and coordinated final acceptance remain required.",
+    "baselineReplay": ".tools/host/source-replay-20261110T132756738420Z/result.json",
+    "declarations": [
+      "GatewayOutcomeValidationCut.gateway_actual_outcome_reaches_copy",
+      "GatewayOutcomeRoute.gateway_actual_outcome_copy_operation",
+      "GatewayOutcomeCopyViews.gateway_actual_private_outcome_copy_views",
+      "GatewayOutcomePathRelease.gateway_actual_outcome_path_release",
+      "GatewayOutcomeConstructionReturn.gateway_actual_received_outcome_construction",
+      "GatewayOutcomeReceivedReturn.gateway_actual_received_outcome_return",
+      "GatewayOwnedOutcomeFactory.gateway_actual_outcome_allocation_keeps_view",
+      "GatewayOwnedOutcome.gateway_actual_owned_outcome_with_view",
+      "GatewayOutcomeCopyReceived.gateway_actual_received_copy_capture",
+      "GatewayWorkspaceOutcomeSource.gateway_workspace_outcome_return_source_cut",
+      "GatewayWorkspaceOutcomeReturn.gateway_actual_workspace_returned_outcome",
+      "GatewayOutcomePrivateReference.gateway_actual_decoded_graph_release_keeps_outcome",
+      "GatewayReferenceContextCapture.gateway_actual_context_reference_capture"
+    ],
+    "focusedLogs": [
+      ".tools/host/gateway/outcome-view-alias-build.log",
+      ".tools/host/gateway/outcome-fields-integration-build.log",
+      ".tools/host/gateway/outcome-path-release-build.log",
+      ".tools/host/gateway/outcome-copy-views-build.log",
+      ".tools/host/gateway/outcome-allocation-entry-build.log",
+      ".tools/host/gateway/outcome-construction-return-build.log",
+      ".tools/host/gateway/outcome-copy-capture-view-build.log",
+      ".tools/host/gateway/outcome-copy-received-build.log",
+      ".tools/host/gateway/workspace-outcome-source-build.log",
+      ".tools/host/gateway/workspace-outcome-return-build.log",
+      ".tools/host/gateway/outcome-private-reference-build.log",
+      ".tools/host/gateway/reference-context-capture-build.log"
+    ],
+    "nativeSourceSha256": "ed97460f47b86fee5970d9311f25caf51133d753f06aea222263198e1a794224",
+    "openProducerJoins": [
+      "Actual validation and files-iteration prefix must produce private decoded dictionary readiness, native local authority and the same reference scope at its selected copy call.",
+      "Actual tuple helper must connect each New/IncRef/SetItem steal/CallObject/DecRef credit to its real source result, argument cell and local capture; arbitrary Path callback result and aliases remain permitted.",
+      "Initialized source global/ticket/immutable descriptor binding must come from the actual initializer and derived guarded callback authority; the class-load consumer only assumes one-interference retention after that current-state frontier.",
+      "The same original Workspace caller must consume the constructed instance through cleanup and CPython new-reference handoff, then public getters/observation dispatch; loss and errors do not produce a successful return."
+    ],
+    "privateCellReleaseRuntime": "GatewayOutcomePrivateReference has a separate individual DecRef allocation/representation effect for the still-unpublished source-created Outcome outside the released decoded graph. Independent result ticket retention is derived from actual selected-owner accounting. It does not freeze public Outcome instances or whole cleanup runs.",
+    "scope": "Actual full constructor call selects its same private-copy operation. Actual Path insertion/release and class-load/allocation/data-cell/native-return source consumers preserve received non-output field views and the original managed json subtree, with source-selected tickets and alias-aware aggregate current/captured/retired budgets. These consumers do not yet supply the complete original validation/copy/tuple prefix context.",
+    "sourceBindings": {
+      "verification/host/GatewayMandatoryCut.v": "47756a5d9a5c9618cfb891684eeb3a17e65f486d1f85bf088dd0a1dd2230e88e",
+      "verification/host/GatewayOutcomeAllocationEntry.v": "69b1cffa32f03a9428a28bd8d13237ad5b46b051301a50efdfb33360b45137c0",
+      "verification/host/GatewayOutcomeConstructionReturn.v": "1632b518bf2db7e97d77ed3956a251e01791c136da482a5f52bef4b70c610cb2",
+      "verification/host/GatewayOutcomeCopyCapture.v": "e587b224d5de4ba374bc5fe00cad5e20eeb5057a7b272051ba355f36e88c36cf",
+      "verification/host/GatewayOutcomeCopyReceived.v": "5d0f028ecfbd76cac23db0494117f7685bfd5525c86312ff29c721c77add43d4",
+      "verification/host/GatewayOutcomeCopyViews.v": "07c39319bc727d1bae2cb168be3b4088bcc1450f56ea6e83ad5ff5987e7abd8f",
+      "verification/host/GatewayOutcomeFieldUpdate.v": "7cb52643d3ef196c35a64e4c27c0f526fded5c88cb9f5e8f688a2c5f76365226",
+      "verification/host/GatewayOutcomeFields.v": "2b03943b8d7c798e75015e5d122afc70415811febe83c98ce2c85be2e5416c38",
+      "verification/host/GatewayOutcomeMetadata.v": "1e7b2bc53111eebbe0a3475ab6a1f0c1553b2f0f4085c8b3a94dc0eb344febdd",
+      "verification/host/GatewayOutcomePathRelease.v": "cf8d6c54530c8463541d272c8672094221ea04cbebd1197b58b4c0c419b7f4ee",
+      "verification/host/GatewayOutcomePrivateReference.v": "c8f877aaa52d9dc56104aa5094f2578dfbfe7a85bafd9b4ec40c25dc5d53131d",
+      "verification/host/GatewayOutcomeReceivedReturn.v": "203c0d7cee14426b06fc21e91c2f59f34e6658ac7547cdc4ea71188eb962a193",
+      "verification/host/GatewayOutcomeRoute.v": "84f803780b6b8cc19c407475d054733f21ba7beedd7977b75ea9816a17808812",
+      "verification/host/GatewayOutcomeValidationCut.v": "2da4b231b2177ea54314c9803394b383c4d0243553a20c981a36f9b21365a9ce",
+      "verification/host/GatewayOwnedOutcome.v": "79e418012545ed51ecae767a106b32e9a73b61776d7623fed4aaa24455908c16",
+      "verification/host/GatewayOwnedOutcomeFactory.v": "2658577def622bc59c0567cb3417d34107de64b8be1ab61eef105a7404cc0ad9",
+      "verification/host/GatewayPresentationRuntime.v": "5dc8653366fd348548947efb0cf5f38d30c4f21435152aba6b7fa8c33b80af16",
+      "verification/host/GatewayPresentationSource.v": "3f519df97277ec53b5f42cad16eff7f76a88e579952b7a133ef186eb9749da74",
+      "verification/host/GatewayPresentationTrace.v": "b8b446fa44d9438b1fc7aca699dbf54dcba8fc356c7b44c1aa80d2c678c8afd3",
+      "verification/host/GatewayReferenceContextCapture.v": "d031dd1bba2e0f15b557c1a0de272bcd961762b674c5d0c45044eb41844f20f1",
+      "verification/host/GatewayWorkspaceOutcomeReturn.v": "fd6ef0f7301481f8788766c60f5818b0954c9f1d259b4a69152962673953ff59",
+      "verification/host/GatewayWorkspaceOutcomeSource.v": "7b2823287f63987319956c18360b250cd64af5c6a4324762df8628b7f101b9a4"
+    },
+    "sourceBoundReturn": "The Workspace final return consumer instruments the same actual run plugged into the actual older continuation. It moves the selected _outcome ticket into that continuation depth result place, including the real source free step and every ambient/loss prefix; no invocation-depth reset or copied transcript.",
+    "sourceSha256": "636015762585214458cf4ab68eef02df799e545f8c3b61d8c3b4226ad2708a9f",
+    "status": "focused-checked-supporting-original-caller-integration"
+  },
+  "fixedTokenProjection": {
+    "checked": "Exact fixed captured-ID/current invocation projection, alias-safe foreign callback mint/release effects, universal physical-prefix lifting including sticky invalid ghost states.",
+    "remaining": "Bind token grants to actual owning storage/source operands and original public-call transfer; no dynamic all-global count frame or parser/helper-success assumption.",
+    "sourceFiles": [
+      "verification/host/GatewayReferenceTokens.v",
+      "verification/host/GatewayReferenceTokenExecution.v",
+      "verification/host/GatewayReferenceTokenProjection.v"
+    ]
+  },
+  "observationSdkFinding": {
+    "currentSourceReplay": {
+      "excluded": [],
+      "modules": 1185,
+      "record": ".tools/host/source-replay-20261110T125354280324Z/result.json",
+      "scope": "db117 getter plus current strictNative199; supporting source/key/present leaves and token projection checked."
+    },
+    "finding": "If PyUnicode_FromString fails, GetItemString clears the error and returnsNULL. Existing observation getter can then returnNone despite an existing json entry. Do not assume existing-key lookup returns value or pending error.",
+    "recommendation": "Use a checked key constructor and PyDict_GetItemWithError in the observation-only source path; retain actual missing-keyNone for manual outcomes and preserve all failure/loss cases.",
+    "repairEvidence": "assurance/host-observation-allocation-repair.json",
+    "source": "CPython3.12.3 Objects/dictobject.c PyDict_GetItemString lines3648-3659",
+    "sourceChangedByThisRecord": true,
+    "status": "repaired-getter-current-source-and-zero-exclusion-kernel-replay-passed; original public-call integration remains open",
+    "url": "https://raw.githubusercontent.com/python/cpython/v3.12.3/Objects/dictobject.c"
+  },
+  "outcomeLookupRepair": {
+    "canonicalIntegration": {
+      "sealedRepairEvidence": "assurance/host-outcome-lookup-repair.json",
+      "sourceReplay": ".tools/host/source-replay-20261110T132756738420Z/result.json",
+      "status": "canonical Source636 installed; whole matching source graph1192 and independent kernel passed with zero exclusions"
+    },
+    "evidence": "assurance/host-outcome-lookup-repair.json",
+    "finding": "Required files/output/current-render GetItemString can suppress allocation failure and yield unsafe NULL SDK arguments.",
+    "status": "candidate two-function source repair and bounded native allocation/reentry/projection checks passed; canonical rebind pending"
+  },
+  "ownedOutcomeReturnIntegration": {
+    "acceptance": "Supporting implementation only; no M5.2 completion, default-route change or deployed isolation claim.",
+    "auditArtifact": "assurance/host-outcome-return-type-audit.json.gz",
+    "auditArtifactSha256": "629f034d57fc9f80e2ddf46847ba65c36263b75f8b0f4deef08353b823d518fe",
+    "declarations": [
+      "GatewayWorkspaceOutcomeCapture.gateway_actual_workspace_captures_outcome",
+      "GatewayWorkspaceOutcomeRelease.gateway_actual_workspace_decoded_release",
+      "GatewayWorkspaceOutcomeComplete.gateway_actual_workspace_returns_constructed_outcome",
+      "GatewayOwnedOutcomeClass.gateway_actual_owned_outcome_class",
+      "GatewayOwnedOutcomeClassStore.gateway_actual_owned_outcome_class_store",
+      "GatewayOwnedOutcomeClassPublication.gateway_actual_initializer_owns_outcome_class"
+    ],
+    "focusedLogs": [
+      ".tools/host/gateway/workspace-outcome-complete-promoted.log",
+      ".tools/host/gateway/owned-outcome-class-promoted.log",
+      ".tools/host/gateway/outcome-return-audit.log",
+      ".tools/host/gateway/outcome-return-kernel.log"
+    ],
+    "foundations": [
+      "ClassicalDedekindReals.sig_forall_dec",
+      "ClassicalDedekindReals.sig_not_dec",
+      "Classical_Prop.classic",
+      "Events.external_functions_sem",
+      "Events.inline_assembly_sem",
+      "FunctionalExtensionality.functional_extensionality_dep"
+    ],
+    "fullTypesAndAssumptions": "Six complete Set Printing All type and transitive-assumption outputs are retained in the audit artifact; each has exactly the existing six foundations. The aggregate audit module passed the independent pinned kernel checker.",
+    "nativeSourceSha256": "ed97460f47b86fee5970d9311f25caf51133d753f06aea222263198e1a794224",
+    "remainingInputs": [
+      "Produce validation/files-iteration and tuple-helper contexts from the actual original constructor entry.",
+      "Produce FromSpec boundary storage roles, current descriptor regions and full aggregate ledger from the actual initial module load and initializer prefix.",
+      "Join actual exchange cleanup and request extraction to the constructor frontier and transfer the final new reference to the public CPython caller."
+    ],
+    "scope": "The actual constructor Returnstate is consumed by the same original Workspace continuation through its real captures, selected original-data DecRef and final native return. A separate same-operation FromSpec/current-global-store consumer derives the immutable class binding with active and archived aliases. These are components of the incomplete original request-return integration.",
+    "sourceBindings": {
+      "verification/host/GatewayHistorySourceCuts.v": "6d7bf14e4bf0e814c320e066b1da531eeb88c1892e19bb90826fcaf4e3aa2897",
+      "verification/host/GatewayOutcomePrivateReference.v": "c8f877aaa52d9dc56104aa5094f2578dfbfe7a85bafd9b4ec40c25dc5d53131d",
+      "verification/host/GatewayOwnedOutcomeClass.v": "56c15c3396d5f4c859013d179e5d9655a119972dae8e8ac3dc2ad9a839f28655",
+      "verification/host/GatewayOwnedOutcomeClassPublication.v": "9275261aa90bb4f26edb7365400576f1e0aadada5d15df7e082a891e623cc79e",
+      "verification/host/GatewayOwnedOutcomeClassStore.v": "884ef1befae914c884795088337b69aa089acf25e8157a27f71f2ebe7fe3c046",
+      "verification/host/GatewayReferenceCaptureObservation.v": "3f0dafa26fa1c6544be30abc02de46736f8178264aa9c300d809c80600c5d258",
+      "verification/host/GatewayReferenceContextCapture.v": "d031dd1bba2e0f15b557c1a0de272bcd961762b674c5d0c45044eb41844f20f1",
+      "verification/host/GatewayWorkspaceOutcomeCapture.v": "4680bfce5fafc4f582bb4e63efc44f542f6f336cb383f7615ec3e2ab9d554c3a",
+      "verification/host/GatewayWorkspaceOutcomeComplete.v": "8a058ada803bc433e909375e9e3c21c0a5678bfd1a7c971c01bccac6ed5d2262",
+      "verification/host/GatewayWorkspaceOutcomeRelease.v": "fbe596db365e6bfec3e5eb164579860b322dc5292e72a8137a7db9c858d574f8",
+      "verification/host/GatewayWorkspaceOutcomeReturn.v": "c847a91b182dd600c1e488a0d521cea0c6577f3ebb4d214573744fdf1ba01f26",
+      "verification/host/GatewayWorkspaceOutcomeSource.v": "7b2823287f63987319956c18360b250cd64af5c6a4324762df8628b7f101b9a4"
+    },
+    "sourceSha256": "636015762585214458cf4ab68eef02df799e545f8c3b61d8c3b4226ad2708a9f",
+    "statementReview": [
+      "Workspace complete starts at the actual returned constructor continuation with an explicit source-bound ledger normal form. It does not claim that the original Workspace Callstate or constructor prefix has yet produced that frontier.",
+      "Class publication consumes the SAME actual FromSpec primitive and SAME later continuation; actual class-global store and overwrite archival produce the later value and owner. The class-cell role/load at the FromSpec boundary remains an internal input to be produced cumulatively from the initial loader/runtime history.",
+      "Minted native credit and every selected release are tied to actual source occurrences and operand places. Repeated-pointer aliases and active plus retired reference totals remain accounted together. No legacy root-lease runtime theorem is consumed.",
+      "Type creation binds the real immutable type specification, exact property table and read-only observation getter; it does not assume Path factory semantics or freeze public Outcome data.",
+      "The broad machine still retains errors, ambient interference, blocked states and loss. These successful-return implications do not establish termination or fabricate a returned result after loss."
+    ],
+    "status": "focused-and-independent-kernel-checked-support-for-original-return"
+  },
   "presentationRoute": {
     "nativeCLI": "host_cli_call sends command5; Commands.cliOutput uses shared WireJson.render and C forwards returned stdout/stderr bytes. Root integration must activate thin canonical CLI aliases; the legacy Python CLI remains a separate unactivated route.",
     "nativeOutcomeJson": "host_outcome_json returns a fresh dictionary projecting current public live fields; no json.dumps call is made in that native method.",
@@ -535,6 +703,17 @@
       "reason": "User requested integration and pause; no new work opened after freeze.",
       "sourceState": "All maintained response/parser/Outcome checkpoint edits compiled; no unfinished or uncompiled maintained draft."
     },
+    "handoffResumed": {
+      "acceptance": "Still supporting work within incomplete M5.2; no default route switch.",
+      "completedSinceCheckpoint": [
+        "GatewayOwnedOutcome.gateway_actual_owned_outcome composes actual allocation/store/return with alias-safe copy-credit adoption and the actual older caller stack.",
+        "Private-only exact dictionary-copy request repair checked across430 affected modules; appendix assurance/host-outcome-copy-amendment.json preserves original records.",
+        "Actual observation root/lookup/present-reference/release/return source paths and NULL-data denial; all fourteen getter closure-bound/data-root selection source paths.",
+        "GatewayOwnedObservationPresent.gateway_actual_owned_observation_present retains actual metadata graph and source result credit through selected data release and real return; it starts at the actual nonNULL lookup-return frontier."
+      ],
+      "next": "Produce the earlier field-validation/copy/Path source prefix and the complete original/public observation getter; coordinate narrow observation error repair.",
+      "reason": "User explicitly resumed M5.2; prior pause checkpoint and sealed records remain historical."
+    },
     "matchingFocusedLogs": [
       ".tools/host/gateway/parse-scalars-build.log",
       ".tools/host/gateway/reference-array-framed-source-build.log",
@@ -631,7 +810,7 @@
       ".tools/host/gateway/reference-parser-audit2-build.log",
       ".tools/host/gateway/reference-parser-audit3-build.log"
     ],
-    "next": "Connect the repaired actual parser graph and reserved ledger to Outcome construction/observation and post-bootstrap initializer, with source-derived runtime authority and actual engine writer/private-channel provenance.",
+    "next": "Produce the earlier field-validation/copy/Path source prefix and the complete original/public observation getter; coordinate narrow observation error repair.",
     "outcomeRepairCheckpoint": {
       "nextAction": "Compose actual GenericAlloc continuation receipt with gateway_owned_outcome_adopt_credits using the source copy-head+older-stack ledger. Derive final source-bound data-cell/result entries from the actual store/load and saved callers, then continue actual host_outcome_from field-validation/dict-copy/Path and observation getter.",
       "path": "assurance/host-outcome-reference-checkpoint.json",
@@ -639,11 +818,10 @@
       "status": "Checked supporting proof checkpoint only; complete Outcome/public caller and full M5.2 acceptance remain unfinished."
     },
     "remaining": [
-      "Actual parsed metadata through Path callback observation, GenericAlloc/field store, original observation graph and all14 public presentation attributes.",
-      "Source-connected matching SDK/thread runtime authority excludes callback-writable globals from native-private SDK frames; actual source guard/callback history supplies global retention.",
-      "Complete post-bootstrap initializer module/class/current+retired source reference ownership.",
-      "Expected typed writer tree versus native decoded tree plus same owned engine-writer/private-channel/native-read provenance.",
-      "Jointly inhabited useful complete execution and final integrated affected acceptance."
+      "Connect the same identified engine writer to the private peer byte queue and actual native reads, preserving committed prefixes, partial delivery, loss, EOF and exact descriptor/process lifetimes.",
+      "Compose actual host_outcome_from field-validation, files iteration, private dictionary copy and Path callback with gateway_actual_owned_outcome, original metadata retention, all fourteen fields and observation/public dispatch.",
+      "Repair the concrete observation GetItemString allocation-error suppression, then bind every getter outcome to its actual SDK observation; keep callback-mutated presentation separate from original response metadata.",
+      "Close source-produced initialized class/path/global authority and all current/retired reference reservations, public result/cleanup joins, useful/loss witnesses and the coordinated final acceptance audit."
     ],
     "resultInterface": "GatewayReferenceParseResult.gateway_reference_parse_result",
     "review": "Complete numeric/parser statements, 175 transitive assumption closures and15 critical interface bodies reviewed in assurance/host-parser-source-review.json; same six baseline foundations, no invalid universal lease runtime. Overall public/IPC acceptance remains open.",
@@ -707,13 +885,12 @@
     "status": "Supporting source interfaces checked; old unindexed-root claims remain invalidated pending full caller conversion/acceptance."
   },
   "remaining": [
-    "Complete actual integer and JSON-number lexical, chunk-loop and arithmetic constructor paths; derive canonicality from the actual source/typed writer rather than from framing alone.",
-    "Compose recursive array/dictionary source iterations with same-run child stream receipts, fresh mutable graph separation, exact builtin updates and source-owned place/ticket transfer/release. Exact old graph snapshots and local append/insertion/allocation/release/return interfaces are checked; the complete source fold remains active.",
-    "Connect the same identified engine writer to the private peer byte queue and actual native reads, preserving partial delivery, loss, EOF and all source counter updates.",
-    "Compose the actual Outcome field checks/copy/Path callback prefix with the checked allocation tail and all fourteen fields plus observation dispatch. Derive private original metadata retention and callback input/output provenance from actual source roots.",
-    "Construct useful/loss caller witnesses, integrate the public host caller, and run the one affected final source/type/transitive-assumption acceptance audit under root coordination."
+    "Connect the same identified engine writer to the private peer byte queue and actual native reads, preserving committed prefixes, partial delivery, loss, EOF and exact descriptor/process lifetimes.",
+    "Compose actual host_outcome_from field-validation, files iteration, private dictionary copy and Path callback with gateway_actual_owned_outcome, original metadata retention, all fourteen fields and observation/public dispatch.",
+    "Finish actual observation/getter/public dispatch using source-selected key/data/value references and fixed captured-token projection; retain the repaired real error paths. Required-field construction/render lookup guards and the source636 rebind are checked in the baseline1192 replay; the complete public consumer remains active.",
+    "Close source-produced initialized class/path/global authority and all current/retired reference reservations, public result/cleanup joins, useful/loss witnesses and the coordinated final acceptance audit."
   ],
-  "reviewStatus": "Focused current-source kernel checks support the listed source branches and construction adapters. Supporting declarations have not been promoted to completed M5.2; final integrated changed-statement/transitive-foundation review remains pending.",
+  "reviewStatus": "Focused source/kernel and native candidate checks remain supporting evidence. The original-call fourteen-field/files/copy/Path/public result integration and final declaration/transitive-foundation acceptance remain active.",
   "runtimeBoundary": [
     "Primitive CPython and Linux/runtime contracts are explicit parameters, not verified kernel or interpreter implementations.",
     "Actual source fresh builtin constructors and the absence of exposure in callback arguments/public roots must establish owned private trees.",
@@ -723,6 +900,7 @@
     "Protected immutable singleton/cached payloads may be shared publicly. Mutable parsed containers require actual fresh construction and source-owned unpublished graph leases."
   ],
   "schema": 1,
+  "accepted_security_delivery": false,
   "sourceEpoch": {
     "nativeSourceSha256": "029c84c480f2805bff2e7e4bbd5f769cabfb24c7455d1ff2f8aa0b77a1c468d1",
     "prior362Fingerprints": "unchanged",

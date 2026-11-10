@@ -24,10 +24,10 @@ theorem run_creation_custody_state_catalogued {kernel : Contract} {runtime : Pri
     (journal : ActorJournal runtime (Population.empty initial) ticks final)
     (anchor : TemporaryAnchor initial) (anchorLookup : TemporaryLookupContract kernel anchor)
     (anchors : SystemAnchorJournal runtime anchor semantics (Population.empty initial) ticks final)
-    (backend : PrimitiveChildAuthorityProducer child ticks)
     (authorityProfile : NativeAuthorityProfile native ticks hostUid) (lookupProfile : NativeLookupProfile native ticks hostUid)
     {first last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid first callers ticks last next)
+    {backend : NativeAuthorityJournal recording}
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState} {request : Request}
     {observed : Option Reply} (selected : ticks[position]? = some tick)
     (action : tick.action.eventFor actor = some (Program.filesystemPrefixEvent (request, observed)))
@@ -42,9 +42,9 @@ theorem run_creation_custody_state_catalogued {kernel : Contract} {runtime : Pri
       foreignReferences (processed ++ [tick]) tick.after nativeCurrent,
       CurrentRootCreation prior.source.custody.caps prior.source.custody.catalogue
         updated.source.custody.caps updated.source.custody.catalogue tick position := by
-  obtain ⟨next, choice, ownership⟩ := run_creation_ownership_prefix_catalogued namespaceLaws descriptors lifetimes
+  obtain ⟨next, choice, ownership⟩ := run_creation_ownership_prefix_catalogued (backend := backend) namespaceLaws descriptors lifetimes
       references raw sdk accounts objects liveMetadata types
-      metadata nativeMetadata lookup probes journal anchor anchorLookup anchors backend authorityProfile lookupProfile
+      metadata nativeMetadata lookup probes journal anchor anchorLookup anchors authorityProfile lookupProfile
       recording selected action present source prior.source
   have notLaunch : ∀ owner references closeExec directory, tick.action ≠ .launch owner references closeExec directory := by
     intro owner references closeExec directory impossible
@@ -75,10 +75,10 @@ theorem run_creation_custody_state {kernel : Contract} {runtime : PrimitiveActor
     (journal : ActorJournal runtime (Population.empty initial) ticks final)
     (anchor : TemporaryAnchor initial) (anchorLookup : TemporaryLookupContract kernel anchor)
     (anchors : SystemAnchorJournal runtime anchor semantics (Population.empty initial) ticks final)
-    (backend : PrimitiveChildAuthorityProducer child ticks)
     (authorityProfile : NativeAuthorityProfile native ticks hostUid) (lookupProfile : NativeLookupProfile native ticks hostUid)
     {first last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid first callers ticks last next)
+    {backend : NativeAuthorityJournal recording}
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState} {request : Request}
     {observed : Option Reply} (selected : ticks[position]? = some tick)
     (action : tick.action.eventFor actor = some (Program.filesystemPrefixEvent (request, observed)))
@@ -91,7 +91,7 @@ theorem run_creation_custody_state {kernel : Contract} {runtime : PrimitiveActor
     (positionCount : processed.length = position) :
     Nonempty (CustodyState runtime initial ticks hostUid dataObjects directories semantics
       foreignReferences (processed ++ [tick]) tick.after nativeCurrent) := by
-  obtain ⟨updated, choice⟩ := run_creation_custody_state_catalogued namespaceLaws descriptors lifetimes references raw sdk accounts objects liveMetadata types metadata nativeMetadata lookup probes journal anchor anchorLookup anchors backend authorityProfile lookupProfile recording selected action present source prior positionCount
+  obtain ⟨updated, choice⟩ := run_creation_custody_state_catalogued (backend := backend) namespaceLaws descriptors lifetimes references raw sdk accounts objects liveMetadata types metadata nativeMetadata lookup probes journal anchor anchorLookup anchors authorityProfile lookupProfile recording selected action present source prior positionCount
   exact ⟨updated⟩
 
 -- §FS-host-boundary.ownership: Preserve the exact current creation choice and source registry.
@@ -113,10 +113,10 @@ theorem run_creation_custody_state_registered {kernel : Contract} {runtime : Pri
     (journal : ActorJournal runtime (Population.empty initial) ticks final)
     (anchor : TemporaryAnchor initial) (anchorLookup : TemporaryLookupContract kernel anchor)
     (anchors : SystemAnchorJournal runtime anchor semantics (Population.empty initial) ticks final)
-    (backend : PrimitiveChildAuthorityProducer child ticks)
     (authorityProfile : NativeAuthorityProfile native ticks hostUid) (lookupProfile : NativeLookupProfile native ticks hostUid)
     {first last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid first callers ticks last next)
+    {backend : NativeAuthorityJournal recording}
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState} {request : Request}
     {observed : Option Reply} (selected : ticks[position]? = some tick)
     (action : tick.action.eventFor actor = some (Program.filesystemPrefixEvent (request, observed)))
@@ -129,7 +129,7 @@ theorem run_creation_custody_state_registered {kernel : Contract} {runtime : Pri
     (positionCount : processed.length = position) :
     Nonempty (RegisteredCustodyState runtime initial ticks hostUid dataObjects directories semantics
       foreignReferences (processed ++ [tick]) tick.after nativeCurrent) := by
-  obtain ⟨updated, choice⟩ := run_creation_custody_state_catalogued namespaceLaws descriptors lifetimes references raw sdk accounts objects liveMetadata types metadata nativeMetadata lookup probes journal anchor anchorLookup anchors backend authorityProfile lookupProfile recording selected action present source prior.current positionCount
+  obtain ⟨updated, choice⟩ := run_creation_custody_state_catalogued (backend := backend) namespaceLaws descriptors lifetimes references raw sdk accounts objects liveMetadata types metadata nativeMetadata lookup probes journal anchor anchorLookup anchors authorityProfile lookupProfile recording selected action present source prior.current positionCount
   exact ⟨prior.creation updated (by simpa only [positionCount] using choice)⟩
 
 -- §FS-host-boundary.ownership: Preserve the exact current creation choice and source registry.

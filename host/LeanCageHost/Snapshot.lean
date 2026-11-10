@@ -146,8 +146,9 @@ def bytesLE : List UInt8 → List UInt8 → Bool
 def sortNames (names : List String) : List String :=
   names.mergeSort (fun a b => bytesLE a.toUTF8.data.toList b.toUTF8.data.toList)
 
-def closeDirectory {α : Type} (cursor : UInt64) (result : Result α) : Program (Result α) :=
-  .call { op := .dirClose, first := cursor } fun reply =>
+-- §AR-host-boundary.primitives: The adapter checks the cursor still owns this exact retained FD.
+def closeDirectory {α : Type} (fd cursor : UInt64) (result : Result α) : Program (Result α) :=
+  .call { op := .dirClose, first := cursor, second := fd } fun reply =>
     match result with
     | .error error => pure (.error error)
     | .ok value =>
@@ -176,17 +177,17 @@ mutual
                 (enumerate (limits.workspaceInodes - state.count + 3) cursor
                   (limits.workspaceInodes - state.count) [] []).bind fun listing =>
                   match listing with
-                  | .error error => closeDirectory cursor (.error error)
+                  | .error error => closeDirectory fd cursor (.error error)
                   | .ok names =>
                     (walkChildren fuel limits fd prefixName (sortNames names) state).bind fun copied =>
                       match copied with
-                      | .error error => closeDirectory cursor (.error error)
+                      | .error error => closeDirectory fd cursor (.error error)
                       | .ok after =>
                         .call { op := .stat, first := fd } fun finalReply =>
                           match parseStat finalReply with
-                          | none => closeDirectory cursor (.error (failure "directory fstat" finalReply))
+                          | none => closeDirectory fd cursor (.error (failure "directory fstat" finalReply))
                           | some final =>
-                            closeDirectory cursor (if final == before then .ok after
+                            closeDirectory fd cursor (if final == before then .ok after
                               else .error "directory changed during bounded snapshot")
 
   def walkChildren : Nat → Limits → UInt64 → String → List String → State → Program (Result State)

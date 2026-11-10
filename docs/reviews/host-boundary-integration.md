@@ -258,7 +258,7 @@ M5.3 subsequently supplies policy/authority producers, M5.4 owned lifetime and
 limits, and M5.5 truthful observation provenance. The host theorem must permit
 arbitrary VM bytes independently of those later guest-truth producers.
 
-The current guarded caller source is C `8dc2bdd9b0a45478` / Clight
+The recorded guarded caller source was C `8dc2bdd9b0a45478` / Clight
 `2fce74e393b92115`. Its exact previous function-body tails remain unchanged.
 The outgoing readiness proof derives request-channel silence from the actual
 distinct control descriptor, then feeds the real sender and source-built header.
@@ -295,3 +295,51 @@ supply no class-global memory frame or complete-initializer success premise.
 The final module, current regions and callback authority must still be produced
 for the existing public completion consumers under
 [§FS-host-boundary.caller.initialization](../functional-spec/FS-host-boundary.md#callerinitialization-reject-nested-initialization-before-changing-module-state).
+
+Typed response framing now has checked prefix uniqueness under
+[§AR-host-boundary.interfaces.gateway](../architecture/AR-host-boundary.md#interfacesgateway-freeze-the-native-request-and-typed-response-wire).
+`GatewayFraming.actual_response_prefix` consumes the maintained executable
+writer. `GatewayResponseFraming.gateway_response_complete_prefix` proves the
+native source-word comparison without a future write acknowledgement or engine
+return. The broad source relation retains its arbitrary scalar tags; the actual
+writer view and parser heap supply canonicality, and the ordinary proof exhibits
+the excluded null/scalar-zero prefix collision explicitly.
+
+`GatewayDecodedFraming.gateway_reference_decoded_writer` consumes the actual
+call72 parse-result interface. Given the physical writer/received byte prefix,
+it retains the same source-owned reference ticket, graph snapshot, descriptor and
+context, now indexed by the writer's exact value, and proves that no pending
+suffix remains. The physical history still has to produce that byte-prefix
+input. This is a checked source-framing connection within M5.2, not completed
+host acceptance.
+
+The full source/type/interface/assumption and ordinary kernel-body review is in
+`assurance/host-framing-review.json`. Matching source/object evidence for the
+415 unchanged dependencies was reused, including the explicit private-copy
+amendment; the new comparison consumers and an independent aggregate Rocq kernel
+check passed. Native assumptions are four existing logical foundations, with
+definitional UIP only for `Lean.eq`; ordinary proofs use the existing three
+foundations. The strict full-theorem import trial is retained separately, without
+relaxing the importer or changing the frozen shared data.
+
+The observation getter now checks key construction and uses the error-reporting
+dictionary lookup. The bounded CPython allocation fixture reproduces the old
+incorrect `None` and confirms `MemoryError` on the repaired implementation, while
+true absence still returns `None`. The existing observation/presentation fixture
+passes with identical repaired extension bytes. These are ordinary no-workload
+caller checks, recorded in `assurance/host-observation-allocation-repair.json`.
+
+`GatewayObservationSourceRepair` checks equality of every other source definition,
+retained public identifier and composite layout between the preserved and new
+Clight epochs. `assurance/host-observation-source-amendment.json` binds that
+change explicitly. The later combined source replay in
+`assurance/host-channel-invocations-review.json` includes the previously developing
+getter consumers and the append-only native invocation data. Source compilation,
+an aggregate import and independent kernel checking pass. The later complete
+source replay checks the pointer and reference-token consumers without exclusions.
+The required-field repair in `host_outcome_from` and `host_outcome_json` rejects
+failed lookups before an invalid runtime argument is used; its immutable source
+epoch and no-workload allocation fixtures are recorded in
+`assurance/host-outcome-source-amendment.json` and
+`assurance/host-outcome-lookup-repair.json`. The current Clight identity is
+`6360157625852144`; these checks do not supply the unfinished complete caller.

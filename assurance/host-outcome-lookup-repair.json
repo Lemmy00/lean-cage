@@ -1,0 +1,90 @@
+{
+  "artifacts": {
+    "host-outcome-constructor-lookup-fixture.c.gz": "c38bae74b0912ce34159de4bebbe2beefe1c5e07b14c8e8405cbfa67d5f6e212",
+    "host-outcome-constructor-lookup-result.json.gz": "cb986f6766cc19d8ebaed892f991dbf8ae528a94d9f7dfdc366aa31f98d97ac1",
+    "host-outcome-lookup-primitive.c.gz": "aea2d6fad3ed6501077a771cf0af10b359924beb268e0995422c4ad991ac65fe",
+    "host-outcome-lookup-primitive.json.gz": "02ee1e0243b88b4aad93c5feac8624a19b68a517656b402f5ea95762c3beb85a",
+    "host-outcome-lookup-repair.patch.gz": "f762fd990c20ff99a50fe9f96d905e1702037ff130e403261d4c717ab859ed05",
+    "host-outcome-observation-current.json.gz": "82ec678f9313bc296deb5f16b5bbdeefeb96f31b00a3e211b91b085480ab45c7",
+    "host-outcome-projection-current.json.gz": "2a803acb9bc0ee43982adeba44b99973124c6831e8a5611b2d5ba443405c82c7",
+    "host-outcome-reentry-current.json.gz": "49131d527d5fc2eb8ff007c3bc07686b4349b7812f224bd88812e017496a70ab",
+    "host-outcome-render-allocation.json.gz": "3d0ae9f2a36e3c38fdeb10705e055a1c7fc3a41b166d12c5c60853a296cd3a13"
+  },
+  "change": {
+    "behavior": "Guard failed required lookups before their next SDK use. Preserve pending errors; when the old lookup API suppressed its error, report explicit ValueError. Original success, current-field mutation and callback behavior are retained.",
+    "dedicatedObservation": "The already repaired checked Unicode key/WithError getter is unchanged and still propagates its actual MemoryError.",
+    "functions": [
+      "host_outcome_from",
+      "host_outcome_json"
+    ]
+  },
+  "checks": {
+    "actualConstructorFaultAdapter": {
+      "extensionSha256": "a88c258359016b5ba34a20e532910a53bae1504229ead727e7e79aaab0a15ba6",
+      "result": "passed files/output second-lookup allocation failures each produce explicit ValueError before iteration/Path",
+      "scope": "Exact maintained host_outcome_from body in isolated extension with a lookup adapter injecting a real one-shot CPython allocation failure. No engine/VM; invalidNULL APIs not executed."
+    },
+    "allocationRegression": {
+      "explicitErrorWindows": 47,
+      "file": "tests/integration/host_gateway_outcome_allocations.py",
+      "postFailureUsability": "passed",
+      "scope": "Manual native Outcome; no engine or VM.",
+      "sha256": "552abd6f113e9363bd540368afa7a7e837e8613a87a945c307530828ca980b9b",
+      "unchangedSuccessWindows": 17,
+      "windows": 64
+    },
+    "candidateExtension": "26eefff2d9426e1396a5eb1df4fcff3668a3cbcec1ba42825c0f3e498ee40456",
+    "existingObservation": "Actual key MemoryError and genuine missing metadataNone:passed",
+    "existingPresentation": "GC/self-reinitialization and setter-destructor reentry:passed",
+    "existingProjection": "Bounded protocol emulator, mutable Path factory, lossless filesystem bytes and immutable source getter binding:passed; no VM/workload.",
+    "syntax": "actual3.12 headers, Werror:passed"
+  },
+  "problem": {
+    "actualPrimitiveProbe": "A one-shot real CPython3.12.3 OBJ allocation failure returnedNULL with no pending error; the output field remained present. Invalid NULL SDK operations were not executed.",
+    "source": "Original required-field GetItemString lookups can suppress key allocation failure and returnNULL with the field present.",
+    "unsafeUses": [
+      "host_outcome_from files\u2192PyDict_Next",
+      "host_outcome_from output\u2192Path tuple IncRef",
+      "host_outcome_json status\u2192RichCompareBool",
+      "host_outcome_json captures\u2192buffer digest",
+      "host_outcome_json output\u2192IsTrue",
+      "host_outcome_json scalar\u2192SetItemString"
+    ]
+  },
+  "remaining": [
+    "Source-retention and1192-module independent kernel pass are recorded in the separately owned root source-epoch chain; this runtime record does not replace its full statements/assumptions.",
+    "Complete same-original-call fourteen-field/files/private-copy/Path/allocation/data-store/public-handoff source consumer; supporting primitive/source leaves alone do not establish it.",
+    "Coordinated physical IPC, initialized global/callback authority and complete M5.2 acceptance remain open."
+  ],
+  "schema": 1,
+  "source": {
+    "afterC": "ed97460f47b86fee5970d9311f25caf51133d753f06aea222263198e1a794224",
+    "beforeC": "be9170ecf1b45075fb7001570b1d598cf6ab0ce04c07a6c441c5f9b122628a2c",
+    "beforeClight": "db117a9df6130d16698bc08c0c034dea82163df277fcc30f3e1ab4227e49b947",
+    "candidateClight": "636015762585214458cf4ab68eef02df799e545f8c3b61d8c3b4226ad2708a9f",
+    "file": "linux/host_python.c",
+    "matchingSourceReplay": {
+      "exclusions": [],
+      "modules": 1192,
+      "record": ".tools/host/source-replay-20261110T132756738420Z/result.json",
+      "result": "source graph,aggregate and independent kernel:passed",
+      "separateChain": "Root seals the exact db117\u2192636 SourceRepair and immutable earlier observation source-retention chain separately."
+    },
+    "pendingDeclarationDelta": {
+      "added": [],
+      "c_sha256": "ed97460f47b86fee5970d9311f25caf51133d753f06aea222263198e1a794224",
+      "changed": [
+        "f_host_outcome_from",
+        "f_host_outcome_json"
+      ],
+      "program_sha256": "636015762585214458cf4ab68eef02df799e545f8c3b61d8c3b4226ad2708a9f",
+      "removed": []
+    },
+    "previousEpoch": "Preserved in root outcome-repair-before snapshot and sealed observation source archive; no historical evidence overwritten."
+  },
+  "specIds": [
+    "FS-host-boundary.caller",
+    "AR-host-boundary.primitives"
+  ],
+  "status": "scoped-runtime-repair-evidence-frozen; application source composition remains active"
+}

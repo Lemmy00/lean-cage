@@ -54,10 +54,10 @@ theorem actual_primitive_run_creation_catalogued {kernel : Contract} {runtime : 
     (journal : ActorJournal runtime (Population.empty initial) ticks final)
     (anchor : TemporaryAnchor initial) (anchorLookup : TemporaryLookupContract kernel anchor)
     (anchors : SystemAnchorJournal runtime anchor semantics (Population.empty initial) ticks final)
-    (backend : PrimitiveChildAuthorityProducer child ticks)
     (authorityProfile : NativeAuthorityProfile native ticks hostUid) (lookupProfile : NativeLookupProfile native ticks hostUid)
     {prior last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid prior callers ticks last next)
+    {backend : NativeAuthorityJournal recording}
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState} {request : Request}
     {observed : Option Reply} (selected : ticks[position]? = some tick)
     (action : tick.action.eventFor actor = some (Program.filesystemPrefixEvent (request, observed)))
@@ -81,8 +81,8 @@ theorem actual_primitive_run_creation_catalogued {kernel : Contract} {runtime : 
   have actual := selected_filesystem_step tick action present
   have filesystem := filesystem_event_family action
   have safe := selected_primitive_action_authority journal selected
-  have change := primitive_run_mkdir_delta namespaceLaws descriptors lifetimes references raw sdk accounts
-    metadata nativeMetadata lookup probes journal backend authorityProfile lookupProfile recording selected action present source
+  have change := primitive_run_mkdir_delta (backend := backend) namespaceLaws descriptors lifetimes references raw sdk accounts
+    metadata nativeMetadata lookup probes journal authorityProfile lookupProfile recording selected action present source
   have allocation : ∀ object, tick.before.shared.allocated object = true → tick.after.shared.allocated object = true :=
     fun object => kernel.allocation_monotone (tick.before.project engine) tick.after.shared request observed object actual
   rcases mkdir_delta_cases change source.mkdir with unchanged | committed
@@ -95,8 +95,8 @@ theorem actual_primitive_run_creation_catalogued {kernel : Contract} {runtime : 
     obtain ⟨parent, live, rawParent, parentObject, parentPublic⟩ := primitive_run_parent_anchor descriptors anchor anchorLookup
       source (fun ordinal reply before after sampled => system_anchor_source_snapshot anchors sampled) state.graph
     obtain ⟨currentParent, information, currentReference, currentRaw, known, trusted, exactNames,
-      mkdir, mode, component, reserved⟩ := primitive_run_mkdir_safe_parent descriptors lifetimes references raw sdk accounts
-        metadata nativeMetadata lookup probes journal backend authorityProfile lookupProfile recording selected present source
+      mkdir, mode, component, reserved⟩ := primitive_run_mkdir_safe_parent (backend := backend) descriptors lifetimes references raw sdk accounts
+        metadata nativeMetadata lookup probes journal authorityProfile lookupProfile recording selected present source
     have currentSame : currentParent = parent := Option.some.inj (currentReference.symm.trans live)
     subst currentParent
     have deltaSame : delta.parent = parent := Option.some.inj (delta.reference.symm.trans live)
@@ -140,10 +140,10 @@ theorem actual_primitive_run_creation_current {kernel : Contract} {runtime : Pri
     (journal : ActorJournal runtime (Population.empty initial) ticks final)
     (anchor : TemporaryAnchor initial) (anchorLookup : TemporaryLookupContract kernel anchor)
     (anchors : SystemAnchorJournal runtime anchor semantics (Population.empty initial) ticks final)
-    (backend : PrimitiveChildAuthorityProducer child ticks)
     (authorityProfile : NativeAuthorityProfile native ticks hostUid) (lookupProfile : NativeLookupProfile native ticks hostUid)
     {prior last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid prior callers ticks last next)
+    {backend : NativeAuthorityJournal recording}
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState} {request : Request}
     {observed : Option Reply} (selected : ticks[position]? = some tick)
     (action : tick.action.eventFor actor = some (Program.filesystemPrefixEvent (request, observed)))
@@ -168,8 +168,8 @@ theorem actual_primitive_run_creation_current {kernel : Contract} {runtime : Pri
           birth.tick = tick ∧ birth.position = position ∧ Sigma.mk root birth ∈ afterCatalogue ∧
             afterCaps = caps.addRoot root) := by
   obtain ⟨afterCaps, afterCatalogue, custody, coverage, currentValid, comparisons, labels, flow, included, origin, choice⟩ :=
-    actual_primitive_run_creation_catalogued namespaceLaws descriptors lifetimes references raw sdk accounts
-      objects liveMetadata types metadata nativeMetadata lookup probes journal anchor anchorLookup anchors backend
+    actual_primitive_run_creation_catalogued (backend := backend) namespaceLaws descriptors lifetimes references raw sdk accounts
+      objects liveMetadata types metadata nativeMetadata lookup probes journal anchor anchorLookup anchors
       authorityProfile lookupProfile recording selected action present source state names catalogue covered valid
   exact ⟨afterCaps, afterCatalogue, custody, coverage, currentValid, comparisons, labels, flow, included, origin,
     choice.receipt⟩
@@ -193,10 +193,10 @@ theorem actual_primitive_run_creation_with_flow {kernel : Contract} {runtime : P
     (journal : ActorJournal runtime (Population.empty initial) ticks final)
     (anchor : TemporaryAnchor initial) (anchorLookup : TemporaryLookupContract kernel anchor)
     (anchors : SystemAnchorJournal runtime anchor semantics (Population.empty initial) ticks final)
-    (backend : PrimitiveChildAuthorityProducer child ticks)
     (authorityProfile : NativeAuthorityProfile native ticks hostUid) (lookupProfile : NativeLookupProfile native ticks hostUid)
     {prior last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid prior callers ticks last next)
+    {backend : NativeAuthorityJournal recording}
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState} {request : Request}
     {observed : Option Reply} (selected : ticks[position]? = some tick)
     (action : tick.action.eventFor actor = some (Program.filesystemPrefixEvent (request, observed)))
@@ -217,8 +217,8 @@ theorem actual_primitive_run_creation_with_flow {kernel : Contract} {runtime : P
         ∃ object, Nonempty (RootBirth runtime ticks ⟨actor, object, anchor.visible, request.left⟩) ∧
           afterCaps = caps.addRoot ⟨actor, object, anchor.visible, request.left⟩) := by
   obtain ⟨afterCaps, afterCatalogue, custody, coverage, currentValid, comparisons, labels, flow, included, origin, receipt⟩ :=
-    actual_primitive_run_creation_current namespaceLaws descriptors lifetimes references raw sdk accounts
-      objects liveMetadata types metadata nativeMetadata lookup probes journal anchor anchorLookup anchors backend
+    actual_primitive_run_creation_current (backend := backend) namespaceLaws descriptors lifetimes references raw sdk accounts
+      objects liveMetadata types metadata nativeMetadata lookup probes journal anchor anchorLookup anchors
       authorityProfile lookupProfile recording selected action present source state names catalogue covered valid
   exact ⟨afterCaps, afterCatalogue, custody, coverage, currentValid, comparisons, labels, flow, included, origin⟩
 
@@ -241,10 +241,10 @@ theorem actual_primitive_run_creation {kernel : Contract} {runtime : PrimitiveAc
     (journal : ActorJournal runtime (Population.empty initial) ticks final)
     (anchor : TemporaryAnchor initial) (anchorLookup : TemporaryLookupContract kernel anchor)
     (anchors : SystemAnchorJournal runtime anchor semantics (Population.empty initial) ticks final)
-    (backend : PrimitiveChildAuthorityProducer child ticks)
     (authorityProfile : NativeAuthorityProfile native ticks hostUid) (lookupProfile : NativeLookupProfile native ticks hostUid)
     {prior last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid prior callers ticks last next)
+    {backend : NativeAuthorityJournal recording}
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState} {request : Request}
     {observed : Option Reply} (selected : ticks[position]? = some tick)
     (action : tick.action.eventFor actor = some (Program.filesystemPrefixEvent (request, observed)))
@@ -263,8 +263,8 @@ theorem actual_primitive_run_creation {kernel : Contract} {runtime : PrimitiveAc
         ∃ object, Nonempty (RootBirth runtime ticks ⟨actor, object, anchor.visible, request.left⟩) ∧
           afterCaps = caps.addRoot ⟨actor, object, anchor.visible, request.left⟩) := by
   obtain ⟨afterCaps, afterCatalogue, custody, coverage, currentValid, comparisons, labels, flow, included, origin⟩ :=
-    actual_primitive_run_creation_with_flow namespaceLaws descriptors lifetimes references raw sdk accounts
-      objects liveMetadata types metadata nativeMetadata lookup probes journal anchor anchorLookup anchors backend
+    actual_primitive_run_creation_with_flow (backend := backend) namespaceLaws descriptors lifetimes references raw sdk accounts
+      objects liveMetadata types metadata nativeMetadata lookup probes journal anchor anchorLookup anchors
       authorityProfile lookupProfile recording selected action present source state names catalogue covered valid
   exact ⟨afterCaps, afterCatalogue, custody, coverage, currentValid, comparisons, labels, origin⟩
 

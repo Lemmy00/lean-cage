@@ -65,10 +65,10 @@ theorem primitive_run_parent_state {kernel : Contract} {runtime : PrimitiveActor
     (lookup : LookupMutationContract (runtime := runtime) child native)
     {initial : World} {final : Population} {ticks : List (ActorTick runtime)}
     (journal : ActorJournal runtime (Population.empty initial) ticks final)
-    (backend : PrimitiveChildAuthorityProducer child ticks)
     (authorityProfile : NativeAuthorityProfile native ticks hostUid) (lookupProfile : NativeLookupProfile native ticks hostUid)
     {prior last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid prior callers ticks last next)
+    {backend : NativeAuthorityJournal recording}
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState} {request : Request}
     (selected : ticks[position]? = some tick) (present : tick.before.actors actor = some engine)
     (source : PrimitiveRunParent runtime initial ticks tick actor engine request) :
@@ -79,7 +79,7 @@ theorem primitive_run_parent_state {kernel : Contract} {runtime : PrimitiveActor
         ∀ current ∈ interval.events,
           LookupBitsEqual interval.sampleTick.after.shared current.before.shared interval.parent.object ∧
           LookupBitsEqual interval.sampleTick.after.shared current.after.shared interval.parent.object := by
-  obtain ⟨interval⟩ := primitive_run_parent_interval descriptors lifetimes references raw sdk accounts journal backend
+  obtain ⟨interval⟩ := primitive_run_parent_interval (backend := backend) descriptors lifetimes references raw sdk accounts journal
     recording selected present source
   obtain ⟨⟨information, known, same, flags⟩, snapshots⟩ := native_parent_state_snapshots lifetimes metadata nativeMetadata lookup
     authorityProfile lookupProfile interval.journal interval.included interval.recording interval.safe interval.known

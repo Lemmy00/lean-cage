@@ -11,7 +11,7 @@ Open Scope Z_scope.
 
 Fixpoint gateway_outcome_right_suffix(n:nat)(source:statement):statement:=
   match n,source with S remaining,Ssequence _ rest=>gateway_outcome_right_suffix remaining rest|_,_=>source end.
-Definition gateway_outcome_allocation_tail:=gateway_outcome_right_suffix 11(fn_body f_host_outcome_from).
+Definition gateway_outcome_allocation_tail:=gateway_outcome_right_suffix 13(fn_body f_host_outcome_from).
 Definition gateway_outcome_after_allocation:=match gateway_outcome_allocation_tail with Ssequence _ rest=>rest|_=>Sskip end.
 Definition gateway_outcome_after_guard:=match gateway_outcome_after_allocation with Ssequence _ rest=>rest|_=>Sskip end.
 Definition gateway_outcome_return:=match gateway_outcome_after_guard with Ssequence _ rest=>rest|_=>Sskip end.

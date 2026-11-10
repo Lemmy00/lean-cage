@@ -95,6 +95,13 @@ bytes at most 512 MiB. Per-value lengths are checked before allocation. Native
 constructors preserve this typed value; an unchecked pickle, eval or JSON
 projection is not the public result connection.
 
+Framing composition compares complete parsed values with actual writer prefixes,
+without assuming a future write acknowledgement or helper return. Its canonical
+scalar tags come from the maintained writer's typed view and the actual parser's
+heap semantics. The broad source-word relation also describes noncanonical tags;
+that relation alone cannot imply value uniqueness. A checked deterministic
+prefix reader over the same word data supplies the comparison theorem.
+
 CPython object identity and C reference ownership are separate. Distinct owned
 references may point to the same cached object. A source-owned ghost ledger
 records the actual temporary, cell or return place that owns each reference;
@@ -120,6 +127,22 @@ source-global symbols, initializer bytes, relocated loads and readable extents.
 Empty linked CPython declarations supply no such source initializer. The live
 interpreter heap is not equated with standalone `Genv.init_mem`. Source ownership
 and retention of each used region remain application obligations.
+The callback environment retains these source definitions and composite layouts
+and may append genuine runtime functions as individual external capabilities.
+In particular, the GC visitor supplied to `host_outcome_traverse` is a typed
+runtime capability; it need not occur in the application unit's declarations.
+Application internal-function and private-address inventories are proved for
+this linked environment as well as the standalone source environment. Runtime
+memory actions and application callbacks retain separate execution evidence;
+the environment alone grants no callback-wide global frame.
+The runtime memory observations identify old argument/load pointers, genuine
+managed storage, fresh allocations, registered symbols and actual scalar bytes.
+They expose each store, byte copy and release against that storage. Application
+callback spans stay in the same before/after memory history and require their
+source proof. Scalar bytes cannot manufacture an abstract C object identity.
+The at-load origin observation covers the C memory view and genuine runtime
+storage; hidden compiler/loader bookkeeping belongs to the explicit
+compiler/runtime correspondence contract.
 Read-only source objects have no writable positions in the ELF memory view.
 The initialization proof retains descriptor snapshots by restricting its writable
 native capability to other objects; a read-only descriptor can still be read.
@@ -165,6 +188,37 @@ separate from the application proving its call arguments, ordering, selected
 reference and final module return. These laws provide no class-global memory
 frame, fresh-object claim or frozen public Python object graph. Actual source
 assignments publish class roots and archive overwritten unreleased references.
+
+The received-value validator uses a separate `PyDict_Next` primitive contract
+for one actual private built-in dictionary and its three writable native output
+slots. The pinned CPython operation either returns zero without writing those
+slots, or returns one borrowed member and writes the opaque signed 64-bit cursor,
+key and value in that order. The intermediate observer retains the source-owned
+graph and references; the three explicit stores then establish the returned
+memory. It grants no new owned reference and no completed validation loop. The
+application proves the dictionary layout, native slot allocation, initialized
+cursor, source call arguments and all subsequent validation decisions. Cursor
+positions are sparse and are not treated as array indices.
+
+While a C invocation holds the GIL, an ambient step outside an SDK call preserves
+the raw data-pointer cell of its live genuine native `Outcome` receiver. An SDK
+event may run callbacks that mutate or reinitialize that receiver. The source
+roots the selected data pointer before such a call and does not subsequently
+rely on equality with the receiver's current cell. The per-state native-layout
+ABI makes that current cell either null or a live builtin dictionary; the actual
+immutable source type supplies the instance role. Public dictionary contents
+and the path factory remain mutable. Exact pre-call dictionary-copy semantics
+apply only to a source-owned unexposed dictionary; public copies retain their
+actual per-operation observation across permitted callbacks.
+The observation getter builds its metadata key with `PyUnicode_FromString`,
+checks the result and uses `PyDict_GetItemWithError`. It roots a present value
+before releasing the key and the captured data dictionary. Construction and
+lookup errors remain errors; only missing/no-error supplies `None`. The older
+`PyDict_GetItemString` law still permits its documented error suppression.
+Such a non-SDK ambient step also preserves the interpreter's semantic object
+values and privacy views while that invocation holds the GIL. This supplies no
+native-cell or signal frame. Python callback and reentry effects occur inside
+their actual SDK histories and remain outside this ambient-only law.
 
 Allocation identities also constrain each individual external, builtin and
 ambient memory effect. At a previously valid logical allocation cell, all current
@@ -326,7 +380,7 @@ kernel/library operation (or rejects its arguments), not a security procedure.
 | 4 | `fstat` on the actual descriptor; eleven exact little-endian UInt64 metadata fields |
 | 5–7 | `mkdirat`, `renameat2(RENAME_NOREPLACE)`, `unlinkat`; actual names, identities, atomic nonreplacement and permitted failures |
 | 8 | `getrandom` with exact requested count; partial/error outcomes, no assumed application freshness |
-| 9–11 | `fdopendir`, `readdir`, `closedir`; the cursor retains and consumes its actual descriptor; bounded observed name/EOF/error |
+| 9–11 | `fdopendir`, `readdir`, `closedir`; close carries the retained FD and checks `dirfd(cursor)` equals it before closing; bounded observed name/EOF/error |
 | 12 | Existing host crypto runtime `SHA256` on the exact immutable input bytes, returning 32 bytes; its computational contract and collision assumption are explicit |
 | 13 | `clock_gettime(CLOCK_MONOTONIC)` with exact seconds/nanoseconds; the application constructs and checks deadlines |
 | 14 | libc `mkdtemp` on the supplied bounded template; fresh private directory and returned spelling, not a completed run |
@@ -471,6 +525,9 @@ Path arguments are capped at 4095 bytes and checked for NUL before termination.
 Reads/writes are capped at 65536 bytes before native copying. The C reply owns
 its bytes and captures errno before runtime allocation. Directory cursors require
 their actual live ownership token; an arbitrary integer is not a valid pointer.
+The directory-close request also retains the FD originally given to `fdopendir`.
+The adapter rejects an out-of-range expected FD or a different `dirfd(cursor)`
+before `closedir`, so even an interrupted close can retire only that descriptor.
 Loss can occur before a reply, including after a committed primitive effect.
 
 The physical filesystem model distinguishes each object's lifetime identity from
@@ -559,6 +616,13 @@ privacy guard. A marker-at-guard or whole-callback preservation assumption is
 not an input. The resulting read reference is the same retained object checked
 by that guard, including direct and object aliases.
 
+External host-code key access is also an operand-level profile restriction on
+the same journal. It excludes acquisition/read of the actual initialized key
+objects, alongside their authority and attribute setters. Initial native-table
+absence, exact acquired-reference effects and retirement-survivor laws then
+derive later reference exclusion. Request-created family labels do not identify
+these installation objects, and no whole callback frame supplies that fact.
+
 The raw publication receipt retains the exact source-created envelope and the
 actual earlier MAC and acknowledged marker operations before its rename. Public
 signing queries additionally require the real committed namespace effect and
@@ -570,12 +634,34 @@ transcript. Source-exposure-or-forgery reduction is separate from constructing
 the complete custody/key-nonexposure history and from the explicit bounded-game
 cryptographic assumption.
 
+The filesystem read adapter distinguishes ordinary stream reads (`third = 0`)
+from positional file reads (`third = offset + 1`). Both bound the byte count;
+the positional branch rejects values above the signed 64-bit file range before
+the syscall. The actual source accumulator produces each positional offset.
+A regular-file primitive observation under no concurrent content modification
+during that actual syscall relates its returned chunk and EOF to that file's
+bytes at the selected offset. That interval condition is separate from equality
+of contents at a sampled endpoint. Protected installation contents and the
+actual retained file identity remain separate source/history obligations. This
+contract grants no atomic snapshot of mutable input files and no whole-copy
+or whole-loader success premise.
+
 The stock Lean runtime's process spawn/read/wait/kill operations have individual
 argument/descriptor/process contracts. `Host.Program` exposes their actual
 configuration and every return/error branch. It does not assume a whole VM,
 controller invocation, cleanup result or host interpreter is correct. Host
 bootstrap lookup names remain protected for the request; mutable input and
 publication names use their separate retained-object/interference contracts.
+
+One relative component open exposes its actual input directory descriptor when
+it resolves a target; that descriptor must exist at that same call, including a
+committed operation whose reply is lost. A socket allocation similarly exposes
+each exact old reference or a genuinely fresh endpoint lifetime. Neither rule
+classifies an entire helper as safe. A `/proc/self/exe` observation identifies
+the same process image as its actual native handoff. Release installation binds
+that image to its protected file independently of the request's selected bundle.
+The actual native or CLI request determines the selected bundle reads; a default
+extension root is not substituted for a caller override.
 
 Validator observation retains a typed reaping bit from the actual wait result.
 A successful wait permits backing-file removal even when policy validation
@@ -634,3 +720,14 @@ and carry the same implementation through the complete host request. Record
 source bindings, complete types/axioms, primitive contracts and input producers.
 The final gate includes the affected product checks and one public acceptance
 for the final identified bundle, reusing unchanged entry/guest evidence.
+
+An in-progress checkpoint may record active partial implementation while the
+delivery remains incomplete. Preserve the exact prior checkpoint and reviewed
+declarations. Behavioral source repairs have an explicit ordered chain of C and
+generated-program identities, a checked all-other-definition retention result,
+and their own runtime evidence; a comment-only amendment cannot authorize them.
+The checkpoint checker verifies the chain, current maintained inventory and
+archived evidence. A source replay additionally freezes its inventory and checks
+copied source and compiled object identities through the independent kernel
+check. Cache collisions and failed checks keep their diagnostics. Neither
+metadata validation nor a partial checkpoint establishes delivery acceptance.

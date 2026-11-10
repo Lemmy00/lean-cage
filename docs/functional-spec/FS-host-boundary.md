@@ -26,6 +26,12 @@ graph. `Outcome.output` keeps the existing path-constructor presentation, and
 customize that path constructor or mutate returned presentation records; those
 changes do not supply a new engine observation. Manually constructed or
 reinitialized outcomes without received metadata expose `observation = None`.
+Metadata key construction or lookup errors propagate as errors; only an actual
+missing metadata entry without a pending error produces `None`.
+Outcome construction and current-field rendering reject missing or failed
+required-field lookups before passing their results to another runtime API.
+If a lookup API has suppressed its allocation error, reject explicitly rather
+than using a null object as a path, capture, comparison or dictionary argument.
 No observation or presentation object is accepted as filesystem authority.
 The native `Outcome` type keeps its maintained method, slot and getset bindings;
 ordinary class mutation and instance-class reassignment cannot replace them.
@@ -231,6 +237,9 @@ Reject unsupported links/special files, malformed UTF-8 tree names, reserved
 over 4095 bytes. Bound directory enumeration before retaining/sorting names.
 Enforce the request's workspace byte/inode and stdin bounds while copying,
 including partial reads and observed changes. Hash acknowledged copied bytes.
+Each regular-file copy selects its next byte offset from its own acknowledged
+accumulator and rejects offsets outside the signed 64-bit file range. Concurrent
+changes to a shared open-file description's cursor cannot redirect this copy.
 After filling input identities and revalidating the emitted policy, require its
 actual host budgets to equal those used for copying. A serialization/parsing
 disagreement cannot increase the later stream/export authority.

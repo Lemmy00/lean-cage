@@ -1,0 +1,97 @@
+{
+  "accepted_security_delivery": false,
+  "after_c_sha256": "be9170ecf1b45075fb7001570b1d598cf6ab0ce04c07a6c441c5f9b122628a2c",
+  "after_clight_sha256": "db117a9df6130d16698bc08c0c034dea82163df277fcc30f3e1ab4227e49b947",
+  "after_program_artifact": "assurance/host-observation-source-program.v.gz",
+  "artifacts": {
+    "assurance/host-observation-allocation-after.json.gz": "7d55d677e65adebaf4c74dc2a1f8ae9dfc364789af668832c688048748eb6268",
+    "assurance/host-observation-allocation-before.json.gz": "fdb1fac8702d40a285ce0e4850cf1fcfa6935c8337cedbd4e339c72e1cb7f266",
+    "assurance/host-observation-allocation-repair.json": "70afd1caba60e76f811393ebb1b2902077791896fa17c34e36afe55b19f63554",
+    "assurance/host-observation-getter-before.json.gz": "5b2323560fd8072319841f5f3fca52fd3e25a6256d6b1e9c15d9231c389e7273",
+    "assurance/host-observation-getter-source-before.json.gz": "edfdc44a5de39447d1b4f15e1c6a4c60f799394c3742541602dfc191ae945b2f",
+    "assurance/host-observation-projection-after.json.gz": "3294dbcdc9b5fa078138f23d4d0972ca2d349cf259654f18e4b8190fd2fa3bcd",
+    "assurance/host-observation-source-before.c.gz": "247aa553903afca0c9fd71b64171ed4a1e49f8934ff50684ada374f2e26e8e7c",
+    "assurance/host-observation-source-program.v.gz": "3d64cbf5ae97b693e7c233e02064ac9a0af52ad09b3625b55037de2dac2289dc",
+    "assurance/host-observation-source-replay-inputs.json.gz": "733f0c6142be6d9c6a9c2a0268335256142b3c90a05c040da4c355ddadba5447",
+    "assurance/host-observation-source-replay.json.gz": "fc43650b8e7d3125a039032a4ed73e3186231d4b25a61c57ebcae3de44f9d482"
+  },
+  "before_c_sha256": "40f8e9bfd8497d81326a76dbcdec2fbf43d2fca29c6cfcdcf91952b1c5c4d88b",
+  "before_clight_sha256": "2fce74e393b9211504531aa0cf31d10ac9bce73ef6c38dcd30bf720e10880eb5",
+  "change": "Only host_outcome_observation now checks PyUnicode_FromString, calls PyDict_GetItemWithError, roots a present result before key cleanup, propagates errors and creates None only on missing/no-error. Existing GetItemString semantics are unchanged.",
+  "historical_records": "All earlier source/type/axiom records keep exact original bindings. The comment-only amendment remains the predecessor; this explicit behavior amendment and checked retention/replay bind the new epoch.",
+  "primary_runtime_contract": "https://docs.python.org/3.12/c-api/dict.html#c.PyDict_GetItemWithError",
+  "remaining": [
+    "The four excluded developing consumers are checked separately after this replay; complete combined current graph replay remains required.",
+    "Complete caller/global callback authority, IPC prefix/custody, filesystem and host public acceptance."
+  ],
+  "replay": {
+    "checked": 1160,
+    "excluded": [
+      "GatewayLiveObjectViews",
+      "GatewayObservationContexts",
+      "GatewayOutcomeGetterSource",
+      "GatewayOwnedObservationPresent"
+    ],
+    "inputs": "assurance/host-observation-source-replay-inputs.json.gz",
+    "record": "assurance/host-observation-source-replay.json.gz",
+    "scope": "Partial source epoch replay; excluded developing consumers remain required for integrated acceptance.",
+    "status": "passed"
+  },
+  "runtime_validation": {
+    "allocation": "Fixed real key-allocation failure raises MemoryError; actual missing metadata returns None; post-error object usability retained.",
+    "extension_sha256": "db9c44f6894333c9bf89713456d514a1a718befd4eb4caa5b96048d289ec8c9f",
+    "projection": "Existing isolated observation fixture passed with identical extension bytes; no VM/workload executed."
+  },
+  "schema": "leancage-host-observation-source-amendment-v1",
+  "source_retention": [
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop,\n  (forall n : nat, {P n} + {~ P n}) ->\n  {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x),\n  (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "name": "gateway_observation_other_definitions_preserved",
+      "type": "gateway_observation_other_definitions_preserved\n     : List.filter gateway_observation_retained_definition\n         GatewayObservationBeforeSource.global_definitions =\n       List.filter gateway_observation_retained_definition\n         GatewayObservationAfterSource.global_definitions\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "name": "gateway_observation_other_public_identifiers_preserved",
+      "type": "gateway_observation_other_public_identifiers_preserved\n     : List.filter\n         (fun identifier : BinNums.positive =>\n          negb\n            (BinPos.Pos.eqb identifier\n               GatewayObservationAfterSource._PyDict_GetItemWithError))\n         GatewayObservationBeforeSource.public_idents =\n       List.filter\n         (fun identifier : BinNums.positive =>\n          negb\n            (BinPos.Pos.eqb identifier\n               GatewayObservationAfterSource._PyDict_GetItemWithError))\n         GatewayObservationAfterSource.public_idents\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "name": "gateway_observation_composites_preserved",
+      "type": "gateway_observation_composites_preserved\n     : GatewayObservationBeforeSource.composites =\n       GatewayObservationAfterSource.composites\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "name": "gateway_observation_old_getter_identifier_preserved",
+      "type": "gateway_observation_old_getter_identifier_preserved\n     : GatewayObservationBeforeSource._host_outcome_observation =\n       GatewayObservationAfterSource._host_outcome_observation\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop,\n  (forall n : nat, {P n} + {~ P n}) ->\n  {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x),\n  (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "name": "gateway_observation_added_dictionary_abi",
+      "type": "gateway_observation_added_dictionary_abi\n     : List.In\n         (GatewayObservationAfterSource._PyDict_GetItemWithError,\n          AST.Gfun\n            (Ctypes.External\n               (AST.EF_external\n                  (String.String\n                     (Ascii.Ascii false false false false true false true\n                        false)\n                     (String.String\n                        (Ascii.Ascii true false false true true true true\n                           false)\n                        (String.String\n                           (Ascii.Ascii false false true false false false\n                              true false)\n                           (String.String\n                              (Ascii.Ascii true false false true false true\n                                 true false)\n                              (String.String\n                                 (Ascii.Ascii true true false false false\n                                    true true false)\n                                 (String.String\n                                    (Ascii.Ascii false false true false true\n                                       true true false)\n                                    (String.String\n                                       (Ascii.Ascii true true true true true\n                                          false true false)\n                                       (String.String\n                                          (Ascii.Ascii true true true false\n                                             false false true false)\n                                          (String.String\n                                             (Ascii.Ascii true false true\n                                                false false true true false)\n                                             (String.String\n                                                (Ascii.Ascii false false true\n                                                 false true true true false)\n                                                (String.String\n                                                 (Ascii.Ascii true false\n                                                 false true false false true\n                                                 false)\n                                                 (String.String\n                                                 (Ascii.Ascii false false\n                                                 true false true true true\n                                                 false)\n                                                 (String.String\n                                                 (Ascii.Ascii true false true\n                                                 false false true true false)\n                                                 (String.String\n                                                 (Ascii.Ascii true false true\n                                                 true false true true false)\n                                                 (String.String\n                                                 (Ascii.Ascii true true true\n                                                 false true false true false)\n                                                 (String.String\n                                                 (Ascii.Ascii true false\n                                                 false true false true true\n                                                 false)\n                                                 (String.String\n                                                 (Ascii.Ascii false false\n                                                 true false true true true\n                                                 false)\n                                                 (String.String\n                                                 (Ascii.Ascii false false\n                                                 false true false true true\n                                                 false)\n                                                 (String.String\n                                                 (Ascii.Ascii true false true\n                                                 false false false true false)\n                                                 (String.String\n                                                 (Ascii.Ascii false true\n                                                 false false true true true\n                                                 false)\n                                                 (String.String\n                                                 (Ascii.Ascii false true\n                                                 false false true true true\n                                                 false)\n                                                 (String.String\n                                                 (Ascii.Ascii true true true\n                                                 true false true true false)\n                                                 (String.String\n                                                 (Ascii.Ascii false true\n                                                 false false true true true\n                                                 false) String.EmptyString)))))))))))))))))))))))\n                  {|\n                    AST.sig_args := AST.Xptr :: AST.Xptr :: nil;\n                    AST.sig_res := AST.Xptr;\n                    AST.sig_cc := AST.cc_default\n                  |})\n               (Ctypesdefs.tptr\n                  (Ctypes.Tstruct GatewayObservationAfterSource.__object\n                     Ctypes.noattr)\n                :: Ctypesdefs.tptr\n                     (Ctypes.Tstruct GatewayObservationAfterSource.__object\n                        Ctypes.noattr)\n                   :: nil)\n               (Ctypesdefs.tptr\n                  (Ctypes.Tstruct GatewayObservationAfterSource.__object\n                     Ctypes.noattr))\n               AST.cc_default))\n         GatewayObservationAfterSource.global_definitions\n"
+    }
+  ],
+  "source_retention_proof": {
+    "path": "verification/host/GatewayObservationSourceRepair.v",
+    "sha256": "1031c0f1de2f74532db9b85490c7a7d1f414049485425025d95cd310a98de281"
+  }
+}

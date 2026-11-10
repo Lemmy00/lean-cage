@@ -36,10 +36,10 @@ theorem primitive_run_mkdir_delta {kernel : Contract} {runtime : PrimitiveActorR
     (probes : LookupPrimitiveContract kernel.step kernel.interference semantics)
     {initial : World} {final : Population} {ticks : List (ActorTick runtime)}
     (journal : ActorJournal runtime (Population.empty initial) ticks final)
-    (backend : PrimitiveChildAuthorityProducer child ticks)
     (authorityProfile : NativeAuthorityProfile native ticks hostUid) (lookupProfile : NativeLookupProfile native ticks hostUid)
     {prior last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid prior callers ticks last next)
+    {backend : NativeAuthorityJournal recording}
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState} {request : Request}
     {observed : Option Reply} (selected : ticks[position]? = some tick)
     (action : tick.action.eventFor actor = some (Program.filesystemPrefixEvent (request, observed)))
@@ -47,8 +47,8 @@ theorem primitive_run_mkdir_delta {kernel : Contract} {runtime : PrimitiveActorR
     (source : PrimitiveRunParent runtime initial ticks tick actor engine request) :
     DataChange dataObjects request (tick.before.project engine) tick.after.shared := by
   obtain ⟨parent, information, reference, rawParent, current, trusted, exactNames,
-    mkdir, mode, component, reserved⟩ := primitive_run_mkdir_safe_parent descriptors lifetimes references raw sdk accounts
-      metadata nativeMetadata lookup probes journal backend authorityProfile lookupProfile recording selected present source
+    mkdir, mode, component, reserved⟩ := primitive_run_mkdir_safe_parent (backend := backend) descriptors lifetimes references raw sdk accounts
+      metadata nativeMetadata lookup probes journal authorityProfile lookupProfile recording selected present source
   have actual := selected_filesystem_step tick action present
   apply namespaceLaws.mutation _ _ _ _ actual (.inl mkdir)
   · simpa only [ComponentRequest, mkdir] using component

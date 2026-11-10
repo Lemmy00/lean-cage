@@ -54,6 +54,8 @@ theorem readLoop_provenance (fuel : Nat) (fd : UInt64) (limit : Nat) (initial : 
     split at run
     · cases run
     · rename_i within
+      have bounds : initial.size ≤ limit ∧ initial.size < 2 ^ 63 := by
+        simpa only [Bool.or_eq_true, decide_eq_true_eq, not_or, Nat.not_lt, Nat.not_le] using within
       obtain ⟨reply, rest, rfl, tail⟩ := returns_call_split run
       split at tail
       · cases tail

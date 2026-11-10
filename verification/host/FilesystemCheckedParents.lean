@@ -56,9 +56,9 @@ theorem checked_parent_interval_owned {kernel : Contract} {runtime : PrimitiveAc
     (sdk : RuntimeDescriptorContract runtime) (accounts : AccountContract kernel hostUid)
     {initial : World} {final : Population} {ticks : List (ActorTick runtime)}
     (journal : ActorJournal runtime (Population.empty initial) ticks final)
-    (backend : PrimitiveChildAuthorityProducer child ticks)
     {prior last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid prior callers ticks last next)
+    {backend : NativeAuthorityJournal recording}
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState}
     (selected : ticks[position]? = some tick) (present : tick.before.actors actor = some engine)
     {limit : Nat} {world : World} {directory : Directories.Opened}
@@ -120,7 +120,7 @@ theorem checked_parent_interval_owned {kernel : Contract} {runtime : PrimitiveAc
         (afterInformation.mode &&& 18 = 0 ∨ (afterInformation.uid = 0 ∧ afterInformation.mode &&& 512 ≠ 0)) := by
       simpa [Directories.trusted, and_assoc] using afterTrusted
     exact fields.2.1
-  have safe := actual_native_authority_journal journal backend recording
+  have safe := backend
   have arranged : ∃ actual : NativeExternalJournal process child native hostUid prior callers ticks last next,
       NativeAuthorityJournal actual := ⟨recording, safe⟩
   rw [shape, List.append_assoc] at arranged
@@ -183,9 +183,9 @@ theorem checked_parent_interval {kernel : Contract} {runtime : PrimitiveActorRun
     (sdk : RuntimeDescriptorContract runtime) (accounts : AccountContract kernel hostUid)
     {initial : World} {final : Population} {ticks : List (ActorTick runtime)}
     (journal : ActorJournal runtime (Population.empty initial) ticks final)
-    (backend : PrimitiveChildAuthorityProducer child ticks)
     {prior last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid prior callers ticks last next)
+    {backend : NativeAuthorityJournal recording}
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState}
     (selected : ticks[position]? = some tick) (present : tick.before.actors actor = some engine)
     {limit : Nat} {world : World} {directory : Directories.Opened}
@@ -194,8 +194,8 @@ theorem checked_parent_interval {kernel : Contract} {runtime : PrimitiveActorRun
     (live : engine.references directory.fd = some observed.handle)
     (earlier : observed.sample.ordinal < engine.events.length) :
     Nonempty (CheckedParentInterval process child native hostUid initial ticks tick actor engine directory.fd) := by
-  obtain ⟨interval, parent, ordinal⟩ := checked_parent_interval_owned descriptors lifetimes references raw sdk accounts
-    journal backend recording selected present observed live earlier
+  obtain ⟨interval, parent, ordinal⟩ := checked_parent_interval_owned (backend := backend) descriptors lifetimes references raw sdk accounts
+    journal recording selected present observed live earlier
   exact ⟨interval⟩
 
 theorem CheckedParentInterval.inside_selected {kernel : Contract} {runtime : PrimitiveActorRuntime kernel}

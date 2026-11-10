@@ -20,8 +20,8 @@ theorem closeResult_post {α : Type} (property : α → Prop) (fd : UInt64) (res
     · exact .pure valid
     · exact .pure True.intro
 
-theorem closeDirectory_post {α : Type} (property : α → Prop) (cursor : UInt64) (result : Result α)
-    (valid : Successful property result) : PostProgram (Successful property) (closeDirectory cursor result) := by
+theorem closeDirectory_post {α : Type} (property : α → Prop) (fd cursor : UInt64) (result : Result α)
+    (valid : Successful property result) : PostProgram (Successful property) (closeDirectory fd cursor result) := by
   apply PostProgram.call
   intro reply
   cases result with
@@ -32,11 +32,11 @@ theorem closeDirectory_post {α : Type} (property : α → Prop) (cursor : UInt6
     · exact .pure valid
     · exact .pure True.intro
 
-theorem closeDirectory_value {α : Type} (cursor : UInt64) (input : Result α)
+theorem closeDirectory_value {α : Type} (fd cursor : UInt64) (input : Result α)
     {events : List (Request × Reply)} {value : α}
-    (run : Returns (closeDirectory cursor input) events (.ok value)) : input = .ok value := by
+    (run : Returns (closeDirectory fd cursor input) events (.ok value)) : input = .ok value := by
   apply post_returns (post := Successful (fun value => input = .ok value))
-    (closeDirectory_post _ _ input (by cases input <;> trivial)) run
+    (closeDirectory_post _ fd cursor input (by cases input <;> trivial)) run
 
 theorem state_blobs (limits : Limits) (state : State) (blobs : List Blob)
     (valid : StateValid limits state) : StateValid limits { state with blobs := blobs } :=
@@ -81,17 +81,17 @@ private theorem walk_state_pair (fuel : Nat) :
               · apply post_bind (post_true _)
                 intro listing _
                 cases listing with
-                | error => exact closeDirectory_post _ _ _ True.intro
+                | error => exact closeDirectory_post _ _ _ _ True.intro
                 | ok names =>
                   apply post_bind (ih.2 _ _ _ _ _ valid)
                   intro result verified
                   cases result with
-                  | error => exact closeDirectory_post _ _ _ True.intro
+                  | error => exact closeDirectory_post _ _ _ _ True.intro
                   | ok after =>
                     apply PostProgram.call
                     intro finalReply
                     split
-                    · exact closeDirectory_post _ _ _ True.intro
+                    · exact closeDirectory_post _ _ _ _ True.intro
                     · apply closeDirectory_post
                       split
                       · exact verified

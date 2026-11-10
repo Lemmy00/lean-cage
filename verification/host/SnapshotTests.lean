@@ -80,20 +80,20 @@ private def fileStart : List (Request × Reply) :=
    ({op := .stat, first := 4}, regular 3)]
 
 private def closed : List (Request × Reply) :=
-  [({op := .close, first := 4}, ok), ({op := .dirClose, first := cursor}, ok)]
+  [({op := .close, first := 4}, ok), ({op := .dirClose, first := cursor, second := 3}, ok)]
 
-private def denied (result : Result Frozen) : Bool :=
+private def denied {α : Type} (result : Result α) : Bool :=
   match result with
   | .error error => error.errno.isNone
   | .ok _ => false
 
 def main : IO Unit := do
   let script := initial ++ listing ++ fileStart ++
-    [({op := .read, first := 4, second := 17}, (3, "abc".toUTF8)),
-     ({op := .read, first := 4, second := 14}, ok),
+    [({op := .read, first := 4, second := 17, third := 1}, (3, "abc".toUTF8)),
+     ({op := .read, first := 4, second := 14, third := 4}, ok),
      ({op := .stat, first := 4}, regular 3), ({op := .close, first := 4}, ok),
      ({op := .sha256, left := "abc".toUTF8}, (0, shaABC)),
-     ({op := .stat, first := 3}, directory), ({op := .dirClose, first := cursor}, ok),
+     ({op := .stat, first := 3}, directory), ({op := .dirClose, first := cursor, second := 3}, ok),
      ({op := .sha256, left := tree}, (0, shaTree)),
      ({op := .sha256, left := "z".toUTF8}, (0, shaZ))]
   match ← runScript (freeze (some "workspace".toUTF8) (.bytes "z".toUTF8) limits) script with
@@ -109,22 +109,25 @@ def main : IO Unit := do
     (freeze none (.bytes "12345".toUTF8) limits) []))
   check "unsupported limits have no effects" (denied (← runScript
     (freeze none .absent ⟨16, 1, 4⟩) []))
+  check "directory close keeps the retained expected FD in its request" (denied (← runScript
+    (closeDirectory 3 cursor (.ok ()))
+    [({op := .dirClose, first := cursor, second := 3}, (0, "invalid".toUTF8))]))
   check "repeated cursor entry rejects" (denied (← runScript
     (freeze (some "workspace".toUTF8) .absent limits)
     (initial ++ [({op := .dirNext, first := cursor}, name "."),
-      ({op := .dirNext, first := cursor}, name "."), ({op := .dirClose, first := cursor}, ok)])))
+      ({op := .dirNext, first := cursor}, name "."), ({op := .dirClose, first := cursor, second := 3}, ok)])))
   check "reserved tmp rejected before child open" (denied (← runScript
     (freeze (some "workspace".toUTF8) .absent limits)
     (initial ++ [({op := .dirNext, first := cursor}, name ".tmp"),
-      ({op := .dirNext, first := cursor}, ok), ({op := .dirClose, first := cursor}, ok)])))
+      ({op := .dirNext, first := cursor}, ok), ({op := .dirClose, first := cursor, second := 3}, ok)])))
   check "invalid UTF8 rejected before child open" (denied (← runScript
     (freeze (some "workspace".toUTF8) .absent limits)
     (initial ++ [({op := .dirNext, first := cursor}, (1, ⟨#[255]⟩)),
-      ({op := .dirClose, first := cursor}, ok)])))
+      ({op := .dirClose, first := cursor, second := 3}, ok)])))
   check "inode enumeration bound precedes opening" (denied (← runScript
     (freeze (some "workspace".toUTF8) .absent ⟨16, 2, 4⟩)
     (initial ++ [({op := .dirNext, first := cursor}, name "file.txt"),
-      ({op := .dirClose, first := cursor}, ok)])))
+      ({op := .dirClose, first := cursor, second := 3}, ok)])))
   check "hard links rejected on retained descriptor" (denied (← runScript
     (freeze (some "workspace".toUTF8) .absent limits)
     (initial ++ listing ++
@@ -140,16 +143,16 @@ def main : IO Unit := do
   check "malformed read acknowledgement rejects" (denied (← runScript
     (freeze (some "workspace".toUTF8) .absent limits)
     (initial ++ listing ++ fileStart ++
-      [({op := .read, first := 4, second := 17}, (4, "abc".toUTF8))] ++ closed)))
+      [({op := .read, first := 4, second := 17, third := 1}, (4, "abc".toUTF8))] ++ closed)))
   let changed := statReply 2 33188 1 4
   check "observed source changes reject" (denied (← runScript
     (freeze (some "workspace".toUTF8) .absent limits)
     (initial ++ listing ++ fileStart ++
-      [({op := .read, first := 4, second := 17}, (3, "abc".toUTF8)),
-       ({op := .read, first := 4, second := 14}, ok), ({op := .stat, first := 4}, changed)] ++ closed)))
+      [({op := .read, first := 4, second := 17, third := 1}, (3, "abc".toUTF8)),
+       ({op := .read, first := 4, second := 14, third := 4}, ok), ({op := .stat, first := 4}, changed)] ++ closed)))
   match ← runScript (freeze none (.file "stdin".toUTF8) limits)
-      (sourceFile "stdin" ++ [({op := .stat, first := 3}, regular 1), ({op := .read, first := 3, second := 5}, (1, "z".toUTF8)),
-       ({op := .read, first := 3, second := 4}, ok), ({op := .stat, first := 3}, regular 1),
+      (sourceFile "stdin" ++ [({op := .stat, first := 3}, regular 1), ({op := .read, first := 3, second := 5, third := 1}, (1, "z".toUTF8)),
+       ({op := .read, first := 3, second := 4, third := 2}, ok), ({op := .stat, first := 3}, regular 1),
        ({op := .close, first := 3}, ok), ({op := .sha256, left := "z".toUTF8}, (0, shaZ))]) with
   | .error error => throw <| IO.userError error.message
   | .ok result => check "file stdin same copied bytes" (result.tree.isNone && result.stdin == some "z".toUTF8)
@@ -163,7 +166,7 @@ def main : IO Unit := do
   check "reserved nested component denied before opening" (denied (← runScript
     (freeze (some "workspace".toUTF8) .absent limits)
     (initial ++ [({op := .dirNext, first := cursor}, name ".leancage-private-stage"),
-      ({op := .dirNext, first := cursor}, ok), ({op := .dirClose, first := cursor}, ok)])))
+      ({op := .dirNext, first := cursor}, ok), ({op := .dirClose, first := cursor, second := 3}, ok)])))
   let marked (fd : UInt64) : Request × Reply :=
     ({op := .getAttribute, first := fd, second := 1, left := PrivateNames.attributeName},
       (1, PrivateNames.attributeValue))
@@ -176,7 +179,7 @@ def main : IO Unit := do
     (freeze (some "workspace".toUTF8) .absent limits)
     (initial ++ listing ++
       [({op := .openAt, first := 3, second := readFlags, left := "file.txt".toUTF8}, (4, .empty)),
-       marked 4, ({op := .close, first := 4}, ok), ({op := .dirClose, first := cursor}, ok)])))
+       marked 4, ({op := .close, first := 4}, ok), ({op := .dirClose, first := cursor, second := 3}, ok)])))
   let renamedCwd := selectedCwd "/renamed/parent" ++ ancestryRoot ++
     [({op := .directoryIdentity, first := 4}, (0, directoryId 9)),
      ({op := .openAt, first := 4, second := directoryFlags, left := "..".toUTF8}, (5, .empty)),

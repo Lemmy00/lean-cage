@@ -67,7 +67,10 @@ theorem readLoop_input (fuel : Nat) (fd : UInt64) (limit : Nat) (bytes : ByteArr
     unfold readLoop
     split
     · exact .pure _
-    · apply InputProgram.call
+    · rename_i within
+      have bounds : bytes.size ≤ limit ∧ bytes.size < 2 ^ 63 := by
+        simpa only [Bool.or_eq_true, decide_eq_true_eq, not_or, Nat.not_lt, Nat.not_le] using within
+      apply InputProgram.call
       · exact boundedReadRequest limit bytes.size (by omega)
       · intro reply
         split
@@ -124,8 +127,8 @@ theorem hash_input (bytes : ByteArray) : InputProgram (Filesystem.hash bytes) :=
   intro reply
   split <;> exact .pure _
 
-theorem closeDirectory_input {α : Type} (cursor : UInt64) (result : Result α) :
-    InputProgram (closeDirectory cursor result) := by
+theorem closeDirectory_input {α : Type} (fd cursor : UInt64) (result : Result α) :
+    InputProgram (closeDirectory fd cursor result) := by
   apply InputProgram.call (by trivial)
   intro reply
   cases result with

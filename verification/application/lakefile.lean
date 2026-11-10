@@ -10,4 +10,5 @@ require leanCageHost from "../../host"
 
 @[default_target]
 lean_lib ApplicationVerification where
-  roots := #[`ControllerValidation, `ControllerFilesystem, `ControllerChildEffects, `WorkspaceController]
+  roots := #[`ControllerValidation, `ControllerFilesystem, `ControllerChildEffects,
+    `ControllerPrimitiveSource, `ControllerNamespaceSource, `WorkspaceController]

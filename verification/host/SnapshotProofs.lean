@@ -52,18 +52,18 @@ private theorem walk_input_pair (fuel : Nat) :
               · apply input_bind (enumerate_input _ _ _ _ _)
                 intro listing
                 cases listing with
-                | error => exact closeDirectory_input _ _
+                | error => exact closeDirectory_input _ _ _
                 | ok names =>
                   apply input_bind (ih.2 _ _ _ _ _)
                   intro result
                   cases result with
-                  | error => exact closeDirectory_input _ _
+                  | error => exact closeDirectory_input _ _ _
                   | ok after =>
                     apply InputProgram.call (by trivial)
                     intro finalReply
                     split
-                    · exact closeDirectory_input _ _
-                    · exact closeDirectory_input _ _
+                    · exact closeDirectory_input _ _ _
+                    · exact closeDirectory_input _ _ _
     · intro limits fd name names state
       cases names with
       | nil => exact .pure _

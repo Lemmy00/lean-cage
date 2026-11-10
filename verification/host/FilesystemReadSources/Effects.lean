@@ -161,8 +161,8 @@ theorem identify_noRead (bytes : Option ByteArray) : RequestProgram NoRead (Snap
   | none => exact .pure _
   | some bytes => exact request_bind (hash_noRead _) (fun _ => .pure _)
 
-theorem closeDirectory_noRead {α : Type} (cursor : UInt64) (result : Result α) :
-    RequestProgram NoRead (Snapshot.closeDirectory cursor result) := by
+theorem closeDirectory_noRead {α : Type} (fd cursor : UInt64) (result : Result α) :
+    RequestProgram NoRead (Snapshot.closeDirectory fd cursor result) := by
   apply RequestProgram.call (by change Op.dirClose ≠ Op.read; decide)
   intro reply
   cases result with

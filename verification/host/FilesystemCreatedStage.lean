@@ -40,6 +40,8 @@ structure StageOpening (parent : Directories.Parent) (events : List (Request × 
   reserved : PrivateNames.reservedBytes request.left = true
   active : Prefix (Directories.fresh parent) (Publication.completed before ++ [(request, none)])
   inspection : ∃ information, after = [({op := .stat, first := stage.directory.fd}, information)]
+  operation : request = {
+    op := .openAt, first := stage.container.fd, second := directoryFlags, left := stage.name }
 
 -- §FS-host-boundary.publication: The completed stage creation selects its own original
 -- child open, with the same raw name, fd and actual source replies.
@@ -63,7 +65,34 @@ theorem created_stage_opening (parent : Directories.Parent) {events : List (Requ
       List.cons_append, List.nil_append]
   exact ⟨⟨before, after, request, reply, trace, rfl, recognized,
     (by change PrivateNames.reservedBytes stage.name = true; rw [childName]; exact private_prefix_reserved _),
-    returned_pending source trace, ⟨information, rfl⟩⟩⟩
+    returned_pending source trace, ⟨information, rfl⟩, rfl⟩⟩
+
+-- §FS-host-boundary.lookup: The actual successful stage producer retains
+-- the same opening and its precise parsed/trusted stat acknowledgement.
+theorem created_stage_opening_observed (parent : Directories.Parent) {events : List (Request × Reply)} {stage : Directories.Fresh}
+    (source : Returns (Directories.fresh parent) events (.ok stage)) : ∃ opening : StageOpening parent events stage, ∃ information,
+      opening.after = [({op := .stat, first := stage.directory.fd}, information)] ∧
+      parseStat information = some stage.directory.information ∧
+      Directories.trusted parent.uid stage.directory.information = true := by
+  obtain ⟨aliasEvents, creating, shape, alias, created⟩ := Publication.fresh_source parent source
+  obtain ⟨random, randomEvents, made, openingEvents, createTrace, randomized, randomSize, childName,
+    component, madeZero, madeEmpty, opened, childUid, childMode⟩ := created
+  obtain ⟨reply, information, openingTrace, recognized, parsed, trusted⟩ := opened
+  let request : Request := {
+    op := .openAt
+    first := stage.container.fd
+    second := directoryFlags
+    left := stage.name }
+  let before := aliasEvents ++ randomEvents ++ [({
+    op := .mkdirAt, first := stage.container.fd, second := 448, left := stage.name}, made)]
+  let after : List (Request × Reply) := [({op := .stat, first := stage.directory.fd}, information)]
+  have trace : events = before ++ (request, reply) :: after := by
+    rw [shape, createTrace, openingTrace]
+    simp only [before, after, request, List.append_assoc,
+      List.cons_append, List.nil_append]
+  exact ⟨⟨before, after, request, reply, trace, rfl, recognized,
+    (by change PrivateNames.reservedBytes stage.name = true; rw [childName]; exact private_prefix_reserved _),
+    returned_pending source trace, ⟨information, rfl⟩, rfl⟩, information, rfl, parsed, trusted⟩
 
 private theorem attempt_staging_prefix (bundle : Validation.Bundle) (input : Publication.Input)
     (stdoutHash stderrHash : ByteArray) {target : ByteArray} (selection : PublicationCreation.Selected target)

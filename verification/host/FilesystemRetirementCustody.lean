@@ -125,6 +125,68 @@ theorem retirement_ownership_prefix {kernel : Contract} {runtime : ActorRuntime 
       exact False.elim (released label)
   exact ⟨prior.advance next (by intro record member; exact member) ownership, rfl, rfl⟩
 
+theorem retirement_custody_state_retained {kernel : Contract} {runtime : ActorRuntime kernel sourceProgram}
+    {child : ChildPrimitive kernel} {native : NativePrimitive kernel}
+    (runtimeLaws : RuntimeDescriptorContract runtime) (descriptors : DescriptorContract kernel)
+    (lifetimes : LifetimeContract runtime) (references : ReferenceContract runtime)
+    (objects : ObjectLifetimeContract runtime) (metadata : LiveMetadataContract runtime child)
+    (heldMetadata : GlobalAuthorityContract runtime child)
+    (lookup : LookupMutationContract (runtime := runtime) child native)
+    {initial : World} {ticks processed : List (ActorTick runtime)} {hostUid : Nat}
+    {dataObjects directories : ObjectId → Prop} {semantics : NameSemanticsView}
+    {foreignReferences : ForeignReferences} {tick : ActorTick runtime} {callers : NativeProcesses}
+    (kind : actionFamily tick.action = .retirement)
+    (prior : CustodyState runtime initial ticks hostUid dataObjects directories semantics
+      foreignReferences processed tick.before callers) :
+    ∃ next : CustodyState runtime initial ticks hostUid dataObjects directories semantics
+      foreignReferences (processed ++ [tick]) tick.after callers,
+      next.source.custody.catalogue = prior.source.custody.catalogue ∧
+      next.source.custody.caps.family = prior.source.custody.caps.family := by
+  obtain ⟨next, caps, catalogue⟩ := retirement_ownership_prefix runtimeLaws.toRetirementContract descriptors lifetimes
+    references objects metadata heldMetadata lookup kind prior.source
+  have ownership : CustodyOwnershipStep next.custody.catalogue tick
+      prior.source.custody.caps.family next.custody.caps.family := by
+    rw [caps]
+    have entries := retirement_entries runtimeLaws.toRetirementContract tick.operation kind
+    constructor
+    · intro parent name object scope bound label missing
+      exact False.elim (missing (by rwa [entries]))
+    · intro object scope allocated label released
+      exact False.elim (released label)
+  refine ⟨prior.application runtimeLaws lifetimes next ?_ ?_ ?_ ?_ ownership, catalogue, ?_⟩
+  · intro actor owned closeExec directory impossible
+    rw [impossible] at kind
+    cases kind
+  · rw [caps]
+    exact unchanged_existing_labels _ _ _
+  · rw [catalogue]
+    exact fun _ member => member
+  · rw [catalogue]
+    exact fun _ member => .inl member
+  · have family := congrArg Capabilities.family caps
+    exact family
+
+-- §AR-host-boundary.interfaces: Preserve the original actual-retirement catalogue projection.
+theorem retirement_custody_state_catalogued {kernel : Contract} {runtime : ActorRuntime kernel sourceProgram}
+    {child : ChildPrimitive kernel} {native : NativePrimitive kernel}
+    (runtimeLaws : RuntimeDescriptorContract runtime) (descriptors : DescriptorContract kernel)
+    (lifetimes : LifetimeContract runtime) (references : ReferenceContract runtime)
+    (objects : ObjectLifetimeContract runtime) (metadata : LiveMetadataContract runtime child)
+    (heldMetadata : GlobalAuthorityContract runtime child)
+    (lookup : LookupMutationContract (runtime := runtime) child native)
+    {initial : World} {ticks processed : List (ActorTick runtime)} {hostUid : Nat}
+    {dataObjects directories : ObjectId → Prop} {semantics : NameSemanticsView}
+    {foreignReferences : ForeignReferences} {tick : ActorTick runtime} {callers : NativeProcesses}
+    (kind : actionFamily tick.action = .retirement)
+    (prior : CustodyState runtime initial ticks hostUid dataObjects directories semantics
+      foreignReferences processed tick.before callers) :
+    ∃ next : CustodyState runtime initial ticks hostUid dataObjects directories semantics
+      foreignReferences (processed ++ [tick]) tick.after callers,
+      next.source.custody.catalogue = prior.source.custody.catalogue := by
+  obtain ⟨next, catalogue, family⟩ := retirement_custody_state_retained runtimeLaws descriptors lifetimes references
+    objects metadata heldMetadata lookup kind prior
+  exact ⟨next, catalogue⟩
+
 private theorem retirement_custody_base {kernel : Contract} {runtime : ActorRuntime kernel sourceProgram}
     {child : ChildPrimitive kernel} {native : NativePrimitive kernel}
     (runtimeLaws : RuntimeDescriptorContract runtime) (descriptors : DescriptorContract kernel)
@@ -140,27 +202,9 @@ private theorem retirement_custody_base {kernel : Contract} {runtime : ActorRunt
       foreignReferences processed tick.before callers) :
     Nonempty (CustodyState runtime initial ticks hostUid dataObjects directories semantics
       foreignReferences (processed ++ [tick]) tick.after callers) := by
-  obtain ⟨next, caps, catalogue⟩ := retirement_ownership_prefix runtimeLaws.toRetirementContract descriptors lifetimes
-    references objects metadata heldMetadata lookup kind prior.source
-  have ownership : CustodyOwnershipStep next.custody.catalogue tick
-      prior.source.custody.caps.family next.custody.caps.family := by
-    rw [caps]
-    have entries := retirement_entries runtimeLaws.toRetirementContract tick.operation kind
-    constructor
-    · intro parent name object scope bound label missing
-      exact False.elim (missing (by rwa [entries]))
-    · intro object scope allocated label released
-      exact False.elim (released label)
-  refine ⟨prior.application runtimeLaws lifetimes next ?_ ?_ ?_ ?_ ownership⟩
-  · intro actor owned closeExec directory impossible
-    rw [impossible] at kind
-    cases kind
-  · rw [caps]
-    exact unchanged_existing_labels _ _ _
-  · rw [catalogue]
-    exact fun _ member => member
-  · rw [catalogue]
-    exact fun _ member => .inl member
+  obtain ⟨next, _⟩ := retirement_custody_state_catalogued runtimeLaws descriptors lifetimes references objects metadata
+    heldMetadata lookup kind prior
+  exact ⟨next⟩
 
 -- §FS-host-boundary.ownership: The actual engine retirement extends the common family,
 -- birth, native-reference and removal histories; it does not manufacture a cleanup result.

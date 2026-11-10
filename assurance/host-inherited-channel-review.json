@@ -1,0 +1,992 @@
+{
+  "schema": 1,
+  "updatedAt": "2026-11-10T15:46:30.890814+00:00",
+  "status": "supporting actual-source connection checked; integrated M5.2 delivery remains active",
+  "accepted_security_delivery": false,
+  "specs": [
+    "FS-host-boundary.caller",
+    "FS-host-boundary.snapshot",
+    "FS-host-boundary.ownership",
+    "AR-host-boundary.primitives"
+  ],
+  "guarantee": "Every inherited raw handle is still the SAME handle at every live source head of the actual lowered Entrypoint.run, and after its individual selected operation with either returned or lost observation. The exact original handoff and actor history come from the same global journal; no current-reference or future-return premise is used.",
+  "consumers": [
+    "Gateway private-stream mandatory ACK/source synchronization consumes actual_live_inherited_reference at the selected write input.",
+    "The same-operation retained-reference producer handles returned/lost effects without framing later resource retirement."
+  ],
+  "review": {
+    "source": "The concrete source composer covers Startup, Packet, CLI parse/dispatch, selected-bundle checks, current engine identity, private key checks, snapshot traversal, validator create/write/spawn/read/wait/release, image creation, VM calls, run cleanup, publication and report retrieval. Every temporary close is linked to actual allocation freshness; no whole helper borrowing assumption is accepted by the final theorem.",
+    "sameHistory": "SelectedActorHistory and Residual are produced from the same ActorJournal and source program. The conclusion compares complete Handle data, including the same object/OFD lifetime and raw provenance. Same-looking native or actor ticks are never substituted for the supplied journal history.",
+    "errors": "Every helper follows arbitrary actual replies. Prefix history excludes a past lost source event only because the selected actor is genuinely live; the selected current operation may have a lost reply. Source exits/retirement remain separate and may release resources afterward.",
+    "primitiveInputs": "DescriptorContract supplies individual allocation freshness/retention/close laws; RuntimeDescriptorContract supplies individual parent SDK raw-reference effects and actual initial raw ownership. DirectoryRetirementContract.other is the precise op11 unrelated-FD effect after the new native expected-FD check. Existing valid live DIR-pointer ownership remains an explicit libc/FFI contract, not a claim that arbitrary integers are safe cursors.",
+    "runtimeDelta": "Op11 accepts expected original FD in request.second, rejects values above INT_MAX, rejects dirfd(cursor) mismatch before closedir, and retains existing status/errno/loss behavior. Snapshot carries its retained fd on every actual directory close. No other C branch changed; host_python.c/native strict data and pins are unchanged by this amendment.",
+    "nonvacuity": "The actual benign native fixture obtains a genuine fdopendir cursor. Different live expected FD and >INT_MAX fail without closing either FD; matching expected FD succeeds and only its descriptor is retired. Current synthetic Snapshot tests exercise successful copied-tree/stdin provenance and malformed close acknowledgements using the exact new transcript.",
+    "scope": "This is the needed source-to-channel ownership connection inside M5.2. It does not complete filesystem/key-origin custody, stream exclusive-reader/source provenance, public Outcome integration, or the whole M5.2 delivery."
+  },
+  "validation": {
+    "affectedBuild": "PASS: root-owned lake build including all current output-source modules and directory-close-check (257 jobs; matching dependencies reused).",
+    "nativeFixture": {
+      "status": "PASS",
+      "resultSha256": "75de325e5fc12d6317ce00e1960a089e150f996054b8a33ba7abd918a515cebb",
+      "inputs": {
+        "host/.lake/build/bin/directory-close-check": "4264143abc3a40696d5040482e6a43d3a6fc714bc35440d87cf10cd8591c1d63",
+        "host/LeanCageHost/Snapshot.lean": "35cc137a6c00978338883624c2386cba7199cc336c67cfdae2fd99e1340d6cfe",
+        "host/lake-manifest.json": "85f91fca646056b3fa7cc5933aeb3c103d103b8d5112fc96c3a914d641a443dd",
+        "host/lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+        "linux/host_primitives.c": "3bd2e9a5e4df69d694ac03619dbfab22a5c06e47e431215985a1f692d82570e1",
+        "verification/host/DirectoryCloseNative.lean": "6d09714f33b70060a83ec8a504f350f84f6e82abbce11f557cc7813aa03dea19"
+      }
+    },
+    "snapshotTests": "PASS: lake env lean --run ../verification/host/SnapshotTests.lean",
+    "fullTypesAxioms": "PASS: no truncated terms or undocumented axioms",
+    "kernelFoundations": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "whitespace": "PASS: affected git diff --check and source citation/trailing-whitespace guard",
+    "grund": "PASS: repository-local Grund check and fmt --check on final owned inputs."
+  },
+  "declarations": [
+    {
+      "name": "LeanCage.Host.Kernel.channel_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_borrow_weaken_from",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.runtime_only_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.lower_source_bind",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.actor_bind",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.actor_filesystem",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.checked_bind_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_borrow_history",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.selected_borrowed_reference",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.snapshot_close_directory_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.snapshot_enumerate_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.snapshot_workspace_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.snapshot_stdin_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.snapshot_identify_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.snapshot_freeze_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.execute_checked_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.dispatch_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.cli_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.commands_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.entrypoint_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actual_live_inherited_reference",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actual_inherited_operation_reference",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.actor_checked_bind",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.actor_lift_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.validator_finish_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.validator_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.policy_prepare_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.dispatch_image_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.cleanup_run_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.duration_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.execute_run_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.bootstrap_read_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.load_bundle_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.identified_copy_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.check_file_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.check_bundle_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.running_image_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.policy_load_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.seal_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.packet_exact_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.packet_read_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.close_effect_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.directory_descend_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.directory_parent_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.temporary_parent_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.run_create_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.run_release_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.run_cleanup_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.image_writer_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.image_create_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.outcome_identify_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.publication_unlink_relative_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.publication_cleanup_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.publication_close_owned_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.publication_finish_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.publication_absolute_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.publication_destination_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.publication_attempt_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.publication_publish_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.hash_only_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.retrieval_read_file_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.retrieval_optional_file_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.retrieval_collect_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.retrieval_export_blobs_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.retrieval_manifest_blobs_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.retrieval_result_json_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.retrieval_marker_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.retrieval_verify_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.retrieval_policy_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.retrieval_validate_metadata_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.retrieval_complete_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.retrieval_stored_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.retrieval_destination_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.retrieval_at_destination_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Lowered.retrieval_report_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.walk_input",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.walkChildren_input",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.copyWorkspace_input",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.copyStdin_input",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.freeze_input",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.freeze_no_write_prefix",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.input_bind",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.input_prefix",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.readLoop_input",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.closeResult_input",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.copyOpened_input",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.copyAt_input",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.hash_input",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.closeDirectory_input",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.enumerate_input",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.closeResult_post",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.closeDirectory_post",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.closeDirectory_value",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.state_blobs",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.walk_state_valid",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.walkChildren_state_valid",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.copyWorkspace_state_valid",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.public_child",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.acquired_frame",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.appendEntry_update",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.appendEntry_blobs",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.walk_acquired",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.walkChildren_acquired",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.copyWorkspace_origin",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.copyWorkspace_acquired",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.closeDirectory_noRead",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "LeanCage.Host.Kernel.DirectoryRetirementContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.closeDirectory",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Snapshot.walk",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Entrypoint.run",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.RuntimeDescriptorContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ActorBorrowPost",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "sourceSha256": {
+    "verification/host/FilesystemOutputBorrowing.lean": "c9138de29c42e067bff64278a44fc7227b7ef5bf19c83d27a5cffc15d3c16498",
+    "verification/host/FilesystemSnapshotBorrowing.lean": "82096c11aba4ba5313aa9e42bf67aed5690d64e590e2e7e5b1c51ed87c7de5a3",
+    "verification/host/FilesystemOutputSources.lean": "5a155c6cab3dabc300b2c4f988818a8858aa9ceacb6b4d60f76658658fa7bae1",
+    "verification/host/FilesystemOutputSources/Application.lean": "6ec7654ddef62e0abe938a114cbb1eb18c324f0f4a2f1243eca528b7c42d7d35",
+    "verification/host/FilesystemOutputSources/Bootstrap.lean": "9099d7e96f0879653280218f42e20d5ab88dcb9edd579cb6b982a06a59e7b2b0",
+    "verification/host/FilesystemOutputSources/Directories.lean": "b62a290b618bf01bf3ed85858017fc45643e917e662e97da6448c1a16b3ca8aa",
+    "verification/host/FilesystemOutputSources/Publication.lean": "11c722af4e61c26ece80cc08468984a5a3eab5ddf4d14af4b4f7638fbdc82942",
+    "verification/host/FilesystemOutputSources/Retrieval.lean": "bdee4be9f7b85dc003d7fac2afdb208149bb5dc3068cb9ce3c4dc9db60f15d94",
+    "verification/host/SnapshotProofs.lean": "602a2c9215e84bf2aebe79ea4644c85e1dbee98ba816611f36aa0eb11cc810ca",
+    "verification/host/SnapshotProofs/Inputs.lean": "3f8d75edd253130bb975b15df78f503b77b916ece424fa8d5b29fe89a1329651",
+    "verification/host/SnapshotProofs/Preservation.lean": "0309d60cf49557250750a759707258c671c27732b3af0016ee2ac65aa49d1e84",
+    "verification/host/SnapshotProofs/Acquisition.lean": "03711114a27edf57d26643bfb787840437c7cccf6b1122c243d7411efd416e0f",
+    "verification/host/FilesystemReadSources/Effects.lean": "454dd15d68e6c9e085d7155443932485cc24e940de9618f2df9278680d5f6d4c",
+    "verification/host/FilesystemReadSources/Source.lean": "179721d08ca627e802f7a085d8309a84283ca535b15821a5d8b700bfc65b733a",
+    "verification/host/FilesystemSnapshotReadForms.lean": "46d573ec81a4c8595080b277683c526f26c609179020c143264b794080a49708",
+    "host/LeanCageHost/Snapshot.lean": "35cc137a6c00978338883624c2386cba7199cc336c67cfdae2fd99e1340d6cfe",
+    "linux/host_primitives.c": "3bd2e9a5e4df69d694ac03619dbfab22a5c06e47e431215985a1f692d82570e1",
+    "verification/host/SnapshotTests.lean": "25836af5b675b47f54097a823db504a22b31359d268199a9504fbac0ec426fde",
+    "verification/host/DirectoryCloseNative.lean": "6d09714f33b70060a83ec8a504f350f84f6e82abbce11f557cc7813aa03dea19",
+    "host/lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "host/lake-manifest.json": "85f91fca646056b3fa7cc5933aeb3c103d103b8d5112fc96c3a914d641a443dd",
+    "host/LeanCageHost/Entrypoint.lean": "c48fc8730cddbfc12ac1d2aac8731a65cc5f2f12b9f905b9fc2e23351a80b471",
+    "host/LeanCageHost/Commands.lean": "173fa38cd59dff6ab401b93e6a1f92cc7e835c8a28bc773f1ece2df7856ea405",
+    "host/LeanCageHost/Application.lean": "08fd19e7d08cf0486b593bc9fd525ff301057e56f69ae7eecf1db63289fe1648",
+    "host/LeanCageHost/Validation.lean": "033340662a44b52068c0c7e89ee16e903c672596b889d0c13146b2305edc990c",
+    "host/LeanCageHost/Retrieval.lean": "74d70ed2ae55744ba5eab2c7fcf19896c3d4479cd23c3aa13ab72650955df9e7",
+    "host/LeanCageHost/Publication.lean": "7cbd8de6c663b78bc180fe14a9fc1b964f73640f651a95b796bdd0f0994c8a88",
+    "host/LeanCageHost/Effects.lean": "3503be10e57e5ebf52916ab42bc65f146ffbc95e1d93a9e8feae70a1a82cffc2",
+    "host/LeanCageHost/Program.lean": "e1e3a0336f118df866fee2a79994d7f468aedd748c050148d743e7d2461595a1"
+  },
+  "artifactsSha256": {
+    "host-inherited-channel-current.json.gz": "5dc46df5d49514dfe27da63224f6f933d76deb9269b75a902434bad33f1db3d9",
+    "host-inherited-channel-audit.lean.gz": "1e8fcb4ffbf2e4c104898d0dd5020489c8d91c45cc7921be7cccce9e6f695fb5",
+    "host-inherited-channel-audit.log.gz": "76cbcbe3b03765b456678d9197091c26091d3e7dbbf4d92832b6b5fe137cc247",
+    "host-inherited-channel-build.log.gz": "df2464405e6d388a2e79c47d27807038843ecb35ea23b94019d5d1f351d1a73e",
+    "host-directory-close-result.json.gz": "2ac24326717c3c3a7b647cfa90ce679578f16c900afa162cafd551cd329b49bd",
+    "host-directory-close-snapshot-tests.log.gz": "b3b91ea4174ede54aa368f04f4d8e0d0578bfdf22519e1dc953cc8ba1f42e24f"
+  },
+  "predecessor": {
+    "path": "assurance/host-directory-close-before.json.gz",
+    "sha256": "1c6ef96689a3fbacfe0f9d5376eb2e4c6bb9b103ad73115cc408748d8fedcc14",
+    "preservation": "Exact pre-amendment runtime and affected proof-client bytes are sealed. Previous reviewed records remain unchanged at their original scope."
+  },
+  "statementDelta": "The closeDirectory executable and its helper contracts now explicitly quantify the retained expected fd as well as cursor. Whole Snapshot guarantees retain their caller arguments and properties but execute the new checked operand. The new final inherited-reference results have no whole BorrowPost/helper-preservation/current-live-handle/future-success premise.",
+  "next": "Consume the checked forward reference producer in the same global stream ACK/queue fold, then finish cumulative filesystem/key-origin and final caller integration before the affected M5.2 acceptance gate."
+}

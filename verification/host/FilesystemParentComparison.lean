@@ -82,10 +82,10 @@ theorem primitive_run_mkdir_safe_parent {kernel : Contract} {runtime : Primitive
     (probes : LookupPrimitiveContract kernel.step kernel.interference semantics)
     {initial : World} {final : Population} {ticks : List (ActorTick runtime)}
     (journal : ActorJournal runtime (Population.empty initial) ticks final)
-    (backend : PrimitiveChildAuthorityProducer child ticks)
     (authorityProfile : NativeAuthorityProfile native ticks hostUid) (lookupProfile : NativeLookupProfile native ticks hostUid)
     {prior last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid prior callers ticks last next)
+    {backend : NativeAuthorityJournal recording}
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState} {request : Request}
     (selected : ticks[position]? = some tick) (present : tick.before.actors actor = some engine)
     (source : PrimitiveRunParent runtime initial ticks tick actor engine request) :
@@ -93,7 +93,7 @@ theorem primitive_run_mkdir_safe_parent {kernel : Contract} {runtime : Primitive
       tick.before.shared.information parent.object = some information ∧ Directories.trusted hostUid information = true ∧
       (semantics.at tick.before.shared parent.object).byteExact ∧ request.op = .mkdirAt ∧ request.second = 448 ∧
       Directories.component request.left = true ∧ PrivateNames.reservedBytes request.left = true := by
-  obtain ⟨interval⟩ := primitive_run_parent_interval descriptors lifetimes references raw sdk accounts journal backend
+  obtain ⟨interval⟩ := primitive_run_parent_interval (backend := backend) descriptors lifetimes references raw sdk accounts journal
     recording selected present source
   obtain ⟨information, known, trusted, exactNames⟩ := parent_interval_state_comparison lifetimes metadata nativeMetadata lookup
     probes journal authorityProfile lookupProfile interval

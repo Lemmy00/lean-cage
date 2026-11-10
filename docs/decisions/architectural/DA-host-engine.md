@@ -64,6 +64,19 @@ as the exact tail after this check so source consumers retain their established
 phase definitions. Cancellation and manual Outcome construction use no module
 bootstrap or class roots and keep their existing behavior.
 
+Derive retention across callbacks from their actual source execution. Extend the
+source environment only with genuine external SDK capabilities, preserving the
+original function bodies, layouts and source global addresses. The runtime's
+individual memory actions retain concrete pointer origins and actual callback
+entries; they supply no callback-wide global frame. Induction on finite nested
+callback histories proves address non-escape. Actual ordinary source calls
+exclude the class writers, and the exported initializer's active/completed
+branches exclude its own assignments at every prefix. Their composition gives
+the five class/flag cells' frame only while the active or completed guard holds.
+An authorized retry before first success may overwrite earlier class roots and
+must retain their separate reference history. Bootstrap buffers and managed
+object fields keep their own write and ownership obligations.
+
 ## hostcode: Identify the external host-code authority profile
 
 Profile 1 makes the host-code exclusion in
@@ -351,3 +364,54 @@ provenance and private orphans. Source/kernel metadata laws apply only to
 resources or inodes actually still live, with no whole private-region frame.
 A completed resource observation concerns that process; descendant supervision
 and justified reaping remain separately observed lifetime obligations.
+
+## copyoffset: Select file-copy offsets in the shared executable core
+
+For [§AR-host-boundary.primitives](../../architecture/AR-host-boundary.md#primitives-enumerate-the-linux-and-runtime-effects) and [§FS-host-boundary.snapshot](../../functional-spec/FS-host-boundary.md#snapshot-identify-the-bytes-actually-copied), regular-file
+copies select their actual offset from acknowledged bytes in executable Lean.
+The existing read primitive's third word is zero for ordinary stream reads and
+offset plus one for positional regular-file reads. The native adapter checks
+the signed 64-bit range before `pread64`. No operation or native-row schema is
+added. Channel and child-output reads retain the ordinary stream form.
+
+This removes shared OFD-cursor continuity from the proof of copied file bytes.
+The actual opened file identity, per-read contents and protected installation
+contents still require their individual runtime observations and source proofs.
+Mutable input snapshots keep their observed-copy guarantee. A focused source
+build and owned-file fixture must settle this adapter choice within thirty
+minutes; failure requires diagnosis and another implementation route toward the
+same manifest-byte provenance guarantee.
+
+The choice was settled within that bound: the real adapter copied all 131273
+fixture bytes across four deliberate advances of the same descriptor's stream
+cursor, retained that cursor independently, and rejected an out-of-range offset.
+Snapshot and retrieval scripted scenarios and the affected snapshot/source proof
+builds pass. `PositionalReadProofs` checks every actual offset word against its
+accumulator without wraparound. The installed-manifest consumer additionally
+requires no concurrent content modification during each actual read interval;
+endpoint equality alone supplies no such condition. This is implementation and
+supporting proof work within the active host delivery.
+
+## framing: Compare typed prefixes over the unchanged source-word relation
+
+For [§FS-host-boundary.caller](../../functional-spec/FS-host-boundary.md#caller-preserve-the-public-request-and-result-interfaces) and
+[§AR-host-boundary.interfaces.gateway](../../architecture/AR-host-boundary.md#interfacesgateway-freeze-the-native-request-and-typed-response-wire), prove that a complete parsed response cannot be
+a strict prefix of this helper's response. A pending helper write supplies a
+committed prefix before its acknowledgement or return; neither event may be
+assumed to establish value identity.
+
+The broad shared `SourceEncoded` relation deliberately permits arbitrary scalar
+tags. In particular, scalar tag zero can share the null prefix. Its actual
+canonical-tag producers are the maintained executable writer's typed view and
+the native parser's constructed heap. Keep those producers explicit rather than
+altering the existing relation to hide the ambiguity.
+
+`GatewayFraming` checks a total deterministic prefix comparison in ordinary Lean.
+The native proof establishes the comparison directly over the unchanged strict
+import of `SourceEncoded`, using its exact word lengths and decoded values.
+This mathematical comparison introduces no replacement application decoder.
+The full-theorem import trial exposed an existing dependent-instantiation
+conflict and an exported logical axiom; retain its diagnostics and the strict
+import policy. No importer relaxation, new axiom or dependency change supplies
+the native theorem. The physical stream history and real caller must still
+produce the common byte prefix consumed by these checked comparisons.

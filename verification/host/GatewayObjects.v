@@ -328,6 +328,7 @@ Inductive gateway_constructor_request (decimal_float:list Z->float->Prop)
       [pointer;Vlong(Int64.repr(Z.of_nat(length bytes)))](gateway_bytes_object bytes)
 | gateway_request_dictionary_copy:forall object fields,
     gateway_object_values heap object=Some(gateway_dict_object fields) ->
+    gateway_object_private heap object=true ->
     gateway_constructor_request decimal_float heap memory gateway_api_dict_copy
       [object](gateway_dict_object fields)
 | gateway_request_list:gateway_constructor_request decimal_float heap memory gateway_api_list_new

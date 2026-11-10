@@ -1,0 +1,15 @@
+{
+  "schema": "leancage-host-runtime-activation-obligation-v1",
+  "accepted_security_delivery": false,
+  "delivery": "M5.2",
+  "status": "actual runtime instantiation remains required",
+  "interfaces": [
+    "GatewaySourceActivation",
+    "GatewayScopedBackend",
+    "GatewaySpawnRuntime.gateway_spawn_ambient"
+  ],
+  "required_connection": "Instantiate held-thread/readiness/owned-reference ambient laws only on the backend whose actual process, image and exec activation survives. An exec or exit during an actual SDK/callback occurrence must produce committed loss or dead control; it cannot resume the former C continuation with retained physical descriptors.",
+  "existing_evidence": "The source activation adapter separates surviving resumption from physical loss. The response channel reference history separately retains actual retirement and full raw/SDK/child/foreign/kernel reference snapshots; it assumes no callback-wide descriptor frame.",
+  "forbidden_shortcut": "Do not instantiate gateway_spawn_ambient on all underlying physical interference, then use its full resource/owned-FD frame to eliminate actual callback exec, exit or retirement.",
+  "next_action": "Supply each actual SDK/source memory-world episode to the surviving-activation adapter, connect its loss branch to the original caller's loss outcome, and instantiate the spawn/thread runtime on that scoped backend before the complete public host theorem."
+}

@@ -1,9 +1,10 @@
 import FilesystemMarkerLifetime
 import FilesystemNativeCustody
 import FilesystemPrimitiveReads
+import FilesystemRecordedAuthority
 
 namespace LeanCage.Host.Kernel
-open Filesystem
+open Filesystem PrivateStreams
 
 variable {sourceProgram : Program UInt32}
 
@@ -132,9 +133,9 @@ theorem primitive_guard_excludes_protected_key {kernel : Contract} {runtime : Pr
     {initial : World} {final : Population} {all : List (ActorTick runtime)} {keys : ObjectId → Prop}
     (profile : NativeProtectedKeyProfile native all keys)
     (journal : ActorJournal runtime (Population.empty initial) all final)
-    (backend : PrimitiveChildAuthorityProducer child all)
     {first last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid first callers all last next)
+    {backend : NativeAuthorityJournal recording}
     {key : ObjectId} {value : ByteArray} (keyMember : keys key) (old : initial.allocated key = true)
     (initialMarker : ProtectedMarker initial hostUid key value)
     {actor : ActorId} {fd : UInt64} {handle : Handle}
@@ -144,7 +145,7 @@ theorem primitive_guard_excludes_protected_key {kernel : Contract} {runtime : Pr
   intro sameObject
   obtain ⟨position, tick, engine, nextEngine, selected, action, present, afterPresent,
     count, beforeShape, afterShape⟩ := guard.sampled
-  obtain ⟨cut⟩ := native_selected_cut recording selected
+  obtain ⟨cut, cutAt⟩ := selectNativeCut_exists recording selected
   have firstJournal : ActorJournal runtime (Population.empty initial) cut.leading tick.before := by
     have arranged := journal
     rw [cut.shape] at arranged
@@ -155,13 +156,7 @@ theorem primitive_guard_excludes_protected_key {kernel : Contract} {runtime : Pr
     intro event member
     rw [cut.shape]
     exact List.mem_append_left _ member
-  have earlierBackend : PrimitiveChildAuthorityProducer child cut.leading := by
-    intro ordinal event sampled before after call
-    have bound : ordinal < cut.leading.length := (List.getElem?_eq_some_iff.mp sampled).1
-    have actual : all[ordinal]? = some event := by
-      simpa only [cut.shape, List.getElem?_append_left bound] using sampled
-    exact backend ordinal event actual before after call
-  have safe := actual_native_authority_journal firstJournal earlierBackend cut.first
+  have safe := (recorded_authority_at recording backend ⟨tick, cut⟩ cutAt).1
   have alive : ObjectAlive tick.before.shared key := by
     have observed := objects.reference _ _ _ _ _ _ guard.actual guard.live
     simpa only [sameObject, beforeShape, ObjectAlive, Population.project] using observed
@@ -186,9 +181,9 @@ theorem primitive_snapshot_key_reference {kernel : Contract} {runtime : Primitiv
     {initial : World} {final : Population} {all : List (ActorTick runtime)} {keys : ObjectId → Prop}
     (profile : NativeProtectedKeyProfile native all keys)
     (journal : ActorJournal runtime (Population.empty initial) all final)
-    (backend : PrimitiveChildAuthorityProducer child all)
     {first last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid first callers all last next)
+    {backend : NativeAuthorityJournal recording}
     {key : ObjectId} {value : ByteArray} (keyMember : keys key) (old : initial.allocated key = true)
     (initialMarker : ProtectedMarker initial hostUid key value)
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState}
@@ -203,7 +198,7 @@ theorem primitive_snapshot_key_reference {kernel : Contract} {runtime : Primitiv
     ∃ handle, engine.references request.first = some handle ∧ handle.object ≠ key := by
   obtain ⟨guarded⟩ := primitive_snapshot_guarded_read descriptors journal selected present adapter
     workspace stdin limits source sourceTrace reading
-  exact ⟨guarded.handle, guarded.live, primitive_guard_excludes_protected_key lifetimes objects metadata attributes
-    foreign nativeMetadata nativeAttributes profile journal backend recording keyMember old initialMarker guarded.guard⟩
+  exact ⟨guarded.handle, guarded.live, primitive_guard_excludes_protected_key (backend := backend) lifetimes objects metadata attributes
+    foreign nativeMetadata nativeAttributes profile journal recording keyMember old initialMarker guarded.guard⟩
 
 end LeanCage.Host.Kernel

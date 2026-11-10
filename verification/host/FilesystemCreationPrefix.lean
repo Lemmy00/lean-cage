@@ -24,10 +24,10 @@ theorem run_creation_prefix {kernel : Contract} {runtime : PrimitiveActorRuntime
     (journal : ActorJournal runtime (Population.empty initial) ticks final)
     (anchor : TemporaryAnchor initial) (anchorLookup : TemporaryLookupContract kernel anchor)
     (anchors : SystemAnchorJournal runtime anchor semantics (Population.empty initial) ticks final)
-    (backend : PrimitiveChildAuthorityProducer child ticks)
     (authorityProfile : NativeAuthorityProfile native ticks hostUid) (lookupProfile : NativeLookupProfile native ticks hostUid)
     {first last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid first callers ticks last next)
+    {backend : NativeAuthorityJournal recording}
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState} {request : Request}
     {observed : Option Reply} (selected : ticks[position]? = some tick)
     (action : tick.action.eventFor actor = some (Program.filesystemPrefixEvent (request, observed)))
@@ -38,8 +38,8 @@ theorem run_creation_prefix {kernel : Contract} {runtime : PrimitiveActorRuntime
     Nonempty (CustodyPrefix runtime initial ticks hostUid dataObjects directories semantics
       foreignReferences (processed ++ [tick]) tick.after) := by
   obtain ⟨afterCaps, afterCatalogue, state, coverage, valid, names, labels, update, included, origin⟩ :=
-    actual_primitive_run_creation_with_flow namespaceLaws descriptors lifetimes references raw sdk accounts
-      objects liveMetadata types metadata nativeMetadata lookup probes journal anchor anchorLookup anchors backend
+    actual_primitive_run_creation_with_flow (backend := backend) namespaceLaws descriptors lifetimes references raw sdk accounts
+      objects liveMetadata types metadata nativeMetadata lookup probes journal anchor anchorLookup anchors
       authorityProfile lookupProfile recording selected action present source prior.namespaceState prior.names
       prior.catalogue prior.coverage prior.valid
   exact ⟨prior.advance_retained descriptors lifetimes references afterCaps afterCatalogue state names coverage valid

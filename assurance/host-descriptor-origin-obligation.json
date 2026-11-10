@@ -1,0 +1,12 @@
+{
+  "schema": "leancage-host-descriptor-origin-obligation-v1",
+  "delivery": "M5.2",
+  "accepted_security_delivery": false,
+  "status": "existing-inode fresh-description source case remains open",
+  "interface": "GatewayChannelFlagEffects.NativeDescriptorOrigin / NativeDescriptorContract.output",
+  "finding": "The older retained/duplicate/flag/fresh-object/nonIpc cases omit a fresh open-file description of an already allocated IPC inode, such as an O_PATH alias. That output contract cannot be instantiated as a universal bare Linux descriptor law for a domain admitting this operation.",
+  "checked_new_scope": "The new source read/reference family tracks the original socket object AND its OFD. An inode alias with a different OFD remains recorded and is not assumed to consume or retain the original socket queue.",
+  "fd_domain_obligation": "GatewayNativeFullTables equivalence and absence are bounded by 0 <= fd <= Int.max_signed; the ordinary table has UInt64 slots. Each actual Linux input/output/full-exec table observer must supply that populated slots are nonnegative signed-int descriptors. Do not lift the bounded C absence theorem to arbitrary UInt64 indices without this representation input.",
+  "next_action": "Add the explicit existing-inode fresh-OFD origin and update its source/retention consumers, or prove the exact maintained native source domain excludes that acquisition before using a restricted adapter. Preserve the older reviewed interfaces at their original scope; do not assume a queue or no-reader conclusion.",
+  "acceptance_condition": "The complete host consumer must use the corrected or source-restricted origin producer, together with actual NativeSocketRowSources and SDK/child/foreign reader evidence."
+}

@@ -1,0 +1,60 @@
+{
+  "accepted_security_delivery": false,
+  "after_c_artifact": "assurance/host-file-copy-offset-current.c.gz",
+  "after_c_sha256": "a06c86463033665dcba8b50153e49bf55904c8f0d6b5662dc6488003bce9ae39",
+  "artifacts": {
+    "assurance/host-file-copy-offset-audit.json.gz": "a89dbb1f6908cb3243190afad510f3e05035cbe5df5fbfa7b63a7f0636954899",
+    "assurance/host-file-copy-offset-audit.lean.gz": "bb6043b95c5cd2504494867e53777fae1f3f2b1203b7e7fa1adcf83e82c98da3",
+    "assurance/host-file-copy-offset-audit.log.gz": "ae1014f4bee801ee673818f2a0ba4fb004cc0fb37d659eaa31c4497ba54fe1e1",
+    "assurance/host-file-copy-offset-before-sources.tar.gz": "e5995ccc894d1a7bb31cc4d686d108a8eaa3f4c4ec128caa0b706efaf8386853",
+    "assurance/host-file-copy-offset-before.c.gz": "d0de79f5b56e9e83d413ec1a379af670bebe2380e884944e08dbbcb107f782b8",
+    "assurance/host-file-copy-offset-before.json.gz": "3ac5c18fa6da5779de94b1a589a6c108bcb40c0ded57e99d189a688d1440ff6c",
+    "assurance/host-file-copy-offset-current.c.gz": "23978a1b32c88f82b48a01fcb2b608e9c13d491b0bc8204f1db9307b02d32344",
+    "assurance/host-file-copy-offset-native-result.json.gz": "c225de900594123f825f293032d8c8c512f1666246f3504484ac0d6a6ac3eb9e"
+  },
+  "before_c_artifact": "assurance/host-file-copy-offset-before.c.gz",
+  "before_c_sha256": "3bd2e9a5e4df69d694ac03619dbfab22a5c06e47e431215985a1f692d82570e1",
+  "decision": "DA-host-engine.copyoffset; focused implementation/proof/owned-native choice settled inside the stated thirty-minute investigation bound",
+  "predecessor": {
+    "path": "assurance/host-inherited-channel-review.json",
+    "sha256": "b024dd68842e75aa47a649102488aa9d0b4b55983767ed01d759d36a2f238eee"
+  },
+  "remaining": [
+    "Cumulative actual source/installation history must supply file identity, current initial bytes and no overlapping content modification for every real manifest read in its exact source ordinal interval.",
+    "Current engine image/bootstrap-buffer and initializer/reference/channel/public-return joins remain M5.2 delivery work.",
+    "Affected final host/package/public disposable-VM acceptance is still required on final inputs."
+  ],
+  "review": "The full primitive constructor includes a per-actual-syscall unmodified interval observation and positive request count. Endpoint byte equality does not establish that condition; mutable snapshot reads are not assumed atomic. The actual loadBundle consumer keeps its same read/open/close/parse and selected root.",
+  "schema": "leancage-host-file-copy-offset-amendment-v1",
+  "scope": "Only native op1 read selection changed; every byte outside that case, including directory-close ABI, is exact. Files.readLoop selects offset+1 from its accumulator and rejects offsets outside signed64. Stream reads retain third0. Native199 and gateway C are unchanged.",
+  "source_sha256": {
+    "host/LeanCageHost/Files.lean": "7fb83757e6ca219cddef75a2b9c6cf0aaa36e79ff220298fd77e80f8e0794213",
+    "linux/host_primitives.c": "a06c86463033665dcba8b50153e49bf55904c8f0d6b5662dc6488003bce9ae39",
+    "verification/host/BootstrapProofs.lean": "805ea27873d9d78b2f9415d43378b2f012a2df3d1091532275964fd31fc32dc8",
+    "verification/host/FilesystemBootstrapManifest.lean": "814aacf647e2cb62328e8eb1c6c3149165e65afa1436af0bbb3f9b4ef9602589",
+    "verification/host/FilesystemBoundedContents.lean": "eccdac29a8cc59de03ef5576cc657750da47b91edcf9fa2ba76fd111d5c1dc3a",
+    "verification/host/FilesystemPositionedContents.lean": "9f899607751a3d3329d329db8113fa1fbdb6fe28bbdc4d95e11b9af4b8583441",
+    "verification/host/PositionalCopyNative.lean": "7ed02dbde16d4e8d52a2408780a19367c4affe4c1062f661b6f33e72baf544cb",
+    "verification/host/PositionalReadProofs.lean": "02dbfe4c30a4daedd7ab0d39dab7d5d4a7c8a9b002a4a918968608543560eb4a",
+    "verification/host/RetrievalTests.lean": "48932e602647b70bb7307d6007d0ca072641be2c4f5b61e7cd0b87613e8fdb68",
+    "verification/host/SnapshotProofs/Copy.lean": "8b070c3ffc4674507894915f02f31324a931b3e33c08915afd33869915e8e0a8",
+    "verification/host/SnapshotProofs/Inputs.lean": "117db56a743cb8a7f80b8455ac3ba4092fedff01724cca9b04c79d1dfe00edd4",
+    "verification/host/SnapshotTests.lean": "6cf3aef665ab77972aa8bb7136282eff1a54b93ee98ec9c6fce598e46c088821"
+  },
+  "validation": {
+    "affected_source_group": "PASS212",
+    "full_types_and_axioms": {
+      "declarations": 154,
+      "foundations": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "interfaces": 18
+    },
+    "native_fixture": "PASS131273 bytes/four real same-descriptor cursor changes; stream cursor independent; offset overflow rejected",
+    "retrieval_scenarios": "PASS",
+    "snapshot_proofs": "PASS",
+    "snapshot_scenarios": "PASS"
+  }
+}

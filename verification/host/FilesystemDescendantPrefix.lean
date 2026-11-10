@@ -41,7 +41,7 @@ theorem exclusive_target_is_birth {kernel : Contract} {semantics : NameSemantics
 
 -- §FS-host-boundary.ownership: This extends the actual global custody prefix for a private
 -- descendant creation. The owner comes from its actual retained parent and recorded birth.
-theorem descendant_creation_prefix {kernel : Contract} {runtime : PrimitiveActorRuntime kernel}
+theorem descendant_creation_prefix_current {kernel : Contract} {runtime : PrimitiveActorRuntime kernel}
     {child : ChildPrimitive kernel} {native : NativePrimitive kernel} {hostUid : Nat}
     {semantics : NameSemanticsView} {dataObjects directories : ObjectId → Prop}
     (namespaceLaws : ByteNamespaceContract kernel semantics dataObjects)
@@ -67,8 +67,12 @@ theorem descendant_creation_prefix {kernel : Contract} {runtime : PrimitiveActor
     (prior : CustodyPrefix runtime initial ticks hostUid dataObjects directories semantics
       foreignReferences processed tick.before)
     (parentPrivate : prior.caps.family parent.object = some scope) :
-    Nonempty (CustodyPrefix runtime initial ticks hostUid dataObjects directories semantics
-      foreignReferences (processed ++ [tick]) tick.after) := by
+    ∃ next : CustodyPrefix runtime initial ticks hostUid dataObjects directories semantics
+        foreignReferences (processed ++ [tick]) tick.after,
+      next.catalogue = prior.catalogue ∧
+      (∀ object, tick.before.shared.allocated object = true → next.caps.family object = prior.caps.family object) ∧
+      (∀ parent name object, tick.before.shared.entries parent name = some object →
+        tick.after.shared.entries parent name = some object) := by
   have actual := selected_filesystem_step tick action present
   have filesystem := selected_filesystem_action_family action
   have safe := selected_primitive_action_authority journal selected
@@ -122,7 +126,8 @@ theorem descendant_creation_prefix {kernel : Contract} {runtime : PrimitiveActor
         rw [fresh] at allocated
         cases allocated
     exact ⟨prior.advance descriptors lifetimes references (prior.caps.retain tick.after.shared) prior.catalogue
-      state names (catalogue_retained_covers prior.coverage) (catalogue_advance_valid prior.valid allocation) owned .same⟩
+      state names (catalogue_retained_covers prior.coverage) (catalogue_advance_valid prior.valid allocation) owned .same,
+        rfl, (by intro object allocated; rfl), (by intro parent name object bound; rwa [unchanged])⟩
   · obtain ⟨delta⟩ := committed
     have sameParent := Option.some.inj (delta.reference.symm.trans parentLive)
     have privateParent : prior.caps.family delta.parent.object = some scope := by rw [sameParent]; exact parentPrivate
@@ -154,6 +159,50 @@ theorem descendant_creation_prefix {kernel : Contract} {runtime : PrimitiveActor
         exact prior.references actor engine present request.first parent scope parentLive parentPrivate
     exact ⟨prior.advance descriptors lifetimes references (prior.caps.addDescendant delta.object scope) prior.catalogue
       state names (catalogue_descendant_covers prior.coverage) (catalogue_advance_valid prior.valid allocation)
-      owned (.fresh delta.object scope delta.fresh)⟩
+      owned (.fresh delta.object scope delta.fresh), rfl,
+        (by
+          intro query allocated
+          have different : query ≠ delta.object := by
+            intro same
+            have absent : tick.before.shared.allocated delta.object = false := delta.fresh
+            rw [same, absent] at allocated
+            cases allocated
+          change setFamily prior.caps.family delta.object scope query = prior.caps.family query
+          simp only [setFamily, ite_eq_right different]), (fun _ _ _ bound => delta.preserves_binding bound)⟩
+
+-- §AR-host-boundary.interfaces: Keep the original private-descendant prefix result.
+-- §FS-host-boundary.ownership: This extends the actual global custody prefix for a private
+-- descendant creation. The owner comes from its actual retained parent and recorded birth.
+theorem descendant_creation_prefix {kernel : Contract} {runtime : PrimitiveActorRuntime kernel}
+    {child : ChildPrimitive kernel} {native : NativePrimitive kernel} {hostUid : Nat}
+    {semantics : NameSemanticsView} {dataObjects directories : ObjectId → Prop}
+    (namespaceLaws : ByteNamespaceContract kernel semantics dataObjects)
+    (descriptors : DescriptorContract kernel) (lifetimes : LifetimeContract runtime)
+    (references : ReferenceContract runtime) (accounts : AccountContract kernel hostUid)
+    (objects : ObjectLifetimeContract runtime) (metadata : LiveMetadataContract runtime child)
+    (types : CreationTypeContract kernel directories)
+    (lookup : LookupMutationContract (runtime := runtime) child native)
+    {initial : World} (targets : OpenTargetContract kernel semantics initial.allocated dataObjects)
+    {final : Population} {ticks : List (ActorTick runtime)}
+    (journal : ActorJournal runtime (Population.empty initial) ticks final)
+    {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState}
+    {request : Request} {observed : Option Reply} {parent : Handle} {scope : ObjectId}
+    (selected : ticks[position]? = some tick)
+    (action : tick.action.eventFor actor = some (Program.filesystemPrefixEvent (request, observed)))
+    (present : tick.before.actors actor = some engine)
+    (operation : request.op = .mkdirAt ∨ (request.op = .openAt ∧ request.second = newFileFlags))
+    (mode : request.op = .mkdirAt → request.second = 448)
+    (component : Directories.component request.left = true)
+    (parentLive : engine.references request.first = some parent)
+    (comparison : (semantics.at tick.before.shared parent.object).byteExact)
+    {processed : List (ActorTick runtime)} {foreignReferences : ForeignReferences}
+    (prior : CustodyPrefix runtime initial ticks hostUid dataObjects directories semantics
+      foreignReferences processed tick.before)
+    (parentPrivate : prior.caps.family parent.object = some scope) :
+    Nonempty (CustodyPrefix runtime initial ticks hostUid dataObjects directories semantics
+      foreignReferences (processed ++ [tick]) tick.after) := by
+  obtain ⟨next, catalogue, labels, bindings⟩ := descendant_creation_prefix_current namespaceLaws descriptors lifetimes references accounts objects metadata types lookup targets journal
+    selected action present operation mode component parentLive comparison prior parentPrivate
+  exact ⟨next⟩
 
 end LeanCage.Host.Kernel

@@ -1,0 +1,76 @@
+{
+  "change": {
+    "addedPremise": "gateway_object_private heap object = true",
+    "afterSha256": "f806fddad8200f22a978081f97e3ba74eeb25e9bda108f06ce5f0b454c51be12",
+    "beforeSha256": "8e4e004fb613a12629349fe57671506ea091b545e8b4e66f9d282351101bca0d",
+    "behaviorChange": false,
+    "declaration": "gateway_request_dictionary_copy",
+    "file": "verification/host/GatewayObjects.v",
+    "otherConstructorUses": "Only definition found; no current private-copy producer invocation to amend. All dependent clients replayed.",
+    "reason": "Exact pre-call dictionary equality is justified for the private unexposed constructor input. Public Outcome.json copying is a separate observed callback operation and must not assume pre-call field equality."
+  },
+  "checkedAt": "2026-11-10T10:34:57.603541+00:00",
+  "historicalRecordsPreserved": [
+    "assurance/host-parser-source-review.json",
+    "assurance/host-outcome-reference-checkpoint.json"
+  ],
+  "newConsumer": {
+    "file": "verification/host/GatewayOwnedOutcome.v",
+    "scope": "The same actual GenericAlloc/field-store/return adopts the real copy credit into its data cell and binds the returned instance credit to the actual older caller stack. Earlier host_outcome_from validation/copy/Path and the public return join remain open.",
+    "sha256": "619bb3e9a2549e7877c66a2e5c8fbfeb49cfa18596723253b4c2d583caef1cf4",
+    "theorem": "gateway_actual_owned_outcome"
+  },
+  "queries": {
+    "axioms": [
+      "ClassicalDedekindReals.sig_forall_dec",
+      "ClassicalDedekindReals.sig_not_dec",
+      "Classical_Prop.classic",
+      "Events.external_functions_sem",
+      "Events.inline_assembly_sem",
+      "FunctionalExtensionality.functional_extensionality_dep"
+    ],
+    "fullTypes": [
+      "gateway_request_dictionary_copy",
+      "gateway_reference_actual_parser_complete",
+      "gateway_reference_actual_parser_with_reservations",
+      "gateway_actual_owned_outcome"
+    ],
+    "output": "assurance/host-outcome-copy-audit.log.gz",
+    "outputSha256": "b49009b2d4d53272c10ae18cbf403aee362138161d9ea7d4d79af80915b3f248",
+    "source": "assurance/host-outcome-copy-audit.v.gz",
+    "sourceSha256": "5ce2b6681cf4ae277c2753e3785414a3e1f526f78eeec5b3cffea62ca82b06b1"
+  },
+  "remaining": [
+    "Actual private 14-field/copy/Path producer",
+    "Original result handoff and public observation/getter source consumers",
+    "Same-response IPC and full public caller acceptance owned by coordinated lanes"
+  ],
+  "replay": {
+    "blocked": [],
+    "checkedModules": 430,
+    "excludedDevelopingRootLeaves": [
+      "GatewayCanonicalBytes",
+      "GatewayCanonicalSubject",
+      "GatewayPrefix*"
+    ],
+    "failures": {},
+    "seconds": 81.24,
+    "snapshot": {
+      "path": "assurance/host-outcome-copy-replay.json.gz",
+      "sha256": "9a435151c1e97ab0dc69b6cce620160e861392008db66cbcc95ec635bb80e610"
+    }
+  },
+  "schema": 1,
+  "specIds": [
+    "FS-host-boundary.caller",
+    "AR-host-boundary.primitives",
+    "REQ-proof-integrity.statement"
+  ],
+  "status": "supporting-interface-repair-checked-public-integration-open",
+  "unchangedBoundaries": [
+    "current C and SDK source epoch",
+    "strict 374 imported declarations",
+    "original successful parser and reserved ownership semantics",
+    "error/loss/interleaving machine transitions"
+  ]
+}

@@ -10,13 +10,15 @@ universe u
 -- §FS-host-boundary.publication: The exact actual open handle survives its own returned
 -- probes, inspection, complete preparation and current commit probes. Each frame comes
 -- from those source operations and individual descriptor laws, not a whole-stage premise.
-theorem CreatedStageContinuation.current_reference {kernel : Contract} {runtime : PrimitiveActorRuntime kernel}
+theorem CreatedStageContinuation.current_kept_reference {kernel : Contract} {runtime : PrimitiveActorRuntime kernel}
     (descriptors : DescriptorContract kernel)
     {initial : World} {all : List (ActorTick runtime)} {before : List Program.Event} {request : Request} {observed : Option Reply}
     {call : HostCommitCall before request observed} {limit : Nat} {current : World}
     (source : CreatedStageContinuation runtime initial all call limit current)
-    (guarded : ∀ event ∈ source.earlier.guards, RetainingEvent event) :
-    current.handles call.source.commit.stage.directory.fd = some source.earlier.source.opening.handle := by
+    (guarded : ∀ event ∈ source.earlier.guards, RetainingEvent event)
+    (held : UInt64) (handle : Handle)
+    (live : source.earlier.source.opening.after.handles held = some handle) :
+    current.handles held = some handle := by
   obtain ⟨inspectionRaw, preparingRaw, inspectionChunks, preparingChunks, rawTrace⟩ :=
     PrimitiveFilesystem.chunks_split (source.opening.after.map Program.filesystemEvent)
       (call.source.commit.preparing.map Program.filesystemEvent) source.earlier.chunks
@@ -33,13 +35,13 @@ theorem CreatedStageContinuation.current_reference {kernel : Contract} {runtime 
   obtain ⟨afterPost, postHistory, rest⟩ := actor_with_split (source.earlier.post.map Program.filesystemEvent) _ history
   obtain ⟨afterInspection, inspectionHistory, rest⟩ := actor_with_split inspectionRaw _ rest
   obtain ⟨afterPreparation, preparationHistory, guards⟩ := actor_with_split preparingRaw source.earlier.guards rest
-  have postLive : afterPost.handles call.source.commit.stage.directory.fd = some source.earlier.source.opening.handle := by
+  have postLive : afterPost.handles held = some handle := by
     rw [actor_retaining_event_handles descriptors postHistory (by
       intro event member
       obtain ⟨⟨operation, reply⟩, occurs, same⟩ := List.mem_map.mp member
       subst event
       exact source.earlier.retaining (operation, reply) occurs)]
-    exact source.earlier.source.opening.live
+    exact live
   obtain ⟨information, inspection⟩ := source.opening.inspection
   have inspectionTrace : inspectionRaw = source.opening.after.map Program.filesystemEvent :=
     PrimitiveFilesystem.chunks_identity inspectionChunks (by
@@ -49,7 +51,7 @@ theorem CreatedStageContinuation.current_reference {kernel : Contract} {runtime 
         simpa only [List.map_cons, List.map_nil, List.mem_singleton, Program.filesystemEvent] using member
       subst event
       exact PrimitiveFilesystem.stat_identity _)
-  have inspectedLive : afterInspection.handles call.source.commit.stage.directory.fd = some source.earlier.source.opening.handle := by
+  have inspectedLive : afterInspection.handles held = some handle := by
     rw [actor_retaining_event_handles descriptors inspectionHistory (by
       intro event member
       rw [inspectionTrace, inspection] at member
@@ -68,10 +70,20 @@ theorem CreatedStageContinuation.current_reference {kernel : Contract} {runtime 
       afterInspection preparing afterPreparation (.ok call.source.commit.candidate) :=
     ⟨prepared, actor_recorded_filesystem (preparationTrace ▸ preparationHistory)⟩
   have preparedLive := (Lowered.history_borrow _ _
-    (Lowered.publication_prepare_borrow descriptors call.source.commit.stage.directory.fd
-      source.earlier.source.opening.handle _ _ _ _ _ _ _) preparation inspectedLive).1
+    (Lowered.publication_prepare_borrow descriptors held
+      handle _ _ _ _ _ _ _) preparation inspectedLive).1
   rw [actor_retaining_event_handles descriptors guards guarded]
   exact preparedLive
+
+-- §AR-host-boundary.interfaces: Preserve the existing actual opener-reference projection.
+theorem CreatedStageContinuation.current_reference {kernel : Contract} {runtime : PrimitiveActorRuntime kernel}
+    (descriptors : DescriptorContract kernel)
+    {initial : World} {all : List (ActorTick runtime)} {before : List Program.Event} {request : Request} {observed : Option Reply}
+    {call : HostCommitCall before request observed} {limit : Nat} {current : World}
+    (source : CreatedStageContinuation runtime initial all call limit current)
+    (guarded : ∀ event ∈ source.earlier.guards, RetainingEvent event) :
+    current.handles call.source.commit.stage.directory.fd = some source.earlier.source.opening.handle :=
+  source.current_kept_reference descriptors guarded _ _ source.earlier.source.opening.live
 
 theorem CreatedStageContinuation.remaining_nondestructive {kernel : Contract} {runtime : PrimitiveActorRuntime kernel}
     {initial : World} {all : List (ActorTick runtime)} {before : List Program.Event} {request : Request} {observed : Option Reply}

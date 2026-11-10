@@ -1,0 +1,47 @@
+{
+  "accepted_security_delivery": false,
+  "artifacts": {
+    "aggregate-kernel": {
+      "path": "assurance/host-callback-source-aggregate-kernel.gz",
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "gc-fixture": {
+      "path": "assurance/host-callback-source-gc-fixture.gz",
+      "sha256": "e9f16b948671bf0fb1a87138d967f668c03472b8c0c9f1f56e624b248925c37f",
+      "uncompressed_sha256": "9c0525f46883879c903a5c03d45e4a3ef86339ebc49646fa637e92d055f66c24"
+    },
+    "inputs": {
+      "path": "assurance/host-callback-source-inputs.gz",
+      "sha256": "e67240ab34656b44b46d2a68ed4dae8d4b497f7caf6fbf692089e4f91bff1cd8",
+      "uncompressed_sha256": "a57e18009cdbefae93a0762c821ebd7b8df0211f24742828b4214d09a7302334"
+    },
+    "kernel": {
+      "path": "assurance/host-callback-source-kernel.gz",
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "query": {
+      "path": "assurance/host-callback-source-query.gz",
+      "sha256": "53dffc419ee4907b09fceabe9dcbff373a63cd0968e23aebe7a8bff75fc6371f",
+      "uncompressed_sha256": "0ee01172da4418656da1a28d7fc5d1bc9f00223a0e3f16325a63e6a6c582a49b"
+    },
+    "query-log": {
+      "path": "assurance/host-callback-source-query-log.gz",
+      "sha256": "e51be5b36ea8d5bec9d33ddee3ec1c5d61bff8284f12aa70771975bf7b6f8bcb",
+      "uncompressed_sha256": "602d74c4ced587a2576e534b6d15fe026c3a5a70654668bb0b8b384206d1015e"
+    },
+    "replay": {
+      "path": "assurance/host-callback-source-replay.gz",
+      "sha256": "32f2f24cf82d06b9817b1ba2653cfbffc21874f383f7f7724d61f6d7716acac2",
+      "uncompressed_sha256": "9d0a2b6db23aa67722795e0cb9b4aae11964d1433eb1ec907a0242f24d8eb14d"
+    }
+  },
+  "review": {
+    "path": "assurance/host-callback-source-review.json",
+    "sha256": "36af0530c921939da2a6da6034064a8e7e01e300088a59d5b99a5f3dad51f3a7"
+  },
+  "reviewed_change": "All188 predecessor declarations have identical full types, assumptions and foundations. Six added dynamic-address admission declarations and four changed scanner interface bodies were reviewed. Genuine native sigaction callback admitted, private initializer excluded; affected source proofs rebuilt and independently checked.",
+  "schema": "leancage-host-callback-source-evidence-v1",
+  "scope": "Supporting actual-source callback and class-cell retention. Complete M5.2 acceptance remains open."
+}

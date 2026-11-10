@@ -59,10 +59,10 @@ theorem actual_primitive_staging_authority {kernel : Contract} {runtime : Primit
     (probes : LookupPrimitiveContract kernel.step kernel.interference semantics)
     {initial : World} {final : Population} {ticks : List (ActorTick runtime)}
     (journal : ActorJournal runtime (Population.empty initial) ticks final)
-    (backend : PrimitiveChildAuthorityProducer child ticks)
     (authorityProfile : NativeAuthorityProfile native ticks hostUid) (lookupProfile : NativeLookupProfile native ticks hostUid)
     {prior last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid prior callers ticks last next)
+    {backend : NativeAuthorityJournal recording}
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState}
     (selected : ticks[position]? = some tick) (present : tick.before.actors actor = some engine)
     {request : Request} {observed : Option Reply}
@@ -74,8 +74,8 @@ theorem actual_primitive_staging_authority {kernel : Contract} {runtime : Primit
   cases uid
   have current : engine.references resources.source.selection.parent.directory.fd =
       some resources.parent.directory.handle := resources.parent.directory.live
-  obtain ⟨interval, sameHandle, sameOrdinal⟩ := checked_parent_interval_owned descriptors lifetimes references raw sdk accounts
-    journal backend recording selected present resources.parent.directory current resources.parent.directory.earlier
+  obtain ⟨interval, sameHandle, sameOrdinal⟩ := checked_parent_interval_owned (backend := backend) descriptors lifetimes references raw sdk accounts
+    journal recording selected present resources.parent.directory current resources.parent.directory.earlier
   have member : resources.source.child.container.fd ∈ Lookup.parents request := by
     exact (congrArg (fun operation => resources.source.child.container.fd ∈ Lookup.parents operation)
       resources.source.child.child.operation).mpr (by simp [Lookup.parents])

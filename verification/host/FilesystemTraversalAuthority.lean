@@ -30,10 +30,10 @@ theorem actual_primitive_traversal_authority {kernel : Contract} {runtime : Prim
     (probes : LookupPrimitiveContract kernel.step kernel.interference semantics)
     {initial : World} {final : Population} {ticks : List (ActorTick runtime)}
     (journal : ActorJournal runtime (Population.empty initial) ticks final)
-    (backend : PrimitiveChildAuthorityProducer child ticks)
     (authorityProfile : NativeAuthorityProfile native ticks hostUid) (lookupProfile : NativeLookupProfile native ticks hostUid)
     {prior last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid prior callers ticks last next)
+    {backend : NativeAuthorityJournal recording}
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState}
     (selected : ticks[position]? = some tick) (present : tick.before.actors actor = some engine)
     {request : Request} {observed : Option Reply}
@@ -44,8 +44,8 @@ theorem actual_primitive_traversal_authority {kernel : Contract} {runtime : Prim
   have uid := sampled_uid_is_host accounts resources.identity
   cases uid
   have live : engine.references resources.source.cursor.cursor.current.fd = some resources.current.handle := resources.current.live
-  obtain ⟨interval, sameHandle, sameOrdinal⟩ := checked_parent_interval_owned descriptors lifetimes references raw sdk accounts
-    journal backend recording selected present resources.current live resources.current.earlier
+  obtain ⟨interval, sameHandle, sameOrdinal⟩ := checked_parent_interval_owned (backend := backend) descriptors lifetimes references raw sdk accounts
+    journal recording selected present resources.current live resources.current.earlier
   have member : resources.source.cursor.cursor.current.fd ∈ Lookup.parents request := by
     have operation := resources.source.cursor.cursor.operation
     exact (congrArg (fun operation => resources.source.cursor.cursor.current.fd ∈ Lookup.parents operation) operation).mpr

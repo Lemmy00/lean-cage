@@ -761,6 +761,7 @@ static PyObject *host_outcome_from(PyObject *data) {
         return NULL;
     }
     PyObject *files = PyDict_GetItemString(data, "files"), *key, *value;
+    if (!files) { PyErr_SetString(PyExc_ValueError, "invalid host outcome fields"); return NULL; }
     Py_ssize_t position = 0;
     while (PyDict_Next(files, &position, &key, &value)) {
         int name_type = host_has_type(key, &PyUnicode_Type, 0);
@@ -773,6 +774,7 @@ static PyObject *host_outcome_from(PyObject *data) {
     PyObject *copy = PyDict_Copy(data);
     if (!copy) return NULL;
     PyObject *output = PyDict_GetItemString(copy, "output");
+    if (!output) { PyErr_SetString(PyExc_ValueError, "invalid host outcome fields"); Py_DecRef(copy); return NULL; }
     if (output != Py_None) {
         PyObject *path = host_call_objects(host_path_class, &output, 1);
         if (!path) { Py_DecRef(copy); return NULL; }
@@ -1045,24 +1047,35 @@ static PyObject *host_outcome_json(HostOutcome *self, PyObject *unused) {
     PyObject *schema = PyUnicode_FromString("leancage-workspace-v1");
     PyObject *complete_string = PyUnicode_FromString("complete");
     PyObject *stdout_info = NULL, *stderr_info = NULL, *output = NULL, *complete_value = NULL;
+    PyObject *key, *value;
     int failed = !result || !artifacts || !files || !file_snapshot || !schema || !complete_string;
-    int complete = failed ? -1 : PyObject_RichCompareBool(
-        PyDict_GetItemString(data, "status"), complete_string, Py_EQ);
-    if (complete < 0) failed = 1;
+    int complete = -1;
+    if (!failed) {
+        value = PyDict_GetItemString(data, "status");
+        if (!value) failed = 1;
+        else { complete = PyObject_RichCompareBool(value, complete_string, Py_EQ); if (complete < 0) failed = 1; }
+    }
     if (!failed) complete_value = PyBool_FromLong(complete);
     if (!failed && !complete_value) failed = 1;
     if (!failed) {
-        stdout_info = complete ? host_digest_info(PyDict_GetItemString(data, "stdout")) : Py_None;
-        if (!complete) Py_IncRef(stdout_info);
-        if (!stdout_info) failed = 1;
+        value = complete ? PyDict_GetItemString(data, "stdout") : Py_None;
+        if (!value) failed = 1;
+        else {
+            stdout_info = complete ? host_digest_info(value) : Py_None;
+            if (!complete) Py_IncRef(stdout_info);
+            if (!stdout_info) failed = 1;
+        }
     }
     if (!failed) {
-        stderr_info = complete ? host_digest_info(PyDict_GetItemString(data, "stderr")) : Py_None;
-        if (!complete) Py_IncRef(stderr_info);
-        if (!stderr_info) failed = 1;
+        value = complete ? PyDict_GetItemString(data, "stderr") : Py_None;
+        if (!value) failed = 1;
+        else {
+            stderr_info = complete ? host_digest_info(value) : Py_None;
+            if (!complete) Py_IncRef(stderr_info);
+            if (!stderr_info) failed = 1;
+        }
     }
     Py_ssize_t position = 0;
-    PyObject *key, *value;
     while (!failed && PyDict_Next(file_snapshot, &position, &key, &value)) {
         PyObject *info = host_digest_info(value);
         if (!info) failed = 1;
@@ -1070,7 +1083,7 @@ static PyObject *host_outcome_json(HostOutcome *self, PyObject *unused) {
     }
     if (!failed) {
         PyObject *raw_output = PyDict_GetItemString(data, "output");
-        int present = PyObject_IsTrue(raw_output);
+        int present = raw_output ? PyObject_IsTrue(raw_output) : -1;
         if (present < 0) failed = 1;
         else if (present) { output = PyObject_Str(raw_output); if (!output) failed = 1; }
         else { output = Py_None; Py_IncRef(output); }
@@ -1078,7 +1091,8 @@ static PyObject *host_outcome_json(HostOutcome *self, PyObject *unused) {
     static const unsigned scalar_fields[] = { 0, 1, 2, 3, 4, 5, 6, 7, 12, 13 };
     for (unsigned index = 0; !failed && index < sizeof(scalar_fields) / sizeof(scalar_fields[0]); index++) {
         const char *name = host_outcome_fields[scalar_fields[index]];
-        if (PyDict_SetItemString(result, name, PyDict_GetItemString(data, name))) failed = 1;
+        value = PyDict_GetItemString(data, name);
+        if (!value || PyDict_SetItemString(result, name, value)) failed = 1;
     }
     if (!failed && (PyDict_SetItemString(result, "schema", schema) ||
         PyDict_SetItemString(artifacts, "complete", complete_value) ||
@@ -1097,7 +1111,11 @@ static PyObject *host_outcome_json(HostOutcome *self, PyObject *unused) {
     if (stderr_info) Py_DecRef(stderr_info);
     if (output) Py_DecRef(output);
     if (complete_value) Py_DecRef(complete_value);
-    if (failed) { if (result) Py_DecRef(result); return NULL; }
+    if (failed) {
+        if (!PyErr_Occurred()) PyErr_SetString(PyExc_ValueError, "missing native Outcome field");
+        if (result) Py_DecRef(result);
+        return NULL;
+    }
     return result;
 }
 
@@ -1517,10 +1535,13 @@ static PyObject *host_outcome_observation(HostOutcome *self, void *unused) {
     }
     PyObject *selected_data = self->data;
     Py_IncRef(selected_data);
-    PyObject *value = PyDict_GetItemString(selected_data, "json");
+    PyObject *key = PyUnicode_FromString("json");
+    if (!key) { Py_DecRef(selected_data); return NULL; }
+    PyObject *value = PyDict_GetItemWithError(selected_data, key);
+    if (value) Py_IncRef(value);
+    Py_DecRef(key);
     if (!value && PyErr_Occurred()) { Py_DecRef(selected_data); return NULL; }
-    if (!value) value = Py_None;
-    Py_IncRef(value);
+    if (!value) { value = Py_None; Py_IncRef(value); }
     Py_DecRef(selected_data);
     return value;
 }

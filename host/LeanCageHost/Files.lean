@@ -49,10 +49,10 @@ def failure (operation : String) (reply : Reply) : Failure :=
 def readLoop : Nat → UInt64 → Nat → ByteArray → Program (Result ByteArray)
   | 0, _, _, _ => pure (.error "host read made no bounded progress")
   | fuel + 1, fd, limit, bytes =>
-    if bytes.size > limit then pure (.error "host input byte bound exceeded")
+    if bytes.size > limit || bytes.size ≥ 2 ^ 63 then pure (.error "host input byte bound exceeded")
     else
       let requested := min chunkMax (limit + 1 - bytes.size)
-      .call { op := .read, first := fd, second := requested.toUInt64 } fun reply =>
+      .call { op := .read, first := fd, second := requested.toUInt64, third := (bytes.size + 1).toUInt64 } fun reply =>
         if nativeError reply then pure (.error (failure "read" reply))
         else if reply.1.toNat != reply.2.size || reply.2.size > requested then
           pure (.error "host read returned invalid bytes")

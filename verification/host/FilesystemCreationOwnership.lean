@@ -23,10 +23,10 @@ theorem run_creation_ownership_prefix_catalogued {kernel : Contract} {runtime : 
     (journal : ActorJournal runtime (Population.empty initial) ticks final)
     (anchor : TemporaryAnchor initial) (anchorLookup : TemporaryLookupContract kernel anchor)
     (anchors : SystemAnchorJournal runtime anchor semantics (Population.empty initial) ticks final)
-    (backend : PrimitiveChildAuthorityProducer child ticks)
     (authorityProfile : NativeAuthorityProfile native ticks hostUid) (lookupProfile : NativeLookupProfile native ticks hostUid)
     {first last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid first callers ticks last next)
+    {backend : NativeAuthorityJournal recording}
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState} {request : Request}
     {observed : Option Reply} (selected : ticks[position]? = some tick)
     (action : tick.action.eventFor actor = some (Program.filesystemPrefixEvent (request, observed)))
@@ -39,12 +39,12 @@ theorem run_creation_ownership_prefix_catalogued {kernel : Contract} {runtime : 
       CurrentRootCreation prior.custody.caps prior.custody.catalogue after.custody.caps after.custody.catalogue tick position ∧
       CustodyOwnershipStep after.custody.catalogue tick prior.custody.caps.family after.custody.caps.family := by
   obtain ⟨afterCaps, afterCatalogue, state, coverage, valid, names, labels, update, included, origin, receipt⟩ :=
-    actual_primitive_run_creation_catalogued namespaceLaws descriptors lifetimes references raw sdk accounts
-      objects liveMetadata types metadata nativeMetadata lookup probes journal anchor anchorLookup anchors backend
+    actual_primitive_run_creation_catalogued (backend := backend) namespaceLaws descriptors lifetimes references raw sdk accounts
+      objects liveMetadata types metadata nativeMetadata lookup probes journal anchor anchorLookup anchors
       authorityProfile lookupProfile recording selected action present source prior.custody.namespaceState prior.custody.names
       prior.custody.catalogue prior.custody.coverage prior.custody.valid
-  have change := primitive_run_mkdir_delta namespaceLaws descriptors lifetimes references raw sdk accounts
-    metadata nativeMetadata lookup probes journal backend authorityProfile lookupProfile recording selected action present source
+  have change := primitive_run_mkdir_delta (backend := backend) namespaceLaws descriptors lifetimes references raw sdk accounts
+    metadata nativeMetadata lookup probes journal authorityProfile lookupProfile recording selected action present source
   have ownership : CustodyOwnershipStep afterCatalogue tick prior.custody.caps.family afterCaps.family :=
     nonremoving_ownership_step afterCatalogue (creation_retains_bindings (before := tick.before.project engine) change (.inl source.mkdir))
       receipt.labels
@@ -71,10 +71,10 @@ theorem run_creation_ownership_prefix {kernel : Contract} {runtime : PrimitiveAc
     (journal : ActorJournal runtime (Population.empty initial) ticks final)
     (anchor : TemporaryAnchor initial) (anchorLookup : TemporaryLookupContract kernel anchor)
     (anchors : SystemAnchorJournal runtime anchor semantics (Population.empty initial) ticks final)
-    (backend : PrimitiveChildAuthorityProducer child ticks)
     (authorityProfile : NativeAuthorityProfile native ticks hostUid) (lookupProfile : NativeLookupProfile native ticks hostUid)
     {first last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid first callers ticks last next)
+    {backend : NativeAuthorityJournal recording}
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState} {request : Request}
     {observed : Option Reply} (selected : ticks[position]? = some tick)
     (action : tick.action.eventFor actor = some (Program.filesystemPrefixEvent (request, observed)))
@@ -84,8 +84,8 @@ theorem run_creation_ownership_prefix {kernel : Contract} {runtime : PrimitiveAc
     (prior : OwnershipPrefix runtime initial ticks hostUid dataObjects directories semantics foreignReferences processed tick.before) :
     Nonempty (OwnershipPrefix runtime initial ticks hostUid dataObjects directories semantics
       foreignReferences (processed ++ [tick]) tick.after) := by
-  obtain ⟨next, choice, ownership⟩ := run_creation_ownership_prefix_catalogued namespaceLaws descriptors lifetimes references raw sdk accounts objects liveMetadata types
-      metadata nativeMetadata lookup probes journal anchor anchorLookup anchors backend authorityProfile lookupProfile
+  obtain ⟨next, choice, ownership⟩ := run_creation_ownership_prefix_catalogued (backend := backend) namespaceLaws descriptors lifetimes references raw sdk accounts objects liveMetadata types
+      metadata nativeMetadata lookup probes journal anchor anchorLookup anchors authorityProfile lookupProfile
       recording selected action present source prior
   exact ⟨next⟩
 

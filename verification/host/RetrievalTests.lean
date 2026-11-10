@@ -40,8 +40,8 @@ private def keyPrefix : List (Filesystem.Request × Reply) :=
      (1, PrivateNames.attributeValue))]
 
 private def keyCopy : List (Filesystem.Request × Reply) :=
-  [({op := .stat, first := 9}, stat), ({op := .read, first := 9, second := 33}, (32, key)),
-   ({op := .read, first := 9, second := 1}, ok), ({op := .stat, first := 9}, stat),
+  [({op := .stat, first := 9}, stat), ({op := .read, first := 9, second := 33, third := 1}, (32, key)),
+   ({op := .read, first := 9, second := 1, third := 33}, ok), ({op := .stat, first := 9}, stat),
    ({op := .close, first := 9}, ok), ({op := .sha256, left := key}, (0, keyDigest))]
 
 private def authentication (wire tag supplied : ByteArray) (equal : Bool) :

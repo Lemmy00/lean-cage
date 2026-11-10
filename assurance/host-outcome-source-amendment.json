@@ -1,0 +1,120 @@
+{
+  "accepted_security_delivery": false,
+  "after_c_sha256": "ed97460f47b86fee5970d9311f25caf51133d753f06aea222263198e1a794224",
+  "after_clight_sha256": "636015762585214458cf4ab68eef02df799e545f8c3b61d8c3b4226ad2708a9f",
+  "after_program": "assurance/host-outcome-source-program.v.gz",
+  "artifacts": {
+    "assurance/host-observation-source-program.v.gz": "3d64cbf5ae97b693e7c233e02064ac9a0af52ad09b3625b55037de2dac2289dc",
+    "assurance/host-outcome-lookup-repair.json": "f89d056690cb6ab38d51d1ca562d35ac315eb608d118e033ebccff12376526dc",
+    "assurance/host-outcome-source-kernel.log.gz": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+    "assurance/host-outcome-source-program.v.gz": "850b93a11d5b5b3fd87a9aae127fa74c9bb54a9da938da3f091eb4f6020b7e90",
+    "assurance/host-outcome-source-replay-inputs.json.gz": "651ebd317645a2d3d74162955e26b6584b489c3b2c150e53dcdc8a70fc406b3a",
+    "assurance/host-outcome-source-replay.json.gz": "572856a67fbe25b21bed4088f9c7ef89a73d5c3460d6f6ed33a7b078f28f7eba",
+    "assurance/host-private-address-source-review.json": "64486d7f7f7ea48dfc8c4bb750c36e15f0d6da4aefcbaae0334a973bde4bdb65"
+  },
+  "before_c_sha256": "be9170ecf1b45075fb7001570b1d598cf6ab0ce04c07a6c441c5f9b122628a2c",
+  "before_clight_sha256": "db117a9df6130d16698bc08c0c034dea82163df277fcc30f3e1ab4227e49b947",
+  "before_program": "assurance/host-observation-source-program.v.gz",
+  "change": "Only host_outcome_from and host_outcome_json add fail-closed missing/failed lookup handling before any runtime argument use; all other definitions, variable initializers, identifiers and composites are kernel-checked equal.",
+  "predecessors": [
+    "assurance/host-source-comment-amendment.json",
+    "assurance/host-observation-source-amendment.json"
+  ],
+  "remaining": [
+    "Full initialization/callback global authority and the actual original-call Outcome construction remain required.",
+    "Physical channel/source family and cumulative filesystem/public acceptance remain assigned."
+  ],
+  "replay": {
+    "checked": 1192,
+    "excluded": [],
+    "inputs": "assurance/host-outcome-source-replay-inputs.json.gz",
+    "kernel_check": true,
+    "record": "assurance/host-outcome-source-replay.json.gz",
+    "status": "passed"
+  },
+  "retention": [
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayOutcomeSourceRepair",
+      "name": "gateway_outcome_repaired_identifier",
+      "type": "gateway_outcome_repaired_identifier\n     : BinNums.positive -> bool\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayOutcomeSourceRepair",
+      "name": "gateway_outcome_retained_definition",
+      "type": "gateway_outcome_retained_definition\n     : AST.ident * AST.globdef (Ctypes.fundef Clight.function) Ctypes.type -> bool\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayOutcomeSourceRepair",
+      "name": "gateway_outcome_other_definitions_preserved",
+      "type": "gateway_outcome_other_definitions_preserved\n     : List.filter gateway_outcome_retained_definition GatewayOutcomeBeforeSource.global_definitions =\n       List.filter gateway_outcome_retained_definition GatewayOutcomeAfterSource.global_definitions\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayOutcomeSourceRepair",
+      "name": "gateway_outcome_public_identifiers_preserved",
+      "type": "gateway_outcome_public_identifiers_preserved\n     : GatewayOutcomeBeforeSource.public_idents = GatewayOutcomeAfterSource.public_idents\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayOutcomeSourceRepair",
+      "name": "gateway_outcome_composites_preserved",
+      "type": "gateway_outcome_composites_preserved\n     : GatewayOutcomeBeforeSource.composites = GatewayOutcomeAfterSource.composites\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayOutcomeSourceRepair",
+      "name": "gateway_outcome_function_identifiers_preserved",
+      "type": "gateway_outcome_function_identifiers_preserved\n     : GatewayOutcomeBeforeSource._host_outcome_from = GatewayOutcomeAfterSource._host_outcome_from /\\\n       GatewayOutcomeBeforeSource._host_outcome_json = GatewayOutcomeAfterSource._host_outcome_json\n"
+    },
+    {
+      "assumptions": "Closed under the global context\n",
+      "axioms": [],
+      "definitional_uip": [],
+      "module": "GatewayOutcomeSourceRepair",
+      "name": "gateway_outcome_variable_definition",
+      "type": "gateway_outcome_variable_definition\n     : AST.ident * AST.globdef (Ctypes.fundef Clight.function) Ctypes.type -> bool\n"
+    },
+    {
+      "assumptions": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop, (forall n : nat, {P n} + {~ P n}) -> {n : nat | ~ P n} + {forall n : nat, P n}\nFunctionalExtensionality.functional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x), (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\n",
+      "axioms": [
+        "ClassicalDedekindReals.sig_forall_dec",
+        "ClassicalDedekindReals.sig_not_dec",
+        "Classical_Prop.classic",
+        "FunctionalExtensionality.functional_extensionality_dep"
+      ],
+      "definitional_uip": [],
+      "module": "GatewayOutcomeSourceRepair",
+      "name": "gateway_outcome_global_initializers_preserved",
+      "type": "gateway_outcome_global_initializers_preserved\n     : List.filter gateway_outcome_variable_definition GatewayOutcomeBeforeSource.global_definitions =\n       List.filter gateway_outcome_variable_definition GatewayOutcomeAfterSource.global_definitions\n"
+    }
+  ],
+  "runtime": {
+    "extension_sha256": "26eefff2d9426e1396a5eb1df4fcff3668a3cbcec1ba42825c0f3e498ee40456",
+    "record": "assurance/host-outcome-lookup-repair.json"
+  },
+  "schema": "leancage-host-outcome-source-amendment-v1",
+  "source_retention_proof": {
+    "path": "verification/host/GatewayOutcomeSourceRepair.v",
+    "sha256": "2dfa8d9a7c2f6c9dbc69801b8245ea82df1509b41c467135f60c06e5a165bfd5"
+  }
+}

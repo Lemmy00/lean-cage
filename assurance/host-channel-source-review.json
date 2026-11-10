@@ -1,0 +1,209 @@
+{
+  "accepted_security_delivery": false,
+  "additional_source_consumer": "LeanCage.Host.PrivateStreams.actual_engine_read_not_original_socket",
+  "artifacts": {
+    "assurance/host-channel-source-ChannelSourceAudit.lean.gz": "7b9e08332ce8a9511a6a45bc8704731d6657aebb4ac2185a2adb7cfd2fe5c9ff",
+    "assurance/host-channel-source-audit-final-records.json.gz.gz": "212a3ebdf1bafbb24d5bb464a6ed0d9f0513452a26bc078d2a481b6effe7286a",
+    "assurance/host-channel-source-audit-final.log.gz": "26b6b2c59a932c5ef16b91967a98dada81f393a2a1f280a348876ecfc16930c6",
+    "assurance/host-channel-source-audit-records.json.gz.gz": "7f7aa49ebc5e6d4a9bcc428212354e85fa54dce536ec5a675f72bf92692c1325",
+    "assurance/host-channel-source-audit-summary.json.gz": "255ffd6b43e8f3f77af63659fbc42f96d650f9428da758918797491624d25bab",
+    "assurance/host-channel-source-audit.log.gz": "26b6b2c59a932c5ef16b91967a98dada81f393a2a1f280a348876ecfc16930c6",
+    "assurance/host-channel-source-final-comparison.json.gz": "58278e6d3381e6786a6dfc67a57f6c4d3c4473fe7a802f59d260579f1520abd4",
+    "assurance/host-channel-source-review.before-refresh.json.gz": "4c8633aa475308c69331e2dfc15dc627ff5fa26d62d4ea86561f58072903151e"
+  },
+  "audit": {
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "constructors": 62,
+    "declarations": 510,
+    "errors": [],
+    "records": 661,
+    "reviewed_security_delivery": false,
+    "status": "passed",
+    "unexpected_axioms": []
+  },
+  "compiled_objects_at_first_query": {
+    "GatewayApplicationReadSources": "aec1267ed6d5d49fc4d2276926123f5988b38da53e9c6f8966f369bf17793afc",
+    "GatewayChannelDescriptionLifetimes": "eaa1ea1b12bf2612680abb81e471621026ed80493bd22449ded2992525da63be",
+    "GatewayChannelEngineAbsence": "608e0094f9313187bbba2b1e56bd5242b98badaadce1e3f36b232081ce1af7f5",
+    "GatewayChannelEngineFamily": "34aaa6ee11ef3a472c4826cf9bc3971cd37cf86ba985221a23b282a8eb49fa69",
+    "GatewayChannelEngineLaunches": "a77d8189c0a4d00f72b0be6564c8ea0965932aefe93f4774e6c865839f019c30",
+    "GatewayChannelEngineReaders": "9a387e4aa26161abb791824800938ef113826bcab1dab5973ec334a842ea7ffa",
+    "GatewayChannelEngineSource": "40a97bfb5042e2444444a25339a3724d118bdff4a782bba9a96e19c52b1f5328",
+    "GatewayChannelExternalOperands": "bcd0b5f37b9fd1f5da75c14a1b51b4201ff392d62a85c00de2acc815b853db03",
+    "GatewayChannelOFDReferences": "d15b96182b5ecd61850cfee16396e4b5f2ec340110dc933634b85d5436b8b75a",
+    "GatewayChannelOFDResidual": "2118ca06460861c505316f725baf405dfb6fd35ee4ec8fd70ab095158cf38fbe",
+    "GatewayChannelReceiveLifetime": "1ccefc7932aff06462fc04400287008e182d92082ca02aa7e6e93a93600ff02c",
+    "GatewayChannelReferenceHistory": "ad21c8c28e21aba790f04fe88e5df1a5149c50fa9e6994d0d0428810e95ec982",
+    "GatewayChannelResidualBatch": "13e248f6baabea9529bd1e886589fe303ceda1207493fb35eed685c3672c2e4f",
+    "GatewayChannelResidualEffects": "3f392b32342b148cdd80003cabf91a62242d80d114a8866e1a9abd06288411ed",
+    "GatewayChannelResidualSources": "6673d7165db5f1938a6bb2b2191b52e37802a66750366ad9921cddccba476c96",
+    "GatewayChannelSocketSurvival": "9963c7a363bc4d19282c9d03a5e76ee240fb6a0221fe65e2d514b741b716b18c",
+    "GatewayChannelSourceJournal": "ae55535c5814b5cf71e7c3b3dba3b01af032e843ef29312afd2e4efbd7fa19a0",
+    "GatewayChannelSourcePrefix": "e697dad2172f59d3726c73b1b49d4734a1b611416d54ffcc2be5bd31c658eba2",
+    "GatewayEntrypointReadSources": "3f5419096640fef949fb3a8f30a2738664b3779e77677c5a1daa7e06f9e837bd",
+    "GatewayFileReadProfile": "01b11f58420a1c9a619d2854765481240f3f7ed4fe1b22073f5bad2daf2fc495",
+    "GatewayPublicationReadProfile": "8e1e48835ca76f941704d9ca6cbaa5159ca5381226f53bb2852c636539663836",
+    "GatewayStoredReadProfile": "1fa5d83878b6b296b87eeedf6b8daaa0258e37ece1dd841aa46a0de0d6b1f31a",
+    "GatewayStreamReadSources": "53eed92f8d7a13bd1764c8223855755f8091620355f8cf18ed83bca637ed2315"
+  },
+  "compiled_objects_at_query": {
+    "GatewayApplicationReadSources": "a8a0c9c968fe9f2fedf135eb40f502a6634a79d4f06ce4b0cb1e4b7444b5419c",
+    "GatewayChannelDescriptionLifetimes": "eaa1ea1b12bf2612680abb81e471621026ed80493bd22449ded2992525da63be",
+    "GatewayChannelEngineAbsence": "608e0094f9313187bbba2b1e56bd5242b98badaadce1e3f36b232081ce1af7f5",
+    "GatewayChannelEngineFamily": "34aaa6ee11ef3a472c4826cf9bc3971cd37cf86ba985221a23b282a8eb49fa69",
+    "GatewayChannelEngineLaunches": "a77d8189c0a4d00f72b0be6564c8ea0965932aefe93f4774e6c865839f019c30",
+    "GatewayChannelEngineReaders": "50266079ba7f53bc103c57af80425bd932aace9b666b72f072ac0d492f2de55a",
+    "GatewayChannelEngineSource": "40a97bfb5042e2444444a25339a3724d118bdff4a782bba9a96e19c52b1f5328",
+    "GatewayChannelExternalOperands": "bcd0b5f37b9fd1f5da75c14a1b51b4201ff392d62a85c00de2acc815b853db03",
+    "GatewayChannelOFDReferences": "d15b96182b5ecd61850cfee16396e4b5f2ec340110dc933634b85d5436b8b75a",
+    "GatewayChannelOFDResidual": "e7a6a093cdfa02dd88fc6e6a1c660a8acadaa78e94d97eea8410a99a80bc144b",
+    "GatewayChannelReceiveLifetime": "1ccefc7932aff06462fc04400287008e182d92082ca02aa7e6e93a93600ff02c",
+    "GatewayChannelReferenceHistory": "ad21c8c28e21aba790f04fe88e5df1a5149c50fa9e6994d0d0428810e95ec982",
+    "GatewayChannelResidualBatch": "4da10f673c4bd62bfd3e6aae58538c3962d3fa1d574c98fa42003ad84620c853",
+    "GatewayChannelResidualEffects": "a0c7fe3e0f64e18fd57ebaa07422644d7e1b30594c1d3157f8ea4af6ddbfd09c",
+    "GatewayChannelResidualSources": "c34a331107a60ce225ce33b869fe26293c7d70a170400b575ab9c7a1cef348c9",
+    "GatewayChannelSocketSurvival": "9963c7a363bc4d19282c9d03a5e76ee240fb6a0221fe65e2d514b741b716b18c",
+    "GatewayChannelSourceJournal": "d5d0f76dd76f251adf0360ace91623307b4481a37c69c83e19dc3e7487997a96",
+    "GatewayChannelSourcePrefix": "28e04e5d7f484caa8cbaaa7883236e5d990c16e535d0a40205988a9994efb602",
+    "GatewayEntrypointReadSources": "7d6ff2ce501e5c6925f7e38d419346b47a038f3ffec0b5885afc3c10f6c950ce",
+    "GatewayFileReadProfile": "01b11f58420a1c9a619d2854765481240f3f7ed4fe1b22073f5bad2daf2fc495",
+    "GatewayPublicationReadProfile": "8e1e48835ca76f941704d9ca6cbaa5159ca5381226f53bb2852c636539663836",
+    "GatewayStoredReadProfile": "1fa5d83878b6b296b87eeedf6b8daaa0258e37ece1dd841aa46a0de0d6b1f31a",
+    "GatewayStreamReadSources": "c1f20852072f7b34f5f542586176161b9b4b49272b57c97a596af3ba2df86b58"
+  },
+  "critical_definitions": [
+    "LeanCage.Host.PrivateStreams.SocketLifetime.matches",
+    "LeanCage.Host.PrivateStreams.SocketReferenceSnapshot.at",
+    "LeanCage.Host.PrivateStreams.SocketReferenceSnapshot.released",
+    "LeanCage.Host.PrivateStreams.SocketReferenceSnapshot.held",
+    "LeanCage.Host.PrivateStreams.SocketTableAbsent",
+    "LeanCage.Host.PrivateStreams.EngineSocketAbsent",
+    "LeanCage.Host.PrivateStreams.PairBirthEntry.callerSocket",
+    "LeanCage.Host.PrivateStreams.EngineChannelRows",
+    "LeanCage.Host.PrivateStreams.embeddedHandoff",
+    "LeanCage.Host.PrivateStreams.SocketReferenceRecording.at",
+    "LeanCage.Host.PrivateStreams.residualReadOpcode",
+    "LeanCage.Host.PrivateStreams.readShutdownOpcode",
+    "LeanCage.Host.PrivateStreams.native_flags_zero_source",
+    "LeanCage.Host.PrivateStreams.NativeSocketRowSources",
+    "LeanCage.Host.PrivateStreams.SourceChannelJournal.channel"
+  ],
+  "modules": [
+    "GatewayChannelExternalOperands",
+    "GatewayChannelResidualEffects",
+    "GatewayChannelResidualBatch",
+    "GatewayFileReadProfile",
+    "GatewayStoredReadProfile",
+    "GatewayPublicationReadProfile",
+    "GatewayApplicationReadSources",
+    "GatewayEntrypointReadSources",
+    "GatewayStreamReadSources",
+    "GatewayChannelDescriptionLifetimes",
+    "GatewayChannelOFDReferences",
+    "GatewayChannelEngineLaunches",
+    "GatewayChannelEngineAbsence",
+    "GatewayChannelEngineFamily",
+    "GatewayChannelEngineSource",
+    "GatewayChannelEngineReaders",
+    "GatewayChannelReferenceHistory",
+    "GatewayChannelReceiveLifetime",
+    "GatewayChannelSocketSurvival",
+    "GatewayChannelOFDResidual",
+    "GatewayChannelResidualSources",
+    "GatewayChannelSourceJournal",
+    "GatewayChannelSourcePrefix"
+  ],
+  "preserved_predecessors": {
+    "assurance/host-channel-invocations-review.json": "caaa34f212d4b6ef2043485ee478f92ae47d809c5fbcd0edbfbc0af4972c2118",
+    "assurance/host-framing-review.json": "b2c938cf84a1264c49f559c40e6ad271f93912239d1fc5318c7b8068ada3fdc5",
+    "assurance/host-response-source-review.json": "57f122620d19b2bcff540382c61ab32357553c8ce78c3626038bbef9ce6daf81"
+  },
+  "primitive_boundaries": [
+    {
+      "interface": "LeanCage.Host.PrivateStreams.NativeDescriptionContract",
+      "scope": "One actual selected native call observes valid input/output object and OFD references; no origin, role, queue or exclusive-reader conclusion."
+    },
+    {
+      "interface": "LeanCage.Host.PrivateStreams.SocketReferenceRuntime",
+      "scope": "One actual stored global row samples current raw native, retiring, engine, child, SDK, foreign and kernel-loan references. Old output OFDs copy real input references; fresh OFDs remain possible. Actual snapshot selectors retain the supplied recording value."
+    },
+    {
+      "interface": "LeanCage.Host.PrivateStreams.SocketResidualRuntime",
+      "scope": "One actual residual read/discard identifies its resolved original socket object/OFD and an actual read, read-shutdown or last-reference cause; extra SDK/child/foreign readers are explicit."
+    },
+    {
+      "interface": "LeanCage.Host.PrivateStreams.ExternalEndpointOperands",
+      "scope": "Profile 1 applies only to each actual external-code operation and resolved private descriptor operand. It does not classify verified C, SDK, engine or pre-exec operations and does not assert a whole callback frame."
+    }
+  ],
+  "query_notes": "Full theorem kernel types/bodies, transitive axioms, structure constructors and critical definition bodies were queried using scripts/host_axiom_query.lean. All physical/protocol/application gaps remain explicit above. Aggregate build/kernel replay is root-coordinated; no predecessor review is refreshed.",
+  "refreshed_aggregate_comparison": {
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "changed_declarations": [],
+    "errors": [],
+    "records": 661,
+    "scope": "Exact repeated query after relevant aggregate dependency refresh; declaration types, bodies, interfaces and axioms compared to preserved first query.",
+    "status": "passed",
+    "unexpected_axioms": []
+  },
+  "schema_version": 1,
+  "scope": "Pending engine read taxonomy, source-built raw-engine OFD exclusion, same-journal reference lifetime and source-conditioned physical response prefix.",
+  "source_drift_after_query": [],
+  "source_hashes": {
+    "verification/host/GatewayApplicationReadSources.lean": "298532a8927f4895f1769bdfcf88dd15d8e2ffdae6e89905e1dc9b048f24040d",
+    "verification/host/GatewayChannelDescriptionLifetimes.lean": "3c641547df7a68dea0b1253ca8d00486b67f22ec3dd1f4fc1211dffcd624e789",
+    "verification/host/GatewayChannelEngineAbsence.lean": "cb8da6aecd3ebfe84a5cec63a1bf5bd05a7328926105172227864b681b1bda54",
+    "verification/host/GatewayChannelEngineFamily.lean": "def6312bd8be22af154ddc82808c0cdc131a58b57f7b4cf5561240c0e49c458f",
+    "verification/host/GatewayChannelEngineLaunches.lean": "1876c9051976e3ac18a7353c344d76a9a68559dfc60d3a467c6161ce77b47e20",
+    "verification/host/GatewayChannelEngineReaders.lean": "5f6b6da620989fafb5051176aef0429004e46f7130de40647a42177cdd4d3150",
+    "verification/host/GatewayChannelEngineSource.lean": "ec8cfedfa3fe291c42fe54b63e0e6bd12b6012ba4b39bbb6f2c0699cef575fe7",
+    "verification/host/GatewayChannelExternalOperands.lean": "50f102bcb1f75cdfb6319f38ca8ec9f4c987c92178e203eefa5f582194d71c42",
+    "verification/host/GatewayChannelOFDReferences.lean": "26513a07c7c80faaf6166fd8e96bf6d4e13de31dfd36b7ce3c4bdd3d17338cb5",
+    "verification/host/GatewayChannelOFDResidual.lean": "a2c1ec4dbb6dc45905cc1a5b93dc8739b83883eb34777e97f33d6d463a5ee1d7",
+    "verification/host/GatewayChannelReceiveLifetime.lean": "ed776dc75e969fdd83dab5835ecf9b3ebc0d4175bb71ed2591105ae54aa7d695",
+    "verification/host/GatewayChannelReferenceHistory.lean": "a04ca232765a3866ddc519c4c06f1eeed1261daf2c693f1e9d7fc1620e4acbd8",
+    "verification/host/GatewayChannelResidualBatch.lean": "1d04d031f1beee5459a43d387f19a8840180202ad382e558e5e042472d4d1066",
+    "verification/host/GatewayChannelResidualEffects.lean": "7f8111624cd86d32990cbc9263d8ce08d4dbfebad02691c56445490faea60be6",
+    "verification/host/GatewayChannelResidualSources.lean": "790bdceddd93573e2636dc4f36cabd888f039472adafb758c799301bb3fc28dd",
+    "verification/host/GatewayChannelSocketSurvival.lean": "d0785dea56731bb640adedb2c12caab3429560be4b69706f1ccb563e8fbd2e6e",
+    "verification/host/GatewayChannelSourceJournal.lean": "29752c01326e2d0a4e4f09ef833f12f3b461b2b732d6de1770f535b23b6b9239",
+    "verification/host/GatewayChannelSourcePrefix.lean": "dbc9fb60b300790d81dcbbdad8c0ccd37f77b61ab3f99819bb72c7af8eb4387f",
+    "verification/host/GatewayEntrypointReadSources.lean": "60892f63598b240514b3e24ee26a04883fcad5f769ecec747e5da1d12a9d471f",
+    "verification/host/GatewayFileReadProfile.lean": "0ff3b68b1df3ec2febd74c7113d7e044941cfbe015f30d7b0ea9947a78e2f332",
+    "verification/host/GatewayPublicationReadProfile.lean": "1746572577cf9e44e376fcc8d3508a05aa8cd289b1f1d050a1f43a0feb817150",
+    "verification/host/GatewayStoredReadProfile.lean": "9127af564463edae61f427d564bbd51f1f38d1de2c0a96b22205d60cdd1754b0",
+    "verification/host/GatewayStreamReadSources.lean": "ae10691ca6503c83fe160b8cc54e6746b63637323f13fc99c08eaab78c5d2da6"
+  },
+  "specs": [
+    "FS-host-boundary.caller",
+    "FS-host-boundary.ownership",
+    "AR-host-boundary.primitives",
+    "AR-host-boundary.interfaces.gateway",
+    "DA-host-engine.hostcode"
+  ],
+  "status": "focused-kernel-and-axiom-query-passed",
+  "strongest_consumer": "LeanCage.Host.PrivateStreams.actual_response_prefix_from_operations",
+  "toolchain": {
+    "host/lake-manifest.json": "85f91fca646056b3fa7cc5933aeb3c103d103b8d5112fc96c3a914d641a443dd",
+    "host/lean-toolchain": "leanprover/lean4:v4.35.0"
+  },
+  "unresolved_application_producers": [
+    "Construct EngineChannelRows from actual original C invocation, same data/control pair storage lifetimes, pending spawn, same birth/exec and exact full handoff. engine_channels_from_source_pairs is the checked data consumer, not yet the complete producer.",
+    "Produce NativeSocketRowSources from actual native source opcodes/operands at every stored row. Direct flags-zero receives are counted once; SDK/pre-exec actions and foreign rows still need their individual source adapter.",
+    "Derive the additional SDK/child/foreign reader exclusions. Current SDK support references are not absent merely because they are outside the raw actor projection.",
+    "Construct SourceChannelJournal from the actual pending per-operation recording with all mandatory ACK/loss reconciliations and canonical native receives; no whole safe-queue certificate is accepted.",
+    "Derive ChannelWriteSources actor/endpoint/OFD placement from the same invocation/creation/exec family and current references.",
+    "Join canonical journal receive bytes to the original C header/parser trace and its actual last original-OFD receive, then consume GatewayDecodedFraming.gateway_reference_decoded_writer.",
+    "Instantiate live owned-resource laws only on the surviving source activation. Actual callback exec/exit remains committed loss/dead with its actual retired physical FDs; it cannot resume old C.",
+    "Useful real-caller nonvacuity and final public acceptance remain integration work; this record is not a delivery acceptance.",
+    "Repair the existing universal NativeDescriptorContract old-inode/fresh-OFD origin case, or construct a source-restricted adapter; O_PATH cannot be erased by a bare IPC-object classification."
+  ]
+}

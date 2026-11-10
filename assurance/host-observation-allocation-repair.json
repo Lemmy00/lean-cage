@@ -1,0 +1,58 @@
+{
+  "checks": {
+    "candidateExtensionSha256": "db9c44f6894333c9bf89713456d514a1a718befd4eb4caa5b96048d289ec8c9f",
+    "existingProjection": {
+      "file": "tests/integration/host_gateway_observation.py",
+      "scope": "Bounded protocol emulator only: mutable Path factory, lossless nonUTF8 output, immutable source bindings, manualNone; no VM/workload.",
+      "sha256": "d3d9bbabe12b34a1e224988a7802a87557493276c3e5fa8bf9257395d22144a7",
+      "status": "passed"
+    },
+    "newRegression": {
+      "command": "timeout 20 /usr/bin/python3.12 tests/integration/host_gateway_observation_allocation.py --extension <candidate>",
+      "file": "tests/integration/host_gateway_observation_allocation.py",
+      "sha256": "436692d1bb58cfcf3d000acf52bdc67fb595d11fd2072661c4705f33e5e18054",
+      "status": "passed"
+    },
+    "records": {
+      "host-observation-allocation-after.json.gz": "7d55d677e65adebaf4c74dc2a1f8ae9dfc364789af668832c688048748eb6268",
+      "host-observation-allocation-before.json.gz": "fdb1fac8702d40a285ce0e4850cf1fcfa6935c8337cedbd4e339c72e1cb7f266",
+      "host-observation-projection-after.json.gz": "3294dbcdc9b5fa078138f23d4d0972ca2d349cf259654f18e4b8190fd2fa3bcd"
+    },
+    "syntax": "cc -fsyntax-only -Wall -Wextra -Werror -Wno-unused-parameter -I/usr/include/python3.12 linux/host_python.c:passed"
+  },
+  "implementation": [
+    "Explicit checked PyUnicode_FromString key constructor.",
+    "PyDict_GetItemWithError keeps real lookup errors distinct from absence.",
+    "Present borrowed value is independently IncRef-owned before key DecRef; repeated-pointer aliases remain permitted.",
+    "Missing-without-error gets an ownedNone; all selected-data/key/value roots have source-selected cleanup."
+  ],
+  "preservation": {
+    "oldGetterCheckedSources": "Archived at .tools/host/gateway/observation-getter-before-with-error/record.json",
+    "rootSourceRetention": "Root checked exact all-other-definition/composite/old-ID retention before canonical installation. Root record supplies final source/kernel evidence.",
+    "sealedParserRecords": "Preserved unchanged; actual getter source repair is a separate amendment."
+  },
+  "problem": {
+    "confirmed": "Bounded actual native manual-Outcome probe with CPython _testcapi.set_nomemory(0,1) returnedNone on the old extension; object usable afterward. No engine or VM.",
+    "function": "PyDict_GetItemString",
+    "reason": "A failed Unicode key allocation is cleared and becomesNULL. The old getter could turn a real allocation error into a successfulNone.",
+    "upstream": "https://raw.githubusercontent.com/python/cpython/v3.12.3/Objects/dictobject.c"
+  },
+  "remaining": [
+    "Recheck actual getter source paths and selected key/value/data reference operations on the new canonical Source.",
+    "Complete original14-field/copy/Path/public result integration and the coordinatedM5.2 acceptance; the native fixture alone is not source or complete application assurance."
+  ],
+  "schema": 1,
+  "source": {
+    "candidateClightSha256": "db117a9df6130d16698bc08c0c034dea82163df277fcc30f3e1ab4227e49b947",
+    "canonicalEpoch": "Root source switch/replay in progress; no new source-proof acceptance claimed here.",
+    "changedFunction": "host_outcome_observation",
+    "file": "linux/host_python.c",
+    "previousSourceEpoch": "8dc2bdd9b0a454786d5525d0b97135c6d2ac2e02fceb5d07afdcb11406effd3d",
+    "sha256": "be9170ecf1b45075fb7001570b1d598cf6ab0ce04c07a6c441c5f9b122628a2c"
+  },
+  "specIds": [
+    "FS-host-boundary.caller",
+    "AR-host-boundary.primitives"
+  ],
+  "status": "native-repair-checked-canonical-proof-replay-in-progress"
+}

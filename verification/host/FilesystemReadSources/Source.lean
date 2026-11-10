@@ -137,7 +137,7 @@ theorem traversal_read_sources (fuel : Nat) :
                     ⟨listing, result, afterListing, listed, rest, listingShape⟩
                 · exact False.elim (noRead_last (enumerate_noRead _ _ _ _ _) enumerating reading)
                 · cases result with
-                  | error => exact False.elim (noRead_last (closeDirectory_noRead _ _) rest reading)
+                  | error => exact False.elim (noRead_last (closeDirectory_noRead _ _ _) rest reading)
                   | ok names =>
                     rcases filesystem_last_bind_split _ _ rest with children |
                         ⟨copied, result, afterCopied, copiedSource, rest, copiedShape⟩
@@ -147,13 +147,13 @@ theorem traversal_read_sources (fuel : Nat) :
                       exact ⟨by simpa only [initialShape, openedShape, listingShape, List.cons_append,
                         List.nil_append, List.append_assoc] using earlier⟩
                     · cases result with
-                      | error => exact False.elim (noRead_last (closeDirectory_noRead _ _) rest reading)
+                      | error => exact False.elim (noRead_last (closeDirectory_noRead _ _ _) rest reading)
                       | ok state =>
                         obtain ⟨reply, afterFinal, finalShape, rest⟩ := noRead_call_tail
                           (by change Op.stat ≠ Op.read; decide) rest reading
                         split at rest
-                        · exact False.elim (noRead_last (closeDirectory_noRead _ _) rest reading)
-                        · exact False.elim (noRead_last (closeDirectory_noRead _ _) rest reading)
+                        · exact False.elim (noRead_last (closeDirectory_noRead _ _ _) rest reading)
+                        · exact False.elim (noRead_last (closeDirectory_noRead _ _ _) rest reading)
     · intro limits parent prefixName names state before request observed active reading
       cases names with
       | nil => exact False.elim (noRead_last (.pure _) active reading)

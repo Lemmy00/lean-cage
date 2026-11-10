@@ -1,5 +1,11 @@
 # Response framing draft
 
+This historical draft is superseded by the checked `GatewayFraming`,
+`GatewaySourceFraming`, `GatewayResponseFraming` and `GatewayDecodedFraming`
+modules. `assurance/host-framing-review.json` records their full statements,
+assumptions, actual parser-result consumer and the still-required physical prefix
+producer. Preserve these old draft bytes and diagnostics; do not resume them.
+
 Preserved at the user-requested M5.2 pause. These text files are unfinished proof
 work, excluded from maintained Rocq module discovery and all accepted claims.
 They neither change the executable codec nor supply the response provenance

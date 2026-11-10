@@ -11,3 +11,12 @@ Check LeanCage_Host_NativeCode_Product.
 Check LeanCage_Host_NativeCode_Reply.
 Check LeanCage_Host_NativeCode_References.
 Check LeanCage_Host_NativeCode_Credentials.
+Check LeanCage_Host_ChannelCode_PairKind.
+Check LeanCage_Host_ChannelCode_Invocation.
+Check LeanCage_Host_ChannelCode_Invocation_WellFormed.
+Check LeanCage_Host_ChannelCode_Invocation_storage.
+Check LeanCage_Host_ChannelCode_ReferenceAt.
+Check LeanCage_Host_ChannelCode_PairUse.
+Check LeanCage_Host_ChannelCode_PairUse_Consistent.
+Check LeanCage_Host_ChannelCode_ReceiveUse.
+Check LeanCage_Host_ChannelCode_ReceiveUse_Consistent.

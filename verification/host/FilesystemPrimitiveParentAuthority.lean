@@ -57,9 +57,9 @@ theorem primitive_run_parent_interval {kernel : Contract} {runtime : PrimitiveAc
     (sdk : RuntimeDescriptorContract runtime) (accounts : AccountContract kernel hostUid)
     {initial : World} {final : Population} {ticks : List (ActorTick runtime)}
     (journal : ActorJournal runtime (Population.empty initial) ticks final)
-    (backend : PrimitiveChildAuthorityProducer child ticks)
     {prior last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid prior callers ticks last next)
+    {backend : NativeAuthorityJournal recording}
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState} {request : Request}
     (selected : ticks[position]? = some tick) (present : tick.before.actors actor = some engine)
     (source : PrimitiveRunParent runtime initial ticks tick actor engine request) :
@@ -124,7 +124,7 @@ theorem primitive_run_parent_interval {kernel : Contract} {runtime : PrimitiveAc
         (afterInformation.mode &&& 18 = 0 ∨ (afterInformation.uid = 0 ∧ afterInformation.mode &&& 512 ≠ 0)) := by
       simpa [Directories.trusted, and_assoc] using afterTrusted
     exact fields.2.1
-  have safe := actual_native_authority_journal journal backend recording
+  have safe := backend
   have arranged : ∃ actual : NativeExternalJournal process child native hostUid prior callers ticks last next,
       NativeAuthorityJournal actual := ⟨recording, safe⟩
   rw [shape, List.append_assoc] at arranged
@@ -188,17 +188,17 @@ theorem primitive_run_parent_current {kernel : Contract} {runtime : PrimitiveAct
     (metadata : GlobalAuthorityContract runtime child) (nativeMetadata : NativeMetadataContract native)
     {initial : World} {final : Population} {ticks : List (ActorTick runtime)}
     (journal : ActorJournal runtime (Population.empty initial) ticks final)
-    (backend : PrimitiveChildAuthorityProducer child ticks)
     (profile : NativeAuthorityProfile native ticks hostUid)
     {prior last : Processes} {callers next : NativeProcesses}
     (recording : NativeExternalJournal process child native hostUid prior callers ticks last next)
+    {backend : NativeAuthorityJournal recording}
     {position : Nat} {tick : ActorTick runtime} {actor : ActorId} {engine : EngineState} {request : Request}
     (selected : ticks[position]? = some tick) (present : tick.before.actors actor = some engine)
     (source : PrimitiveRunParent runtime initial ticks tick actor engine request) :
     ∃ parent information, engine.references request.first = some parent ∧ parent.rawOwned = true ∧
       tick.before.shared.information parent.object = some information ∧
       Directories.trusted hostUid information = true := by
-  obtain ⟨interval⟩ := primitive_run_parent_interval descriptors lifetimes references raw sdk accounts journal backend
+  obtain ⟨interval⟩ := primitive_run_parent_interval (backend := backend) descriptors lifetimes references raw sdk accounts journal
     recording selected present source
   obtain ⟨information, known, same⟩ := native_parent_authority_interval metadata nativeMetadata profile interval.journal
     interval.included interval.recording interval.safe interval.known interval.owner interval.held interval.leases

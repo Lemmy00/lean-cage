@@ -88,7 +88,7 @@ private theorem transferred_held {processes : NativeProcesses} {actor : ActorId}
 
 -- §FS-host-boundary.caller: The source launch consumes the actual same exec snapshot and
 -- transfers its current native token. Raw channels and complementary SDK references coexist.
-theorem handoff_custody_state_catalogued {kernel : Contract} {runtime : ActorRuntime kernel sourceProgram}
+theorem handoff_custody_state_retained {kernel : Contract} {runtime : ActorRuntime kernel sourceProgram}
     (descriptors : DescriptorContract kernel) (lifetimes : LifetimeContract runtime)
     (references : ReferenceContract runtime)
     {initial : World} {ticks processed : List (ActorTick runtime)} {hostUid : Nat}
@@ -102,7 +102,8 @@ theorem handoff_custody_state_catalogued {kernel : Contract} {runtime : ActorRun
       foreignReferences processed tick.before before) :
     ∃ next : CustodyState runtime initial ticks hostUid dataObjects directories semantics
       foreignReferences (processed ++ [tick]) tick.after (before.transfer handoff.actor handoff.execution),
-      next.source.custody.catalogue = prior.source.custody.catalogue := by
+      next.source.custody.catalogue = prior.source.custody.catalogue ∧
+      next.source.custody.caps.family = prior.source.custody.caps.family := by
   have actual : ActorStep runtime (.launch handoff.actor handoff.execution.references.rawProjection.handles
       handoff.execution.references.rawProjection.closeOnExec handoff.execution.references.workingDirectory)
       tick.before tick.after := handoff.action ▸ tick.operation
@@ -129,7 +130,26 @@ theorem handoff_custody_state_catalogued {kernel : Contract} {runtime : ActorRun
     (by intro record member; exact member) prior.births ownership (unchanged_existing_labels _ _ _)
     (fun object allocated => by rw [shared]; exact allocated)
   exact ⟨⟨prior.source.advance next (by intro record member; exact member) ownership,
-    nativePublic, nativeLive, directoriesPublic, directoriesLive, births⟩, rfl⟩
+    nativePublic, nativeLive, directoriesPublic, directoriesLive, births⟩, rfl, rfl⟩
+
+-- §AR-host-boundary.interfaces: Preserve the original catalogue projection.
+theorem handoff_custody_state_catalogued {kernel : Contract} {runtime : ActorRuntime kernel sourceProgram}
+    (descriptors : DescriptorContract kernel) (lifetimes : LifetimeContract runtime)
+    (references : ReferenceContract runtime)
+    {initial : World} {ticks processed : List (ActorTick runtime)} {hostUid : Nat}
+    {dataObjects directories ipc : ObjectId → Prop} {semantics : NameSemanticsView}
+    {foreignReferences : ForeignReferences} {tick : ActorTick runtime} {before : NativeProcesses}
+    (handoff : NativeHandoffAt tick before)
+    (binding : InitialEngineBinding ipc handoff.execution.references.rawProjection.handles
+      handoff.execution.references.rawProjection.closeOnExec)
+    (separate : ∀ object, ipc object → ¬ dataObjects object)
+    (prior : CustodyState runtime initial ticks hostUid dataObjects directories semantics
+      foreignReferences processed tick.before before) :
+    ∃ next : CustodyState runtime initial ticks hostUid dataObjects directories semantics
+      foreignReferences (processed ++ [tick]) tick.after (before.transfer handoff.actor handoff.execution),
+      next.source.custody.catalogue = prior.source.custody.catalogue := by
+  obtain ⟨next, catalogue, family⟩ := handoff_custody_state_retained descriptors lifetimes references handoff binding separate prior
+  exact ⟨next, catalogue⟩
 
 -- §AR-host-boundary.interfaces: Preserve the original handoff consumer while retaining
 -- the exact catalogue in the stronger sibling used by the registered global source fold.
@@ -153,7 +173,7 @@ theorem handoff_custody_state {kernel : Contract} {runtime : ActorRuntime kernel
 
 -- §FS-host-boundary.ownership: This constructor consumes the concrete native source row,
 -- resolved per-operation operands and the existing versioned external host-code profile.
-theorem native_custody_state {kernel : Contract} {runtime : ActorRuntime kernel sourceProgram}
+theorem native_custody_state_retained {kernel : Contract} {runtime : ActorRuntime kernel sourceProgram}
     {primitive : NativePrimitive kernel} {hostUid : Nat} {semantics : NameSemanticsView}
     {dataObjects directories : ObjectId → Prop}
     (namespaceLaws : NativeNamespaceContract primitive) (metadata : NativeLiveMetadataContract primitive)
@@ -170,8 +190,10 @@ theorem native_custody_state {kernel : Contract} {runtime : ActorRuntime kernel 
     (prior : CustodyState runtime initial ticks hostUid dataObjects directories semantics
       foreignReferences processed tick.before before)
     (profile : NativePrivateOperandProfile namespaceLaws call prior.source.custody.caps.family) :
-    Nonempty (CustodyState runtime initial ticks hostUid dataObjects directories semantics
-      foreignReferences (processed ++ [tick]) tick.after after) := by
+    ∃ next : CustodyState runtime initial ticks hostUid dataObjects directories semantics
+        foreignReferences (processed ++ [tick]) tick.after after,
+      next.source.custody.catalogue = prior.source.custody.catalogue ∧
+      next.source.custody.caps.family = prior.source.custody.caps.family := by
   obtain ⟨next, nativePublic, nativeLive, caps, catalogue⟩ := native_custody_prefix_current namespaceLaws metadata
     heldMetadata descriptors lifetimes references objects lookup journal boundaryProfile selected call prior.source
     profile prior.nativePublic
@@ -195,8 +217,34 @@ theorem native_custody_state {kernel : Contract} {runtime : ActorRuntime kernel 
   have old : ∀ record ∈ next.custody.catalogue, record ∈ prior.source.custody.catalogue := by
     rw [catalogue]
     exact fun _ member => member
+  have family := congrArg Capabilities.family caps
   exact ⟨⟨next, nativePublic, nativeLive, publicDirectories, liveDirectories,
     catalogue_birth_scopes_existing included old prior.births ownership labels
-      (fun object => actor_step_allocated lifetimes tick.operation object)⟩⟩
+      (fun object => actor_step_allocated lifetimes tick.operation object)⟩, catalogue, family⟩
+
+-- §AR-host-boundary.interfaces: Preserve the original native-row result;
+-- the stronger sibling retains the exact family/catalogue for cumulative source custody.
+theorem native_custody_state {kernel : Contract} {runtime : ActorRuntime kernel sourceProgram}
+    {primitive : NativePrimitive kernel} {hostUid : Nat} {semantics : NameSemanticsView}
+    {dataObjects directories : ObjectId → Prop}
+    (namespaceLaws : NativeNamespaceContract primitive) (metadata : NativeLiveMetadataContract primitive)
+    (heldMetadata : NativeMetadataContract primitive) (descriptors : DescriptorContract kernel)
+    (runtimeLaws : RuntimeDescriptorContract runtime) (lifetimes : LifetimeContract runtime)
+    (references : ReferenceContract runtime) (objects : ObjectLifetimeContract runtime)
+    (lookup : NativeNonemptyLookupContract primitive semantics)
+    {initial : World} {final : Population} {ticks : List (ActorTick runtime)}
+    (journal : ActorJournal runtime (Population.empty initial) ticks final)
+    (boundaryProfile : NativeBoundaryAuthorityProfile primitive ticks hostUid)
+    {position : Nat} {tick : ActorTick runtime} (selected : ticks[position]? = some tick)
+    {before after : NativeProcesses} (call : NativeCallAt primitive tick before after)
+    {processed : List (ActorTick runtime)} {foreignReferences : ForeignReferences}
+    (prior : CustodyState runtime initial ticks hostUid dataObjects directories semantics
+      foreignReferences processed tick.before before)
+    (profile : NativePrivateOperandProfile namespaceLaws call prior.source.custody.caps.family) :
+    Nonempty (CustodyState runtime initial ticks hostUid dataObjects directories semantics
+      foreignReferences (processed ++ [tick]) tick.after after) := by
+  obtain ⟨next, catalogue, family⟩ := native_custody_state_retained namespaceLaws metadata heldMetadata descriptors
+    runtimeLaws lifetimes references objects lookup journal boundaryProfile selected call prior profile
+  exact ⟨next⟩
 
 end LeanCage.Host.Kernel

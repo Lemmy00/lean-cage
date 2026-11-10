@@ -1,0 +1,201 @@
+{
+  "canonical_replay": {
+    "aggregate_object_sha256": "24bc6f10e9d71174e78ee710a54e61a5d19b6c59d127015c5508ab558f9f92c8",
+    "excluded_developing": [
+      "GatewayPointerExpressions",
+      "GatewayPointerMemory",
+      "GatewayReferenceTokenExecution",
+      "GatewayReferenceTokens"
+    ],
+    "failed": {},
+    "input_drift": [],
+    "inputs_sha256": "b45ae6e4d9608acc405397c78049a52b34c0327cab3c0902d1de1a63f6dc4991",
+    "modules": 1170,
+    "status": "passed"
+  },
+  "checked_declarations": {
+    "actual_exchange_pair_pending_source": "Same original exchange function entry and source prefixes fix the local data/control pointer at a pending socketpair; no syscall result or future return.",
+    "gateway_channel_invocation_formed": "Fresh actual function-entry blocks produce all shared lifetime inequalities and positivity.",
+    "gateway_channel_pair_row_from_call": "Same pending source and actual returned syscall/copyout bind selected raw row/process/order to shared invocation; private-pair helper and exchange need not return.",
+    "gateway_channel_pair_use_consistent": "Actual copyout receipt and same full raw row produce per-field shared PairUse consistency."
+  },
+  "complete_delivery": false,
+  "contracts": [
+    "AR-host-boundary.interfaces.gateway",
+    "AR-host-boundary.primitives",
+    "FS-host-boundary.ownership"
+  ],
+  "evidence": {
+    "canonical-delta": {
+      "path": "assurance/host-channel-invocations-canonical-delta.gz",
+      "sha256": "0c2a461a8521dcd8e5541388a85af107702c6775cb314806aa0733026d3b63e2",
+      "uncompressed_sha256": "9a62c553fe472cd3d9b46b8a4542665728f5047f997a761306f916109b2712db"
+    },
+    "canonical-export": {
+      "path": "assurance/host-channel-invocations-canonical-export.gz",
+      "sha256": "15a090d38bb59129103c73ec03577cc16751c3dacf6d835cb3ba3b02ff02f5ec",
+      "uncompressed_sha256": "9d19b55d757d77eadf0518f1dc06543f73998490c02bf5da065bb1018d68c545"
+    },
+    "canonical-inputs": {
+      "path": "assurance/host-channel-invocations-canonical-inputs.gz",
+      "sha256": "09d42c502c3c0ffd0068393414d0effaeff975cffe6145a9d8e2c8ce32164e3e",
+      "uncompressed_sha256": "b45ae6e4d9608acc405397c78049a52b34c0327cab3c0902d1de1a63f6dc4991"
+    },
+    "canonical-kernel": {
+      "path": "assurance/host-channel-invocations-canonical-kernel.gz",
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "canonical-replay": {
+      "path": "assurance/host-channel-invocations-canonical-replay.gz",
+      "sha256": "79cb1a6036edb8b404b4de166e35165c4f81cddf6ca85b92bc9098a2f8721eb1",
+      "uncompressed_sha256": "1c815074802e52d71fe44d204c9b8c8733c0a4c5ec30df8ea1a9c10241cfd9da"
+    },
+    "probe": {
+      "path": "assurance/host-channel-invocations-probe.gz",
+      "sha256": "077d21d4223c3b80a8c737186bb5d362fe98acc800527b944b8be62ffdc783d1",
+      "uncompressed_sha256": "3b793097198848895d5089cbd3fae413c091d3a5dd4176b73a6413a36c7306cc"
+    },
+    "source-kernel": {
+      "path": "assurance/host-channel-invocations-source-kernel.gz",
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "source-types": {
+      "path": "assurance/host-channel-invocations-source-types.gz",
+      "sha256": "df171faa82d6cf42aa95f5cab215ce257d3e9241f8821e9db48991d2a96a25ca",
+      "uncompressed_sha256": "afa90d10317f0d968469def9461b0bbf8f4d5afe545b6f8df8ff018ff6d13014"
+    },
+    "strict-import": {
+      "path": "assurance/host-channel-invocations-strict-import.gz",
+      "sha256": "4db15e49649676cf04dcbdaabd3a6c1a352cdc36847be53610b5330092a306b0",
+      "uncompressed_sha256": "b98e3eacfa716f4a67b3dc8c8f9fc14c3657de59e4dd67778de534ba037c2710"
+    }
+  },
+  "extension": {
+    "added": [
+      "Exists",
+      "Exists.intro",
+      "Exists.rec",
+      "LE",
+      "LE.le",
+      "LE.mk",
+      "LE.rec",
+      "LT",
+      "LT.lt",
+      "LT.mk",
+      "LT.rec",
+      "LeanCage.Host.ChannelCode.Invocation",
+      "LeanCage.Host.ChannelCode.Invocation.WellFormed",
+      "LeanCage.Host.ChannelCode.Invocation.controlStorageLifetime",
+      "LeanCage.Host.ChannelCode.Invocation.dataStorageLifetime",
+      "LeanCage.Host.ChannelCode.Invocation.key",
+      "LeanCage.Host.ChannelCode.Invocation.mk",
+      "LeanCage.Host.ChannelCode.Invocation.rec",
+      "LeanCage.Host.ChannelCode.Invocation.storage",
+      "LeanCage.Host.ChannelCode.Invocation.storage.match_1",
+      "LeanCage.Host.ChannelCode.PairKind",
+      "LeanCage.Host.ChannelCode.PairKind.casesOn",
+      "LeanCage.Host.ChannelCode.PairKind.control",
+      "LeanCage.Host.ChannelCode.PairKind.data",
+      "LeanCage.Host.ChannelCode.PairKind.rec",
+      "LeanCage.Host.ChannelCode.PairUse",
+      "LeanCage.Host.ChannelCode.PairUse.Consistent",
+      "LeanCage.Host.ChannelCode.PairUse.invocation",
+      "LeanCage.Host.ChannelCode.PairUse.leftDescription",
+      "LeanCage.Host.ChannelCode.PairUse.leftFd",
+      "LeanCage.Host.ChannelCode.PairUse.leftObject",
+      "LeanCage.Host.ChannelCode.PairUse.mk",
+      "LeanCage.Host.ChannelCode.PairUse.position",
+      "LeanCage.Host.ChannelCode.PairUse.rec",
+      "LeanCage.Host.ChannelCode.PairUse.rightDescription",
+      "LeanCage.Host.ChannelCode.PairUse.rightFd",
+      "LeanCage.Host.ChannelCode.PairUse.rightObject",
+      "LeanCage.Host.ChannelCode.PairUse.row",
+      "LeanCage.Host.ChannelCode.ReceiveUse",
+      "LeanCage.Host.ChannelCode.ReceiveUse.Consistent",
+      "LeanCage.Host.ChannelCode.ReceiveUse.bytes",
+      "LeanCage.Host.ChannelCode.ReceiveUse.dataDescription",
+      "LeanCage.Host.ChannelCode.ReceiveUse.dataObject",
+      "LeanCage.Host.ChannelCode.ReceiveUse.descriptor",
+      "LeanCage.Host.ChannelCode.ReceiveUse.extent",
+      "LeanCage.Host.ChannelCode.ReceiveUse.invocation",
+      "LeanCage.Host.ChannelCode.ReceiveUse.mk",
+      "LeanCage.Host.ChannelCode.ReceiveUse.position",
+      "LeanCage.Host.ChannelCode.ReceiveUse.rec",
+      "LeanCage.Host.ChannelCode.ReceiveUse.row",
+      "LeanCage.Host.ChannelCode.ReferenceAt",
+      "LeanCage.Host.NativeCode.CallRow.afterReferences",
+      "LeanCage.Host.NativeCode.CallRow.beforeReferences",
+      "LeanCage.Host.NativeCode.CallRow.operation",
+      "LeanCage.Host.NativeCode.CallRow.process",
+      "LeanCage.Host.NativeCode.CallRow.product",
+      "LeanCage.Host.NativeCode.Handle.description",
+      "LeanCage.Host.NativeCode.SourceKey.actionsLifetime",
+      "LeanCage.Host.NativeCode.SourceKey.attributesLifetime",
+      "LeanCage.Host.NativeCode.SourceKey.entryPosition",
+      "LeanCage.Host.NativeCode.SourceKey.process",
+      "Nat.le",
+      "Nat.le.rec",
+      "Nat.le.refl",
+      "Nat.le.step",
+      "Nat.lt",
+      "Or",
+      "Or.inl",
+      "Or.inr",
+      "Or.rec",
+      "instLENat",
+      "instLTNat"
+    ],
+    "after_export_sha256": "3883ba0609832a1483f2d46def3d3bc548c666644fc17ba315c3ed4f763e0a0d",
+    "after_source_sha256": "2e29ec519029d540f7c436efa146e3d91e726ae804e63528e711555392d5410a",
+    "before_export_sha256": "f6bb9b8b88cd7e99d6438a3b8fba82a4eb6688e3d5825073f3a04f66a57f16d2",
+    "before_source_sha256": "2e29ec519029d540f7c436efa146e3d91e726ae804e63528e711555392d5410a",
+    "changed": [],
+    "invocation_source_sha256": "602fa489467a021bca0c757e439cab3e01e5aa82037dee2fd02f38938ca952b8",
+    "preserved": ".tools/host/gateway/native-data-before-invocations",
+    "reason": "Bind source allocation lifetimes and exact pair/read rows without a private-role assumption",
+    "review": "Native127 bytes preserved and all127 fingerprints unchanged; raw consistency supplies no channel authority",
+    "strict_import": "checked without importer relaxation"
+  },
+  "foundations": {
+    "additional_axioms": [],
+    "pure_conversion": [
+      "Lean.eq definitional UIP (existing strict importer baseline)"
+    ],
+    "source": [
+      "Classical_Prop.classic",
+      "ClassicalDedekindReals.sig_not_dec",
+      "ClassicalDedekindReals.sig_forall_dec",
+      "FunctionalExtensionality.functional_extensionality_dep",
+      "Events.external_functions_sem",
+      "Events.inline_assembly_sem"
+    ]
+  },
+  "open_integration": [
+    "Same actual full fork/exec descriptor snapshot rather than only source-held lease projection.",
+    "Every native/engine read/discard/alias operation classified on the same global history by actual source/callback/SDK cause.",
+    "Owned caller reader lifetime through parser and EOF, including all aliases and pre-exec child support slots.",
+    "Pending physical write extent reconciled exactly once with same source ordinal ACK/loss and same response context.",
+    "Actual full encoded engine response prefix joined to actual caller received-byte projection, then checked framing/public consumer."
+  ],
+  "predecessor": "Native127 bytes/native-export manifest preserved by host-native-before-invocations-*.gz; all existing Native127 fingerprints unchanged. Prior reviews retain their original bytes and scope.",
+  "schema": "leancage-host-channel-invocations-component-v1",
+  "scope": "Actual native C allocation lifetimes and data/control source operands, plus same-row raw pair data; no channel authority or exclusive-reader conclusion.",
+  "source_epoch": {
+    "clight_sha256": "db117a9df6130d16698bc08c0c034dea82163df277fcc30f3e1ab4227e49b947",
+    "gateway_data_sha256": "e654b8c03d39600811fd50651b9b6aada9569f98d6e75bf136f6573bb4bb592e",
+    "native_c_sha256": "be9170ecf1b45075fb7001570b1d598cf6ab0ce04c07a6c441c5f9b122628a2c",
+    "native_data_declarations": 199,
+    "native_data_sha256": "3883ba0609832a1483f2d46def3d3bc548c666644fc17ba315c3ed4f763e0a0d"
+  },
+  "sources": {
+    "verification/host/GatewayChannelCode.lean": "602fa489467a021bca0c757e439cab3e01e5aa82037dee2fd02f38938ca952b8",
+    "verification/host/GatewayChannelCodeProducer.v": "7c065ad8db19016a384874111d222376db6152de3941848ea741e7ea72d45013",
+    "verification/host/GatewayChannelPairSource.v": "ea4187ca66e7b81a3cd1b2d6644b555788983408ffca6a8af42a5f13bcc95a3b",
+    "verification/host/GatewayChannelSourceScope.v": "a972ad425e1801177c4d8e0da22f83300f4ec66f1aa88ea6a7b54a26c3da0dc5",
+    "verification/host/GatewayNativeImport.v": "84b0b074182b19eae90505cdbe217bcb93486d72eb63f224da5627ad15e25e99",
+    "verification/host/native_code.py": "b1f74baef65140a5ae552fd521602c47647303aea521c6554fa2fa61d0b8b6f7"
+  },
+  "status": "checked-source-bindings"
+}

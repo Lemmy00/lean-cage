@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "implementation-paused-at-user-request",
+  "status": "implementation-active",
   "delivery": "M5.2",
   "contract": [
     "FS-host-boundary.ownership",
@@ -9,8 +9,8 @@
     "AR-host-boundary.primitives",
     "FS-host-boundary.lookup"
   ],
-  "consumer": "Same actual host engine and native callers; final RequestGuarantee/physical ownership composition is not yet closed.",
-  "implementation_frozen": true,
+  "consumer": "Same actual host engine/native callers. Actual selected commit now produces same-root custody and committed source-tag exposure; universal application/native/foreign/child custody execution and final RequestGuarantee remain in progress.",
+  "implementation_frozen": false,
   "accepted_security_delivery": false,
   "route": "Actor lifetime identities, exact source residuals and one shared kernel journal. Derive per-operation namespace roles and private-family invariants from actual caller phase producers; never assume a whole host/helper/private-region frame.",
   "model_corrections": [
@@ -51,7 +51,11 @@
     "Actual run creation now retains a constructive RootBirth data receipt so its global tick and before/after worlds remain definitionally the SAME selected mkdir. The old existence wrapper preserves its exact type.",
     "Once a private boundary is nonempty, pinned ext4 inode-locked flag/encryption rules derive comparison stability even after the source parent FD is closed. The empty pre-birth probe interval continues to require the actual active-parent source/authority producer.",
     "Native callback path setters now include exact fchmodAt/fchownAt operands and same-operation resolved metadata targets. The old FD-only target predicate cannot classify either setter; metadata/active-boundary/system-anchor profiles consume the indexed path target. The NativeCode94 amendment preserves the sealed92 predecessor and unrelated data groups.",
-    "Engine and Python-caller exit have distinct SAME-kernel retirement rows. Source execution stops immediately while exact surviving FD/OFD and optional CWD references persist through partial teardown; only actual completion yields empty resources. Birth/exec/catalogue/orphan history remains. No lost reply, EOF, future SDK return, or engine exit proves descendant cleanup/reaping."
+    "Engine and Python-caller exit have distinct SAME-kernel retirement rows. Source execution stops immediately while exact surviving FD/OFD and optional CWD references persist through partial teardown; only actual completion yields empty resources. Birth/exec/catalogue/orphan history remains. No lost reply, EOF, future SDK return, or engine exit proves descendant cleanup/reaping.",
+    "Backend source authority now follows the exact NativeExternalJournal value and actual embedded child calls, rather than arbitrary ChildCallAt witnesses over equal ticks. The original 27-consumer source/type/axiom evidence is sealed in host-recorded-backend-predecessor.json.gz.",
+    "The actual selected release manifest binds its installed32-byte key digest and initialized key object/contents; actual copied-key SHA yields equality or an explicit collision. Publisher and retrieval reductions use that fixed secret; no global digest injectivity or key-copy helper frame is assumed.",
+    "Only successful rename acknowledgement forces the real target binding; error/loss retain committed and unchanged possibilities. Canonical publication release tracking preserves private root labels through child cleanup unlinks until actual owner publication.",
+    "Directory-close op11 now carries the original retained fd in request.second and checks dirfd(cursor) equals it before closedir. The source derives unrelated inherited-reference preservation through actual nested scans instead of assuming an absent cursor-to-FD frame."
   ],
   "checked_supporting_interfaces": [
     {
@@ -230,6 +234,78 @@
       "module": "FilesystemLookupAuthority / FilesystemParentState",
       "source_epoch": "expanded-raw-source",
       "result": "Same actual raw parent interval propagates only CASEFOLD/ENCRYPT comparison bits with current metadata, retaining individual native flag/encryption/attribute target exceptions and ordinary permission checks. Foreign-owned public input directory flags remain dynamic. The separate ext4 nonempty-boundary contract names the pinned inode-locked emptiness check; no empty-directory interval is assumed."
+    },
+    {
+      "module": "FilesystemCommitRoot",
+      "result": "Actual selected raw commit resources plus genuine earlier mkdir/open/source interval derive current same lifetime, parent/name/binding/private family and owner; no current root premise."
+    },
+    {
+      "module": "FilesystemCommitCustody",
+      "result": "Actual per-operation parent authority and selected commit construct the next registered custody/ownership state, retaining no-change or committed move, including error/loss."
+    },
+    {
+      "module": "FilesystemCommitMarker",
+      "result": "The SAME source commit and actual key/MAC calls identify its earlier acknowledged marker on the exact same root lifetime; original authentication consumer type remains a wrapper."
+    },
+    {
+      "module": "FilesystemCustodyExecution",
+      "result": "Application-produced cumulative snapshots are indexed by the SAME NativeExternalJournal value; exact structural selection retains that recording head and native before table. Universal producer remains pending."
+    },
+    {
+      "module": "FilesystemCommitExposure",
+      "result": "Current root marker is derived through each actual intervening source/native/foreign row using constructed custody snapshots and actual setter operands; an actual committed delta yields a genuine exposed source signing query even on lost/error acknowledgement."
+    },
+    {
+      "module": "FilesystemBootstrapSource / FilesystemReadCustody / FilesystemNativeKeyAccess",
+      "source_epoch": "expanded-raw-source",
+      "result": "Actual selected manifest/canonical inventory and exact caller read forms feed registered open custody. SAME native recording acquisition origins and resolved external-code profile operands derive initialized key reference exclusion, including partial retirement survivors."
+    },
+    {
+      "module": "FilesystemInstalledAuthentication / FilesystemCommittedKeyIdentity / FilesystemInstalledExposure / FilesystemCommitAcknowledgement",
+      "source_epoch": "expanded-raw-source",
+      "result": "SAME copied-key SHA/MAC/marker source yields installed-secret equality or explicit digest collision. Actual committed publisher exposure and returned report reduce to fixed-secret source query/forgery alternatives. Success0/empty forces a physical rename delta; error/loss remain broad."
+    },
+    {
+      "module": "FilesystemRecordedBackend / FilesystemRecordedAuthority / ControllerPrimitiveSource",
+      "source_epoch": "expanded-raw-source",
+      "result": "Actual raw child birth/current ledger produces original logical validator/QEMU role; actual recorded metadata/runtime/VMM calls construct NativeAuthorityJournal of the exact recording. 27 consumer hypotheses corrected with sealed predecessor/full-type evidence."
+    },
+    {
+      "module": "FilesystemForeignCustody / FilesystemRegisteredLifecycle / FilesystemPublicationProgress",
+      "source_epoch": "expanded-raw-source",
+      "result": "Ordinary foreign operations and actual launch/retirement rows extend registered custody. Per-real-birth publication release tracking derives unpublished root privacy through owned child unlinks; the whole source/child/cleanup fold remains active."
+    },
+    {
+      "module": "FilesystemOutputSources",
+      "result": "The entire actual lowered Entrypoint.run source produces inherited raw-reference preservation through all native/CLI branches. actual_live_inherited_reference derives the current reference from the SAME actual handoff and journal; actual_inherited_operation_reference retains the individual returned/lost operation output independently of later retirement."
+    },
+    {
+      "module": "FilesystemSnapshotBorrowing",
+      "result": "Actual SourcePaths opens establish fresh FDs; every scan/child/error path and the checked expected-FD closedir preserve other held raw handles. No whole Snapshot borrowing premise is accepted."
+    },
+    {
+      "module": "FilesystemPublicationLifecycle / FilesystemPublicationReads / FilesystemCommitPublication",
+      "result": "Cumulative same-journal publication state has checked native/foreign/runtime/handoff/retirement/read and actual rename cases. Retained family/catalogue outputs are explicit; the exhaustive source/native/child fold is still in progress."
+    },
+    {
+      "module": "FilesystemByteNamespaceFrames / FilesystemAttributes",
+      "result": "New raw rename/unlink ownership consumes CURRENT byte-exact operand frames, and commit/key exposure consumes only tracked-attribute laws. Legacy logical stronger interfaces remain exact wrappers, not raw unsupported-filesystem assumptions."
+    },
+    {
+      "module": "FilesystemPrivateTraversal / FilesystemPublicationChains / FilesystemCleanupParents / FilesystemUnlinkOrigins",
+      "result": "Actual nested opens and cleanup source loops retain source arguments, preceding events and same kernel worlds. Starting owned root continuity and exhaustive application dispatch remain part of the cumulative integration."
+    },
+    {
+      "module": "FilesystemJointUnlinks",
+      "result": "Every actual Entrypoint raw unlink derives its own run/validator/publication source and advances the same RegisteredPublicationState plus JointPublicationPrefix. Current parent, component, byte comparison, owner and original final root binding are application conclusions; errors and lost replies remain."
+    },
+    {
+      "module": "FilesystemPublicationCleanupJoint",
+      "result": "All failed-publication cleanup removals retain actual failed preparation, typed nested opens/stat observations and source ordinals. Final root continuity is derived through the same ownership journal and actual earlier private-parent removal operands, including ignored errors."
+    },
+    {
+      "module": "FilesystemJointCreation/FilesystemJointDescendants",
+      "result": "Named actual run/staging/public creation and private descendant local source receipts extend the same joint birth/catalogue/ownership state. Exhaustive in-progress publisher fill/open dispatch is still required."
     }
   ],
   "remaining_producers": [
@@ -247,7 +323,7 @@
     },
     {
       "id": "same-birth-directory-custody",
-      "action": "Exact earlier raw-open/source receipts and SAME Mk/root lifetime/opened handle now checked. Actual stage handle preservation and nondestructive source suffix through prepare/current rename probes checked. Next join these into selected-commit current root binding/family/owner, then complete run current-content and descendant/cleanup custody."
+      "action": "Actual selected commit and all Entrypoint run/validator/publication unlink source cases now derive same-birth/current parent/root binding and advance the joint prefix, including failed preparation and arbitrary error/loss. Complete in-progress publisher fill mkdir/O_EXCL/private descendant/open source dispatch and all per-actor creation/alias cases; then feed the full constructed execution to fixed-key/exposure consumers."
     },
     {
       "id": "public-path-and-cwd-custody",
@@ -259,7 +335,7 @@
     },
     {
       "id": "key-and-marker-observation-origin",
-      "action": "Protected-key guard exclusion now uses SAME raw native/engine history; returned report has same-transcript source-exposure-or-forgery. Still derive actual bootstrap-key observations, complete key-byte nonexposure and source-produced public committed exposures over the entire key lifetime, including persisted reports."
+      "action": "Actual committed-source exposure now derives SAME root/tag and every intervening raw/native marker frame from constructed per-position custody snapshots. Still construct the universal custody execution, derive actual bootstrap-key observations, and finish complete key-byte nonexposure over the entire key lifetime including persisted reports."
     },
     {
       "id": "joint-usefulness-and-acceptance",
@@ -267,7 +343,7 @@
     }
   ],
   "evidence": "Focused build logs under .tools/host/filesystem-*.log. These checks are supporting development evidence, not integrated M5.2 acceptance.",
-  "next_action": "Add the actual selected-commit root consumer: derive PrimitiveCommitResources from the same raw rename adapter; consume primitive_created_stage_continuation, RootOpenReceipt.opened_root, EarlierOpen.shared_handles, CreatedStageContinuation.current_reference and source_nondestructive to establish the SAME recorded root lifetime/current stage handle/binding before that rename. Then finish the universal constructed custody/ownership/commit/key fold. FilesystemCommitRoot has not been started; no failing maintained proof is hidden.",
+  "next_action": "Construct the exhaustive same-NativeExternalJournal joint custody execution. The actual Entrypoint unlink dispatcher is checked. Next derive in-progress publisher fill stage references/metadata from the actual completed Staged producer without future prepare success, dispatch source mkdir/O_EXCL/open cases, and incorporate actual controller/VMM per-operation deltas. Then close protected installation content/read intervals and fixed-key nonexposure/authentication/exposure on the complete same journal, compose public results and run integrated M5.2 acceptance. No supporting component is a completed delivery.",
   "primitive_sources": [
     {
       "url": "https://github.com/torvalds/linux/blob/v6.8/fs/xattr.c#L104-L144",
@@ -447,5 +523,17 @@
     ],
     "validation": "Registered graph326jobs and complete selected-module kernel type/body/axiom query PASS; baseline three foundations only.",
     "scope": "Partial M5.2 implementation checkpoint. No complete global custody/key-origin or host-boundary delivery claim."
+  },
+  "reviewed_recorded_backend_correction": {
+    "record": "assurance/host-recorded-backend-correction.json",
+    "sha256": "5a06f77536fa50d8a27f13b6ea017349487295afe906809ebd322bcf5f821214",
+    "accepted_security_delivery": false
+  },
+  "reviewed_forward_inherited_channels": {
+    "record": "assurance/host-inherited-channel-review.json",
+    "sha256": "b024dd68842e75aa47a649102488aa9d0b4b55983767ed01d759d36a2f238eee",
+    "native_fixture": "host-directory-close-result.json.gz",
+    "predecessor": "host-directory-close-before.json.gz",
+    "state": "Focused full-source borrowing and affected native/ordinary checks pass. Entry consumes the forward fd1 producer; integrated M5.2 remains active."
   }
 }
