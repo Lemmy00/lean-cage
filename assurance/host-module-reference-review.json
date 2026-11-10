@@ -1,0 +1,67 @@
+{
+  "actual_source_connection": "The normal source consumer takes the SAME Clight SDK primitive at module_outcome_add_cont, the actual _host_outcome_class symbol/load and current native-cell capability. Root-owned source initialization must produce those frontiers/capabilities and the guarded callback profile.",
+  "alias_retry_scope": "Repeated pointers retain distinct active tickets. Prior global-overwrite allocations stay in the disjoint retired count; no global vacancy is assumed and no release is invented.",
+  "artifacts": {
+    "assurance/host-module-reference-audit.log.gz": {
+      "sha256": "f2d0cc36e81a1c72f5871aed05770f7bb8ed07e3dc20dca6584e7bd3f47ac853",
+      "source_sha256": "d1dc5d503f071d5f7c89ff731943afbec596a2772f9fdde50c44d3b90566fb11"
+    },
+    "assurance/host-module-reference-audit.v.gz": {
+      "sha256": "2d3bf35ee6dc6059282dce34a4d7bbfbb31ad348ade9460454fd99daefb7baed",
+      "source_sha256": "2cd9f240e0a4aeb6a8f0a0372b270770330967f84f169ad054663a0e805d14b5"
+    },
+    "assurance/host-module-reference-build.log.gz": {
+      "sha256": "92e493937f276bf1cac3362bb38c6ee7f74c3b0eb7d5362943b9064f01adc75c",
+      "source_sha256": "32ac465055353dd0a4a170910cf3131e091fd59447f4f06ef6fa3d2cb51ca196"
+    }
+  },
+  "assumption_result": "Only the existing reviewed six Rocq/CompCert baseline foundations; no new axiom, sorry/admit, UIP or native_decide.",
+  "checks": [
+    "Focused current-source compile PASS.",
+    "Full type/constructor/assumption query PASS."
+  ],
+  "declarations": [
+    "GatewayModuleReferencePublication.gateway_module_reference_runtime",
+    "GatewayModuleReferencePublication.gateway_module_publication_reference_pool",
+    "GatewayModuleReferencePublication.gateway_actual_module_reference_publication"
+  ],
+  "inputs": {
+    ".tools/host/gateway/GatewayModuleReferencePublication.vo": "2176a113f443131d17802d1bd5bbe7fe6e42dd22ca90e32e69af9403b49ab3df",
+    ".tools/host/gateway/GatewaySource.v": "2fce74e393b9211504531aa0cf31d10ac9bce73ef6c38dcd30bf720e10880eb5",
+    ".tools/host/gateway/gateway-code.ndjson": "e654b8c03d39600811fd50651b9b6aada9569f98d6e75bf136f6573bb4bb592e",
+    ".tools/host/gateway/source-inputs.json": "78df64cda071d8d189194e31070a4defac71d1132ce1a18d3a0513e29557ad2c",
+    "linux/host_python.c": "8dc2bdd9b0a454786d5525d0b97135c6d2ac2e02fceb5d07afdcb11406effd3d",
+    "verification/host/GatewayModuleReferencePublication.v": "4ead4f8dceb17ffa2919d448d20d15d814eb9a74bcd2c8e8d764786941fb6cb7",
+    "verification/host/GatewayReferenceAbandon.v": "d86032fb041a8fe9c488022989624a6cc873e09b543156619781d97dd64ca515",
+    "verification/host/GatewayReferenceHistory.v": "ccc232b63a314ab4a5c90009579bc3e7648c3d5ec55dbe49909f12b3d18ecd85",
+    "verification/host/GatewayReferenceLedger.v": "7c5435e0da7c8b3332ee6ef29779af2345088f3db5d84637f7fad37174733764",
+    "verification/host/GatewayTypeRuntime.v": "309fdb49e70299850ea8910c70641ae36db990ccf1df44d846062a5c949b6c30"
+  },
+  "primitive_inputs": [
+    "Existing individual gateway_type_runtime effects, including precise integer ABI, native output frame and access retention.",
+    "New supplementary individual PyModule_AddObjectRef nonstealing current-pool law; it does not model physical ob_refcnt or other invocation/module references."
+  ],
+  "remaining": [
+    "Actual full guarded initializer and callback-frame/current-root producer.",
+    "Actual recursive/numeric response parser and public Outcome/getter conversion.",
+    "Useful combined physical/runtime model and final integrated M5.2 acceptance."
+  ],
+  "result": "The exact individual source AddObjectRef operation keeps the active source ledger and retired allocation counts, actual native class-global load and retained class root for success and nonzero status. It supplies no module-attribute/presentation freeze or reclamation observation.",
+  "schema": "leancage-host-proof-repair-review-v1",
+  "specs": [
+    "FS-host-boundary.caller.initialization",
+    "AR-host-boundary.interfaces.gateway",
+    "AR-host-boundary.primitives",
+    "REQ-proof-integrity.statement"
+  ],
+  "statement_review": "Reviewed full types, all runtime record fields and constructor, quantifiers, actual operation/memory/world binding, error status, logical pool scope, retired counts, actual source global cell and absence of old gateway_root_lease_runtime premise.",
+  "status": "supporting reference repair checked; integrated M5.2 guarantee remains incomplete",
+  "transitive_assumptions": [
+    "ClassicalDedekindReals.sig_not_dec",
+    "ClassicalDedekindReals.sig_forall_dec",
+    "Events.inline_assembly_sem",
+    "FunctionalExtensionality.functional_extensionality_dep",
+    "Events.external_functions_sem",
+    "Classical_Prop.classic"
+  ]
+}

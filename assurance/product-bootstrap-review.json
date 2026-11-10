@@ -19,7 +19,12 @@
     "final_product_tests": 32,
     "final_product_tests_status": "passed",
     "fresh_foundation_and_product_core": "passed before two product fixture failures",
-    "github": "pending",
+    "github": {
+      "commit": "ecc32068a1bc952e87d523bde8f3631c6289e685",
+      "run_id": 42543884423,
+      "status": "passed",
+      "url": "https://github.com/Lemmy00/lean-cage/actions/runs/42543884423"
+    },
     "grund": "passed",
     "static_vm_init": "passed"
   }

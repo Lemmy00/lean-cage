@@ -1,125 +1,129 @@
-# M5 continuation: finish the host boundary, then continue through M5.5
+# M5 continuation — user-requested M5.2 pause
 
-The user assigned all five integrated deliveries, validated integration and push
-to `main` after each, and explicitly rejected stopping at partial implementation.
-Continue automatically. This file records state and does not authorize stopping.
-The acceptance authority is [§AR-application-verification](docs/architecture/AR-application-verification.md#ar-application-verification-prove-the-application-through-integrated-security-guarantees) and the current delivery
-is [§RM-roadmap.m5.next](docs/roadmap.md#m5next-current-assignment).
+M5.1 is complete and integrated. M5.2 is **partial implementation with checked
+components**, paused at the user's explicit request. M5.3, M5.4 and M5.5 remain
+assigned and incomplete. Resume M5.2 before advancing to those deliveries.
+The acceptance contract remains [§AR-application-verification.host](docs/architecture/AR-application-verification.md#host-safe-host-boundary-for-arbitrary-vm-output) and
+[§FS-host-boundary.acceptance](docs/functional-spec/FS-host-boundary.md#acceptance-prove-and-consume-the-real-host-implementation); component checks are not delivery acceptance.
 
-**Status, 2026-11-09:** M5.1 is complete. M5.2 is current; M5.3–M5.5 have not
-started. Final entry acceptance is `assurance/entry-acceptance.json`. The public
-bundle `77298fb97001ec611c9941962725c0e118046b35558b48d58b8b2352944ccda6`
-passed all 12 CLI/library scenarios. Integration started from `69734d3`,
-preserved earlier work at `be541b1`, and safely merged latest `main` `cf63751`
-at `23e0d20`. The working M4 product and historical proofs retain their scopes.
+The existing public CLI/library and accepted entry guarantee remain the working
+baseline. The new native Python gateway and separate executable Lean host engine
+are a candidate, reached through `leancage.native`; they have not replaced the
+default public caller. No complete safe-host/public-result guarantee is claimed.
 
-## Completed entry guarantee
+## What is preserved
 
-The maintained prepared-root launch statement establishes actual restricted
-credentials, stdio/failure handles, filter, exact arguments and owned entry
-scope before workload image replacement. Setup errors cannot fall through to
-execution; preflight has a separate no-workload path. Actual source control and
-the fresh Lean worker compose under the explicit Linux/runtime contracts.
+The maintained implementation lives in `host/`, `linux/host_python.c`,
+`linux/host_primitives.c`, the small Python build/alias modules and
+`verification/host/`. It covers bounded request/response encoding, snapshots,
+filesystem/VM effects, validation, staged authenticated publication and retrieval.
+The architecture, behavior and route decisions are in [§AR-host-boundary](docs/architecture/AR-host-boundary.md#ar-host-boundary-execute-host-security-control-in-one-shared-lean-engine),
+[§FS-host-boundary](docs/functional-spec/FS-host-boundary.md#fs-host-boundary-preserve-host-authority-and-bounds-for-arbitrary-vm-bytes) and [§DA-host-engine](docs/decisions/architectural/DA-host-engine.md#da-host-engine-use-a-small-native-python-gateway-and-a-separate-lean-host-image). See
+[the integration review](docs/reviews/host-boundary-integration.md) for scoped
+source connections and withdrawn historical assumptions.
 
-- `verification/launch/process.py` owns the canonical C source graph, strict
-  ordinary-Lean imports, full type/assumption/interface audit and independent
-  kernel check. `assurance/entry-process.json.gz` records its checked artifacts.
-- `NamespaceScopeFactory.actual_prepared_source_scope_from_raw` derives the
-  source scope producer from actual preparation, fork, parent admission and
-  private-channel source events. It assumes no local scope, admission,
-  authorization, checkpoint, private invariant or whole-interval stability.
-- Closed `ProcessEntryAcceptance.actual_entry_acceptance` retains one source
-  tuple and its process, capability, queue, journal, IO, descriptor and source
-  label history. `entry_runtime_ticks_ordinary` identifies its complete tick list
-  with the exact worker/startup/image consumer. Full frame equalities additionally
-  establish descriptor after maps; before-only ticks cannot establish them.
-- `EntryGuarantee.production_source_workspace` consumes that producer at the
-  actual release read. `CallerWitness.useful_public_source_workspace` derives
-  native argument meanings internally from the same source-bound bytes, actual
-  fork ancestry and complete worker execution. It supplies an inhabited useful
-  restricted image and workspace task. Image replacement can still be at its
-  exec stop; later supervision is M5.4.
-- `assurance/entry-claims.json` binds executable bodies, full theorem types,
-  transitive assumptions and source interfaces. The original body record remains
-  preserved. Reviews are under `assurance/entry-*-review.json`.
+The following records identify checked current components and their remaining
+inputs, rather than independent completed deliveries:
 
-The initial route investigation started 2026-11-03 20:05 UTC and selected the
-fresh single-threaded worker at 21:58 UTC, within four working hours. See
-[§DA-entry-worker](docs/decisions/architectural/DA-entry-worker.md#da-entry-worker-use-a-fresh-single-threaded-lean-entry-image). Native code executes a new Lean image before Lean initialization;
-effectful Lean never resumes inherited runtime state after fork. Preserve the
-bounded thread/runtime checks, strict narrow byte bridge, production/test-image
-separation and failure/loss cases.
+- `assurance/host-parser-source-review.json`: actual recursive C parser, all
+  supported numeric/container branches, alias-aware aggregate ownership and
+  original caller buffer permissions, with full statement/axiom review.
+- `assurance/host-caller-checkpoint.json`: the actual call72 consumer reaches
+  decoded graph and real EOF; owned-close, reap and restore components retain
+  their individual contracts. It does not yet compose the entire public return.
+- `assurance/host-response-source-review.json`: actual same-journal pending writer
+  provenance before any current write acknowledgement or future engine return.
+  The stream writer additionally derives response identity and writer offsets.
+- `assurance/host-root-handle-checkpoint.json`: actual creation/reopen/stage
+  receipts connect to the same recorded root lifetime and current handle.
+- `assurance/host-initializer-objects-review.json`: actual import/class setup,
+  pointer-store, failure and reentry rejection source; individual SDK reference
+  laws have no assumed whole-initializer or callback-global frame.
+- `assurance/host-outcome-reference-checkpoint.json`: checked Outcome
+  allocation/store/return and reference-adoption support; original public caller
+  composition is still required.
 
-The final canonical audit caught and removed `Axioms.proof_irr` from clock-memory
-loads without changing theorem types. It is partitioned without omitting queries,
-and full independent kernel checking passed. Matching proof objects, exports,
-ASTs, full types and foundations survived the final metadata-only amendments.
-Do not replay them merely because of a handoff.
+Detailed ownership and response obligations remain in
+`assurance/host-ownership-status.json` and
+`assurance/host-response-obligations.json`. Other component records retain their
+original scope. The final checkpoint validation inventory belongs in
+`assurance/host-checkpoint.json`.
 
-Earlier reporting evidence reads exact archived source inputs and sealed original
-API/Main caches under an exact amendment/code guard. It is explicitly historical;
-current source consumers and entry have separate records. See
-`assurance/reporting-preservation-review.json`. Never substitute current cache
-identities into the accepted old receipts.
+## Remaining completion work
 
-## Current host work and exact next action
+1. **Connect the physical response to the same caller and decoded value.** Join
+   the actual pair birth, source leases, per-operation IPC/OFD lifetime/custody,
+   monotone partial writes and caller receives. Derive exclusive read/discard
+   authority from the actual source history, retaining other-reader/discard cases
+   until excluded. Prove canonical typed framing/prefix uniqueness so that the
+   actual writer value and actual parser value agree; broad `SourceEncoded`
+   alone intentionally permits scalar tags that cannot supply this conclusion.
+2. **Finish initialization, public extraction and Outcome ownership.** Compose
+   the actual SDK callback source/global-write authority, current regions and
+   reference histories. Join Outcome allocation with copy-credit adoption at
+   the actual older stack, derive the data-cell/result bindings, and compose the
+   real 14-field/dictionary-copy/Path/observation callers and getters. Do not
+   assume stable callback-writable globals or an empty retry state.
+3. **Close filesystem custody and authenticated publication.** First construct
+   the selected commit consumer from `PrimitiveCommitResources`,
+   `primitive_created_stage_continuation`, `opened_root`, `shared_handles`,
+   `current_reference` and `source_nondestructive`. Then fold the whole actual
+   global custody/commit/key-origin history, including aliases, uncertain commit,
+   cancellation, hostile output, failed operations and lost acknowledgements.
+4. **Compose and accept the delivered host guarantee.** Join original argument
+   extraction, request/header/stream/ledger producers, EOF, closes,
+   Save/Reap/Restore, status/result/stack-free and Outcome projection on the same
+   run, with all error/loss cases. Integrate both documented public callers only
+   after the proof connections hold. Run the required final identified bundle
+   acceptance, including the affected hostile VM/snapshot/export/storage cases.
 
-Finish [§AR-application-verification.host](docs/architecture/AR-application-verification.md#host-safe-host-boundary-for-arbitrary-vm-output): safe snapshots, per-run image/bundle
-checks, bounded arbitrary VM framing, artifact validation, private publication
-and retrieval, through CLI and reusable `Workspace`. Later deliveries supply
-policy authority, owned lifetime and truthful inner observations. Keep those
-producer obligations explicit; no whole application adapter may remain assumed
-secure in the final M5.5 composition.
+These are substantial end-to-end proof/integration obligations. No reliable
+percentage or completion-time estimate follows from the number of checked
+components. Final M5.2 acceptance has not passed or been claimed.
 
-The read-only host map found these actual-source obligations: directory listing
-materializes all names before its inode check; startup failure reads the entire
-diagnostic before shortening it; run-zero artifact validation is incomplete;
-export parsing can escape the transport error handler; retrieval does not recheck
-aggregate policy bounds and follows ancestors. Diagnostic polling permits size
-overshoot. Resolve them in the actual source-connected host path; a standalone
-parser or plan is supporting work, not the delivery.
+## Exact restart point
 
-The isolated route prototype lives under ignored `.tools/host/prototype`. An
-abi3 CPython C gateway calls a separate Lean image through `posix_spawn`, with
-exact request/response bytes and bounded errors. The pinned Clight frontend
-accepts the actual limited-API Python headers; gateway source and strict
-ordinary-Lean interface compile. A real native `Workspace.run(bytes, UnicodePath)`
-reaches the compiled Lean engine. Finish its checked accepted/error caller
-connection, then record the route decision and host contract before moving it
-into maintained code.
+Start with the physical channel/canonical framing connection and selected-commit
+current root consumer above, while the Outcome/initializer lane composes its
+actual caller. `GatewayReferenceParserComplete.gateway_reference_actual_parser_complete`
+and `GatewayResponseDecoded.actual_exchange_decodes_response` are the checked
+parser/consumer interfaces to reuse. Do not reopen their unchanged numeric proofs.
 
-Prefer shared executable Lean control owning security effect sequencing. Python
-must not remain an unchecked multi-operation plan interpreter. Account for the
-small C gateway's CPython primitive marshaling, copied memory, actual ABI and
-interpreter, GIL, signals, owned cancellation handles and spawn errors. Do not
-embed an inherited Lean runtime or introduce an unassigned Python-verifier project.
+Two unfinished proofs are preserved as explicitly non-acceptance text drafts in
+`verification/host/drafts/`: canonical framing preparation and cleanup status
+retention. They are excluded from maintained Rocq source discovery, and no
+security result consumes them. Each draft has its exact next action and failure
+record. All maintained source modules at this checkpoint have checked objects.
 
-The host needs a total bounded byte/JSON parser for arbitrary reports. The old
-policy `StrictJson` is partial; its accepted-value bounds theorem does not prove
-interpretation. Reuse the total parser for M5.3 after it serves the actual host
-caller. Preserve policy versions, supported Unicode/escapes, useful executions
-and failure/loss. Distinguish native raw-byte export names from the host's current
-UTF-8 materialization restriction explicitly.
+The M5.4 signal-target issue is independently recorded in
+`assurance/host-signal-target-obligation.json`: automatic child reaping can permit
+raw process-group ID reuse. Repair the actual implementation before claiming
+owned cancellation; a successful raw signal operation is not a lifetime proof.
 
-Freeze owned files/interfaces before parallel implementation. Keep maintained
-modules responsibility-named. Run hostile workloads only in the designated VM.
-Use focused checks, then the required affected gate once on final inputs; reuse
-matching accepted evidence. Integrate and push each complete delivery to `main`,
-then proceed automatically.
+## Validation and evidence reuse
 
-## Preserved subtleties for the remaining producers
+The checkpoint preserves focused Lean/Rocq kernel/type/axiom checks and their
+source identities. Earlier runtime/VM evidence keeps its own identified inputs;
+it is not final M5.2 acceptance. Hostile workloads remain confined to the
+recorded disposable VM.
 
-- The entry cut is the actual allocated `State` at `namespace_tail 9`, not an
-  uninhabited whole-`namespace_init` `Callstate`. M5.3 supplies its real prologue,
-  root, identity, argv, object classification and ancestor producers.
-- Retain actual fork incarnation/PID leases, descriptor aliases, widths, bytes,
-  errors, arbitrary external steps and loss. A receipt label is not authority.
-- Do not normalize `taskKey` by unrestricted computation: its multiplication can
-  expand enormously. Rewrite the checked concrete actor keys first.
-- An earlier rare cancellation failure remains under
-  `.tools/launch/diagnostics/cancel-after-entry/failed`; retain it for M5.4.
-  Later successful runs do not erase it or establish a lifetime proof.
-- Detailed contracts and obligations are in [§AR-entry](docs/architecture/AR-entry.md#ar-entry-shared-executable-guest-admission-over-primitive-operations), [§FS-entry](docs/functional-spec/FS-entry.md#fs-entry-value-carrying-fail-closed-guest-admission),
-  [§FS-assurance.entry](docs/functional-spec/FS-assurance.md#entry-entry-worker-body-and-route-evidence) and the reviewed claims. Compiler/runtime, precise Linux
-  primitives, crypto identities and configured platform remain named assumptions.
-  Kernel/hardware implementation research is the separate M6 track.
+Five C comment edits fix citation width and remove an unjustified PID-ownership
+comment. `assurance/host-source-comment-amendment.json` preserves the exact old C
+and generated program and records that the pinned frontend produces **identical
+Clight bytes** from the current C. Historical component source bindings are not
+silently refreshed. The next aggregate delivery record must consume that
+amendment explicitly.
+
+The final checkpoint manifest records the foundation/product check, the affected
+host build, matching source/object inventory, ordinary/Rocq query evidence,
+native compile and Git integration. These checks preserve a reviewable partial
+checkpoint; they cannot establish the four unfinished guarantees above.
+
+The checkpoint's current public-product gate passed. Because the two optional
+Python modules changed its source inventory, the existing disposable workspace
+VM was actually replayed: 67 cases, three API checks and six death/cancellation
+boundaries passed. The previous exact records are preserved in
+`assurance/host-workspace-checkpoint-before.json.gz`; only the reviewed input
+fingerprints of the workspace theorem record changed, with every theorem,
+assumption, predecessor and scope field preserved. This is baseline product
+validation, not final host-candidate acceptance.

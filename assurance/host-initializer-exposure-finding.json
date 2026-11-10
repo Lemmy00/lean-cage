@@ -1,0 +1,51 @@
+{
+  "artifacts": {
+    "assurance/host-initializer-exposure-probe.log.gz": {
+      "sha256": "a40251d16f76be8318dcf4d1a7e9e98faffefbfdb34c427db562983e41492aa0",
+      "uncompressed_sha256": "f9cc6547becaed92593d9180030f4c220457f05a2841c87e7fff6585284b8412"
+    },
+    "assurance/host-initializer-exposure-probe.py.gz": {
+      "sha256": "5ecedaaeeaa9bbfdf293dda875402e839f9fdf2355d9818b9532a63342e4a813",
+      "uncompressed_sha256": "c2738fffae84f054997bd84c132adb2d583c118b4f6c814f1367e8825b7cc3a5"
+    }
+  },
+  "consequence": "Fresh heap types are public through object.__subclasses__ before PyInit returns. Freshness/unpublished alone cannot imply module-initialization private type ownership or justify consuming not-yet-initialized class globals.",
+  "inputs": {
+    ".tools/host/gateway/GatewaySource.v": "618aabda9c25cae755a16f49c305eb6141f89f902aecd8759ef1a4d06c975f95",
+    ".tools/host/gateway/gateway-code.ndjson": "e654b8c03d39600811fd50651b9b6aada9569f98d6e75bf136f6573bb4bb592e",
+    ".tools/host/gateway/source-inputs.json": "fed4744972c4c0f930ea1d300d3d1efc2adfcfbdb24a1025eb5929695557ccb1",
+    "linux/host_python.c": "029c84c480f2805bff2e7e4bbd5f769cabfb24c7455d1ff2f8aa0b77a1c468d1"
+  },
+  "observation": {
+    "events": [
+      {
+        "module_from_spec_returned": false,
+        "name": "Workspace",
+        "phase": "start"
+      },
+      {
+        "module_from_spec_returned": false,
+        "name": "Cancellation",
+        "phase": "start"
+      },
+      {
+        "module_from_spec_returned": false,
+        "name": "Outcome",
+        "phase": "start"
+      }
+    ],
+    "extension": "/localhome/milikic/sandbox-formalization/.tools/host/gateway/initialization-runtime/python/leancage/_host.abi3.so",
+    "retained_classes_match_returned": {
+      "Cancellation": true,
+      "Outcome": true,
+      "Workspace": true
+    },
+    "scope": "read-only public weak subclass-registry probe during actual module creation; no object constructors, engine, VM or workload",
+    "sha256": "fd8285d35b13fb39c9f31a0d64d5753bdef38c26374f16df8cc65ed8072901ef"
+  },
+  "preservation": "Prior sealed evidence is unchanged; this finding does not complete M5.2.",
+  "required_application_producer": "Actual public-entry readiness guards before Workspace path/default conversions and request dispatch; immutable Outcome binding separately derives from the actual type description.",
+  "schema": "leancage-host-finding-v1",
+  "scope": "bounded read-only native initialization callback; no engine, VM, object constructor or workload",
+  "status": "source-connection finding; application repair pending"
+}

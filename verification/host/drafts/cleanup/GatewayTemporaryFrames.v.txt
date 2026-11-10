@@ -1,0 +1,159 @@
+(* SPDX-License-Identifier: Apache-2.0 *)
+(* §FS-host-boundary.caller: Original C temporaries survive arbitrary nested calls when
+   the actual caller syntax never assigns them; this is not a memory/runtime frame. *)
+From Stdlib Require Import List Bool.
+From compcert Require Import Coqlib Maps AST Values Memory Events Ctypes Clight.
+Require Import Machine.
+From HostGateway Require Import GatewayMachine GatewayTempNull GatewayNullReset.
+
+Fixpoint gateway_keeps_statement protected(body:statement):bool:=
+  match body with
+  |Sset assigned _=>gateway_keeps_temp protected assigned
+  |Scall destination _ _|Sbuiltin destination _ _ _=>gateway_keeps_destination protected destination
+  |Ssequence first second|Sifthenelse _ first second|Sloop first second=>
+    gateway_keeps_statement protected first&&gateway_keeps_statement protected second
+  |Slabel _ body=>gateway_keeps_statement protected body
+  |Sswitch _ _|Sgoto _=>false
+  |_=>true end.
+
+Fixpoint gateway_keeps_cont protected(continuation:cont):Prop:=
+  match continuation with
+  |Kstop=>True
+  |Kseq body rest=>gateway_keeps_statement protected body=true /\gateway_keeps_cont protected rest
+  |Kloop1 first second rest|Kloop2 first second rest=>
+    gateway_keeps_statement protected first=true /\gateway_keeps_statement protected second=true /\
+      gateway_keeps_cont protected rest
+  |Kswitch rest=>gateway_keeps_cont protected rest
+  |Kcall _ _ _ _ _=>False end.
+
+Fixpoint gateway_saved_temporary function environment protected value(continuation:cont):Prop:=
+  match continuation with
+  |Kstop=>False
+  |Kseq _ rest|Kloop1 _ _ rest|Kloop2 _ _ rest|Kswitch rest=>
+    gateway_saved_temporary function environment protected value rest
+  |Kcall destination actual locals parameters rest=>
+    (actual=function /\locals=environment /\parameters!protected=Some value /\
+      gateway_keeps_destination protected destination=true /\gateway_keeps_cont protected rest) \/
+      gateway_saved_temporary function environment protected value rest
+  end.
+
+Definition gateway_fixed_temporary function environment protected value(source:Clight.state):Prop:=
+  match source with
+  |State actual body continuation locals parameters _=>
+    (actual=function /\locals=environment /\parameters!protected=Some value /\
+      gateway_keeps_statement protected body=true /\gateway_keeps_cont protected continuation) \/
+      gateway_saved_temporary function environment protected value continuation
+  |Callstate _ _ continuation _=>gateway_saved_temporary function environment protected value continuation
+  |Returnstate _ continuation _=>continuation=Kstop \/gateway_saved_temporary function environment protected value continuation
+  end.
+
+Lemma gateway_keeps_call_cont protected continuation:
+  gateway_keeps_cont protected continuation->call_cont continuation=Kstop.
+Proof. induction continuation;cbn;intuition. Qed.
+
+Lemma gateway_saved_call_cont function environment protected value continuation:
+  gateway_saved_temporary function environment protected value(call_cont continuation)<->
+    gateway_saved_temporary function environment protected value continuation.
+Proof. induction continuation;cbn;tauto. Qed.
+
+Lemma gateway_saved_find_label function environment protected value label body continuation found rest:
+  find_label label body continuation=Some(found,rest)->
+  gateway_saved_temporary function environment protected value continuation->
+  gateway_saved_temporary function environment protected value rest
+with gateway_saved_find_label_branches function environment protected value label branches continuation found rest:
+  find_label_ls label branches continuation=Some(found,rest)->
+  gateway_saved_temporary function environment protected value continuation->
+  gateway_saved_temporary function environment protected value rest.
+Proof.
+  - destruct body;cbn;intros FOUND SAFE;try discriminate.
+    + destruct(find_label label body1(Kseq body2 continuation))as[[statement next]|]eqn:FIRST;
+        [inversion FOUND;subst;eapply gateway_saved_find_label;[exact FIRST|exact SAFE]|
+         eapply gateway_saved_find_label;[exact FOUND|exact SAFE]].
+    + destruct(find_label label body1 continuation)as[[statement next]|]eqn:FIRST;
+        [inversion FOUND;subst;eapply gateway_saved_find_label;[exact FIRST|exact SAFE]|
+         eapply gateway_saved_find_label;[exact FOUND|exact SAFE]].
+    + destruct(find_label label body1(Kloop1 body1 body2 continuation))as[[statement next]|]eqn:FIRST;
+        [inversion FOUND;subst;eapply gateway_saved_find_label;[exact FIRST|exact SAFE]|
+         eapply gateway_saved_find_label;[exact FOUND|exact SAFE]].
+    + eapply gateway_saved_find_label_branches;[exact FOUND|exact SAFE].
+    + destruct(ident_eq label l);[inversion FOUND;subst;exact SAFE|
+        eapply gateway_saved_find_label;[exact FOUND|exact SAFE]].
+  - destruct branches;cbn;intros FOUND SAFE;try discriminate.
+    destruct(find_label label s(Kseq(seq_of_labeled_statement branches)continuation))as[[statement next]|]eqn:FIRST;
+      [inversion FOUND;subst;eapply gateway_saved_find_label;[exact FIRST|exact SAFE]|
+       eapply gateway_saved_find_label_branches;[exact FOUND|exact SAFE]].
+Qed.
+
+Lemma gateway_fixed_temporary_internal ge function environment protected value source trace after:
+  gateway_fixed_temporary function environment protected value source->step2 ge source trace after->
+  gateway_fixed_temporary function environment protected value after.
+Proof.
+  intros GOOD STEP;inversion STEP;subst;
+    cbn[gateway_fixed_temporary gateway_keeps_statement gateway_keeps_cont gateway_saved_temporary]in *.
+  all:repeat rewrite andb_true_iff in *.
+  all:try solve[intuition discriminate].
+  - destruct GOOD as[[FUNCTION[ENVIRONMENT[TEMP[KEEPS CONT]]]]|SAVED].
+    + left;split;[exact FUNCTION|]. split;[exact ENVIRONMENT|]. split.
+      * rewrite PTree.gso;[exact TEMP|intro SAME;apply(gateway_keeps_temp_different _ _ KEEPS);congruence].
+      * split;[reflexivity|exact CONT].
+    + right;exact SAVED.
+  - destruct GOOD as[[FUNCTION[ENVIRONMENT[TEMP[KEEPS CONT]]]]|SAVED].
+    + left;split;[exact FUNCTION|]. split;[exact ENVIRONMENT|]. split.
+      * rewrite gateway_keeps_set_destination;assumption.
+      * split;[reflexivity|exact CONT].
+    + right;exact SAVED.
+  - destruct b;tauto.
+  - destruct GOOD as[[FUNCTION[ENVIRONMENT[TEMP[KEEPS CONT]]]]|SAVED].
+    + left;apply(gateway_keeps_call_cont protected);exact CONT.
+    + right;apply gateway_saved_call_cont;exact SAVED.
+  - destruct GOOD as[[FUNCTION[ENVIRONMENT[TEMP[KEEPS CONT]]]]|SAVED].
+    + left;apply(gateway_keeps_call_cont protected);exact CONT.
+    + right;apply gateway_saved_call_cont;exact SAVED.
+  - destruct GOOD as[[FUNCTION[ENVIRONMENT[TEMP[KEEPS CONT]]]]|SAVED].
+    + destruct k;cbn in *;intuition.
+    + right;exact SAVED.
+  - right;eapply gateway_saved_find_label;[eassumption|].
+    apply gateway_saved_call_cont;intuition discriminate.
+  - destruct GOOD as[STOP|SAVED];subst.
+    + inversion STEP.
+    + destruct SAVED as[[FUNCTION[ENVIRONMENT[TEMP[KEEPS CONT]]]]|SAVED].
+      * left;split;[exact FUNCTION|]. split;[exact ENVIRONMENT|]. split.
+        -- rewrite gateway_keeps_set_destination;assumption.
+        -- split;[reflexivity|exact CONT].
+      * right;exact SAVED.
+Qed.
+
+Definition gateway_fixed_temporary_state {World}function environment protected value(state:gateway_state World):Prop:=
+  match state with gateway_live source _=>gateway_fixed_temporary function environment protected value source|gateway_dead _ _=>True end.
+
+Lemma gateway_fixed_temporary_step {World Event}(backend:gateway_backend World Event)ge
+    function environment protected value before event after:
+  gateway_fixed_temporary_state function environment protected value before->gateway_step backend ge before event after->
+  gateway_fixed_temporary_state function environment protected value after.
+Proof.
+  intros GOOD STEP;inversion STEP;subst;cbn in *;try exact I.
+  - eapply gateway_fixed_temporary_internal;eassumption.
+  - right;exact GOOD.
+  - destruct GOOD as[[FUNCTION[ENVIRONMENT[TEMP[KEEPS CONT]]]]|SAVED].
+    + left;split;[exact FUNCTION|]. split;[exact ENVIRONMENT|]. split.
+      * rewrite gateway_keeps_set_destination;assumption.
+      * split;[reflexivity|exact CONT].
+    + right;exact SAVED.
+  - destruct source;exact GOOD.
+  - exact GOOD.
+Qed.
+
+Theorem gateway_actual_temporary_retained {World Event}(backend:gateway_backend World Event)ge
+    function environment protected value source world events body temporaries after next:
+  gateway_fixed_temporary function environment protected value source->
+  gateway_steps backend ge(gateway_live source world)events
+    (gateway_live(State function body Kstop environment temporaries after)next)->
+  temporaries!protected=Some value.
+Proof.
+  intros INITIAL RUN.
+  assert(FINAL:gateway_fixed_temporary_state function environment protected value
+    (gateway_live(State function body Kstop environment temporaries after)next)).
+  { change(gateway_fixed_temporary_state function environment protected value(gateway_live source world))in INITIAL.
+    revert INITIAL;induction RUN;intros GOOD;[exact GOOD|apply IHRUN;eapply gateway_fixed_temporary_step;eassumption]. }
+  cbn in FINAL;intuition.
+Qed.

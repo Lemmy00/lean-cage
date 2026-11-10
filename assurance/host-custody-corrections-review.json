@@ -1,0 +1,582 @@
+{
+  "accepted_security_delivery": false,
+  "artifactsSha256": {
+    "assurance/host-custody-audit.lean.gz": "50b9ef96acb24153c21f902d1620257fc10f4cad73d98b1607533f706fec0d23",
+    "assurance/host-custody-audit.log.gz": "8262bf67a25c530bc6a7109bae9695adff6d941267d1368c03e0754ad5e37927",
+    "assurance/host-custody-native-build.log.gz": "6e4219e80ed28294daff34f2032b65d89db8bcc052d5b08eb9b394175fe4a4f1",
+    "assurance/host-custody-native.json.gz": "56de39f22e3df624c79ead1293fb509bc53a9c0dc556b65bcac0f50e63ec955f",
+    "assurance/host-custody-native.log.gz": "e11e1dcbb02f974948db51d38e6d55d23dc8b6172207b2fde7fb0c552d999807",
+    "assurance/host-custody-source-build.log.gz": "83cb978f4e64cf3117f24451ebb62076c39ebccef30f1210b5df588b71c4e3ca"
+  },
+  "declarations": [
+    {
+      "name": "LeanCage.Host.VirtualMachine.read_safe_bind",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.read_safe_prefix",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.prefix_of_return_bind",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.source_profile_bind",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.source_profile_read_safe",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.perform_profile",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.runtime_read_profile",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.consume_profile",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.runtime_clock_profile",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.runtime_poll_profile",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.close_profile",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.connect_profile",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.consume_ready_profile",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.after_send_profile",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.connected_profile",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.loop_profile",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.observe_exit_profile",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.reap_profile",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.final_program_profile",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.run_profile",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.perform_read_safe",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.runtime_read_safe",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.consume_read_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.runtime_clock_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.runtime_poll_safe",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.close_read_safe",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.connect_read_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.consume_ready_read_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.after_send_read_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.connected_read_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.loop_read_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.observe_exit_read_safe",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.reap_read_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.final_program_read_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.run_read_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.actual_prefix_read_bounds",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.source_profile_prefix",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.actual_prefix_spawn_arguments",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.lost_read_not_observation",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Validation.result_reaped_exact",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Validation.observe_reaped_source",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Validation.release_requests",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Validation.unknown_finish_prefix",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Validation.rejected_status_reaped",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Validation.unknown_wait_not_reaped",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Validation.failed_spawn_not_reaped",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Publication.closeOwned_requests",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Publication.finishCommit_requests",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Publication.finishCommit_release_prefix",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Publication.native_error_release_exists",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Publication.lost_rename_prefix",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Publication.finishCommit_readOnly",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Publication.finishCommit_no_rollback",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Publication.attempt_source",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.selected_publisher_commit",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.selected_spawn_source",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Entrypoint.main_source",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "LeanCage.Host.Validation.ChildObservation",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Validation.validationResult",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Validation.observeChild",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Validation.releaseDirectory",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Validation.finishValidation",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Validation.validateCopied",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Publication.closeOwned",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Publication.finishCommit",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Publication.attempt",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Publication.ReleaseRequest",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.NamespacePassiveRequest",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.BoundedEffect",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.ProfileEffect",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.SourceProfile",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    }
+  ],
+  "review": {
+    "main_split": "The exact Entrypoint.main_source theorem type and rfl body move to EntrypointExecutableProofs; generic EntrypointProofs no longer imports HostMain. This permits controller/host ordinary composition without a Main symbol collision.",
+    "native_fixture": "Two real Linux renames in fresh owned directories. Each creates an independent peer at the old staging name; one returns synthetic EIO and the other loses its ACK. The actual finishCommit source preserves both committed bytes and peer bytes. This does not exercise a network filesystem or add a production fault switch.",
+    "publication": "All rename acknowledgements close the three actual owned raw descriptors only. No native errno is assumed to exclude a commit. Pre-attempt cleanup and public storage-failure/report projection are preserved. Error/lost source witnesses are constructive.",
+    "validator": "Only an actual successful wait status produces reaped=true. Both successful validation and policy rejection may clean up; unknown spawn/wait releases raw handles while retaining backing names/files. stdout EOF and error text never produce reaping. Every unknown-finish source prefix has only its two owned close requests.",
+    "vm": "Existing ReadSafe public theorem headers are unchanged, but BoundedEffect is deliberately strengthened to include engine-side namespace passivity. One source traversal is generalized to SourceProfile with exact spawn arguments, covering every reply/loss. No backend child-lifetime or whole-VM filesystem frame follows. This is a reviewed extension of host-vm-review, not a silent replacement of its scope."
+  },
+  "schema": 1,
+  "sourceSha256": {
+    "host/LeanCageHost/Publication.lean": "7cbd8de6c663b78bc180fe14a9fc1b964f73640f651a95b796bdd0f0994c8a88",
+    "host/LeanCageHost/Validation.lean": "033340662a44b52068c0c7e89ee16e903c672596b889d0c13146b2305edc990c",
+    "verification/host/EntrypointExecutableProofs.lean": "8189170a19bc38888f42221b45cbb9ce110b83be8622d89a9afaea51368f3dbd",
+    "verification/host/EntrypointProofs.lean": "c275be0d69ad49a255de5a281ffd5124ae229024d3d1d9d9530fb18a4b40ca60",
+    "verification/host/FilesystemPublicationSource.lean": "32e0d588d1af418d0cc082eec7e30e5b840b1a3187f1269d80bf362728f052ed",
+    "verification/host/FilesystemSourceOrigins.lean": "62d015824b157dac7f5f705ed263d98ab94ae30531ea9686ad30a948b1be5b72",
+    "verification/host/FilesystemSpawnSources.lean": "edd9255f28fa04d867a27f9191701a6a2785333f7742694a86cb6442f013d4ab",
+    "verification/host/PublicationCustodyNative.lean": "52405719bef0ff6eeff3a42642b687cb0527ae229cb7d35e25dfbb0316f4cc1d",
+    "verification/host/PublicationCustodyProofs.lean": "5ea77b9da9cabf5fd988b259316a66dac82c82296c881e4a1f072d5619c0ceff",
+    "verification/host/PublicationProofs/Commit.lean": "874872fc5a8ba097fa5850775dc0b49dece8f02b391b6d8314878ee4a520c376",
+    "verification/host/PublicationProofs/Cuts.lean": "246dca1291e690b0580ac88edb1f560bf60997181f8c287a6de3dc08fe44cdb1",
+    "verification/host/PublicationProofs/Prefix.lean": "405907850fd5322cd160be5cbe98eb7428a24aed88d30e703123b0af58e10eba",
+    "verification/host/RuntimeEffects.lean": "a62f14f15268be11f33750ff911bdd7b4f21dd2c3fe1bd954c48a1e9c9d7622c",
+    "verification/host/ValidationReapingProofs.lean": "f41c1a94bf923fcd957ae10f0e8501e8f8664b65bbbbc6bfa5e3c76bd31cfa88",
+    "verification/host/ValidatorPrefixCuts.lean": "d8bfe36347bf29affdbfb78363cd0c1107aefa84966e4931951c36da0b837ec6",
+    "verification/host/VirtualMachineProofs/Prefix.lean": "69895280441f2b31559d7ce6f0da990f5a61d3692f8ab0d64433f21532ec05e4"
+  },
+  "specs": [
+    "FS-host-boundary.ownership",
+    "FS-host-boundary.publication",
+    "AR-host-boundary.primitives",
+    "DA-host-engine.private",
+    "DA-host-engine.publication"
+  ],
+  "status": "Supporting source/custody corrections reviewed. Physical caller composition and complete M5.2 acceptance remain in progress.",
+  "updatedAt": "2026-11-09T12:06:58.973016+00:00",
+  "validation": {
+    "full_types_critical_bodies": "PASS; no truncation",
+    "native_build": "PASS133jobs",
+    "native_fixture": "PASS2cases; actual rename plus synthetic acknowledgements",
+    "old_readsafe_headers_preserved": [
+      "actual_prefix_read_bounds",
+      "after_send_read_safe",
+      "close_read_safe",
+      "connect_read_safe",
+      "connected_read_safe",
+      "consume_read_safe",
+      "consume_ready_read_safe",
+      "final_program_read_safe",
+      "loop_read_safe",
+      "lost_read_not_observation",
+      "observe_exit_read_safe",
+      "perform_read_safe",
+      "prefix_of_return_bind",
+      "read_safe_bind",
+      "read_safe_prefix",
+      "reap_read_safe",
+      "run_read_safe",
+      "runtime_clock_safe",
+      "runtime_poll_safe",
+      "runtime_read_safe"
+    ],
+    "source_build": "PASS169jobs: PublicationProofs/FilesystemPublicationSource/ValidationReapingProofs",
+    "transitive_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  }
+}

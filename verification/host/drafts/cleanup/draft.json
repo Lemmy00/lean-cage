@@ -1,0 +1,8 @@
+{
+  "status": "uncompiled_non_acceptance_draft",
+  "purpose": "Retain an original exchange temporary through real nested calls and loops",
+  "last_error": "GatewayTemporaryFrames.v:119 wrong bullet; previous return-to-caller branch incomplete",
+  "next_use": "Derive _status preservation from actual parser/EOF prefix rather than add it as an output premise",
+  "maintained_root": false,
+  "acceptance_evidence": false
+}

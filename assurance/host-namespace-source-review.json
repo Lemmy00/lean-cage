@@ -1,0 +1,1014 @@
+{
+  "accepted_security_delivery": false,
+  "artifactsSha256": {
+    "assurance/host-namespace-source-audit.lean.gz": "4b5a334ef615549371d35e01fbdc3ca171b061f5270515d70fb6460838942c37",
+    "assurance/host-namespace-source-audit.log.gz": "2cefce4aecf04ba206ba4e2306f3d95e46e0d0a223a608b7bd74d9ef48a998f0",
+    "assurance/host-namespace-source-build.log.gz": "35b5e7e855ac129a2f1ee03956066413a1b0c390214ff9bd12f8f4db23e1f8c9"
+  },
+  "declarations": [
+    {
+      "name": "LeanCage.Host.Kernel.ensured_directory_handle",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.public_at_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.public_at_handle",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.descend_handle",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.inspected_handle",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.parent_handle",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.directory_open_alias",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.fresh_container_alias",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.commit_parent_trace",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.selected_commit_handles",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.foreign_acquisition_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.foreign_entry_origin_not_private",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.foreign_private_binding_earlier",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.foreign_namespace_family",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.foreign_namespace_references",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.foreign_namespace_well_formed",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.foreign_references_public_retained",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.foreign_reference_external_step",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.foreign_reference_journal_split",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.register_root_at_commit",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.register_descendant_at_commit",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.register_root_authority_at_commit",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.retained_registry_authorities",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.published_registry_authorities",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.empty_root_boundaries",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.root_boundaries_authority",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.root_boundaries_retain",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.root_boundaries_adjoin",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.root_boundaries_descendant",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.root_boundaries_public_birth",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.root_boundaries_published",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.empty_scope_directories",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.set_scope_directories",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.clear_scope_directories",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.retained_private_directory_authority",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.created_private_directory_authority",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.adjoined_private_directory_authority",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.passive_private_directory_mode",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.publication_private_directory_mode",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.publication_private_directory_program",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.run_creation_private_directory_program",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.run_cleanup_private_directory_program",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.safe_private_directory_program",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.image_private_directory_program",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.cleanup_private_directory_mode",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.validator_private_directory_mode",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.run_private_directory_mode",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.entrypoint_private_directory_mode",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.selected_private_directory_mode",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.new_raw_reference_has_fresh_description",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.operation_reference_before",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_step_description_allocated",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_step_presence",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_step_reference_before",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_journal_reference_continuity",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.directory_inspect_recorded",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.directory_open_recorded",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.directory_ensure_recorded",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.directory_public_recorded",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.directory_descend_recorded",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.parent_recorded",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.temporary_parent_recorded",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.sampled_uid_is_host",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.journal_selected_prefix",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.journal_between_selected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.safe_external_split",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.observed_directory_current_authority",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.selected_commit_authority",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.initial_namespace_custody",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ordinary_namespace_custody",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.run_mkdir_site",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.entrypoint_mkdir_site",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.selected_mkdir_site",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.run_creation_mkdir_authority",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.selected_filesystem_step",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "LeanCage.Host.Kernel.ForeignReferences",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.DirectoryView",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.PrivateDirectoryAuthority",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.PrivateBoundaryAuthority",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ForeignReferenceSafe",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ForeignAcquisition",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ForeignEntryOrigin",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ForeignNamespaceObservation",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ForeignNamespaceContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ForeignReferenceJournal",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.RootBoundaries",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.CreationTypeContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ScopeDirectories",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.NamespaceCustody",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.RawReferenceLifetimeContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.StatSample",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.UidSample",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ObservedDirectory",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ObservedParent",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.RunMkdirAuthority",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.CommitHandles",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.CommitAuthority",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.RunMkdirSite",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.HostMkdirSite",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.PrivateDirectoryMode",
+      "transitiveAxioms": []
+    }
+  ],
+  "primitive_sources": [
+    {
+      "review": "Primary-source audit of path_openat allocating a file/OFD, may_create write/search checks, may_delete directory/sticky checks and vfs_link directory-hardlink rejection. No Linux code copied.",
+      "url": "https://github.com/torvalds/linux/blob/v6.8/fs/namei.c"
+    },
+    {
+      "review": "The explicit coherent-UID initialized mount profile remains necessary; mount IDs alone do not identify UID permission views.",
+      "url": "https://www.kernel.org/doc/html/v6.8/filesystems/idmappings.html"
+    }
+  ],
+  "prior_reviews": {
+    "assurance/host-authority-contract-review.json": "7894a8bfe0a5261d95ff9c843a7dfed9965b43e06accba5b85cd71994564a349",
+    "assurance/host-marker-custody-review.json": "82f00cc9758d5f16e1a7249486ddb0c0b0874195f6c1c2a77c076c8b9af819ee"
+  },
+  "review": {
+    "caller": "selected_mkdir_site derives a real run/validator creation or publication branch from the actual Entrypoint/packet/CLI source prefix. run_creation_mkdir_authority consumes that actual creation branch and derives the retained parent raw reference, actual host UID, current trusted metadata, reserved component and448 mode. selected_commit_authority derives its parent/container/stage from the same actual parent/fresh/prepare source, proves container aliases parent, and derives current parent UID/metadata for returned/error/lost rename acknowledgements.",
+    "foreign": "ForeignAcquisition and ForeignEntryOrigin contain no private/family predicate. They record actual searched parents, lookup permissions, fresh object births, existing nondirectory capabilities, or checked directory rename sources. ForeignNamespaceObservation retains per-operation inserted-binding/lifetime observations. A global ordinary-reference pool includes descriptors and pending lookup/commit references; ordinary copies within it remain possible. O_PATH access to a private root directory is retained, without granting descendant search. No protected_hardlinks sysctl or permission-based revocation of prior writable descriptors is assumed.",
+    "foreign_scope": "The per-tick ForeignNamespaceContract records application/owned-child effects separately from ordinary foreign access. The supported primitive effect constructors do not transfer SCM_RIGHTS. Other process memory/descriptor extraction from the host engine/owned children remains outside the initialized threat profile; UID inequality alone does not establish that boundary. Complete actual backend namespace/transfer production and compatible global pool instantiation remain open.",
+    "full_statement": "All queried full theorem types and critical structure bodies were reviewed without truncation. Source observations retain actual request/descriptor/UID/metadata arguments, kernel replies, source ordinals and the same global ActorTick positions. No supplied whole SnapshotSafe, PublicationSafe, HostSafe or private-region interval frame occurs.",
+    "global_fold": "initial_namespace_custody initializes an empty application family, without assuming that future caller CWDs are initially public. ordinary_namespace_custody constructs the complete ordinary-foreign state transition and preserves every registered peer root. The application/public-path/private-open/cleanup source transition fold is still unfinished; these supporting results are not the complete M5.2 public guarantee.",
+    "metadata": "ObservedDirectory and UidSample keep real fstat/euid primitive operations and SourceReturnAt observations. observed_directory_current_authority derives current trust through the exact intervening journal, using OFD continuity and individual external metadata effects. It does not assume that parent metadata or its path remained stable.",
+    "mount_profile": "All UID/type/mode reasoning uses the explicitly supported coherent host UID mapping across ordinary bind aliases. Arbitrary idmapped aliases require a later per-mount view model and remain outside this initialized profile. Mount identity observations alone prove no UID mapping.",
+    "ofd": "RawReferenceLifetimeContract applies to one raw adapter operation. This ABI has no dup operation and new opens allocate fresh OFD lifetime identities; SDK new_reference remains separate. The derived continuity preserves numeric FD reuse, mutable/shared offsets, initial handoff aliases and lost operations. It is not Linux FD-number injectivity or a whole application descriptor-frame premise.",
+    "registry": "register_root_at_commit and register_root_authority_at_commit include committed error/lost mkdir observations. RootBoundaries ties every live family boundary to the same registered birth and derives its trusted-parent authority. State transitions handle descendant/public creation, retained deletion and actual publication effects. Directory authority uses actual mkdir ownership/mode metadata and the same external-step liveness rules, including inode retirement; fixed lifetime type is separate from finite inode-number reuse.",
+    "remaining": "Source-derived application family/ownership fold; public root/CWD/path traversal and same birth-to-open/current cleanup link; actual controller/QEMU filesystem footprint; complete key-byte nonexposure and actual key-lifetime signing transcript including persisted reports; compatible joint useful executions and integrated public acceptance."
+  },
+  "schema": 1,
+  "sourceSha256": {
+    "host/LeanCageHost/Application.lean": "08fd19e7d08cf0486b593bc9fd525ff301057e56f69ae7eecf1db63289fe1648",
+    "host/LeanCageHost/Artifacts.lean": "320db9c3f91c11f3c30976a761880625bad11f36f72460c6983ac4b8a9706c38",
+    "host/LeanCageHost/Artifacts/Manifest.lean": "9d65efb99c13fef087bcab1dd3931eb9994ac1f6bb3dc0b28f8372f65c66aaf3",
+    "host/LeanCageHost/Artifacts/Report.lean": "0a6de3a6fc57c625461f35bf5125302432bae0b1d856d2a4acecd4f4321882c9",
+    "host/LeanCageHost/Artifacts/Types.lean": "d8b3ad01825c2a67f908c18bd5a5ad55207be3d38fc78e06095e34532699e8fa",
+    "host/LeanCageHost/Artifacts/Validation.lean": "0840119ff50946f973622a7ab7522db301bcd6dcfb2596be2d5134be3fe44806",
+    "host/LeanCageHost/Bytes.lean": "d4c674e06964e4be3c84306a3589af63f321cf1e5d1d3576365c583a0fbbe3c3",
+    "host/LeanCageHost/Cli.lean": "d1c0d3168f858033ba842d5039e305848f63f4c4b56b6003c1e7693e42c250a9",
+    "host/LeanCageHost/Commands.lean": "173fa38cd59dff6ab401b93e6a1f92cc7e835c8a28bc773f1ece2df7856ea405",
+    "host/LeanCageHost/Directories.lean": "b1d638e6db520ca7a446762b98f7be38051a53ab93dfead2b4bb3038d3bd714f",
+    "host/LeanCageHost/Effects.lean": "0ee1bf83797fa4d41303e92ddc68cc6c2b7c1f8203c1148a44eee3251497a9f8",
+    "host/LeanCageHost/Entrypoint.lean": "c48fc8730cddbfc12ac1d2aac8731a65cc5f2f12b9f905b9fc2e23351a80b471",
+    "host/LeanCageHost/Files.lean": "0272adbffa078fca5527aa6caf25ab152a4ab7ad4a50741535c099a53852f97e",
+    "host/LeanCageHost/GatewayWire.lean": "9b957c051aaea312219c053d95fb8767cb10bca9ed46e91efc2b574f8522d1fd",
+    "host/LeanCageHost/Image.lean": "de5551774b3de38d397f49d75aa05a6d88375c54134d01974f1959eeb6fcb168",
+    "host/LeanCageHost/Json.lean": "5afb7f331db27d25f2703953b522269dd3b0d3af325ca2eb0fb8fbc42820ae0b",
+    "host/LeanCageHost/Json/Grammar.lean": "8b0f67ed31eb6efae5caf0343b0e4610b5ae7231a025bd4b2bc9192e707a3765",
+    "host/LeanCageHost/Json/Number.lean": "5d43486a22ee8779875f7ae0a83922cdd2936977032a1e53d1081fe91f582258",
+    "host/LeanCageHost/Json/Parser.lean": "52cde4660f68cf1125e511d75db41e2cb04d9e2bd7542bbe639fd3530d5ff3d0",
+    "host/LeanCageHost/Json/Render.lean": "116f85597a1f08701dd938836b849742cc4d1408d140c152f125b14d60081c3a",
+    "host/LeanCageHost/Json/Types.lean": "7d49bf38cda4af040d3a63715983ee92d9fcccc503e1963c93cd26eeec5cc5ba",
+    "host/LeanCageHost/Json/Unicode.lean": "1822076a4c897fc8e73769e1c074e6677edd9bd106c9c523877f1f01e15629fb",
+    "host/LeanCageHost/Outcome.lean": "68d5c6e5434bee36af4d2824f07508f4df15c038ac80667d260b3a96059e92be",
+    "host/LeanCageHost/Packet.lean": "64a75b255246749d096df4ed717933ec04d6b847d5e91bb901941782f0f5fabc",
+    "host/LeanCageHost/Policy.lean": "e48adfa39f939c6a2d6363192521227007bf26cf21a8a9476a258e09ae4da6b3",
+    "host/LeanCageHost/PrivateNames.lean": "276cfa58c73a3cdca25713466fb65e765cb5e2dde85076113bf23685e3b787c4",
+    "host/LeanCageHost/Program.lean": "e1e3a0336f118df866fee2a79994d7f468aedd748c050148d743e7d2461595a1",
+    "host/LeanCageHost/Publication.lean": "7cbd8de6c663b78bc180fe14a9fc1b964f73640f651a95b796bdd0f0994c8a88",
+    "host/LeanCageHost/Publication/Authentication.lean": "8ab172a52b03d5dc1d38395506639087dcb4bd279d0c804fe5b3abd5c4bdf33b",
+    "host/LeanCageHost/Publication/Files.lean": "4df844663e08aec0b18c16c2909458cddc3db8dd98becf8624ff44dfad69a727",
+    "host/LeanCageHost/Publication/Types.lean": "726899a6bedd578f83435d3678fbe5cf44ec0f025bfdf611b5722190cb155872",
+    "host/LeanCageHost/Retrieval.lean": "74d70ed2ae55744ba5eab2c7fcf19896c3d4479cd23c3aa13ab72650955df9e7",
+    "host/LeanCageHost/Retrieval/Files.lean": "9f606a7c468db8deed8e6c3f5aa03150c89b5462c52e8ee690e28a08428e0d19",
+    "host/LeanCageHost/Retrieval/Stored.lean": "da14dfe70eaf9f1f3a523cb752f79f8d06ee8f7f7b57f42f12b8cbd453debbac",
+    "host/LeanCageHost/Retrieval/Types.lean": "b84dbb0f7d26d8ca315c3ca00353b30e65682ad2ced234fa9f49abc2938f0fd2",
+    "host/LeanCageHost/RunDirectory.lean": "7d02b66aa4754c095ce7d94e54223923429035904b4e7baefdcc2e3f9b0b14fd",
+    "host/LeanCageHost/Runtime.lean": "9d0b0665dfb6dbff30d516a653d0047bbcceedae8f560fbf48c77c9d34d5d22a",
+    "host/LeanCageHost/Snapshot.lean": "e5a983df621eb8cf1c81438776b9ccd5007ce97533d395c23f64a5ea7b60701d",
+    "host/LeanCageHost/SourcePaths.lean": "bb6bfd2a8935a66cb94e8377f5ce274461c1554a8f3f9969067fe95895d19436",
+    "host/LeanCageHost/Startup.lean": "9d5823c5a4633bdb9496138da1083aa0b04550cd2e8896896dcd3a8a38144d7c",
+    "host/LeanCageHost/Transport.lean": "9ec1fd82c2b1cb0abb660ca71f08e7a367f59d971986841a244bd9f4f27ee9c6",
+    "host/LeanCageHost/Validation.lean": "033340662a44b52068c0c7e89ee16e903c672596b889d0c13146b2305edc990c",
+    "host/LeanCageHost/VirtualMachine.lean": "3e0e6e0d133fd13b82900eb5726ac8dc6ce1608642d6e37344d478a7dcec9ded",
+    "host/LeanCageHost/WireJson.lean": "f8387c9aeb2aaec3038eb81b47cd913ee25b928c5dad9c301f5af4aa99d09fe4",
+    "host/lake-manifest.json": "85f91fca646056b3fa7cc5933aeb3c103d103b8d5112fc96c3a914d641a443dd",
+    "host/lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "linux/host_primitives.c": "299f40bc19ce63f3821d2eb161bcd431f7b3f44dde1793390e75d7c237fc5a24",
+    "verification/host/ApplicationProofs.lean": "0d31ba0095d034152fe42bc53df0c08a2b74a045a0694fb2b5a6680f1a45a1e1",
+    "verification/host/ArtifactsProofs.lean": "1f557145559fb7f7540c8fbb66aff1afc72e90f94e00495ec282715a06314998",
+    "verification/host/ArtifactsProofs/Blobs.lean": "f726ce91a2c4664599c0b4f3349eb4a2f421b9acccc892564a659f276d13dff2",
+    "verification/host/ArtifactsProofs/Bounds.lean": "a44924dc84d5b00e0bd4d96d7cc8f54388224ad6052b8862a28a756c5e3e4b13",
+    "verification/host/ArtifactsProofs/Canonical.lean": "404ef56fd88c480b8ffba72489b7fd58a6551c14a303d107e2343b4498745f11",
+    "verification/host/ArtifactsProofs/Composition.lean": "1a0561647887dd5d54b7466ee523cf286a71bb1638062fa432fad8ea6c54d0a0",
+    "verification/host/ArtifactsProofs/Effects.lean": "950f42a14e80fe50cc85b923be12d4aa87f876ed74ecb9e0e54aecd396247c28",
+    "verification/host/ArtifactsProofs/Files.lean": "19e28357f5e8bce0458c4a6a9c512ddd9e05741bc15cb09114df03d978c5c657",
+    "verification/host/ArtifactsProofs/Fixtures.lean": "4d3109ce06c295d3009ae6f2ed2d53423ef6322e10ed84d37f63a468e0e97ec4",
+    "verification/host/ArtifactsProofs/Manifest.lean": "c8ad05bbdbbebba42c494d72c96beceda61c240181e058a521a9358eeb321110",
+    "verification/host/ArtifactsProofs/Report.lean": "3cea8e8fcb167870530aa1df723eb0c7b8a185ef1e76172ca794f91cf2ddc5ed",
+    "verification/host/ArtifactsProofs/Witnesses.lean": "04706a6645dd8ba013b1fdc61358d02601b053ed89d78083f00e83cb380ac8d8",
+    "verification/host/BytesProofs.lean": "3d6e1aff51a91eba5d3f81e928e7f8e0b06a28326fb190bb1090e628c99e7cda",
+    "verification/host/CallerPrefixCuts.lean": "fbc85cdf21c24f462e27fe196e0a881172a81a538eb436d344c3cf33a9fad379",
+    "verification/host/CallerProofs.lean": "3f433a9173367c95716f06cf59193e18f3d4402f9cdc8e57b7ed9e7fc8ea877e",
+    "verification/host/CommandProofs.lean": "0ff0521c2317eda657be601d7f3e8060142ae7a66bc46f9b01ca9075358750a9",
+    "verification/host/EngineIdentityProofs.lean": "ba5c235c04ed3b3dd6ef71324906fd9b7fbb2ea67fab0b5171804d667685072d",
+    "verification/host/EntrypointPrefixCuts.lean": "24bf45ea268926c6a0b460af5ee04c7f080677988bcc5ae7cfd6f8c4403ea78f",
+    "verification/host/EntrypointProofs.lean": "c275be0d69ad49a255de5a281ffd5124ae229024d3d1d9d9530fb18a4b40ca60",
+    "verification/host/ExecutionProofs.lean": "6f18d73b7008886989c9e372b6dd94f568ffd9ea4ccea8af5159783b7c7a839b",
+    "verification/host/FilesystemActors.lean": "f9691b6463f59c2286260c11bcc5a672eb9a12069095f53fa8c3460ab22dbf35",
+    "verification/host/FilesystemAuthoritySources.lean": "feff6580af2e088cfd424a420f6ffae9976f23c3ad6a4e5a5895afbc015d6d91",
+    "verification/host/FilesystemBackend.lean": "ad89fa1924f9112d974bc8aa0beae40e324820c56027cd48db963afd462836e8",
+    "verification/host/FilesystemBirths.lean": "f5cbf2995021021497786e5e85a50776b7f53855299987b2c07a1cca1398a2fc",
+    "verification/host/FilesystemBorrowing.lean": "d1c780e21c6aff678df7fbce5504b9256d384479a3280b44377136f8690dff27",
+    "verification/host/FilesystemBoundaries.lean": "285b54a334e7d537d5afb943eb6fbe707d469e385071dfcaab3ad815a5e013d4",
+    "verification/host/FilesystemCapabilities.lean": "2ead400b048694c899f65bda81923b5d593d28dd37b5bccd9fd8249848af20c7",
+    "verification/host/FilesystemChanges.lean": "cfe9d66f8338b4fdf45e6f9a56587edef6335968dd622a5197cebc422a99ffdc",
+    "verification/host/FilesystemChildEffects.lean": "1b37005fbcd5f5f6b12365be68fe6dad342b0d5d12fd83cef76261b9b446d861",
+    "verification/host/FilesystemCommitAuthority.lean": "736426e9d7a1a428137d41efbffc54f5e00ae3c4c9f3fc8514286d63837a02dc",
+    "verification/host/FilesystemContracts.lean": "608fe419be5e2c25ed5eaa929562b4a730e29dc8cf5344993755beffaef507ca",
+    "verification/host/FilesystemCreationSources.lean": "8c19b72d1c95903a6888a70dd59c19dc9e476319e6bbe6d61f9c6151a11e5718",
+    "verification/host/FilesystemCryptography.lean": "c046b26c4d0bd7fe920579f01513143d87d48a37c5069c7511d561f97147736a",
+    "verification/host/FilesystemCwdFrames.lean": "6d7beb6b5f9ffe0f22e1d571074e98bb1395946b5ca63acb0d768989ef072512",
+    "verification/host/FilesystemDescriptors.lean": "0e7ee52e332596409cf573cb0201d9894f894600f01a39e516e6287f350e79b6",
+    "verification/host/FilesystemDirectoryHandles.lean": "ea109dbe0f27740292e9d4cbcd25cc9b2216076978d9934872898d952451a658",
+    "verification/host/FilesystemDirectoryObservations.lean": "c97ddd8c25d2e1181c988cc1c0e34757f978d2a93233245af8206035aed953fd",
+    "verification/host/FilesystemDirectorySources.lean": "7a9686e3e61a2cac998eb4de58794eb777b058f30375fe0c173dd97f43f2e1f0",
+    "verification/host/FilesystemExecFlags.lean": "de095a9058ee969801abd10554a332ad1c090daeddfd31a73bb23c06b1264bc9",
+    "verification/host/FilesystemFamilies.lean": "241c27f9931c6740c69de773774c23d6b3dbf9e93bec3a0b2726b53fcdbc5056",
+    "verification/host/FilesystemFamilyAuthority.lean": "e7deb741b12d618f8349c4cd65fd6eb817f45af6e08ff9c968a109e9ccf00807",
+    "verification/host/FilesystemForeign.lean": "440912ab162d33775bbedffc5ec2f4d9e3791e600991610b64e4d75fbda35b74",
+    "verification/host/FilesystemForeignNamespace.lean": "40b0908a3340b99e1ebb23415f3ca75456d86a24735aae2e28a8161ef7d787a8",
+    "verification/host/FilesystemGlobalAuthority.lean": "947ef34c09756938a2ef6986c8974e2b9361532a10a37b3cafddaa099419af90",
+    "verification/host/FilesystemHandoff.lean": "fb4ffb9aa1d80fff3c9ec03ab819e81d015cf847152e75f029ff150c463c0a36",
+    "verification/host/FilesystemInitial.lean": "395db4f97764375a44e2d2e32451d8d4a23aa4dd5e2bb26a820a4971f068d5a8",
+    "verification/host/FilesystemIntervals.lean": "7887ac9121e98fcceaa4f8f3c759ebc012b3d85cf9667c15f49717416d10eb3f",
+    "verification/host/FilesystemLiveMetadata.lean": "0607013b462a25df22157c97a1941c28703f0212f9e978b692f5a3993d83bc53",
+    "verification/host/FilesystemLookups.lean": "39fdf5a0d0563e4cdcf7a9f1e5677fd3f90964f61c346d2dbab9c811fe4119cf",
+    "verification/host/FilesystemMarkerBindings/Invocation.lean": "8f516a900210380902cd9cb772ad52fdd752668fbf6bf5b004ece333ac1e804d",
+    "verification/host/FilesystemMarkerBindings/Publication.lean": "87df7fb44c08403ec63108c1cc89a3bcc6333d140290ea54b193f634b96a062e",
+    "verification/host/FilesystemMarkerBindings/RunSource.lean": "17ba7373c6857ac5f31d4cbbd7d7c117b9f46a6e2138d5926f4fd0bf8c624628",
+    "verification/host/FilesystemMarkerGuards.lean": "c1d03655e41a086ad236c5327b8b6cb6cc4e19f3cf9e688e7dc08caf62a4c571",
+    "verification/host/FilesystemMarkerLifetime.lean": "6daee707fd9ecc1ee110298fef72f2a7352bb6f2d2b3f5d02aedf3d0ce3c54bc",
+    "verification/host/FilesystemMarkerSources.lean": "53ae522dbe4edde7b805b178b9f196f0e7154a6a5f8e516fbed6060c137da71e",
+    "verification/host/FilesystemMarkers.lean": "22bb55e41b5a0874b4f3f0b9caf6263bb0de1551009609096410359e7020728f",
+    "verification/host/FilesystemMetadata.lean": "7ef8fab298a87aa11a339a09586700cbd20d82f4070873ae51273c801b4c6182",
+    "verification/host/FilesystemMkdirOrigins.lean": "7fa36e54056b746e8caf77590d470555974e0028a3b135eb8f08a8fcf39d204c",
+    "verification/host/FilesystemMkdirSources.lean": "317a6570585f031298b7fa83532ab74de7e4cf95cf8785a4036322d9c3d2dac7",
+    "verification/host/FilesystemNamespaceState.lean": "7b4118c2efe6524d2df5651d7b6d38db60c2a5b3ee1312d1d15c04a480f6f8d6",
+    "verification/host/FilesystemNamespaces.lean": "0ee6ab38db2fc8d315812a165488fc91014875e27dc19090a0be5e5fdf8043b9",
+    "verification/host/FilesystemObjectLifetime.lean": "42c3ea66150a1bdf917e2e6a23a592ec2f60085ec5016777b16d27e66605f706",
+    "verification/host/FilesystemObservedAuthority.lean": "daf43b73cbc388f5d8c9bc63c7b8f6fe7408f587c5aa188b415fd89497e04f32",
+    "verification/host/FilesystemOwnership.lean": "1048fa264b62dd98c52c26a6aaf4450ae2cbbbc4af925dd58cd9bf2b26268787",
+    "verification/host/FilesystemParentHandles.lean": "3c4d1b842385f36cc0a5fd4eb6e6cfe450ad7cf12208f872ceb2909622e092ab",
+    "verification/host/FilesystemPermissions.lean": "df968c5d3ac33e85d6e7c6cf02468d712aae9ff34948094edc69c6696e9764ef",
+    "verification/host/FilesystemPrefixes.lean": "2909787f293fc27597ef0c8206ff0d7f2af33d4728e3e92453f110c0e5ee9357",
+    "verification/host/FilesystemPrimitiveSelection.lean": "d3145d9d1c0176b66c3b0b6bc0aa444e786da6b0b08d0ad11c116d934912ee9c",
+    "verification/host/FilesystemProcesses.lean": "593419e9645846e4e1ea0f24a910f719e944ff7336868d91bcdb565a07291aa9",
+    "verification/host/FilesystemProjection.lean": "dfb4b2bd0dbf32e9726fe065369e5ba5dbd86c2d1069fff47ef5096254edef72",
+    "verification/host/FilesystemPublicationBorrowing.lean": "b52ad0bbaba802e234928823963660d5e875236c938feba88f66b5606cf3c090",
+    "verification/host/FilesystemPublicationHandles.lean": "7c750bae6d5aa15e1a01880da0393c2c0265ccdebbd22a44616b84d4727f0bf3",
+    "verification/host/FilesystemPublicationSource.lean": "32e0d588d1af418d0cc082eec7e30e5b840b1a3187f1269d80bf362728f052ed",
+    "verification/host/FilesystemReadSources.lean": "a5bebc2f45b70429480faddb25fd11e9218146fc4a6481bd0f9997c7fc29bb06",
+    "verification/host/FilesystemReadSources/Effects.lean": "7e52435270dc9b8410d8f5e9cd06be5a4d981439e80883597d6c7255bdc84b01",
+    "verification/host/FilesystemReadSources/Handles.lean": "8c1f8c273723d0af56d2aca76cb4c9cf9aad90a8b9e4e4f8a4718d6f99840e64",
+    "verification/host/FilesystemReadSources/Recording.lean": "3c3b5233a8af5b264d4cd41291f5b44277d45abd4fdc79a3dbf932ab9fa0c788",
+    "verification/host/FilesystemReadSources/Source.lean": "cff59f5d4487cd770c5a1be8da5f2802648f8ff522eaf2ae0aed8e96c3bbce1d",
+    "verification/host/FilesystemReads.lean": "3ae62ad81d540aecb94a3ca6677ccc830b08d793e4e05b5316484171c522dc84",
+    "verification/host/FilesystemRecording.lean": "615091d019a42e8a31bf9f65fbf63807211eab34f9035f1523e1082163a20060",
+    "verification/host/FilesystemReferenceLifetime.lean": "2cfe589a2da3816a6525e182885fda61289d05c5cb89df9009d0952c3b73cebf",
+    "verification/host/FilesystemReferences.lean": "a53ce534c80badf69fde65b16b97345e595f240c662844997bb7ba8f5168fb4a",
+    "verification/host/FilesystemRootAuthority.lean": "0893ab52a4d2951a477c2918b488b8431f25ba36c912684adec3d6b154fc32b7",
+    "verification/host/FilesystemRootRegistration.lean": "49996bd58d23b5292017f8df3be883f72373974924ad2b0988f7a65ab8b803a3",
+    "verification/host/FilesystemRunMkdirAuthority.lean": "4177bc995488cbf2f4abf0c488cca11f43a20b955a2e7cc40c5ce74188152621",
+    "verification/host/FilesystemRuntime.lean": "4c59332127e2639acb26493ad1855cc9d1c88aceac2c9fcc2e4c8cb5c44162b3",
+    "verification/host/FilesystemSourceFrames.lean": "010978b3df66fd70f031ba94a89642b97f9156e58862322c04a47957972293f9",
+    "verification/host/FilesystemSourceKinds.lean": "7423ef8f49ac488be0745a85bd3c9fd437843ebd420c0cb57743e02ce0ee388b",
+    "verification/host/FilesystemSourceOrigins.lean": "62d015824b157dac7f5f705ed263d98ab94ae30531ea9686ad30a948b1be5b72",
+    "verification/host/FilesystemSpawnSources.lean": "edd9255f28fa04d867a27f9191701a6a2785333f7742694a86cb6442f013d4ab",
+    "verification/host/FilesystemWrites.lean": "6716297d122d6cc3d55d256b5ccdc82668175998a491dd334a5ec7be0b9468dd",
+    "verification/host/ImageProofs/Prefix.lean": "197c39f935fb0aa4c93d5e94a0f673990b780a3a92e6c734cad3350b3fbe2718",
+    "verification/host/ImageProofs/Source.lean": "feaeabbc540cc14c4b458d422b4270ae7319f271f0f0a3efce80abeb39b835be",
+    "verification/host/ImageProofs/Writes.lean": "6f2314eeebf6bb29494f8d89e1348b5bf4b11a8148c6385c501c770c4a293c49",
+    "verification/host/JsonProofs.lean": "7ea19094430dd9bdfd11cecd3054d16cdbeb07f8a38e979973cbb5d2107776f1",
+    "verification/host/PacketProofs.lean": "c08e8099f3a96d5a15f287706e4d23bd1da01dac4584b38ea1174130fe9e8b31",
+    "verification/host/PolicyProofs.lean": "1d2ef99ba5240d903b4d9080e4d308c81949c9077e97922eb6b41785b8551750",
+    "verification/host/PrefixOrigins.lean": "7f7aba41dbb844fa87d411ad9855ee93217521660b2c24226ce7236b5a836f9c",
+    "verification/host/PreparationPrefixCuts.lean": "ce6e798a90ec0b484dcc297827a0e5d5a426db18ed242dfa5ccc4b779b953230",
+    "verification/host/ProgramProofs.lean": "177bd8bc34fdc73242bb5fd9e66769bb1bbab3901500423f1514aad771212bae",
+    "verification/host/PublicationConnection.lean": "2b0644e1fb67eae4998fd641c73e8be5594b48bdaa153626b0504fd241cc3ae2",
+    "verification/host/PublicationCustodyProofs.lean": "5ea77b9da9cabf5fd988b259316a66dac82c82296c881e4a1f072d5619c0ceff",
+    "verification/host/PublicationMarkerProofs.lean": "3accda0ce2ad2e0b9d0267bb87a441d2dc8534f2da60516c03aab2d371bb2470",
+    "verification/host/PublicationMarkerProofs/Effects.lean": "c16f27a0068265d4ad75a6de6536e790db10b0af436302f69f4c8907e4b7ed44",
+    "verification/host/PublicationMarkerProofs/Source.lean": "8851f19ebff7955abeea268f685875c541183b4e5c5ba689528c800f1bdf387a",
+    "verification/host/PublicationProofs.lean": "e5ba748aee13579388aefece421fb85d3039df15bf3e7d82735ea6b1c89ad14d",
+    "verification/host/PublicationProofs/Commit.lean": "874872fc5a8ba097fa5850775dc0b49dece8f02b391b6d8314878ee4a520c376",
+    "verification/host/PublicationProofs/Content.lean": "2b0c2c0dfac4f8cc8ee3859774a3ad6e789623ca62d541785d3b83da3852b868",
+    "verification/host/PublicationProofs/Creation.lean": "ce64a295b280d65b9581fd26677d4390ba5630be749e7a3b3d40f2d503ae84cb",
+    "verification/host/PublicationProofs/Cuts.lean": "246dca1291e690b0580ac88edb1f560bf60997181f8c287a6de3dc08fe44cdb1",
+    "verification/host/PublicationProofs/Directories.lean": "23b84edec7ab8ed5d81661bbc9f73e9ec4a56a4435f04a4418cb7995a0dc2114",
+    "verification/host/PublicationProofs/Effects.lean": "99341eaebe85dbe49d6b7edf9641d5c3098f0cde718d56eb8b2532763b3e7e5e",
+    "verification/host/PublicationProofs/Exports.lean": "45d7e99df20f65567d81fa866978d515197cb0dc529ad1bae90d527f7cf48152",
+    "verification/host/PublicationProofs/Files.lean": "83b341af0fa80d0b81fe2e91ec36c29c97868c7de3662abe9fac499624cccd40",
+    "verification/host/PublicationProofs/Loops.lean": "aa28fefe9d8cbc9c680b7d96cc666296cfd61f975b599ce2650e36ed13812477",
+    "verification/host/PublicationProofs/Prefix.lean": "405907850fd5322cd160be5cbe98eb7428a24aed88d30e703123b0af58e10eba",
+    "verification/host/PublicationProofs/Prepare.lean": "55558a9f4339f08ce7d4f62bf56339a81ed73dce05a305569a063606cf67795d",
+    "verification/host/PublicationProofs/Relative.lean": "971675703230279ebd383e87798f3844b69105273442c6bd6324d662103e4fd7",
+    "verification/host/PublicationProofs/Reporting.lean": "ab39dbff06f9e3f5a3e6069082ab837d9041678be4b248e3fc7925e7920f1cda",
+    "verification/host/PublicationProofs/Source.lean": "528b06ce96cf700e109723e8a29c5c9182854e867b374a9537ae1da61a4e13e2",
+    "verification/host/PublicationProofs/Useful.lean": "6ca8a265e64c5cb3f0ed8ceb1ebe89b691ce60570269b0fb257f23957b3813ed",
+    "verification/host/PublicationProofs/Writes.lean": "54fd9a68fddc71179438a6e9a7ed62c208c0ba4519c43622aef62fbf6701e3f6",
+    "verification/host/ReceiveProofs.lean": "5be72f02a0f55fee750f6ebc119fe33d798b361fe1424e67c4c501fc1beee22b",
+    "verification/host/RequestGuarantee.lean": "7f1053a2e5696a9b95f8af2c111750fbe81206c901fa15f2970d7b7fb6c7473b",
+    "verification/host/RetrievalProofs.lean": "5581a84528bb885790ec6be3ab2b5ecd66ac30102ae55b1902459affbcf0208a",
+    "verification/host/RetrievalProofs/Authentication.lean": "bf37f6b245d7f35a1e452e4cad0b784825d8715c6520e8b162650e7651323800",
+    "verification/host/RetrievalProofs/Collection.lean": "45242e98ad19dd109693be8af78344f19a7321dbb08e94a01550506268f29676",
+    "verification/host/RetrievalProofs/Directories.lean": "bcf0f67c12b3d57ea04b52fba82f447c10c243c01f6f29a71ad8046f2eebd44f",
+    "verification/host/RetrievalProofs/Effects.lean": "56840d9576f25c03d1a2248b9caa8c2c04e634ef71cde19fc952864e99017d5d",
+    "verification/host/RetrievalProofs/Envelope.lean": "f31f14e03f56731f2de4440846b55f6e121cb9ce8c75225ca0e9c545ba72666a",
+    "verification/host/RetrievalProofs/Files.lean": "5fcc5985378c43494c75d353e7a22a5836cc337ca2bb7b9a439d33c56a9de71f",
+    "verification/host/RetrievalProofs/Justification.lean": "b28104407828445fc03325c32e2ad38e15c01171ba12f8ee8694f46ee8799732",
+    "verification/host/RetrievalProofs/Parents.lean": "271894bcae7d7e54be95c0a9925a8dfa44ef36bd15c031f3957282dcbc6870d0",
+    "verification/host/RetrievalProofs/Policy.lean": "5189ef00da8d1a19d3af2a1407fa02c69e2400961b2a0fc8ec7f03aa3e4a36c4",
+    "verification/host/RetrievalProofs/Public.lean": "8fae75703150bfe55f3e24779f752212a8e2fb88b52ed0976b5c09edf3ddb9f0",
+    "verification/host/RetrievalProofs/ReadOnly.lean": "2587f8277d1d6a70e34215d12189d02aed242ec52ed75deea7c7f376d7b4cab4",
+    "verification/host/RetrievalProofs/Source.lean": "9bc8a5841cd9e27dd9e1465561f04c95615eb4aad0428ac5833b725ec55c6bad",
+    "verification/host/RetrievalProofs/Stored.lean": "176ed91b3beb9e5784a9a26836001dc5a76c5cebc50c6602bea32e9fc78e37b4",
+    "verification/host/RetrievalProofs/Traversal.lean": "c16569cebf018a5945d13af9a11ea54ce1cce6495ee1971ab225af692a32ea87",
+    "verification/host/RetrievalProofs/Validation.lean": "24fe98e020fe417822562dd8b13d12dcd13defcc6fec49a254f616a1e7ba44f9",
+    "verification/host/RunDirectoryProofs.lean": "f52e4d4794d6a0793dee4d50c23706e43653dee9f4325a04b6f4db670a9c0e94",
+    "verification/host/RunDirectoryProofs/Cleanup.lean": "65b5896b2c2b482e4467bca5a5208b040a8ce0be982f398e210b2708b8081f40",
+    "verification/host/RunDirectoryProofs/Requests.lean": "39ebb398f0b5337aca15aa7bb3896a445071689989bf7f1b53a3230ab598e035",
+    "verification/host/RunDirectoryProofs/Source.lean": "817645489756408dd5e3d8d21e2c5982f746952e36e444b14b8a29e3e2484489",
+    "verification/host/RunPrefixCuts.lean": "3d4f7ecf3e415501102cf78057b438dd510978593894bf8f449bcc06b74c99e4",
+    "verification/host/RuntimeEffects.lean": "a62f14f15268be11f33750ff911bdd7b4f21dd2c3fe1bd954c48a1e9c9d7622c",
+    "verification/host/SnapshotProofs.lean": "226fcdcaf94ceec7354a921e342d5b5d4985bfd337438e427814f541d47ce316",
+    "verification/host/SnapshotProofs/Acquisition.lean": "ec0ae12f7eefe3003b7e9107305dc1486345696642f48821ddef5c078da59cf6",
+    "verification/host/SnapshotProofs/Blobs.lean": "3cab014dfa2eb83a93ea2f29ddbdcdc587fe29ae1230cfdeba9c66c718c75863",
+    "verification/host/SnapshotProofs/Budget.lean": "11f5b64d201952bd053f39193d51377cf28fdfbfd23549649a319bf8db248088",
+    "verification/host/SnapshotProofs/Catalog.lean": "df58abfd0c317653e4948fd559c3c41b99e196a9839c991427f6e3e553ca1b0e",
+    "verification/host/SnapshotProofs/Copy.lean": "62d53c7b2d21e4fcdc57c643fefff6b4b38befad8ae6aaa3ae84339b3028a9ac",
+    "verification/host/SnapshotProofs/Effects.lean": "ec696edaa5633e497860a41ceea4613967fb2537d545752b96eee9a873793d89",
+    "verification/host/SnapshotProofs/Enumeration.lean": "ae0faba747c4fd091987840a9a645547c83a19560158afa98d2e90f00cdf6911",
+    "verification/host/SnapshotProofs/Format.lean": "4e1371e771feafa517a9987607a34ff202e78d3dd18be6887724fcd83b2398c4",
+    "verification/host/SnapshotProofs/Freeze.lean": "207ebee34508f7a7704450c7eb8d0694beecb4c290251666d8fc304f1e785749",
+    "verification/host/SnapshotProofs/Inputs.lean": "66c1c625fc8786e6ff329be4b771f2695305eaf0a4a668311ee63f46f8f5fbe2",
+    "verification/host/SnapshotProofs/Origins.lean": "3ae91f80e95b41f433c1c02001cefcd3c876897400f560609de81a933004387a",
+    "verification/host/SnapshotProofs/Preservation.lean": "d9b3cfa481264eeb0f7773507ff80817786c25af9bc6ceedf22a27ea2629dc42",
+    "verification/host/SnapshotProofs/Private.lean": "00ff41d7eb930a2377d332630e2b7cf976112f01555b991f5d7952816c8c5f05",
+    "verification/host/SnapshotProofs/SourcePaths.lean": "1fd469475d76ecd2093d0e9dbc602ac0b89e5bc9f0d8535d42221a4ea0873b2e",
+    "verification/host/SnapshotProofs/State.lean": "3717881e5a27fbc7203ee5ad882431ea625b8e2e682019025c86710298bed603",
+    "verification/host/SnapshotProofs/Useful.lean": "84e0b1a9412f90673182bd51905610a910c863a8e8b855b4f3b42df94e234fa4",
+    "verification/host/TransportProofs.lean": "3b8c2ef417ca3452f5ace2f4b90b317e091ea5829b479ad4c59379dce70cd1d0",
+    "verification/host/TransportProofs/Bounds.lean": "e8424faaae2367b94c8d4006db070992c9c1e6bd972668dca81255501f02906b",
+    "verification/host/TransportProofs/Framing.lean": "9db371d3c1c777a9f0b5a67221d1dd0c1879cd2474bb8bd4b33ad2e1df8322a0",
+    "verification/host/TransportProofs/Results.lean": "a9b01dc05ab6936b97ffdcf2830113a8563b9c935d2f92f17e359a4f79acfcf9",
+    "verification/host/TransportProofs/Witnesses.lean": "b5b61ad5ab201823314118003246a70ede7cf07facf19d872b520c675ea1eb6d",
+    "verification/host/ValidatorPrefixCuts.lean": "d8bfe36347bf29affdbfb78363cd0c1107aefa84966e4931951c36da0b837ec6",
+    "verification/host/VirtualMachineProofs/Consume.lean": "69f64faca7710500c0ab91f9b35cdced6e14b657130e04e7a7eefa4fdffca99b",
+    "verification/host/VirtualMachineProofs/Loop.lean": "dc4551d47a20c97e2082a23f7246a4d862a657c11358798ee583b9846d9cd1f6",
+    "verification/host/VirtualMachineProofs/Prefix.lean": "768232fc6609a9744f79d2fc8c000e86acaa0e914fabbf72c2efa1469fc49c4d",
+    "verification/host/VirtualMachineProofs/Progress.lean": "0f9627154dd66e82755b59bf949311024d5d3a186fd2a6a0e15e18bd9aff26aa",
+    "verification/host/VirtualMachineProofs/Ready.lean": "7d3b6ead6bca59a6f02d987f8bc87d590dbde71c14ffc5957c2db6cb388f38dd",
+    "verification/host/VirtualMachineProofs/Run.lean": "15dd427f9abf6211eed34771e19517d9678a99ad005f6b543c18eaa33c18beb9",
+    "verification/host/VirtualMachineProofs/Runtime.lean": "8bb21fe99f52ce3ccfb185732a253272e96ced317bc7497fbb4af5e20bc74918"
+  },
+  "specs": [
+    "FS-host-boundary.ownership",
+    "FS-host-boundary.snapshot",
+    "FS-host-boundary.publication",
+    "AR-host-boundary.primitives"
+  ],
+  "status": "Reviewed supporting caller/source and physical transition interfaces. Full M5.2 application namespace, child, key-lifetime and public acceptance composition remain in progress.",
+  "updatedAt": "2026-11-09T17:55:56.135908+00:00",
+  "validation": {
+    "grund": "PASS current consistency check",
+    "primitive_selection": "PASS focused current-source ordinary Lean check",
+    "query": "PASS75 full theorem types plus25 critical bodies, untruncated",
+    "runtime": "Proof/contracts/documentation only; no runtime behavior change, hostile host experiment, new VM replay or unreviewed historical evidence rebinding.",
+    "source_build": "PASS220jobs",
+    "transitive_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  }
+}

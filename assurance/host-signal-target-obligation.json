@@ -1,0 +1,68 @@
+{
+  "schema": "leancage.host.source-obligation.v1",
+  "status": "open",
+  "assignment": "M5.4 current-lifetime signal target",
+  "delivery_complete": false,
+  "specifications": [
+    "\u00a7FS-host-boundary.ownership",
+    "\u00a7AR-application-verification.lifetime"
+  ],
+  "inputs": {
+    "native_source": {
+      "path": "linux/host_python.c",
+      "sha256": "8dc2bdd9b0a454786d5525d0b97135c6d2ac2e02fceb5d07afdcb11406effd3d"
+    },
+    "caller_contract": {
+      "path": "docs/functional-spec/FS-host-boundary.md",
+      "sha256": "ec0b71d6a7cbd344a80542c51ee201abfc0a2d893e832b0f3a8d9c42a769b602"
+    },
+    "source_epoch_sha256": "2fce74e393b9211504531aa0cf31d10ac9bce73ef6c38dcd30bf720e10880eb5"
+  },
+  "source_sites": [
+    {
+      "path": "linux/host_python.c",
+      "line": 489,
+      "operation": "host_engine_reap"
+    },
+    {
+      "path": "linux/host_python.c",
+      "line": 490,
+      "operation": "incomplete path kill(-child, SIGKILL) before waitpid"
+    },
+    {
+      "path": "linux/host_python.c",
+      "line": 494,
+      "operation": "nonblocking waitpid(child, &status, WNOHANG)"
+    },
+    {
+      "path": "linux/host_python.c",
+      "line": 501,
+      "operation": "timeout kill(-child, SIGKILL)"
+    },
+    {
+      "path": "linux/host_python.c",
+      "line": 502,
+      "operation": "blocking waitpid with EINTR retry"
+    },
+    {
+      "path": "docs/functional-spec/FS-host-boundary.md",
+      "line": 104,
+      "operation": "ordinary signal/reentry/configuration callbacks remain permitted"
+    }
+  ],
+  "finding": {
+    "trigger": "Permitted SIGCHLD=SIG_IGN or SA_NOCLDWAIT may automatically reap an exited engine.",
+    "source_behavior": "The incomplete path sends a raw negative numeric PGID before checking waitpid.",
+    "risk": "After the old process group ceases to exist, that numeric identifier can name another group lifetime.",
+    "identity_distinction": "An immutable old child birth token and copied PID value do not establish the current target lifetime of a later kill(-pid, SIGKILL)."
+  },
+  "proof_boundary": {
+    "proved_components": "The raw C source and native operand/row bridge retain the exact negative group bits, signal9, actual optional observation and separate committed native product.",
+    "not_proved": "Current signal target belongs to the original engine birth or its owned descendants.",
+    "not_assumed": "SIGCHLD disposition is fixed; callbacks cannot change permitted signal configuration; the numeric PID/PGID is never reused.",
+    "m5_2_consumers": "Any M5.2 statement consuming current-lifetime cancellation ownership must retain this open producer. Raw source/byte provenance receipts do not claim it."
+  },
+  "required_resolution": "Implement a lifetime-safe signaling/cleanup route and prove its actual current target. Do not silently strengthen the caller profile or substitute an old birth receipt.",
+  "evidence_kind": "Static actual-source and contract review. No hostile host experiment or reproducer was run.",
+  "runtime_change": false
+}

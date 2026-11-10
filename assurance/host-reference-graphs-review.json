@@ -1,0 +1,168 @@
+{
+  "artifacts": {
+    ".tools/host/gateway/GatewayBootstrapReference.vo": "004b5dbd920b71f00b3d13f7df2013a20cdb9c5f9924b6cd2117e7a370138f21",
+    ".tools/host/gateway/GatewayGraphSnapshots.vo": "599c6f9ee3bca27a529d5c7aeab0529bd6b882af6a8a5c2156bb9312e033d59f",
+    ".tools/host/gateway/GatewayObjectThreads.vo": "1dcf24d6530e4d619900402043be4badbe7a34e13960d9980ea92db681d49cd0",
+    ".tools/host/gateway/GatewayReferenceArrayRun.vo": "5664180d997ffda88e4b8074cf4ce6821dc80e280a04434b58370e82f16af199",
+    ".tools/host/gateway/GatewayReferenceBooleanValue.vo": "9f8bd1182b1b374c2b2c9180c0e7d5219211d0c97b662144cfa9afd08ef97cd9",
+    ".tools/host/gateway/GatewayReferenceBytesValue.vo": "16c01f4f59ae99664a233ebc9586dbc0f2e6b29974fa9324432212d794147f76",
+    ".tools/host/gateway/GatewayReferenceContainerAllocation.vo": "2aa32cfb7aa164f4c626515771a69c6d5d457c4c894a6a838b6f6d7d66113406",
+    ".tools/host/gateway/GatewayReferenceContainers.vo": "f8aa8da8ed991e9444e7563234615389ac9998550eec42a4dce2d27d21dfdc54",
+    ".tools/host/gateway/GatewayReferenceDictionaries.vo": "8c1a48b1c55e472f536dccefcce870efcef78333f679b7c9e7226cc4595f893b",
+    ".tools/host/gateway/GatewayReferenceEmptyContainer.vo": "1f73297a88b0840a6b83cfb8ff2c2381da844011e2a11b8567efe4259c00f8a4",
+    ".tools/host/gateway/GatewayReferenceEmptyValue.vo": "0eca4f22e7bf323ef872bbb25e11fdc53f4d07344b3926dd1b8577e5abf57eeb",
+    ".tools/host/gateway/GatewayReferenceGraphCapture.vo": "a3e50bb6924db9d55ed7e8dd7b082ce0831a2952adc7292fbdc5b155ab33d5f3",
+    ".tools/host/gateway/GatewayReferenceHeld.vo": "7a05609882aa1efd2b434a73030fc14c3d4327d34cc40a8dc5460a4b38229026",
+    ".tools/host/gateway/GatewayReferenceKeyType.vo": "bd64b910dc8b3fa08f46d80aba611bc11d19d93b332bfc89568c15d061bb0a32",
+    ".tools/host/gateway/GatewayReferenceNullValue.vo": "1fe9ecadb2960c18b84afc321daddc2669ffd1476a7a062a9df67727d46bb460",
+    ".tools/host/gateway/GatewayReferencePathValue.vo": "f5478ed003d2c9bd13cec8bf0c70c8d6b667fcfbbafdb97202abe0806a4681e9",
+    ".tools/host/gateway/GatewayReferenceReleaseRun.vo": "cdcc7d224c54fe10003b59fdf6593c9461d933f3c3169119ebcff546ba552df8",
+    ".tools/host/gateway/GatewayReferenceRetained.vo": "730eef20129a89a61cc274df5bf3d53b9c5413d843c921ad0ea2ac04bd4dd0e8",
+    ".tools/host/gateway/GatewayReferenceTextValue.vo": "899398495d5148ac92d681359f0c1b2a0bdb10797461238322a11f9af7f4e849",
+    ".tools/host/gateway/GatewayReferenceThreads.vo": "c150fd778b6a813c2115cffdad2637b2e69f67158462d7a114a4fbeaa257362c",
+    ".tools/host/gateway/ReferenceGraphAudit.vo": "60f8265a33e374fa98379f93daca95bbfa1dc9ed246be2dc2eb04b4675c9a654",
+    "assurance/host-reference-graphs-audit.log.gz": "4393b301de90b71719b432d473bf44eaf3edf9010e14c2e764db79eaf4f5b859",
+    "assurance/host-reference-graphs-audit.v.gz": "ef9f19f71cbe72fec3d6d5d1de7f266d9cb2061fe83469eebcd73f7b216568a0",
+    "assurance/host-reference-graphs-build.log.gz": "2e9afab49726015a7d21e14f220171c2305c65407f044b385da6183c3b2a3deb"
+  },
+  "declarations": {
+    "GatewayBootstrapReference": [
+      "gateway_bootstrap_reference_runtime",
+      "gateway_bootstrap_reference_history"
+    ],
+    "GatewayGraphSnapshots": [
+      "gateway_graph_snapshot",
+      "gateway_graph_snapshot_forward",
+      "gateway_graph_snapshot_backward",
+      "gateway_graph_snapshot_retained"
+    ],
+    "GatewayObjectThreads": [
+      "gateway_held_description",
+      "gateway_held_description_holds"
+    ],
+    "GatewayReferenceArrayRun": [
+      "gateway_reference_actual_array_run"
+    ],
+    "GatewayReferenceBooleanValue": [
+      "gateway_reference_actual_boolean_value"
+    ],
+    "GatewayReferenceBytesValue": [
+      "gateway_reference_actual_bytes_stream_value"
+    ],
+    "GatewayReferenceContainerAllocation": [
+      "gateway_reference_actual_container_allocation"
+    ],
+    "GatewayReferenceContainers": [
+      "gateway_reference_actual_append"
+    ],
+    "GatewayReferenceDictionaries": [
+      "gateway_reference_actual_dictionary_insert"
+    ],
+    "GatewayReferenceEmptyContainer": [
+      "gateway_reference_actual_empty_container_owned",
+      "gateway_reference_actual_empty_container"
+    ],
+    "GatewayReferenceEmptyValue": [
+      "gateway_reference_actual_empty_stream_value"
+    ],
+    "GatewayReferenceGraphCapture": [
+      "gateway_reference_add_graph_capture",
+      "gateway_reference_upgrade_wire_capture",
+      "gateway_reference_graph_snapshot",
+      "gateway_reference_graph_exclusion",
+      "gateway_reference_scalar_avoids_graph_parent"
+    ],
+    "GatewayReferenceHeld": [
+      "gateway_reference_held",
+      "gateway_reference_decref_keeps_held"
+    ],
+    "GatewayReferenceKeyType": [
+      "gateway_reference_actual_unicode_key"
+    ],
+    "GatewayReferenceNullValue": [
+      "gateway_reference_actual_null_value"
+    ],
+    "GatewayReferencePathValue": [
+      "gateway_reference_actual_path_stream_value"
+    ],
+    "GatewayReferenceReleaseRun": [
+      "gateway_reference_actual_release_run"
+    ],
+    "GatewayReferenceRetained": [
+      "gateway_reference_held_frame"
+    ],
+    "GatewayReferenceTextValue": [
+      "gateway_reference_actual_text_stream_value"
+    ],
+    "GatewayReferenceThreads": [
+      "gateway_reference_thread_contract",
+      "gateway_reference_scope_thread_effect"
+    ]
+  },
+  "foundations": {
+    "axiomFreeQueries": 16,
+    "observed": [
+      "ClassicalDedekindReals.sig_forall_dec",
+      "ClassicalDedekindReals.sig_not_dec",
+      "Classical_Prop.classic",
+      "Events.external_functions_sem",
+      "Events.inline_assembly_sem",
+      "FunctionalExtensionality.functional_extensionality_dep"
+    ],
+    "oldRootRuntimeHypothesis": false,
+    "standardFoundationQueries": 16,
+    "uipOrProofIrrelevanceAdded": false
+  },
+  "review": {
+    "aliases": "Distinct tickets may share a pointer. A release consumes one actual selected owner; initial mutable containers are fresh, immutable/cache aliases remain useful.",
+    "appendOnlyInterface": "Held descriptions retain both old constructors and add a graph view with the exact initial reachable pointer map, initial destructibility, and the existing wire view. No runtime contract, C behavior, or374 strict export fingerprint changes.",
+    "bootstrapRebind": "This record preserves the earlier sealed host-bootstrap-reference-review.json and rebinds its unchanged proof source to the append-only held-view interface and current object artifacts.",
+    "containerConsumers": "Whole empty array/object success is source-connected through actual count guard, allocation, zero loop and selected return. Local nonempty append/insertion interfaces still require induction-produced graph separation, not platform or whole-parser assumptions.",
+    "frames": "All held-frame cases preserve this map using individual actual SDK/thread frames on rooted private graphs. No frame on unrelated objects, public Outcome presentation, Workspace fields, or module attributes is asserted.",
+    "integrity": "Old universal unindexed RootLeases runtime is not a premise of these repaired source consumers. The historical lease-only induction sibling remains under its original held/invalidated contract and is not used as authority.",
+    "remaining": [
+      "Nonempty recursive list/dictionary complete source fold",
+      "Integer3 and JSON-number9 lexical/arithmetic source consumers",
+      "Actual parser/engine queue/public Outcome and original observation composition",
+      "Jointly useful physical/CPython witness, remaining failure/loss resource prefixes and integratedM5.2 acceptance"
+    ],
+    "scalarConsumers": "Whole actual null/Boolean/byte/text/filesystem scalar consumers use the repaired selected-source ledger and retain old captures, including new graph views, while preserving actual read-byte/stream and readonly origins.",
+    "statementReview": [
+      "Reviewed full quantifiers/hypotheses for all32 queried declarations. No decoder-result or whole-callee success premise enters the individual CPython/Linux contracts.",
+      "The graph constructor is appended: existing wire/scalar captures retain their prior meanings, and snapshot captures are only established from the same actual owned object and current graph.",
+      "Release authority is source-place/ticket indexed; graph views are proof descriptions and may share a ticket without allocating another physical reference.",
+      "Nonempty local append/insertion conclusions still depend on application induction-produced separation. These are explicitly pending source producers, not acceptance premises of a completed host guarantee."
+    ]
+  },
+  "schema": "leancage-host-supporting-proof-review-v1",
+  "scope": [
+    "FS-host-boundary.caller",
+    "AR-host-boundary.interfaces.gateway"
+  ],
+  "source": {
+    ".tools/host/gateway/GatewaySource.v": "2fce74e393b9211504531aa0cf31d10ac9bce73ef6c38dcd30bf720e10880eb5",
+    ".tools/host/gateway/gateway-code.ndjson": "e654b8c03d39600811fd50651b9b6aada9569f98d6e75bf136f6573bb4bb592e",
+    "linux/host_python.c": "8dc2bdd9b0a454786d5525d0b97135c6d2ac2e02fceb5d07afdcb11406effd3d",
+    "verification/host/GatewayBootstrapReference.v": "0132ffb03d8628ad27ad2c891b218d3656c8d653a0335d5c5c5db84596d8729c",
+    "verification/host/GatewayGraphSnapshots.v": "720f6342d38b3c6da857e1db0b4281e3d065ad90eef52da2e27797412a13c184",
+    "verification/host/GatewayObjectThreads.v": "738786fd876a193318dd8f9378426058b7001e6ce0d17f26b1d28303ff4e5820",
+    "verification/host/GatewayReferenceArrayRun.v": "ce8ce853b34c12e48ddbb47438ff5935d1e7cf09d6aa3326a244ec6ac88557fb",
+    "verification/host/GatewayReferenceBooleanValue.v": "da87de0c314d47284a0625273f8f06c6138e2f2c89e2c0b5afa2cc1315a6bdc1",
+    "verification/host/GatewayReferenceBytesValue.v": "5426a554dba05aa919fdbea9c2129e7e0da6686a1012b97d1d0e0c221c6cb269",
+    "verification/host/GatewayReferenceContainerAllocation.v": "744cb334097c3122e087255708ece985042f556c241326fc7582fb91075493c8",
+    "verification/host/GatewayReferenceContainers.v": "31285041add6a45b73b7af0157298c8b86a5d59102bc360eb350008cf4847d56",
+    "verification/host/GatewayReferenceDictionaries.v": "d13a444534bff9c4834ce40c81193916321937f0cdfdd29fc60276d68963cfbb",
+    "verification/host/GatewayReferenceEmptyContainer.v": "6a01cf84897dde8f41b3e42494dfa4e609ca817bc7816468ef7416bdae2f30a2",
+    "verification/host/GatewayReferenceEmptyValue.v": "885063e7f113aa8b4d83999d22946b9d88416664258a081ae31955d2025a53bf",
+    "verification/host/GatewayReferenceGraphCapture.v": "3255b109aa8fad23e439f4bb58386c299e16924815a10302bb7f61493d0b7799",
+    "verification/host/GatewayReferenceHeld.v": "5ae909da3cc379c7d18bd3052093db31e63270851670e69fdfac9449021323d2",
+    "verification/host/GatewayReferenceKeyType.v": "5468ad9f784dc91ab45b54e7cf6f985dca794799d4328bbc227ded08df37444b",
+    "verification/host/GatewayReferenceNullValue.v": "26459ea14f975a723e1c5330702b78a68ded79bbaa965727836e4134ed6699db",
+    "verification/host/GatewayReferencePathValue.v": "a21e60ca0aaa094dc4109f5d90d071758694bff6f2caf2a5e057b39f0baf4c84",
+    "verification/host/GatewayReferenceReleaseRun.v": "288cb72470c395b01fad5cfbd33e3a0bb9f1a1d5e978ddffced115bd116c1986",
+    "verification/host/GatewayReferenceRetained.v": "beb18175622c43d30f7488c6c2fe6fe3256f3d966c8305be3bb4b0bfcc936d54",
+    "verification/host/GatewayReferenceTextValue.v": "626507cc2116e18df622fa383fbdd681670e7b5b0e51858ac3d46723ae0abb54",
+    "verification/host/GatewayReferenceThreads.v": "01af3191c826a114f26b38180de2aa57dc43f87224969b2ca7a0a99ef8ce1f38"
+  },
+  "status": "checked-supporting-source-and-graph-proof-not-complete-host-boundary"
+}

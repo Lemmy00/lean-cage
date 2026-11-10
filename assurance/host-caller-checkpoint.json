@@ -1,0 +1,139 @@
+{
+  "acceptance": false,
+  "complete_delivery": false,
+  "created_utc": "2026-11-10T09:24:54.575622+00:00",
+  "declarations": {
+    "ObservedJournal.birth_cut": "Private queue initialization comes from the SAME actual fresh socketpair product, not an initial private-invariant premise.",
+    "ObservedStep.written_origin": "Every committed byte segment has a registered actual engine/native call entry on the SAME global rows.",
+    "actual_engine_response_unique": "SAME ActorJournal and raw pending-call/handoff object+OFD binding derive one response value/encoding for the selected actor, without future engine return or ACK.",
+    "actual_exchange_closes_owned_endpoints": "SAME cleanup source consumes the two actual source-owned descriptor leases, retains response graph/caller memory and reaches SaveThread. Numeric FD slots may be reused after close; no global FD-absence claim.",
+    "actual_exchange_decodes_response": "SAME actual source Callstate72 and original caller run; per-API contracts plus raw initial stream/reference inputs produce reserved decoded result and full original permissions. Parser success is derived from the real caller guard.",
+    "actual_exchange_decodes_then_eof": "Composes that actual parser with source EOF/retries and original cleanup. Exact received framing, graph/ticket, zero-byte recv and caller permissions are outputs, not premises.",
+    "actual_received_prefix_from_birth": "Conditional queue conservation from that actual birth. Other readers/discards remain explicit and their source/custody exclusion is still an obligation.",
+    "pending_response_raw": "Actual raw response prefix is exact lowered prelude followed by actual earlier acknowledged writes.",
+    "pending_response_sequence": "Same ordered raw source prefix derives ACK-list extension and exact offset increment; no reset/skip/equal-payload premise."
+  },
+  "evidence": {
+    "assurance/host-caller-checkpoint-audit.log.gz": "85c09cf6e53be150c243708567e3adb061cf6958d48ab9d1995c4d82c5706316",
+    "assurance/host-stream-checkpoint-audit.lean.gz": "09f7eef12afc9549f0e8d0d9392dfd71a5fb64917f27337f82e07ec331838885",
+    "assurance/host-stream-checkpoint-audit.log.gz": "9e0c590f6bb59f5fc97cb4db4ea56e9313a7ae6d6ef3d45dfd4a598228913b30"
+  },
+  "frozen_inputs": {
+    ".tools/host/gateway/GatewaySource.v": "2fce74e393b9211504531aa0cf31d10ac9bce73ef6c38dcd30bf720e10880eb5",
+    ".tools/host/gateway/gateway-code.ndjson": "e654b8c03d39600811fd50651b9b6aada9569f98d6e75bf136f6573bb4bb592e",
+    ".tools/host/gateway/native-code.ndjson": "f6bb9b8b88cd7e99d6438a3b8fba82a4eb6688e3d5825073f3a04f66a57f16d2",
+    "linux/host_python.c": "40f8e9bfd8497d81326a76dbcdec2fbf43d2fca29c6cfcdcf91952b1c5c4d88b",
+    "linux/host_python_primitives.c": "ecd149e184b43392ae68b6f1de75717aba6a98ab7bcf31fefbfd828abf9ee758",
+    "linux/host_python_primitives.h": "d777b27d25d2d085b68a20418c9ee57cfcd611039fc265fb95789d3973ac0723"
+  },
+  "new_explicit_primitive_interface": {
+    "definition": "GatewayCleanupReferences.v",
+    "name": "gateway_cleanup_reference_runtime",
+    "operations": [
+      "actual close",
+      "negative-group kill9",
+      "waitpid with native-private writable status4",
+      "nanosleep with native-private readable timespec16",
+      "mode-correct monotonic clock with native-private writable sample16"
+    ],
+    "review": "Kernel-checked typed interface and wrappers; final platform/interface acceptance remains pending.",
+    "scope": "Same individual operation, exact ABI/arguments, source-held managed reference/graph projection, with actual normal thread mode before and after; no whole-helper/process-lifetime/cleanup-success premise."
+  },
+  "next_action": "Resume at actual source status-temp/cleanup-result join and the exact per-row IPC custody/queue adapter, then compose these with the real public caller. No further source work until user resumes.",
+  "non_acceptance_draft": {
+    "archive": "assurance/host-status-temporary-nonacceptance-draft.v.gz",
+    "archive_sha256": "28b1bd780e24341594b551237a535db6adaac70f2719b82d8c711b6073e64e9e",
+    "last_error": "Return-to-caller proof branch incomplete (wrong bullet at former line119).",
+    "next_use": "Derive original _status temporary preservation through actual parser/EOF prefix.",
+    "path": ".tools/host/gateway/drafts/GatewayTemporaryFrames.v.draft",
+    "sha256": "5cbfb5fd0d136b094cd1af6c2063319beaacc6838e0aa4eb0e7dca4ea110b6f7",
+    "status": "Uncompiled, removed from maintained proof roots"
+  },
+  "remaining": [
+    "Produce same-global-history private IPC custody/operation classification excluding another caller-endpoint reader and discard. Preserve unknown events until derived from actual four leases, full refs, pre-exec/file-actions/exec and source cuts.",
+    "Join actual engine pending writer chunks/incremental commits/native receives into one exact encoded reply, then derive native header layout from that source writer; no valid-response or whole safe-queue input.",
+    "Finish original public extraction/configuration/strong-root prefix through fixed request/spawn/transport and same actual native row binder. Existing source components are not yet one public caller theorem.",
+    "Join parser+EOF, checked owned closes, SaveThread, actual raw reap, restoration, status0/result projection and actual caller stack free into the final same graph/Outcome producer. Derive status-temp and remaining memory/lease facts from source.",
+    "Close all error/null/interrupted/lost-call caller paths and complete physical/global application composition, statement/interface review and public acceptance gate.",
+    "Raw negative-PGID signal target is not the old lifetime token under allowed SIGCHLD changes; current-lifetime signal ownership remains the explicit M5.4 implementation obligation in assurance/host-signal-target-obligation.json."
+  ],
+  "schema": "leancage-host-caller-checkpoint-v1",
+  "scope": "Real native parser call72 through source-derived decoded graph/reference budget/Cur-Max and exact EOF; actual owned endpoint closes; source-bound positional private-stream algebra and writer identity/ACK sequencing. No complete public caller result or exclusive-stream guarantee is asserted.",
+  "specifications": [
+    "FS-host-boundary.caller",
+    "FS-host-boundary.ownership",
+    "FS-host-boundary.transport",
+    "AR-host-boundary.primitives",
+    "AR-host-boundary.acceptance",
+    "FS-assurance.evidence"
+  ],
+  "status": "checked supporting source components; paused by user before integrated M5.2 acceptance",
+  "validation": {
+    "focused_modules": {
+      "GatewayCallerQuery": {
+        "focused_log_sha256": "dccf98c8745e8c5eedc145c10b29b87ecf08944cf642040963e479a425616ed0",
+        "object_sha256": "d9e8e933c8d959bdbe61125bc92fe7710794a9187958a0e4055e4cb049dee1f5",
+        "source_sha256": "947d27b6e268a46d21843f1ed764f065eff41e09b21479ff022897f211541a28"
+      },
+      "GatewayCleanupOwnedCloses": {
+        "focused_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "object_sha256": "90769b29a03cada94a6ff55583b6de187b5cbcd5a394d24768ce6e7cf090a625",
+        "source_sha256": "2842578800ef560279fe18fa033df94c7abc902b11780038cacdf7241feb3af0"
+      },
+      "GatewayCleanupReferences": {
+        "focused_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "object_sha256": "3953c8be08edf4265d45201b216e260d93f076a05fff3ba791999fec36759d17",
+        "source_sha256": "c10d115959d7c499eb34ec83938a38414892cf94a985738de84db2e5390e488d"
+      },
+      "GatewayDecodedEOF": {
+        "focused_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "object_sha256": "c63ea4dbad6fa7b0fa4c7e5b2c19de49fcec6d094ef59a374570f71381b6250a",
+        "source_sha256": "6a63d18e4f62821bbb6b787bdb311898b307040c4b0411ca87513f0d433ce8cb"
+      },
+      "GatewayPrivateStreams": {
+        "object_sha256": "90fdf51b75579021a302b8b558d52c9713b3899884ae1a472a078045d2aaf8d3",
+        "source_sha256": "0db451d751da6684b8c17b111a3e0aaf5c4a9a96a5c30d9079ee3aec42ee1776"
+      },
+      "GatewayResponseDecoded": {
+        "focused_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "object_sha256": "cce30f2cd5a5ad0e18626dd1567a9b793ec9491bce00c6cf560414c5e676abea",
+        "source_sha256": "6792923e149ed6549fee96b91585fe2a7b1828287f1524647f65c693c1e3899b"
+      },
+      "GatewayStreamJournal": {
+        "object_sha256": "f052150f20363f5df0a792e1b447d2ff8f08ce05aee69b776222196e9d780345",
+        "source_sha256": "67bee20f151e2efaa46f4b59309f952161b3ac7899e3eaf63e9f369e31e18150"
+      },
+      "GatewayStreamKernel": {
+        "object_sha256": "5e2fa95e7904b3e8ef3934947b3e3bc39ce783d6f6ca25e3c2dac4dbe1317bb2",
+        "source_sha256": "56bd1e443e36b5883c64fe086444762c91e38ec90998355f2cc2314e75c864a8"
+      },
+      "GatewayStreamSources": {
+        "object_sha256": "825907d309cfc0de65dec14df8c662954fe97d55ff196d644d451df5c4bb6b16",
+        "source_sha256": "faee851b4857ca8272377b8d888817afbe6dc70162598f9f16c292ef0a4142c4"
+      },
+      "GatewayStreamWriter": {
+        "object_sha256": "6ea3d363e52ecb77fea9fb0583bdb2dc409df0260681320e386eaa40b47119a8",
+        "source_sha256": "1d1465927f9ef0a392fa701b870a6bca1f3209f25f8da312d8535e3ceaf1a598"
+      }
+    },
+    "full_shared_gate": "Not run for this pause checkpoint; root owns shared final checks and Git integration.",
+    "ordinary_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "ordinary_query_result": "PASS; selected type/axiom query in archived stream log",
+    "rocq_baseline_axioms": [
+      "ClassicalDedekindReals.sig_forall_dec",
+      "ClassicalDedekindReals.sig_not_dec",
+      "Classical_Prop.classic",
+      "Events.external_functions_sem",
+      "Events.inline_assembly_sem",
+      "FunctionalExtensionality.functional_extensionality_dep"
+    ],
+    "rocq_query": "verification/host/GatewayCallerQuery.v",
+    "rocq_query_result": "PASS, complete selected theorem types and transitive assumption lists",
+    "strict_kernel_feature": "Lean.eq relies on SProp definitional UIP, already present in prior host source/word audit; no new UIP/proof_irrelevance axiom introduced.",
+    "whitespace_and_comment_checks": "PASS on all owned new maintained files"
+  }
+}

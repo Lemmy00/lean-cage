@@ -1,0 +1,19 @@
+{
+  "inputs": {
+    "verification/host/drafts/framing/GatewayCanonicalBytes.v.txt": {
+      "compiled": false,
+      "sha256": "bf83bcb0a546985df71b18ac3c9772d7e53971743780c470d8682027827a103e"
+    },
+    "verification/host/drafts/framing/GatewayCanonicalSubject.v.txt": {
+      "compiled": false,
+      "sha256": "ee9ab48acbf85c061d6c0bf1feb1148b6d44a4d48a93c023529ff1ee5fa6a131"
+    },
+    "verification/host/drafts/framing/gateway-canonical-bytes.log.gz": {
+      "sha256": "3562c3f3a2464455cd2646fb4e52acf6dec936ec6f9ec6801c24db20c0279a33"
+    },
+    "verification/host/drafts/framing/gateway-canonical-subject.log.gz": {
+      "sha256": "d7583912ad23a5a07043bb1d0705e4bded4c66ddabf759fb73aaed0165c6178f"
+    }
+  },
+  "status": "uncompiled non-acceptance draft preserved at explicit user pause"
+}

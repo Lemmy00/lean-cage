@@ -1,0 +1,29 @@
+{
+  "authority": "Only active owner entries can justify a later source operand. Archived entries have unique tickets disjoint from active entries and earlier source positions. A count bound alone supplies no source authority.",
+  "counter_scope": "python_native_strong is a logical source pool projection. SDK graph edges, independent invocations, mutable public module attributes and physical immortal refcount headers are separate.",
+  "coverage": "Total deterministic ghost history still lifts every physical prefix, including invalid/unclassified states and committed loss; erasure recovers the same memory/world/event trajectory.",
+  "evidence": {
+    "verification/host/GatewayModuleReferencePublication.v": "4ead4f8dceb17ffa2919d448d20d15d814eb9a74bcd2c8e8d764786941fb6cb7",
+    "verification/host/GatewayReferenceAbandon.v": "d86032fb041a8fe9c488022989624a6cc873e09b543156619781d97dd64ca515",
+    "verification/host/GatewayReferenceGlobalStore.v": "6dc47f5e5e89b3bf3a7868b073e0471aeff9a23d8ea5a068275f0564edcb19e0",
+    "verification/host/GatewayReferenceHistory.v": "ccc232b63a314ab4a5c90009579bc3e7648c3d5ec55dbe49909f12b3d18ecd85",
+    "verification/host/GatewayReferenceHistoryCredit.v": "c4438f13966fad4a9bc0db6a023af46c8a842f6795bbf7340484fb0e9d12765d",
+    "verification/host/GatewayReferenceHistoryMove.v": "d53d3678267925c45b87b5a3dd7a239415041338b97c405b5e467b6c3e899d9a",
+    "verification/host/GatewayReferenceOverwrite.v": "61ee157e45b4cc33162b4fd4ff1204df4b6166c474ee0861b83314cdd5946e34",
+    "verification/host/GatewayReferenceStoreSequence.v": "b2a0d784bdfa05afe64de3ba70a30dbca9cf9df7b4e6f65262172cbeac368aad"
+  },
+  "extends": {
+    "path": "assurance/host-reference-pool-amendment.json",
+    "sha256": "a33339ee7bb2932c3fd1bba615f5c40a3c57b4cbd3272a8c381b10d11334cfd2"
+  },
+  "overwrite": "At the same actual global store, the old reference is removed from active ownership and archived without claiming a DecRef; the newly returned reference moves to the real global place. A NULL store archives the old reference without minting any replacement.",
+  "pool_precision": "The designated source pool includes still-unreleased references originally held by this source invocation or retained C globals, including references archived at actual source overwrites. Archive membership records unreleased allocation, not active source ownership.",
+  "remaining": [
+    "source-derived complete initializer and callback-frame integration",
+    "actual recursive and numeric parser ownership",
+    "actual public Outcome/getter composition",
+    "joint useful physical/runtime model and final statement/axiom acceptance"
+  ],
+  "schema": "leancage-host-reference-retirement-amendment-v1",
+  "status": "supporting repaired accounting; complete parser/public application acceptance pending"
+}

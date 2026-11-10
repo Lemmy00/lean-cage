@@ -1,0 +1,1009 @@
+{
+  "accepted_security_delivery": false,
+  "artifactsSha256": {
+    "assurance/host-entrypoint-writer-prefix-audit.lean.gz": "947a5ffec92f3bbfb31ca82135ac23e7e571c8643784676524eef695b9f12cf5",
+    "assurance/host-entrypoint-writer-prefix-audit.log.gz": "332a058eba3284ec464935bc0313d0c873071ef06f49e0d94d6ff59a3658437d",
+    "assurance/host-entrypoint-writer-prefix-build.log.gz": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+    "assurance/host-entrypoint-writer-prefix-declarations.json.gz": "1332b407c33b0be3c28d93fb6ea0b406b4dd64e8e3fc7f09aaf159ae602beb48"
+  },
+  "consumer": "GatewayPrivateStreams same global NativeExternalJournal selects the actual response writer using live endpoint/OFD identity and source-derived descriptor freshness.",
+  "declarations": [
+    {
+      "kernelBodySha256": "71a1f0edb70951c4f4e67e43203f4bcc860fa52124b858c227d873f18d9bb6ac",
+      "kernelTypeSha256": "1363a161e2523f02c402f1cc9c33e71239b0ad585ed0d9c8715f728412b391b1",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.AcknowledgedPrefix.brecOn",
+      "theorem": true,
+      "transitiveAxioms": [],
+      "typeSha256": "5fcd881da8b0c6f87ec25508ab6bbdbb91aaaa3849e3b87dabf6777e16fc27c0"
+    },
+    {
+      "kernelBodySha256": "a682cc556dd408b30c5e3c1b399ebb1e6158d30307c060b83f4f178fde752e7e",
+      "kernelTypeSha256": "9be46f78ffe0e054cbd93528268a1ae6e36002c6a24703be41578f4f6d61201e",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.AcknowledgedPrefix.bytes",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "bb8ccd1b3579d57c428c37939ffcbe30106f13ee107c051af549a981fd7cfd13"
+    },
+    {
+      "kernelBodySha256": "de97912aae2afc4a41585b3739df7b292887d842eda5d6a83becaae86ce39097",
+      "kernelTypeSha256": "339d2b4fd390e78b4f63dcbdff714e5e94c3dc4820b6c8acead6f95b764cc5c9",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.AcknowledgedPrefix.bytes._proof_1_1",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "a0bbb05ebc733cca24a69766875e3f972eb32e67746d143d7c21fa07f181e419"
+    },
+    {
+      "kernelBodySha256": "09ae418201139b61d4f76e7dfa5638fe88c9457ab10912887f1b536878aeb69a",
+      "kernelTypeSha256": "cbba44a4b3f9ec1c9806ab582d5b87705fa0bc42785b7167bfc1ecd620e89552",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.AcknowledgedPrefix.bytes._proof_1_2",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "f3074b5b3eeb9b0eb492c6762a0232c0d336b939f15ee1e3fc38170e8e442a4d"
+    },
+    {
+      "kernelBodySha256": "ec62c1df460eecab385eafeca9f1129e6a26d0b9e09e4bbf619a7cbc48f6c7b1",
+      "kernelTypeSha256": "3c10ceda45da897f794f2bee21f2e81914c43cf537b8dfc0ee6975e027eadb68",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.AcknowledgedPrefix.monotone",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "a9bb2265d20f2891a443e50cdb4f336330a682cdd5a695a9edfe825313f76f20"
+    },
+    {
+      "kernelBodySha256": "bc1a6dbfd2cfccd781d6372caf7dc7cbf7139fe7b38e3ba60f0be65214a08d65",
+      "kernelTypeSha256": "64c13f31eb1adc28881881915df42cfa55552323e09901deb31b0e6087310d53",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.AcknowledgedPrefix.monotone._proof_1_1",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "73f870509899a08788497b532d4ab89ad5cb0d21422447ac58d9dacaea53a7af"
+    },
+    {
+      "kernelBodySha256": "7940f4ff2d878abec48ee5c4ee283a416ff0384beffe05814b642661af24be44",
+      "kernelTypeSha256": "7b47a8e7a1ea022798059f0ec0e0feb1d8801625060b8b9571b8f5a7c59855f5",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.Cut.application.inj",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "34e446350626a90e47d08a81c988afb629850a101990090d50ce6968b1b1ecdf"
+    },
+    {
+      "kernelBodySha256": "ad1df34caeccacf84e350d1f679c6bc61483d41375a61fa915ed2513b8485c23",
+      "kernelTypeSha256": "dffe4537c104cd14ca2abdf758415a430ccc70f0ecb223a2bb1242f02610e148",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.Cut.application.injEq",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "2dc96c1d3a137819605766b3b63155338b6b6abce00caf647415f6e2ea498ac9"
+    },
+    {
+      "kernelBodySha256": "5ff81b167e4f4e346670be20d31601a0bdc1f1dd80ccb84c5e992b172e616d87",
+      "kernelTypeSha256": "0cc8572f579ea7ac664ef2dadf8727f8cb4cb6859bdcc8a98ece90508124d03d",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.Cut.application.sizeOf_spec",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "206139b7c2a238500f6b2ec879ea7dc830829dc0b623dda9207c2e6e1e1587ee"
+    },
+    {
+      "kernelBodySha256": "ca6932f8340fb22e7c8ef33fdf3b763b1deda9ddc35a65c53cc42b554baece04",
+      "kernelTypeSha256": "0b5d63dca467fb090b6db0cfd9f1bc4ff001d1a5d56b6bc62bad8451cbfa04c5",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.Cut.response.inj",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "90966476a362bd59e14acbf0b48e7d03b22f8fb7301687956f45670d95536fbd"
+    },
+    {
+      "kernelBodySha256": "ae9aaba8c444c52bf5f0a35f7ec73f3490bce8f8335b566890d9f87a82604b70",
+      "kernelTypeSha256": "58fb414deb479f8596fe2e86e6cdd83835543370a4e8ffb7ff87ddf6c6cbf7b6",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.Cut.response.injEq",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "0fe8a32ec9fcde7e662ee204b900572beefc6f53fd7c2672d80252719e561d8e"
+    },
+    {
+      "kernelBodySha256": "154b6bfd05d542ed4a7a6d8c466273336509230ce41680a8e52466741d3afb3a",
+      "kernelTypeSha256": "a17076a6441d118ddd07dd385f9e0f8b2eeb2169824c93dc3e271623c30d9077",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.Cut.response.sizeOf_spec",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "77b317014645a738823c6c3e36f90ca4c206b898e51f531643b5af7c61982990"
+    },
+    {
+      "kernelBodySha256": "8454923dfb723c79a6737dfc86517c6a13c9721727ea6793e3ea4d57e9fad82e",
+      "kernelTypeSha256": "2dde28369d645a4a0d93bd99096616b846ef282b689f9685e86e2671627b2bcd",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.PrimitiveCut.mk.inj",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "9fc3b59da9b8f12ad37de01612db719085eacfa6e2a345bacb02f3e804b9b563"
+    },
+    {
+      "kernelBodySha256": "2918321166a7306aee82c8b1dbc71016daebb37319b0b129a8c6514640eb8be5",
+      "kernelTypeSha256": "7dc1c2b8b346638c965784fcf522a93970aae8a72434eb08f34ae2233c709adb",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.PrimitiveCut.mk.injEq",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "b321a608742a60e8d7f03b82a2d36d716052eeec073e210cbf56d5df8d703fff"
+    },
+    {
+      "kernelBodySha256": "3f98b0f7e52d2387c5ed93b055347b8dd0f6c15e9cbaf0efe466319675df5e33",
+      "kernelTypeSha256": "3915bc85c9834f53339346f7ea6f2199471fd1df79c81c0075c3a0d179221a2f",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.PrimitiveCut.mk.sizeOf_spec",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "67e4d3679b9aa620b37362e32ca276095a7cb1b644805ce8900aac54de76164b"
+    },
+    {
+      "kernelBodySha256": "c977b815b9cac0ed449d098be77d8b378930855aa03510e9bcc46847d7a21a32",
+      "kernelTypeSha256": "82551bc72a71c945fdfcbf0971789c66ea328f7cd9884afdd04e649cf635b2b9",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.PrimitiveCut.noGuards",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "9f5d96032be5e1083b79202d3964c081f195f5b6f4ad2756b2cb5ec99cc84606"
+    },
+    {
+      "kernelBodySha256": "be2547b12dec60e97e046d1834742012bb5628c12a3e78649fc4116bbd5e5ceb",
+      "kernelTypeSha256": "1b8358462e58ae5bcef21a31e8891d2eb5e95b65ac736731dbf88241691f6832",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.PrimitiveCut.primary",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "24ffe498d75158407dc606cfd31e4d98126a735c6946c1729a45bdbaceaecc4f"
+    },
+    {
+      "kernelBodySha256": "b9a54a1060675039b11102b33adcf0b9775cf98c0511e39b4e0bf9c92c3fc751",
+      "kernelTypeSha256": "f1b06340500a3fcae52775431038ead2195e79bc4d5a2a5debceb7ab1d00c8d5",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.PrimitiveCut.rawTrace",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "1d9be4e51a7a5d938c89ed2432deffbc6dc6d3bdb32492a205a715fd42c27d23"
+    },
+    {
+      "kernelBodySha256": "c092e6b04241b23713aea237dd2f1c6b135762093fa87297df0d224798b374ac",
+      "kernelTypeSha256": "2797c700c3b49cd34ab5d3cf12053710a0777a5d64e2705429d9b03d92cff397",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.ResponseFrontier.active",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "41180a4f56ea0241f5211c366f05e06e3080353911d53a1fceb3f2afc5111b84"
+    },
+    {
+      "kernelBodySha256": "58ab4f8f5e68b13b744ee867d137c49d0173d7515b66d20e54e604b973b3da65",
+      "kernelTypeSha256": "275bada36b217636f6ddfa61f633eb32e1e82bc0fa14845c90b57c9ef0eee556",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.ResponseFrontier.bounded",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "a4d206b014ee8859d33ccec80a6a967b222d18e680be19edbc4a6e7338cdfb1f"
+    },
+    {
+      "kernelBodySha256": "d9e60191cc0d7136198aa759014782230132da813d1014573eb1ba99979c6ece",
+      "kernelTypeSha256": "9745546fb9904583b3c514f9a25c4c9ce4512fa4366bbfbfae1aff07e796c796",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.ResponseFrontier.mk.inj",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "12e46fec910fa077e64e4e18f4b6e1537cb01d8f45055a4d92d33ae16a676b0d"
+    },
+    {
+      "kernelBodySha256": "94509d25d3b83ca781c5defd9159de5d4bfb86e10c08b5e2a583a5eaae716605",
+      "kernelTypeSha256": "b5f08a6186ca423d5e302e647c8cb13566a1aa2b8d8dd7d0a431619cb254cf0c",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.ResponseFrontier.mk.injEq",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "d46210a70cbb80fa885a9adead23c9ce08fd7f09b4039b73220e25d25ae9eaa1"
+    },
+    {
+      "kernelBodySha256": "ed07d55d685fad79007efd31e9467e6419531cebd02a8cfc7310a4cf18e9131c",
+      "kernelTypeSha256": "2d76254d5dcaf58f600876d98ab2ca1dcf224f177023b2013654cfd85ab3d09c",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.ResponseFrontier.mk.sizeOf_spec",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "6d6e66865592e1dd4011a17bd8f112c32bbecbe7351116b89352b11ce7b5f14e"
+    },
+    {
+      "kernelBodySha256": "70ce71fc1111e7257d2a5a5fb7d5df16144dd28fdc030061452a61676ed18c61",
+      "kernelTypeSha256": "eea686f7e038efcc485ebf027b3dca9e54338135e3c137324a0bf67ade60153e",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.ResponseFrontier.payload",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "82ab11d2d4ab87e0fc94b5c9d8d31feea4d63fbb3333985d23d4cb51b37f26ac"
+    },
+    {
+      "kernelBodySha256": "a39721fe1f9de7bb715ef26004e65304945edef6d80319ba551278ea9ed01815",
+      "kernelTypeSha256": "86e8b6b8870a220b04fb8e11b355d8cf65c0a6a51f23578f515e5f10cea7ed42",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.ResponseFrontier.trace",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "b79069cb58f6a0603d5014d70dd9abcd61c1e6eb3a1d7883da4e350ecd7e28d1"
+    },
+    {
+      "kernelBodySha256": "15017f2de04552acd0637a873384ca647e155fa8dbdf768dfec78b86e61967f9",
+      "kernelTypeSha256": "ba3ad001e94a1025fc36f67a17ea9e65c6df3441ddda4dd4a06fa0b275d5385c",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.WriteFrontier.inside",
+      "theorem": true,
+      "transitiveAxioms": [],
+      "typeSha256": "e6c975aeb0d3540e336fee983955827d0e805b93e199e6d5b6ed8fd0c0edd48f"
+    },
+    {
+      "kernelBodySha256": "2e4064bd596bee295179b7042b93845a78305627b21618773b57dfb5b26c8a79",
+      "kernelTypeSha256": "d0413eea24ec6b74f8093036e27c79342a036d9f1dbb6f1499c75d4088adeb26",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.WriteFrontier.mk.inj",
+      "theorem": true,
+      "transitiveAxioms": [],
+      "typeSha256": "8939c3e71bbfc52d1e315e26788e2c924d7fb3c8d9e124b67f39d805b4a858a2"
+    },
+    {
+      "kernelBodySha256": "0275aaca296018dc92600fe6fa1d5959f0b351d8ba300944510355493a9d135f",
+      "kernelTypeSha256": "a082e5ac657e8a36315d9f2c1699f421ac3ac2717f498402444b5546a791846e",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.WriteFrontier.mk.injEq",
+      "theorem": true,
+      "transitiveAxioms": [
+        "propext"
+      ],
+      "typeSha256": "5f805d42017662dfee4eb71e7e690ec968bd2ee91552c6216e5d445e381fb764"
+    },
+    {
+      "kernelBodySha256": "68dbf09fc47a0daf5432ddf1b74008ea4e774da306f57c5ba0c2005a2188c8a7",
+      "kernelTypeSha256": "9bbde09076153dd81ff9bdb4c7394f8a1ea67c25ef49997d3d4b157761e36dc0",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.WriteFrontier.mk.sizeOf_spec",
+      "theorem": true,
+      "transitiveAxioms": [],
+      "typeSha256": "3b84862bd028ff450b7588db0062a2e7247e0bcb34edadd41f13f1964525c35c"
+    },
+    {
+      "kernelBodySha256": "697293c3fde5e63925190f38f459821d82f3ac06ef89efc7e68153164075ac49",
+      "kernelTypeSha256": "6af14e7d8bda75cda04d9b8f1fa3d4962dd9badaa131ea89b9d2b6583cc1a8ea",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.WriteFrontier.operation",
+      "theorem": true,
+      "transitiveAxioms": [],
+      "typeSha256": "49516074120949619372fa6900ead180fe0d1fcedb5707109262e80f3b9b9f6c"
+    },
+    {
+      "kernelBodySha256": "9b62fdb223a94e3eede0189b82ab638ce81163b22175fa794b6dca99fdcd82dc",
+      "kernelTypeSha256": "7cbad8b00209cb5038ac5d8a265ffac7067e30dbb687952744090cb049476948",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.WriteFrontier.progress",
+      "theorem": true,
+      "transitiveAxioms": [],
+      "typeSha256": "444deb4af1026407214c79a3c758ce6b3201b2edb7596f08c6f2749ac0ea9d71"
+    },
+    {
+      "kernelBodySha256": "d19bf7f285eebb6971b59929a407c73b139684fd77ca50b2806c209defcdc2c6",
+      "kernelTypeSha256": "3c008d08b4015693ec9dc9c1980bf6d7bbeea8bc741ab0e98eb2f46ba59c5f31",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.WriteFrontier.trace",
+      "theorem": true,
+      "transitiveAxioms": [],
+      "typeSha256": "9cd1e4d8972300848ede3dfa9645e587a3e19c0648f4521f3c7ee375b4d2d059"
+    },
+    {
+      "kernelBodySha256": "df70b8be3e70285032d0b8aa09f1397ed816d831e5759e45a91592666d92e737",
+      "kernelTypeSha256": "480abbe17f5da3d3f1e32a1c306e02f7cfe5cc724b38ff33863367a26ce4540c",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.primitive_write_cut",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "f0388b4166be02efd052575d54e9c33beba7174ef9cd075805d72e218ca6fae6"
+    },
+    {
+      "kernelBodySha256": "a638ec4ec99b6df6aa988a43d1240c6b1b7eb76242235637370238374298be14",
+      "kernelTypeSha256": "d6f2b4e22979992736f6d43853f3417abf3dd40e5abbbaea4b14658f92e51c68",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.primitive_write_cut._proof_1_1",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "a096f484bd2ab18a71e5d290f4eaf3159ea2690b12d00129f86e5cae63949687"
+    },
+    {
+      "kernelBodySha256": "946c6446c157a7864d30c4389ffcd761e4b6c1a668cc8e247bb9474a39973c71",
+      "kernelTypeSha256": "cd342da2810bae787a457d45a5d8772a10002d70d52edbcf389b63dbad0c93d9",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.primitive_write_cut._proof_1_2",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "c860c28ae0c81ab2225a291581db1bb877e089eb7c2ed47e93a8e3f73af05bec"
+    },
+    {
+      "kernelBodySha256": "0fea20dbb5fc1793cfa51724043f225b870b98ec38ddc01a9e894444542da3e1",
+      "kernelTypeSha256": "90d53ae7113f6c91f3981c625796adbb4a857287a2c80b2a902d3ecfe4d23d51",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.primitive_write_cut._proof_1_3",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "bc4c5c4a139e2ead04f6c566944ea4b6910e2fa5b993f0e90d8d19a91be6c3ce"
+    },
+    {
+      "kernelBodySha256": "c56a7b5779fb70d97c7e53387e4a4d6ceafd9ef86d78a99257cef3ae4dd7e121",
+      "kernelTypeSha256": "164e697526c0b5e9469c00771b420d53c9e6f497b23b1ec3ef0d87ff968a6db9",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.write_cut",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "6280243dec89917fceb9ac37ae5e63f1d713acedf82451dee6a0838ab41f8d93"
+    },
+    {
+      "kernelBodySha256": "8c47a47f1c7e32c84db6b692bf3049778e6e07c2c954d0b68ddff283ec08986e",
+      "kernelTypeSha256": "da1622207c5e5d3ee9c39de1fa0e5106088e854c3915b4ab66604e0f695b6c87",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.write_loop_frontier",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "21c5f90e21f70301f9a47c03182879ae0b866e3ed6ff4cc6addaa88444396ada"
+    },
+    {
+      "kernelBodySha256": "4b6ece5ce4974a47ce77355a734ed8912be17a0073d19730fd6b97da5eed0ab2",
+      "kernelTypeSha256": "7ce33f17e46373cc28af4b8ca8300aff148c3c769c9efd8b8530f10d22eed4d8",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.write_loop_frontier._proof_1_1",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "d1cc9efb744e3d035cee9aa06b3f5e92d5f4f39381b0387ceda7b387cd4cb05a"
+    },
+    {
+      "kernelBodySha256": "72c6fa7a9c2e15fa69ab5937d847acec0819397e250913072c01a1f7c267e685",
+      "kernelTypeSha256": "1c9ba78881b4b8a68951c9720c54decdfe22a477664b3c2a4d365ec9472983f7",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.write_loop_frontier._proof_1_2",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "2218f82995a0c18e1903cc42ede80a3f6e97b5767b9b6b657dde7768a1ded0e9"
+    },
+    {
+      "kernelBodySha256": "837f0b95ac16591d77f6bc8d0d47ebaa4575c83c99acfeae02a2d0918734bab9",
+      "kernelTypeSha256": "87282288a87d9ed38871745947f9c85bd3a5d9dce06dbf06ec8aeafcc2e7c1cd",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.write_loop_frontier._proof_1_5",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "b0c7b8f0d3111c14c72a2a62b616a17e3da8e98c9c56c95a282bda6691928e9b"
+    },
+    {
+      "kernelBodySha256": "e9dbc8d32eb0eb114973f5668034dfee988f71889d48d09e5c871320570f715a",
+      "kernelTypeSha256": "fd503b34a6d70a3f1e29ad15b5ced7b140968a472f8bd0b8fd75843eec45f480",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.write_loop_frontier._proof_1_6",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "e6d9059352909b22b4c71ad8c8b9723462ed759fa6f564ac899cd1ccd830cbf7"
+    },
+    {
+      "kernelBodySha256": "ddeee04b628992cb8e57f88b1d6f0459b263e8fd8446c60f28462511c5aff72c",
+      "kernelTypeSha256": "ec65f1cda53c4aec23f2c8503ef1659bd46fbf0d35d7d3f67ed008764ecdd040",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.write_loop_frontier._simp_1_3",
+      "theorem": true,
+      "transitiveAxioms": [
+        "propext"
+      ],
+      "typeSha256": "e492b412787d6cb6afc25d57ecad3f1eb52f4333d87fcd5bfee617f03a746c29"
+    },
+    {
+      "kernelBodySha256": "0fa981af5d1d1f106d48eb9640104a2abde9c91e041811ed4a4df1136a0b1621",
+      "kernelTypeSha256": "f03242390a026b8c7dc768e70a47cd6df4629708aeba11f7fcad735193a4d26b",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.write_loop_frontier._simp_1_4",
+      "theorem": true,
+      "transitiveAxioms": [
+        "propext"
+      ],
+      "typeSha256": "5df96d3ccb90baa604a810bc4febdf0c13b75c08ebe9f4faea3e22ce1dee43e0"
+    },
+    {
+      "kernelBodySha256": "a74d4b5836df86c1bd7804c717a64d50749700f804d799cc1eba0a185b04d0bd",
+      "kernelTypeSha256": "9ee79206560c2c18d5b6c1fcf7c29b0fbff0fbcad80f2b4e71545fe702d9b820",
+      "name": "_private.EntrypointWriterPrefix.0.LeanCage.Host.EntrypointWriterPrefix.call_cases",
+      "theorem": true,
+      "transitiveAxioms": [],
+      "typeSha256": "6fce24e59e28ec36866decd92b2333b6c1f0c0b74f3d22331f065a6ddfe343f7"
+    },
+    {
+      "kernelBodySha256": "da4db31fe05b714e7499a5a6296394126db694c43f6615f511235fc38275f27c",
+      "kernelTypeSha256": "1915f0d63c95f61d30ca4c838aab0c6f5c53da5c82f29610358263d8dc20b469",
+      "name": "_private.EntrypointWriterPrefix.0.LeanCage.Host.EntrypointWriterPrefix.packet_exact_no_write",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "ad5fadfc1225784e33f5cae7cc1b48495d8c8a6037852c354deeebb7a3df66f9"
+    },
+    {
+      "kernelBodySha256": "3a1d74dd9afc86c54c153529bcbdd8771e921a727a3406682f3c84da6ae882b1",
+      "kernelTypeSha256": "f72cb44d247fb5d529611bfafb4553b0779692c9aa67db107eb03212dc0b059e",
+      "name": "_private.EntrypointWriterPrefix.0.LeanCage.Host.EntrypointWriterPrefix.packet_no_write",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "a9921d0e6da30d2184593b304bd4ddb6c8cccb86491e33c7ab5c9eea07d33271"
+    },
+    {
+      "kernelBodySha256": "49141b1b000e3e0b476d3a53ace6f0f7cfe69f7ef3c5d1f02fe17ff4427f0e0f",
+      "kernelTypeSha256": "b2dcece72e81d20a7522d68b1053fb635c7c9ddc20519a852c4a9035d8bac107",
+      "name": "_private.EntrypointWriterPrefix.0.LeanCage.Host.EntrypointWriterPrefix.pure_no_last",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "2a7b0c884b060d54ce3cd03b38c6c75b1237eb246b8e06a83edeb5a1a792092b"
+    },
+    {
+      "kernelBodySha256": "81ad5ee2bb18bd85a2666aa83144a9866ec2255644a8c352401f692a163a8758",
+      "kernelTypeSha256": "9b4a2a5fc3b8751cb850252a1f8f8acd8a5c78b3058da428b4288949b65e846e",
+      "name": "_private.EntrypointWriterPrefix.0.LeanCage.Host.EntrypointWriterPrefix.pure_no_last._proof_1_1",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "c9fb5d7d868ca5b29e3ccbca796d57e6bce06b316e7855b5f30829a862588b2e"
+    },
+    {
+      "kernelBodySha256": "6b93d77c91c7967eda163c075720c22666584a70ef9f8f19efa7743f85079c0e",
+      "kernelTypeSha256": "09b49081b47ce33e0875a796b5c8780aa6c52132e3c0ccb1e25e8e423a9dec6c",
+      "name": "_private.EntrypointWriterPrefix.0.LeanCage.Host.EntrypointWriterPrefix.seal_no_write",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "694214894842fe9771990f86842ab8407ffeb8863d1a105768de6b5be0e18016"
+    },
+    {
+      "kernelBodySha256": "ae52c4f1b212a088e40c01f8bbf5742ea49c0513d2b1db406f73b72a15a51ca4",
+      "kernelTypeSha256": "f9ed863960c91d4308cb53d08add6fab7bf317c9464e63344f35e799b8846ad1",
+      "name": "_private.EntrypointWriterPrefix.0.LeanCage.Host.EntrypointWriterPrefix.write_adapter",
+      "theorem": true,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "6aa38892214f54f1a03bfd59540bfcf6712248a0e81017d78a3b92ee658ded7b"
+    },
+    {
+      "kernelBodySha256": "bdf811d2374739eb4d791175426b69c7c511ba93d8d293473730fb6b41a1a7bb",
+      "kernelTypeSha256": "f28b875d5da192f56cda8341617b4466b8b62db953c61c2ff18dc3e1f38ec866",
+      "name": "_private.EntrypointWriterPrefix.0.LeanCage.Host.Packet.read.match_1.eq_1",
+      "theorem": true,
+      "transitiveAxioms": [],
+      "typeSha256": "d21fc103a7c9858519a1205eb14f35e609073f9e2ad66538ccf63a6a7b611942"
+    },
+    {
+      "kernelBodySha256": "6ceddc4d2bbc6e53fe9161566bafbd89ffc6a69d4e4fd6907e68fbb5999a0b85",
+      "kernelTypeSha256": "62ae74542ac9cc948905fdfe1dfd78515c613ea4c7352303734e3ea4563f2040",
+      "name": "_private.EntrypointWriterPrefix.0.LeanCage.Host.Packet.read.match_1.eq_2",
+      "theorem": true,
+      "transitiveAxioms": [],
+      "typeSha256": "767f406d89eb3d54805d315691ea0d401c2e52c60975baf933b0499a619d080e"
+    },
+    {
+      "kernelBodySha256": "d3b3cd350da0b14fec31597b92be392d172a8e0f7c76f971465bc6e68c274536",
+      "kernelTypeSha256": "905794c8e95534199abf41978a5c7a68853682572816b1208e98be99559c6eb7",
+      "name": "_private.EntrypointWriterPrefix.0.LeanCage.Host.Packet.read.match_5.eq_1",
+      "theorem": true,
+      "transitiveAxioms": [],
+      "typeSha256": "31ae287b0c57206e998112debc1ce497e677ad87e3b46166efefff66e0043497"
+    },
+    {
+      "kernelBodySha256": "0118d0b3d330e18fb729be5d9278bc0ceac9e906cd214b4077b262378e2f4cfd",
+      "kernelTypeSha256": "6bd5cb14cb7210436d90bd1c94858651245544ee227de12ff8afddc20e65752d",
+      "name": "_private.EntrypointWriterPrefix.0.LeanCage.Host.Packet.read.match_5.eq_2",
+      "theorem": true,
+      "transitiveAxioms": [],
+      "typeSha256": "2125db4218e018ff43c6595a55afac2859cc8b00b5f12ae9cbd9b72ea9eefd68"
+    },
+    {
+      "kernelBodySha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "kernelTypeSha256": "65951b9877fb51225b5f086e8e2368a41725b726fc4cef2e489c830ebe817521",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.AcknowledgedPrefix",
+      "theorem": false,
+      "transitiveAxioms": [],
+      "typeSha256": "9e7ac06893b6a62a312541bcac984d119f3133365451a7cf293b7bb4d96f88a6"
+    },
+    {
+      "kernelBodySha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "kernelTypeSha256": "5d7eeeb825dffd2091bd4e0824fca4e02c923f38bd5096218ad15e28401405fe",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.AcknowledgedPrefix.nil",
+      "theorem": false,
+      "transitiveAxioms": [],
+      "typeSha256": "132d900f6c811837bb01b49960431b0e0605f9cb66fa128eba673dc76e75a463"
+    },
+    {
+      "kernelBodySha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "kernelTypeSha256": "7b07fff545107d966261b39755790aa48c392d776f1eee0801d5bdb2068e25f2",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.AcknowledgedPrefix.more",
+      "theorem": false,
+      "transitiveAxioms": [],
+      "typeSha256": "a3d17a0ee4b4378eea724bda14c4998c069ea423802681fac895584ede92acd5"
+    },
+    {
+      "kernelBodySha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "kernelTypeSha256": "9098e8a0bd24b9aa3ecc70f9b61acc5f6404c85d8ccaf10e4727d7e0f0abc036",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.AcknowledgedPrefix.below",
+      "theorem": false,
+      "transitiveAxioms": [],
+      "typeSha256": "549abce140259fdcd296e2e56e4687ba1e4f6303bbe1c7a3204449bcf1d36a38"
+    },
+    {
+      "kernelBodySha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "kernelTypeSha256": "69aa99c07c54ffe698cca792fc18799d6a8759bec2fbf61396ddac8ce63c07ed",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.AcknowledgedPrefix.below.nil",
+      "theorem": false,
+      "transitiveAxioms": [],
+      "typeSha256": "20c7922e9545d6e18398073120d537cad918bbb05082e48e94a9a361b5f38d07"
+    },
+    {
+      "kernelBodySha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "kernelTypeSha256": "516ed16b7825f2840e43df4ff7b77429e538f018fa9340f8d5558486c1207ef8",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.AcknowledgedPrefix.below.more",
+      "theorem": false,
+      "transitiveAxioms": [],
+      "typeSha256": "ff84bb3bfb54d88d2bea02eb724e708169fb9d5b67aca42f3c3ddd863de9c53b"
+    },
+    {
+      "kernelBodySha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "kernelTypeSha256": "660cd3ca97080b3a4004dc06256d491dd7a41bf58a213b9fffb4454db89300de",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.Cut",
+      "theorem": false,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "94670ad346fd3a4153146f36fdb9135694ae060a26513eb96ce7a2850443143d"
+    },
+    {
+      "kernelBodySha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "kernelTypeSha256": "757f2f1b1b1ce743ede21fac2cfa6dd2ab1462a59ea42629f825ccdbdbb8f2c9",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.Cut.application",
+      "theorem": false,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "6c0479b30553fdcdfb11d868b93f4af5ae4091af0d5ec681e5db8792b890b232"
+    },
+    {
+      "kernelBodySha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "kernelTypeSha256": "37118bb6e990155f463f4ac5b2e9790a71e756b276c0db04eef4323dd359ecc0",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.Cut.response",
+      "theorem": false,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "b21f82724238601dc2b144410062ed64471654be1bd85e7485bbdd9c08add9e0"
+    },
+    {
+      "kernelBodySha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "kernelTypeSha256": "d4663b041eb5cd87cf4f36fb936fed5473720b8b5c64180b9b4cf1f6cc7ce7e7",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.PrimitiveCut",
+      "theorem": false,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "3a942318959fb2dfc5aa5fb783d38aec02bbd71bbe3401cbcfdea0bfba96ad5c"
+    },
+    {
+      "kernelBodySha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "kernelTypeSha256": "cde28208accb60595eae5f4781963fe9129b5e097650fc0dd7267c66463afa47",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.PrimitiveCut.mk",
+      "theorem": false,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "54234dc8b88a2620673ddd1421768d18679838f3b62303237384b34723d2723d"
+    },
+    {
+      "kernelBodySha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "kernelTypeSha256": "660cd3ca97080b3a4004dc06256d491dd7a41bf58a213b9fffb4454db89300de",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.ResponseFrontier",
+      "theorem": false,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "94670ad346fd3a4153146f36fdb9135694ae060a26513eb96ce7a2850443143d"
+    },
+    {
+      "kernelBodySha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "kernelTypeSha256": "defbcee49ea30335f1716792862601ff3d45cf7c71820b22caaca973ef1f80f9",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.ResponseFrontier.mk",
+      "theorem": false,
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "typeSha256": "dc2168b7f5799828714bf9696b4b5715fb9351c0b8c58dbe677798ad129d1e83"
+    },
+    {
+      "kernelBodySha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "kernelTypeSha256": "086444d09ceb8324fc71b12bd267d1833e1fe24e08cb0c2edad03fd38ddfbc7d",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.WriteFrontier",
+      "theorem": false,
+      "transitiveAxioms": [],
+      "typeSha256": "6dff2ce18cc38793d5d885d807c12753fc24dcf5e63ec2974f0ae705d8c5a8c7"
+    },
+    {
+      "kernelBodySha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "kernelTypeSha256": "2fda0962b5b94963211727d3618c8962ef672509c2fa75244e5362699bff2476",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.WriteFrontier.mk",
+      "theorem": false,
+      "transitiveAxioms": [],
+      "typeSha256": "1b9ef86cb7746abf3bae01bf8466184983166256d46a5292bb94c71e0b3f2366"
+    },
+    {
+      "kernelBodySha256": "035fbc5aa508e616a7704ad3fec2d6f666a11fb42f82a762ededdf07549565c9",
+      "kernelTypeSha256": "016f48833829cc1c81e034452d6467b175ffab00bc3fb299a0c9ded7c7ca0527",
+      "name": "LeanCage.Host.EntrypointWriterPrefix.acknowledgedBytes",
+      "theorem": false,
+      "transitiveAxioms": [],
+      "typeSha256": "ab0557a8410cc9927e0e491ea28a7a5cc7c4abe396c0cb07d6e6774740fb62c8"
+    }
+  ],
+  "delivery": "M5.2",
+  "review": [
+    "The total source Cut retains actual Commands.run prefix for application writes and actual Responded status/value/GatewayWire.encodeResponse for final response writes; integer descriptor1 alone never selects the final branch.",
+    "write_loop_frontier derives all prior acknowledged counts from the actual bounded source loop; concatenating actual acknowledged payload prefixes equals the encoded response prefix. The selected next write remains lost or returned with no future successful write or engine return premise.",
+    "primitive_write_cut consumes the SAME PrimitiveAdapterAt, proves primary request equality, no guard calls for writes, and exact raw-before position. The logical final event is pending/lost; the selected actual ACK/committed bytes remain separately on the adapter/physical row.",
+    "Existing Entrypoint.Response/run_source successful-return interfaces and all frozen evidence remain unchanged. Complete private-stream provenance still needs actual IPC object/OFD custody and exclusion of application temporary-file writes on that live endpoint."
+  ],
+  "schema": 1,
+  "sourceInputsSha256": {
+    "docs/functional-spec/FS-host-boundary.md": "ec0b71d6a7cbd344a80542c51ee201abfc0a2d893e832b0f3a8d9c42a769b602",
+    "docs/requirements/REQ-proof-integrity.md": "04d01ac0d8ecd9a06759c0faf0c7a9b28f359230a0d8980500ccc55fc6de0e00",
+    "host/LeanCageHost/Application.lean": "08fd19e7d08cf0486b593bc9fd525ff301057e56f69ae7eecf1db63289fe1648",
+    "host/LeanCageHost/Artifacts.lean": "320db9c3f91c11f3c30976a761880625bad11f36f72460c6983ac4b8a9706c38",
+    "host/LeanCageHost/Artifacts/Manifest.lean": "9d65efb99c13fef087bcab1dd3931eb9994ac1f6bb3dc0b28f8372f65c66aaf3",
+    "host/LeanCageHost/Artifacts/Report.lean": "0a6de3a6fc57c625461f35bf5125302432bae0b1d856d2a4acecd4f4321882c9",
+    "host/LeanCageHost/Artifacts/Types.lean": "d8b3ad01825c2a67f908c18bd5a5ad55207be3d38fc78e06095e34532699e8fa",
+    "host/LeanCageHost/Artifacts/Validation.lean": "0840119ff50946f973622a7ab7522db301bcd6dcfb2596be2d5134be3fe44806",
+    "host/LeanCageHost/Bytes.lean": "d4c674e06964e4be3c84306a3589af63f321cf1e5d1d3576365c583a0fbbe3c3",
+    "host/LeanCageHost/Cli.lean": "d1c0d3168f858033ba842d5039e305848f63f4c4b56b6003c1e7693e42c250a9",
+    "host/LeanCageHost/Commands.lean": "173fa38cd59dff6ab401b93e6a1f92cc7e835c8a28bc773f1ece2df7856ea405",
+    "host/LeanCageHost/Directories.lean": "b1d638e6db520ca7a446762b98f7be38051a53ab93dfead2b4bb3038d3bd714f",
+    "host/LeanCageHost/Effects.lean": "3503be10e57e5ebf52916ab42bc65f146ffbc95e1d93a9e8feae70a1a82cffc2",
+    "host/LeanCageHost/Entrypoint.lean": "c48fc8730cddbfc12ac1d2aac8731a65cc5f2f12b9f905b9fc2e23351a80b471",
+    "host/LeanCageHost/Files.lean": "ccd2fe72f1aac55f4cfa2de154549a696314b5961451fe71bbb5d00801a998ad",
+    "host/LeanCageHost/GatewayWire.lean": "9b957c051aaea312219c053d95fb8767cb10bca9ed46e91efc2b574f8522d1fd",
+    "host/LeanCageHost/Image.lean": "de5551774b3de38d397f49d75aa05a6d88375c54134d01974f1959eeb6fcb168",
+    "host/LeanCageHost/Json.lean": "5afb7f331db27d25f2703953b522269dd3b0d3af325ca2eb0fb8fbc42820ae0b",
+    "host/LeanCageHost/Json/Grammar.lean": "8b0f67ed31eb6efae5caf0343b0e4610b5ae7231a025bd4b2bc9192e707a3765",
+    "host/LeanCageHost/Json/Number.lean": "5d43486a22ee8779875f7ae0a83922cdd2936977032a1e53d1081fe91f582258",
+    "host/LeanCageHost/Json/Parser.lean": "52cde4660f68cf1125e511d75db41e2cb04d9e2bd7542bbe639fd3530d5ff3d0",
+    "host/LeanCageHost/Json/Render.lean": "116f85597a1f08701dd938836b849742cc4d1408d140c152f125b14d60081c3a",
+    "host/LeanCageHost/Json/Types.lean": "7d49bf38cda4af040d3a63715983ee92d9fcccc503e1963c93cd26eeec5cc5ba",
+    "host/LeanCageHost/Json/Unicode.lean": "1822076a4c897fc8e73769e1c074e6677edd9bd106c9c523877f1f01e15629fb",
+    "host/LeanCageHost/Outcome.lean": "68d5c6e5434bee36af4d2824f07508f4df15c038ac80667d260b3a96059e92be",
+    "host/LeanCageHost/Packet.lean": "64a75b255246749d096df4ed717933ec04d6b847d5e91bb901941782f0f5fabc",
+    "host/LeanCageHost/Policy.lean": "e48adfa39f939c6a2d6363192521227007bf26cf21a8a9476a258e09ae4da6b3",
+    "host/LeanCageHost/PrivateNames.lean": "276cfa58c73a3cdca25713466fb65e765cb5e2dde85076113bf23685e3b787c4",
+    "host/LeanCageHost/Program.lean": "e1e3a0336f118df866fee2a79994d7f468aedd748c050148d743e7d2461595a1",
+    "host/LeanCageHost/Publication.lean": "7cbd8de6c663b78bc180fe14a9fc1b964f73640f651a95b796bdd0f0994c8a88",
+    "host/LeanCageHost/Publication/Authentication.lean": "8ab172a52b03d5dc1d38395506639087dcb4bd279d0c804fe5b3abd5c4bdf33b",
+    "host/LeanCageHost/Publication/Files.lean": "4df844663e08aec0b18c16c2909458cddc3db8dd98becf8624ff44dfad69a727",
+    "host/LeanCageHost/Publication/Types.lean": "726899a6bedd578f83435d3678fbe5cf44ec0f025bfdf611b5722190cb155872",
+    "host/LeanCageHost/Retrieval.lean": "74d70ed2ae55744ba5eab2c7fcf19896c3d4479cd23c3aa13ab72650955df9e7",
+    "host/LeanCageHost/Retrieval/Files.lean": "9f606a7c468db8deed8e6c3f5aa03150c89b5462c52e8ee690e28a08428e0d19",
+    "host/LeanCageHost/Retrieval/Stored.lean": "da14dfe70eaf9f1f3a523cb752f79f8d06ee8f7f7b57f42f12b8cbd453debbac",
+    "host/LeanCageHost/Retrieval/Types.lean": "b84dbb0f7d26d8ca315c3ca00353b30e65682ad2ced234fa9f49abc2938f0fd2",
+    "host/LeanCageHost/RunDirectory.lean": "7d02b66aa4754c095ce7d94e54223923429035904b4e7baefdcc2e3f9b0b14fd",
+    "host/LeanCageHost/Runtime.lean": "9d0b0665dfb6dbff30d516a653d0047bbcceedae8f560fbf48c77c9d34d5d22a",
+    "host/LeanCageHost/Snapshot.lean": "e5a983df621eb8cf1c81438776b9ccd5007ce97533d395c23f64a5ea7b60701d",
+    "host/LeanCageHost/SourcePaths.lean": "bb6bfd2a8935a66cb94e8377f5ce274461c1554a8f3f9969067fe95895d19436",
+    "host/LeanCageHost/Startup.lean": "9d5823c5a4633bdb9496138da1083aa0b04550cd2e8896896dcd3a8a38144d7c",
+    "host/LeanCageHost/Transport.lean": "9ec1fd82c2b1cb0abb660ca71f08e7a367f59d971986841a244bd9f4f27ee9c6",
+    "host/LeanCageHost/Validation.lean": "033340662a44b52068c0c7e89ee16e903c672596b889d0c13146b2305edc990c",
+    "host/LeanCageHost/VirtualMachine.lean": "3e0e6e0d133fd13b82900eb5726ac8dc6ce1608642d6e37344d478a7dcec9ded",
+    "host/LeanCageHost/WireJson.lean": "f8387c9aeb2aaec3038eb81b47cd913ee25b928c5dad9c301f5af4aa99d09fe4",
+    "host/lake-manifest.json": "85f91fca646056b3fa7cc5933aeb3c103d103b8d5112fc96c3a914d641a443dd",
+    "host/lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "scripts/host_axiom_query.lean": "d24a47efea7925a09a01b807580626c043a2c57e1d86cacfe63ebb9dc78b07f7",
+    "verification/host/ApplicationProofs.lean": "0d31ba0095d034152fe42bc53df0c08a2b74a045a0694fb2b5a6680f1a45a1e1",
+    "verification/host/ArtifactsProofs.lean": "1f557145559fb7f7540c8fbb66aff1afc72e90f94e00495ec282715a06314998",
+    "verification/host/ArtifactsProofs/Blobs.lean": "f726ce91a2c4664599c0b4f3349eb4a2f421b9acccc892564a659f276d13dff2",
+    "verification/host/ArtifactsProofs/Bounds.lean": "a44924dc84d5b00e0bd4d96d7cc8f54388224ad6052b8862a28a756c5e3e4b13",
+    "verification/host/ArtifactsProofs/Canonical.lean": "404ef56fd88c480b8ffba72489b7fd58a6551c14a303d107e2343b4498745f11",
+    "verification/host/ArtifactsProofs/Composition.lean": "1a0561647887dd5d54b7466ee523cf286a71bb1638062fa432fad8ea6c54d0a0",
+    "verification/host/ArtifactsProofs/Effects.lean": "950f42a14e80fe50cc85b923be12d4aa87f876ed74ecb9e0e54aecd396247c28",
+    "verification/host/ArtifactsProofs/Files.lean": "19e28357f5e8bce0458c4a6a9c512ddd9e05741bc15cb09114df03d978c5c657",
+    "verification/host/ArtifactsProofs/Fixtures.lean": "4d3109ce06c295d3009ae6f2ed2d53423ef6322e10ed84d37f63a468e0e97ec4",
+    "verification/host/ArtifactsProofs/Manifest.lean": "c8ad05bbdbbebba42c494d72c96beceda61c240181e058a521a9358eeb321110",
+    "verification/host/ArtifactsProofs/Report.lean": "3cea8e8fcb167870530aa1df723eb0c7b8a185ef1e76172ca794f91cf2ddc5ed",
+    "verification/host/ArtifactsProofs/Witnesses.lean": "04706a6645dd8ba013b1fdc61358d02601b053ed89d78083f00e83cb380ac8d8",
+    "verification/host/BytesProofs.lean": "3d6e1aff51a91eba5d3f81e928e7f8e0b06a28326fb190bb1090e628c99e7cda",
+    "verification/host/CallerPrefixCuts.lean": "fbc85cdf21c24f462e27fe196e0a881172a81a538eb436d344c3cf33a9fad379",
+    "verification/host/CallerProofs.lean": "3f433a9173367c95716f06cf59193e18f3d4402f9cdc8e57b7ed9e7fc8ea877e",
+    "verification/host/CommandProofs.lean": "0ff0521c2317eda657be601d7f3e8060142ae7a66bc46f9b01ca9075358750a9",
+    "verification/host/EngineIdentityProofs.lean": "ba5c235c04ed3b3dd6ef71324906fd9b7fbb2ea67fab0b5171804d667685072d",
+    "verification/host/EntrypointPrefixCuts.lean": "24bf45ea268926c6a0b460af5ee04c7f080677988bcc5ae7cfd6f8c4403ea78f",
+    "verification/host/EntrypointProofs.lean": "c275be0d69ad49a255de5a281ffd5124ae229024d3d1d9d9530fb18a4b40ca60",
+    "verification/host/EntrypointWriterPrefix.lean": "918b3bf526d53545cc586d100e7f2f246201b431dc5464c15f06891663e245e5",
+    "verification/host/ExecutionProofs.lean": "6f18d73b7008886989c9e372b6dd94f568ffd9ea4ccea8af5159783b7c7a839b",
+    "verification/host/FilesystemAccessJournal.lean": "741e79284145b1a1dc78fffef11a1dbee372fc0ece8e29fa2dcf1a5112e49c87",
+    "verification/host/FilesystemAccessProofs.lean": "4d5d27e9970ed124aec8240277a4466d2620a611ff54ee298bdf104bee2cc096",
+    "verification/host/FilesystemAccessProofs/Closing.lean": "0555d6c66720d3d5c09bc1cc3330cd9b789ed8883faace1ce0124efd63096309",
+    "verification/host/FilesystemAccessProofs/Phases.lean": "457bdb3cd090bc4bc687b1f54d2d69d3d8de832439d94913b413f100e0262569",
+    "verification/host/FilesystemAccessProofs/Profiles.lean": "3f5047a070c21ca2786abde9a88e72e2e6adacd093adeb69e647ca2b7e67d356",
+    "verification/host/FilesystemActors.lean": "a0216a3654a2e49784635506d4f55659c22d14aef8e854eb1c50b2c6d9f7b573",
+    "verification/host/FilesystemApplicationLowering.lean": "efbc4a594c0293d2fad1263c600b034feebcfd605b4d6882c4c1a358aa921264",
+    "verification/host/FilesystemBirths.lean": "b591232e5d81305838021090bca5320aaab9098e2e5247793ad6783ac9f71e85",
+    "verification/host/FilesystemBorrowing.lean": "d1c780e21c6aff678df7fbce5504b9256d384479a3280b44377136f8690dff27",
+    "verification/host/FilesystemCapabilities.lean": "2ead400b048694c899f65bda81923b5d593d28dd37b5bccd9fd8249848af20c7",
+    "verification/host/FilesystemChanges.lean": "cfe9d66f8338b4fdf45e6f9a56587edef6335968dd622a5197cebc422a99ffdc",
+    "verification/host/FilesystemContracts.lean": "068bc99e24bdb4e55021298343bf1dd349c88a62c3f6b9546b36e78e2fc890ae",
+    "verification/host/FilesystemCreationSources.lean": "8c19b72d1c95903a6888a70dd59c19dc9e476319e6bbe6d61f9c6151a11e5718",
+    "verification/host/FilesystemCwdFrames.lean": "6d7beb6b5f9ffe0f22e1d571074e98bb1395946b5ca63acb0d768989ef072512",
+    "verification/host/FilesystemDescriptors.lean": "0e7ee52e332596409cf573cb0201d9894f894600f01a39e516e6287f350e79b6",
+    "verification/host/FilesystemDirectoryHandles.lean": "ea109dbe0f27740292e9d4cbcd25cc9b2216076978d9934872898d952451a658",
+    "verification/host/FilesystemDirectoryObservations.lean": "c97ddd8c25d2e1181c988cc1c0e34757f978d2a93233245af8206035aed953fd",
+    "verification/host/FilesystemDirectorySources.lean": "7a9686e3e61a2cac998eb4de58794eb777b058f30375fe0c173dd97f43f2e1f0",
+    "verification/host/FilesystemExecFlags.lean": "9b12877ef61165aff119152ed72d64c1e90cdb619320ba11d6abcd7d355f6969",
+    "verification/host/FilesystemFamilies.lean": "241c27f9931c6740c69de773774c23d6b3dbf9e93bec3a0b2726b53fcdbc5056",
+    "verification/host/FilesystemForeign.lean": "56809aa6d966b2232975519500375afbd0c52b025c865cbe4c4942ca91cbb1d8",
+    "verification/host/FilesystemHandoff.lean": "bb7243b524ed4475979be407eb39402d351f4f547034f25f7854662fc8ec4ef2",
+    "verification/host/FilesystemInitial.lean": "395db4f97764375a44e2d2e32451d8d4a23aa4dd5e2bb26a820a4971f068d5a8",
+    "verification/host/FilesystemLookupSemantics.lean": "f10ae4fcf86efdd6179693630e7f7868c438e40693f35caba2dd200a10fadf34",
+    "verification/host/FilesystemLookups.lean": "39fdf5a0d0563e4cdcf7a9f1e5677fd3f90964f61c346d2dbab9c811fe4119cf",
+    "verification/host/FilesystemMarkerSources.lean": "53ae522dbe4edde7b805b178b9f196f0e7154a6a5f8e516fbed6060c137da71e",
+    "verification/host/FilesystemMarkers.lean": "22bb55e41b5a0874b4f3f0b9caf6263bb0de1551009609096410359e7020728f",
+    "verification/host/FilesystemMetadata.lean": "7ef8fab298a87aa11a339a09586700cbd20d82f4070873ae51273c801b4c6182",
+    "verification/host/FilesystemNamespaces.lean": "0ee6ab38db2fc8d315812a165488fc91014875e27dc19090a0be5e5fdf8043b9",
+    "verification/host/FilesystemOwnership.lean": "1048fa264b62dd98c52c26a6aaf4450ae2cbbbc4af925dd58cd9bf2b26268787",
+    "verification/host/FilesystemParentHandles.lean": "3c4d1b842385f36cc0a5fd4eb6e6cfe450ad7cf12208f872ceb2909622e092ab",
+    "verification/host/FilesystemPermissions.lean": "df968c5d3ac33e85d6e7c6cf02468d712aae9ff34948094edc69c6696e9764ef",
+    "verification/host/FilesystemPrefixes.lean": "2909787f293fc27597ef0c8206ff0d7f2af33d4728e3e92453f110c0e5ee9357",
+    "verification/host/FilesystemPrimitiveChunks.lean": "d27eca69e8b2640ab67d00cbd438172c89feb08f5d6e717b61107b239e3ca518",
+    "verification/host/FilesystemPrimitiveObservations.lean": "2062f444c63f166e7fdb6b22b9aea1b741f7f7fee27471768051b13397f487c1",
+    "verification/host/FilesystemPrimitiveRecording.lean": "586e9997fa161e0b1aba974b9c8f8b8b2c2f0a5fa9f6e696ea659aafaf16aef4",
+    "verification/host/FilesystemPrimitiveSources.lean": "20fdb2ab54625b1c2bb8c2aa15090ceb790586a7ba3acd1e0492b6bfdffe786a",
+    "verification/host/FilesystemProjection.lean": "ce503eb4258890afe18802d27498e95e8afa2c3c646f463ca706324e0d054e0f",
+    "verification/host/FilesystemPublicationBorrowing.lean": "b52ad0bbaba802e234928823963660d5e875236c938feba88f66b5606cf3c090",
+    "verification/host/FilesystemPublicationSource.lean": "32e0d588d1af418d0cc082eec7e30e5b840b1a3187f1269d80bf362728f052ed",
+    "verification/host/FilesystemReadSources.lean": "a5bebc2f45b70429480faddb25fd11e9218146fc4a6481bd0f9997c7fc29bb06",
+    "verification/host/FilesystemReadSources/Effects.lean": "7e52435270dc9b8410d8f5e9cd06be5a4d981439e80883597d6c7255bdc84b01",
+    "verification/host/FilesystemReadSources/Handles.lean": "8c1f8c273723d0af56d2aca76cb4c9cf9aad90a8b9e4e4f8a4718d6f99840e64",
+    "verification/host/FilesystemReadSources/Recording.lean": "215ee96cc3cb29ded4ebad4cf619564c11ae9aa380f16c21758b98698ff68230",
+    "verification/host/FilesystemReadSources/Source.lean": "cff59f5d4487cd770c5a1be8da5f2802648f8ff522eaf2ae0aed8e96c3bbce1d",
+    "verification/host/FilesystemReads.lean": "3ae62ad81d540aecb94a3ca6677ccc830b08d793e4e05b5316484171c522dc84",
+    "verification/host/FilesystemRecording.lean": "9d7fa6a69618c2b9fa554dd02570db206a1ea3524cd47b427ca8576ba9fac188",
+    "verification/host/FilesystemReferenceLifetime.lean": "f618f287e43be8724cef48d3ff19076954f038c682cdbe4d126f3f357ee5d8b7",
+    "verification/host/FilesystemReferences.lean": "3962670732371a0ea9b12251e12da95947f529f85d01039f9b1efa66770a4590",
+    "verification/host/FilesystemRetirement.lean": "c7ee0a51b9a955ea2487391c21b8b9ca796585712281fa57a023bf0599448026",
+    "verification/host/FilesystemRuntime.lean": "033250ac954f87b2238069514c312527c5eebc256ff81a50f3409af9eaef3627",
+    "verification/host/FilesystemSourceFrames.lean": "010978b3df66fd70f031ba94a89642b97f9156e58862322c04a47957972293f9",
+    "verification/host/FilesystemSourceKinds.lean": "7423ef8f49ac488be0745a85bd3c9fd437843ebd420c0cb57743e02ce0ee388b",
+    "verification/host/FilesystemSourceOrigins.lean": "62d015824b157dac7f5f705ed263d98ab94ae30531ea9686ad30a948b1be5b72",
+    "verification/host/FilesystemSpawnSources.lean": "edd9255f28fa04d867a27f9191701a6a2785333f7742694a86cb6442f013d4ab",
+    "verification/host/FilesystemWrites.lean": "6716297d122d6cc3d55d256b5ccdc82668175998a491dd334a5ec7be0b9468dd",
+    "verification/host/ImageProofs/Prefix.lean": "197c39f935fb0aa4c93d5e94a0f673990b780a3a92e6c734cad3350b3fbe2718",
+    "verification/host/ImageProofs/Source.lean": "feaeabbc540cc14c4b458d422b4270ae7319f271f0f0a3efce80abeb39b835be",
+    "verification/host/ImageProofs/Writes.lean": "6f2314eeebf6bb29494f8d89e1348b5bf4b11a8148c6385c501c770c4a293c49",
+    "verification/host/JsonProofs.lean": "7ea19094430dd9bdfd11cecd3054d16cdbeb07f8a38e979973cbb5d2107776f1",
+    "verification/host/PacketProofs.lean": "c08e8099f3a96d5a15f287706e4d23bd1da01dac4584b38ea1174130fe9e8b31",
+    "verification/host/PolicyProofs.lean": "1d2ef99ba5240d903b4d9080e4d308c81949c9077e97922eb6b41785b8551750",
+    "verification/host/PrefixOrigins.lean": "7f7aba41dbb844fa87d411ad9855ee93217521660b2c24226ce7236b5a836f9c",
+    "verification/host/PreparationPrefixCuts.lean": "ce6e798a90ec0b484dcc297827a0e5d5a426db18ed242dfa5ccc4b779b953230",
+    "verification/host/ProgramProofs.lean": "177bd8bc34fdc73242bb5fd9e66769bb1bbab3901500423f1514aad771212bae",
+    "verification/host/PublicationConnection.lean": "2b0644e1fb67eae4998fd641c73e8be5594b48bdaa153626b0504fd241cc3ae2",
+    "verification/host/PublicationCustodyProofs.lean": "5ea77b9da9cabf5fd988b259316a66dac82c82296c881e4a1f072d5619c0ceff",
+    "verification/host/PublicationMarkerProofs.lean": "3accda0ce2ad2e0b9d0267bb87a441d2dc8534f2da60516c03aab2d371bb2470",
+    "verification/host/PublicationMarkerProofs/Effects.lean": "c16f27a0068265d4ad75a6de6536e790db10b0af436302f69f4c8907e4b7ed44",
+    "verification/host/PublicationMarkerProofs/Source.lean": "8851f19ebff7955abeea268f685875c541183b4e5c5ba689528c800f1bdf387a",
+    "verification/host/PublicationProofs.lean": "e5ba748aee13579388aefece421fb85d3039df15bf3e7d82735ea6b1c89ad14d",
+    "verification/host/PublicationProofs/Commit.lean": "874872fc5a8ba097fa5850775dc0b49dece8f02b391b6d8314878ee4a520c376",
+    "verification/host/PublicationProofs/Content.lean": "2b0c2c0dfac4f8cc8ee3859774a3ad6e789623ca62d541785d3b83da3852b868",
+    "verification/host/PublicationProofs/Creation.lean": "ce64a295b280d65b9581fd26677d4390ba5630be749e7a3b3d40f2d503ae84cb",
+    "verification/host/PublicationProofs/Cuts.lean": "246dca1291e690b0580ac88edb1f560bf60997181f8c287a6de3dc08fe44cdb1",
+    "verification/host/PublicationProofs/Directories.lean": "23b84edec7ab8ed5d81661bbc9f73e9ec4a56a4435f04a4418cb7995a0dc2114",
+    "verification/host/PublicationProofs/Effects.lean": "99341eaebe85dbe49d6b7edf9641d5c3098f0cde718d56eb8b2532763b3e7e5e",
+    "verification/host/PublicationProofs/Exports.lean": "45d7e99df20f65567d81fa866978d515197cb0dc529ad1bae90d527f7cf48152",
+    "verification/host/PublicationProofs/Files.lean": "83b341af0fa80d0b81fe2e91ec36c29c97868c7de3662abe9fac499624cccd40",
+    "verification/host/PublicationProofs/Loops.lean": "aa28fefe9d8cbc9c680b7d96cc666296cfd61f975b599ce2650e36ed13812477",
+    "verification/host/PublicationProofs/Prefix.lean": "405907850fd5322cd160be5cbe98eb7428a24aed88d30e703123b0af58e10eba",
+    "verification/host/PublicationProofs/Prepare.lean": "55558a9f4339f08ce7d4f62bf56339a81ed73dce05a305569a063606cf67795d",
+    "verification/host/PublicationProofs/Relative.lean": "971675703230279ebd383e87798f3844b69105273442c6bd6324d662103e4fd7",
+    "verification/host/PublicationProofs/Reporting.lean": "ab39dbff06f9e3f5a3e6069082ab837d9041678be4b248e3fc7925e7920f1cda",
+    "verification/host/PublicationProofs/Source.lean": "528b06ce96cf700e109723e8a29c5c9182854e867b374a9537ae1da61a4e13e2",
+    "verification/host/PublicationProofs/Useful.lean": "6ca8a265e64c5cb3f0ed8ceb1ebe89b691ce60570269b0fb257f23957b3813ed",
+    "verification/host/PublicationProofs/Writes.lean": "54fd9a68fddc71179438a6e9a7ed62c208c0ba4519c43622aef62fbf6701e3f6",
+    "verification/host/ReceiveProofs.lean": "5be72f02a0f55fee750f6ebc119fe33d798b361fe1424e67c4c501fc1beee22b",
+    "verification/host/RequestGuarantee.lean": "7f1053a2e5696a9b95f8af2c111750fbe81206c901fa15f2970d7b7fb6c7473b",
+    "verification/host/RetrievalProofs.lean": "5581a84528bb885790ec6be3ab2b5ecd66ac30102ae55b1902459affbcf0208a",
+    "verification/host/RetrievalProofs/Authentication.lean": "bf37f6b245d7f35a1e452e4cad0b784825d8715c6520e8b162650e7651323800",
+    "verification/host/RetrievalProofs/Collection.lean": "45242e98ad19dd109693be8af78344f19a7321dbb08e94a01550506268f29676",
+    "verification/host/RetrievalProofs/Directories.lean": "bcf0f67c12b3d57ea04b52fba82f447c10c243c01f6f29a71ad8046f2eebd44f",
+    "verification/host/RetrievalProofs/Effects.lean": "56840d9576f25c03d1a2248b9caa8c2c04e634ef71cde19fc952864e99017d5d",
+    "verification/host/RetrievalProofs/Envelope.lean": "f31f14e03f56731f2de4440846b55f6e121cb9ce8c75225ca0e9c545ba72666a",
+    "verification/host/RetrievalProofs/Files.lean": "5fcc5985378c43494c75d353e7a22a5836cc337ca2bb7b9a439d33c56a9de71f",
+    "verification/host/RetrievalProofs/Justification.lean": "b28104407828445fc03325c32e2ad38e15c01171ba12f8ee8694f46ee8799732",
+    "verification/host/RetrievalProofs/Parents.lean": "271894bcae7d7e54be95c0a9925a8dfa44ef36bd15c031f3957282dcbc6870d0",
+    "verification/host/RetrievalProofs/Policy.lean": "5189ef00da8d1a19d3af2a1407fa02c69e2400961b2a0fc8ec7f03aa3e4a36c4",
+    "verification/host/RetrievalProofs/Public.lean": "8fae75703150bfe55f3e24779f752212a8e2fb88b52ed0976b5c09edf3ddb9f0",
+    "verification/host/RetrievalProofs/ReadOnly.lean": "2587f8277d1d6a70e34215d12189d02aed242ec52ed75deea7c7f376d7b4cab4",
+    "verification/host/RetrievalProofs/Source.lean": "9bc8a5841cd9e27dd9e1465561f04c95615eb4aad0428ac5833b725ec55c6bad",
+    "verification/host/RetrievalProofs/Stored.lean": "176ed91b3beb9e5784a9a26836001dc5a76c5cebc50c6602bea32e9fc78e37b4",
+    "verification/host/RetrievalProofs/Traversal.lean": "c16569cebf018a5945d13af9a11ea54ce1cce6495ee1971ab225af692a32ea87",
+    "verification/host/RetrievalProofs/Validation.lean": "24fe98e020fe417822562dd8b13d12dcd13defcc6fec49a254f616a1e7ba44f9",
+    "verification/host/RunDirectoryProofs.lean": "f52e4d4794d6a0793dee4d50c23706e43653dee9f4325a04b6f4db670a9c0e94",
+    "verification/host/RunDirectoryProofs/Cleanup.lean": "65b5896b2c2b482e4467bca5a5208b040a8ce0be982f398e210b2708b8081f40",
+    "verification/host/RunDirectoryProofs/Requests.lean": "39ebb398f0b5337aca15aa7bb3896a445071689989bf7f1b53a3230ab598e035",
+    "verification/host/RunDirectoryProofs/Source.lean": "817645489756408dd5e3d8d21e2c5982f746952e36e444b14b8a29e3e2484489",
+    "verification/host/RunPrefixCuts.lean": "3d4f7ecf3e415501102cf78057b438dd510978593894bf8f449bcc06b74c99e4",
+    "verification/host/RuntimeEffects.lean": "a62f14f15268be11f33750ff911bdd7b4f21dd2c3fe1bd954c48a1e9c9d7622c",
+    "verification/host/SnapshotProofs.lean": "226fcdcaf94ceec7354a921e342d5b5d4985bfd337438e427814f541d47ce316",
+    "verification/host/SnapshotProofs/Acquisition.lean": "ec0ae12f7eefe3003b7e9107305dc1486345696642f48821ddef5c078da59cf6",
+    "verification/host/SnapshotProofs/Blobs.lean": "3cab014dfa2eb83a93ea2f29ddbdcdc587fe29ae1230cfdeba9c66c718c75863",
+    "verification/host/SnapshotProofs/Budget.lean": "11f5b64d201952bd053f39193d51377cf28fdfbfd23549649a319bf8db248088",
+    "verification/host/SnapshotProofs/Catalog.lean": "df58abfd0c317653e4948fd559c3c41b99e196a9839c991427f6e3e553ca1b0e",
+    "verification/host/SnapshotProofs/Copy.lean": "62d53c7b2d21e4fcdc57c643fefff6b4b38befad8ae6aaa3ae84339b3028a9ac",
+    "verification/host/SnapshotProofs/Effects.lean": "ec696edaa5633e497860a41ceea4613967fb2537d545752b96eee9a873793d89",
+    "verification/host/SnapshotProofs/Enumeration.lean": "ae0faba747c4fd091987840a9a645547c83a19560158afa98d2e90f00cdf6911",
+    "verification/host/SnapshotProofs/Format.lean": "4e1371e771feafa517a9987607a34ff202e78d3dd18be6887724fcd83b2398c4",
+    "verification/host/SnapshotProofs/Freeze.lean": "207ebee34508f7a7704450c7eb8d0694beecb4c290251666d8fc304f1e785749",
+    "verification/host/SnapshotProofs/Inputs.lean": "66c1c625fc8786e6ff329be4b771f2695305eaf0a4a668311ee63f46f8f5fbe2",
+    "verification/host/SnapshotProofs/Origins.lean": "3ae91f80e95b41f433c1c02001cefcd3c876897400f560609de81a933004387a",
+    "verification/host/SnapshotProofs/Preservation.lean": "d9b3cfa481264eeb0f7773507ff80817786c25af9bc6ceedf22a27ea2629dc42",
+    "verification/host/SnapshotProofs/Private.lean": "00ff41d7eb930a2377d332630e2b7cf976112f01555b991f5d7952816c8c5f05",
+    "verification/host/SnapshotProofs/SourcePaths.lean": "1fd469475d76ecd2093d0e9dbc602ac0b89e5bc9f0d8535d42221a4ea0873b2e",
+    "verification/host/SnapshotProofs/State.lean": "3717881e5a27fbc7203ee5ad882431ea625b8e2e682019025c86710298bed603",
+    "verification/host/SnapshotProofs/Useful.lean": "84e0b1a9412f90673182bd51905610a910c863a8e8b855b4f3b42df94e234fa4",
+    "verification/host/TransportProofs.lean": "3b8c2ef417ca3452f5ace2f4b90b317e091ea5829b479ad4c59379dce70cd1d0",
+    "verification/host/TransportProofs/Bounds.lean": "e8424faaae2367b94c8d4006db070992c9c1e6bd972668dca81255501f02906b",
+    "verification/host/TransportProofs/Framing.lean": "9db371d3c1c777a9f0b5a67221d1dd0c1879cd2474bb8bd4b33ad2e1df8322a0",
+    "verification/host/TransportProofs/Results.lean": "a9b01dc05ab6936b97ffdcf2830113a8563b9c935d2f92f17e359a4f79acfcf9",
+    "verification/host/TransportProofs/Witnesses.lean": "b5b61ad5ab201823314118003246a70ede7cf07facf19d872b520c675ea1eb6d",
+    "verification/host/ValidatorPrefixCuts.lean": "d8bfe36347bf29affdbfb78363cd0c1107aefa84966e4931951c36da0b837ec6",
+    "verification/host/VirtualMachineProofs/Consume.lean": "69f64faca7710500c0ab91f9b35cdced6e14b657130e04e7a7eefa4fdffca99b",
+    "verification/host/VirtualMachineProofs/Loop.lean": "dc4551d47a20c97e2082a23f7246a4d862a657c11358798ee583b9846d9cd1f6",
+    "verification/host/VirtualMachineProofs/Prefix.lean": "768232fc6609a9744f79d2fc8c000e86acaa0e914fabbf72c2efa1469fc49c4d",
+    "verification/host/VirtualMachineProofs/Progress.lean": "0f9627154dd66e82755b59bf949311024d5d3a186fd2a6a0e15e18bd9aff26aa",
+    "verification/host/VirtualMachineProofs/Ready.lean": "7d3b6ead6bca59a6f02d987f8bc87d590dbde71c14ffc5957c2db6cb388f38dd",
+    "verification/host/VirtualMachineProofs/Run.lean": "15dd427f9abf6211eed34771e19517d9678a99ad005f6b543c18eaa33c18beb9",
+    "verification/host/VirtualMachineProofs/Runtime.lean": "8bb21fe99f52ce3ccfb185732a253272e96ced317bc7497fbb4af5e20bc74918"
+  },
+  "specs": [
+    "FS-host-boundary.caller",
+    "AR-host-boundary.primitives",
+    "REQ-proof-integrity.statement"
+  ],
+  "status": "Reviewed total selected-write source cut, exact acknowledged-prefix payload and same raw adapter; private-stream/global custody integration remains active.",
+  "updatedAt": "2026-11-10T07:00:43.613464+00:00",
+  "validation": {
+    "declaration_audit": {
+      "command": "lake env lean ../.tools/host/EntrypointWriterPrefixAudit.lean",
+      "exitCode": 0,
+      "records": 71
+    },
+    "runtime": "No runtime/C/ABI or strict-data changes; existing matched runtime evidence keeps its original scope.",
+    "source": {
+      "command": "lake env lean -R ../verification/host -DautoImplicit=false -DwarningAsError=true -o .lake/build/lib/lean/EntrypointWriterPrefix.olean ../verification/host/EntrypointWriterPrefix.lean",
+      "exitCode": 0
+    },
+    "transitive_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "unreviewed_axioms": []
+  }
+}

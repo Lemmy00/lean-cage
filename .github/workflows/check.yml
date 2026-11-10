@@ -27,3 +27,5 @@ jobs:
           use-github-cache: "false"
       - name: Check foundation and reusable product core
         run: ./scripts/check_product.sh
+      - name: Check partial host checkpoint bindings
+        run: python3 verification/host/checkpoint.py

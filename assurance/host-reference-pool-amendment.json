@@ -1,0 +1,48 @@
+{
+  "newTypeCreditDomain": {
+    "addObjectRef": "Pending separate root-owned nonstealing conservation interface over the current source-owned pool and actual protected class-global cell. No global module/presentation frame is granted.",
+    "fromSpec": "Only the actual maintained Outcome spec symbol and exact source-bound slots at the SAME individual FromSpec operation. Raw specification memory is checked independently.",
+    "genericAlloc": "Only the same actual immutable Outcome description and already-justified default allocator. Arbitrary supplied type callbacks are outside this supplemental count law.",
+    "genericNew": "No unused generic-new count law is included."
+  },
+  "priorAmendment": {
+    "path": "assurance/host-reference-ownership-amendment.json",
+    "sha256": "73e25f7d4de6394795fc0c475d2881e8f5753480bf16695f1dd88bb504236375"
+  },
+  "referencePool": {
+    "callbackScope": "Public module attributes, Workspace configuration, public Outcome/presentation fields and other invocations may change under callbacks. No equality for all global refcounts or the full interpreter heap is inferred.",
+    "coverage": "Every physical prefix lifts to the ghost execution, including invalid/unclassified ownership, waiting, ambient changes, loss and committed loss. Safety consumers must prove their source path remains valid; lifting does not supply that conclusion.",
+    "decrefSelection": "One actual source operand place selects one ticket. A physical pointer alias does not select all matching tickets.",
+    "graphEdges": "Borrowed child reachability and SDK/container references have separate object-graph laws. They do not mint a source-owned C reference without an actual constructor/IncRef occurrence.",
+    "python_native_strong": "Logical strong references owned by the current source invocation and explicitly designated retained C globals. It excludes SDK-internal references, object-graph child edges, and independent invocations. Source place ownership is established by the application, not by a pointer value or a count inequality alone.",
+    "python_strong": "A logical liveness/refcount projection, not the physical CPython ob_refcnt header. Immortal/cached objects may share one pointer across distinct owned source references."
+  },
+  "remaining": [
+    "Actual recursive/numeric parser source ownership and all exit paths on the repaired ledger.",
+    "Actual module AddObjectRef/current C-global pool integration.",
+    "Actual public Outcome/getter construction and caller projection on the repaired ledger.",
+    "Full statement/assumption audit, useful aliased physical-prefix evidence and integrated M5.2 acceptance."
+  ],
+  "schema": 1,
+  "sources": {
+    "verification/host/GatewayModuleReference.v": "45266c64ba223d6f859beb082c9a1e79e81b3ac08039036603cacd20fa98b42a",
+    "verification/host/GatewayModuleReferenceDispatch.v": "431a8592f9768f42ae0ace00dcde3aefeb88f723760e96138a6c001915729adb",
+    "verification/host/GatewayModuleReferenceStore.v": "d419ca2fc6f17f7a169153a6202eba371b0a5aed2a4b48df3223a66cf7d68edf",
+    "verification/host/GatewayOutcomeReferenceAllocation.v": "4514d82847ac629fe59c4d951aece05b2ec9afb4552043c599ff40b1210d1814",
+    "verification/host/GatewayReferenceAccounting.v": "c72307c7f6f96d411b090dd229c97c188d28f5ce64ed250639ef7b37565f4934",
+    "verification/host/GatewayReferenceExecution.v": "d759f51e420e4f9536761eb4461b7c7cda488ec047b0591c8cd3c9abaef8697a",
+    "verification/host/GatewayReferenceHeld.v": "c1163281fdb40df0fc47ab1e3424887edae2caa646914a998d755da91ba03f69",
+    "verification/host/GatewayReferenceLedger.v": "7c5435e0da7c8b3332ee6ef29779af2345088f3db5d84637f7fad37174733764",
+    "verification/host/GatewayReferenceOperands.v": "a93a0ad5fd086585b6b860fce6f48183828ce04b626fc5acaa73c8f8f420fbee",
+    "verification/host/GatewayReferencePlaces.v": "ca3eeb7a200c5efe71d98deb2230ce820a2d714048244fac12c943804ccbb62c",
+    "verification/host/GatewayReferenceRuntime.v": "affef152dc3cfde684e4679387500c08c7507a0a3535473c895b4c941ff33df8",
+    "verification/host/GatewayReferenceSourceExecution.v": "74414d5ae9aab3aa20a10cfaffad1d71f60d3fd67bd6ebaad574daeb5fcdbd5d"
+  },
+  "specs": [
+    "FS-host-boundary.ownership",
+    "AR-host-boundary.interfaces.gateway",
+    "AR-host-boundary.primitives",
+    "REQ-proof-integrity.statement"
+  ],
+  "status": "repair implementation; prior invalidated claims remain unusable until their actual source consumers are converted and accepted"
+}

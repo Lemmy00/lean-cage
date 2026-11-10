@@ -1,0 +1,55 @@
+{
+  "artifacts": {
+    "assurance/host-readiness-audit.json.gz": "450c06cfed457275c0bf287a845e86251442d07b2f0e6abf05c05934d9f866c3",
+    "assurance/host-readiness-kernel-log.gz": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+    "assurance/host-readiness-query-log.gz": "fcea657add52a2f49342b88237a6507173ba91e278eef90d53445c1d90b6ee67",
+    "assurance/host-readiness-query.gz": "af6a4634ebf6c001bf680816d54c48843df404e6021decf0fb5ebb7dc156b481"
+  },
+  "consumers": [
+    "GatewayReadyActual.gateway_actual_complete_read",
+    "GatewayValueActual.gateway_actual_value_tag",
+    "GatewayWordActual"
+  ],
+  "delivery": "M5.2",
+  "delivery_complete": false,
+  "explicit_runtime": "Individual Linux/CPython thread operations, actual native allocations and readonly capabilities, same source/SDK ABI. These predicates must be produced by actual caller/object/endpoint ownership integration.",
+  "foundation_scope": "The listed Rocq/CompCert foundations retain their reviewed M4 scope. Uninterpreted stock external/assembly semantics are signature parameters; gateway primitive transitions use the explicit individual backend contracts. No whole-helper/readiness/read safety premise supports the instantiated producer.",
+  "foundations": [
+    "ClassicalDedekindReals.sig_forall_dec",
+    "ClassicalDedekindReals.sig_not_dec",
+    "Classical_Prop.classic",
+    "Events.external_functions_sem",
+    "Events.inline_assembly_sem",
+    "FunctionalExtensionality.functional_extensionality_dep"
+  ],
+  "full_type_review": "Reviewed full inputs and conclusions, actual Genv bindings, same execution cuts, signal failure conditional ownership, retry induction without fairness, exact local release, and protected-data adapter with no native/stable disjointness premise.",
+  "generated_source_sha256": "ed6a458292beedf485ab2f7de1e05e7c5c350f4e246a22bd1fb370fb821ec9ed",
+  "independent_kernel": {
+    "command": [
+      "rocq",
+      "check",
+      "-silent",
+      "...pinned profile flags...",
+      "HostGateway.GatewayReadyActual"
+    ],
+    "exit_code": 0
+  },
+  "native_source_sha256": "7758927a9fa0f78ae83babdf92dff6ea33c8ac60cbb0f45c7ef97d43edd18544",
+  "remaining": [
+    "Full error-posting/pending-exception and finite/lost-prefix ownership composition.",
+    "Complete native request/response/extraction/endpoint/spawn/public caller joins.",
+    "Physical filesystem/private-family and scoped publication-origin integration.",
+    "Final current bundle and affected integrated acceptance."
+  ],
+  "result": "The actual f_host_ready entry, helpers, timeout, poll stores, saved token, poll/errno/capture/restore/signals, retries and local-only release supply the actual bounded read source. Caller data/read-only contents, full stream permissions, all previously valid native and readable stable capabilities are retained; readiness consumes no direct receive bytes.",
+  "schema": "leancage-native-readiness-review-v1",
+  "source_inputs_sha256": "bccd653a26ae9851bf61655425c2da217431544c3bc4f6b60263f5d8f8826f00",
+  "specs": [
+    "FS-host-boundary.transport",
+    "AR-host-boundary.interfaces",
+    "AR-host-boundary.primitives",
+    "REQ-proof-integrity.statement"
+  ],
+  "status": "checked-source-component; integrated delivery remains in progress",
+  "strict_export_sha256": "e654b8c03d39600811fd50651b9b6aada9569f98d6e75bf136f6573bb4bb592e"
+}

@@ -1,0 +1,478 @@
+{
+  "accepted_security_delivery": false,
+  "artifactsSha256": {
+    "assurance/host-process-retirement-audit.lean.gz": "28eb457ae3a02bf471c2d2adc44c9f7d3691ef67ca3304bb950068db4c1b3475",
+    "assurance/host-process-retirement-audit.log.gz": "2bb0a53f82c644540e5094052f698ca44da713af5f746ccb3355e60eeeb4e3b9",
+    "assurance/host-process-retirement-before.json.gz": "b5cef43bbbd3d6dd65544afc5bc1fde0c2bdada22346d06b652d292f048affa5",
+    "assurance/host-process-retirement-build.log.gz": "d5143945da536247628a00278eb0564d817bdfcf497e8621d67230a83380fc49"
+  },
+  "consumer": "CustodyState engine_retirement_custody_state/native_retirement_custody_state; same ActorJournal and NativeExternalJournal including partial teardown.",
+  "declarations": [
+    {
+      "name": "LeanCage.Host.Kernel.actor_step_source_for",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_history_source_for",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_step_consistent",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.projection_from_reference_laws",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_journal_projection_with",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_step_stopped_source",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_journal_stopped_source",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.retired_engine_resources_complete",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.NativeRetirementAt.observed",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.NativeRetirementAt.stopped",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.NativeExternalStep.stopped",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.native_journal_stopped",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.native_stopped_cannot_call",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.native_stopped_cannot_launch",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.native_retirement_held_before",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.native_retirement_resources_complete",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.retirement_ownership_prefix",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.engine_retirement_custody_state",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.native_retirement_custody_state",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.NativeExternalStep.birth_frame",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.native_execution_source",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_step_allocated",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_step_raw",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_journal_reference_continuity",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_step_live_backward_for",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_step_live_backward",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.external_step_live_authority",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.external_step_protected_marker",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.system_anchor_step",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.EngineState",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.EngineRetirement",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.RetirementResources",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.EngineState.retired",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ActorRuntime",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ActorAction",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ActorStep",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.RetirementContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.RuntimeDescriptorContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ReferenceContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.LifetimeContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.NativeProcesses",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.NativeProcesses.retire",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.NativeRetirementAt",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.NativeExternalStep",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.RetirementResources.Held",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.NativeHeld",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ActionFamily",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.GlobalAuthorityContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ObjectLifetimeContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.LiveMetadataContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ExistingAttributeContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.NamespaceMetadataContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.LookupMutationContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.AnchorOperationContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "finding": "The old actor sum could not express actual engine or Python-caller exit, retaining stale raw references indefinitely or erasing native references without a distinct observed row.",
+  "preserved_before": {
+    "path": "assurance/host-process-retirement-before.json.gz",
+    "scope": "Exact prior core source snapshots; old accepted supporting records are unchanged.",
+    "sha256": "b5cef43bbbd3d6dd65544afc5bc1fde0c2bdada22346d06b652d292f048affa5"
+  },
+  "review": {
+    "history": "Allocated lifetime IDs, birth/exec/source/catalogue and orphan provenance remain; cached historical CWD or inherited complementary SDK exec snapshot is not live-reference evidence.",
+    "hostile_cases": "Actual source losses and errors remain. Other actors and mutable contents/OFD offsets remain broad. Live metadata retention is conditional on actual surviving inode lifetime.",
+    "one_row_laws": "Individual retirement namespace/reference/lifetime/attribute/authority/lookup laws are explicit. Native ordinary-operation rows keep other existing process tables and ongoing teardown ledgers. No whole helper, caller, callback or private-region frame is added.",
+    "partial_resources": "A partial row only releases resources; remaining actual FD/OFD and optional CWD references stay accounted for. Finished=true requires this process raw resources empty and CWD absent.",
+    "remaining": "Concrete native exit-to-row projection, complete constructed global custody/source fold and scoped key/MAC publication origin are still required. No descendant cleanup or reaping theorem follows.",
+    "same_observation": "ActorStep retirement consumes the actual runtime kernel exit observation. NativeRetirementAt uses that exact tick/action, own before/after resources and ledger update. No later SDK return or EOF is substituted.",
+    "source_terminal": "Engine source transcript and current program remain unchanged after stopping. Native ownership becomes false, remains false across the actual subsequent journal and prevents any further NativeCallAt/handoff."
+  },
+  "schema": 1,
+  "sourceSha256": {
+    "host/lake-manifest.json": "85f91fca646056b3fa7cc5933aeb3c103d103b8d5112fc96c3a914d641a443dd",
+    "host/lakefile.lean": "4749ec975242643af334dbccc1c24a1a32eeb296447f15ca8507ee127b756427",
+    "host/lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "verification/host/FilesystemActors.lean": "a0216a3654a2e49784635506d4f55659c22d14aef8e854eb1c50b2c6d9f7b573",
+    "verification/host/FilesystemAnchorHistory.lean": "5d62d97e39cad5a01397c5ea1bbb248415586e54894ed9f4a73186d93b6c5263",
+    "verification/host/FilesystemBirths.lean": "b591232e5d81305838021090bca5320aaab9098e2e5247793ad6783ac9f71e85",
+    "verification/host/FilesystemCwdCustody.lean": "f54a45ddd93cc4f592620183517973cf5cf8634d4cda88e97a3c2ff74edb47f0",
+    "verification/host/FilesystemDescriptorEffects.lean": "9ba8b1c38410729af66383fde3823f621076780f7659b033e312b3c735937cbd",
+    "verification/host/FilesystemGlobalAuthority.lean": "82c2c845e885596ebd0e38b421b0bcb4171f132fe21a13a2ce3b800b65560477",
+    "verification/host/FilesystemHandoff.lean": "bb7243b524ed4475979be407eb39402d351f4f547034f25f7854662fc8ec4ef2",
+    "verification/host/FilesystemLiveMetadata.lean": "954367a7ffb17fe4bbaf1d969c2f22f7bfb0b6a84f5296414e3d7d774c6271de",
+    "verification/host/FilesystemLookupAuthority.lean": "134eafbfc19481e7f5ead4734cbee6f837fa4edce1f3157028265258949aaf49",
+    "verification/host/FilesystemMarkerLifetime.lean": "9826346e6baff65aecb75b67d461880a6a4e028ad30bc19cf41bd79f694660ca",
+    "verification/host/FilesystemNamespaceMetadata.lean": "e15d7bc3115cba57c4c58c47bbf01dbc4c1b8c966d79e1b94eddb94a289fdb54",
+    "verification/host/FilesystemNativeAuthority.lean": "e87dc1f020f18d58173dd8bdf8b2bb983c6cb63a3368d599fd2f9d680e53a4f2",
+    "verification/host/FilesystemNativeBirths.lean": "4033fcc84ce442ba8e4bdaf7287d45b7d24881f843f48b16f3bec6d86d0b2f23",
+    "verification/host/FilesystemNativeEffects.lean": "3d0663866ce0c61d0b5ab9f719b06e03231f33bce15a1e8f75fff898c7f72df9",
+    "verification/host/FilesystemNativeExecutions.lean": "26733c0984679bf7d89bf8a7868c343cf18c4aabe8bd4c7025fbcbd47050402e",
+    "verification/host/FilesystemNativeNamespace.lean": "c0bc42cf825902a3447eeb68c69723291d1d70372f9b686359f3e69c7f8b8648",
+    "verification/host/FilesystemNativeOperations.lean": "6b6f54dfd4b2f0a8f3b1e4e178a288f39fbf3acd88746be3defd3a45a52688e6",
+    "verification/host/FilesystemNativeRetirement.lean": "6e9f44d28669fbc2de82028b58f858badc9c3a00d9ba6c4dc518fef48eebabb2",
+    "verification/host/FilesystemObjectLifetime.lean": "f471b148c35e98263f4169142fa17436b7410c8b86ccd79cd972a3f27c8e5503",
+    "verification/host/FilesystemOpenTargets.lean": "9ade3574eaed4324893f4ca2dc1c3461ee2115a57536cd81d67933f4a9aa47bc",
+    "verification/host/FilesystemPassiveCustody.lean": "c9e13cf7c9fbdfdb87ee2d984aade2bddf4c88f50aee26a1837a4a146f619530",
+    "verification/host/FilesystemPassiveOwnership.lean": "96f9a4d5c2376c472aa72dd31c1f82ba00157377852406399e08d584512db3b0",
+    "verification/host/FilesystemPrimitiveRecording.lean": "cd9a7643d05764a4782210b233a6cefb63be16b82cbdeaaeeec584f9ad8366ca",
+    "verification/host/FilesystemPrimitiveSelection.lean": "1e8e8263621f27b62c61f19f22ab3960c67edabcc8b1d44c30b25ac4aa9fa52e",
+    "verification/host/FilesystemProcesses.lean": "6547645cadcc1883d1dfdf489007d32cef454964bee8b214a3842915f8265b94",
+    "verification/host/FilesystemProjection.lean": "ce503eb4258890afe18802d27498e95e8afa2c3c646f463ca706324e0d054e0f",
+    "verification/host/FilesystemRecording.lean": "9d7fa6a69618c2b9fa554dd02570db206a1ea3524cd47b427ca8576ba9fac188",
+    "verification/host/FilesystemReferenceCustody.lean": "0f0a9d800b978943361bb44c53e8b588c0c84ca0159b0116f6cac973dceb213d",
+    "verification/host/FilesystemReferenceLifetime.lean": "f618f287e43be8724cef48d3ff19076954f038c682cdbe4d126f3f357ee5d8b7",
+    "verification/host/FilesystemReferences.lean": "3962670732371a0ea9b12251e12da95947f529f85d01039f9b1efa66770a4590",
+    "verification/host/FilesystemRetirement.lean": "c7ee0a51b9a955ea2487391c21b8b9ca796585712281fa57a023bf0599448026",
+    "verification/host/FilesystemRetirementCustody.lean": "0d5f91b0a1e086a6374804e3d11d51405f6b04799bbd1bb626480d674986bc35",
+    "verification/host/FilesystemRetirementProjection.lean": "d4373c5970fe8b0f7d3f1a82fad6a75ad6ad12f5dc214f4683416ebd5ec5551a",
+    "verification/host/FilesystemRunCreation.lean": "5d8c7de1ce3979931fdfbb18482e39a90ceafecb24814971a0f2c82eb6854039",
+    "verification/host/FilesystemRuntime.lean": "033250ac954f87b2238069514c312527c5eebc256ff81a50f3409af9eaef3627"
+  },
+  "specs": [
+    "FS-host-boundary.ownership",
+    "AR-host-boundary.primitives",
+    "DA-host-engine.retirement"
+  ],
+  "status": "Reviewed local correction; complete caller/physical M5.2 integration remains in progress.",
+  "updatedAt": "2026-11-10T04:40:20.918565+00:00",
+  "validation": {
+    "audit": "PASS complete types of 29 theorems and full bodies of 25 critical definitions, kernel transitive-axiom review.",
+    "grund": "fmt --check PASS; check has only four preexisting concurrent root-owned host_python.c inline-note lengths after our staging comment fix.",
+    "runtime": "No maintained runtime/C/native strict-data change; matched VM evidence reused.",
+    "source_build": "PASS HostVerification 364 jobs, including all affected actor/native/custody clients.",
+    "transitive_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  }
+}

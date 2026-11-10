@@ -442,6 +442,14 @@ Its complete entry guarantee is conditional on the explicit prepared-run and
 primitive platform contracts; policy preparation, lifetime and public observation
 producers remain assigned to M5.3–M5.5. M5.2–M5.5 are not complete.
 
+At the user's explicit pause, the current M5.2 implementation and checked
+supporting components are preserved in [the checkpoint](../M5-CONTINUE.md).
+M5.2 remains incomplete: the actual response/channel, initializer/Outcome,
+whole custody/authentication and public acceptance connections are still required.
+The working public product remains the accepted entry baseline. Resume from the
+checkpoint's exact source/consumer joins; this pause does not change delivery
+acceptance or the M5.3–M5.5 assignment.
+
 The entry route decision under [§DA-entry-worker](decisions/architectural/DA-entry-worker.md#da-entry-worker-use-a-fresh-single-threaded-lean-entry-image) was made within the first four
 working hours and carried through the complete entry acceptance. For the host,
 resolve the actual caller/adapter connection with a bounded real round trip before

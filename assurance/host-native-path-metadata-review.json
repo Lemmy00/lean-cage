@@ -1,0 +1,222 @@
+{
+  "schema": "leancage-host-native-path-metadata-review-v1",
+  "status": "reviewed-supporting-source-and-model-interfaces",
+  "accepted_security_delivery": false,
+  "delivery": "M5.2 safe host boundary; integration remains active",
+  "specification": [
+    "FS-host-boundary.ownership",
+    "AR-host-boundary.primitives"
+  ],
+  "scope": "Exact fchmodAt/fchownAt ABI data, checked byte/word decoding and inverse, same-operation resolved metadata target, and existing active-boundary/system-anchor authority consumers. No complete filesystem or public caller guarantee follows from this supporting record.",
+  "concrete_connection": "NativeCallAuthorityTarget.path_iff forces a path setter to use NativePrimitive.pathTarget on the exact same token, caller, before/after native ledgers, projected worlds, operation, optional reply and committed product. The directory FD is never substituted for the resolved metadata target.",
+  "review": [
+    "Both operations append constructors; old enum order and unrelated data groups remain under the separate explicit strict NativeCode amendment.",
+    "Raw path bytes and every mode, UID/GID and flags word are retained; out-of-range words/bytes reject before narrowing.",
+    "Errors/loss can retain a real resolved/committed target; no successful SDK return or future child birth is assumed.",
+    "Metadata exceptions and profile1 authority restrictions name the actual setter target at the same active boundary. No whole callback/private-region frame is introduced.",
+    "Full types and transitive axioms were queried in the pinned ordinary Lean kernel; no custom axiom, sorry or compiler reduction shortcut was found."
+  ],
+  "remaining": [
+    "Actual C/SDK per-operation NativeCode binder and same global NativeCallAt producer remain root-owned integration work.",
+    "Full source/native custody fold, private-key nonexposure and earlier committed-envelope provenance remain incomplete M5.2 obligations."
+  ],
+  "source_sha256": {
+    "verification/host/NativeCode.lean": "347181920990c3deba0a464436791816eb818ac454c6793acb8ca9e7e124b10a",
+    "verification/host/FilesystemNativeOperations.lean": "02caf110a2b2a800e5a733dadf4310e9198a2cca2a96c3910885c5c60c4b68b1",
+    "verification/host/FilesystemNativeDecoding.lean": "2b646826f94977ac093bc41553d8e2c7bd2ebf3d8cb221f150ed376a9d7a0d81",
+    "verification/host/FilesystemNativeMetadata.lean": "bacdd7cc0e5e582b485a58fb5c12b1e777847fca81522647ee2d3a8551af09f7",
+    "verification/host/FilesystemNativeAuthority.lean": "429a4764895956f5755c23fc2509b42e155de0bb34509db8dbd182425e4108bf",
+    "verification/host/FilesystemBoundaryAuthority.lean": "d6b5be998370f5da02698a066dddfe1370e18c0250e54ac626d9c859c4df04b0",
+    "verification/host/FilesystemAnchorOperations.lean": "d47a0d835dc7b01615a24c9129b74df6a3d1eafd0a2e552478ae83afe31095fd",
+    "verification/host/FilesystemAnchorHistory.lean": "06d690bac406907a8eb8fed3e350be849852152e580a61d5731043591361c1f4",
+    "host/lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "host/lake-manifest.json": "85f91fca646056b3fa7cc5933aeb3c103d103b8d5112fc96c3a914d641a443dd"
+  },
+  "declarations": [
+    {
+      "declaration": "LeanCage.Host.Kernel.NativeVfsOperation",
+      "full_type": "LeanCage.Host.Kernel.NativeVfsOperation : Type",
+      "full_type_sha256": "db211de53556c0da204c15b04bf1d9dff27862987f38180d2b864a2b57c5663e",
+      "transitive_axioms": []
+    },
+    {
+      "declaration": "LeanCage.Host.Kernel.NativePrimitive",
+      "full_type": "LeanCage.Host.Kernel.NativePrimitive : LeanCage.Host.Kernel.Contract \u2192 Type",
+      "full_type_sha256": "48cedf0ac9734b35fcc48318a1ebe44af8693c834d5960f853f5672b452334eb",
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "LeanCage.Host.Kernel.NativePathSetter",
+      "full_type": "LeanCage.Host.Kernel.NativePathSetter : LeanCage.Host.Kernel.NativeOperation \u2192 Prop",
+      "full_type_sha256": "a07bfc5c3c71f270c38ea0cc7a514a87f137ed8567b8fd68c9caef9c15372871",
+      "transitive_axioms": []
+    },
+    {
+      "declaration": "LeanCage.Host.Kernel.NativeCallPathTarget",
+      "full_type": "@LeanCage.Host.Kernel.NativeCallPathTarget : {kernel : LeanCage.Host.Kernel.Contract} \u2192\n  {sourceProgram : LeanCage.Host.Program UInt32} \u2192\n    {runtime : LeanCage.Host.Kernel.ActorRuntime kernel sourceProgram} \u2192\n      {primitive : LeanCage.Host.Kernel.NativePrimitive kernel} \u2192\n        {tick : @LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime} \u2192\n          {before after : LeanCage.Host.Kernel.NativeProcesses} \u2192\n            @LeanCage.Host.Kernel.NativeCallAt kernel sourceProgram runtime primitive tick before after \u2192\n              LeanCage.Host.Kernel.ObjectId \u2192 Prop",
+      "full_type_sha256": "631c5d87636d78d51249389ef26eb6af295c57647a4aeb88f67ae49d327729fc",
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "LeanCage.Host.Kernel.NativeCallAuthorityTarget",
+      "full_type": "@LeanCage.Host.Kernel.NativeCallAuthorityTarget : {sourceProgram : LeanCage.Host.Program UInt32} \u2192\n  {kernel : LeanCage.Host.Kernel.Contract} \u2192\n    {runtime : LeanCage.Host.Kernel.ActorRuntime kernel sourceProgram} \u2192\n      {primitive : LeanCage.Host.Kernel.NativePrimitive kernel} \u2192\n        {tick : @LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime} \u2192\n          {before after : LeanCage.Host.Kernel.NativeProcesses} \u2192\n            @LeanCage.Host.Kernel.NativeCallAt kernel sourceProgram runtime primitive tick before after \u2192\n              LeanCage.Host.Kernel.ObjectId \u2192 Prop",
+      "full_type_sha256": "effd81947fa361c7c47c4bdc8f5bf4bb5e426d2039b2b05ef4ae9ea29b4fb840",
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "LeanCage.Host.Kernel.NativeMetadataContract",
+      "full_type": "@LeanCage.Host.Kernel.NativeMetadataContract : {kernel : LeanCage.Host.Kernel.Contract} \u2192\n  LeanCage.Host.Kernel.NativePrimitive kernel \u2192 Prop",
+      "full_type_sha256": "346ccac73fc97b8b787b0dd1f6d9e403ab761f3c4b4cac8931925942c18312e5",
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "LeanCage.Host.Kernel.NativeAuthorityProfile",
+      "full_type": "@LeanCage.Host.Kernel.NativeAuthorityProfile : {sourceProgram : LeanCage.Host.Program UInt32} \u2192\n  {kernel : LeanCage.Host.Kernel.Contract} \u2192\n    {runtime : LeanCage.Host.Kernel.ActorRuntime kernel sourceProgram} \u2192\n      LeanCage.Host.Kernel.NativePrimitive kernel \u2192\n        List.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime) \u2192 Nat \u2192 Prop",
+      "full_type_sha256": "8e7287cf1d46ffa1a7040702126103fcc3cb68f4ef40194c5ee7aa55d3ad432c",
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "LeanCage.Host.Kernel.NativeBoundaryAuthorityProfile",
+      "full_type": "@LeanCage.Host.Kernel.NativeBoundaryAuthorityProfile : {sourceProgram : LeanCage.Host.Program UInt32} \u2192\n  {kernel : LeanCage.Host.Kernel.Contract} \u2192\n    {runtime : LeanCage.Host.Kernel.ActorRuntime kernel sourceProgram} \u2192\n      LeanCage.Host.Kernel.NativePrimitive kernel \u2192\n        List.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime) \u2192 Nat \u2192 Prop",
+      "full_type_sha256": "88704304a13a72fec4d5e6dbe4594416c0a68fc56b7c0e87d360fd14357603a6",
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "LeanCage.Host.Kernel.NativeAnchorProfile",
+      "full_type": "@LeanCage.Host.Kernel.NativeAnchorProfile : {sourceProgram : LeanCage.Host.Program UInt32} \u2192\n  {kernel : LeanCage.Host.Kernel.Contract} \u2192\n    {runtime : LeanCage.Host.Kernel.ActorRuntime kernel sourceProgram} \u2192\n      LeanCage.Host.Kernel.NativePrimitive kernel \u2192\n        {initial : LeanCage.Host.Kernel.World} \u2192\n          LeanCage.Host.Kernel.TemporaryAnchor initial \u2192\n            LeanCage.Host.Kernel.NameSemanticsView \u2192\n              List.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime) \u2192 Prop",
+      "full_type_sha256": "69558173b1b6ca9975d7e00462f0a0031c3c71a4d02f5d5bd9ef0b6c914b9d18",
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "LeanCage.Host.Kernel.path_setter_not_fd_target",
+      "full_type": "LeanCage.Host.Kernel.path_setter_not_fd_target : \u2200 (references : LeanCage.Host.Kernel.NativeReferences)\n  {operation : LeanCage.Host.Kernel.NativeOperation} {object : LeanCage.Host.Kernel.ObjectId},\n  LeanCage.Host.Kernel.NativePathSetter operation \u2192\n    Not (LeanCage.Host.Kernel.NativeAuthorityTarget references operation object)",
+      "full_type_sha256": "aaea23bce0ca44beddbd755048d09c82de0f3d154b943c55e8cbda782b89fa59",
+      "transitive_axioms": []
+    },
+    {
+      "declaration": "LeanCage.Host.Kernel.NativeCallAuthorityTarget.path_iff",
+      "full_type": "@LeanCage.Host.Kernel.NativeCallAuthorityTarget.path_iff : \u2200 {sourceProgram : LeanCage.Host.Program UInt32}\n  {kernel : LeanCage.Host.Kernel.Contract} {runtime : LeanCage.Host.Kernel.ActorRuntime kernel sourceProgram}\n  {primitive : LeanCage.Host.Kernel.NativePrimitive kernel}\n  {tick : @LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime}\n  {before after : LeanCage.Host.Kernel.NativeProcesses}\n  {call : @LeanCage.Host.Kernel.NativeCallAt kernel sourceProgram runtime primitive tick before after}\n  {object : LeanCage.Host.Kernel.ObjectId},\n  LeanCage.Host.Kernel.NativePathSetter\n      (@LeanCage.Host.Kernel.NativeCallAt.operation kernel sourceProgram runtime primitive tick before after call) \u2192\n    Iff\n      (@LeanCage.Host.Kernel.NativeCallAuthorityTarget sourceProgram kernel runtime primitive tick before after call\n        object)\n      (@LeanCage.Host.Kernel.NativeCallPathTarget kernel sourceProgram runtime primitive tick before after call object)",
+      "full_type_sha256": "60965a6235d26f8b967a3e771eabbc5dd1c0f8355d12e492a9ec4874aed1c42d",
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "LeanCage.Host.Kernel.native_active_parent_authority",
+      "full_type": "@LeanCage.Host.Kernel.native_active_parent_authority : \u2200 {sourceProgram : LeanCage.Host.Program UInt32}\n  {kernel : LeanCage.Host.Kernel.Contract} {runtime : LeanCage.Host.Kernel.ActorRuntime kernel sourceProgram}\n  {primitive : LeanCage.Host.Kernel.NativePrimitive kernel},\n  @LeanCage.Host.Kernel.NativeMetadataContract kernel primitive \u2192\n    \u2200 {ticks : List.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime)} {hostUid : Nat},\n      @LeanCage.Host.Kernel.NativeAuthorityProfile sourceProgram kernel runtime primitive ticks hostUid \u2192\n        \u2200 {position : Nat} {tick : @LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime},\n          @Eq.{2} (Option.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime))\n              (@getElem?.{1, 0, 1} (List.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime)) Nat\n                (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime)\n                (fun as i =>\n                  @LT.lt.{0} Nat instLTNat i\n                    (@List.length.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime) as))\n                (@List.instGetElem?NatLtLength.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime)) ticks\n                position)\n              (@some.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime) tick) \u2192\n            \u2200 {before after : LeanCage.Host.Kernel.NativeProcesses}\n              (call : @LeanCage.Host.Kernel.NativeCallAt kernel sourceProgram runtime primitive tick before after)\n              {object : LeanCage.Host.Kernel.ObjectId} {information : LeanCage.Host.Filesystem.Stat}\n              (lease :\n                @LeanCage.Host.Kernel.ActiveParentLease sourceProgram kernel runtime ticks\n                  (@LeanCage.Host.Kernel.ActorTick.before sourceProgram kernel runtime tick) hostUid object),\n              LeanCage.Host.Kernel.GloballyHeld\n                  (@LeanCage.Host.Kernel.ActorTick.after sourceProgram kernel runtime tick) object \u2192\n                @Eq.{1} (Option.{0} LeanCage.Host.Filesystem.Stat)\n                    ((@LeanCage.Host.Kernel.ActorTick.before sourceProgram kernel runtime tick).shared.information\n                      object)\n                    (@some.{0} LeanCage.Host.Filesystem.Stat information) \u2192\n                  @Exists.{1} LeanCage.Host.Filesystem.Stat fun later =>\n                    And\n                      (@Eq.{1} (Option.{0} LeanCage.Host.Filesystem.Stat)\n                        ((@LeanCage.Host.Kernel.ActorTick.after sourceProgram kernel runtime tick).shared.information\n                          object)\n                        (@some.{0} LeanCage.Host.Filesystem.Stat later))\n                      (LeanCage.Host.Kernel.SameAuthority information later)",
+      "full_type_sha256": "417d6f4361d4e1cde76a0a8a4bb3965176253bacaafeeb417698179b069bbea9",
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "LeanCage.Host.Kernel.native_boundary_parent_authority",
+      "full_type": "@LeanCage.Host.Kernel.native_boundary_parent_authority : \u2200 {sourceProgram : LeanCage.Host.Program UInt32}\n  {kernel : LeanCage.Host.Kernel.Contract} {runtime : LeanCage.Host.Kernel.ActorRuntime kernel sourceProgram}\n  {native : LeanCage.Host.Kernel.NativePrimitive kernel},\n  @LeanCage.Host.Kernel.NativeMetadataContract kernel native \u2192\n    \u2200 {ticks : List.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime)} {hostUid : Nat},\n      @LeanCage.Host.Kernel.NativeBoundaryAuthorityProfile sourceProgram kernel runtime native ticks hostUid \u2192\n        \u2200 {position : Nat} {tick : @LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime},\n          @Eq.{2} (Option.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime))\n              (@getElem?.{1, 0, 1} (List.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime)) Nat\n                (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime)\n                (fun as i =>\n                  @LT.lt.{0} Nat instLTNat i\n                    (@List.length.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime) as))\n                (@List.instGetElem?NatLtLength.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime)) ticks\n                position)\n              (@some.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime) tick) \u2192\n            \u2200 {before after : LeanCage.Host.Kernel.NativeProcesses}\n              (call : @LeanCage.Host.Kernel.NativeCallAt kernel sourceProgram runtime native tick before after)\n              {object : LeanCage.Host.Kernel.ObjectId}\n              (lease :\n                @LeanCage.Host.Kernel.BoundaryParentLease sourceProgram kernel runtime ticks position\n                  (@LeanCage.Host.Kernel.ActorTick.before sourceProgram kernel runtime tick) hostUid object),\n              LeanCage.Host.Kernel.GloballyHeld\n                  (@LeanCage.Host.Kernel.ActorTick.after sourceProgram kernel runtime tick) object \u2192\n                \u2200 {information : LeanCage.Host.Filesystem.Stat},\n                  @Eq.{1} (Option.{0} LeanCage.Host.Filesystem.Stat)\n                      ((@LeanCage.Host.Kernel.ActorTick.before sourceProgram kernel runtime tick).shared.information\n                        object)\n                      (@some.{0} LeanCage.Host.Filesystem.Stat information) \u2192\n                    @Exists.{1} LeanCage.Host.Filesystem.Stat fun later =>\n                      And\n                        (@Eq.{1} (Option.{0} LeanCage.Host.Filesystem.Stat)\n                          ((@LeanCage.Host.Kernel.ActorTick.after sourceProgram kernel runtime tick).shared.information\n                            object)\n                          (@some.{0} LeanCage.Host.Filesystem.Stat later))\n                        (LeanCage.Host.Kernel.SameAuthority information later)",
+      "full_type_sha256": "cf13b102a7579ba458261c69d628985049da1243b7fa8f57cbf7f5c2cff91556",
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "LeanCage.Host.Kernel.system_anchor_step",
+      "full_type": "@LeanCage.Host.Kernel.system_anchor_step : \u2200 {sourceProgram : LeanCage.Host.Program UInt32}\n  {kernel : LeanCage.Host.Kernel.Contract} {runtime : LeanCage.Host.Kernel.ActorRuntime kernel sourceProgram}\n  {process : @LeanCage.Host.Kernel.ProcessContract sourceProgram kernel runtime}\n  {child : LeanCage.Host.Kernel.ChildPrimitive kernel} {native : LeanCage.Host.Kernel.NativePrimitive kernel}\n  {hostUid : Nat} {semantics : LeanCage.Host.Kernel.NameSemanticsView} {initial : LeanCage.Host.Kernel.World}\n  {anchor : LeanCage.Host.Kernel.TemporaryAnchor initial},\n  @LeanCage.Host.Kernel.LifetimeContract sourceProgram kernel runtime \u2192\n    @LeanCage.Host.Kernel.AnchorOperationContract sourceProgram kernel runtime child semantics initial anchor \u2192\n      @LeanCage.Host.Kernel.GlobalAuthorityContract kernel sourceProgram runtime child \u2192\n        @LeanCage.Host.Kernel.NativeMetadataContract kernel native \u2192\n          @LeanCage.Host.Kernel.LookupMutationContract sourceProgram kernel runtime child native \u2192\n            \u2200 {all : List.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime)},\n              @LeanCage.Host.Kernel.NativeAnchorProfile sourceProgram kernel runtime native initial anchor semantics\n                  all \u2192\n                \u2200 {position : Nat} {tick : @LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime},\n                  @Eq.{2} (Option.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime))\n                      (@getElem?.{1, 0, 1} (List.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime)) Nat\n                        (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime)\n                        (fun as i =>\n                          @LT.lt.{0} Nat instLTNat i\n                            (@List.length.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime) as))\n                        (@List.instGetElem?NatLtLength.{1}\n                          (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime))\n                        all position)\n                      (@some.{1} (@LeanCage.Host.Kernel.ActorTick sourceProgram kernel runtime) tick) \u2192\n                    \u2200 {before after : LeanCage.Host.Kernel.Processes}\n                      {callers next : LeanCage.Host.Kernel.NativeProcesses}\n                      (source :\n                        @LeanCage.Host.Kernel.NativeExternalStep sourceProgram kernel runtime process child native\n                          hostUid before callers tick after next),\n                      @LeanCage.Host.Kernel.AnchorSourceOperands sourceProgram kernel runtime process child native\n                          hostUid initial anchor before after callers next tick source \u2192\n                        @LeanCage.Host.Kernel.NativeAuthoritySafe sourceProgram kernel runtime process child native\n                            hostUid before after callers next tick source \u2192\n                          \u2200\n                            (state :\n                              @LeanCage.Host.Kernel.SystemAnchorState initial anchor semantics\n                                (@LeanCage.Host.Kernel.ActorTick.before sourceProgram kernel runtime tick).shared),\n                            Nonempty.{1}\n                              (@LeanCage.Host.Kernel.SystemAnchorState initial anchor semantics\n                                (@LeanCage.Host.Kernel.ActorTick.after sourceProgram kernel runtime tick).shared)",
+      "full_type_sha256": "8dd396368b777a8eaaef9e90b6c039bc102b0f84b8e7dceb4761d3120a767585",
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "LeanCage.Host.NativeCode.vfs_roundtrip",
+      "full_type": "LeanCage.Host.NativeCode.vfs_roundtrip : \u2200 (value : LeanCage.Host.Kernel.NativeVfsOperation),\n  @Eq.{1} (Option.{0} LeanCage.Host.Kernel.NativeVfsOperation)\n    (LeanCage.Host.NativeCode.vfs? (LeanCage.Host.NativeCode.encodeVfs value))\n    (@some.{0} LeanCage.Host.Kernel.NativeVfsOperation value)",
+      "full_type_sha256": "9ef928d4e95b5077a54ce4ea1e4e168d84c01f2251ed751e0081f8d35124486f",
+      "transitive_axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "LeanCage.Host.NativeCode.vfs_exact",
+      "full_type": "@LeanCage.Host.NativeCode.vfs_exact : \u2200 {code : LeanCage.Host.NativeCode.VfsOperation}\n  {value : LeanCage.Host.Kernel.NativeVfsOperation},\n  @Eq.{1} (Option.{0} LeanCage.Host.Kernel.NativeVfsOperation) (LeanCage.Host.NativeCode.vfs? code)\n      (@some.{0} LeanCage.Host.Kernel.NativeVfsOperation value) \u2192\n    @Eq.{1} LeanCage.Host.NativeCode.VfsOperation (LeanCage.Host.NativeCode.encodeVfs value) code",
+      "full_type_sha256": "187e7834786a0f2999a1e44aa0ce8a7c2a64cc305d44b19431590cb2b326b444",
+      "transitive_axioms": [
+        "propext"
+      ]
+    },
+    {
+      "declaration": "LeanCage.Host.NativeCode.operation_exact",
+      "full_type": "@LeanCage.Host.NativeCode.operation_exact : \u2200 {code : LeanCage.Host.NativeCode.Operation}\n  {value : LeanCage.Host.Kernel.NativeOperation},\n  @Eq.{1} (Option.{0} LeanCage.Host.Kernel.NativeOperation) (LeanCage.Host.NativeCode.operation? code)\n      (@some.{0} LeanCage.Host.Kernel.NativeOperation value) \u2192\n    @Eq.{1} LeanCage.Host.NativeCode.Operation (LeanCage.Host.NativeCode.encodeOperation value) code",
+      "full_type_sha256": "8a4653e37a05bbcdbe63eeed1080621f89731a1424299de65aa95bfaa6ff5e8c",
+      "transitive_axioms": [
+        "propext"
+      ]
+    },
+    {
+      "declaration": "LeanCage.Host.NativeCode.operation_decode_iff",
+      "full_type": "LeanCage.Host.NativeCode.operation_decode_iff : \u2200 (code : LeanCage.Host.NativeCode.Operation)\n  (value : LeanCage.Host.Kernel.NativeOperation),\n  Iff\n    (@Eq.{1} (Option.{0} LeanCage.Host.Kernel.NativeOperation) (LeanCage.Host.NativeCode.operation? code)\n      (@some.{0} LeanCage.Host.Kernel.NativeOperation value))\n    (@Eq.{1} LeanCage.Host.NativeCode.Operation (LeanCage.Host.NativeCode.encodeOperation value) code)",
+      "full_type_sha256": "3d75f2ebd9a4158b253e60d742b22c23ccc22c22c2edbaf78396a7b66d478232",
+      "transitive_axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "artifacts": {
+    "assurance/host-native-path-metadata-audit.lean.gz": {
+      "sha256": "624bd82951de71ef0ef22b35dcfa9607f17307090438e1cb8ac2c6d20e8b25f9",
+      "uncompressed_sha256": "72ea6df4ab6a53aa2e065341a17dfe45a4ad378aac1d12dcf4ae72b09645c8a8"
+    },
+    "assurance/host-native-path-metadata-audit.log.gz": {
+      "sha256": "23b01ec1642f18a8ebbf431959636df69439f480b1a32d967e8b6a05adea64d8",
+      "uncompressed_sha256": "22e10a4d4cc0e8c5f03f9056e70b3c43a0858a211b01b22ed2844fa0b2ef351e"
+    },
+    "assurance/host-native-path-metadata-graph-build.log.gz": {
+      "sha256": "bec248e07fe44d89d1321d526cb1aa0cc15119e02c46581633e959efc3342e4b",
+      "uncompressed_sha256": "1ee4db874b04406ede5174b29e5aad64596eb3cf5416358cec99eab68798c2cc"
+    },
+    "assurance/host-native-path-metadata-final-build.log.gz": {
+      "sha256": "cbadef4a25b650300c92857337276877d0e8bada23d8ddac62b10d0c8ceeb4c0",
+      "uncompressed_sha256": "5aaf0df27286255f7af5838ba514e580f5cc205fa91f99f28109599a20b19db8"
+    }
+  },
+  "validation": {
+    "coherent_dependency_graph": "PASS: NativeDecoding, NativeMetadata, BoundaryAuthority and AnchorHistory; 256 Lake jobs, 254 after the final path_iff lemma (cached dependencies reused).",
+    "ordinary_type_axiom_query": "PASS: 18 exact declaration types; only propext, Classical.choice and Quot.sound where listed.",
+    "runtime_changes": "none; C/Clight source epoch unchanged"
+  }
+}

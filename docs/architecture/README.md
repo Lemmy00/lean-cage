@@ -1,5 +1,7 @@
 # Architecture
 
+The current host delivery uses [§AR-host-boundary](AR-host-boundary.md#ar-host-boundary-execute-host-security-control-in-one-shared-lean-engine) and the route in [§DA-host-engine](../decisions/architectural/DA-host-engine.md#da-host-engine-use-a-small-native-python-gateway-and-a-separate-lean-host-image).
+
 These are design contracts for the staged implementation. M1 supplies a pure
 decoder, checked decoder/bounds and launch-order proofs, an axiom audit, a native
 Linux driver, and an isolated VM demonstration. M2 adds conditional lifecycle

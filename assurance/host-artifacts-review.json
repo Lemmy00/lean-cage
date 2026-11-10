@@ -1,0 +1,948 @@
+{
+  "schema": 1,
+  "updatedAt": "2026-11-09T03:26:49.187535+00:00",
+  "status": "Artifact implementation and focused kernel/runtime acceptance passed; root-owned live caller/publication/retrieval composition and M5.2 delivery acceptance remain active.",
+  "specs": [
+    "\u00a7FS-host-boundary.artifacts",
+    "\u00a7FS-host-boundary.transport",
+    "\u00a7FS-host-boundary.publication",
+    "\u00a7AR-host-boundary.interfaces",
+    "\u00a7AR-host-boundary.acceptance"
+  ],
+  "claim": "The actual total artifact validator derives typed report consistency for every run kind, bounded complete unique hierarchical UTF-8 exports, exact declared file/blob provenance, and manifest/content hash requests on the same bytes. Every finite validator prefix only requests SHA operations. Success from actual transport finish retains its exact caller-bound framing and observed EOF.",
+  "consumers": [
+    "LeanCage.Host.Application after actual Transport.State.finish",
+    "LeanCage.Host.Publication materialization of complete validated output",
+    "Later observation provenance and composition delivery"
+  ],
+  "review": {
+    "sameImplementation": "validate_sound unfolds the same Artifacts.validate used by the host engine. actual_transport_artifacts also consumes actual decoder initialization, same run, finish and filesystem-return trajectory.",
+    "noConclusionPremise": "No safe manifest, complete artifact plan, precomputed HashesMatch certificate, arbitrary parser transcript or blanket report trust is a top premise. Source declarations, paths, sizes, controls and hash calls are extracted from actual success.",
+    "reportKinds": "Run0 and preflight require no artifacts and no entry. Allocated stored reports are byte-equal to REPORT with successful retrieval. Unknown/null observations remain unknown. Bounded terminal controller status is independent of inner guest termination. Profile/runtime bindings are exact caller inputs.",
+    "reportPreservation": "The exact parsed JSON and raw report bytes are retained, including extra legal numeric lexemes. Validation failure exposes no partial complete result. Caller must retain already recognized report via Artifacts.knownReport; root owns public projection.",
+    "hashPrimitive": "HashSeen witnesses actual op12 request bytes, successful reply and exact 32-byte reply payload in the same execution. HashReplyContract names correctness only of those actual primitive replies; hashSeen_meaning consumes it. No global digest injectivity or whole-plan hash premise.",
+    "manifest": "Length is checked before scanning; line size before retention/list creation; sixth token before cons; inodes/declared bytes before append. Canonical decimal/hex/UTF-8 paths, full hierarchy, duplicates, omitted count, declared sizes and both-direction blob references are checked before output.",
+    "allocationBounds": "Actual manifest/file/dir/omitted counts and file bytes, path-byte sum, capture/report bounds, checked blob aggregate and digest metadata are proved. splitFields_count and unhexLoop_size bound token/path decoding intermediates. This is actual value/copy accounting, not byte-exact Lean heap layout.",
+    "componentPathIdentity": "Structural Char-list splitting preserves Unicode scalars and reconstructs the exact manifest path. It permits root .tmp while rejecting empty/dot/parent/NUL/slash components. Publication uses the same ExportPath.components.",
+    "hostileCoverage": "Arbitrary VM bytes and primitive replies remain. Malformed UTF-8, incomplete/trailing manifests, duplicate/conflicting paths, missing/extra/mismatched blobs, mismatched report/capture/storage and primitive failures explicitly reject. Lost prefixes still contain no writes.",
+    "nonvacuity": "useful_actual_validation is a closed kernel-checked execution of the complete validator on one full report and useful .tmp export, with actual manifest/content SHA request/reply trajectory. Runtime acceptance also runs full decoder-to-validator fragmentation and run0/preflight/failure cases.",
+    "runtimeBoundary": "Linux/runtime/compiler/FFI operations and actual SHA correctness remain explicit per-operation contracts. Later deliveries establish lifetime and observation truth. This is supporting evidence, not a completed M5.2 delivery."
+  },
+  "validation": {
+    "focusedBuild": {
+      "command": "lake -d host build ArtifactsProofs",
+      "result": "PASS (38 jobs; matching dependencies reused)",
+      "log": "assurance/host-artifacts-build.log.gz"
+    },
+    "runtimeChecks": {
+      "command": "lake -d host env lean --run verification/host/ArtifactsTests.lean",
+      "result": "PASS",
+      "log": "assurance/host-artifacts-runtime.log.gz",
+      "scope": "Actual shared decoder/validator code with exact scripted SHA requests and known SHA fixture replies; no hostile workload or VM on host."
+    },
+    "fullTypeAndAxiomAudit": {
+      "command": "lake -d host env lean -DautoImplicit=false -DwarningAsError=true .tools/host/ArtifactsAudit.lean",
+      "result": "PASS",
+      "source": "assurance/host-artifacts-audit.lean.gz",
+      "log": "assurance/host-artifacts-audit.log.gz",
+      "theorems": 83,
+      "fullInterfaces": 33,
+      "settings": [
+        "pp.all",
+        "pp.universes",
+        "pp.explicit",
+        "pp.fullNames"
+      ]
+    },
+    "kernelFoundationUnion": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "integratedAcceptance": "Pending root-owned caller/engine/publication/retrieval gate on final identified inputs."
+  },
+  "declarations": [
+    {
+      "name": "LeanCage.Host.Artifacts.blob_index_empty",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.blob_index_insert",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.checkBlobs_provenance",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.checkBlobs_index_sound",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.blob_bounded_initial",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.blob_bounded_insert",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.checkBlobs_bounded",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.checkBlobs_sequence",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.pathBytes_bound",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.export_path_bytes_bound",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.capture_getD_bound",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.validated_retained_bounds",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.componentParts_nonempty",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.componentParts_identity",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.pathComponents_identity",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.unhexLoop_size",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.decodePath_identity",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.splitFields_count",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.validateExport_execution",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.validate_execution",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.validateExport_sound",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.validateExport_omitted",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.uncommitted_absent",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.validate_sound",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.actual_transport_artifacts",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.hashSeen_meaning",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.hashOnly_bind",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.hashOnly_hash",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.checkBlobs_hashOnly",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.validateExport_hashOnly",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.validate_hashOnly",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.hashOnly_prefix",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.validate_prefix_no_write",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.hash_returned",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.hashSeen_append_left",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.hashSeen_append_right",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.bindFiles_retains",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.bindFiles_provenance",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.bindFiles_bytes",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.bindFiles_count",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.bindFiles_required",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.bindFiles_complete",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.fileNames_member",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.fileNames_unique",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.bindFiles_names",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.node_partition_count",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.node_omitted_count",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.manifest_directory_member",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.manifest_omitted_member",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.Witness.replay_returns",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.manifest_initial",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.appendNode_fields",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.manifest_append",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.scanManifest_invariant",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.parseManifest_sound",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.manifest_hierarchy",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.except_bind_ok",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.reportFields_decoded",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.readNatural_bounded",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.readOptionalNatural_bounded",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.checkControl_sound",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.checkReport_sound",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.report_run0_entry",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.report_preflight_entry",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.noArtifacts_fields",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.capture_present_bound",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.capture_known_present",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.capture_known_absent",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.knownReport_preserved",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.Witness.useful_program_completes",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.Witness.useful_actual_export",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.Witness.useful_full_completes",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.Witness.useful_actual_validation",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.Witness.invalid_hash_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.Witness.omitted_count_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.Witness.missing_blob_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.Witness.duplicate_path_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.Witness.missing_parent_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.Witness.conflicting_parent_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.Witness.leading_zero_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.Witness.invalid_utf8_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.Witness.traversal_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.Witness.uppercase_hex_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "LeanCage.Host.Artifacts.Expected",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.ValidPath",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.ExportPath",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.ExportPath.components",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.componentParts",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.pathComponents",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.Report",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.ValidatedFile",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.Validated",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.CheckedBlob",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.ReportDecoded",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.ControlValid",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.ReportValid",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.ManifestInvariant",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.BlobBounded",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.FileFromNode",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.HashOnly",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.HashSeen",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.ExportValid",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.ArtifactsValid",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.HashReplyContract",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.checkReport",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.checkControl",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.decodePath",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.splitFields",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.parseLine",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.scanManifest",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.parseManifest",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.checkBlobs",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.bindFiles",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.validateExport",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.validate",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Artifacts.assemble",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "sourceSha256": {
+    "host/LeanCageHost/Artifacts.lean": "320db9c3f91c11f3c30976a761880625bad11f36f72460c6983ac4b8a9706c38",
+    "host/LeanCageHost/Artifacts/Manifest.lean": "9d65efb99c13fef087bcab1dd3931eb9994ac1f6bb3dc0b28f8372f65c66aaf3",
+    "host/LeanCageHost/Artifacts/Report.lean": "0a6de3a6fc57c625461f35bf5125302432bae0b1d856d2a4acecd4f4321882c9",
+    "host/LeanCageHost/Artifacts/Types.lean": "d8b3ad01825c2a67f908c18bd5a5ad55207be3d38fc78e06095e34532699e8fa",
+    "host/LeanCageHost/Artifacts/Validation.lean": "0840119ff50946f973622a7ab7522db301bcd6dcfb2596be2d5134be3fe44806",
+    "verification/host/ArtifactsProofs.lean": "1f557145559fb7f7540c8fbb66aff1afc72e90f94e00495ec282715a06314998",
+    "verification/host/ArtifactsProofs/Blobs.lean": "f726ce91a2c4664599c0b4f3349eb4a2f421b9acccc892564a659f276d13dff2",
+    "verification/host/ArtifactsProofs/Bounds.lean": "a44924dc84d5b00e0bd4d96d7cc8f54388224ad6052b8862a28a756c5e3e4b13",
+    "verification/host/ArtifactsProofs/Canonical.lean": "404ef56fd88c480b8ffba72489b7fd58a6551c14a303d107e2343b4498745f11",
+    "verification/host/ArtifactsProofs/Composition.lean": "1a0561647887dd5d54b7466ee523cf286a71bb1638062fa432fad8ea6c54d0a0",
+    "verification/host/ArtifactsProofs/Effects.lean": "950f42a14e80fe50cc85b923be12d4aa87f876ed74ecb9e0e54aecd396247c28",
+    "verification/host/ArtifactsProofs/Files.lean": "19e28357f5e8bce0458c4a6a9c512ddd9e05741bc15cb09114df03d978c5c657",
+    "verification/host/ArtifactsProofs/Fixtures.lean": "4d3109ce06c295d3009ae6f2ed2d53423ef6322e10ed84d37f63a468e0e97ec4",
+    "verification/host/ArtifactsProofs/Manifest.lean": "c8ad05bbdbbebba42c494d72c96beceda61c240181e058a521a9358eeb321110",
+    "verification/host/ArtifactsProofs/Report.lean": "3cea8e8fcb167870530aa1df723eb0c7b8a185ef1e76172ca794f91cf2ddc5ed",
+    "verification/host/ArtifactsProofs/Witnesses.lean": "04706a6645dd8ba013b1fdc61358d02601b053ed89d78083f00e83cb380ac8d8",
+    "verification/host/ArtifactsTests.lean": "82255bafac79693afab54ee6e212e55fbb93f39e8688035768c16b6b2cc10bd0"
+  },
+  "artifactsSha256": {
+    "assurance/host-artifacts-audit.lean.gz": "9f3b392e60e669b36399a3753629cd0535f3579f9d203a126376a20dcc5a1cfc",
+    "assurance/host-artifacts-audit.log.gz": "bcc6869c3c305ba5a284a50efd0131a93a4607051598ecb366df9480ce166aae",
+    "assurance/host-artifacts-build.log.gz": "c2dbebc2d0a6cff69c1fe1d6c28f10ae2bf0db1e9f8472701b9bfa20643d70df",
+    "assurance/host-artifacts-runtime.log.gz": "56602e31add06076396529229a1a6479d97212d74214b3182b5f6102a4c8e0e2"
+  },
+  "toolchain": {
+    "lean": "Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+    "hostLeanToolchain": "leanprover/lean4:v4.35.0"
+  },
+  "next": "Root consumes actual_transport_artifacts/validate_sound/validated_retained_bounds and no-write prefixes in live host publication, retaining known report on every artifact failure; complete M5.2 integrated acceptance."
+}

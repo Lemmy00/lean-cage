@@ -1,0 +1,90 @@
+{
+  "artifacts": {
+    "assurance/host-response-construction-audit.log.gz": "35771eeaa5191de0a0bbc121633494c0654a544f3e6cac3a44e30383c8b24169",
+    "assurance/host-response-construction-audit.v.gz": "1dc8749246e1289ea0d1276fed9b70614e7462dd3b2727966d3c1c0291ad2b98"
+  },
+  "consumer": "GatewayModuleDispatch combines the SAME actual PyInit FromSpec step with retained regional descriptors. GatewayOutcomeFactory combines the SAME GenericAlloc call/caller continuation, source failure guard, data-field assignment and final return. The full response parser/Path conversion/Workspace caller must still supply their actual earlier source frontiers and held metadata graphs.",
+  "declarations": [
+    "GatewayOutcomeType.gateway_outcome_type_regions",
+    "GatewayOutcomeGetsets.actual_outcome_properties_from_regions",
+    "GatewayOutcomeFactory.gateway_actual_outcome_allocation",
+    "GatewayOutcomeDispatch.gateway_current_outcome_class",
+    "GatewayModuleDispatch.gateway_actual_module_immutable_outcome"
+  ],
+  "foundationBaseline": "assurance/host-readiness-review.json",
+  "foundationResult": "Exact same six reviewed Rocq/CompCert foundations, no UIP/proof_irrelevance or new axioms.",
+  "foundationScope": "Stock external/assembly semantics remain signature parameters in Clight types. Actual gateway primitive transitions use individual explicit backend contracts; these source proofs never infer a whole helper result from stock externals.",
+  "foundations": [
+    "ClassicalDedekindReals.sig_forall_dec",
+    "ClassicalDedekindReals.sig_not_dec",
+    "Classical_Prop.classic",
+    "Events.external_functions_sem",
+    "Events.inline_assembly_sem",
+    "FunctionalExtensionality.functional_extensionality_dep"
+  ],
+  "interfaces": [
+    "GatewayOutcomeAllocation.gateway_outcome_private_cell",
+    "GatewayOutcomeAllocation.gateway_outcome_allocation_runtime",
+    "GatewayTypeDescriptors.gateway_descriptor_runtime"
+  ],
+  "objects": {
+    "GatewayGetsets": "efa39f22303eec57f04716f0642f7495cadb2bcae05f5cb1a2e73373c4a600f7",
+    "GatewayModuleDispatch": "d625af9cb2f8cbdeb184d702257503f1b6a32028a82aeac7a7b2e657bb1f2f21",
+    "GatewayOutcomeAllocation": "2a167b05ae49527fc5d7c2b3a76cd56c11df083c083e979cb175760d9b6c29f4",
+    "GatewayOutcomeConstruction": "a6871245bc153764fee6a53fea5a49f3ec96bf34c1081a38c0defa58f368cb8c",
+    "GatewayOutcomeDispatch": "def5dff84729c1fbbc8e3b55abb778268644e303939540503975a8490eca2001",
+    "GatewayOutcomeFactory": "43df9814266f8b9ea4a7253dd20cbd6fef1325b10248456e6d0cbb97513d1cac",
+    "GatewayOutcomeFailure": "487f8d65db58d523be3bc2ffb44d17d6396ebd2cee4302e1de839997d079b0ca",
+    "GatewayOutcomeGetsets": "591e23ab0b27a0788e41dfaef3020ee54127c1eba2aae007d701e78c3f241069",
+    "GatewayOutcomeMemory": "ec8b92c420311bb5da863d106d242a7fd311aa945183ee4bf0ca5b69e2b3ed56",
+    "GatewayOutcomeResult": "cbe984c7251267199cb3786f243367b0cce98020d823bb222f27afb473bb9e1f",
+    "GatewayOutcomeReturn": "1071d1cde358d6dc3be53f3b09a6408f5ad708b921b14d8541deb823b23f2cd9",
+    "GatewayOutcomeType": "74b986f8409826d2c85bfbc6916fce84a57ae928ddda2b4f9aa826c8340bccb2",
+    "GatewayTypeDescriptors": "35e09037f071087b57d5dfdd3a743960740b66f04cb3f185e91dd7a3479250df"
+  },
+  "schema": 1,
+  "sourceEpoch": {
+    "c": "abf3b63691e80f4a27a4ce4045476403ecd69a7b862beaf6eadf15e1cfccf1b2",
+    "sdkInputs": "04eee93ca73c4f9bd62d1fbe641d0cabcc8dcaa06dc3b503bfb8935aafbd5272",
+    "source": "aaeadaa44c8912066e3474e7e567aca50693a886f34f24db8f01f7143b9ca0d7",
+    "strict374": "e654b8c03d39600811fd50651b9b6aada9569f98d6e75bf136f6573bb4bb592e"
+  },
+  "sources": {
+    "verification/host/GatewayGetsets.v": "33930e789cb0c1d321efd2c16a7cf28930756323ed20e7fce650ecdd302efd5c",
+    "verification/host/GatewayModuleDispatch.v": "4a0ae653b1c9a105d903818f7d2892a17d75ccd6d51e378078ed23297ab56bc3",
+    "verification/host/GatewayOutcomeAllocation.v": "f298a2e04333d100404c54c60426c495ff32b5ea0eda2d6f52fa63638f9b8d21",
+    "verification/host/GatewayOutcomeConstruction.v": "3be8a540e295c0dc0a8d93ae7a030886bf51ef5cb693e63674ed294b27d3a8d6",
+    "verification/host/GatewayOutcomeDispatch.v": "6e7adf8bace89223c57ddc9b446febaea916b3beb118d61d6d0cb3e0a32a0eb6",
+    "verification/host/GatewayOutcomeFactory.v": "c1d7feffd0f13f29d9e60e7862ddab8585b0cb59568f9ff8ecaa4af7ceccbd13",
+    "verification/host/GatewayOutcomeFailure.v": "feb3b531fb7b81f67a7fad8cb6f748b93abdbd4f8700ea77f25015cda264481a",
+    "verification/host/GatewayOutcomeGetsets.v": "78c9238d4b9cff6d458710349dd9c7965ac5c0acbc0b3928d5074bc092659ca2",
+    "verification/host/GatewayOutcomeMemory.v": "372311d6132cd01356f2edc57ea438b5048a8144eb58f4aae77c076b8ff8a19e",
+    "verification/host/GatewayOutcomeResult.v": "87e75c95f5a6d7e76154c0c0f6418508b9c6cd40af3c6020bf110c2866abf487",
+    "verification/host/GatewayOutcomeReturn.v": "f735a0a98d2ba1917901d94c9135784625913111499c08438dc084528f11197e",
+    "verification/host/GatewayOutcomeType.v": "f8e0ac857ba3aac3069e029baad48114c200e56ab2f652f1c522277e8c454869",
+    "verification/host/GatewayTypeDescriptors.v": "a238c6fd1442ceee59cd1c168a27d2bd95c1e1b7d0b4d14c6870fc57ed9d228c"
+  },
+  "spec": [
+    "FS-host-boundary.caller",
+    "AR-host-boundary.interfaces.gateway",
+    "AR-host-boundary.primitives"
+  ],
+  "statementReview": [
+    "All type/getset/method inputs are loaded from SAME current memory. No full Genv.init_mem equality is required of the live CPython heap.",
+    "The actual Source TypeSpec has basicsize24, itemsize0, flags16640 including IMMUTABLETYPE256, and seven actual source slots. It has no custom getattr/getattro/setattr/setattro or allocator slot47.",
+    "All15 actual getset rows and name strings are relocated source data; names are unique. The only actual method is json. Observation row14 has the actual source getter, NULL setter and NULL closure.",
+    "The explicit per-FromSpec SDK contract creates lifetime-indexed immutable class description/dispatch metadata from actual raw tables and flag. Current rooted immutable-class inspection supplies current World-indexed type metadata and the absent-slot47 default allocator. No mutable Path-class semantics are asserted.",
+    "GenericAlloc consumes actual class+zero arguments and yields a fresh runtime-owned24-byte instance, initialized data cell and distinct source-owned root lease. The native field authority is limited to the current not-yet-published instance, never later public field mutation.",
+    "The actual raw Mem.store preserves all live byte payloads via the allocation data-cell separation law. It neither substitutes a native-private permission for runtime-owned instance storage nor invents a refcount operation on the field store.",
+    "The source NULL guard is proved from the actual caller continuation. Failed allocation may error, block, lose a return or follow arbitrary error-call effects; no such path can synthesize successful final return.",
+    "Actual return/free-list source steps preserve SAME metadata pointer, current held roots, instance class and root ticket. Ambient changes and loss remain in the underlying broad machine.",
+    "The class-root ticket and exact metadata held graph are still explicit caller inputs to Factory; their earlier source producers, all parser cases and public getter behavior remain required integration work."
+  ],
+  "status": "Focused source-construction support checked; complete parser/public caller integration remains in progress.",
+  "validation": {
+    "factoryBuildLog": ".tools/host/gateway/outcome-factory-build.log",
+    "independentFinalGate": "Pending complete current host/gateway integration under root coordination.",
+    "moduleBuildLog": ".tools/host/gateway/module-dispatch-build.log",
+    "queryBuildLog": ".tools/host/gateway/response-construction-audit-build.log"
+  }
+}

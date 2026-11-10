@@ -1,0 +1,717 @@
+{
+  "schema": 1,
+  "updatedAt": "2026-11-09T05:45:55.212043+00:00",
+  "status": "Supporting VM implementation/proof connection checked; integrated M5.2 delivery acceptance remains root-owned.",
+  "specs": [
+    "\u00a7FS-host-boundary.transport",
+    "\u00a7FS-host-boundary.ownership",
+    "\u00a7FS-host-boundary.caller",
+    "\u00a7AR-host-boundary.interfaces",
+    "\u00a7AR-application-verification.lifetime"
+  ],
+  "guarantee": "Every consumed transport event is an ordered selected actual connection read of the maintained VM program, with the same native FD, positive bounded amount, reply count and exact bytes. Actual EOF is a successful zero-byte positive-size read; VM exit cannot fabricate it. Decoder and diagnostic value bounds hold over returning success/error paths, and every emitted read in every finite/lost VM prefix has positive request size at most 65536.",
+  "consumers": [
+    "LeanCage.Host.RequestGuarantee and CallerProofs actual executeRun/VM/receive/publication chain.",
+    "Artifacts.actual_transport_artifacts obtains initialization/run/finish from actual_finished_origin rather than an independently supplied decoder transcript."
+  ],
+  "review": {
+    "source": "run_source cuts actual spawn, descriptor, clock, loop and finalization trajectories. loop_progress and consume_source derive the same Transport.State.run history; ReadSubsequence preserves exact order in the original dependent Program.Event list.",
+    "guards": "Runtime.read validates positive amount at most chunkMax before native allocation request, then validates count/bytes/limit before returning data. ReadSafe follows every possible primitive reply and lost last effect; actual_prefix_read_bounds consumes Program.Prefix of the same VM.run.",
+    "diagnostics": "collect_source and consume_result_bounded prove boot/diagnostic bounds; oversize rejection retains the previous bytes and raw decoder report. Both diagnostic streams and control FD3 are syntactically separated from transport; events_selected supplies actual stored connection selection.",
+    "caller": "Actual args use only fixed QEMU options, the selected bundle root and run-private image/control paths, fixed environment, null stdin and separate piped outputs. connect_source supplies the precise actual socket/connect pair and descriptor-width bound.",
+    "errors": "Timeout/read/cancel/clock/setup/finalization failures keep the actual transport prefix. Reap_frame and final_program_frame prove finalization preserves received data; they make no claim that signaling proves reaping.",
+    "runtime": "Each Program.Event records an actual interpreted operation under named individual Linux/runtime contracts. Per-object fresh socket/borrowed stream ownership and truthful process-status operations remain explicit primitive/lifetime interfaces; this review never assumes an entire safe VM or kernel.",
+    "nonvacuity": "Witness.actual_useful_consumer constructs actual source Returns for two real consumer/read calls and proves framed output equals the accepted decoder fixture. Witness.actual_lost_eof constructs the matching lost-read prefix; no_eof_incomplete retains the report while rejecting completion.",
+    "reduction": "The checked source continuation view uses full ordinary Lean definitional reduction with smart unfolding disabled locally. This affects elaboration only; proof terms are checked by the same kernel, with unchanged foundations."
+  },
+  "validation": {
+    "focusedBuild": "PASS: lake -d host build VirtualMachineProofs (41 jobs; matching dependencies reused)",
+    "fullAudit": "PASS: complete theorem types and full critical data/source interfaces; no truncation",
+    "kernelFoundations": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "theorems": 71,
+    "interfaces": 20
+  },
+  "declarations": [
+    {
+      "name": "LeanCage.Host.VirtualMachine.arguments_paths",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.arguments_environment",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.connect_source",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.connected_fd_bound",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.read_budget_bound",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.consume_factor",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.consume_returns",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.consume_connection",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.collect_source",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.consume_result_bounded",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.boot_overflow_retains",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.diagnostic_overflow_retains",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.stream_source_one",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.consume_result_source",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.consume_source",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.after_send_progress",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.connected_progress",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.loop_progress",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.read_safe_bind",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.read_safe_prefix",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.prefix_of_return_bind",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.perform_read_safe",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.runtime_read_safe",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.consume_read_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.runtime_clock_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.runtime_poll_safe",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.close_read_safe",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.connect_read_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.consume_ready_read_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.after_send_read_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.connected_read_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.loop_read_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.observe_exit_read_safe",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.reap_read_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.final_program_read_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.run_read_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.actual_prefix_read_bounds",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.lost_read_not_observation",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.program_pure_bind",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.program_bind_assoc",
+      "transitiveAxioms": [
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.program_bind_except",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.Progress.unchanged",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.Progress.refl",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.Progress.trans",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.Progress.fail",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.consume_progress",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.events_selected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.consume_ready_progress",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.read_subsequence_member",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.actual_finished_origin",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.actual_run_bounds",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.reap_frame",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.initial_program_progress",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.final_program_frame",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.finish_result_source",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.run_source",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.runtime_read_data",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.runtime_read_eof",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.read_subsequence_append",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.read_subsequence_empty",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.read_subsequence_mono",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.stream_source_refl",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.stream_source_append",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.runtime_read_useful",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.runtime_eof_useful",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.Witness.data_delivered",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.Witness.eof_observed",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.Witness.actual_useful_consumer",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.Witness.useful_framed",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.Witness.no_eof_incomplete",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.Witness.actual_lost_eof",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "LeanCage.Host.VirtualMachine.ReadOrigin",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.ReadSubsequence",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.StreamSource",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.Progress",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.Connected",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.ReadSafe",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.BoundedEffect",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.BoundedEvent",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.FinishedOrigin",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.consumeResult",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.readBudget",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.afterSend",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.connectedProgram",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.initialProgram",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.finalProgram",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.arguments",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.consume",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.loop",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.run",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Runtime.read",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    }
+  ],
+  "sourceSha256": {
+    "verification/host/VirtualMachineProofs.lean": "1608d7c791d654dce3625d42d1ad0fb273c9f0cf605431b9d6d6faf75f8194e3",
+    "verification/host/VirtualMachineProofs/Arguments.lean": "ec20fdf9e70a43dc115533be954bd54c5239f1757b9dade7166a6c3e396d62ba",
+    "verification/host/VirtualMachineProofs/Connection.lean": "5823f721fd1ef4f837e335e0409fea347f5ff1697584941f97953b18af501138",
+    "verification/host/VirtualMachineProofs/Consume.lean": "69f64faca7710500c0ab91f9b35cdced6e14b657130e04e7a7eefa4fdffca99b",
+    "verification/host/VirtualMachineProofs/Loop.lean": "dc4551d47a20c97e2082a23f7246a4d862a657c11358798ee583b9846d9cd1f6",
+    "verification/host/VirtualMachineProofs/Prefix.lean": "be9254262acc5d688ebd0e84163a33d6f09feb6c2ee0143193eb23b96b98d695",
+    "verification/host/VirtualMachineProofs/Progress.lean": "0f9627154dd66e82755b59bf949311024d5d3a186fd2a6a0e15e18bd9aff26aa",
+    "verification/host/VirtualMachineProofs/Ready.lean": "7d3b6ead6bca59a6f02d987f8bc87d590dbde71c14ffc5957c2db6cb388f38dd",
+    "verification/host/VirtualMachineProofs/Results.lean": "bedf7bb1e442e7c2a03f9d63c949433376a26e485cd7ed5ec11b7cf564c9a1b6",
+    "verification/host/VirtualMachineProofs/Run.lean": "15dd427f9abf6211eed34771e19517d9678a99ad005f6b543c18eaa33c18beb9",
+    "verification/host/VirtualMachineProofs/Runtime.lean": "8bb21fe99f52ce3ccfb185732a253272e96ced317bc7497fbb4af5e20bc74918",
+    "verification/host/VirtualMachineProofs/Witnesses.lean": "6f0831236df8df3b822fbaf72a1d582379b236067bf6860a4b5920f855a5e450",
+    "host/LeanCageHost/VirtualMachine.lean": "0756bcf94f54dbb6afc48cb51ee63475bbfd40537bb8e04dccda570a5ab2412c",
+    "host/LeanCageHost/Runtime.lean": "9d0b0665dfb6dbff30d516a653d0047bbcceedae8f560fbf48c77c9d34d5d22a",
+    "host/LeanCageHost/Program.lean": "e1e3a0336f118df866fee2a79994d7f468aedd748c050148d743e7d2461595a1",
+    "host/LeanCageHost/Transport.lean": "9ec1fd82c2b1cb0abb660ca71f08e7a367f59d971986841a244bd9f4f27ee9c6"
+  },
+  "artifactsSha256": {
+    "host-vm-audit.lean.gz": "bb58a335814613e0aa0dc491c401efb71b85eb4cac4f1fc86123bdd91304e7de",
+    "host-vm-audit.log.gz": "585f1a01fc1232b8f22845e5a59f4f65000880a76344ff33a083da3f04e1072d",
+    "host-vm-build.log.gz": "1cee454b489668ee54d19fc9d895d8972185ab20f8ad86f0b8182dc1105237cf"
+  },
+  "next": "Root completes the integrated host guarantee using actual caller/receive/publication evidence; native response projection continues as the next supporting source task."
+}

@@ -1,0 +1,131 @@
+{
+  "accepted_security_delivery": false,
+  "artifactsSha256": {
+    "assurance/host-vm-custody-native-build.log.gz": "82b705842e0af338432dbb750fdd7a57c425a2fdeb8d2267d1f773051bd78249",
+    "assurance/host-vm-custody-native.json.gz": "5fe5175e214f7203082e9e71f910d77b0d6200c3ed89206c825882987c0243f3",
+    "assurance/host-vm-custody-native.log.gz": "641f8588a4be4ded11fb10efc6c2daf6c55ccde9a407cb7ba3185d8ca536fe35",
+    "assurance/host-vm-spawn-custody-audit.lean.gz": "49a745eaea6e8a39bf264cbcad43c60ffef159b71850d3e6210e7439a6fb0e9a",
+    "assurance/host-vm-spawn-custody-audit.log.gz": "d101e4df6e089a3ef61aa272cf90a628e32fe27507daca850111bf725e687255",
+    "assurance/host-vm-spawn-custody-build.log.gz": "63e5572cfdfe8ce03eb35f48c9d0b22df839a866af2c4f1f5d50fd4ca1004ee6"
+  },
+  "declarations": [
+    {
+      "name": "LeanCage.Host.VirtualMachine.spawn_error_source",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.dispatch_spawn_error_source",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.spawn_error_report_preserved",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.unknown_cleanup_prefix",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.spawn_error_cleanup_prefix",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "LeanCage.Host.VirtualMachine.run",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.spawnErrorResult",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.spawnErrorInput",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.cleanupRun",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.receive",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "prior_reviews": {
+    "assurance/host-custody-corrections-review.json": "6fdb1e31b57fab87086905cf9e40ddbf9851ebd147977a621762c2dda36a93ec"
+  },
+  "review": {
+    "change": "Returned VM spawn error now produces cleanup unknown. Actual run\u2192dispatch\u2192receive source retains original transport/rawReport/recognizedReport/error. Unknown cleanup closes only its two actual raw handles, including all lost/error prefixes. Pre-spawn image failure still has the distinct not_started branch.",
+    "finding": "The broad actual spawn relation permits a committed child on a returned error. VM.run previously reported not_started, which cleanupRun treated as authorization to remove its backing directory.",
+    "fixture": "Actual fresh RunDirectory.create, exclusive policy write, shared VM/receive/cleanupRun source and retained-parent name/data lookup. The spawn reply is synthetic; no child/QEMU/VM workload is run on the host. The fixture uses the real decoder to produce a recognized report prefix, and confirms exact known/raw report preservation plus retained files/name. Test cleanup is performed separately after certifying that the fixture started no child.",
+    "proof_boundary": "No no-child-on-error assumption was added. These source proofs do not establish process reaping; truthful runtime wait and owned process tokens remain individual runtime/lifetime interfaces.",
+    "scope_extension": "This records the new VM error behavior separately from the frozen earlier VM source/profile review. No unrelated theorem/claim or historical evidence was rebound."
+  },
+  "schema": 1,
+  "sourceSha256": {
+    "host/LeanCageHost/Application.lean": "08fd19e7d08cf0486b593bc9fd525ff301057e56f69ae7eecf1db63289fe1648",
+    "host/LeanCageHost/VirtualMachine.lean": "3e0e6e0d133fd13b82900eb5726ac8dc6ce1608642d6e37344d478a7dcec9ded",
+    "verification/host/VirtualMachineCustodyNative.lean": "5d1f74aa3590d59a9ccb9644d9a237010dd36ff20929364cf6444fe34c8242fb",
+    "verification/host/VirtualMachineCustodyProofs.lean": "591d3daf92fa222b4c802071d7c1768b1c14108c3c3aa030e7f18cec8ecee624"
+  },
+  "specs": [
+    "FS-host-boundary.ownership",
+    "FS-host-boundary.artifacts",
+    "AR-host-boundary.primitives",
+    "DA-host-engine.private"
+  ],
+  "status": "Supporting actual-source custody correction reviewed; integrated M5.2 physical caller guarantee is still in progress.",
+  "updatedAt": "2026-11-09T12:46:16.296630+00:00",
+  "validation": {
+    "full_types_and_critical_bodies": "PASS; no truncation",
+    "native_build": "PASS252jobs, matching current dependencies",
+    "native_fixture": "PASS; .tools/host/vm-custody-native.json",
+    "source_build": "PASS177jobs affected VM/source graph",
+    "transitive_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  }
+}

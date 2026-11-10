@@ -1,0 +1,1030 @@
+{
+  "accepted_security_delivery": false,
+  "artifactsSha256": {
+    "assurance/host-authority-authenticity-build.log.gz": "cfa09f3c877bfd6c09bc06f0db0945090581f5812018c530af445ef2eddce198",
+    "assurance/host-authority-contract-audit.lean.gz": "81c16a706766644024a5234655be1680a736194b134e9feca59011d88e9ed05f",
+    "assurance/host-authority-contract-audit.log.gz": "27a5766ac125d53f45ac0c12c18cda01df726c76f176d8101982b0b91bb517bc",
+    "assurance/host-authority-controller-build.log.gz": "14360a0c97e5d9b55285dd78f8777de7e394b73d9e96f69641211e5042c2c85d",
+    "assurance/host-authority-source-build.log.gz": "df69c0d757480136f6754216eb3e36c848211134681dcdb3e4204d3871590747"
+  },
+  "declarations": [
+    {
+      "name": "LeanCage.Host.Kernel.fresh_directory_lookup",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.untouched_entry",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.same_authority_trans",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.same_authority_regular",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.same_authority_directory",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.same_authority_mask",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.same_authority_trusted",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.operation_keeps_authority",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.foreign_host_authority_retained",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.foreign_unowned_authority_retained",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.masked_no_search",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.masked_no_write",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.fresh_mkdir_foreign_denied",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actual_private_mkdir_birth",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.root_authority_after",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.foreign_root_authority_after",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ordinary_foreign_preserves_root",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ordinary_foreign_root_authorities",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.register_actual_root_authority",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.syscall_keeps_marker",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.accepted_public_tick_excludes_marker",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.guarded_copy_excludes_object",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ExternalStep.process",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.external_journal_processes",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.selected_external_cut",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actual_foreign_source",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.owned_child_kernel_step",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.passive_authority_safe",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.publication_authority_safe",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.publication_authority_program",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.run_creation_authority_program",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.run_cleanup_authority_program",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.safe_authority_program",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.image_authority_program",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.cleanup_authority_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.validator_authority_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.run_authority_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.entrypoint_authority_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.selected_authority_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.tracked_attribute_is_not_acl",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actual_no_acl_setter",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.external_step_authority",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.external_journal_authority",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.selected_action_authority_safe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actual_external_authority_journal",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.writeLoop_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.writeNew_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.directoryEnsure_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.publication_under_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.publication_write_relative_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.borrow_forIn",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.publication_directories_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.publication_exports_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.publication_fill_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.authentication_key_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.authentication_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.publication_prepare_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actual_prepare_retains_stage",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_borrow_physical_prefix",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_borrow_returns",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_prefix_from_history",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.vm_prefix_retains_reference",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.vm_return_retains_reference",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.observed_marker_tag",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actual_marker_source_query",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.accepted_nonquery_is_forgery",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actual_verification_origin_or_forgery",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.accepted_bad_reduces",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.bad_sample_count_le",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_borrow_weaken",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.perform_passive_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.perform_fresh_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.vm_close_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.clock_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.poll_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.runtime_read_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.connect_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.consume_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.consume_ready_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.loop_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.observe_exit_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.reap_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.run_borrow",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.loop_borrow_source",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Application.ControllerFilesystem.metadata_authority_safe",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Application.ControllerFilesystem.actual_controller_authority",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Application.ControllerFilesystem.backend_authority_from_actual_programs",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "LeanCage.Host.Kernel.Handle",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.Description",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.TrackedAttribute",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.NamespaceContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.SameAuthority",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.AuthoritySafeRequest",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.AuthoritySafeEffect",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.AccountContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ForeignAuthorityContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.RuntimeAuthorityContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.GloballyHeld",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.AuthoritySafeAction",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ChildAuthoritySafe",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ExternalAuthoritySafe",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.GlobalAuthorityContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.BackendAuthorityProducer",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ChildOperation",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ChildPrimitive",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ChildCallAt",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ExternalStep",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ExternalJournal",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.OwnedChildCall",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ActorBorrowPost",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ActorPhysicalPrefix",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.observedEvent",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.SourceSigningQuery",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.SourceSigned",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.MacForgery",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.acceptedBad",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.observedTag",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.ConnectionFresh",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.FreshConnection",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.afterWait",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.loopAfterSend",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.loopAfterConnection",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.loopAfterWait",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.VirtualMachine.runAfterState",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Application.ControllerFilesystem.metadataRequest",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Application.ControllerFilesystem.ControllerRuntimeContract",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Application.ControllerFilesystem.VmmRuntimeContract",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Application.ControllerFilesystem.ControllerCallSource",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "primitive_sources": [
+    {
+      "review": "posix_acl_update_mode changes low permission bits. Read-only primary-source audit; no Linux code copied.",
+      "url": "https://github.com/torvalds/linux/blob/v6.8/fs/posix_acl.c"
+    },
+    {
+      "review": "do_setxattr dispatches POSIX ACL names to do_set_acl; the tracked user.* XATTR_CREATE byte law is not generalized to ACL/security names. No Linux code copied.",
+      "url": "https://github.com/torvalds/linux/blob/v6.8/fs/xattr.c"
+    }
+  ],
+  "prior_reviews": {
+    "assurance/host-raw-handoff-review.json": "f2ee11fecf91c377d4c8ba047204b9e0071a4e86ab13171d3f5a0d6a80c04ab3",
+    "assurance/host-source-privacy-review.json": "7940645d8ed8d95a9179e6ca587c42e8e4064cd780d81ae8e8bba5746e9e53d1"
+  },
+  "review": {
+    "authenticity": "actual_marker_source_query supplies the actual same-tick publisher wire/key and earlier real MAC operation. actual_verification_origin_or_forgery retains the actual comparison Tick and classifies the accepted marker as a source-authenticated query or MAC-forgery candidate. observedTag extracts that candidate from supplied bytes, not verifier internals. Internal verification MAC calls are not signing queries. bad_sample_count_le transfers a pointwise finite sampled reduction; it assumes no zero-failure/no-forgery/injectivity axiom.",
+    "backend": "Each recorded owned child event derives its earlier actual Source/ProcessJournal birth and exact spawn arguments. allocated=true means born/known, not running. The maintained controller Metadata.bounded adapter uses the real open/read/close ABI and O_RDONLY|O_CLOEXEC 524288. The controller runtime and fixed-argument VMM interfaces describe individual observed operations; complete filesystem footprint/lifetime production remains open.",
+    "flags": "Handle.flags records original open/request provenance, not F_GETFL status. O_CREAT/O_EXCL/O_CLOEXEC cannot be inferred from F_GETFL. OFD positions/append are separate mutable state; closeExec and native nonblocking observations stay separately represented.",
+    "global_authority": "GloballyHeld uses actual current actor references or current namespace bindings, never stale shared raw tables or historical child descriptor maps. Per-operation authority retention frames UID/type/low permission bits only. Ordinary foreign permitted changes remain; same-host verified peers derive safe setters from actual source. Backend actions stay separately recorded and require actual per-operation controller/VMM producers.",
+    "key_lifetime": "A computational UF-CMA bound requires the complete actual publication-key lifetime transcript from fresh key generation, including earlier persisted reports across restarts, plus source-derived key nonexposure. A current-request journal alone does not justify that bound. Historical tags are not discarded or assumed forged. Finite device/inode envelope values likewise do not imply physical lifetime injectivity.",
+    "metadata": "AuthoritySafeRequest restricts only a setter name. Every actual returned/lost Entrypoint setter is derived from real packet/CLI/run/validator/publication source to use one of the two exact tracked user.* names; actual_no_acl_setter excludes both POSIX ACL names. The primitive relation still permits arbitrary ACL setters, and only the actual application source supplies the narrower profile.",
+    "namespace": "TrackedAttribute is exactly the private-anchor/publication user.* names. Attribute byte/existing/other laws require those names and an actual raw handle. The invalid raw-absence-implies-EBADF law was removed. syscall_keeps_marker now explicitly requires the selected setter raw-handle producer; global source custody must supply it.",
+    "publication_borrow": "Actual authentication, bounded writes, descendant traversal, export iteration and preparation retain any preexisting stage raw FD/OFD, using fresh descriptor allocation and same-source close discipline. No whole prepare/fill frame is a premise.",
+    "remaining": "Actual native channel producer instance; source-derived global family/capability/birth-to-open/resource fold; controller/QEMU per-child namespace footprint; exact historical key/marker persistence and key nonexposure; full key-lifetime cryptographic experiment reduction; compatible useful global execution and integrated public M5.2 acceptance.",
+    "vm_borrow": "run_borrow proves the maintained spawn/descriptor/clock/connect/poll/read/consume/reap/run source retains each preexisting raw handle on arbitrary replies, errors and lost-call prefixes. Only the actual freshly allocated cancellation connection may close. loop_borrow_source is an rfl equality to the actual executable; source continuation copies are kernel-connected by definitional equality rather than a translation or helper-frame assumption. ActorPhysicalPrefix/actor_borrow_physical_prefix and actor_borrow_returns give the actual same-history interpretation with interference."
+  },
+  "schema": 1,
+  "sourceSha256": {
+    "host/LeanCageHost/Effects.lean": "0ee1bf83797fa4d41303e92ddc68cc6c2b7c1f8203c1148a44eee3251497a9f8",
+    "host/LeanCageHost/Program.lean": "e1e3a0336f118df866fee2a79994d7f468aedd748c050148d743e7d2461595a1",
+    "host/LeanCageHost/Publication/Authentication.lean": "8ab172a52b03d5dc1d38395506639087dcb4bd279d0c804fe5b3abd5c4bdf33b",
+    "host/LeanCageHost/Publication/Types.lean": "726899a6bedd578f83435d3678fbe5cf44ec0f025bfdf611b5722190cb155872",
+    "host/LeanCageHost/Runtime.lean": "9d0b0665dfb6dbff30d516a653d0047bbcceedae8f560fbf48c77c9d34d5d22a",
+    "host/LeanCageHost/VirtualMachine.lean": "3e0e6e0d133fd13b82900eb5726ac8dc6ce1608642d6e37344d478a7dcec9ded",
+    "linux/host_primitives.c": "299f40bc19ce63f3821d2eb161bcd431f7b3f44dde1793390e75d7c237fc5a24",
+    "verification/application/ControllerChildEffects.lean": "7a98fdd3a1a8bac427fe37e64e9ba36d94942866f1b675c64d764eb347c051a8",
+    "verification/application/ControllerFilesystem.lean": "a3080e81f22ce8bae85621501722f0a044eccaf51432963a6e3255a658954aea",
+    "verification/host/FilesystemActorBorrowing.lean": "4bb53d42f64dd831c1400cbcf1673d236dee9dce86895bfad93dbb76a1a08bb4",
+    "verification/host/FilesystemAuthenticity.lean": "f1296a27e3eb1723cfabefda73fbe59ced2ea2e2746176ee7d1186e0817d3154",
+    "verification/host/FilesystemAuthoritySources.lean": "feff6580af2e088cfd424a420f6ffae9976f23c3ad6a4e5a5895afbc015d6d91",
+    "verification/host/FilesystemChildEffects.lean": "1b37005fbcd5f5f6b12365be68fe6dad342b0d5d12fd83cef76261b9b446d861",
+    "verification/host/FilesystemCryptography.lean": "c046b26c4d0bd7fe920579f01513143d87d48a37c5069c7511d561f97147736a",
+    "verification/host/FilesystemGlobalAuthority.lean": "947ef34c09756938a2ef6986c8974e2b9361532a10a37b3cafddaa099419af90",
+    "verification/host/FilesystemMarkers.lean": "22bb55e41b5a0874b4f3f0b9caf6263bb0de1551009609096410359e7020728f",
+    "verification/host/FilesystemMetadata.lean": "7ef8fab298a87aa11a339a09586700cbd20d82f4070873ae51273c801b4c6182",
+    "verification/host/FilesystemNamespaces.lean": "0ee6ab38db2fc8d315812a165488fc91014875e27dc19090a0be5e5fdf8043b9",
+    "verification/host/FilesystemPublicationBorrowing.lean": "b52ad0bbaba802e234928823963660d5e875236c938feba88f66b5606cf3c090",
+    "verification/host/FilesystemRootAuthority.lean": "0893ab52a4d2951a477c2918b488b8431f25ba36c912684adec3d6b154fc32b7",
+    "verification/host/FilesystemRuntime.lean": "4c59332127e2639acb26493ad1855cc9d1c88aceac2c9fcc2e4c8cb5c44162b3",
+    "verification/host/FilesystemVirtualMachineBorrowing.lean": "d489b9006c96c83fa126af310c32c229f88c6d98b7e933e3d16d5380d8264547",
+    "verification/host/FilesystemVirtualMachineBorrowing/Effects.lean": "5f08d71cf5ab474669aa36632eac91c97420eee310d502695971b7845db340ab",
+    "verification/host/FilesystemVirtualMachineBorrowing/Loop.lean": "f1a5916763a76751989182aa88da684c82755e140325c9445fdab9f64b390a48",
+    "verification/host/FilesystemVirtualMachineBorrowing/Run.lean": "0361c5aa8c15f0309a708c8032a4bd20842bdc94d7c37084a061dc0cb8a40a66",
+    "verification/host/FilesystemVirtualMachineBorrowing/Source.lean": "914a6afb16333917fa14632d9639822f43b102e4a781a52ff897264f85ba4b4a"
+  },
+  "specs": [
+    "FS-host-boundary.ownership",
+    "FS-host-boundary.publication",
+    "FS-host-boundary.snapshot",
+    "AR-host-boundary.primitives"
+  ],
+  "status": "Reviewed supporting physical/source interfaces. Full M5.2 global caller/ownership and cryptographic experiment instantiation remain in progress.",
+  "supersedes": {
+    "reason": "Linux POSIX ACL setters may change low mode bits, and Linux descriptors owned by SDK handles may exist outside the raw-reference projection. The earlier broad primitive clauses were unjustified.",
+    "record": "assurance/host-raw-handoff-review.json",
+    "rows": "Changed NamespaceContract tracked-user-attribute fields, AccountContract.authority_existing, operation_keeps_authority, root_authority_after and syscall_keeps_marker are reviewed here with their new exact full types. Prior sealed evidence remains unchanged; no accepted M5.1 payload or source contract is weakened."
+  },
+  "updatedAt": "2026-11-09T15:51:06.379816+00:00",
+  "validation": {
+    "authenticity_build": "PASS179jobs",
+    "controller_build": "PASS197jobs",
+    "query": "PASS128 declarations/interfaces with full untruncated types/bodies",
+    "runtime": "No runtime change in this review. Existing relevant native/VM fixtures retain their recorded scope; no hostile host workload or unrelated replay.",
+    "source_build": "PASS190jobs",
+    "transitive_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  }
+}

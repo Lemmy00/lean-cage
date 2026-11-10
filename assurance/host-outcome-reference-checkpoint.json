@@ -1,0 +1,54 @@
+{
+  "artifacts": {
+    "assurance/host-outcome-reference-checkpoint-audit.log.gz": "110a12e8f71e5cd8adbef033c2533275590b1076905c1a936a9026a30c76c4e6",
+    "assurance/host-outcome-reference-checkpoint-audit.v.gz": "decc69eb41a0cd6aed0f062af175c0d327bf5add344ccbc832a1b846e4b4ad26"
+  },
+  "compiledObjects": {
+    "GatewayOwnedOutcomeAdoption": "13d213901d7a4f09ecb9601e839aa58977df404fb3bf6b7707cc56062936ac90",
+    "GatewayOwnedOutcomeFactory": "dec1190f8ab7f2b9b59c89779c71c8ee94922321362d10cfc4197f4a90df19f5",
+    "GatewayOwnedOutcomeResult": "06d2c5c6ab11b343103ae196d1352b69b6ff8ca9fc272532209152ecfa284f0d",
+    "GatewayOwnedOutcomeReturn": "7d1ddf76c153d83d770b612607a4ebb1e91de2bf8842b673cf098f01aa83be75",
+    "GatewayReferenceSecondMove": "e7c9f1f203e9555eab515ca291e24952839d2a4623058ffde7535e5d58a16a5f"
+  },
+  "declarations": [
+    "GatewayOwnedOutcomeFactory.gateway_actual_owned_outcome_allocation",
+    "GatewayOwnedOutcomeResult.gateway_actual_owned_constructed_outcome",
+    "GatewayOwnedOutcomeReturn.gateway_actual_owned_outcome_return",
+    "GatewayOwnedOutcomeAdoption.gateway_owned_outcome_adopt_credits"
+  ],
+  "foundations": [
+    "ClassicalDedekindReals.sig_forall_dec",
+    "ClassicalDedekindReals.sig_not_dec",
+    "Classical_Prop.classic",
+    "Events.external_functions_sem",
+    "Events.inline_assembly_sem",
+    "FunctionalExtensionality.functional_extensionality_dep"
+  ],
+  "nextAction": "Compose actual GenericAlloc continuation receipt with gateway_owned_outcome_adopt_credits using the source copy-head+older-stack ledger. Derive final source-bound data-cell/result entries from the actual store/load and saved callers, then continue actual host_outcome_from field-validation/dict-copy/Path and observation getter.",
+  "schema": 1,
+  "scope": [
+    "The actual GenericAlloc source call/nonnull guard, same allocated instance, exact copy field store, source local cleanup and return preserve the repaired source ledger and original private held metadata graph.",
+    "SDK allocation/count rules are individually conditioned on the actual source Outcome TypeSpec/default allocator. The legacy lease relation may occur only as an allocation-event annotation in the existing raw allocation interface; no unindexed universal lease-release runtime is assumed.",
+    "The pure adoption lemma preserves pointer aliases and exact older tail while moving the selected copy credit into the data cell and the allocated instance credit into the outer result. It is algebra, not a substitute for the missing complete original-caller composition.",
+    "This checkpoint does not yet derive all14 field/type guards, dict-copy/Path-callback source provenance, the original observation graph getter, complete initializer ownership, public method return, or engine/private-IPC identity. Historical sealed construction records and invalidation amendments remain preserved."
+  ],
+  "sourceEpoch": {
+    "c": "8dc2bdd9b0a454786d5525d0b97135c6d2ac2e02fceb5d07afdcb11406effd3d",
+    "source": "2fce74e393b9211504531aa0cf31d10ac9bce73ef6c38dcd30bf720e10880eb5",
+    "strict374": "e654b8c03d39600811fd50651b9b6aada9569f98d6e75bf136f6573bb4bb592e"
+  },
+  "sources": {
+    "verification/host/GatewayOwnedOutcomeAdoption.v": "9f6b85693099ebc0bf718e896af94a9a2078a87a6a9fe3d2dbb277589b239548",
+    "verification/host/GatewayOwnedOutcomeFactory.v": "b527a4cce9c6c8119c3a36aeb4805eb6c494a9d6839b22172f224b86711f1764",
+    "verification/host/GatewayOwnedOutcomeResult.v": "e7323bee37e96e9a21fc7075383b40c33f87027b3169c3481e87a95732bf16dc",
+    "verification/host/GatewayOwnedOutcomeReturn.v": "8465ce192a190bfe569a4fdef52c4682e3b7928a98b9feded9e7dfed1c08b4ec",
+    "verification/host/GatewayReferenceSecondMove.v": "66c32ae39040e41a0302a20789de97e4f3b91832634e775626a29fba664dde85"
+  },
+  "spec": [
+    "FS-host-boundary.caller",
+    "AR-host-boundary.interfaces.gateway",
+    "AR-host-boundary.primitives"
+  ],
+  "status": "Checked supporting proof checkpoint only; complete Outcome/public caller and full M5.2 acceptance remain unfinished.",
+  "validation": "Five maintained source/object matches, all focused compilations passed; current supporting full-type/interface/assumption audit passed. No invalid universal RootLeases runtime occurs in queried types. No complete delivery/acceptance gate claimed."
+}

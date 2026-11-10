@@ -1,0 +1,985 @@
+{
+  "schema": 1,
+  "updatedAt": "2026-11-09T01:35:34.440051+00:00",
+  "status": "Component implemented and focused checks passed; live host-engine composition and M5.2 integrated acceptance remain active.",
+  "specs": [
+    "\u00a7FS-host-boundary.transport",
+    "\u00a7AR-host-boundary.interfaces",
+    "\u00a7AR-host-boundary.acceptance"
+  ],
+  "claim": "The maintained total decoder bounds every finite hostile input prefix. Successful finish uniquely reconstructs exact caller-bound LCVM1 framing, terminal status and actual EOF, with unique records, bounded raw result bytes and sticky errors preserving known REPORT.",
+  "intendedConsumers": [
+    "Live host engine exact primitive read loop",
+    "Artifacts validation of raw reports, manifests and blob content hashes"
+  ],
+  "decision": {
+    "oneExecutable": "Proofs unfold the same Transport.State.init/byte/step/run/finish definitions used by the host engine.",
+    "blobIndex": "Balanced TreeSet of exact 64-byte digest encodings; the byte ABI inverse proves injectivity and each key is below 256^64.",
+    "hashBoundary": "Transport validates canonical hexadecimal digest encoding and uniqueness. Actual content SHA matching is consumed separately by Artifacts before publication.",
+    "evaluation": "Useful/failure witnesses use proof-producing cbv and kernel-checked equalities, without native_decide."
+  },
+  "review": {
+    "topPremises": "accepted_stream and related results require successful actual State.init and finish of the same State.run events; no well-formed/safe input or framing conclusion is assumed.",
+    "hostileCoverage": "Event.data accepts arbitrary bytes; oversized chunks fail before toList. Unknown/reserved/oversized/duplicate/truncated/trailing/digest/aggregate/terminal and EOF-loss cases remain in the executable relation.",
+    "provenance": "accepted_stream accounts for every data byte; accepted_has_eof derives an EOF input event; arbitrary_fragmentation equates all bounded chunkings of the same byte sequence.",
+    "memory": "Exact retained frame cost and blob-content sums, bounded frame/index node counts, index keys below 2^512, active payload/header sizes, final digest/content-copy sum and static error messages are proved. Input normalization allocates a list only after the 65536-byte check.",
+    "runtimeBoundary": "These are bounds on actual Lean values and requested copies, not an invented byte-exact Lean heap layout or constant-memory API. The actual primitive read buffer and its EOF origin must be supplied by the live engine; Linux/runtime/compiler contracts remain explicit.",
+    "correctnessKind": "Finite-prefix partial correctness and inhabited useful/error executions. This record does not claim termination, observation truth, filesystem publication authority or a completed M5.2 delivery."
+  },
+  "validation": {
+    "focusedBuild": {
+      "command": "lake -d host build TransportProofs",
+      "result": "PASS",
+      "log": "assurance/host-transport-build.log.gz"
+    },
+    "fullTypeAndAxiomAudit": {
+      "command": "lake -d host env lean -DautoImplicit=false -DwarningAsError=true .tools/host/TransportAudit.lean",
+      "result": "PASS",
+      "source": "assurance/host-transport-audit.lean.gz",
+      "log": "assurance/host-transport-audit.log.gz",
+      "settings": [
+        "pp.all",
+        "pp.universes",
+        "pp.explicit",
+        "pp.fullNames"
+      ]
+    },
+    "kernelFoundationUnion": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "integratedAcceptance": "Pending root-owned host engine integration; this component check is supporting evidence."
+  },
+  "declarations": [
+    {
+      "name": "LeanCage.Host.littleEndian_size",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.fromLittleEndian_bound",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.fromLittleEndian_littleEndian",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.fromLittleEndian_littleEndian_exact",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.littleEndian_fromLittleEndian",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.littleEndian_injective",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.step_error",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.byte_error",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.run_error",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.fail_report",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.oversized_chunk",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.bytes_append",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.header_parse_fields",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.finish_requires_eof",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.finish_clean",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.init_fields",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.prefix_size",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.cap_le_active",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.acceptHeader_fields",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.commit_ok",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.header_parse_self",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.header_word64",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.acceptBlob_fields",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.bounded_fail",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.bounded_init",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.bounded_append",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.bounded_commit",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.bounded_phase",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.bounded_byte",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.bounded_bytes",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.bounded_step",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.bounded_run",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.frame_count",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.bounded_storage",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.tag_beq",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Transport.ledger_commit",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.ledger_byte",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.indexed_empty",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.indexed_append",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.indexed_byte",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.indexed_bytes",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.indexed_step",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.indexed_run",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.framed_commit",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.framed_byte",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.framed_bytes",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.framed_step",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.framed_run",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.append_wire",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.commit_wire",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.byte_clean_before",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.byte_wire",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.bytes_error",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.bytes_clean_before",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.bytes_wire",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.step_clean_before",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.run_clean_before",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.step_wire",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.run_wire",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.commit_preserves",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.byte_preserves",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.byte_static",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.bytes_static",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.step_config",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.run_config",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.data_fragmentation",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.data_step_eq_bytes",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.data_normal_form",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.arbitrary_fragmentation",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.finish_shape",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.accepted_stream",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.frameWire_injective",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.record_member",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.record_bounded",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.known_report_byte",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.known_report_bytes",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.known_report_step",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.known_report_run",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.accepted_unique_records",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.blob_output_count",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.blob_output_bytes",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.accepted_blob_bounds",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.blob_key_injective",
+      "transitiveAxioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.bounded_active_bytes",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.accepted_record_bounds",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.reachable_invariants",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.data_eof_static",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.step_eof_origin",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.run_eof_origin",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.accepted_has_eof",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.terminal_parse_fields",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Transport.accepted_terminal_bounds",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.accepted_output_copies",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.error_message_bounded",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.Witness.initialized",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.Witness.useful_exact",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.Witness.eof_required",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.Witness.truncation_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.Witness.trailing_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.Witness.eof_is_final",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.Witness.duplicate_report_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.Witness.duplicate_preserves_report",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.Witness.reserved_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.Witness.unknown_tag_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.Witness.maximum_uint64_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.Witness.terminal_bounds_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.Witness.useful_blob_exact",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.Witness.duplicate_blob_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.Witness.aggregate_bytes_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.Witness.malformed_digest_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.Witness.short_blob_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.Witness.missing_report_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Transport.Witness.mismatched_identity_rejected",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "printedInterfaces": [
+    "LeanCage.Host.Transport.Limits",
+    "LeanCage.Host.Transport.Limits.Valid",
+    "LeanCage.Host.Transport.Header",
+    "LeanCage.Host.Transport.Header.parse",
+    "LeanCage.Host.Transport.Frame",
+    "LeanCage.Host.Transport.Frame.Valid",
+    "LeanCage.Host.Transport.Terminal",
+    "LeanCage.Host.Transport.Terminal.parse",
+    "LeanCage.Host.Transport.State",
+    "LeanCage.Host.Transport.State.init",
+    "LeanCage.Host.Transport.State.acceptHeader",
+    "LeanCage.Host.Transport.State.acceptBlob",
+    "LeanCage.Host.Transport.State.commit?",
+    "LeanCage.Host.Transport.State.byte",
+    "LeanCage.Host.Transport.State.step",
+    "LeanCage.Host.Transport.State.run",
+    "LeanCage.Host.Transport.State.finish",
+    "LeanCage.Host.Transport.State.Bounded",
+    "LeanCage.Host.Transport.Indexed",
+    "LeanCage.Host.Transport.State.Framed",
+    "LeanCage.Host.Transport.Result",
+    "LeanCage.Host.Transport.retainedBudget",
+    "LeanCage.Host.Transport.activeBudget"
+  ],
+  "sourceSha256": {
+    "host/LeanCageHost/Bytes.lean": "d4c674e06964e4be3c84306a3589af63f321cf1e5d1d3576365c583a0fbbe3c3",
+    "host/LeanCageHost/Transport.lean": "9ec1fd82c2b1cb0abb660ca71f08e7a367f59d971986841a244bd9f4f27ee9c6",
+    "verification/host/BytesProofs.lean": "3d6e1aff51a91eba5d3f81e928e7f8e0b06a28326fb190bb1090e628c99e7cda",
+    "verification/host/TransportProofs.lean": "3b8c2ef417ca3452f5ace2f4b90b317e091ea5829b479ad4c59379dce70cd1d0",
+    "verification/host/TransportProofs/Bounds.lean": "e8424faaae2367b94c8d4006db070992c9c1e6bd972668dca81255501f02906b",
+    "verification/host/TransportProofs/Framing.lean": "9db371d3c1c777a9f0b5a67221d1dd0c1879cd2474bb8bd4b33ad2e1df8322a0",
+    "verification/host/TransportProofs/Results.lean": "a9b01dc05ab6936b97ffdcf2830113a8563b9c935d2f92f17e359a4f79acfcf9",
+    "verification/host/TransportProofs/Witnesses.lean": "b5b61ad5ab201823314118003246a70ede7cf07facf19d872b520c675ea1eb6d",
+    "host/lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "host/lakefile.lean": "c8560e9aa6d652c2b4cbc65c8afeec50384641b0e4b50d464f6b641c7a9b29fa"
+  },
+  "checkedArtifactSha256": {
+    "host/.lake/build/lib/lean/LeanCageHost/Bytes.olean": "7da8d81c42b53fb40618cf0de753cae7497e8d9f00ea446d66eba76267346d90",
+    "host/.lake/build/lib/lean/LeanCageHost/Transport.olean": "3bb65c558de1c44ccd36a3eb4c9b3617cba22482e8671a8dc0cd211f76d41b05",
+    "host/.lake/build/lib/lean/BytesProofs.olean": "c431b36c7fb878a6afed1142a91ef4be24f28c17c90ee7f758a812ba5f3e3071",
+    "host/.lake/build/lib/lean/TransportProofs.olean": "ed13965b4e51576c945645bfd0bb7e569fd07efaa267278e28b78cabc0cfbf6c",
+    "host/.lake/build/lib/lean/TransportProofs/Bounds.olean": "1c2a01f3f4bcd3eedc4b4f8192b9eaa42e36378195fbcd7003bb6edee84c7363",
+    "host/.lake/build/lib/lean/TransportProofs/Framing.olean": "fad828b309301411777986c7f327db084d138aaaa99b3fc0891526a91fff0578",
+    "host/.lake/build/lib/lean/TransportProofs/Results.olean": "b5e99937cf49d043abf24937f8ce2eb8bf20e8e2d833fc8208852e9f7af62b39",
+    "host/.lake/build/lib/lean/TransportProofs/Witnesses.olean": "f780ba3dcd4c3aee1c3ef43148f3480360211ec3938748a0addd11e688f29e50"
+  },
+  "toolchain": "Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "evidenceSha256": {
+    "assurance/host-transport-audit.lean.gz": "fa981005f6662cdc6b755084fc4133a8ca6fe1ee880ead36a87ff82e53ec1148",
+    "assurance/host-transport-audit.log.gz": "b4dc5e4ae96f43166bbcc100cbaa5c8665f74c28d3d338687c0ca31d39073958",
+    "assurance/host-transport-build.log.gz": "ae22730822c9d58a7b1f96e79dfa09c0c9d036fd3be4ce2c5070445000a52839"
+  }
+}

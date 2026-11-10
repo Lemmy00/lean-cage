@@ -1,0 +1,78 @@
+{
+  "accepted_security_delivery": false,
+  "artifacts": {
+    "assurance/host-bootstrap-retention-audit.log.gz": {
+      "sha256": "935f47b27a34f74cdade392c4c2ac686bbb2ec56d3b8efa9e17ee44a15ab7af5",
+      "source_sha256": "b974a3b42155bd77cbfb5a16d87caa86e989946b83cb6260b7957f2d40894089"
+    },
+    "assurance/host-bootstrap-retention-audit.v.gz": {
+      "sha256": "adaa1daf39bdfd9f49940226a9c78d6d2726f71a58b24f042697b87d29fbc36d",
+      "source_sha256": "c79a0761f61a91cc6de355043014cd204ed212147b7e703f00e0a457bf345bd6"
+    },
+    "assurance/host-bootstrap-retention-build.log.gz": {
+      "sha256": "6d91d7d7ef83f5e8bc9e7825bb25fd0d8fc8c4f86d078df38f29cb83159033db",
+      "source_sha256": "34ab918ef0d569f72ef94f097feb3951f6d9786208fe51a88084cafe12ebabf6"
+    }
+  },
+  "checks": [
+    "Focused protected memory/thread/libc adapters PASS.",
+    "Whole actual bootstrap descriptor composition PASS.",
+    "Full statement/permission/runtime/assumption query PASS; same six reviewed Rocq/CompCert foundations."
+  ],
+  "connection": "Protected write authority excludes mutable descriptor blocks while permitting reads from actual read-only descriptors. At-load writable/readonly ELF permissions plus individual primitive footprints, source stores and frees derive snapshot retention. No whole-helper or whole-initializer frame is an input.",
+  "declarations": [
+    "GatewayBootstrapDescriptors.actual_loaded_bootstrap_descriptors",
+    "GatewayInitializationBootstrap.gateway_actual_initializer_bootstrap",
+    "GatewayProtectedThreads.gateway_protected_threads",
+    "GatewayProtectedBootstrap.gateway_protected_bootstrap"
+  ],
+  "failure_and_loss": "All original GatewayMachine error, waiting, interference, source loss and committed-loss cases remain. These return theorems are partial correctness and establish no termination/reclamation result.",
+  "inputs": {
+    ".tools/host/gateway/GatewayBootstrapDescriptors.vo": "ec1f7cca9e57a6420593e1761bc251455e1a6cfd4388566da5f859e5764ee286",
+    ".tools/host/gateway/GatewayBootstrapGuarantee.vo": "58daa2c0c728f514d9fb720f7c716855f022de17de218f21fdf28aee6dd535f2",
+    ".tools/host/gateway/GatewayBootstrapGuaranteeQuery.vo": "886a10edd1c4302c63ffb91cb17daa0c2856ac64e5e8954738ea48d68b59dfff",
+    ".tools/host/gateway/GatewayInitializationBootstrap.vo": "eaa284e322b41667b0a25377242cb65b5f69924b9a551323f91b805dd0a1265b",
+    ".tools/host/gateway/GatewayInitializerProtection.vo": "c68028b525dbcebecfa6c891c8c136a7f517faa5067ec182ddc8fe9d8b0b077e",
+    ".tools/host/gateway/GatewayProtectedBootstrap.vo": "70180fc7567a8cce1be6b97c6e0cddff4d35f74ae0b896402238f0cb9a2764ee",
+    ".tools/host/gateway/GatewayProtectedMemory.vo": "4eb92e7b075ba8c028639cb9901899cfb9415c29ecb53bbb3d24d3bd0d405d30",
+    ".tools/host/gateway/GatewayProtectedThreads.vo": "7214dc746f037a69a7c45fcdf7f08b57c8f4cbd094698e5747687869ce7adc80",
+    ".tools/host/gateway/GatewaySource.v": "2fce74e393b9211504531aa0cf31d10ac9bce73ef6c38dcd30bf720e10880eb5",
+    ".tools/host/gateway/GatewaySource.vo": "3a97870876c2627abf77351b40625a0a1b699a187c891ef5f7f116a22c0d9909",
+    ".tools/host/gateway/source-inputs.json": "78df64cda071d8d189194e31070a4defac71d1132ce1a18d3a0513e29557ad2c",
+    "assurance/host-bootstrap-source-review.json": "c4c2bd2a42af4eb8bb8318523287eb69dcfb376bdad0f0d1f73f25b56d8c034a",
+    "linux/host_python.c": "8dc2bdd9b0a454786d5525d0b97135c6d2ac2e02fceb5d07afdcb11406effd3d",
+    "verification/host/GatewayBootstrapDescriptors.v": "752491938cc8327aaf9cee581d97bb1b8a514ecdce014445603db55b0f19d4f0",
+    "verification/host/GatewayBootstrapGuarantee.v": "a2e9ccd33dbddbecc6651baf4212f314495aa117162b1831027e7a4e6563eed4",
+    "verification/host/GatewayBootstrapGuaranteeQuery.v": "c79a0761f61a91cc6de355043014cd204ed212147b7e703f00e0a457bf345bd6",
+    "verification/host/GatewayInitializationBootstrap.v": "73fdf07af2870924012db5c00ef68fa61e487936b805b5bd7c2416d3af949d36",
+    "verification/host/GatewayInitializerProtection.v": "cdf5cc23ccf73a088defeb663158e06043424f1c8a4afe63d7243ec0f97dbe32",
+    "verification/host/GatewayProtectedBootstrap.v": "f31cb68fe6498c67fc4b79d8fe83b8b1d5ff772ba93cf4a7f7d5607c0ea4053c",
+    "verification/host/GatewayProtectedMemory.v": "fa1013132ffd20e65029c0cd910955f95b5f4471fc2158eca4617261cfb3e8cd",
+    "verification/host/GatewayProtectedThreads.v": "fb13b82c04a7e2e5700e2162647bab973d6538bfc2003dcd2bba2d974ecadb67"
+  },
+  "primitive_inputs": [
+    "Original individual loader/libc/thread contracts and source ELF region/native storage facts.",
+    "At-load readonly source mappings have no writable positions; actual readonly source data may be read but cannot satisfy a writable output-pointer precondition."
+  ],
+  "remaining": [
+    "Pre-bootstrap guarded PyInit prefix and complete post-bootstrap class/reference/module/public caller composition.",
+    "Repaired active plus retired/global source reference history retained through the entire initializer.",
+    "Complete M5.2 shared native-row/custody/result joins, integrated final acceptance and main push."
+  ],
+  "result": "The SAME actual f_host_bootstrap call/entry/allocation through Return0 produces actual loader-originated validated paths and retains every initialized source descriptor/literal region, including relocated pointer tables. The source host_initialize bootstrap call and actual nonzero failure guard force Return0 for a non-null final initializer return; undefined results cannot pass that guard.",
+  "schema": "leancage-host-bootstrap-retention-review-v1",
+  "specs": [
+    "FS-host-boundary.caller.initialization",
+    "AR-host-boundary.primitives",
+    "REQ-proof-integrity.statement"
+  ],
+  "status": "whole actual bootstrap descriptor frame and actual initializer bootstrap guard checked; full guarded initializer/caller still incomplete",
+  "transitive_assumptions": [
+    "ClassicalDedekindReals.sig_not_dec",
+    "ClassicalDedekindReals.sig_forall_dec",
+    "Events.inline_assembly_sem",
+    "FunctionalExtensionality.functional_extensionality_dep",
+    "Events.external_functions_sem",
+    "Classical_Prop.classic"
+  ]
+}

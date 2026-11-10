@@ -1,0 +1,382 @@
+{
+  "accepted_security_delivery": false,
+  "artifactsSha256": {
+    "assurance/host-marker-custody-audit.lean.gz": "59c8870d82202ed4c824d50ec0498d5f18253b735c5d7eb8c8825bece4dea30f",
+    "assurance/host-marker-custody-audit.log.gz": "52168f7814a4e2677a594efe7dffa59a90b6984b972ff7400b658645a02d8c4b",
+    "assurance/host-marker-custody-build.log.gz": "af4874e8abbb01d47d848fc340ef392380676d9c3f27465c434a4009600e9368"
+  },
+  "declarations": [
+    {
+      "name": "LeanCage.Host.Kernel.directory_observation_returns",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.directory_observation_handle",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.created_observation_handle",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actual_child_handle",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actual_fresh_handles",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.operation_live_backward",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_step_live_backward",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_journal_live_backward",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actor_journal_live_snapshots",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.external_step_live_authority",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.external_step_protected_marker",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.external_journal_protected_marker",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.selected_safe_external_cut",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actual_guard_excludes_initial_marker",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actual_guarded_read_excludes_initial_marker",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actual_snapshot_protected_reference",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.entrypoint_private_marker_call",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.marker_creation_trace",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.selected_publisher_marker_handle",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.run_after_mark_no_attribute",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.run_marker_call",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.selected_private_marker_handle",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.selected_attribute_handle",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.foreign_cannot_remove_private_child",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.foreign_cannot_mutate_private_directory",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.foreign_cannot_clear_private_attribute",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "LeanCage.Host.Kernel.ObjectAlive",
+      "transitiveAxioms": []
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ForeignContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ObjectLifetimeContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.LiveMetadataContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ExistingAttributeContract",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.ProtectedMarker",
+      "transitiveAxioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.SafeExternalCut",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.RunMarkerCall",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.RunCreationPrefix",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.runAfterMark",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.HostMarkerCall.creatingContext",
+      "transitiveAxioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "primitive_sources": [
+    {
+      "review": "Official kernel documentation distinguishes inode filesystem ownership from per-mount ownership, including stat output. Read-only source review; no Linux code copied. The supported initialized coherent UID-view profile is explicit.",
+      "url": "https://www.kernel.org/doc/html/v6.8/filesystems/idmappings.html"
+    },
+    {
+      "review": "Tracked user.* fsetxattr(XATTR_CREATE) cannot replace an already-present attribute. Actual adapter op20 passes that flag; ACL/security dispatch is outside the tracked-name law. Read-only primary-source review, no Linux code copied.",
+      "url": "https://github.com/torvalds/linux/blob/v6.8/fs/xattr.c"
+    },
+    {
+      "review": "Deletion permission is checked on directory/entry ownership and sticky/DAC conditions; retirement is not a file-write authorization. No Linux code copied.",
+      "url": "https://github.com/torvalds/linux/blob/v6.8/fs/namei.c"
+    }
+  ],
+  "prior_reviews": {
+    "assurance/host-authority-contract-review.json": "7894a8bfe0a5261d95ff9c843a7dfed9965b43e06accba5b85cd71994564a349",
+    "assurance/host-raw-handoff-review.json": "f2ee11fecf91c377d4c8ba047204b9e0071a4e86ab13171d3f5a0d6a80c04ab3"
+  },
+  "review": {
+    "birth_scope": "DirectoryHandles establishes genuine output handles; it does not equate their opened inode to the preceding mkdir birth. That equality remains the global namespace/family invariant responsibility.",
+    "create_only_attribute": "ExistingAttributeContract names exact one-operation XATTR_CREATE semantics for tracked user.* attributes, plus individual SDK/socket/child attribute effects. An already-present tracked tag on an OLD still-live inode cannot be replaced by that primitive, independently of whether its FD appears in the acting raw projection. This is not a whole private-region frame or an attribute law for arbitrary ACL/security names.",
+    "guard_producer": "actual_guard_excludes_initial_marker extracts the exact SourceReturnAt guard Tick from the same full ActorJournal and ExternalJournal. It derives actual per-operation source/DAC restrictions, old-inode liveness and the protected marker at THAT prior guard snapshot, then contradicts its actual ENODATA observation. It does not assume a marker at the guard or that a private path stayed unchanged.",
+    "initial_boundary": "Initial input is the exact allocated logical object with real UID, no group/other write bits, and an existing private marker. It is a precise protected-bootstrap/earlier-source observation, not HostSafe, SnapshotSafe, PublicationSafe or a whole-file immutable-region premise.",
+    "metadata": "LiveMetadataContract frames UID/type/low authority bits only for a still-live object across one actual syscall/SDK/child event. The application proves tracked setter names from actual source. Ordinary foreign authorized changes remain in the relation; key/object owner and mode checks derive denial in the selected case. No file-content, size, timestamps, links or pathname interval is frozen.",
+    "mount_identity_view": "The supported initialized platform profile, explicitly stated in FS-host-boundary.ownership and AR-host-boundary.primitives, has a coherent host UID view across permitted ordinary bind aliases. Idmapped aliases require a later per-mount view model; mount ID/stat bytes alone are not mapping evidence. This is not a private-region/HostSafe assumption. Numeric inode reuse remains distinct.",
+    "remaining": "Global family/capability/birth-to-open/cleanup ownership; complete per-child filesystem footprint; actual public caller freeze-context and bootstrap-key observation producers; full key bytes/nonexposure flow and computational authenticity over the complete key lifetime including persisted reports; compatible useful global execution and integrated M5.2 acceptance.",
+    "retirement": "ObjectAlive describes live lifetime metadata, not numeric device/inode injectivity or knowledge newly learned by fstat. ObjectLifetimeContract supplies individual raw-reference liveness and backward no-resurrection for OLD logical lifetime tokens. A late actual guard therefore derives prior liveness at every relevant journal snapshot. Retired objects and error/lost effects remain broad.",
+    "setter_custody": "selected_attribute_handle derives every actual returned/lost application setter target from the same actor history: either successful actual run newChild opening or publisher fresh stage followed by the real hash/auth/fill program. No raw-handle binding, phase label or whole-helper frame is a premise. The stage/container raw Handle/OFD outputs are derived by actual acknowledged open/stat source and primitive effects.",
+    "snapshot_consumer": "actual_snapshot_protected_reference composes the maintained Snapshot.freeze prefix and actual source-event/context equality with that historical guard producer. It yields a genuine live read handle whose physical object differs from the protected key/object, including a lost read response. The public application producer must supply the actual freeze context from its existing preparation source cuts."
+  },
+  "schema": 1,
+  "sourceSha256": {
+    "host/LeanCageHost/Directories.lean": "b1d638e6db520ca7a446762b98f7be38051a53ab93dfead2b4bb3038d3bd714f",
+    "host/LeanCageHost/Publication.lean": "7cbd8de6c663b78bc180fe14a9fc1b964f73640f651a95b796bdd0f0994c8a88",
+    "host/LeanCageHost/Publication/Authentication.lean": "8ab172a52b03d5dc1d38395506639087dcb4bd279d0c804fe5b3abd5c4bdf33b",
+    "host/LeanCageHost/Publication/Files.lean": "4df844663e08aec0b18c16c2909458cddc3db8dd98becf8624ff44dfad69a727",
+    "host/LeanCageHost/RunDirectory.lean": "7d02b66aa4754c095ce7d94e54223923429035904b4e7baefdcc2e3f9b0b14fd",
+    "host/LeanCageHost/SourcePaths.lean": "bb6bfd2a8935a66cb94e8377f5ce274461c1554a8f3f9969067fe95895d19436",
+    "linux/host_primitives.c": "299f40bc19ce63f3821d2eb161bcd431f7b3f44dde1793390e75d7c237fc5a24",
+    "verification/host/FilesystemAuthoritySources.lean": "feff6580af2e088cfd424a420f6ffae9976f23c3ad6a4e5a5895afbc015d6d91",
+    "verification/host/FilesystemContracts.lean": "608fe419be5e2c25ed5eaa929562b4a730e29dc8cf5344993755beffaef507ca",
+    "verification/host/FilesystemDirectoryHandles.lean": "ea109dbe0f27740292e9d4cbcd25cc9b2216076978d9934872898d952451a658",
+    "verification/host/FilesystemForeign.lean": "440912ab162d33775bbedffc5ec2f4d9e3791e600991610b64e4d75fbda35b74",
+    "verification/host/FilesystemGlobalAuthority.lean": "947ef34c09756938a2ef6986c8974e2b9361532a10a37b3cafddaa099419af90",
+    "verification/host/FilesystemLiveMetadata.lean": "0607013b462a25df22157c97a1941c28703f0212f9e978b692f5a3993d83bc53",
+    "verification/host/FilesystemMarkerBindings.lean": "f7d1798dee6cfcf25d0cb0f077281921a51a297291da13da53547c1b847b66b6",
+    "verification/host/FilesystemMarkerBindings/Invocation.lean": "8f516a900210380902cd9cb772ad52fdd752668fbf6bf5b004ece333ac1e804d",
+    "verification/host/FilesystemMarkerBindings/Publication.lean": "87df7fb44c08403ec63108c1cc89a3bcc6333d140290ea54b193f634b96a062e",
+    "verification/host/FilesystemMarkerBindings/RunSource.lean": "17ba7373c6857ac5f31d4cbbd7d7c117b9f46a6e2138d5926f4fd0bf8c624628",
+    "verification/host/FilesystemMarkerBindings/Selected.lean": "b8529d9325219e818376fa05af54725b81a3fcb76d9a3ae558efcdf4e7c32553",
+    "verification/host/FilesystemMarkerGuards.lean": "c1d03655e41a086ad236c5327b8b6cb6cc4e19f3cf9e688e7dc08caf62a4c571",
+    "verification/host/FilesystemMarkerLifetime.lean": "6daee707fd9ecc1ee110298fef72f2a7352bb6f2d2b3f5d02aedf3d0ce3c54bc",
+    "verification/host/FilesystemObjectLifetime.lean": "42c3ea66150a1bdf917e2e6a23a592ec2f60085ec5016777b16d27e66605f706",
+    "verification/host/FilesystemPublicationBorrowing.lean": "b52ad0bbaba802e234928823963660d5e875236c938feba88f66b5606cf3c090",
+    "verification/host/FilesystemReadSources/Recording.lean": "3c3b5233a8af5b264d4cd41291f5b44277d45abd4fdc79a3dbf932ab9fa0c788",
+    "verification/host/FilesystemRuntime.lean": "4c59332127e2639acb26493ad1855cc9d1c88aceac2c9fcc2e4c8cb5c44162b3"
+  },
+  "specs": [
+    "FS-host-boundary.ownership",
+    "FS-host-boundary.snapshot",
+    "FS-host-boundary.publication",
+    "AR-host-boundary.primitives"
+  ],
+  "status": "Reviewed source-derived setter custody and historical guard/key-object exclusion. Full M5.2 public/physical guarantee remains in progress.",
+  "supersedes": {
+    "reason": "Unlinking the final inode binding can retire an object and discard its attributes using parent directory permission, without file CanWrite. The corrected law retains that actual Linux case.",
+    "record": "assurance/host-raw-handoff-review.json",
+    "rows": "ForeignContract.attribute_permission and foreign_cannot_clear_private_attribute now require actual after-object liveness. Their current complete types are sealed here. Prior supporting evidence is unchanged and does not claim this retirement case was already justified."
+  },
+  "updatedAt": "2026-11-09T16:37:02.349313+00:00",
+  "validation": {
+    "query": "PASS26 complete theorem types and11 critical bodies; zero truncation/unsafe declarations",
+    "runtime": "Proof/contract corrections only; maintained runtime programs and native/VM evidence remain unchanged.",
+    "source_build": "PASS207jobs on current source inputs",
+    "transitive_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  }
+}

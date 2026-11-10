@@ -1,0 +1,1956 @@
+{
+  "artifacts": {
+    "assurance/host-parser-source-audit-log0.log.gz": "fa66459ac2426ff3d4d37a6c18e9d2900b6c56f8bfaa15edc79d6227e4d332fe",
+    "assurance/host-parser-source-audit-log1.log.gz": "1da1242a8435f8e060d04953f3ee3fb54988fe641748114843e06fe28f400581",
+    "assurance/host-parser-source-audit-log2.log.gz": "c1fdf03e510b2a6e4fcd6b48205a14707067d66701f2ee67840e7e4bfea4aa1e",
+    "assurance/host-parser-source-audit-log3.log.gz": "8f49333285b1e2afb32f456b98f9ba658604ad81165ef7df35bde8eb50e67b5d",
+    "assurance/host-parser-source-audit0.v.gz": "b1a2f25cd3db64508739a2c9a7624d6214ec2ba0f736502fa0e167cf38e4e419",
+    "assurance/host-parser-source-audit1.v.gz": "25956f20e1805eef3c4285770da3d78cecbb4e887cad17cff9d5910c780e451d",
+    "assurance/host-parser-source-audit2.v.gz": "6dfcc9961df65c222fb2a6da6e51044a4b08600db0b9395754b7eaa54f39b7d4",
+    "assurance/host-parser-source-audit3.v.gz": "9d2e7f8adbd4995fadca5ed0d5f4823bc1658672f171e79e340a2d0dd7abac16",
+    "assurance/host-parser-source-build.log.gz": "67bafc06353d2d7cb650de5d2ad0e02e7118d082c36dba2a5850b50d94cde659"
+  },
+  "compiledObjects": {
+    "GatewayAllocation": "3a615e379bddcc070be727d1e2bd9b27e7e3afa4c1e5bbd8222cec37b53d4693",
+    "GatewayArrayBindings": "4f034ab03fbb2c3f7c04b7ba1c4a8d03660fe92b0ce900b6960f333aa57043f1",
+    "GatewayArrayBounds": "1973b62562dfc805a4b7a6de204cf4008762ff5489cd2d5a94d1b0c8a78709a7",
+    "GatewayArrayEmptyShape": "fc8c0317e44cec18531a655631787b5f0599afafd0455794ca80877bf5acd6ad",
+    "GatewayArraySeparation": "0734b709186879ffe66c816d2781b52af591063a205d42f7d7847e332bb60ea6",
+    "GatewayBindings": "f887e57871c1311868ee1b79c878da5e59a54b321fad60a5b7ef533ff48d60b1",
+    "GatewayBranches": "8c121a09465cf3a473f661997d602ec963ab8df8126cf62b35441d28989080e6",
+    "GatewayBufferReference": "09b0185e32fa590bbd74abab867f1a6bdf06a172f94fd50f6558569f996321ff",
+    "GatewayCallPath": "309aba39279a50f62c4595d2a9ae3a6e2255544d876d4c30fd978ab192d7c2af",
+    "GatewayCallerReturns": "856f861306d2bd1e1b3c0b54c9ba26c9660e7afb59c3e61b26d0cf5e255d73ff",
+    "GatewayCalls": "864c65985257833859a50c0739f668696042ba166d02cdb933f604e84ce9ba3c",
+    "GatewayCancellation": "95666cab03210649ccaea66a97957af39848dc78b78cf985ded3eaafe5cf3d79",
+    "GatewayCancellationAfterSend": "cb6717424943c319f56412933016d203d0261bb4794fb7f57c2ca0b9c7e7025e",
+    "GatewayCancellationBuffers": "f78276cbd0d121d5f9dd7068b7ede42f6f2f39b8d67545202a22c677390d1aba",
+    "GatewayCancellationComplete": "d3e264d7cf740d601d18690d4c5944453e1fd0d1f814a5ae56b56ecbefd302d0",
+    "GatewayCancellationEntryBuffers": "9470bd52cab518213984dcfd4e43fcff378366121e43efc25b25610f52016568",
+    "GatewayCancellationFrames": "308ea4df7621211fc14b2e45e09815a0bd4d348dee7ca7fbcf4b324293e390c7",
+    "GatewayCancellationInputs": "a6f54054113ce780a4a12bd0b4df05ff19c8ed4217aad86e2a3145f06c0ce910",
+    "GatewayCancellationMemory": "83fd40e39084910908b04d0edbe95ffe1729c8b4e13f0e8602bad7ca438bf2a6",
+    "GatewayCancellationPath": "02a8128b8fb4b547c6f9c01b22c69292504bf04899b709bb6ec5ce2be2adcdaa",
+    "GatewayCancellationPathBuffers": "dc3c0c7d8a0e0eb9a37d21ec484938f1f85fdb30c797b99c0a27be6922185796",
+    "GatewayCancellationReturnBuffers": "d76a158a72d831b2a55d8a2117e0d1712640e3398afce6e89470f0ec6d6ed204",
+    "GatewayCancellationRuntime": "60d2bbb198f11b70fae20fc2d224acdb3e4d54fdcbec58a0b11e90bcd03fd979",
+    "GatewayCancellationSend": "906e992c83432847b1de2f8a99aff8535996a1e8f5f4be6e051f773fac80e23c",
+    "GatewayCancellationSendBuffers": "035700dc7662f93627b907c3803f6d809f8039aebf30bcd4d3ed402450333d85",
+    "GatewayCancellationSuffix": "770129bb4bf86bca0456c65216efaa09ac7e5fb845e5eea4838d0c75418b8d5e",
+    "GatewayCheckedCalls": "75908b31ca84eb31129c09793cc70172d1b9fe8960d5781786eb479da58e0a23",
+    "GatewayCheckedWord": "62ca8c7c76a68f660b5f22e42a86b9972e8a83b7c081cb841de6870d299bc8fd",
+    "GatewayClock": "9fdc6dd9b4ddfcb1d57fbd67bbcfaec0dcb171b56a7b15ee382a4475890aa573",
+    "GatewayClockBufferOperation": "d300df9e179c397b76c97f38bda12c493957aa42acafa4b94b462af88423ec0f",
+    "GatewayClockBuffers": "9fce9a05f29e6ffe68fa6ec901fc418ed2a9da21fee27ea7eb17f58a093a9de4",
+    "GatewayClockComplete": "85dc2c58ddfd32fe7d4548a7cc2764ed9794a04b52204b9d2d3abdd523ed846a",
+    "GatewayClockRuntime": "ba78bd911a65a7882f4b0a34fe2e0f4218d410b823d28aa5ce8dfb94f4d0f116",
+    "GatewayConditionalFailure": "0fbebc0b0a38373809d7bb7ade726f47090bb695bcfe123e0b50abf60f8d54ad",
+    "GatewayContainerABI": "c45c500c97b7eaaa7039e8e467bad7cda209d9ca18c0869ccbbeb8b48f20a8ca",
+    "GatewayContainerAllocation": "ecc20ef80fe9473cb0793d3297ee4dfeb385ec38e49510932eb9feacc29456f1",
+    "GatewayContainerAppendCall": "3526289c4b2dac51b45e86cb0c4d37b13211d9f0ecc181d027fed4fb536fb393",
+    "GatewayContainerAppendReceipt": "32181e857d381690bbf9bed61e720b38206a159bc2e314248d0dd3b683c57ab6",
+    "GatewayContainerArrayRelease": "9ac977110bc08e72fe8b5c9079572bf2998c25a9e755dfbbc8209cc1f6a47e29",
+    "GatewayContainerArraySource": "0f73a4810440b2d9d7bed73d49ebaf0b047bfc88f0ed89238a173fbbd167f3cc",
+    "GatewayContainerArrayStatus": "f99e20c2da446a41b2600f505966364a2f1a5a9d2c7fa9edd704bc185aee39eb",
+    "GatewayContainerCalls": "bb17918958d0c258d623a53e418917fcefb9015ded410331958cc347b8b0f657",
+    "GatewayContainerChildCall": "04c836422228f3c983f37b2aa438fb7e408552c7d291a78cb7726e32268c4220",
+    "GatewayContainerChildContext": "d0f04ddc6cbaf19611a83a0209fe757b48c33a9336c98a6e8d7f15c978252ef1",
+    "GatewayContainerChildReceipt": "d667efc3ed0b14c521a997b595055213c68a2862e13cd6d282873ec5635d8ab2",
+    "GatewayContainerConstructorReceipt": "392c05e73727c0c7650be77441cd8a6f8ecb37e8914e5e69e53669201977909e",
+    "GatewayContainerCount": "02ffbe8de7fe4d20c4790e97719ba08c1c991ee286387223f5cd54feb7737012",
+    "GatewayContainerDictionarySource": "4b6208740234e4db2a51b59e33adf84db5c457829bdbb4be5f8caff72f5789d3",
+    "GatewayContainerEffects": "a5c510393233bab13288321b37249821cbd4fc403d58abbe59eb3564b9e87a1b",
+    "GatewayContainerEncoding": "2cc1abea5f6b00bfde1d0dc314b6d51a8ec352911cf2714041c0b867e1c9e0e7",
+    "GatewayContainerExit": "44b5668a918646e1b27295f9c697234bcf7959418116976a394b606bcbb0b7a5",
+    "GatewayContainerGraph": "9f1152f61871c53e6bcf48b1c490d40f1f75f091ff023c4849f1be11d01063f4",
+    "GatewayContainerGuards": "bffd49d0fdf60fe2440b60eb8997dc4f57f0175056ec0cf5ccdc6520bca3a6eb",
+    "GatewayContainerLength": "1f117f3138017b3829ec15b61b55f522c94072508640e086a77266d0b7209296",
+    "GatewayContainerLoopSource": "57ee0bb1ca0e32fd0e2e71b29546f9f0e7073f0e92689486fb7bfdc15e6aee98",
+    "GatewayContainerMemory": "198bb05f2858aac06541a0d9d84d8ba051799eec64bc2be4d1647cf609f14616",
+    "GatewayContainerNull": "33778c35a2e92c694e0f767377ba6dac1af792f30c83bbe6cae11c07fb432952",
+    "GatewayContainerSetup": "26eb4eec7c4facc7e80da1bbfa6438c3c05c5e8384ebe71f190953dc47fb8497",
+    "GatewayContainerSetupReceipt": "93ef3e105386aff6516710cb0ad1158cd63305ddc3491c64d503c8064eb485ee",
+    "GatewayContexts": "c2b371e36c3000a3d543842c27d7ecae0e71eb39481d1aa2f5e8ca6ae6d2925d",
+    "GatewayControlPaths": "cab050fe7de057c9a79ab3a8bf1358a51088ce7aa090f92bf20e9684fe195467",
+    "GatewayDictionaryBindings": "30205f2a9f87dcceeb0c72b4fe8ce720ec8243f1fba6f041842328c22b4546ee",
+    "GatewayDictionaryCallReceipts": "7df3cc9f4eb42ee60a3f784b093dcdbb568aa4f919d67019e3589b7bd9defa5f",
+    "GatewayDictionaryEmptyShape": "c0e5bc567e49fb5cf0c2e2c8ba5e80524d5ead22d9e2b463d2d586e883be52b4",
+    "GatewayDictionaryInsertReceipt": "91ab9d3f2db812daa1b3d01a36d7a31dadd6a267e6ac9954ba8bfbdad4223a43",
+    "GatewayDictionaryInsertStatus": "75344e59822eb96720740dc7f5e1f8bac42b844088d282b50f830a5682badad5",
+    "GatewayDictionaryReleaseReceipts": "db07f4b6b6a26235a3001a505c07de344071eb805f1cfba24c12cdbc1f561a4d",
+    "GatewayDictionarySecondReceipt": "b2025aba84a0756b1637c33ff771aafb469b5f48be8b1dea91ac26fcd5ffcae7",
+    "GatewayDictionarySeparation": "c51ded3b5c2a15e225ba8e38d8bcc05d49b04061612dc41cb93251e5f42c340a",
+    "GatewayErrorRuntime": "fccf9a6c3a3106eb0c539d042168c3906c6ac357701e9d46814e5b4c3cc78f12",
+    "GatewayFailurePaths": "36947400af1debfaf418d3db33ed257e80757e3c725e6a7438a7fbf245c8a2a8",
+    "GatewayFramedRuntime": "8a6b3bc6bad14550f08ea5112a423a9f44fe43a9bad16742b99db9e72af77526",
+    "GatewayFrames": "be6ef26aaf9ee647024d74fe6edb4fc36c9ed6f4ecbba0c3ecce0951c3085fea",
+    "GatewayFunctionEntry": "53ba93f0dfbae5fd14bb9706230ca1c2f211b91d4a8949121048b1ae5d582750",
+    "GatewayGlobals": "3c63a529a10d16373f51f3cd973acd79c79d3bd61e13afc62a3e5314a2955828",
+    "GatewayGraphSnapshots": "599c6f9ee3bca27a529d5c7aeab0529bd6b882af6a8a5c2156bb9312e033d59f",
+    "GatewayGuardFunction": "06f8079d73089093b5761bc309a545745ae5fe6b23d2f75550e572d88b2bbfea",
+    "GatewayGuardObservation": "787236563908fde3b7dc98b3480269b2f60dc8c682cd96c9726c170d07659324",
+    "GatewayGuardReturn": "eab4ea008fd5dd3bc807a08b16cd4abf0abbd326077217d3b930a036a73a8443",
+    "GatewayGuardScope": "17fbac71704b4def9c21097fc3bc12fe826cb3179f243348fb10d123b5314167",
+    "GatewayGuardedCuts": "52e165fb12868a6f0885dfa6c232bcbbbeb5c474cab82a1abf674844cc7e30ff",
+    "GatewayHeapMemory": "d67f00447b30e5945a25e3786786ff7ff17db70910145039177a855fcf3e8fd2",
+    "GatewayImport": "6fd0eb7306124d786eba7c462fee55a26038d718d2b252cced1a3ce9a962ebf1",
+    "GatewayInertCuts": "f747a250e6d016a5e12aae790325b0113dcf81b5066c7d882ae4f0e3c8f94dc2",
+    "GatewayInertEffects": "a9384adab18f3452a7f7fb4ee6125b6b5a78d30f2c9409a5a3076db47ad21c3c",
+    "GatewayInstructions": "a976bd0308f818cf1a499333232d855134a3ef1ccd0663a61161284cff6c4514",
+    "GatewayIntegerCanonical": "99eb54b4c442fef92b32dab1c05ac98923a54293fbcb238c3f1e83a04e078e8f",
+    "GatewayIntegerFailures": "86bc745c5a6557ea754626f2f7263d9c9a7aa81d7c9117f150890fb77f3f7fb6",
+    "GatewayIntegerLexical": "a5999477678947eda1d9aba0593fbf200b946c53a5d4da46362876919989b8d0",
+    "GatewayIntegerLoop": "78c1e68731edad61c31917fe97368bc8f655e3ef7e981ef18f336c483102ed50",
+    "GatewayIntegerMemory": "30f671660d372ac95d8ef6af84e3cc0a84a62f8324c8a8f92bab5d59234e7e85",
+    "GatewayIntegerPrefix": "a8934c80499ae3c334dbb9ac3e113ce76f1b4210fc82e31f8638c5719e476a96",
+    "GatewayIntegerPrefixSource": "fef88c1264770c7ce4d8a88959a29ca5da8dfa726c8e06d049d68554d5d2dec5",
+    "GatewayIntegerScan": "9298e49951c9f6c4f1710755bf13a5dd91e9701193a2825b51bc472f80eb8036",
+    "GatewayIntegerScanRetained": "e24c0cf42eaa44f25f3bc5a6e5df43bb13c9f8031e064fcef9ec11d048965f78",
+    "GatewayIntegerTail": "69d405c7de86e07651f55acdd656ed930fa14165ebb3e4414a9c1089e0e2a557",
+    "GatewayJsonNumberCallEntry": "3861f3b8bf43744ef1d7e9b56596292b006a5a6b89484630d1dfde56b09af133",
+    "GatewayJsonNumberLexical": "b309967b622b4874e5e746abb0125c649e3bde4be608206bce75c34d9507d82e",
+    "GatewayJsonNumberLexicalSlices": "8f01df85e47ab4d6f975415051c7a41c06aac05c507b178a86d26fc9de6d1ae9",
+    "GatewayJsonNumberSource": "f0c7de02301a4e0ec530ae5afb1ad2de4c4bb91e03cc5d2d998250ae51f933c8",
+    "GatewayJsonNumberSourceBytes": "10f03cbde710323debab59f07f9fe95600665233791a5a6b9f28a43b4e31b45b",
+    "GatewayJsonNumberSourceCalls": "605d5fa0f3ed5100f0a89b0cbe3f180082cf428c7dde9e1da8a39dd820ffc3f5",
+    "GatewayJsonNumberSourceConnection": "c06eadd634fc2da13ed05ae40d1303b4e3d7e947c40c6c48df220be5a7789c01",
+    "GatewayJsonNumberSourceEntry": "2d200b81781675d824d8e9b40666558cd314542cd254660cf492ab32efce73ec",
+    "GatewayJsonNumberSourceExponent": "c2dc161d6872bf94af4aed91f43c5501469c66441f00748afdeac48eac5b7d26",
+    "GatewayJsonNumberSourceFold": "a7aa9692fe0042b455ddecbf1d21fcab35d7aaab9fc993001f06d312f170a211",
+    "GatewayJsonNumberSourceFraction": "ae4e27fb697ea16f2dc269a01959b1391a307eb9b72caea69d1ba5b0736a59ad",
+    "GatewayJsonNumberSourceInteger": "6fe2535318fb1b0beceae5fbf510d20214d38e0701f9abbc0e39fd0e556f5e5b",
+    "GatewayJsonNumberSourceIntegerFold": "987b728c7ed47fe39b6359967b035b1d22dd3f67bbc465e3e6efbb6a5ca26910",
+    "GatewayJsonNumberSourceIntegerPrefix": "971b42285e1852c5aa8247615ad9e128a1a57d6056fc269c7b6fc5c58a9bd620",
+    "GatewayJsonNumberSourceLexical": "c720dcb3fa64a2b4f41223e600d3cb1b7d33580bd48c33606c5d8af9af9d2fed",
+    "GatewayJsonNumberSourcePhases": "755ff49ed683e0952a51c401754a191c43de6df6fc662643676366033b29b1fa",
+    "GatewayJsonNumberSourceScans": "6ea19276ab9a55653f3cfd61ee0b33f83fe441679a38341f5a3067841b579cda",
+    "GatewayJsonNumberSourceTests": "b108f1dcec184bf67908ac67647bc7def2776027e3637d2e4ec7669e4c082c2a",
+    "GatewayLocalBorrow": "06296007fe9f66839bf892555c4d61f77f208bf8c9a474a121e80f73b698dedd",
+    "GatewayLocalRuntime": "26292913caddb65044eccf8373403a7a7058b28554857d02a50461787049ff96",
+    "GatewayMachine": "b76b2310511ef7f4fc747432d94cecc6cdf594ae5f6cabb9b50ccbecb98c7470",
+    "GatewayMemoryBindings": "97920d28a2287ecfc687c568dc1d450724baa8505d9dd66b67dbd11a6ff68141",
+    "GatewayMemoryCuts": "27c7fcf51c98654a21baefdf1bf81167f1ee7d671061591801bf0258f8824d4a",
+    "GatewayNativeMemory": "6e7043f785114a0325854da152244e131b2da7de247d4b30a02a2c5af79e2302",
+    "GatewayNativeRegions": "0872feabf0fdc31575609c89f1bbe1af3d0ee357419f1fefbcf4d89be4fd5d96",
+    "GatewayNativeRoots": "630a08e37cbdefdb789e54fd86e5909ab888dca9fb83d65fcffd83b421374432",
+    "GatewayNoLocalEntry": "6482eedffd7d030141bc200072eb8b8c0a40240d68eec57325b50024ac957565",
+    "GatewayNoMemory": "e123323fdedece22dfaa104e0c77595d77d41b40db7f9bf3821851690470caee",
+    "GatewayNoMemoryBinding": "87dbcd8d267ba5906c22d4ec028554ddfba272942c8d7803b8c822efdf7b51d1",
+    "GatewayNoneMemory": "364fff007baa3e00fcb2aecf5f6e2956d20a78dd789d563d4de8002bd3b11516",
+    "GatewayNoneReferenceRun": "af8f2ff224a9e193b1d7894ee3fe657cb5350738b6d4246c0d740bf9a63c96f4",
+    "GatewayNullContexts": "5932398b164c000603ecad794e469cff9e01a87778eb5cc72ba686c1da6cf890",
+    "GatewayNumber": "96b22ae4d4bf2a8afc04f48380cbed6070fd708f0c63a20b295aa4f48b4e045b",
+    "GatewayNumberArithmeticBindings": "f89e109ee1d43316e70c76d3c3633ccf5cdbbd4ac4061e1f8c3b407177994445",
+    "GatewayNumberArithmeticSuccess": "9ab85740efbbaa910cc837901fe38730268ae6d21bf47ce4d7eeff28dc604da1",
+    "GatewayNumberBaseFailure": "915c265bf4b202570abec723cc80c77a1d601c4c5e64a4628aab615f5850f2df",
+    "GatewayNumberChunkReceipt": "b57ed8739b7cb378c3462e0c4006d70da6770cc34ac140a9f3a7c523bc43a8ba",
+    "GatewayNumberChunkSource": "c4398c50e5cb602efc502e65c74cba1597cef1a9fe8609c8120be796cb199d00",
+    "GatewayNumberConstruction": "3f4667cf60e2d751dd8ed8c5c9968d4b05c0b616e65b161222768e228658f177",
+    "GatewayNumberFailures": "428fadf10f50b74b19fc5f8972bcbcf44a33c50b570d5b2f360c2f1398c7d33c",
+    "GatewayNumberFloatReturn": "67823cb37d947c891346b297114f2cd9edeca11c3b1e3a5efe4df598abb313b6",
+    "GatewayNumberFloatSource": "47f0856ce9815287fb3521486547452be35c049616c6f9eae72022061779bc9c",
+    "GatewayNumberFoldMath": "f179f8648f3762420487f5934837dc9f0e4536136de8118662ff3df7613f384e",
+    "GatewayNumberIntegerCalls": "b76115c2a32409e20bbfc7e52ade6ac284a03d13d547f4c7a0f2f13eed4538f6",
+    "GatewayNumberIntegerLoopSource": "ccc6c969c272c9b8611f3435869279388b94c9e145eaacd0a1d3b886eabb9986",
+    "GatewayNumberIntegerStart": "6767ea31ae91551a45b5aca71ef07794ad3c957d9a540175ddfe745da4ac29b0",
+    "GatewayNumberIntegerStructure": "19e17a0ef53e29549a71730a860cb620168c5f11a94d4414092218afd274da77",
+    "GatewayNumberIterationFailure": "5e9606e7cc18cbbb1b72791781a2891517eee96223a83e9ac216011e604e75db",
+    "GatewayNumberLexicalFacts": "7fa0049ee42bcede5e6391ba5dacbdaef7087e22b598e30d274e6ea5a40a135d",
+    "GatewayNumberNegativeResult": "312c8a8eb031add4da5192e29fc36caf2df61d7a41f89c464c925bb8e0910e81",
+    "GatewayNumberSemantics": "1ad7b51c73030039fe0decd0240b233c28b5449386cde42afe524c7d429c06fa",
+    "GatewayNumberSignSource": "2fca61f07a5bffabf0bfa09258ad61cfd7998bd947f8e19e7e113006db4fe8b4",
+    "GatewayNumberWidth": "3d8ba7dbffd8c52271cec1b3e8071a085480e366f247a5a54ef2b92a30db987c",
+    "GatewayObjectAddresses": "4c92b5d1b7c7234e3a1361625ab2d85446f7b9ac789e9bff2f6c14085edc9175",
+    "GatewayObjectConstants": "48a2f3938620b0bba89c66c9d88e1f97121712066ac8f63093499ce6025bcab6",
+    "GatewayObjectDiscipline": "d2a634139d84135c33fa6a523ddf69606b6d4ea84d90ac8104772cdfaa9a8975",
+    "GatewayObjectEvents": "2a87611987e0578ed444a45aa993d3c0d25af75ea31e70cf31f4cfd65c06abee",
+    "GatewayObjectExecution": "1ad73c6ab26901bea17fb0be406734a20611ab5f825039407164b11983f1feaf",
+    "GatewayObjectInstances": "d755aa760042aa60a8915d866693bf62d8247debb8037ebbcc307fb359727267",
+    "GatewayObjectRuns": "a20f31af6946e2ee7ad762cbc5cf0c535b8a901964afbcdaa19bc23e9155dc67",
+    "GatewayObjectThreads": "1dcf24d6530e4d619900402043be4badbe7a34e13960d9980ea92db681d49cd0",
+    "GatewayObjects": "c814dce73550b737f44e8cc09aea19070c1c3a7e92635391ddc5bfa2b305749b",
+    "GatewayObserverEffects": "f15e7eb5f6456e69e81c2d6d1d18c8111bc6f4f47add207779bb4ce938ee026e",
+    "GatewayOperations": "8abc10ac5e0a318975a3215b8263bee7ebe67275337dd88eb96abe45098935f7",
+    "GatewayOutcomeAllocation": "fe5a9fec7ee95c6ab7ae911e9f923e1712a789a569b082c40efef8fc20548b59",
+    "GatewayOutcomeMemory": "622ea834e285b3d550d5534f0112b2c28e26ca71fd3a3d84c3c0500ffc1c060e",
+    "GatewayOutcomeType": "46f4c7284d102d8c1f4e4bf97db4a070bc871e2a0c58078419b85db33cb716a0",
+    "GatewayPathEvents": "f9e2a9ef83f2c5b2db80b5bf6d9c94ae1f9151a7b3a0336ad491af8abf0d53dc",
+    "GatewayPermissionEffects": "0f510a6347a0d03a6b69e3af796d880818feff0dbd62ad90da8a0f7f5583b665",
+    "GatewayPermissionFootprints": "bd2f4764cfb7a71e49edbd78a22e1feb7561c0d3a2996d1c83a854c2e6378407",
+    "GatewayPermissionRuntime": "47932e19f82a2fb5d190603edaa2f0b1bb673b32ab2a395f294ffcd40df15cae",
+    "GatewayPermissionScopes": "1162392965ac87aaf33df53accd166195a76a397770622c297230abe8ca0ad42",
+    "GatewayPermissionSurvival": "ed072b6cca3f370c1fb8321bcb2fbea11a2513a0e577632b860e97d61a2afc10",
+    "GatewayPoints": "5921d565fb288a65da77e98d4a11dc8f3b25a90354dab63fd30e10a0e8edc45e",
+    "GatewayPollLayout": "331bcb37abde41e3d2993900afa6350b04e7d2b3ea4364c3aba508ce7bc722ed",
+    "GatewayPollStore": "6c81cc70de676de8f65bc3fc2068c283f53b977733ee56b9119554d1384ff6eb",
+    "GatewayPollStorePath": "9e9d99b2fc29329a7daa8d21f3ab7bfe5ddd587dc3f516035ab26e5c9571312e",
+    "GatewayPrefix": "5b29fcdc580a3d2b0e0d1f4585cc5faa08760c6e130b456d2b54fa59ca781911",
+    "GatewayPrefixBuffer": "8f5a55fa14ed5e93547794a9a5cc462ee87bf270e299969725d79032298ec30c",
+    "GatewayPrefixContext": "2a0b9eb71bee984d909a53737b1ddad82f238831b66775eba417b1e773f1cf00",
+    "GatewayPrimitiveBindings": "99c1c1b819ca2e0fb9cd578eb2eaf77911fe1be3d63a6182ed5bf4e0114db26f",
+    "GatewayPrimitiveCalls": "88c611fed37ff39468310025049329ae677064a7df89b03c23cb1d31688eb205",
+    "GatewayPrimitiveEncoding": "3b3c5b7beb7ff4c96d13621fdae720ce4f2de6ab2263cfa8d325c40e1be5796f",
+    "GatewayPrimitiveMemory": "bbad0b87975aaa061287e0b8787137e947afe18c68354adeed562c03ad135259",
+    "GatewayPrimitiveValues": "6bb3493e0401a2da236a1d3826f7a93c2e411e0f90e9b404d80da4fa77b2a879",
+    "GatewayPure": "6864c789d183e871e609b200b184d283368d98f06c989d28490cef0755a160a9",
+    "GatewayPython": "47c07c37dbe3ae5ce052f778e995dd4c4fc99359fc1550c9c6ac6d88348dd4ef",
+    "GatewayReadActual": "0823caaeb4c062adce671cfcba076bb96e16d2be5b18b846933e8801e95d662f",
+    "GatewayReadComplete": "8af294b96ee3e369714b5ff45b5ac4779659b56e228e4d5e22cfd69bf9b2296e",
+    "GatewayReadContext": "a10393a4b8c11c82646b78de592207e90e6a0571212317f1c99e231232f27cd6",
+    "GatewayReadCounterMemory": "e4b66420b1689cc411580813946e0b12be9d7c07c1064012ac30ba7ee2dc5fee",
+    "GatewayReadCounterRuntime": "96f891c6969321576a33effbb365c7d1f9c0792a22cea77f519bd6681b39e501",
+    "GatewayReadCounterSource": "61311fc6e1d00220e57449062dc0c134bcbd1febbca8d9f9fe1cb273b80abe16",
+    "GatewayReadEntry": "0e13e70e78bdba1a46e0370dd9fa72b129083d18bc17113d377c59bd0d81ff5c",
+    "GatewayReadGuard": "13935294d877137be3cef61d52bae3516a7ef34f0c8d8760d9ace00b0a243542",
+    "GatewayReadMemory": "21c6243e772dfb67dcb86723653ffde7b9a3f9d8b7116ae4dbca55ff0dc0905b",
+    "GatewayReadProducer": "7f39bd9bfbb2754c6e4e1e0cd66c10e0a73bd39551b87d0a4f4da1a172e2d7c8",
+    "GatewayReadRegions": "d2e9f56972baa131353354842a29cafa3b55684b08393269a21ed5a6b3b0bf15",
+    "GatewayReadSource": "17339b9e05bed15efc14a0fe667202237e00d1d8717eb736aee94d547324cb3e",
+    "GatewayReadStable": "b816b4006341df89173c8cafc628c0f36808a9d760f1554000f5432feaf60a14",
+    "GatewayReadTransfer": "3b7e66f31fe5126701464bfc24dd019a947916990f6e6edfbc37a4100151afea",
+    "GatewayReadWindow": "4288eb4d95136024baa3242f3320d0c9d8811a3b18b581add3ca181d4558ec8c",
+    "GatewayReadonly": "befe1dd7bc6ef4793c57c9d7e21efa662e111507778f15eeeb080c64ef04bb96",
+    "GatewayReadonlyOperations": "7199d7d9d213688994760a876fc0959cc15720f64629ca76520c50b69c4a738e",
+    "GatewayReadonlyRuntime": "0ed7acdc23926ed9abd9e9823e938e81b0186b647d49932bd18b11a8831b14c1",
+    "GatewayReads": "50d27e3de90c19524a6a85e086f496d42578cb9f8862f42dcb12b379f1ec501f",
+    "GatewayReadyActual": "e939b69e16b658e297b8e8b92b75d2ece2da2e985532fcdaa8f41144efcc791c",
+    "GatewayReadyBindings": "b10c18ab783856f89e410ce987ea6ccf5047b0dd58c62975031056e1957b0c11",
+    "GatewayReadyBorrow": "74898ea395751e2cfd1f8542dc53d8ee880bbf1b87315c9673681abbaba30c4a",
+    "GatewayReadyCalls": "e1a52ddfb737ed18fe9aa062d00e95a586f1f871f56bfd8bc4a3fff49ebeaec5",
+    "GatewayReadyCapture": "3b70de6151c86cab24e55b81dbfe80f4bd251f849142c9d4554daa87f3d4e26e",
+    "GatewayReadyClock": "5250586db5ae300e6e12b54ce820dc8cfbae4f0eb7fabb687814e496c459c07f",
+    "GatewayReadyComplete": "9e31c2cf5f46467031985aa59d701843bb5cdd837bb3c1ec15bc560892555370",
+    "GatewayReadyContext": "00fd30c38cd760dd64669b1b237a62dbedd3e68861abfd71eff55855f7c01424",
+    "GatewayReadyControl": "f91d572cc693b1f44e0c250ef86ab5c8716015f98dece5e2749edded12ccc3d8",
+    "GatewayReadyEntry": "2964d4953851f4b5324be19be7ca4fb4ce4d29665f50dcf0f7380f6e0b564f1c",
+    "GatewayReadyErrnoCalls": "b2a1fcdf244da38f5db87aa36e99de2b4df8e678a3704288f2280d9aa7c49569",
+    "GatewayReadyHelpers": "07cd7edcfa831c4e2e819fa42439379f6f2ed1e5ed7bff3982ac21211c1c683e",
+    "GatewayReadyInterface": "42fc9beded6fa5fdfb7468905c7ab0fcd0e8c9e4afdc5ddc9dbf892f48b3bec0",
+    "GatewayReadyIteration": "39f6200fa0a12ae491b67f18638a6677a0b9e758a455334fcc3581e774d631b8",
+    "GatewayReadyLoop": "b819c03f1a7505bb60739cd24a1bb60aedf7c0f6775d7fa6c471c361ddee3172",
+    "GatewayReadyMemory": "09651fb6bdd08d4d452e7c387a5ad0e0b5a9fe1d605c9824d8c481455faab5b0",
+    "GatewayReadyNoOutput": "7564139ba06eb8f6069f9693afc8bf9ea42e979e404ff0f330b0f29428a99a51",
+    "GatewayReadyOperations": "6a72b35a3898c851d81a9c9302d4e750ced550bb273cfc4e32f6696f4631d222",
+    "GatewayReadyPhases": "a7fee7ebfcb0c11bbbcc06c02b4d70d57552ee9c8d191f8392a6cd3bd6450a81",
+    "GatewayReadyPollCalls": "94dcda6241d96d9b27585ef9e879fc00ed4b1d2da77bd91ca45f60132f773e24",
+    "GatewayReadyProducer": "627e574ddc102a9f1e451f92bcffd8277ec2c5fac3ddb201a088c1f11f66ac50",
+    "GatewayReadyProtected": "26fd30197b0975fd9a728d5bab8184c93b3ad94b289104d31dbc2e4b23e9b57f",
+    "GatewayReadyRestoreCalls": "9f8f49464bdc2722e8be659c64d09a19058839620f72126fedd856bc6f4280b2",
+    "GatewayReadyReturn": "8792a238a8c2c2d1b8072f66878d6b4ff924120f5faa31c9011b36336611cf07",
+    "GatewayReadySetup": "ef2eb09c716c21326f1bedab03e4c24d45c45a5e3846ade2bd8dc522b3bd88b1",
+    "GatewayReadySetupPaths": "0c0ccae4dca729a4f18c545c1fb3ac26856637496d52c817055b03d68857c6ae",
+    "GatewayReadySignals": "599ec0451b3884a9ebcd4c178491c49120624345251182e1008b2d88221e3119",
+    "GatewayReadySource": "d2a0ca24b11817ecf770c74fb45fe6ba34a82f6efbba8abf863593eb5ad2110b",
+    "GatewayReadyTail": "f2f1003cb726aad5661dcabc329a79da1b65b74f82fccc7ef2474a189359736f",
+    "GatewayReadyTests": "d90ffeef63e99d993b9df78107ea9e56614691c8094b3d39452ff941dcb4968c",
+    "GatewayReadyTimeout": "7f8a040ada5d7275f7a84ce3e91d7f06087c01c874cf8c5c18622a78204c21cc",
+    "GatewayReceiveMemory": "907d48d61bde92e5e25cbeb49b6ab40611123b375f6114daa1f9da58fa3510fa",
+    "GatewayReceiveRuntime": "706b3422dc90a6cca43af360098ca61af89a86fe9ab9b5bf60a20733b590f9ec",
+    "GatewayReferenceAccounting": "de917c37fe6b59bde30ad7ce50381f4ab08b68488473f9977ee42b01950a9b16",
+    "GatewayReferenceAccountingStack": "2038c89af23847eee1cb51cb615c4c9db42afed65fff1f7b6fee00ad39e7af7e",
+    "GatewayReferenceActivation": "c33f3faa5ca8f0ddcd8237fb4e2c694656302dec8ff5792da25d7cab8c4a98c3",
+    "GatewayReferenceAncestors": "5a2a53549af874c01319ff2b29126dc56805d5237759274cacb6b10ee87b6509",
+    "GatewayReferenceArrayAdvance": "c5da66860179e645910a86b1cfb336c0c112e83a0008470f37f37d677104e997",
+    "GatewayReferenceArrayChild": "c5e4125581e154ba5d71383703e17e9a61921b2a36a3bf30736bd20c0e9c81ad",
+    "GatewayReferenceArrayContextRun": "2fa5e662553425b0a08ca792090dd17acf9bcaaec2cc10d7b63c96e08244ba59",
+    "GatewayReferenceArrayEnd": "d3b13e2025ec3594d366a24420aadd87630dd81d6a713e4fc1f96a88c0093e48",
+    "GatewayReferenceArrayFold": "240e092a1de29b1623ea191eecf37122b96b29e4ecaa1becb18c1a76dea47d63",
+    "GatewayReferenceArrayInduction": "6309349670059866746e40b5c49255fc259da3c901e7d53486f764216e3f9e1f",
+    "GatewayReferenceArrayResume": "3560c5b725bfcd67288900ca40d4f384e956fae7d32ea2c99cf2dcbeb7c515ff",
+    "GatewayReferenceArrayStart": "b5d9f04e324fd7e5703ec4e1f6bcc0e8a4de6cab42d499ce6cb281b68de3ec31",
+    "GatewayReferenceArrayStep": "b5035398ab239c788fbc98e723c2e6f25716f5658c6e6c66dfee5c0d1e5f0d4d",
+    "GatewayReferenceArrayValue": "4b36a564fb4a2f98dd6b822438dbcd3e6307ab0ed66717b845a49d84f9d4e354",
+    "GatewayReferenceBoolean": "84e65f3638c7700e9eac97991c72c4916b0d327fd59a6f7755c4ab48ac2ff976",
+    "GatewayReferenceBytes": "956e1b7840244ba79527621b2b63ee4c058fcac1d95dda5cd4bf100cf8dc039e",
+    "GatewayReferenceChildOwnership": "8e60927df9bd1a57f4dda74e78978bdc3c1dcb58432dc0a714872099beed5771",
+    "GatewayReferenceConstructors": "890e2a03d1b4b10cbdb32f0928e1a16ee24d912449b2d6359ea91368c0d006f8",
+    "GatewayReferenceContainerAllocation": "2aa32cfb7aa164f4c626515771a69c6d5d457c4c894a6a838b6f6d7d66113406",
+    "GatewayReferenceContainerContext": "6157c5a3ff973778b12d604550e60f186636f1f3fc48e8bdd52c26f153e99a81",
+    "GatewayReferenceContainerExit": "ab58c99b6783e73b2d2b8e9b4fabf8a483a44f5c3e87b719cebc37a8d136413e",
+    "GatewayReferenceContainerScope": "7f67fd3c24a61904cfd77321bf86773f9c018a7e2cc57920d99a0d3b97e421ce",
+    "GatewayReferenceContainers": "f8aa8da8ed991e9444e7563234615389ac9998550eec42a4dce2d27d21dfdc54",
+    "GatewayReferenceContextReturns": "d476992d53f39be0e5b2b4e0d628fb2a44ecb061e6c9ed3a104e7dcb2b6099e3",
+    "GatewayReferenceContextScope": "2b394c54a8831e3c98d7faa56a09d4329d27d5f1eabb175b6a10ee7c9cbaa59b",
+    "GatewayReferenceDecoded": "802931136b7c169e8a9962794372c2d94bbe7f51bd5e0889e87fb0689654ff84",
+    "GatewayReferenceDictionaries": "8c1a48b1c55e472f536dccefcce870efcef78333f679b7c9e7226cc4595f893b",
+    "GatewayReferenceDictionaryAdvance": "32e8d6b9c2d2204f9de7ae4379b4ea5608c9468bc6fc6a967799a1e7d0924ae6",
+    "GatewayReferenceDictionaryChild": "ac325560011e1b420b5c2767189a374a264f029ea11d709ebbddd0ccba209d69",
+    "GatewayReferenceDictionaryContainsPhase": "ab441b7f1ae65ca0a81248aa51ce221f3074e1747b522ebfab56f3c397349198",
+    "GatewayReferenceDictionaryContextRun": "8c2dd62f16de534623e9cb597e75ca64737da3d8c1622a0b0390a450f0650539",
+    "GatewayReferenceDictionaryEnd": "ea91c44175c383b7cd9b2e29ab02e9a35ea521ff3ac1b187bca956c660d702c8",
+    "GatewayReferenceDictionaryFirst": "9e2d0395d0f7fca64ee7da99edea8a338865dee9183ccdf3cef2257c8f1c3b2e",
+    "GatewayReferenceDictionaryFirstInduction": "39ed4a20923dde8d4d83aa14dd8d8109446fa9d9c36fd2ebd99fc816409bc556",
+    "GatewayReferenceDictionaryFold": "6f74734c8160b23d0ebca9a9d9b3062b3566b45f22c045e4fb8ed3634298abac",
+    "GatewayReferenceDictionaryKeyPhase": "3b13d4e978a1b17706a87071a8d60494f816e3c5d9792344647f4ba266cf3f0c",
+    "GatewayReferenceDictionaryLedger": "532b81075a3eefaa20bb7c2324c3e747e3d172cdd0682e29236d83ac5cde428f",
+    "GatewayReferenceDictionaryNormalForm": "5d39456b5ba4a5374ae2b6c50be18199412746654a2ba58a6370f83cfd1ffc55",
+    "GatewayReferenceDictionaryObservers": "3c2a0f8e30c3bfe9a947357ffe598ab9f015a2b892cdd1bf4ee8dd1121c833fc",
+    "GatewayReferenceDictionaryResume": "db1f1656c0f339338c7934d6cfc8c80a7f666319460e9ce68de5f344588036de",
+    "GatewayReferenceDictionarySecond": "e79583a441e9dec8004bd06a3d7baddbb23d318b0404c6eef68b6ca393a7af40",
+    "GatewayReferenceDictionarySecondInduction": "5d040031415a9538bddb60f83639d0ab26b5cb63a0d0c87198668ab3b18f814f",
+    "GatewayReferenceDictionarySecondResume": "4952c27a87716c287b22a5667c83193993d2954845dd1653d23d47d958afc1a0",
+    "GatewayReferenceDictionarySnapshots": "eb28df069200555c296632b795beb45c76f663a77a5940ab6ade4a5011bcb5c6",
+    "GatewayReferenceDictionaryStart": "88d914b195ac4286176d837394b16646dd23ce5be135f653e37507d2c091f0d0",
+    "GatewayReferenceDictionaryStep": "a93a0f0464305f10bfb4278a82b4ac7e8322c6df37bd4d7a88eb77fbfa959a00",
+    "GatewayReferenceDictionaryTarget": "e0e525f5f971db4540674c1a9d8d4c4a153f0ac9db118381d21af32b5ef37138",
+    "GatewayReferenceDictionaryValue": "861190e1457681e004f0c09dae985e27399703a85ce7d281b51d94caa8684c60",
+    "GatewayReferenceDictionaryValueResume": "37985d4093c44fa53adf373b803174a804098ba6e39b3c650c7c0a155aaaefe6",
+    "GatewayReferenceEmptyContainer": "1f73297a88b0840a6b83cfb8ff2c2381da844011e2a11b8567efe4259c00f8a4",
+    "GatewayReferenceExecution": "7652f2023a013099c3ae680629f30b1afbb5da85969cb076ee6cc7e3a3025a50",
+    "GatewayReferenceFloat": "43006f9452991ae03f671a380ef293cea203510114c003ba979bf3d72c7eb694",
+    "GatewayReferenceFloatConstruction": "d2e92925f0128aa70760fa5718d2a751ae56deaf983338bc5d73f27f69a3efd5",
+    "GatewayReferenceFloatTail": "d6c8d2e18e203bb1491e038ce0b3fdb80b75701e57d911af1a6876d7b938506d",
+    "GatewayReferenceFrames": "cc2f4db38629aa8216c943b5d90ea60359b51b2805e1426bbead3fd6f1d11f7d",
+    "GatewayReferenceGraphCapture": "a3e50bb6924db9d55ed7e8dd7b082ce0831a2952adc7292fbdc5b155ab33d5f3",
+    "GatewayReferenceHeld": "7a05609882aa1efd2b434a73030fc14c3d4327d34cc40a8dc5460a4b38229026",
+    "GatewayReferenceIncref": "ac606e6e0dd2fdeaca6a2e278a73616400d158873861d4262cab6ea7d934ee16",
+    "GatewayReferenceInteger": "7885d0fc869c68b6e3859187cb63ad5160eba58fe28068852e76aeec3b1b7466",
+    "GatewayReferenceJsonNumber": "eccf0cac90155f3af2ba7905eb1dcb17304e008246ea49a878d4e2f763b0fafc",
+    "GatewayReferenceKeyType": "bd64b910dc8b3fa08f46d80aba611bc11d19d93b332bfc89568c15d061bb0a32",
+    "GatewayReferenceLedger": "3868a0782e8afa41a4be0d420f4143e19d22c1e2d34ca468a1f393953c13a50b",
+    "GatewayReferenceLoopLedger": "e91fc63020d2c8aeeaf96a6b2ee27241057fc29194dad497c20d1e0d88f9d7bf",
+    "GatewayReferenceMoves": "829338bae3623d5a5e9f41370eb97d01b3d47908a7e93f61233a978d7d9bc1e1",
+    "GatewayReferenceNoneRun": "2dc5a1626678489c64c6ecc19a655be1fbe53f0024eac31a002134e4d40bba5e",
+    "GatewayReferenceNormalForm": "e1676fa2e8d2478221abd6e95b04e4894308e95990980b5b0f22a8ecbf37b989",
+    "GatewayReferenceNull": "611e07b2538307697e0c31ac1875cad84ec5985392c1868dfb0c9b32cde4e387",
+    "GatewayReferenceNumber": "4ff2a1ab2993d916c376c81ca3c6a71192cd7ee49027b43c2b1deb6fdb9ac381",
+    "GatewayReferenceNumberAdd": "38410ee273a332f351dd3ea74fb75ac8dd4b11fd475a3321b490d1a685f74878",
+    "GatewayReferenceNumberArithmetic": "033d19437f2ccecbfdfd672d2d449e1527eadfc8504dde6339ebed196cca5c19",
+    "GatewayReferenceNumberBaseRelease": "84044e3fab06848a51271f6be7a839d97a2494912faff25d1fbc86df68b0cb10",
+    "GatewayReferenceNumberFold": "fc3403312a30e3642e30fe1595bd5c0c1ece34a7cfd8702cd8674a13a7c395ae",
+    "GatewayReferenceNumberIntegerConstruction": "419b1d13fa91634284b4bb8d984ae6a5a7b092d7da69f695e7c0750352f0d2af",
+    "GatewayReferenceNumberIteration": "e3fce07d0debdfc67015927a414be0862d820f5dcb18424ce3c647b6782bac37",
+    "GatewayReferenceNumberLiterals": "e03853cc2959f89b911181c163eb2ebd5c6d4a0a8ac428e9392c3bad3ae71416",
+    "GatewayReferenceNumberMultiply": "4eed1a19789d348974e017b732335e3c1ed83a1e3d228914ab5401af8f860b8b",
+    "GatewayReferenceNumberNegative": "1f76c7ee3d35dc325e7c6f64e3fcc62928b8f72537e337dea65a25a25fa50cd1",
+    "GatewayReferenceNumberNormalForm": "f992ff72eddec29fa8b1ce4c799f818b5c19b6a935373115024193c67cf9668b",
+    "GatewayReferenceNumberOwners": "4cf0939743d5b588b105dbfc9beb7f2cb49d2788e25d64827298c19313e3bb44",
+    "GatewayReferenceNumberPart": "d32e38ebbc9ef407420430924157decbd21a57ffcd8c61ae3c4af4717b82a21c",
+    "GatewayReferenceNumberPositive": "a238f0f1b54d05d99b20b04fdfe2fd2523fdf9753b0692abf791d9bbe20e6d2b",
+    "GatewayReferenceNumberReturn": "f152c8e21ddc958ee263362689f99a64f2f1bfa083d295b9a7ca2250b8e250c3",
+    "GatewayReferenceNumberSign": "2a1a7857811ea897ba5f937d5e6bfee85bb6355f1259039d466bd3f6d9b00897",
+    "GatewayReferenceNumberStart": "7f0c199d0ed9a15d40e5d7585cc1dde1dd2f1169dc2aefc974f97dab4d3c0ba9",
+    "GatewayReferenceNumberVacancy": "9fcd70c16e9f09eec7fda4515aec964ed0bce6b27eb9a78362dcedc775dd499c",
+    "GatewayReferenceNumericContext": "b506bab70f7fd5f1815dbab56dae354e608400ee668c72e4e4106a5d70ec5a92",
+    "GatewayReferenceNumericFrames": "53504622c16541561246f9ff8db5b26db794f9dba5d98fd5462fc6760511dbfd",
+    "GatewayReferenceNumericLedger": "4de542818eb684ce0abc53453e84a0f8a86b108e5602428aac810b505b6819f3",
+    "GatewayReferenceNumericNormalForm": "226a064b9df3b56f531ee6cd8ada23f04bd39d03601fbd2aae0095e2b594ea62",
+    "GatewayReferenceNumericRelease": "5526cdcfd0cca6bc56c9cb2ba42d67f2a01ff9b613af9c802859ff4310ac272d",
+    "GatewayReferenceNumericRequests": "b0851ed5f9eb3d82b4eaa2cd143ca8533f5ea224cf9f531b39cbc948876143eb",
+    "GatewayReferenceNumericStorage": "47c09599580d3568edba8c81b9dfac9f40ba0d37855876d1d4885296b7dde782",
+    "GatewayReferenceNumericText": "81ce073304622141a2bfe5c97b327674749e95a2cf8bae1fa56b8682c9de3670",
+    "GatewayReferenceObserverContextRun": "244345fe75a4cffb47e96e4a5ba1664f88fc7596a31416f3afb7938c885d3724",
+    "GatewayReferenceObservers": "8f47f7ce42069fa80c2f070c942de55955822ba3af3e336c0f7ce78b7dcd4d7d",
+    "GatewayReferenceOwnedBoolean": "5752c1429d5b3807f8646080ec995edc44289d97657fd736220e637546eb3e5a",
+    "GatewayReferenceOwnedCaller": "12f2f958bece46dfb51cbe9ba0b884f194c2c57356c15081c5f0f7b9ced78445",
+    "GatewayReferenceOwnedContainerExit": "217e82af45ca091c633a1c31f748567d6afcd3559ac384e1a3f7c9db2337163c",
+    "GatewayReferenceOwnedEmpty": "86379d5c167ee6b4b9b6def1dc25b806239b80f20eb15050cab027aad3601e99",
+    "GatewayReferenceOwnedInteger": "83e2b786ed54d7e938d02e884b0f8eebb7be2168a49c365cfc4d20932dc5ef09",
+    "GatewayReferenceOwnedNumber": "df22205f8ed1d357d3588a1dd80a9783fac47798e943b4175ec69537f352e34d",
+    "GatewayReferenceOwnedPath": "aa8a6a8b879dbbcff416c666641055e70d84f39313ef67c5f9cbeaf44b66b669",
+    "GatewayReferenceOwnedReturn": "6b85f97a9dc30934734379d0c2567b9aa84d2661c18e10446658b63f225b1587",
+    "GatewayReferenceOwnedValues": "01d972211a68050617227d2dfd912f5bf421b5b60e9448d9f453bb5c347c73a8",
+    "GatewayReferenceParseInteger": "4d396c055369aab5c7d5bc93f2638d06f4642041bb69b9a83c12d410ec041357",
+    "GatewayReferenceParseNumber": "75426c3c9407300e0771c8c7b302c8aee3bd605356fe3b154e6a317b74c91220",
+    "GatewayReferenceParseResult": "d5ed1b8ae7a77550408294fa72d88338a44f41d619ab39063eb53d561dac4af5",
+    "GatewayReferenceParseScalars": "452936986b27d304e2be37a0fcb4a03c69a9ec4130ad8e72b533e1350746210c",
+    "GatewayReferenceParser": "ae1915c2fc1800202cd2516a878da280ae964b4d26c6441cb1a4c830830342a4",
+    "GatewayReferenceParserComplete": "07230170c4e8812254d2763cc1d917c5d8d284754a19a4244049c3321a4606ed",
+    "GatewayReferenceParserInputs": "20b63fbc8e7773772dbc093349a476974de147520541bf7db95fc27ecff8b106",
+    "GatewayReferenceParserPool": "3b9327501207f7111fb44278beded3e275a91e7e2a38127f3049890434df2cec",
+    "GatewayReferencePath": "e12846c1a3a1ae0bd851def76d514c3343f3b644246a464c2497a66e5a352e30",
+    "GatewayReferencePathPayload": "7d586c1a12fda10724978c1a7603c8ca451723f7246270e72745690b1977eee3",
+    "GatewayReferencePlaces": "0719bf1ec84d43d4381ffae7e630b6e0c6228148ffa3e5070be441574ec742f3",
+    "GatewayReferenceReleaseContextRun": "aa5765f4e7b10841a397cf5214cc3dabcf96cb792d116d40d141f4b497f63cb9",
+    "GatewayReferenceReleaseEffects": "6fdc9b05bfca5c8ef0d6546e128ce03e14243139d94dda5a182927a21ce0bafc",
+    "GatewayReferenceReservations": "5ee35f6d5d5818c164ff60eea6f8dcea45bffcb60ffb4c460f6c945a82944e82",
+    "GatewayReferenceRetained": "730eef20129a89a61cc274df5bf3d53b9c5413d843c921ad0ea2ac04bd4dd0e8",
+    "GatewayReferenceReturnPath": "9afe5bec80d65d0047d2c222e4ccad6cc4a8b1232ee3d2fbeac8d2fe3c546326",
+    "GatewayReferenceRuntime": "a668ad9fd717da96a545f25e5f15982e6a7101e561fec7a4404c8632b197901f",
+    "GatewayReferenceScalarCleanup": "0daadc46a83e99887675a4f3473781a7f333757addcc89fba4707c058fd72b5e",
+    "GatewayReferenceScalarRuns": "d908be2d004685326b5b3677a3f7fcd26734750df5310ada47afe2ca2db3f212",
+    "GatewayReferenceScalarStorage": "6f17df9918291de24c0ec829d20c6f3f485726ac74d147f4c41537b57c41e615",
+    "GatewayReferenceScalarTransfer": "4e5b73eaff8c2c383db049cb4ae9ce76ce299a376f6ca49fa69d18ceac9abdd9",
+    "GatewayReferenceSnapshotInputs": "d01eaa74d7f051ba746f5ca2497c89103668a3a6cdaa8952f6549e921ceb6eb7",
+    "GatewayReferenceSourceReturn": "7383a8c8de7c4860b5904a4b8b81ce61b4aac27a8b53447d20aa2ffd5670b529",
+    "GatewayReferenceStackBound": "16d1bd90233ca14bb5d8e58665c904ec0a683386a11a88e78beec9c28a2df354",
+    "GatewayReferenceText": "3e3610dbd352280d43c943fca172f01b52d5d842c83b491bbd37589683380bb2",
+    "GatewayReferenceThreads": "c150fd778b6a813c2115cffdad2637b2e69f67158462d7a114a4fbeaa257362c",
+    "GatewayReferenceValueProperties": "329999ccb5e72d43a7367127c6a5e31c8322c0e874e091c92b570e247f53eba6",
+    "GatewayReferences": "4ed4532378e65eeba20e83912a7f48949eadd98a93582e86755913c0b317830d",
+    "GatewayRegionMemory": "6045a2378d1d8616e710c28ee208399f08e8b64afedb07029f5eaa7db3d77bdc",
+    "GatewayRegionThreads": "a10c48ca48a9a4ebd37782c050ab18afb36d55ffa4568ca94cc3c9267a7ee485",
+    "GatewayRegistry": "6aed4e13b24d521d4499ccee35d66033b64846ea9fd62fef6c4f988d64d870d2",
+    "GatewayReturnIdentity": "20e4e8d224458ae0021a1f17649104ab005fd66fe2722f262a80a3630d755e16",
+    "GatewayReturnMemory": "ca99d6ebbb24424ee941c9159e633d969331c7ce4982dad80dde9454cfa0b6c6",
+    "GatewayReturnRuntime": "72991eb3eb7b226fe15758b5ff32fcff98be8f52ef3bd0c892cf6960970f0c23",
+    "GatewayReturnTypes": "9e3a4fb47c7d662a5361484d2d6133341811ecac638f3e907d4496a9a6949cae",
+    "GatewayReturns": "a14c8fc34d409a49abc0e1ba06a5b33048e442c28b57a35aab981da066620cac",
+    "GatewayRootLeases": "ee75c8c224d05354fd4720359aad7b6469f0c14296e6cb5b4e37deb7fe115c61",
+    "GatewayRuntime": "f5660a0e8346b7bc7a11933c0a41e72f57185e99fb6c034797d8792014ecdf86",
+    "GatewayRuntimeABI": "1e16de3bb1ae2c596ef128dff80761f0f49448c06164d146f110ba8ced9380e1",
+    "GatewayRuntimeCuts": "ba9e3170d405a8954def032012f12844e6a67c2c926a28e5f2f507bbc509e89a",
+    "GatewayRuntimeTrace": "501a83d944aa90def470c47a486e14b96fa78ef08220fdf3b6ff7afb17fe95bb",
+    "GatewayScalarAllocationCall": "1ea013e32007941c2e6c6fbc012334bc2df16c39d2fae18c7555f434e2ac7963",
+    "GatewayScalarAllocationPath": "0ec5d04638ec672197d48c85a64a8935f476416d8f703a1ca4dba133efea4803",
+    "GatewayScalarBuffer": "e24384ac951aec852cc041bc50f99cd237aa3f65236bb714843f0b313fe620b8",
+    "GatewayScalarBytes": "acbb456f6b23a0ce372d384ac398dd5a71d162c547ecd70b28ff1886aa7623b1",
+    "GatewayScalarBytesCall": "3c9bd6dae7c522d8b360a1d6d34ef84a803ccad552f4e15be1140eb163c511ca",
+    "GatewayScalarBytesPath": "5c010b52344b88be9630b9122e93363cc7bda90fda221cdb4308625ce20c8312",
+    "GatewayScalarCleanup": "81fe6864c01fe59c3ed191fd33b73a11fefc451ee9121f8df0effb50937d59f1",
+    "GatewayScalarConstructorCalls": "a0ce32a16c18d885faea0ca2cdf3dcb89e805b23d028c0d77b1ec2edfafa798e",
+    "GatewayScalarConstructorMemory": "0cf7c63bab83b38d002556cf53d3e02c0a35a13881a1b1ad44a8146d15e0be35",
+    "GatewayScalarContext": "76624c585f6e76522b5b23390d662dcda631eac3b52ed27511fcf72bad5d57fa",
+    "GatewayScalarDecoding": "01392729ed87dcfdc0ebef1ba87c18e3b99caf29713f438eb4ae4fed01324714",
+    "GatewayScalarEncoding": "0c2b5c431a13a189a83b0b5a667115d66500960524492d2b55e8f5276ac3415b",
+    "GatewayScalarFrames": "86deb2de8b96b73b998fbae6ee34b6c82c54f4d8222908f0ad694d781e3fb7c2",
+    "GatewayScalarFree": "57cef5a5fd4f824589ffbdd2813e70bef23def1dff2827b0ec61dbdc3fc58633",
+    "GatewayScalarGuards": "e76a9980fd6d9d5b217130fb9cd265ae3df7bebe94abc28c0fb51a2dd84b43ca",
+    "GatewayScalarIntegerCall": "bda3cde8625a10314cfcfe8dd01e412be344ab9f2d1fb24fab99e07c53d23518",
+    "GatewayScalarIntegerRequest": "2ea402d99b61d895b45dddf1ca31663fb8c1eaf05e9b344ca1ed37ecdb5efccb",
+    "GatewayScalarLength": "902b844c08a1c488dc2421ec79dabf18fff2bac16eaf800d8e3fd5d258693fed",
+    "GatewayScalarLimits": "4b06132895ce74776cdd346a1835b0a4a468de309e15c339a9f695afcc834d9f",
+    "GatewayScalarMalloc": "991b6aa0dd603165f801642e46dbf2bfb264158f38ea5970d65e65269942a9b4",
+    "GatewayScalarMemory": "33607cfd1621343664b17fbb592ac380e9b42687298d052414639d02f1cdd8d5",
+    "GatewayScalarNativeEffects": "62e5af079b4320bf128268e1c08ef585fa1f1de1862d1bcd85fb861dc086410c",
+    "GatewayScalarNull": "1a38b498c0e6d418a933627134f2d635a7845a09deb112f568cb2c068a572c6f",
+    "GatewayScalarNullFailure": "d8cb5d3996fbce41d06b27966ce3651494c7e7a1d3faf958cd5ed19070b253ba",
+    "GatewayScalarNumberCall": "2d83cbb533fb61f6933aee2ea64ab73e87fb232dab716b8d4a9b37ae919a7317",
+    "GatewayScalarNumberPath": "b8a6ed8ae5da120e894bb2dcb1f593c5e2ecca3d0f1cc69172569bc3cc21e5ac",
+    "GatewayScalarOwnedCleanup": "d0bb8ff8952c5352e913cb325602b9b6eda73ad1363c499cd1b4d0bac6fe1c9a",
+    "GatewayScalarPathCall": "c90c9e2e0736a74fdb211e4eb00892e2f0f3c8ab9d52d5438cbe9052dad02e52",
+    "GatewayScalarPathDecoded": "578ee6d411d78a40aea97951de11dcee19ffbd69acb12b9ae7d63d9f24d9eda8",
+    "GatewayScalarPathDecodedStream": "0ca404a02d3293c2c5d99d0a1823c0ee50187e4ca11fd6169009df92feea1b2d",
+    "GatewayScalarPathDenied": "ecac3cfe8b2a50bfe4f4572102b4821e7213c8d45ec2466c8805088e2d6034b4",
+    "GatewayScalarPathGuard": "932b62c84d6586923e46a9aba71fd4095a0bb3c1d8ce2a5d0ce8ac25f53d86e0",
+    "GatewayScalarPathSource": "0bfccd06201be40dd464ffe99d05533fd5a59f34da4b0de88c54cacac66614ad",
+    "GatewayScalarPayload": "b83e765f987176b4c6176ff2b35fee7e5d1e0a9a6b836342511e5f4cfd3e1ed3",
+    "GatewayScalarPayloadMemory": "62605b7da91db794f24216ef280fac779c16d5138db8ada797c5c713136cbf48",
+    "GatewayScalarReadCall": "1cfcc381704a54daab6b3fd963ea7a9d491df9c0d861d1e77f3176aa2c861b98",
+    "GatewayScalarReadMemory": "e3d2ab5bb1b6e68ddf688b52c1657bc4a2b8c17af5d0ebfeda95de992444be81",
+    "GatewayScalarReadPath": "1aaf7d1eeba076fe43c889b2c8a8883227cf62ace51a861b49c8cd15b1cb745d",
+    "GatewayScalarReadReceipt": "1c7834d9915a8f484a4105bd05bc9db09a56dacdd106eb495d72d971235bb053",
+    "GatewayScalarReleaseMemory": "b0ecda791061c56a0a6edd6fc1448e1e24153df7d3e9c67fcb0b93cb2becec8a",
+    "GatewayScalarRuns": "1e3d28294bf46458540ad2e6a4ffc6e949e58d1f0cfe954ac3ded7be8ae73e69",
+    "GatewayScalarScan": "c361838b24f0a1dbec2d17835050fa798f017ad916faed197c3b6af8b29171ab",
+    "GatewayScalarSize": "671c5b41fa8b37581f4f4a44ec680f4ce9ab7f3cfc3efb884f4efb4d8b2417b8",
+    "GatewayScalarSizeCall": "e4b6e52e25941006db57bb9d203e047abc4b8aa394fcd24cd5b4d150db3c8845",
+    "GatewayScalarSizedFrames": "6cd885b3c65f4d01fb1714d2263e6e4a8de080a49a0856e002d436ebc80e6b3d",
+    "GatewayScalarStreamCleanup": "f12f710843fa566ed7fb4615f7884a8a0413896d8b0b49ae9daad1f5d256e602",
+    "GatewayScalarTerminate": "b3c56cd95dc178df12c9929c13be18058cdd76865521990ce7613c7e92805295",
+    "GatewayScalarText": "f106bcc08fd300b0bfe6e0b47579ccb9923e33f417d47129ce4abd8804aef994",
+    "GatewayScalarTextCall": "71e0d02157b200b8a684f7803d4988f506d9b1279fe5e9038ed6178f07793662",
+    "GatewayScalarTextPath": "8788c374fbbad3e85e06b9491310fcc9d74f1932f7623df93ccbefd081a86798",
+    "GatewayScopeBufferReference": "2733db439950eba12ea121b1295697a56578026fcf7224e8776cd3886006182d",
+    "GatewayScopedBufferRuntime": "4107e8e0d48064c01e42d5fc4a2324bd003a8a1be958ca541d21c006c256651f",
+    "GatewayScopedMemory": "dcea9dd0447ffe9d147265d212a206f8d28ee9bd5f1794ce70e8db56fa8d24c4",
+    "GatewaySource": "3a97870876c2627abf77351b40625a0a1b699a187c891ef5f7f116a22c0d9909",
+    "GatewaySourceBoundCalls": "162c0289bd2104de2eed4c2483daedd45d2dac268f72c4ffb994161278871b6c",
+    "GatewaySourceCuts": "2e24c7478bcdc5fc0ffa09d902ab06825e3308ad0638f59637da076877bf1c97",
+    "GatewaySourceDynamic": "f54d36fcfa635fb03cdde7b81eeb0f899719b9cb58dee991f14c7cc225a1e3d3",
+    "GatewaySourceEvaluation": "94ec669da79cea74a958dbd490a4f9efafb3ed47adfa7d34594bbd4247e49378",
+    "GatewaySourceIntegerReceipt": "76567285cb0141f7a4debc9949594769bd63dfdb89a238fc4f6c2ec7f4dfa3af",
+    "GatewaySourcePaths": "c895756f5136ccf429fc0ea59361ae6c321d6e6c63fc389238825306f1affc94",
+    "GatewaySourceSegmentAutomation": "b0924085962b72dd9929aa6fe91ea6527404fe9335bf1a13c407b73207b14047",
+    "GatewaySourceSegments": "438d7a0aa31bb4f2b68a33226eae135719ed2e637b84199e8d2288372fd66cde",
+    "GatewaySourceTactics": "eedda2999bac9545bb252f9f4782bc875d33e7f732f22d6d4945708bef0ae737",
+    "GatewayStreamAccess": "03007feab514cff1fd57a6aa8271fa87345934a5b370da92d5cc9df2ce802d8e",
+    "GatewayStreamInterface": "049ec06833e399f2e111e37c22c225943617bd471e3ba41a6a574abaf6f8d9a7",
+    "GatewayStreamLayout": "61f0e2b8e0b17533bd33d3cb5dc7a9d11cc036b323cdd9a8e2850c9a98d13267",
+    "GatewayStreamMemory": "2c486314528c0f2e8d01976a26e0a81504ec7b113f12290778ddb86dac948285",
+    "GatewayStreamRelations": "9fdfaf06f75899c1053ac89ecd315b9c55257f663411e531384039b3f89a9bec",
+    "GatewayStreamUnique": "9395d68ba07ff4b36bc68f0de391524e163f796bc19e6a7d2a714d2c21f466a0",
+    "GatewayStreamWord": "5732334664409e2d5dcfcb232dda5600a8fef2e54fd37c8146fd2d8554d4352c",
+    "GatewayTempNull": "fc9aa14f732f5404fc139436ab231840fac997fc3a0be723ba464ab8fa1be6fd",
+    "GatewayThreadInvariant": "48705fcaea184a8175e9909defcb7ee6776ceaa6529f564ec1c80349864b6a48",
+    "GatewayThreadRuntime": "4d5cf36fb71ab511d2603efe350a68d8fc3c7b0fce848867c569688995a282b6",
+    "GatewayTransferBuffer": "9f18003ef07fc0f354f68bf9d2e4ed68b874a79c4a0600e0e835c9de651cabef",
+    "GatewayTransferCalls": "85f55284cdccba0ae782590be70e003ee100518e0f366570178b172008b7453c",
+    "GatewayTransferChunk": "6ecb2a7f0631ced5d9b9e8b9ce60a4b955c3fdf3b0459123d631341c41223a51",
+    "GatewayTransferClassification": "42096b5727c683bb7c759b542840b7991ba805b5fcee6b999ddcdfe4cd143e59",
+    "GatewayTransferErrno": "ae802c7000b890f71fc69a43865dcb8bc3a007ea86763fa88a70bcb759d7ba48",
+    "GatewayTransferErrors": "5120d37f9a3c0ec92300376b1bb3d25440518662f1cec9c6bba8f6198fa07c2b",
+    "GatewayTransferFailure": "573bbd3ee5846db13be28a4e6050be830a9c7ca66cabebd9f4711a74336e2e0d",
+    "GatewayTransferIteration": "aab71e42481f22aa04962f790b3841db52f3d0599a8310306a2462863466b2a7",
+    "GatewayTransferLoop": "72c58494243c01b2903c59ee754b6beaff5fda8a00c830e2a3a0e7e9dda48e81",
+    "GatewayTransferMath": "d2652b48cc7ff44d5834b8d433d475de743a47bfd57a1857061b81d743f40ff8",
+    "GatewayTransferPost": "f2ab9434521054b41c2e199875e9369180642f5d4c2963f8e03dc6c9f6698de1",
+    "GatewayTransferProgress": "cda485c20978060e75293d6ddd103b8f7463dc0a1dca7fdbbd6e29b167ed09dd",
+    "GatewayTransferProgressMath": "7fec7da00a7b88a2a28e3050c9968c9b3912dca4c0f3e5860f8de63cd8fc3e74",
+    "GatewayTransferReadonly": "7022f0e2b803ad9a05a02c6aa75251aa0828d91a9bf3090b8c988c343a65e344",
+    "GatewayTransferReady": "c9ed99540b9bb3c013390b40fdb53e562657850e53517bf9b064294d9c6e02f3",
+    "GatewayTransferReceive": "6713d70e2a937cd7522283f626cc97f022e947f1c1e1b88441a7986a4d9b2200",
+    "GatewayTransferRestore": "7f7e9d7a2f52cb73d2bd2a69dd20d4f21474e4610ae258f599d87e47cc95991d",
+    "GatewayTransferRetry": "cc037fdd1ae1ff12db9606c362d8c3d67438843baa238a98f7416778123e832f",
+    "GatewayTransferRuntime": "1d87927aedb27d50e2e6ad8e455fa901b3167f6031c48bfacd97e507851d2b44",
+    "GatewayTransferSource": "676184eb8c931b6efcf7658f817c2f17e515af2641cf3f6221b0f55df2d993eb",
+    "GatewayTransferState": "2f3b45de2ee613c11870997c3dba532363fa1eee82d0bf44e970f717ff501f4b",
+    "GatewayTransferUndefined": "81ac627eabc6a2a0fb951fe4ac90e1e06cd646a3e114b461a8f2195034388db3",
+    "GatewayTransferValues": "6acaf351c80c9f3d0480376c6130c0e37e73d9abb641891ebbcf909d5f9e8d9f",
+    "GatewayTransportFrame": "4b26a452bbbbd0326687bbb0472f8b679e037d8e9caa7bd7f078b7769188dade",
+    "GatewayTypeRuntime": "1d37787145c166e8372ada1b3410781c8059f7f09c9fdac1e7b968d8b77e3947",
+    "GatewayUnaryExpressions": "bc3c8736bc8fe7848c0fe304d3549cd2cba6f5e5c3e0e1abb154da76b996eeea",
+    "GatewayValue": "d377a42464defb995d8342bedc4a883e2a30a257d16fcdeddb4ebc75c599042f",
+    "GatewayValueActual": "2b5c7ef9c108d20cae2fd0ba6522da8cf56c2053711dd6e927ede79dfb22f6a7",
+    "GatewayValueAfterBoolean": "4a6fbdecbbe9aee1ecdf88a155f96f2be68c330fb8790314638c8e0fdc1afa9a",
+    "GatewayValueBindings": "fb8ac6561cfb93f096a9a8be15cd2808d7213bbc982426d7ccbd85167454f73d",
+    "GatewayValueBoolean": "48a4b0c495a3ea4ca830ea9dfca7923149c0f4dafc998e1465dfd39b4db20c48",
+    "GatewayValueBooleanCut": "167463fb52584169f58f60df4db80cba1986a99a2fcd1223f51fe1923a9dcedb",
+    "GatewayValueBooleanHeap": "6c018f9453bdc9556f7d693264caa9c8b0b3998bfe2bb9ecf19c809daeec926e",
+    "GatewayValueContext": "1cc52d27b1cd9ac5d60da82d5db57082dfd3fe3237128928803923eae7eae2a9",
+    "GatewayValueDispatch": "79701366ff4d6bc632e1cc097180755d6a5e4cf8f3fd2a4772c1e02fff9103cd",
+    "GatewayValueEntry": "9b168156a895ede2aa7ca76cc7b2b30d4b755ca6e078d21cce4430e7b89c0ecf",
+    "GatewayValueEnvironment": "9e069b7824274ada6ab581efdb85b56765e2f8fbd95e519e0fca3d59c189ce1a",
+    "GatewayValueExpressions": "434c093a21af74faa7e36e28ed7bcd594427c19e0f8fdf3b5a9e48ff048302d4",
+    "GatewayValueFirstWord": "3350f59c9d6927b2a500af58587b38e86ca61a64f5e372a05552d1edf3e1ee57",
+    "GatewayValueFrame": "b9649d19c2ee257026a55b5ca14eca97b555da89b17d18ccb8c57e6cff6729d3",
+    "GatewayValueGuards": "c6c1192f7fe19968d32a9c9de62e64c601f95bb26c0d341d1f3935c9cdcf7434",
+    "GatewayValueKnownTag": "86924dad2b8a87bbf261e8342d24e68114af324402d216b82f36083b9ce3b1cb",
+    "GatewayValueNodeMemory": "6a4d28a2952d5e44e38deb375879a24cbd977c2f409ad3b83249debeaa75ec1c",
+    "GatewayValueNodes": "2c3816e18c3229b5fd09bbc275b2e75b07738eb663f70e4bbb5ed2840ac581a5",
+    "GatewayValueNull": "8c631f6b8f8a2bba478c271d79038d78f22bef08059d45e01c7ca116181ec52a",
+    "GatewayValueNullHeap": "3d8c087a80977afd20a99ea5e8f6523acc639bfb5b426a07723b7d077c70dd85",
+    "GatewayValueNullSource": "4cbfb11855893a3dcd5d140242cdb94ae84734d500eeafd0abbf19dca3b9e836",
+    "GatewayValueOwnership": "c33a04013e5f7798e2671ae959107850c896eccc492942eef7cd9727b29e7d20",
+    "GatewayValueRegions": "ae4e0c5f7881612b65ddc47ca1da299583d8f7796b849782da8e51391b589611",
+    "GatewayValueReturnContext": "f31658f4ad419af9f590cbfded00f42d6fb66a82bc48380f888e2831bd4c7f4c",
+    "GatewayValueReturns": "482d7df928678f3496a560e83e8182a63d74832b7b9d4222f77be6a8a796c4eb",
+    "GatewayValueShapes": "c3f053cd957f40b7d33bddf5d6beb04d87dbbad8bccda8d32000527118b0d799",
+    "GatewayValueSlotSwap": "5445ffd1baf1f9813ea236d950ababb84772266d00c4897407c0ce16f24fb884",
+    "GatewayValueStack": "1ce29b9782cba3d881dd72aa7d301b5281f75e8a70725c92ce48aef11d3d4bcc",
+    "GatewayValueStreamRelations": "334d7fe5e8b5d5c4da644c8d6868bb797d220e9f8968faaf8fe25b90eee5ee55",
+    "GatewayValueTag": "8474cf34b5695adb0ae07214e10688032df727104cfc2650cf9134c3a12143df",
+    "GatewayValueTagOwned": "34a9bce1589efdea4be25d0d43456e0e888faeec589ab1bf3459d2e74f85ca4c",
+    "GatewayValueUnknown": "43cedf0e2d8d2cc392c294470136a2d35d00c07a38ea731c2072833fd55bcd5d",
+    "GatewayValueWord": "6de49540d26e598f073c98c560cc836c8078c40eec867da9039b8a9e196feee2",
+    "GatewayWordActual": "0d23e2ef41c713da97c43a5faa7510c61af3391712aa8ce3bc7958ad91c52fed",
+    "GatewayWordComplete": "553747af7b2d624a7d0b435f16912d873bb51c631e0b3abfd354be43bc5b2d06",
+    "GatewayWordContext": "a8373d6a58794f0d27d89d79edbf8c9f50262958cf321e3110d7fc63501956d0",
+    "GatewayWordData": "8dae02f0a33ae0eb37d2fb1d7fffc3d3d010fdd6161b63b82f71445b49fddf11",
+    "GatewayWordFamily": "ebe3cfb9f39600edae4639783043fd3bfdac163235cc2e559a03079e403ae253",
+    "GatewayWordInputs": "3929139b5f3ded697977bb1312d770207a3c351229a1f7914118e630416cc374",
+    "GatewayWordOwned": "ecc832b9afdeeae3a92dcc75024adb29de14d2d2d6caeb45bbb84ba2c8be0efe",
+    "GatewayWordPermissions": "0bed9384f3123e94aa3b63420928effaae8af284e9d37a2027946040b3c3052a",
+    "GatewayWordReadReceipt": "824ca6446f45f7191011c67056a07a7869012082b691bcaf5a13dda58f9a49a5",
+    "GatewayWordReceipt": "bfe1477fe3e473c53b02f00cb3d5dfaa7be353d8dd4b5639d16f24282b5363f6",
+    "GatewayWordRuntime": "f3c6533e1492487d7e0c30fb20fb3e78585de4bc51be53bd29ca8a68f5ce9c06",
+    "GatewayWordSource": "4e61857ec528283f6723cfa8ac041cfbc36263dce444ee5a4ea68938f2132142",
+    "GatewayWordValues": "b7e37e7fea28d982bfb3d8bc07e30c0b26401e2436fb8d9c46bad80ef86eca06",
+    "GatewayWords": "9d0a4cf8966009155192cfc3b02562ffad2b48a53ba3b7e4fc382f264a73d5de",
+    "GatewayWordsMath": "4710c0935829ea8e64d789ff4b7b4c889cc8d2cacc518da6a1526c159846a2c0",
+    "GatewayWordsMemory": "5826b77eff9a08d5250836a2d127120b442e5d60910a46c91f545b62a4db463e"
+  },
+  "consumer": "GatewayResponseDecoded.actual_exchange_decodes_response and GatewayDecodedEOF.actual_exchange_decodes_then_eof consume the same actual call72 source result; original Outcome and complete public writer/channel join remain separate integration work.",
+  "declarations": [
+    "GatewayReferenceJsonNumber.gateway_reference_actual_json_number",
+    "GatewayReferenceParseNumber.gateway_reference_parse_number",
+    "GatewayReferenceParser.gateway_reference_actual_parser",
+    "GatewayReferenceParserPool.gateway_reference_actual_parser_with_reservations",
+    "GatewayReferenceParserComplete.gateway_reference_actual_parser_complete",
+    "GatewayPermissionRuntime.gateway_actual_run_permissions"
+  ],
+  "foundationBaseline": "assurance/host-response-construction-review.json (same six; historical invalidated ownership claims are not reused)",
+  "foundationResult": "All exact full theorem types and critical interfaces checked; no new axioms, UIP/proof_irrelevance or old universal RootLeases runtime hypothesis in the queried types.",
+  "foundations": [
+    "ClassicalDedekindReals.sig_forall_dec",
+    "ClassicalDedekindReals.sig_not_dec",
+    "Classical_Prop.classic",
+    "Events.external_functions_sem",
+    "Events.inline_assembly_sem",
+    "FunctionalExtensionality.functional_extensionality_dep"
+  ],
+  "queries": [
+    {
+      "declaration": "GatewayConditionalFailure.gateway_failure_when_conditional",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNullContexts.gateway_actual_null_context",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNullContexts.gateway_null_context_replace",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNullContexts.gateway_failure_null_context",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_decimal_append",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_decimal_bounds",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_nine_digit_chunk_fits",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_actual_number_chunk_expressions",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_chunk_multiply",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_chunk_digit",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_actual_chunk_step",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_number_signed_ascii",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_number_ascii_load",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_actual_number_chunk_loop",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_number_long_add",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_number_pointer_add",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_actual_chunk_character",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_number_offset_guard",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_number_offset_increment",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_actual_chunk_iteration",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_number_fold_exact",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_actual_chunk_argument_bounded",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_number_chunk_next_state",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumber.gateway_actual_chunk_exit",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberArithmeticBindings.gateway_actual_number_multiply_binding",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberArithmeticBindings.gateway_actual_number_add_binding",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberArithmeticBindings.gateway_actual_number_negative_binding",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberArithmeticSuccess.gateway_number_scaled_success_nonnull",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberArithmeticSuccess.gateway_number_sum_success_nonnull",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberBaseFailure.gateway_number_null_base_denied",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberChunkReceipt.gateway_number_middle_byte",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberChunkReceipt.gateway_number_actual_chunk_segment",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberChunkSource.gateway_chunk_parameters_refl",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberChunkSource.gateway_chunk_parameters_trans",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberChunkSource.gateway_chunk_parameters_next",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberChunkSource.gateway_number_chunk_iteration_segment",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberChunkSource.gateway_number_chunk_exit_segment",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberChunkSource.gateway_number_chunk_segment",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberConstruction.gateway_actual_number_constructor_bindings",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberConstruction.gateway_number_long_literal",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberConstruction.gateway_number_base_source_path",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberFailures.gateway_number_base_after_null_zero",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberFailures.gateway_number_null_zero_denied",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberFloatReturn.gateway_number_float_return_path",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberFloatReturn.gateway_number_after_float_identity",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberFloatReturn.gateway_number_float_return_ready",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberFloatSource.gateway_number_float_pointer_return",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberFloatSource.gateway_number_null_text_denied",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberFloatSource.gateway_number_float_source_path",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberFloatSource.gateway_number_text_release_source_path",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberFloatSource.gateway_number_float_return_identity",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberFoldMath.gateway_number_remaining_multiple",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberFoldMath.gateway_number_nine_available",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberFoldMath.gateway_number_skip_nine_multiple",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberFoldMath.gateway_number_nine_fold",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberFoldMath.gateway_number_zero_chunk",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberIntegerCalls.gateway_number_multiply_source_path",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberIntegerCalls.gateway_number_old_value_release_path",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberIntegerCalls.gateway_number_add_source_path",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberIntegerCalls.gateway_number_scaled_release_path",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberIntegerCalls.gateway_number_part_release_path",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberIntegerLoopSource.gateway_number_integer_loop_enter",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberIntegerLoopSource.gateway_number_integer_loop_exit",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberIntegerLoopSource.gateway_number_chunk_part_source_path",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberIntegerLoopSource.gateway_number_integer_advance_segment",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberIntegerStart.gateway_number_integer_start",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberIntegerStructure.actual_number_integer_chunk_group",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberIntegerStructure.actual_number_integer_release_operands",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberIterationFailure.gateway_number_null_part_denied",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberIterationFailure.gateway_number_null_scaled_denied",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberIterationFailure.gateway_number_null_sum_denied",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberLexicalFacts.gateway_number_lexical_parts",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberLexicalFacts.gateway_number_integer_part_digits",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberLexicalFacts.gateway_number_lexical_integer",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberLexicalFacts.gateway_number_lexical_integer_semantics",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberLexicalFacts.gateway_number_lexical_float",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberNegativeResult.gateway_number_negative_result_identity",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberSemantics.gateway_integer_part_digits",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberSemantics.gateway_json_integer_byte",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberSemantics.gateway_json_integer_no_float_marker",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberSemantics.gateway_json_integer_scalar_kind",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberSignSource.actual_number_sign_source_shapes",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberSignSource.gateway_number_final_base_release_path",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberSignSource.gateway_number_negative_source_path",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberSignSource.gateway_number_negative_release_path",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberSignSource.gateway_number_positive_return_path",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberSignSource.gateway_number_negative_return_path",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberSignSource.gateway_number_sign_return_identity",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberSignSource.gateway_number_positive_return_identity",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberSignSource.gateway_number_negative_return_identity",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberWidth.gateway_number_first_width_bounds",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberWidth.gateway_number_subtract",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberWidth.gateway_number_remainder",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayNumberWidth.gateway_number_zero_width",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionFootprints.gateway_native_footprint_cell",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionFootprints.gateway_python_footprint_cell",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionFootprints.gateway_constructor_permission_cell",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionFootprints.gateway_reference_permission_cell",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionFootprints.gateway_read_permission_cell",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionFootprints.gateway_free_permission_cell",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionRuntime.gateway_actual_step_permissions",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionRuntime.gateway_actual_run_permissions",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionRuntime.gateway_actual_return_permissions",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionSurvival.gateway_survival_refl",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionSurvival.gateway_survival_trans",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionSurvival.gateway_survival_exact",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionSurvival.gateway_survival_alloc",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionSurvival.gateway_survival_store",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionSurvival.gateway_survival_storebytes",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionSurvival.gateway_survival_free",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionSurvival.gateway_survival_free_list",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionSurvival.gateway_survival_variables",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionSurvival.gateway_survival_assignment",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionSurvival.gateway_internal_permission_survival",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionSurvival.gateway_survival_observed_permissions",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceAccountingStack.gateway_accounting_depth",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceAccountingStack.gateway_accounting_pointers",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceAccountingStack.gateway_accounting_entry_form",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceAccountingStack.gateway_accounting_formed",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceAccountingStack.gateway_accounting_bound",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceAccountingStack.gateway_accounting_count",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceAccountingStack.gateway_accounting_call",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceFloat.gateway_reference_actual_float_storage",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceFloatConstruction.gateway_reference_actual_float_construction",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceFloatTail.gateway_actual_number_float_bindings",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceFloatTail.gateway_reference_actual_float_tail",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceJsonNumber.gateway_reference_actual_json_number",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumber.gateway_reference_actual_number_value",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberAdd.gateway_reference_actual_number_add",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberArithmetic.gateway_reference_actual_binary_storage",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberArithmetic.gateway_reference_actual_negative_storage",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberBaseRelease.gateway_reference_actual_number_base_release",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberFold.gateway_reference_actual_number_nine_fold",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberIntegerConstruction.gateway_reference_actual_integer_construction",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberIteration.gateway_reference_actual_number_iteration",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberLiterals.gateway_reference_actual_literal_storage",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberMultiply.gateway_reference_actual_number_multiply",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberNegative.gateway_reference_actual_number_negative",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberNormalForm.gateway_number_release_current_under_operands",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberNormalForm.gateway_number_iteration_reference_tail",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberPart.gateway_reference_actual_number_part",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberPositive.gateway_reference_actual_number_positive",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberReturn.gateway_number_sign_pure_return",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberReturn.gateway_reference_actual_number_return",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberSign.gateway_reference_actual_number_sign",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberStart.gateway_reference_actual_number_start",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberVacancy.gateway_number_two_heads_vacant",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumberVacancy.gateway_number_one_head_vacant",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumericContext.gateway_reference_numeric_ambient",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumericFrames.gateway_reference_numeric_release_next",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumericFrames.gateway_reference_numeric_release_keeps_vacant",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumericLedger.gateway_reference_numeric_minted_keeps",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumericLedger.gateway_reference_numeric_released_vacant",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumericLedger.gateway_reference_numeric_released_keeps",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumericNormalForm.gateway_reference_numeric_middle_release",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumericRelease.gateway_reference_actual_numeric_release",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumericRequests.gateway_reference_scalar_capture_value",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumericRequests.gateway_reference_multiply_request",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumericRequests.gateway_reference_add_request",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumericRequests.gateway_reference_negative_request",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumericStorage.gateway_reference_actual_numeric_storage",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceNumericText.gateway_reference_actual_numeric_text",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceOwnedNumber.gateway_reference_actual_number_stream_value_owned",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceParseNumber.gateway_reference_parse_number",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceParser.gateway_reference_actual_short_parser",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceParser.gateway_reference_actual_parser",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceParserComplete.gateway_reference_actual_parser_complete",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceParserPool.gateway_reference_actual_parser_with_reservations",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceReservations.gateway_reference_parser_reservations",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceReservations.gateway_reference_actual_parser_reservations",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceReservations.gateway_reference_received_result_reservations",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayReferenceScalarTransfer.gateway_reference_actual_scalar_transfer",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayScalarNumberCall.gateway_actual_number_constructor_cut",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayScalarNumberPath.gateway_scalar_number_path",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayValueKnownTag.gateway_actual_value_known_tag",
+      "interface": false
+    },
+    {
+      "declaration": "GatewayPermissionRuntime.gateway_allocation_lifetime_runtime",
+      "interface": true
+    },
+    {
+      "declaration": "GatewayPermissionSurvival.gateway_permission_survival",
+      "interface": true
+    },
+    {
+      "declaration": "GatewayReferenceParserInputs.gateway_reference_short_parser",
+      "interface": true
+    },
+    {
+      "declaration": "GatewayReferenceParseResult.gateway_reference_parse_result",
+      "interface": true
+    },
+    {
+      "declaration": "GatewayReferenceReservations.gateway_reference_reserved_parse_result",
+      "interface": true
+    },
+    {
+      "declaration": "GatewayReferenceDecoded.gateway_reference_decoded",
+      "interface": true
+    },
+    {
+      "declaration": "GatewayReferenceLedger.gateway_reference_ledger_well_formed",
+      "interface": true
+    },
+    {
+      "declaration": "GatewayReferenceThreads.gateway_reference_thread_contract",
+      "interface": true
+    },
+    {
+      "declaration": "GatewayReferences.gateway_reference_runtime",
+      "interface": true
+    },
+    {
+      "declaration": "GatewayObjects.gateway_objects_runtime",
+      "interface": true
+    },
+    {
+      "declaration": "GatewayObjectInstances.gateway_instance_runtime",
+      "interface": true
+    },
+    {
+      "declaration": "GatewayContainerABI.gateway_container_abi_runtime",
+      "interface": true
+    },
+    {
+      "declaration": "GatewayObjects.gateway_container_runtime",
+      "interface": true
+    },
+    {
+      "declaration": "GatewayReferenceAccountingStack.gateway_accounting_stack",
+      "interface": true
+    },
+    {
+      "declaration": "GatewayReferenceAccountingStack.gateway_accounting_entries",
+      "interface": true
+    }
+  ],
+  "schema": 1,
+  "sourceEpoch": {
+    "c": "8dc2bdd9b0a454786d5525d0b97135c6d2ac2e02fceb5d07afdcb11406effd3d",
+    "gatewayImport": "47649fedbfe36ee6ffca2b769ea9c8623763a5aa67600bab343321326ef1e1e4",
+    "sdkInputs": "78df64cda071d8d189194e31070a4defac71d1132ce1a18d3a0513e29557ad2c",
+    "source": "2fce74e393b9211504531aa0cf31d10ac9bce73ef6c38dcd30bf720e10880eb5",
+    "strict374": "e654b8c03d39600811fd50651b9b6aada9569f98d6e75bf136f6573bb4bb592e"
+  },
+  "sources": {
+    "verification/host/GatewayConditionalFailure.v": "5200b32963ad7b1e47b9d2c7a020cfe258eb196b73e543a194856223b6599a8f",
+    "verification/host/GatewayNullContexts.v": "c9b3e3d3826cb874942d654ab5f7dd1d1edf706bb30958018b7b1c42288d18be",
+    "verification/host/GatewayNumber.v": "39457ec54a709e948c2b69163af5edc25dafd4cd04a30426b8b81e780ce4d548",
+    "verification/host/GatewayNumberArithmeticBindings.v": "177922873f78daa8b03382723f3f5528073b78d5fbffb072239315bfdb756261",
+    "verification/host/GatewayNumberArithmeticSuccess.v": "87ef2968e36f812871d2624764a05a853677593ef336b8f3ac5532ecce0b85fc",
+    "verification/host/GatewayNumberBaseFailure.v": "0ec2df9d32aacf5e957b6863faa99b7724b6bcc96b1c24f0c81fbe810861597f",
+    "verification/host/GatewayNumberChunkReceipt.v": "7c1055a44e5d64122efab79d01d40bfa41db4750914d0884b1615409e78d72ad",
+    "verification/host/GatewayNumberChunkSource.v": "6fb965e841b6c5f3613ca3b2d37ae6c6f0fff656d66d61de6dfd4c54a0040c06",
+    "verification/host/GatewayNumberConstruction.v": "2211705ebe92e14ba7f69154bf09a8c884a2a413da1a1eb189a7a5782d1b3bd0",
+    "verification/host/GatewayNumberFailures.v": "f875676e41cea9dda6e11ae16b3d22350a39a74ac6cc820c735d86f4c505933c",
+    "verification/host/GatewayNumberFloatReturn.v": "8360696bdd22c31977fb2ba42306e1e79950d9cc976b1676bf9ec94b4db18ea1",
+    "verification/host/GatewayNumberFloatSource.v": "985293f7ee17b7c6cb66540cefea0121ff4ab3b5c9c5840307ab9e36aafbdee3",
+    "verification/host/GatewayNumberFoldMath.v": "31e69b2cd73e709c5745b5e7d23836090c6e597434383a54ca36c8dabfa51ea1",
+    "verification/host/GatewayNumberIntegerCalls.v": "7baa5d954c3b11ff6cb89dd856daf6cf4319b93dd0deab7b5c6d9cc290d29ceb",
+    "verification/host/GatewayNumberIntegerLoopSource.v": "19b13bf7cf25a07ca2eafc2c99900b291b1d70b64cc9f2c173575a0c71d6c792",
+    "verification/host/GatewayNumberIntegerStart.v": "c5f34fed71441d7318238692af3dddea072c4a13db0193ea26b65f7bf76bcae6",
+    "verification/host/GatewayNumberIntegerStructure.v": "8dc4a6a43f74f9b15588cb2f124f2113c3e746e5796e10468044a83feefe23d3",
+    "verification/host/GatewayNumberIterationFailure.v": "506ffe8dbb953d535801c0bc1dfa2dfe3edef5af4478c26135d8e9191b9f0e88",
+    "verification/host/GatewayNumberLexicalFacts.v": "4eb22c3ef604977fd3418538ab8dc53be0f7c7ad3d77971848274385e530bc7d",
+    "verification/host/GatewayNumberNegativeResult.v": "2a7d30d7e5f44a58f20931f175b79a38557e595ddb8f18144de2205ccc507566",
+    "verification/host/GatewayNumberSemantics.v": "05452794006a992b13959e320323ab735d246ed7afce880baada37b3fc62b5c7",
+    "verification/host/GatewayNumberSignSource.v": "314d21ea7433c9f0993d8ea348c3a32fc4c7a2a4090f39ada925d6f8e31589d3",
+    "verification/host/GatewayNumberWidth.v": "8eccb54bee374ee93b69cbadaaf4da66f8a4434f7c5231a3be29c8c28cdb2fce",
+    "verification/host/GatewayPermissionFootprints.v": "5bc4ef1b81439ba5423a0e9d53923e17e848a247b5186ff411cbf7a5363ada6c",
+    "verification/host/GatewayPermissionRuntime.v": "2a367b3cc1a9476032027b9be365af7397598a061a8adf64b464fc7dcdc6fe24",
+    "verification/host/GatewayPermissionSurvival.v": "7c2be8e47d6780bb20808ba25e5b95289f5b0174df2cb28b9118b0ab879961a8",
+    "verification/host/GatewayReferenceAccountingStack.v": "1db45f03cbfba1e5cb695a247cf8585c613ca0a98f9e3cdff737f5a6d8018015",
+    "verification/host/GatewayReferenceFloat.v": "322d656dfefc1e8b0ef4a425c771bc6ca0e2b7d01ef5b73de056a7892a54c04c",
+    "verification/host/GatewayReferenceFloatConstruction.v": "52bca1412a46aa4f82c8220da6fef152a7ca887e32698c5a65a9f183a08156b3",
+    "verification/host/GatewayReferenceFloatTail.v": "f4404caac7be6e2d35ca9d0bec76f700e26ca255e2a7f0087c3e04188dbb5605",
+    "verification/host/GatewayReferenceJsonNumber.v": "df2de5fb2555edc467bdbd78493089c763013a13805c65d5edb6aa1484f44548",
+    "verification/host/GatewayReferenceNumber.v": "d05c88f087918ebcaf74c3947c2a529372de0c41164e160a12a7de402d94a9ee",
+    "verification/host/GatewayReferenceNumberAdd.v": "32f4e26b034b57b77118b9d45507797e1cca3e67eb80fcf3c6ea488272b27abd",
+    "verification/host/GatewayReferenceNumberArithmetic.v": "53b28000f0b0a939d4bf1b36978913bcc942664300701ef4c4afa769f857edf0",
+    "verification/host/GatewayReferenceNumberBaseRelease.v": "934f657cf31d5a42deaf42f923d89bbd63c88fed73dee48236f69078f1be02ad",
+    "verification/host/GatewayReferenceNumberFold.v": "21ccee1c93a7f502cb1b501ac83c6d2dcc5d1595824216c3e45a7820e15dc0e7",
+    "verification/host/GatewayReferenceNumberIntegerConstruction.v": "95563f3b88283166634aff95322d8413330b9645bd6317272f7951ce45ac8b99",
+    "verification/host/GatewayReferenceNumberIteration.v": "05e1851a2f843dee18e82126bba993ee76113a579f7ccc8ba6a37a08f86f2e81",
+    "verification/host/GatewayReferenceNumberLiterals.v": "0b51fecb8aecc8ef3539e235a8e5bf74fecbb7b3c093e7038e68fe01b0f5db8f",
+    "verification/host/GatewayReferenceNumberMultiply.v": "166225f8e0b83e1b1559d2d05dc9a980d37ca91d166adf1a8915ef7adf3874c3",
+    "verification/host/GatewayReferenceNumberNegative.v": "5925546189e9e706ff43998c6cef606d893b636a78fe625ed3b2d31e82cd430c",
+    "verification/host/GatewayReferenceNumberNormalForm.v": "f54aafab4dbc7df44d0113b66a92425700de73af01bfd58fdcf7a0555c09e04c",
+    "verification/host/GatewayReferenceNumberOwners.v": "5a28070378dbdf5b43c23164f6b5e705997bd825eb08d492e5ef89e8facb5128",
+    "verification/host/GatewayReferenceNumberPart.v": "0675bc130b185b0f9b615f27efe891d7f6d80a5c281f53d445af7186b8273b80",
+    "verification/host/GatewayReferenceNumberPositive.v": "3945ef020b9063585fefbf236d8f288f34910b0165f28f4329dd4f0a31cf1fdb",
+    "verification/host/GatewayReferenceNumberReturn.v": "c500c0ae303fb5e1f48db0473beed97fd425f3df9d0c142d6d1dad8ede872f3f",
+    "verification/host/GatewayReferenceNumberSign.v": "df5ebe49e47e92a2614bfa1743a687b129145ae0ca66c7906b137ff04adbfaf8",
+    "verification/host/GatewayReferenceNumberStart.v": "be399973e2123ba04344cd8c25f336326312a157902211a8062fb858264168da",
+    "verification/host/GatewayReferenceNumberVacancy.v": "7c0681e85b2ad87b00260a8766df21ab663b0ff3fd967fa2ad4abef6d6a9f49d",
+    "verification/host/GatewayReferenceNumericContext.v": "e6a991fe5f3447c7ff3aa1b0775ff37ffe569f0aed0a8e2e51f399dc45d16ced",
+    "verification/host/GatewayReferenceNumericFrames.v": "8c502e93a26df7b6e14be0d991f64412f9c0e0b9743881b5f7549586b899d401",
+    "verification/host/GatewayReferenceNumericLedger.v": "d645b3ff8d4cf0aed220ca5727bd45908c8be7846e6c7702e8212fc39edcf97c",
+    "verification/host/GatewayReferenceNumericNormalForm.v": "b575b6467cb874d97addc68f0a81d1c68919ec631cb57a93b639b137eb507da6",
+    "verification/host/GatewayReferenceNumericRelease.v": "0111e6ce05936cee9fc36098e770f666d03abec3cea0ff253e2131d76fc6e9f3",
+    "verification/host/GatewayReferenceNumericRequests.v": "b5f3c7318d19c4a829597fc66ee459f4294425975987bf6168e32930813c2f37",
+    "verification/host/GatewayReferenceNumericStorage.v": "205c26888c5cc38c6019cb092ddfa18b23bd2bc6d3ad6a773bf57b04e3dd9efc",
+    "verification/host/GatewayReferenceNumericText.v": "d463a453a35406af9a5665013c94a47ebac9414ada8dfa27394750cea5c05e5f",
+    "verification/host/GatewayReferenceOwnedNumber.v": "ef8e547fbc4e73386d7ac6c3eabb2edbb099e41fa26cd3f8042bc55021452aa5",
+    "verification/host/GatewayReferenceParseNumber.v": "c553c54bed33e41dfeff2e2878d7853f506a17123198f7611d44a060ba30fcd4",
+    "verification/host/GatewayReferenceParser.v": "812059878d7e734921a1036520243a5a85a63345774c43130baf1ef194e00faf",
+    "verification/host/GatewayReferenceParserComplete.v": "1859bcfa76156fb326877dba57f5a32354f7d0697a29729dc54e176728e441e6",
+    "verification/host/GatewayReferenceParserPool.v": "7ffcbbeabc7fe400688fef09ad4675daa81163186abd116b77838cf7bf37e76b",
+    "verification/host/GatewayReferenceReservations.v": "805e6b3094a82d85ef4b778129bc5a898e93d0d5cda16fbfbfcb9e16da70a483",
+    "verification/host/GatewayReferenceScalarTransfer.v": "2ebb81c9d0aefef878f7e2634a4329d52ab4a66a2d615bfd51860a0659fa6a07",
+    "verification/host/GatewayScalarNumberCall.v": "6da879137734795dba1c5ce74bca012a86383cd8f994f0b5f8fd007cceb6a8fb",
+    "verification/host/GatewayScalarNumberPath.v": "8f7e3943621758628464ad55a1280d6d4fc89d8b31bdf0e5a01047d188e9fc58",
+    "verification/host/GatewayValueKnownTag.v": "b27f29159eaffd405520300fb8ded8811455c3956e28ecf1c2f7b23562acab1c"
+  },
+  "spec": [
+    "FS-host-boundary.caller",
+    "AR-host-boundary.interfaces.gateway",
+    "AR-host-boundary.primitives"
+  ],
+  "statementReview": [
+    "The complete parser starts the actual maintained Internal host_value Callstate and same broad source/backend execution. Its output concerns that identical successful run, not an independently supplied parsing transcript or assumed parser success.",
+    "Each recursive container call is strictly shorter in actual event length. The final theorem has no short-parser, helper-return, lexical-validation, buffer-frontier or whole-heap-frame hypothesis.",
+    "Every supported tag0..9 reaches its actual implementation. Unknown bytes are retained and source-denied. Underlying Machine still includes arbitrary ambient changes, blocked calls, setup/primitive errors, truncation and committed/uncommitted loss; successful-return conclusions are partial correctness, not termination.",
+    "JSON9 source validates the same <=65536-byte payload. Integers use actual remainder-width then9-digit chunk operations, arbitrary-size arithmetic, selected releases and optional sign. Floats use actual lexical marker/validation and one Python float conversion. No 32-byte or interpreter decimal-string limit is silently substituted.",
+    "The JSON helper result belongs to its nested invocation. The actual outer t20/assignment/free/return source summary transfers the same ticket to its real outer return; old caller entries remain the exact tail.",
+    "Reference releases consume the actual selected source place. Cached immutable values may alias current/base/part/scaled/signed results or reserved/retired holders; pointers are never assumed distinct.",
+    "Aggregate reservation replay uses an explicitly synthetic accounting stack only for a numerical consequence of the identical standalone physical run. It claims no fictitious actual caller. One initial reserved+local count bound yields final reserved+real-result-ledger bound; independent FIT inequalities are never added.",
+    "Allocation-lifetime runtime fields constrain individual actual external/builtin/ambient effects: old cells preserve all Cur/Max permissions or are fully revoked. Fresh or reused physical addresses receive new logical allocation identities. Source alloc/store/free/free-list/function-entry steps are proved directly; no premise says the caller remains accessible.",
+    "Generic permission survival covers all prefixes and loss. The final actual stream Writable/readonly Readable produced by the parser excludes revocation at successful return and yields original caller Cur/Max, including Freeable, independently of modified stream counters.",
+    "Same source payload/word/framing and exact private held graph are produced. SourceEncoded alone permits arbitrary scalar tags; expected engine-tree identity still needs typed canonical framing uniqueness or an expected-writer induction plus the actual private queue producer.",
+    "SDK/runtime assertions remain precise per-operation platform inputs. A source-connected matching authority interpretation must exclude callback/CLI/retry-writable globals from SDK native-private frames; source guards and identities must independently prove any C-global retention.",
+    "Complete Outcome construction/getters/observation, initializer/module source ownership, actual writer/private-channel/read identity, useful complete execution and affected final acceptance remain required before M5.2 completion."
+  ],
+  "status": "Focused complete actual parser source proof checked; full M5.2 public/IPC/initializer/runtime-instantiation acceptance remains open.",
+  "transitiveSources": {
+    ".tools/host/gateway/GatewayAllocation.v": "81d2867c51e9c318c3cd3d338e7b48ef286be05fcb1a46db6d69f67429e43f68",
+    ".tools/host/gateway/GatewayArrayBindings.v": "0cff1a8f022fa8246dedc066c9a91ef0ff5dbcd70ed5d6ec5a5fdf7a066ac954",
+    ".tools/host/gateway/GatewayArrayBounds.v": "c2a4a2bcd3edd79de66fc54c7a63801bf9f21057c2a23ef191b00240c8cbc16a",
+    ".tools/host/gateway/GatewayArrayEmptyShape.v": "4a7039d339f9fe302b4ccfa188fcf071f22719ebb49f3e452eef6f662bb860e8",
+    ".tools/host/gateway/GatewayArraySeparation.v": "b408c2f5f77423135410ec34f25bb65caad90529803eb1f2cc09c33d80cbd520",
+    ".tools/host/gateway/GatewayBindings.v": "212b6d350ecb7385226c6ee0d7a5566cf87e3ab999562db0135c2c1860d17dfc",
+    ".tools/host/gateway/GatewayBranches.v": "f72b49e47ba1280d0cf121470d45c8a505978da8dbda6cf7cdbe19f882bfaf6c",
+    ".tools/host/gateway/GatewayBufferReference.v": "b35f521fe847cb2029b73e3aabb5458edbb5cad2f003304b2ba7d2a7a8672930",
+    ".tools/host/gateway/GatewayCallPath.v": "49ba3ac1e3ad8c3dff7034c1dd0f61c3524bb7d25dd40096bc76a6c0716be756",
+    ".tools/host/gateway/GatewayCallerReturns.v": "5aeb3f21d059921cce38bbee3c791c973b980d0d2074720a8dc5ff254f3a7d5c",
+    ".tools/host/gateway/GatewayCalls.v": "fe3518d84b0c5ebbe5ec34e9e607fc222c4e77a19d13cb4353d9844f7032c665",
+    ".tools/host/gateway/GatewayCancellation.v": "c50fa83ce7d53fa8ea139bd80297a3e87db92f12c920cec6b98500afd1f1ff0c",
+    ".tools/host/gateway/GatewayCancellationAfterSend.v": "d76e527dfdc2a4b30e8ad3e2d1781cfc9abd4a81874f8c884d7fc60127123f62",
+    ".tools/host/gateway/GatewayCancellationBuffers.v": "08bb7750cef9d4e1401ca45f3a123bc4dbc058bd5f143fd5dfd8b1e2ba8c6685",
+    ".tools/host/gateway/GatewayCancellationComplete.v": "8d3794cee0a63f7e3f6f237e89ec5746a3fec35089bc2cadb72192051817d046",
+    ".tools/host/gateway/GatewayCancellationEntryBuffers.v": "8a18d037af8fcf4fa1ddf5e52a4d1641311f57bff2537bda9f9201da8f2f3aa0",
+    ".tools/host/gateway/GatewayCancellationFrames.v": "71dfe7e591b8ef097aa1c7da67710b2ea5a4f20f62a8a9df065b573e25f20bf0",
+    ".tools/host/gateway/GatewayCancellationInputs.v": "935449d781994006db027215ba3af7b0ca72e4b2a712ddd7659e759a9cb8de1e",
+    ".tools/host/gateway/GatewayCancellationMemory.v": "15434a186588a50d76e9e57c9e29448ff798252a5ad3c8332f9cfa700e2fd4d2",
+    ".tools/host/gateway/GatewayCancellationPath.v": "f33283b5e9276a53e624dfd84d85c802124bfa2e86668bf5d5bdeea201560d94",
+    ".tools/host/gateway/GatewayCancellationPathBuffers.v": "f0a6e868b67a5462ead6b89b6ecdba01e48227c90910e8f539a0c55b31985dd8",
+    ".tools/host/gateway/GatewayCancellationReturnBuffers.v": "d717036781d7edccf54970fb662aef752d214547ad92152021dfbc7dadff8443",
+    ".tools/host/gateway/GatewayCancellationRuntime.v": "5ea93b61697501ee3582a8926a7bfd5245f102ae81591a18cabaad1d184c35f0",
+    ".tools/host/gateway/GatewayCancellationSend.v": "7bc3afdfa52e82b5a84fc11d8aa1b62aea71256fc2eab23e2a0033fa3954e02d",
+    ".tools/host/gateway/GatewayCancellationSendBuffers.v": "db73486e07bf64fdc26ebf6c2e98cf60085ea4800eb4ece80204deecd1af48a1",
+    ".tools/host/gateway/GatewayCancellationSuffix.v": "89012399edf277259fe5c2093f81fdf81ae0b5af3e871a00bf44e412b000e15a",
+    ".tools/host/gateway/GatewayCheckedCalls.v": "bb70a33ba6a13872f825ebc075c711e9091a52a244a91042c3087002214b41bc",
+    ".tools/host/gateway/GatewayCheckedWord.v": "4a3f7526f3a2956c7c9f635cc8faa2ab805cd48846e0ffe259357c3e7c592de5",
+    ".tools/host/gateway/GatewayClock.v": "a66c7911127b0b907ce7b3b2d5237b8004f11a07c8b8738cce672aa36463879e",
+    ".tools/host/gateway/GatewayClockBufferOperation.v": "91e53325675761cdb32971d9860c02e328024d84b1bc92e00f5f40028db1f4ce",
+    ".tools/host/gateway/GatewayClockBuffers.v": "c167479d4a44b330023c88600d145ceb909f589b1eaeafcafa8bb54e6a5aaa03",
+    ".tools/host/gateway/GatewayClockComplete.v": "b1f0810886a0eaba47bddef66c7e317e6ff53b7630b7d83612109d6356922899",
+    ".tools/host/gateway/GatewayClockRuntime.v": "7f100fd93304d35103833198d1a20fbf3fd4ef027e73f2992df06a26b08f400f",
+    ".tools/host/gateway/GatewayConditionalFailure.v": "5200b32963ad7b1e47b9d2c7a020cfe258eb196b73e543a194856223b6599a8f",
+    ".tools/host/gateway/GatewayContainerABI.v": "6e16d5e7527323fa26dc262132154bf00aee6654e3b84f4e0da2f1485696804d",
+    ".tools/host/gateway/GatewayContainerAllocation.v": "59a3533fb746dc61f0e454cf0198da62e2f52880f446d8c2d8bcc48b997b6607",
+    ".tools/host/gateway/GatewayContainerAppendCall.v": "6e3dbc8383f314c1238e41e100f2ad1a8d6f4f4fa4efba57c86737d3dfe6d4d4",
+    ".tools/host/gateway/GatewayContainerAppendReceipt.v": "38d67fb7472cac7e926643b57d75a00d98ee1337ba64df128eff8a5cf2577abe",
+    ".tools/host/gateway/GatewayContainerArrayRelease.v": "767303459a0cc849b33aebb5ba8d0cc6efa0576628accff5e364b36a48248ee8",
+    ".tools/host/gateway/GatewayContainerArraySource.v": "2dd500de2a3e8c038fcac5971798d1230503578939129fa341dc1237cb821508",
+    ".tools/host/gateway/GatewayContainerArrayStatus.v": "977c64b10c42d342f00623d551d674bfc6b1085d0d0d7ea9ad09b8d646cde6b2",
+    ".tools/host/gateway/GatewayContainerCalls.v": "453b5915ac60c12458e616b57c0d2b8427fbd844e76bf9b9855c10eb08fa3984",
+    ".tools/host/gateway/GatewayContainerChildCall.v": "50ff62d95fd61b6d9856de4bb1c08766f2eebec0b5f27ffb7115e07e0ce61d70",
+    ".tools/host/gateway/GatewayContainerChildContext.v": "ba276ac52a84cc1964060f7baff7f3b5a640b025ebf9c7eabb7eaa036b4d87cb",
+    ".tools/host/gateway/GatewayContainerChildReceipt.v": "a815c0a6d8bd0cfbde03db32c2a99f17703fe85631ba812f8c7bfe3eb2bbfd5f",
+    ".tools/host/gateway/GatewayContainerConstructorReceipt.v": "b98d3bd0ca82d967264d79fa0e5bc0ae99ed1ee0e5550cadc3b2deb1735af919",
+    ".tools/host/gateway/GatewayContainerCount.v": "222e06d3da3fa57e4e0bee5c812571123f03a82141bacc90e40af0d9515e109f",
+    ".tools/host/gateway/GatewayContainerDictionarySource.v": "b8a398a3d9afd4c70efc721c73b2c334bfd0dfda2cc562ad70c6aee04a4c03bf",
+    ".tools/host/gateway/GatewayContainerEffects.v": "1078d7b3e07ac681b1ce64ff1987f40ef6960616c5e93893466f9814e8ca133c",
+    ".tools/host/gateway/GatewayContainerEncoding.v": "cd2525f42bb9ba63688d8073431178fc94947f6dd028d9853ee589d0986320c8",
+    ".tools/host/gateway/GatewayContainerExit.v": "e148957ba30870dcc0be57131a1439507ab6b7c020147cb12d013021e7164a95",
+    ".tools/host/gateway/GatewayContainerGraph.v": "1864a57404a92881a62f42f81ad66f79c6fc614ae35c434444904c7b956229ee",
+    ".tools/host/gateway/GatewayContainerGuards.v": "b531e558ad2c5eea44041123d7d8e64cf9d7065aea9d9df3f90272cca87fe421",
+    ".tools/host/gateway/GatewayContainerLength.v": "e55f3222dda6e4aa46e58ba169de49de21437c73135bc3fd629b1382ac1ff815",
+    ".tools/host/gateway/GatewayContainerLoopSource.v": "44a593ec0bc48b88e7a0c5f3941f6c710e130612679316ba17b49c2c7490c640",
+    ".tools/host/gateway/GatewayContainerMemory.v": "cfd0a07576c8a6952b90222246d67621385c67fb16c3e88f242665ebc0b7b5d8",
+    ".tools/host/gateway/GatewayContainerNull.v": "037be17f1068c21b4e3fff974ded93b3a7d3e2e05b998d506e18072147f5d3c5",
+    ".tools/host/gateway/GatewayContainerSetup.v": "d29f7f7e39c1b9761bbfe915b0b2aac1baa478eb2e4e8a1cf08d8b1708b97985",
+    ".tools/host/gateway/GatewayContainerSetupReceipt.v": "75c66b83224d59a129a10114da5f0feebb0b4358b0f37f012e88857c78c1d130",
+    ".tools/host/gateway/GatewayContexts.v": "79603bee3b62946a44c2a5161abfdeeabf1f1fc0602261578a61a6832af2d9db",
+    ".tools/host/gateway/GatewayControlPaths.v": "d16ed13cc0670dfcf402dbcb51967af86806b146540ff100b903846adb50a281",
+    ".tools/host/gateway/GatewayDictionaryBindings.v": "3adbe0ba71328ef3b3117887c360e27405a6e365949bf26f984607340fc51aa7",
+    ".tools/host/gateway/GatewayDictionaryCallReceipts.v": "ca93aac6c44307a01d1eb93eed1e7f2fb69515ff1a63320dacf3efb69e38b375",
+    ".tools/host/gateway/GatewayDictionaryEmptyShape.v": "c2261abb747884b095210060fd97eaa08fc5c8eb834d34283c80154bcb2e4d1f",
+    ".tools/host/gateway/GatewayDictionaryInsertReceipt.v": "daab66fcfb71cc065153fecce4581e60ac5d8a58747f7f7efea25f0384de3bce",
+    ".tools/host/gateway/GatewayDictionaryInsertStatus.v": "d830cccc44851cf58c5f7ae5158a118dcc4b52b0e3019389cf5e62e3b22914ae",
+    ".tools/host/gateway/GatewayDictionaryReleaseReceipts.v": "4c1da36f7c4bb879e1e9387d32a646c6ced42edfe337043c9960e41a086ac03b",
+    ".tools/host/gateway/GatewayDictionarySecondReceipt.v": "e491a8fe02e39beea4994174acecc5748c063e66e891b7a548bc14eae3c549ba",
+    ".tools/host/gateway/GatewayDictionarySeparation.v": "45d64efea2c4e96b2521b13dc738b98ea59e3014db673891031c8a3b701032a8",
+    ".tools/host/gateway/GatewayErrorRuntime.v": "5975faee38f22f7271de18a90fc988afa8a16cb9e2958646e8ea3f8653b62502",
+    ".tools/host/gateway/GatewayFailurePaths.v": "a346090c67a5fd395447dbd0a63e7cd0b52844514abcfaafa0e65205c2009ced",
+    ".tools/host/gateway/GatewayFramedRuntime.v": "5287918c0de4ff635a742c601774dabc8425cd5f8fa953f8d8e1a65ce4dc28a8",
+    ".tools/host/gateway/GatewayFrames.v": "351b657254217f3945b864727315eb4e1838e09e3223159082338eb55e1f3e2a",
+    ".tools/host/gateway/GatewayFunctionEntry.v": "c0a8dda1eeb8056da38429e56ef56823183dc64c87fcb070e88f47db407c656b",
+    ".tools/host/gateway/GatewayGlobals.v": "c70644ef50dc4fd11e5739d228173dac77f8cfb27342f6093658a131efeb9b54",
+    ".tools/host/gateway/GatewayGraphSnapshots.v": "720f6342d38b3c6da857e1db0b4281e3d065ad90eef52da2e27797412a13c184",
+    ".tools/host/gateway/GatewayGuardFunction.v": "09e6a1d3ae21c43972b834c4a6be72e96b09e4709be17a219a464615e684bb8a",
+    ".tools/host/gateway/GatewayGuardObservation.v": "f99961d0edfaa37dfec97f871367071286f37b7d167b2b7711d678d2d3c50473",
+    ".tools/host/gateway/GatewayGuardReturn.v": "5937a79cb6a647979cf1f88d8b4ecfa9f721d68fc023c38e230e3982fcfa0fbb",
+    ".tools/host/gateway/GatewayGuardScope.v": "2828df067d810eac9bde664b8a7f6493ab0ad2c88c5dbb0776958e8524e70636",
+    ".tools/host/gateway/GatewayGuardedCuts.v": "0358fff6797a2e2af8522402b1ae5876b9af4f48ca59e641e53d2c26beaba797",
+    ".tools/host/gateway/GatewayHeapMemory.v": "829561e7e49c6974df7db773566bf9e755ec7845adc1983cf61e545aecf59031",
+    ".tools/host/gateway/GatewayImport.v": "47649fedbfe36ee6ffca2b769ea9c8623763a5aa67600bab343321326ef1e1e4",
+    ".tools/host/gateway/GatewayInertCuts.v": "ae0070f423998bdff6088df0183e1c0d66e892bde8171da8a3c93f4fcda5f792",
+    ".tools/host/gateway/GatewayInertEffects.v": "fc8bd855cdeca12406a6073342c78590377c7962a7de1ecc262e8e2557e6e267",
+    ".tools/host/gateway/GatewayInstructions.v": "504e1d000fef388807c5c461a9eba142a1fa6532170bf1e53e3ef64463df17bb",
+    ".tools/host/gateway/GatewayIntegerCanonical.v": "5ef8534ab197acd5b05e8e726beb6122e5ec2cda4a31a41e8a97ad986c34619a",
+    ".tools/host/gateway/GatewayIntegerFailures.v": "2ec9231c6cd4cc24c1feef08d075a1f1ba92ccde9b3a7b7a14b629577eb2b66d",
+    ".tools/host/gateway/GatewayIntegerLexical.v": "1134f80222b6568b3d6386bf46afef44e1f25555bb44ee17ea7e0ee063681f4e",
+    ".tools/host/gateway/GatewayIntegerLoop.v": "635157fc3ac673afb045405693b9ab443de5e64e48afee186ae164dfcbdf576a",
+    ".tools/host/gateway/GatewayIntegerMemory.v": "83b3da02526300cfe77a81b1305fca00b81dc9abe2d293c0ecf9d642ea779ae1",
+    ".tools/host/gateway/GatewayIntegerPrefix.v": "42d8e4b49ffea6b7cd0a6e0386ead16857b494514beab25a7d41b11406f71eac",
+    ".tools/host/gateway/GatewayIntegerPrefixSource.v": "fc2cc0ae3166ab264d345916d72614eb0fa6004012c861fc2dd709c3d73b6a72",
+    ".tools/host/gateway/GatewayIntegerScan.v": "c20f38618bb71974713927a181f0f4e751419d0ba9d07d8e9f34655f3e3268e1",
+    ".tools/host/gateway/GatewayIntegerScanRetained.v": "e45607697016e0f21199f9f5e6a75ceb879ece24d94bace50970f199eecc421c",
+    ".tools/host/gateway/GatewayIntegerTail.v": "3ae230c6376983dc6b436b06b214e181adfc687dea9be1331360de896a0b2040",
+    ".tools/host/gateway/GatewayJsonNumberCallEntry.v": "b23292885d837a17c6e145db4baa677d004d61a94ffb2ca251e1b92de96b8bdd",
+    ".tools/host/gateway/GatewayJsonNumberLexical.v": "c5adb6f16fbabfb74a8b43a27bbbe99508d8b6a57c71e0d67357f14051b8f543",
+    ".tools/host/gateway/GatewayJsonNumberLexicalSlices.v": "71376f223701192dacf8c2671cc620a25141d9d58a89c10bed7fcefe426aadc3",
+    ".tools/host/gateway/GatewayJsonNumberSource.v": "011a22bb53fbd4ab07977006fd3adfd5b1fa8d2fba22b08537433e8c1c1d8c4e",
+    ".tools/host/gateway/GatewayJsonNumberSourceBytes.v": "7773af739f145d495bd1f62546cfda97d1e4c5329aa8bc467b14860b35129c70",
+    ".tools/host/gateway/GatewayJsonNumberSourceCalls.v": "8ac6ec2941500150bcb7110efdc19d25de13dafecb0ab6fbb735d2c4fcade1e7",
+    ".tools/host/gateway/GatewayJsonNumberSourceConnection.v": "12968eeb47917afe1d954e0934cb1d1d39287af090e7a7cc462a95fd9255b439",
+    ".tools/host/gateway/GatewayJsonNumberSourceEntry.v": "b44628bd4d246e866323ab33e00b3d97e8461bd5e1f04d530c23d56f20d5b9a0",
+    ".tools/host/gateway/GatewayJsonNumberSourceExponent.v": "1047feabc1ab576809d56e2b91bb31c6f68a7694c94322d38ac20831eb62ae53",
+    ".tools/host/gateway/GatewayJsonNumberSourceFold.v": "bf7a8a6b068cfa4aaf371aff66c74a97ae51670cc8fc2c848d0e2a5231254caa",
+    ".tools/host/gateway/GatewayJsonNumberSourceFraction.v": "319c9ea201763f4b149bd40255061b3247d67b9a76b016a59e979cd00128b47c",
+    ".tools/host/gateway/GatewayJsonNumberSourceInteger.v": "7f3e91645366922456294df9e455fb3c95bbf256e7471cfde0730af08f8a8714",
+    ".tools/host/gateway/GatewayJsonNumberSourceIntegerFold.v": "1c73ea80a1ad348b3ff04de0027da60c57310f94082274568c5f10e73defc4e6",
+    ".tools/host/gateway/GatewayJsonNumberSourceIntegerPrefix.v": "44d4eb6f843f1fc42adf464c25239783a3c1b541265b1cb35a17fad39f61b3d0",
+    ".tools/host/gateway/GatewayJsonNumberSourceLexical.v": "78d4c701f8966a201a94dfb31277821df20a60101b64ffa3ebce3f5c26ca917b",
+    ".tools/host/gateway/GatewayJsonNumberSourcePhases.v": "b87bf78afc244adc853cec1bc35e01b2ba1f3fe241d392121b829449eef535e8",
+    ".tools/host/gateway/GatewayJsonNumberSourceScans.v": "b09c9f06b5f62dfb5c7792518f5dea8aae20c7f3e08c20eae077c5a54dae9b19",
+    ".tools/host/gateway/GatewayJsonNumberSourceTests.v": "39817fa55bb3da5afaba6531faaa6f5d83c583ba226a0e74814fa19b67e1416d",
+    ".tools/host/gateway/GatewayLocalBorrow.v": "d75a4c1879bb5880a3cfb560b17e37a4ad459c6d53a1ab876e3b97254efdf56f",
+    ".tools/host/gateway/GatewayLocalRuntime.v": "731a8f5dfcacaf0ddc1bdd11cf2bebdaf2b7f5fa5b35cbaf095de1def102b0c6",
+    ".tools/host/gateway/GatewayMachine.v": "f6a3adf7af06c12c42c1bf4649a964160cd3dc70615dc273f2957bfa0bbea355",
+    ".tools/host/gateway/GatewayMemoryBindings.v": "17c425aab60bc40e5e294124ce3789b6c945ee3f64b11b80c61794a514ab34c1",
+    ".tools/host/gateway/GatewayMemoryCuts.v": "41a46ad4492e1e3bd7557387ad4b1e08e5f6f3ff4ad5fc81df4f14ae38d8d182",
+    ".tools/host/gateway/GatewayNativeMemory.v": "b31285c4a8a1c4464d57c078be13e48999bc3735c326d8e87daa11ce154b32ed",
+    ".tools/host/gateway/GatewayNativeRegions.v": "fcbda1e2b5d39d82a392556797c75b9cb1c8dd15bdd37b15ac9521502c133ef7",
+    ".tools/host/gateway/GatewayNativeRoots.v": "ce59a8b282de83fbd76952b3359742b5db734c8607aaf80dad2e1b96716b1bd7",
+    ".tools/host/gateway/GatewayNoLocalEntry.v": "737baf69372fcac9c4313b2621bf158371dff0673e59a5877bafb11f5d46df56",
+    ".tools/host/gateway/GatewayNoMemory.v": "651be2f936eff5fb3ba0c2e2bd4412d314422e812af22a23f21872a0a1328bca",
+    ".tools/host/gateway/GatewayNoMemoryBinding.v": "f342583c153fbc248c6e165596b2513c2d27ceb11c178b97498275d1952f7c84",
+    ".tools/host/gateway/GatewayNoneMemory.v": "c3a6ea2320e5d569bd0b5161bf755ead995c08d45cbf6c31dd66a6ae980d2233",
+    ".tools/host/gateway/GatewayNoneReferenceRun.v": "8a45f30d86c42593cab654519734ee6b4d0db337b6b66980a50700a0f75dcc34",
+    ".tools/host/gateway/GatewayNullContexts.v": "c9b3e3d3826cb874942d654ab5f7dd1d1edf706bb30958018b7b1c42288d18be",
+    ".tools/host/gateway/GatewayNumber.v": "39457ec54a709e948c2b69163af5edc25dafd4cd04a30426b8b81e780ce4d548",
+    ".tools/host/gateway/GatewayNumberArithmeticBindings.v": "177922873f78daa8b03382723f3f5528073b78d5fbffb072239315bfdb756261",
+    ".tools/host/gateway/GatewayNumberArithmeticSuccess.v": "87ef2968e36f812871d2624764a05a853677593ef336b8f3ac5532ecce0b85fc",
+    ".tools/host/gateway/GatewayNumberBaseFailure.v": "0ec2df9d32aacf5e957b6863faa99b7724b6bcc96b1c24f0c81fbe810861597f",
+    ".tools/host/gateway/GatewayNumberChunkReceipt.v": "7c1055a44e5d64122efab79d01d40bfa41db4750914d0884b1615409e78d72ad",
+    ".tools/host/gateway/GatewayNumberChunkSource.v": "6fb965e841b6c5f3613ca3b2d37ae6c6f0fff656d66d61de6dfd4c54a0040c06",
+    ".tools/host/gateway/GatewayNumberConstruction.v": "2211705ebe92e14ba7f69154bf09a8c884a2a413da1a1eb189a7a5782d1b3bd0",
+    ".tools/host/gateway/GatewayNumberFailures.v": "f875676e41cea9dda6e11ae16b3d22350a39a74ac6cc820c735d86f4c505933c",
+    ".tools/host/gateway/GatewayNumberFloatReturn.v": "8360696bdd22c31977fb2ba42306e1e79950d9cc976b1676bf9ec94b4db18ea1",
+    ".tools/host/gateway/GatewayNumberFloatSource.v": "985293f7ee17b7c6cb66540cefea0121ff4ab3b5c9c5840307ab9e36aafbdee3",
+    ".tools/host/gateway/GatewayNumberFoldMath.v": "31e69b2cd73e709c5745b5e7d23836090c6e597434383a54ca36c8dabfa51ea1",
+    ".tools/host/gateway/GatewayNumberIntegerCalls.v": "7baa5d954c3b11ff6cb89dd856daf6cf4319b93dd0deab7b5c6d9cc290d29ceb",
+    ".tools/host/gateway/GatewayNumberIntegerLoopSource.v": "19b13bf7cf25a07ca2eafc2c99900b291b1d70b64cc9f2c173575a0c71d6c792",
+    ".tools/host/gateway/GatewayNumberIntegerStart.v": "c5f34fed71441d7318238692af3dddea072c4a13db0193ea26b65f7bf76bcae6",
+    ".tools/host/gateway/GatewayNumberIntegerStructure.v": "8dc4a6a43f74f9b15588cb2f124f2113c3e746e5796e10468044a83feefe23d3",
+    ".tools/host/gateway/GatewayNumberIterationFailure.v": "506ffe8dbb953d535801c0bc1dfa2dfe3edef5af4478c26135d8e9191b9f0e88",
+    ".tools/host/gateway/GatewayNumberLexicalFacts.v": "4eb22c3ef604977fd3418538ab8dc53be0f7c7ad3d77971848274385e530bc7d",
+    ".tools/host/gateway/GatewayNumberNegativeResult.v": "2a7d30d7e5f44a58f20931f175b79a38557e595ddb8f18144de2205ccc507566",
+    ".tools/host/gateway/GatewayNumberSemantics.v": "05452794006a992b13959e320323ab735d246ed7afce880baada37b3fc62b5c7",
+    ".tools/host/gateway/GatewayNumberSignSource.v": "314d21ea7433c9f0993d8ea348c3a32fc4c7a2a4090f39ada925d6f8e31589d3",
+    ".tools/host/gateway/GatewayNumberWidth.v": "8eccb54bee374ee93b69cbadaaf4da66f8a4434f7c5231a3be29c8c28cdb2fce",
+    ".tools/host/gateway/GatewayObjectAddresses.v": "a4b9fb7e1ac6940c2fb29c64a5c17c674dcda643bff305bfa95ccc1887de0652",
+    ".tools/host/gateway/GatewayObjectConstants.v": "b6505b160125369c3ab435feb075a743885653d93a5ff7fe049914a19f5cfa5d",
+    ".tools/host/gateway/GatewayObjectDiscipline.v": "0b33fef0acf39f4ba58b1e870e4c57ea50cfd3d01e42150c72433437daa6766b",
+    ".tools/host/gateway/GatewayObjectEvents.v": "b0af5f78b3dbfe343ca9b2a492801d6ce4ca347ceca06fb1de83a7434a1848a6",
+    ".tools/host/gateway/GatewayObjectExecution.v": "57cf75960ed4f2e8936c2435c33d54cd8ca5d52f742a67e5e8cd961f02c7d3ad",
+    ".tools/host/gateway/GatewayObjectInstances.v": "a493b6de51f9c5ec41b3dc3ae7564ab99b75946784a1b9e5ab6b5cdf68a71d0b",
+    ".tools/host/gateway/GatewayObjectRuns.v": "9faa10128f2fd960c6f3b205ced2698a8a5557c7b0aa9605822213718897d2a8",
+    ".tools/host/gateway/GatewayObjectThreads.v": "738786fd876a193318dd8f9378426058b7001e6ce0d17f26b1d28303ff4e5820",
+    ".tools/host/gateway/GatewayObjects.v": "8e4e004fb613a12629349fe57671506ea091b545e8b4e66f9d282351101bca0d",
+    ".tools/host/gateway/GatewayObserverEffects.v": "b54318fac51c7c8c41b2cd9b653a92f52784d3009a524fdf2c6ea82a418d2eb6",
+    ".tools/host/gateway/GatewayOperations.v": "9dd6b09423510cc1412d342fdf1d3e757c5b02a381b70a99b61ac8e060f45d2c",
+    ".tools/host/gateway/GatewayOutcomeAllocation.v": "f298a2e04333d100404c54c60426c495ff32b5ea0eda2d6f52fa63638f9b8d21",
+    ".tools/host/gateway/GatewayOutcomeMemory.v": "372311d6132cd01356f2edc57ea438b5048a8144eb58f4aae77c076b8ff8a19e",
+    ".tools/host/gateway/GatewayOutcomeType.v": "f8e0ac857ba3aac3069e029baad48114c200e56ab2f652f1c522277e8c454869",
+    ".tools/host/gateway/GatewayPathEvents.v": "c76e86ad0bb4cab8f29b7a85e5a475dcbbf955c93df0ef0c5ceb24c9f42a9511",
+    ".tools/host/gateway/GatewayPermissionEffects.v": "6edef2ec4105fbc0f420b034d0502dbc4b02e25f7194a3f935ed3de083ba6db4",
+    ".tools/host/gateway/GatewayPermissionFootprints.v": "5bc4ef1b81439ba5423a0e9d53923e17e848a247b5186ff411cbf7a5363ada6c",
+    ".tools/host/gateway/GatewayPermissionRuntime.v": "2a367b3cc1a9476032027b9be365af7397598a061a8adf64b464fc7dcdc6fe24",
+    ".tools/host/gateway/GatewayPermissionScopes.v": "9abcdcdfae7bc72a66a3bcbdc2b71ea38c7c3e60d13658745be208e9776670e1",
+    ".tools/host/gateway/GatewayPermissionSurvival.v": "7c2be8e47d6780bb20808ba25e5b95289f5b0174df2cb28b9118b0ab879961a8",
+    ".tools/host/gateway/GatewayPoints.v": "3b7b43a3f6e974f9bdca805c9e456ce591ce39dd1d75f59032f60fd91ba3bcf2",
+    ".tools/host/gateway/GatewayPollLayout.v": "bc53f418fbdd43d7133c7e852971bfabbc6f9ad3db160f53eb5fbb345be02e50",
+    ".tools/host/gateway/GatewayPollStore.v": "9533c02ee4d5adbf8a45cdbf0069ad19112975d22e142302c01981432ee6a790",
+    ".tools/host/gateway/GatewayPollStorePath.v": "2ce9eb67197c0d7c44305ba573d9a55938dd720fdcb2591bff5ca475a962ca19",
+    ".tools/host/gateway/GatewayPrefix.v": "0e32d9727cfc336c8cf2e97957c109235f5d35f548cb20ee39a38794e43b951d",
+    ".tools/host/gateway/GatewayPrefixBuffer.v": "80ba5d8cb2395d2d221338f60d7907212689ee30bb221aeaf6bd3c16dcf29f2f",
+    ".tools/host/gateway/GatewayPrefixContext.v": "874803ff4cac98f247cbca36dbb4e84ed832f50976372b6c9ba820e7d6b3153e",
+    ".tools/host/gateway/GatewayPrimitiveBindings.v": "e1ffb0f4bb0e7ffe87f6f6aca78de373a45868ad7c65cbfbacdd763bd0b22693",
+    ".tools/host/gateway/GatewayPrimitiveCalls.v": "6f66bd7274b0dfb4385319ee323cea55cf218b66b0843f277cb13e56f068281a",
+    ".tools/host/gateway/GatewayPrimitiveEncoding.v": "61e9b3519646a958a38eab8f904993d0a8d93b408a95a8e90812c8e33a6301e0",
+    ".tools/host/gateway/GatewayPrimitiveMemory.v": "e0da034aff9b185d7a42c29b0d1546428e61cd533bb59100d453af9406e8ab14",
+    ".tools/host/gateway/GatewayPrimitiveValues.v": "c70de268749e805667d119f79f3f11b6524590e1e30f270492134198a4f34dea",
+    ".tools/host/gateway/GatewayPure.v": "9f4aad50a738fa0e76a89242b2690540523b2b699ede43b0ecd25bf5d055fea0",
+    ".tools/host/gateway/GatewayPython.v": "6f5ea85efd25d404ef9d8a4b9a313e12711f13f9c8fdbf9299908d523802b041",
+    ".tools/host/gateway/GatewayReadActual.v": "e085af6639284b5d3d739e6eb5a72d3e0abc676786d039c493a0e97bcc110c72",
+    ".tools/host/gateway/GatewayReadComplete.v": "05a670d5e8d006864bdcb69eb06dca6b7115e8a199a439400bcac363cea4f9db",
+    ".tools/host/gateway/GatewayReadContext.v": "b97f103d99d5811aed3a9c0241ce70914a6327a35e9210f9df24cc20a7e2ee3b",
+    ".tools/host/gateway/GatewayReadCounterMemory.v": "b978ad29fcd3b7070ea024c04fe106357e6b2b851ede71937f5e28545bfccac2",
+    ".tools/host/gateway/GatewayReadCounterRuntime.v": "f167eed8a8be498f4a120aa9257e19a616b90c06494981d9bfa11e3560cd025e",
+    ".tools/host/gateway/GatewayReadCounterSource.v": "14e7c1d7f9c6a88198dbba3c33a55f4e2d182954989a97b75312bc79788670c1",
+    ".tools/host/gateway/GatewayReadEntry.v": "0ba8e1f2c023049cb0da69244dc4ddabbc21896a1b421d8f2202b8c07ddf4cde",
+    ".tools/host/gateway/GatewayReadGuard.v": "de5b751fefb2316cf4e9c779b2b57d64e4ac50b0e6fc2d93595e5ffd93d26cf9",
+    ".tools/host/gateway/GatewayReadMemory.v": "f6ae193ecd762ca813e1440d1be5601f4e74257aebfd8238c210c57a5eda6993",
+    ".tools/host/gateway/GatewayReadProducer.v": "eb85096dca1170be50db29f713be499eb3cd2b9575f174ab0108688c09ab1711",
+    ".tools/host/gateway/GatewayReadRegions.v": "5c942883e5ee52293f5b60b08596bb24271d733704c6ab42e2fc71d252ae4db1",
+    ".tools/host/gateway/GatewayReadSource.v": "f32aa0510a0ef66648f2f9f5402d243007b17f19e4c755bc03cae5da44263fdc",
+    ".tools/host/gateway/GatewayReadStable.v": "ffa211a91e1af13b269de4a37fd0d9b844b7e099c40e4a30620c410f84ee99ef",
+    ".tools/host/gateway/GatewayReadTransfer.v": "2914e4529e62558a8b44ed7b46d67719debfceda4b9b5374ec2ab6070e1a489c",
+    ".tools/host/gateway/GatewayReadWindow.v": "43735252d862658f58df0d1eb9ddb958f01e363438b80497bab3f64ae934088c",
+    ".tools/host/gateway/GatewayReadonly.v": "07aae183e31995e2b0bd0729240ff072983d9af23909ff4819fae4d5fe4d0906",
+    ".tools/host/gateway/GatewayReadonlyOperations.v": "3c017254bce621928895261cd506b55d85b4f218e7afab2bff2fcb47bc02ee2c",
+    ".tools/host/gateway/GatewayReadonlyRuntime.v": "0c78f5418182491cb44772e09aaca66d83fedf0cc6945830167103f5184e7971",
+    ".tools/host/gateway/GatewayReads.v": "b8b7175afff4ffe6060f915858497ee7493b73d8f58dac51dc0a8af173b45c8c",
+    ".tools/host/gateway/GatewayReadyActual.v": "42c91114a5599d251a2385411fc0cffacf66998b626c358b199b1ad9563e2b73",
+    ".tools/host/gateway/GatewayReadyBindings.v": "41a4fd85d5399d08ad03571ac26e297e6efda6acd023bda828a2992b0ee4d491",
+    ".tools/host/gateway/GatewayReadyBorrow.v": "f66144cd48b7a9329fb12d33e60c4267ca91410643539496adf1f03493a823b2",
+    ".tools/host/gateway/GatewayReadyCalls.v": "1d7d22fdda57dd48a24c66705980aa0ad020808ef9ef327b0a02e70a72be01b4",
+    ".tools/host/gateway/GatewayReadyCapture.v": "f709d4316bada033f8711fef1b5efc4c78385e6d53d373ae0aca34f29fcaf8b6",
+    ".tools/host/gateway/GatewayReadyClock.v": "a0e068c595621a23ae6808e359b6afab0ed02c5af9eef93b683c0d820df039b9",
+    ".tools/host/gateway/GatewayReadyComplete.v": "d85d835e4d4a64fadb9972353b8605f4162ab382f431fd20e33572fa6550cea6",
+    ".tools/host/gateway/GatewayReadyContext.v": "d586a648f2795f0d47ed8412ba44ddb0dde20958de395bf6b43dd61d5cd53f58",
+    ".tools/host/gateway/GatewayReadyControl.v": "15b7bec023a409dda6dd091c4c4df534c30cdabd00bada73c3968c21ba06c40c",
+    ".tools/host/gateway/GatewayReadyEntry.v": "7ba9a12fe95b6d6967f15b2bbba1bf8b9629ecee435ea9b226fee45d18177722",
+    ".tools/host/gateway/GatewayReadyErrnoCalls.v": "1ef203d27b6060ef9255df5ad6646a277231563a73f818674ee376d48c12c231",
+    ".tools/host/gateway/GatewayReadyHelpers.v": "7cdb7cc7cdade5936dd705168799fa4f4f7c97fc87427e132917ed32c1df0b99",
+    ".tools/host/gateway/GatewayReadyInterface.v": "cfac744d51860d140e89257ebb97bb4839a32bbb2c3e3a505c55981317a1504f",
+    ".tools/host/gateway/GatewayReadyIteration.v": "e61d3456818964ff54f8fdc67ac9f57f36c7928aa6f4b60c67aee95f5e80dd5c",
+    ".tools/host/gateway/GatewayReadyLoop.v": "12e2620a807d474822fd1ad07009aa20e491d558c89863fa72023917e2ac9b4e",
+    ".tools/host/gateway/GatewayReadyMemory.v": "b5662c25ee6bdb69a3ff19d0180a9cb425e251c34c321d4dee4cb6def33f432b",
+    ".tools/host/gateway/GatewayReadyNoOutput.v": "551839e0d61e332b8d0aa9539177048d9398edd28e0dca62aaedd21efa2cc841",
+    ".tools/host/gateway/GatewayReadyOperations.v": "96f54ac6c8bd2eac7d3b24cf6c7c9e6242d75f85388bf1c4854c61960397a005",
+    ".tools/host/gateway/GatewayReadyPhases.v": "4eada056492e87e230094a6429c42e043c9bde4e7cf878ec99b146dea0a0b0c0",
+    ".tools/host/gateway/GatewayReadyPollCalls.v": "b4513f52aad81a21dc6ff20680c549831084c97f6a88efe7289d44ffae7a77db",
+    ".tools/host/gateway/GatewayReadyProducer.v": "e32c18a0e0da47fd4d1099f1f4ae6b56e8d25186ced13018a016cfdacc87f432",
+    ".tools/host/gateway/GatewayReadyProtected.v": "a026d7c4f11fe1052ddafc4b47a0ff748bba897ff65d5e9fe37997c63dcd529b",
+    ".tools/host/gateway/GatewayReadyRestoreCalls.v": "828f2b59a49c0cd48e85bca78dba4283d247dde768a811ee5f84141d281ddd42",
+    ".tools/host/gateway/GatewayReadyReturn.v": "57c07bca474516caf14027ee9243519d4bc5dc7d7d6054b4c6fdcaac9f54bc13",
+    ".tools/host/gateway/GatewayReadySetup.v": "21094b632c3d70eedf09b3a0ca265b3207c17d7263ad00b6d7e7d1c12f808f3f",
+    ".tools/host/gateway/GatewayReadySetupPaths.v": "0dbc2e5630a685ee1afec2027761d4b1f8c9f9193f145b6733c123305778af2b",
+    ".tools/host/gateway/GatewayReadySignals.v": "e6c428f11b448edc93155fe2fd156a1d622362ab65be0b9d6a2ab3fad837033a",
+    ".tools/host/gateway/GatewayReadySource.v": "5de697dfaab020d5cf0fdf297a90ad2161574c5c3dddb4df9a3c1d932d09f06a",
+    ".tools/host/gateway/GatewayReadyTail.v": "21b7ecc8244290ed5b954401b961719b7aa37ee60f7d386ab042fbe42e5fa8d3",
+    ".tools/host/gateway/GatewayReadyTests.v": "d66e3d6adf4c76667b725b74236107189ae29a2c351a80345408d7b0a37be8ea",
+    ".tools/host/gateway/GatewayReadyTimeout.v": "c1d3cc5f6cfd9f3420ca687237cc6601b1a2d941cb208e0e2beaf9313f3a1342",
+    ".tools/host/gateway/GatewayReceiveMemory.v": "5c4b7b328671878aacac8845b9ea066af8134bf1467f4698cb2cfd6bd95d429e",
+    ".tools/host/gateway/GatewayReceiveRuntime.v": "4fdaa41cad6356cfd2f3b0303e7057f304df51bf6f3797742cd055c6b68d2038",
+    ".tools/host/gateway/GatewayReferenceAccounting.v": "c72307c7f6f96d411b090dd229c97c188d28f5ce64ed250639ef7b37565f4934",
+    ".tools/host/gateway/GatewayReferenceAccountingStack.v": "1db45f03cbfba1e5cb695a247cf8585c613ca0a98f9e3cdff737f5a6d8018015",
+    ".tools/host/gateway/GatewayReferenceActivation.v": "b63763726c6dfdde09895a22bbbc726fefae6c165aa1a48ed92600890109d740",
+    ".tools/host/gateway/GatewayReferenceAncestors.v": "b0e8ceef5f50704ae879142c8489059204baa0bf2a3e133bfa0bb3421cfdebce",
+    ".tools/host/gateway/GatewayReferenceArrayAdvance.v": "801805d4749c8c965f0b60daf9368da3e10a359526a15d6634b05762edf705f9",
+    ".tools/host/gateway/GatewayReferenceArrayChild.v": "e90cb0b8bd0e37611ec4dbac9f829efac1f56652a940675c2fdf9ac2080fd25e",
+    ".tools/host/gateway/GatewayReferenceArrayContextRun.v": "1307a5766ff43091cfc23152844ff04641ceace623ce5ebf1b547ba98f6756de",
+    ".tools/host/gateway/GatewayReferenceArrayEnd.v": "17fab2b634140a7a239fd7b2b2f596e3a89b4473ed2166fd14968f963b5130ac",
+    ".tools/host/gateway/GatewayReferenceArrayFold.v": "4b9df042019408c12f293881bba0a94d45fd051f4c0da32b8ce11f1bd84e5877",
+    ".tools/host/gateway/GatewayReferenceArrayInduction.v": "60b6712108101fb40d7257fa2cddf0f0b295a8d25f29bfedf1ade6f3bf418fce",
+    ".tools/host/gateway/GatewayReferenceArrayResume.v": "f2f7bf2d993ca75b8a46547b7e7707f50da28897e19b573c18d94e8600aa60b9",
+    ".tools/host/gateway/GatewayReferenceArrayStart.v": "1a7c01e262a9cf013b5c5fc0901543f600805e37aa0778cd43937fcaa9ab34f0",
+    ".tools/host/gateway/GatewayReferenceArrayStep.v": "32bf657e85614b000eff1272a864e325d235723cd230243ce26eb02f709604e9",
+    ".tools/host/gateway/GatewayReferenceArrayValue.v": "2dc9e288d9f88f027b36d397aeaaf68023012b40056d9709aaeaf03e04330acd",
+    ".tools/host/gateway/GatewayReferenceBoolean.v": "6e037a17095e3673bd15bc045e0212b95b966d0be3732e9813670cc6b268708d",
+    ".tools/host/gateway/GatewayReferenceBytes.v": "1010fc52e76b975ae45984a002cdb3c4593bbd30c7e957972c415a282faea813",
+    ".tools/host/gateway/GatewayReferenceChildOwnership.v": "7ba2739f2fe6877468e0d63b9cc44aa79db8d15abecae78d11f33597b58db14c",
+    ".tools/host/gateway/GatewayReferenceConstructors.v": "b14497b28a147c03fa6ceb236061e856fea494a9b7bfe42ad824945cb9b1fbf7",
+    ".tools/host/gateway/GatewayReferenceContainerAllocation.v": "744cb334097c3122e087255708ece985042f556c241326fc7582fb91075493c8",
+    ".tools/host/gateway/GatewayReferenceContainerContext.v": "671d07d1aac9ea3a190acc1337a966e56d9f50371454a6556eed084630bbe1b9",
+    ".tools/host/gateway/GatewayReferenceContainerExit.v": "27c3e156523425e6de7ba709e7b5049aebbbd83d09706e0599bd09c761e19692",
+    ".tools/host/gateway/GatewayReferenceContainerScope.v": "3d2528585c52a959dbdc569d0bdd356f17f9bdf6964030bd58437ea2a85b03a2",
+    ".tools/host/gateway/GatewayReferenceContainers.v": "31285041add6a45b73b7af0157298c8b86a5d59102bc360eb350008cf4847d56",
+    ".tools/host/gateway/GatewayReferenceContextReturns.v": "54b8bb2468159a0825ddeee0f226fb2653485fa13d246a8ef9c45a8314dfeba8",
+    ".tools/host/gateway/GatewayReferenceContextScope.v": "e8530e5c7943a1819846176f5fb9d379c7603dde45b8eb9cdd399571389c0e7e",
+    ".tools/host/gateway/GatewayReferenceDecoded.v": "69d8f6ddca9a38dc1c0ba754f1a5f9fcb1cd60d6ff4efca92deb783dec81d26c",
+    ".tools/host/gateway/GatewayReferenceDictionaries.v": "d13a444534bff9c4834ce40c81193916321937f0cdfdd29fc60276d68963cfbb",
+    ".tools/host/gateway/GatewayReferenceDictionaryAdvance.v": "aff940666be4c457315ddca0541ba1201f4ad17de31c1887190c1537a69111c9",
+    ".tools/host/gateway/GatewayReferenceDictionaryChild.v": "3c29d0c4118aa5486a4a7a040ca35791a34f22163ff8160c212819b8cdb3507d",
+    ".tools/host/gateway/GatewayReferenceDictionaryContainsPhase.v": "2145f11bfd63e3acaf224a5003934c5b4de9bddd9534934dcd1db88cabf7a70c",
+    ".tools/host/gateway/GatewayReferenceDictionaryContextRun.v": "0df1e98deedbca7492d29f893fa2c22619f9da33f8b2406826daa0c7f25d377e",
+    ".tools/host/gateway/GatewayReferenceDictionaryEnd.v": "a6cc18fd399a849f992d8ccdb0e4e0aa046f4163e20f9211d9c00a756418bc29",
+    ".tools/host/gateway/GatewayReferenceDictionaryFirst.v": "de4ab05e4013f48cd1a7f5bebe1bcf1c2667671309ef1c40da38b81b0096f1ee",
+    ".tools/host/gateway/GatewayReferenceDictionaryFirstInduction.v": "e3ddfcc440d735c736f4d4d8c1a9953073c5d2e030ed25df3b14fe16ff274ac5",
+    ".tools/host/gateway/GatewayReferenceDictionaryFold.v": "0ea9a6d33bbba1bf782c76d66ac8d1ce8dcddddad24c266c7b23da19dbe96e66",
+    ".tools/host/gateway/GatewayReferenceDictionaryKeyPhase.v": "a08a0c48ad0f4f58d5172789f708fb716886fa261405a14f006bed69c8333502",
+    ".tools/host/gateway/GatewayReferenceDictionaryLedger.v": "aa64a6010259fb4dd1038e730e3fc8b3231c79513953a2e43b3473968176e149",
+    ".tools/host/gateway/GatewayReferenceDictionaryNormalForm.v": "f4822af75b03f1b4c4a6f72624808de2a5ea8be0957396e08bb24aa44429157b",
+    ".tools/host/gateway/GatewayReferenceDictionaryObservers.v": "904592da9aa496052ecb9667f88b3836f0aac790ca7346cb30c0243998cc0227",
+    ".tools/host/gateway/GatewayReferenceDictionaryResume.v": "91d59a4d2b26342b2e5394bb4bea3c9a65f11601ed616f7f81a8c9f7f11b73fb",
+    ".tools/host/gateway/GatewayReferenceDictionarySecond.v": "42ac9203509e2353c94c7d80d2312448741af31bec3d8d42c97d945fc059c0cc",
+    ".tools/host/gateway/GatewayReferenceDictionarySecondInduction.v": "04770d73a5f2baf6487d7e88906da002380882d7a18c4a49a8256310d5c51580",
+    ".tools/host/gateway/GatewayReferenceDictionarySecondResume.v": "af119b0fd75eb56344af41db8fc9ca9b88e80d1a20f850137f375d44ecc2e0ff",
+    ".tools/host/gateway/GatewayReferenceDictionarySnapshots.v": "210abbf05ef2d131caf18c0d71fb6c070e3d66627b951edee8636369b176fc54",
+    ".tools/host/gateway/GatewayReferenceDictionaryStart.v": "b3f94c0f764a6d3fb08f33eded9ce92c95de26b67c5e6cc463e66ba08e78df29",
+    ".tools/host/gateway/GatewayReferenceDictionaryStep.v": "2953feef6b7ddca7a15faf23fea9ec2915bb28279206d7f7c372ad27d0eda708",
+    ".tools/host/gateway/GatewayReferenceDictionaryTarget.v": "4c0ebdad77be13d540d237299944b7824016f9fe430f6f75ca1adb5ecf66460f",
+    ".tools/host/gateway/GatewayReferenceDictionaryValue.v": "519e43e8f4e123e175f3181cf17c01b9a109d459fabd931c835cd02577e5012d",
+    ".tools/host/gateway/GatewayReferenceDictionaryValueResume.v": "8a583ad34f6018893e852f215c05c0b2a86060ddcad77011da0cd1ce6d94349c",
+    ".tools/host/gateway/GatewayReferenceEmptyContainer.v": "6a01cf84897dde8f41b3e42494dfa4e609ca817bc7816468ef7416bdae2f30a2",
+    ".tools/host/gateway/GatewayReferenceExecution.v": "d759f51e420e4f9536761eb4461b7c7cda488ec047b0591c8cd3c9abaef8697a",
+    ".tools/host/gateway/GatewayReferenceFloat.v": "322d656dfefc1e8b0ef4a425c771bc6ca0e2b7d01ef5b73de056a7892a54c04c",
+    ".tools/host/gateway/GatewayReferenceFloatConstruction.v": "52bca1412a46aa4f82c8220da6fef152a7ca887e32698c5a65a9f183a08156b3",
+    ".tools/host/gateway/GatewayReferenceFloatTail.v": "f4404caac7be6e2d35ca9d0bec76f700e26ca255e2a7f0087c3e04188dbb5605",
+    ".tools/host/gateway/GatewayReferenceFrames.v": "0ebb5d99b91705c0eb8175add3752740dfddd33bef54d4e5bab5caf8dfeada09",
+    ".tools/host/gateway/GatewayReferenceGraphCapture.v": "3255b109aa8fad23e439f4bb58386c299e16924815a10302bb7f61493d0b7799",
+    ".tools/host/gateway/GatewayReferenceHeld.v": "5ae909da3cc379c7d18bd3052093db31e63270851670e69fdfac9449021323d2",
+    ".tools/host/gateway/GatewayReferenceIncref.v": "3d3209ac12db1e5600628abbcf075cc1a0ed9a4571d899d1e40a8949e7aad63c",
+    ".tools/host/gateway/GatewayReferenceInteger.v": "fed687fd58f8c0ebb86bb2d37a281ab007cc7e13c75d3651201e5c65374cec18",
+    ".tools/host/gateway/GatewayReferenceJsonNumber.v": "df2de5fb2555edc467bdbd78493089c763013a13805c65d5edb6aa1484f44548",
+    ".tools/host/gateway/GatewayReferenceKeyType.v": "5468ad9f784dc91ab45b54e7cf6f985dca794799d4328bbc227ded08df37444b",
+    ".tools/host/gateway/GatewayReferenceLedger.v": "7c5435e0da7c8b3332ee6ef29779af2345088f3db5d84637f7fad37174733764",
+    ".tools/host/gateway/GatewayReferenceLoopLedger.v": "18343d61a150dcd265949f695e2ca22588987ee043c356fc346417ff142e9710",
+    ".tools/host/gateway/GatewayReferenceMoves.v": "e08a222fc27dac2cdd62a7d9fb46616ec0f6caff5320ae883cdc0e52ab209fbc",
+    ".tools/host/gateway/GatewayReferenceNoneRun.v": "c8d57c790a1626f44db56999be969669fae25b2530d2b7404c4fdfdf2768097f",
+    ".tools/host/gateway/GatewayReferenceNormalForm.v": "16dac9c0ab9e14805fde42aedcefb01740a4e0a009a84969720769b43b083b57",
+    ".tools/host/gateway/GatewayReferenceNull.v": "5ae2d7882d536a7307ff8d8a80965956f5da9274f4b777a7146502f3ccdf5b32",
+    ".tools/host/gateway/GatewayReferenceNumber.v": "d05c88f087918ebcaf74c3947c2a529372de0c41164e160a12a7de402d94a9ee",
+    ".tools/host/gateway/GatewayReferenceNumberAdd.v": "32f4e26b034b57b77118b9d45507797e1cca3e67eb80fcf3c6ea488272b27abd",
+    ".tools/host/gateway/GatewayReferenceNumberArithmetic.v": "53b28000f0b0a939d4bf1b36978913bcc942664300701ef4c4afa769f857edf0",
+    ".tools/host/gateway/GatewayReferenceNumberBaseRelease.v": "934f657cf31d5a42deaf42f923d89bbd63c88fed73dee48236f69078f1be02ad",
+    ".tools/host/gateway/GatewayReferenceNumberFold.v": "21ccee1c93a7f502cb1b501ac83c6d2dcc5d1595824216c3e45a7820e15dc0e7",
+    ".tools/host/gateway/GatewayReferenceNumberIntegerConstruction.v": "95563f3b88283166634aff95322d8413330b9645bd6317272f7951ce45ac8b99",
+    ".tools/host/gateway/GatewayReferenceNumberIteration.v": "05e1851a2f843dee18e82126bba993ee76113a579f7ccc8ba6a37a08f86f2e81",
+    ".tools/host/gateway/GatewayReferenceNumberLiterals.v": "0b51fecb8aecc8ef3539e235a8e5bf74fecbb7b3c093e7038e68fe01b0f5db8f",
+    ".tools/host/gateway/GatewayReferenceNumberMultiply.v": "166225f8e0b83e1b1559d2d05dc9a980d37ca91d166adf1a8915ef7adf3874c3",
+    ".tools/host/gateway/GatewayReferenceNumberNegative.v": "5925546189e9e706ff43998c6cef606d893b636a78fe625ed3b2d31e82cd430c",
+    ".tools/host/gateway/GatewayReferenceNumberNormalForm.v": "f54aafab4dbc7df44d0113b66a92425700de73af01bfd58fdcf7a0555c09e04c",
+    ".tools/host/gateway/GatewayReferenceNumberOwners.v": "5a28070378dbdf5b43c23164f6b5e705997bd825eb08d492e5ef89e8facb5128",
+    ".tools/host/gateway/GatewayReferenceNumberPart.v": "0675bc130b185b0f9b615f27efe891d7f6d80a5c281f53d445af7186b8273b80",
+    ".tools/host/gateway/GatewayReferenceNumberPositive.v": "3945ef020b9063585fefbf236d8f288f34910b0165f28f4329dd4f0a31cf1fdb",
+    ".tools/host/gateway/GatewayReferenceNumberReturn.v": "c500c0ae303fb5e1f48db0473beed97fd425f3df9d0c142d6d1dad8ede872f3f",
+    ".tools/host/gateway/GatewayReferenceNumberSign.v": "df5ebe49e47e92a2614bfa1743a687b129145ae0ca66c7906b137ff04adbfaf8",
+    ".tools/host/gateway/GatewayReferenceNumberStart.v": "be399973e2123ba04344cd8c25f336326312a157902211a8062fb858264168da",
+    ".tools/host/gateway/GatewayReferenceNumberVacancy.v": "7c0681e85b2ad87b00260a8766df21ab663b0ff3fd967fa2ad4abef6d6a9f49d",
+    ".tools/host/gateway/GatewayReferenceNumericContext.v": "e6a991fe5f3447c7ff3aa1b0775ff37ffe569f0aed0a8e2e51f399dc45d16ced",
+    ".tools/host/gateway/GatewayReferenceNumericFrames.v": "8c502e93a26df7b6e14be0d991f64412f9c0e0b9743881b5f7549586b899d401",
+    ".tools/host/gateway/GatewayReferenceNumericLedger.v": "d645b3ff8d4cf0aed220ca5727bd45908c8be7846e6c7702e8212fc39edcf97c",
+    ".tools/host/gateway/GatewayReferenceNumericNormalForm.v": "b575b6467cb874d97addc68f0a81d1c68919ec631cb57a93b639b137eb507da6",
+    ".tools/host/gateway/GatewayReferenceNumericRelease.v": "0111e6ce05936cee9fc36098e770f666d03abec3cea0ff253e2131d76fc6e9f3",
+    ".tools/host/gateway/GatewayReferenceNumericRequests.v": "b5f3c7318d19c4a829597fc66ee459f4294425975987bf6168e32930813c2f37",
+    ".tools/host/gateway/GatewayReferenceNumericStorage.v": "205c26888c5cc38c6019cb092ddfa18b23bd2bc6d3ad6a773bf57b04e3dd9efc",
+    ".tools/host/gateway/GatewayReferenceNumericText.v": "d463a453a35406af9a5665013c94a47ebac9414ada8dfa27394750cea5c05e5f",
+    ".tools/host/gateway/GatewayReferenceObserverContextRun.v": "a902c77b53d77ee11b80c3dc89e5a58fa1c9f897947a83e75027a1661c7ac488",
+    ".tools/host/gateway/GatewayReferenceObservers.v": "c958cac76ff8d4712cf62b3a8726b6b5319174213984762eab8b6605059747e1",
+    ".tools/host/gateway/GatewayReferenceOwnedBoolean.v": "e4df5c0c6779fdebf4d61b6987ce7247877652be38c3c9c61c5aa0bf87e0d59a",
+    ".tools/host/gateway/GatewayReferenceOwnedCaller.v": "ad53e5ed7c7a8e1e8775cf27fc1b06ddcd5126bc5cf4789db24cdcba207988ae",
+    ".tools/host/gateway/GatewayReferenceOwnedContainerExit.v": "3711f648bd4e2fb6fd05d0ac9caf99f86fd7dee02d11ef542de7e566873939eb",
+    ".tools/host/gateway/GatewayReferenceOwnedEmpty.v": "e445962b71ac12bdecbc268fa56f0c9644d2efe5175703ee456b031be07a326b",
+    ".tools/host/gateway/GatewayReferenceOwnedInteger.v": "b132f5e1e275a2340352a85f6a742b74123c04ad09f589822ac5a6063dbc6e36",
+    ".tools/host/gateway/GatewayReferenceOwnedNumber.v": "ef8e547fbc4e73386d7ac6c3eabb2edbb099e41fa26cd3f8042bc55021452aa5",
+    ".tools/host/gateway/GatewayReferenceOwnedPath.v": "429f13a029f6aea4e0df181b285c1ab1dd01e04055ca68be00baffdc8e0bc0d5",
+    ".tools/host/gateway/GatewayReferenceOwnedReturn.v": "2a6b44f96bbfa56eef2c71c462ad841f9c38bb61e0a13325b0eb9a135253b199",
+    ".tools/host/gateway/GatewayReferenceOwnedValues.v": "dea85f3c77a1095289b24bb73ade7ce8826c246bd7020795286d2efa68d908a7",
+    ".tools/host/gateway/GatewayReferenceParseInteger.v": "59d38663805a0f400bfb15e0c83d33dca91b4ea5369aacfd13557f8103f0cda1",
+    ".tools/host/gateway/GatewayReferenceParseNumber.v": "c553c54bed33e41dfeff2e2878d7853f506a17123198f7611d44a060ba30fcd4",
+    ".tools/host/gateway/GatewayReferenceParseResult.v": "95fcf41eef2f3b199859e2e59f38b55d6fb15cfa7579c2d548c1c35da91c5b5e",
+    ".tools/host/gateway/GatewayReferenceParseScalars.v": "6431696b3cdfb8a5dd71b2e94a83cbccd8e0b4dd8e565f147fd20591f9bedcc9",
+    ".tools/host/gateway/GatewayReferenceParser.v": "812059878d7e734921a1036520243a5a85a63345774c43130baf1ef194e00faf",
+    ".tools/host/gateway/GatewayReferenceParserComplete.v": "1859bcfa76156fb326877dba57f5a32354f7d0697a29729dc54e176728e441e6",
+    ".tools/host/gateway/GatewayReferenceParserInputs.v": "321ccac7cecdbc04b5c874d5be1034ab52b01bd651124fd46e5255b4f55c8fe7",
+    ".tools/host/gateway/GatewayReferenceParserPool.v": "7ffcbbeabc7fe400688fef09ad4675daa81163186abd116b77838cf7bf37e76b",
+    ".tools/host/gateway/GatewayReferencePath.v": "c25dff9cd258b87c0bddb5a7f6c29125edbbc83a6d539ea7e7bfa27c40d15f12",
+    ".tools/host/gateway/GatewayReferencePathPayload.v": "ad089dd9441261ff91cb1ccb98f4ec73d708d90eb7e84060372bda9aa3452e37",
+    ".tools/host/gateway/GatewayReferencePlaces.v": "ca3eeb7a200c5efe71d98deb2230ce820a2d714048244fac12c943804ccbb62c",
+    ".tools/host/gateway/GatewayReferenceReleaseContextRun.v": "797649b153b7cbf04ffd2d296510bf71330a51f1244c790da448b07ef7a0fc57",
+    ".tools/host/gateway/GatewayReferenceReleaseEffects.v": "5164afffea33af794921f7b28d985f86659131f39b73e0dec5b5a5d64b38b708",
+    ".tools/host/gateway/GatewayReferenceReservations.v": "805e6b3094a82d85ef4b778129bc5a898e93d0d5cda16fbfbfcb9e16da70a483",
+    ".tools/host/gateway/GatewayReferenceRetained.v": "beb18175622c43d30f7488c6c2fe6fe3256f3d966c8305be3bb4b0bfcc936d54",
+    ".tools/host/gateway/GatewayReferenceReturnPath.v": "8033ae200bea013d3a59da6b6b66d7f50cba2daba2443018abae758e3383affc",
+    ".tools/host/gateway/GatewayReferenceRuntime.v": "affef152dc3cfde684e4679387500c08c7507a0a3535473c895b4c941ff33df8",
+    ".tools/host/gateway/GatewayReferenceScalarCleanup.v": "eb3cb719998de0029ee2d5471a8efcf261c7c0c086337c86029a4f2594cfc862",
+    ".tools/host/gateway/GatewayReferenceScalarRuns.v": "fc2f25a7ea775a7a28c66ddaf8418e16be64f06f98143cb1495b4bd8972e8971",
+    ".tools/host/gateway/GatewayReferenceScalarStorage.v": "cb7ddf18becf5dc96fe65e9abecad3fd3073de014a0b393ca466d80564645347",
+    ".tools/host/gateway/GatewayReferenceScalarTransfer.v": "2ebb81c9d0aefef878f7e2634a4329d52ab4a66a2d615bfd51860a0659fa6a07",
+    ".tools/host/gateway/GatewayReferenceSnapshotInputs.v": "2a0386b21b9eeea0b868d6af96d672531021fb9bd31a8b8c123835bc304fc664",
+    ".tools/host/gateway/GatewayReferenceSourceReturn.v": "e9c716bdf1b695bb0d5e9c8e9a59a3df0028806a1b945cf6c73364651901bbae",
+    ".tools/host/gateway/GatewayReferenceStackBound.v": "2d831cb5bbf59051516ca88c692a1ec1a3d42aed4aab4f84fcae75970a5fb40f",
+    ".tools/host/gateway/GatewayReferenceText.v": "ce190385d13804c71ac651689605b02a6481f54f2988d577b22a7746de706412",
+    ".tools/host/gateway/GatewayReferenceThreads.v": "01af3191c826a114f26b38180de2aa57dc43f87224969b2ca7a0a99ef8ce1f38",
+    ".tools/host/gateway/GatewayReferenceValueProperties.v": "cadf51baea38f1a0eb123a5d4e6e79fe38c4a02540f6ea93223561f97e1ee67f",
+    ".tools/host/gateway/GatewayReferences.v": "87fab195cdff9673f4f88a826a20d5b821936afb8697ceac3812b7343373c71b",
+    ".tools/host/gateway/GatewayRegionMemory.v": "8433a2c69ddb5e89c42dce6e7c05dace9726e11cff41285f764f2b5dce9146bb",
+    ".tools/host/gateway/GatewayRegionThreads.v": "8a4f768afcde78d1d6c5b0129014c7d8ee3ae35113b1ba0d9b50edf5d1ec985b",
+    ".tools/host/gateway/GatewayRegistry.v": "54a3602e71d2b6626056f2f1ac410604962a1c5e142e44642c95db68bbc27b00",
+    ".tools/host/gateway/GatewayReturnIdentity.v": "9deb9a7321731a94a2600e2ab6790d5d3a33a37ec462c5dd012a93ff71e81eec",
+    ".tools/host/gateway/GatewayReturnMemory.v": "25eec25b9b4380643d27a3fce31c40a4ae94a676c8b63e84537c88ec1a5cef71",
+    ".tools/host/gateway/GatewayReturnRuntime.v": "b3f628d266a13411daf8639aaaf3eee66989e20848a193266d318fe2c007b174",
+    ".tools/host/gateway/GatewayReturnTypes.v": "44d5dfed40fa10bd9ec9f1dfa0b8d145c269e8f94a2ed8206aa9385735b98589",
+    ".tools/host/gateway/GatewayReturns.v": "7546c71e758eec0456914a7ec73e69ca5ce38b9fa55934294cd408bca0bd8a55",
+    ".tools/host/gateway/GatewayRootLeases.v": "1d23ef81d1964e8abdbf5af41cae1ddcbee2428c9877f6d47b92dad6db7f2b76",
+    ".tools/host/gateway/GatewayRuntime.v": "efd036908691500c07c74e4494df6b9a9108cf9d2708c47ee3cd562204e9602c",
+    ".tools/host/gateway/GatewayRuntimeABI.v": "9d9b33e60ccd74d2063f29b7a855839c216d36841faba24afdd0122e71e6298a",
+    ".tools/host/gateway/GatewayRuntimeCuts.v": "331503f1ba664bf92266f81c08036048f9e0a13fa084d8e99083b261fbba7772",
+    ".tools/host/gateway/GatewayRuntimeTrace.v": "203d843aaacbd086569ba49a952aaa528f1cb1ef5722c0b85aaeef5f217a6907",
+    ".tools/host/gateway/GatewayScalarAllocationCall.v": "efe635ae3f4a9b9cc5edddb8bfb4a1536cb222bcea88a722a9c04cecbb6e2f94",
+    ".tools/host/gateway/GatewayScalarAllocationPath.v": "e5d6c72ae563455e9a152691fdb528d2d0d2a5a955c191636e26ac267880a080",
+    ".tools/host/gateway/GatewayScalarBuffer.v": "662faa36b4d3baf2c75d62bcee9fd324f5bb4922a0e69cc559b7d9bab98eb76d",
+    ".tools/host/gateway/GatewayScalarBytes.v": "ffad593b65bdaa192fbc75a52b029b24a26bea7bbe2e9d82b10e7b81c4980fe3",
+    ".tools/host/gateway/GatewayScalarBytesCall.v": "d7b869ef3fcec43cdc83e29bb79b5a72ec251410c8c1da0b662700299de1b0bd",
+    ".tools/host/gateway/GatewayScalarBytesPath.v": "889e06e1c8cc3f0e6894b525da6316f2c61b978d1bf56e368d20b7e1c58c94b7",
+    ".tools/host/gateway/GatewayScalarCleanup.v": "406bfb6fbe99fcedf619b4d54f83f6410a33b22b0108014dcf93d8473d3b2d51",
+    ".tools/host/gateway/GatewayScalarConstructorCalls.v": "bbd270c1b33472f16db0c55e8a95420220eeb47a13e755004147593dc48a595b",
+    ".tools/host/gateway/GatewayScalarConstructorMemory.v": "bbe5dcf75320c9dffb11e851803f78c5b2d6611dea68fcc69d453494b2b54d14",
+    ".tools/host/gateway/GatewayScalarContext.v": "82124e2342401ff335511055a6b15d934a4e5f2b3e515f288f58b20c6a8e60a9",
+    ".tools/host/gateway/GatewayScalarDecoding.v": "892048e11b9e9ee0cac6d8c5dfafd7ee51b39a3c65341aa306ef0616e2dc3ee8",
+    ".tools/host/gateway/GatewayScalarEncoding.v": "8567c4a5abaad6711076dcaaa82a9bcb0da9ce2604dcd30b8a7a56137532d785",
+    ".tools/host/gateway/GatewayScalarFrames.v": "000987d398d932ea81045b4b3db64f7525d5a87ffc30573de221eeccb72e710e",
+    ".tools/host/gateway/GatewayScalarFree.v": "746d7cdcd93d26ba1ac2a278a5187fed70216e799cb4e201f183b65f97f838d1",
+    ".tools/host/gateway/GatewayScalarGuards.v": "10303beb37506b3197cc57ffb5a1344f4ff1b6e5f25aa0608ca655645ecde22a",
+    ".tools/host/gateway/GatewayScalarIntegerCall.v": "63730fb167a253a5ddf5ab3b61f45c989d0b9b745c268cd0ee90d67c6d5df38c",
+    ".tools/host/gateway/GatewayScalarIntegerRequest.v": "52c7211e9f6c68869f528c6197b40409cd7a851640fb053335cdf846216939c5",
+    ".tools/host/gateway/GatewayScalarLength.v": "7842246aa40627266492230347f729cfc157d4861c5c3c23c22ec89fb4235d54",
+    ".tools/host/gateway/GatewayScalarLimits.v": "dd02507ece3aede9bda2b8fd5a20f596e0724b679044d99e66d9fc9805dc8d41",
+    ".tools/host/gateway/GatewayScalarMalloc.v": "b3be6fdad32741e93190d857cf08228f1b41662dfd0112af61a5a802259cbe02",
+    ".tools/host/gateway/GatewayScalarMemory.v": "169a4e01115460fddba16f81183f5b334148e69af7471baf4162f9ec59e49ed6",
+    ".tools/host/gateway/GatewayScalarNativeEffects.v": "dd7731d1280553962917ef14d960932c7ff52daaaafd06284faa0ec890a2ebac",
+    ".tools/host/gateway/GatewayScalarNull.v": "29bfbedc0267b940048cc389e60c7336e1efc3ef21abeda17612c2054a0528ae",
+    ".tools/host/gateway/GatewayScalarNullFailure.v": "680993ad404dfe84425cf10ee87df78e2710be3b20fa749780e7b7ed4fd53505",
+    ".tools/host/gateway/GatewayScalarNumberCall.v": "6da879137734795dba1c5ce74bca012a86383cd8f994f0b5f8fd007cceb6a8fb",
+    ".tools/host/gateway/GatewayScalarNumberPath.v": "8f7e3943621758628464ad55a1280d6d4fc89d8b31bdf0e5a01047d188e9fc58",
+    ".tools/host/gateway/GatewayScalarOwnedCleanup.v": "e9ea9129c5cc2fc73a75bb23f3163110acb648285ff475a7f8e05c735ba0130f",
+    ".tools/host/gateway/GatewayScalarPathCall.v": "6c6c2e84b2c5ecd8be3064630b848a8fbbe625af8b1505736e6c0e7409f7db33",
+    ".tools/host/gateway/GatewayScalarPathDecoded.v": "34881e1a4ef49cb944d78b9d2469c59061417cc81eec24cab5ff8c3e939129dd",
+    ".tools/host/gateway/GatewayScalarPathDecodedStream.v": "96813bb284799ec50eb6826280916cb4091a1aa8cf1514503f525d3eebe688b0",
+    ".tools/host/gateway/GatewayScalarPathDenied.v": "cf42b7bcf13392194d6e8f6b96ccbd8281d4b5ec63dfd43c427c154543e99d06",
+    ".tools/host/gateway/GatewayScalarPathGuard.v": "8a2ab4c22d701a40e800152eb300cd443ec8fea938d184e2dc8a50c7d6c5e78a",
+    ".tools/host/gateway/GatewayScalarPathSource.v": "4c705a356627538659cb409f66ab692142344b379c9c416219aee28821e918a9",
+    ".tools/host/gateway/GatewayScalarPayload.v": "760bbac3e2a63fdec46ccf758886a84e25f74f980a2b0449771fa85dc7096715",
+    ".tools/host/gateway/GatewayScalarPayloadMemory.v": "7616e1e10b86e6e8d2e46a6c5a5ae1fa7b7d69b479766473b832a45e527ecf1b",
+    ".tools/host/gateway/GatewayScalarReadCall.v": "8fad0dc040689ad6e4b9404856c9ec7179a9c1e6a7950457dea70b6080148437",
+    ".tools/host/gateway/GatewayScalarReadMemory.v": "6dc32130e2c51b6cd935f03a5b2c69eb5c49ea9fc7aa938b3cd58682dea6ba48",
+    ".tools/host/gateway/GatewayScalarReadPath.v": "49384dc3fcfc41ea48957da5a6042b0a54ad89571f7694a26c6cfba3781093ba",
+    ".tools/host/gateway/GatewayScalarReadReceipt.v": "bb3f0c87bd7611b6cfa424eec088a7f0257d4c68026fbe363fc54ead1e11ec2c",
+    ".tools/host/gateway/GatewayScalarReleaseMemory.v": "1424e74ad5332f0e84e16129c69fcea7bad3126a93f510393ee501808316ee33",
+    ".tools/host/gateway/GatewayScalarRuns.v": "6390199128c48818f7f6b4852404b9edd9d9be1a3ff1b90f6f35d6ef631c681f",
+    ".tools/host/gateway/GatewayScalarScan.v": "ce2fe725af21e68b4cf2c54fce75736c61c3545206deb8e2f0f9907db87d62cc",
+    ".tools/host/gateway/GatewayScalarSize.v": "32de631cb327c71ccaee50b4906b4f267286bd0421a2c82d9aa63b7d5f5b2de0",
+    ".tools/host/gateway/GatewayScalarSizeCall.v": "5db2755eb1fc7881f6f1b2d5b2973acf80e2e9ff3a6c5a0c78312d67ecc4a2ce",
+    ".tools/host/gateway/GatewayScalarSizedFrames.v": "9f2614e0b378cf4cedeee6ee1d06eac4500f5a85f96bbf6f49d2d85b86236641",
+    ".tools/host/gateway/GatewayScalarStreamCleanup.v": "3c79a51bd448dc40992669ba54bfb2a2e2867aaf57210aa7c4396d61ee84df48",
+    ".tools/host/gateway/GatewayScalarTerminate.v": "5d113135861b3577fc008d3b2f1f51b5c150b58346e004df0e1af9f109a290b5",
+    ".tools/host/gateway/GatewayScalarText.v": "109b78b526e236291112316b0d8d5d2546c10f7b56f4bce07fa8715f0738bea8",
+    ".tools/host/gateway/GatewayScalarTextCall.v": "6c99f42c89813bcb5bfcde9613b413f5de2019a1aa24fe1d92addd774002fc1e",
+    ".tools/host/gateway/GatewayScalarTextPath.v": "3425eacae9024e8f7b5ee5a2e1c659336fea693ae1d2f28ae1dd5315f7b6bfaa",
+    ".tools/host/gateway/GatewayScopeBufferReference.v": "fd4afc101ad25dff2df4f2beb10c369a9f7ff31aa06041ffaa0c6de922ce17a1",
+    ".tools/host/gateway/GatewayScopedBufferRuntime.v": "20a81d153b2c7974e3ac7abee55577a474076a3df2cf0485011957f89609904f",
+    ".tools/host/gateway/GatewayScopedMemory.v": "876f11a0811a8a0a04194863bf2b94c8d270baf01f6aecfee9288b99ffdbee80",
+    ".tools/host/gateway/GatewaySource.v": "2fce74e393b9211504531aa0cf31d10ac9bce73ef6c38dcd30bf720e10880eb5",
+    ".tools/host/gateway/GatewaySourceBoundCalls.v": "2292d1fa51137890703b04c6ca6c4cf2685650a3bb13c88edd36cc476c201b4c",
+    ".tools/host/gateway/GatewaySourceCuts.v": "20aba5817c2a31e2f28618b53dfc4434b7391846b59cbe5c7e42cf05bc9a2400",
+    ".tools/host/gateway/GatewaySourceDynamic.v": "b812afac87264a066eebe60c58c1f8b509e6444306655591636a4544e38f5a28",
+    ".tools/host/gateway/GatewaySourceEvaluation.v": "3753662c249427f9394d11ec51748c9ac2c1b101fbb71a1fc0e91747aed1272a",
+    ".tools/host/gateway/GatewaySourceIntegerReceipt.v": "0b53f4cbc90a1cd8f326710266eed07f299fb8013591ef5800a814f589d88e2c",
+    ".tools/host/gateway/GatewaySourcePaths.v": "820251e3de983e995d31666a0ab28a3ff62b2e580740234fa7b8c27c839bd733",
+    ".tools/host/gateway/GatewaySourceSegmentAutomation.v": "eee5571756651a4fc3c88b382576ff2138954c4f73591c9cfa4827f7377ce376",
+    ".tools/host/gateway/GatewaySourceSegments.v": "9fc3c7354ac21edb9df81568be0a9ccec6f7c7ebcddb5592ade7c3dca5b78c28",
+    ".tools/host/gateway/GatewaySourceTactics.v": "7540a604d4486d1d72163d5852eee00104f592c14730cdedc6764801c4c68564",
+    ".tools/host/gateway/GatewayStreamAccess.v": "5074870c34bb21772592d93f0fb0e8bef982586ca66424cd96dde4801cc718b0",
+    ".tools/host/gateway/GatewayStreamInterface.v": "2fbe68117758e070d8d76b109e883fba2cfdfc94fcdf3e254f6e03a1d5f18cf5",
+    ".tools/host/gateway/GatewayStreamLayout.v": "a2f8ad63b7507eedcdc50fb121df800aa441e92980c64252ebc4a622bc892ef8",
+    ".tools/host/gateway/GatewayStreamMemory.v": "eeef639bbb08316e328e6737d073de348d5258b08f9fdcebfdbc38a0554e2024",
+    ".tools/host/gateway/GatewayStreamRelations.v": "0c9e298274520670d0151dc1bc97f8e78593815a52e8e0457ea7052672950730",
+    ".tools/host/gateway/GatewayStreamUnique.v": "f41b10a17eba7d24415beb7f71cb1db79792783cb98ec3ce3851cff85e7cc785",
+    ".tools/host/gateway/GatewayStreamWord.v": "8bb36f418b9d599335b3952a7be7ec13bfbe39d96d6a486feff22ab28a9c34e1",
+    ".tools/host/gateway/GatewayTempNull.v": "137302f286a2cf4a7f79d846b84ecbd52c4b13c8e7890ab664b4d9e1d0093516",
+    ".tools/host/gateway/GatewayThreadInvariant.v": "2c2203ef215c1929e1bb99a38620483378aec32421cc81ac988c3e4349601deb",
+    ".tools/host/gateway/GatewayThreadRuntime.v": "f59b2ed2e649a70d0a4a8e524ba46148b352330d95846e13345cfabdb009191f",
+    ".tools/host/gateway/GatewayTransferBuffer.v": "742ae30e2ea8b565e129c49186545e0f4d07ffec0b403800face37e79ef1b1c3",
+    ".tools/host/gateway/GatewayTransferCalls.v": "8d8959d1c0b6aa7bd121d061f5434562d1af895f2cd698d476c9d289fefac182",
+    ".tools/host/gateway/GatewayTransferChunk.v": "d15c8ef07d83f2725d5041ab960afbdda345ce7be91d1a330546921fb405360c",
+    ".tools/host/gateway/GatewayTransferClassification.v": "edab9bb5d45e72351d0876f72990ab8595cd9ecbb7e80f48a23fb80750abf8a7",
+    ".tools/host/gateway/GatewayTransferErrno.v": "4f4eb361f94f4a23a9bae60c6d8ec4414cf3e44cecf466a1196c4c64ed0e23f7",
+    ".tools/host/gateway/GatewayTransferErrors.v": "be3eb46978bfbe42a137b3a0099f64fdb6f49b13f3a1d76c8cf7f31ac405e83d",
+    ".tools/host/gateway/GatewayTransferFailure.v": "a3969f4e0c4e430aea214c2e188cf38630f26af2a827fa1c8256b46f71111bd1",
+    ".tools/host/gateway/GatewayTransferIteration.v": "4bf0de3d3a6e0b4db9f48e06221ecfe4dc80af7a2bc2f80e134cad9cd9c2decf",
+    ".tools/host/gateway/GatewayTransferLoop.v": "c862f115dad1889fd19e046a4a1dcae6984d792d6c0b481229ff9b2ce4c95449",
+    ".tools/host/gateway/GatewayTransferMath.v": "f590712cf91be5a5bd4f02227d68791c50c1d24df5f82b4dc0e3524abb86c488",
+    ".tools/host/gateway/GatewayTransferPost.v": "ba2ce4b5abca2c016f261ac8d6dfce6df970d3232960a9faecd2acc3bae04b19",
+    ".tools/host/gateway/GatewayTransferProgress.v": "64395cb2f24282de6ff4399503abb711ef9105f395af894ff8ddf0e4d90d9b11",
+    ".tools/host/gateway/GatewayTransferProgressMath.v": "a797b82aa01cd0f90edbfa8ac674117118e104b949f7c728cbbaf14cba839b85",
+    ".tools/host/gateway/GatewayTransferReadonly.v": "dc24c31efc8f6e8f439fae2b7a57d0d616ed6fa67eefd4dfae0e9d9146adf27c",
+    ".tools/host/gateway/GatewayTransferReady.v": "5e671531c3518e251463cd65572ec86c44f0ed39b4ddcd5a6c4bf137b2c2d7f4",
+    ".tools/host/gateway/GatewayTransferReceive.v": "381e9f640417b972e5d46002f14a175d28582da2c9ee0e2bad7d8bb8d23c317e",
+    ".tools/host/gateway/GatewayTransferRestore.v": "4249f65aef31e34d1e129fb0ae45ccec2a1b8a6d66ae064da0b595d700d8aee0",
+    ".tools/host/gateway/GatewayTransferRetry.v": "248eb2e288b55182fb841d6515c836cbe1209bc2bbf21b235e42eec96b1290ba",
+    ".tools/host/gateway/GatewayTransferRuntime.v": "08460a20b8e793522d6fd5d9af152776e85e1bc23d9baa6249cc676e67c6ca3e",
+    ".tools/host/gateway/GatewayTransferSource.v": "d9dd5ae1fcaaf83e91aeb08c11e0579b446495af21c215da2cb2ba344606b404",
+    ".tools/host/gateway/GatewayTransferState.v": "d4ccab79e117a7943eac4d2926355ce6dd4c91256a53e3bcaec50b7663d691a4",
+    ".tools/host/gateway/GatewayTransferUndefined.v": "8abf330bc15df14a7e12e3719b43a5b7341953e14b72a25c4a6ef9604e6cf8cd",
+    ".tools/host/gateway/GatewayTransferValues.v": "76ae6a9c3c6385c2f370863a2c4be32f3dee604c1507f75df8fbe6ac8fd248b1",
+    ".tools/host/gateway/GatewayTransportFrame.v": "023257bca0f9ad0a0a0e45e5145495f628420c54f8e8b5d228bb137932a4b38d",
+    ".tools/host/gateway/GatewayTypeRuntime.v": "309fdb49e70299850ea8910c70641ae36db990ccf1df44d846062a5c949b6c30",
+    ".tools/host/gateway/GatewayUnaryExpressions.v": "1368b2fb1ce5686f205d9bcc8eace5883b2a678bab63508137e968b29a9c1faf",
+    ".tools/host/gateway/GatewayValue.v": "49269d42a696fda49e77b22c9d94854eb6319c8abb8045d9442b539ae2477b9e",
+    ".tools/host/gateway/GatewayValueActual.v": "4a77accd3d77280f0dacf7cfc69c2a0db6bcea2f5cd549eb6c3f3163393c66cb",
+    ".tools/host/gateway/GatewayValueAfterBoolean.v": "3a18adb3e0ef115707a9193368411e0f3606cacd4334c34eb838b3cf9bac830f",
+    ".tools/host/gateway/GatewayValueBindings.v": "7dfa9e7ca4d67eaa1b24bc03ca4c83eac2f10f6f192a1cfa679589391f5d4e90",
+    ".tools/host/gateway/GatewayValueBoolean.v": "c79e31281648e825e6bec4bd91e55c7746e7e21ce0c5b55a394ce19ef2653543",
+    ".tools/host/gateway/GatewayValueBooleanCut.v": "5a5842425aa5e08916aebc2a56110e7b7053a05d80ac985cebde0151ccadee46",
+    ".tools/host/gateway/GatewayValueBooleanHeap.v": "1841c911d7f30f35cc4e70897d00831e2592e1f674c6812a22f1036372d02d33",
+    ".tools/host/gateway/GatewayValueContext.v": "71137bfba2f1aa37997728e4def734679ad44b0dd35443eb28c6290075404b7e",
+    ".tools/host/gateway/GatewayValueDispatch.v": "feb45b24cacaf9d556dfe7330de80600316bc72a4937bc4b4059feb9c92bbafd",
+    ".tools/host/gateway/GatewayValueEntry.v": "ca241d3ce5a91ebda85177af510e7cb2dfe67a354a69bd9801e4295eebc89ffc",
+    ".tools/host/gateway/GatewayValueEnvironment.v": "a81dfc387a01140026a2bba7f773e2410075c387e4dc565065578074a4f94c25",
+    ".tools/host/gateway/GatewayValueExpressions.v": "3b629450c7745f0e6bfd3f3ffa3058e258dde0537fc6ba3aedcf8b4bd601a3e1",
+    ".tools/host/gateway/GatewayValueFirstWord.v": "b6c8ef7bbb10d0081d4e2fc8a6bfe327e48492d5a9bda815a2093c9e17422759",
+    ".tools/host/gateway/GatewayValueFrame.v": "9a7af5ed9e9a988f9bfe2830cb23dfc1c0eeed873e4f632d766ce34792dab1a6",
+    ".tools/host/gateway/GatewayValueGuards.v": "3799ce52518a4799ac7b40681d1134963444e3e7a4f9475b4686578454f3a97a",
+    ".tools/host/gateway/GatewayValueKnownTag.v": "b27f29159eaffd405520300fb8ded8811455c3956e28ecf1c2f7b23562acab1c",
+    ".tools/host/gateway/GatewayValueNodeMemory.v": "85ae0e4e6454764893060436c03e0fdc2945d4d3cf53aa5955a56c1b98acf932",
+    ".tools/host/gateway/GatewayValueNodes.v": "0b42bda5d3ff8568415739d4cd81290400e0964d46d5e76262d7cc9b6dc9918c",
+    ".tools/host/gateway/GatewayValueNull.v": "45793e1066d450a86a2526368c85fcddd0c9da8e8b5ee1117f31d38adc34dbd0",
+    ".tools/host/gateway/GatewayValueNullHeap.v": "01cc69bdea8d22fe8e17a2b63cdba4e18304ad60b9191c2ed3e103a6cf60324e",
+    ".tools/host/gateway/GatewayValueNullSource.v": "e4a49754dd8cd98ab1bc43396afd4204124bad2e43b618fe33e8273b661661c7",
+    ".tools/host/gateway/GatewayValueOwnership.v": "c35ca83f9eb17a6cfb3723b9103b583f67c37d0e054496cf4a31137d301c9532",
+    ".tools/host/gateway/GatewayValueRegions.v": "f31d5fcfa82cf406ef2d052367d00e73ea9c0bb3cc292f7c7f8bcb8faed18b4f",
+    ".tools/host/gateway/GatewayValueReturnContext.v": "106589b7941a5085dd4729c770aff32c558de0a3bd615fc406a0156a18c9c5e2",
+    ".tools/host/gateway/GatewayValueReturns.v": "b0a16d3162cdccd9dd2f5cfda06aa384ffbbd43d1a7118579d61baad878c3239",
+    ".tools/host/gateway/GatewayValueShapes.v": "a03732df768ed2c36fb3881774ef4671b466869714219466bb412398e4282af9",
+    ".tools/host/gateway/GatewayValueSlotSwap.v": "eb2116e994b5155ea156d4b3d24ad8a5b012b8989d761f5e744d5ec6655d3d8a",
+    ".tools/host/gateway/GatewayValueStack.v": "799bfc7ac30df7a5b41793250643766cdab343156c18f1fbad57065b790a5268",
+    ".tools/host/gateway/GatewayValueStreamRelations.v": "e85e4dca0d3d2a63b78725c7c03cad1871c765d9dd0b5f74c5d661b614ba2133",
+    ".tools/host/gateway/GatewayValueTag.v": "bb9e94ff7b8d501fd1a8c653c8c142c43f6c3528c0a1dee65ce83d8b5f7d86c7",
+    ".tools/host/gateway/GatewayValueTagOwned.v": "595281c6febf7de7c8a7d042e4b2ad372e38efe416d1839b5a506a0194539b50",
+    ".tools/host/gateway/GatewayValueUnknown.v": "3666aeb3e535ec17cb5d53bd7dcc79670f1ba1fae1de088eae1bba82fff0445b",
+    ".tools/host/gateway/GatewayValueWord.v": "c1131826bdce6f193b0785141a01db02af36d41112da513ea43ef6ec1b1dcfd4",
+    ".tools/host/gateway/GatewayWordActual.v": "9cb4b43ce163aa2e8877935625faa5c81c29b79fa5921abbcedbf3d26c47d09e",
+    ".tools/host/gateway/GatewayWordComplete.v": "82f9171d5e75ed959119c65d051f0a065cabacaba9ebc81bbb7a9ac81889f5cf",
+    ".tools/host/gateway/GatewayWordContext.v": "e75e4b627aebf8e3bde79dcc44fbe834e516699da7321aa1f69622ca44384a4f",
+    ".tools/host/gateway/GatewayWordData.v": "b789946ede807723807d824ac330012a9fcb093e4a0b633501222daf7466813d",
+    ".tools/host/gateway/GatewayWordFamily.v": "16949361b771cfc232ffd431cc51610847fd45c486b18d5bad984d9b6e81acbe",
+    ".tools/host/gateway/GatewayWordInputs.v": "c27cb692437b070479b97f24a673c5be47a2b11063ffdfd15abca579d8fc8317",
+    ".tools/host/gateway/GatewayWordOwned.v": "15644f2349e80861fd4aacb953663b85f72256503a782c7be1a52f5bc808f813",
+    ".tools/host/gateway/GatewayWordPermissions.v": "aeaeb8f5ff6c020b0a454e42bd7aa54908f9f00752e297b01bda9685350e064e",
+    ".tools/host/gateway/GatewayWordReadReceipt.v": "3845a04e2703e943c88e5aa4ef6f8a85a3772c79b61746dd544475bf8e6c735a",
+    ".tools/host/gateway/GatewayWordReceipt.v": "9c0ad3253cc1638d63ab24cadfd21f993f94ef371236ce8a7fef022b817a4517",
+    ".tools/host/gateway/GatewayWordRuntime.v": "f6cbee3e3543279368274d6493b33a80a713b16945d7cfee43663721242b2919",
+    ".tools/host/gateway/GatewayWordSource.v": "9d4b6373c8fa1fbdda366f35bef4c7bf58febd74c13495239b2992476b208924",
+    ".tools/host/gateway/GatewayWordValues.v": "22eb33e9d62e0c00cedbcb5b5517d04d75a68c35033c1695b1ae0a6ff497ddca",
+    ".tools/host/gateway/GatewayWords.v": "e8d500060b77b8ca560058313e79df9b8a1fc211ad8b440328ab38ca2122e27e",
+    ".tools/host/gateway/GatewayWordsMath.v": "331f6dcebe4691b93c59467f86902e432d537aca3d4151da5de6529bd5c2e15b",
+    ".tools/host/gateway/GatewayWordsMemory.v": "1f737d4c1f73dd167ccf428ed3b699b8c3a987f68cb811fe452bf6d5b10e252f"
+  },
+  "validation": {
+    "finalAcceptance": "Pending full integrated M5.2 caller/public/physical join; no full gate or VM workload repeated for this proof-only checkpoint.",
+    "focusedBuild": "All recorded final relevant leaves and four audit leaves passed on the stated source/data epoch.",
+    "fullAudit": "175 theorem types/assumption closures and15 full interface bodies; all190 queries untruncated."
+  }
+}

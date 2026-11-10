@@ -1,0 +1,170 @@
+{
+  "artifacts": {
+    "assurance/host-initializer-threshold-probe.log.gz": {
+      "sha256": "4ce9905138b2246a618dace259bd4c0a9df9a481a5a8b45cb208b3b698334943",
+      "uncompressed_sha256": "4a5fc623f31547318ea50e0e6e446cd95d134974ca43864a7175249b4a7a4e9a"
+    },
+    "assurance/host-initializer-threshold-probe.py.gz": {
+      "sha256": "111c3380af2c0de73b149349eab890b2dcdfa9d247be8088cea811140a612009",
+      "uncompressed_sha256": "18b511a0f92c134dba28d1c7237bb0ea35111005448226f2da72b1a56b56ac78"
+    }
+  },
+  "conclusion": "No Workspace-present/Outcome-absent callback was observed. Pre-module_from_spec-return observations remain insufficient to identify actual PyInit-return timing.",
+  "corrected_record": "assurance/host-initializer-timing-correction.json",
+  "fixture_sha256": "fd8285d35b13fb39c9f31a0d64d5753bdef38c26374f16df8cc65ed8072901ef",
+  "results": [
+    {
+      "events": [
+        {
+          "module_from_spec_returned": false,
+          "names": [],
+          "phase": "start"
+        },
+        {
+          "module_from_spec_returned": false,
+          "names": [
+            "Cancellation",
+            "Outcome",
+            "Workspace"
+          ],
+          "phase": "start"
+        }
+      ],
+      "partial_type_set_observed": false,
+      "scope": "bounded read-only GC threshold probe; no constructors, engine, VM or workload",
+      "threshold": 1
+    },
+    {
+      "events": [
+        {
+          "module_from_spec_returned": false,
+          "names": [],
+          "phase": "start"
+        },
+        {
+          "module_from_spec_returned": false,
+          "names": [
+            "Cancellation",
+            "Outcome",
+            "Workspace"
+          ],
+          "phase": "start"
+        }
+      ],
+      "partial_type_set_observed": false,
+      "scope": "bounded read-only GC threshold probe; no constructors, engine, VM or workload",
+      "threshold": 2
+    },
+    {
+      "events": [
+        {
+          "module_from_spec_returned": false,
+          "names": [],
+          "phase": "start"
+        },
+        {
+          "module_from_spec_returned": false,
+          "names": [
+            "Cancellation",
+            "Outcome",
+            "Workspace"
+          ],
+          "phase": "start"
+        }
+      ],
+      "partial_type_set_observed": false,
+      "scope": "bounded read-only GC threshold probe; no constructors, engine, VM or workload",
+      "threshold": 4
+    },
+    {
+      "events": [
+        {
+          "module_from_spec_returned": false,
+          "names": [],
+          "phase": "start"
+        },
+        {
+          "module_from_spec_returned": false,
+          "names": [
+            "Cancellation",
+            "Outcome",
+            "Workspace"
+          ],
+          "phase": "start"
+        }
+      ],
+      "partial_type_set_observed": false,
+      "scope": "bounded read-only GC threshold probe; no constructors, engine, VM or workload",
+      "threshold": 8
+    },
+    {
+      "events": [
+        {
+          "module_from_spec_returned": false,
+          "names": [],
+          "phase": "start"
+        },
+        {
+          "module_from_spec_returned": false,
+          "names": [
+            "Cancellation",
+            "Outcome",
+            "Workspace"
+          ],
+          "phase": "start"
+        }
+      ],
+      "partial_type_set_observed": false,
+      "scope": "bounded read-only GC threshold probe; no constructors, engine, VM or workload",
+      "threshold": 16
+    },
+    {
+      "events": [
+        {
+          "module_from_spec_returned": false,
+          "names": [],
+          "phase": "start"
+        },
+        {
+          "module_from_spec_returned": false,
+          "names": [
+            "Cancellation",
+            "Outcome",
+            "Workspace"
+          ],
+          "phase": "start"
+        }
+      ],
+      "partial_type_set_observed": false,
+      "scope": "bounded read-only GC threshold probe; no constructors, engine, VM or workload",
+      "threshold": 32
+    },
+    {
+      "events": [
+        {
+          "module_from_spec_returned": false,
+          "names": [],
+          "phase": "start"
+        }
+      ],
+      "partial_type_set_observed": false,
+      "scope": "bounded read-only GC threshold probe; no constructors, engine, VM or workload",
+      "threshold": 64
+    },
+    {
+      "events": [
+        {
+          "module_from_spec_returned": false,
+          "names": [],
+          "phase": "start"
+        }
+      ],
+      "partial_type_set_observed": false,
+      "scope": "bounded read-only GC threshold probe; no constructors, engine, VM or workload",
+      "threshold": 128
+    }
+  ],
+  "schema": "leancage-host-finding-correction-evidence-v1",
+  "scope": "No constructors, engine, VM, workload, gc.get_objects or private storage access.",
+  "status": "bounded negative timing probe; no privacy or initialization theorem"
+}

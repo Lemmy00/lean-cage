@@ -1,0 +1,34 @@
+{
+  "after_sha256": "40f8e9bfd8497d81326a76dbcdec2fbf43d2fca29c6cfcdcf91952b1c5c4d88b",
+  "before_artifact": "assurance/host-source-comment-before.c.gz",
+  "before_sha256": "8dc2bdd9b0a454786d5525d0b97135c6d2ac2e02fceb5d07afdcb11406effd3d",
+  "changes": [
+    {
+      "after": "// \u00a7FS-host-boundary.ownership: Raw signal targets require the lifetime proof tracked for M5.4.",
+      "before": "// \u00a7FS-host-boundary.caller: The helper PID remains owned until reaping; its group is private.",
+      "occurrences": 1
+    },
+    {
+      "after": "    // \u00a7FS-host-boundary.caller.initialization: Exposed classes require completed setup.",
+      "before": "    // \u00a7FS-host-boundary.caller.initialization: Public callbacks may see classes before module return.",
+      "occurrences": 4
+    }
+  ],
+  "claim": "Only five source comments changed; existing proof records keep original immutable input bindings. This amendment grants no new runtime or M5.2 guarantee.",
+  "frontend_command": [
+    "/localhome/milikic/sandbox-formalization/.tools/m4/CompCert/clightgen",
+    "-normalize",
+    "-fstruct-passing",
+    "-I",
+    "/usr/include/python3.12",
+    "-o",
+    "/localhome/milikic/sandbox-formalization/.tools/host/source-comment-checkpoint/GatewaySource.v",
+    "linux/host_python.c"
+  ],
+  "frontend_sha256": "0f63158fba4320009d612c5cc5f2a48c8409045cede62ff32e5c1be2c1f1f5eb",
+  "program_artifact": "assurance/host-source-comment-program.v.gz",
+  "program_sha256": "2fce74e393b9211504531aa0cf31d10ac9bce73ef6c38dcd30bf720e10880eb5",
+  "regenerated_program_sha256": "2fce74e393b9211504531aa0cf31d10ac9bce73ef6c38dcd30bf720e10880eb5",
+  "schema": "leancage-host-source-comment-amendment-v1",
+  "status": "exact regenerated Clight program bytes identical"
+}

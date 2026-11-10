@@ -5,3 +5,7 @@
 .tools/
 __pycache__/
 *.pyc
+
+# §DA-host-engine.bootstrap: Generated alias to the identified bundle's native caller.
+/python/leancage/_host.abi3.so
+/python/leancage/_host.abi3.so.next

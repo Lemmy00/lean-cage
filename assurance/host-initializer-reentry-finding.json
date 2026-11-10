@@ -1,0 +1,42 @@
+{
+  "accounting": "Sequential retries after a failed initialization can still overwrite prior owning globals. Source-positioned history records those old references as abandoned/unreleased allocations, separately from active authority. No VM-cleanup observation proves their reclamation.",
+  "artifacts": {
+    "assurance/host-initializer-reentry-probe.log.gz": "9fc22447cc91edf6aed395dc345ddd05cfe41ee9e432f815fb45d696895dd680",
+    "assurance/host-initializer-reentry-probe.py.gz": "a8fb9c0feb4bc95c30167c8fdc2900fe7072f85653446a760f0d100a629652b5"
+  },
+  "finding": "Ordinary Python loader reentry from a pathlib attribute callback can execute nested native initialization and change owning class globals during an SDK operation. An unconditional private-C-global frame across that operation was not justified before the source guard.",
+  "probe": {
+    "baselineC": "abf3b63691e80f4a27a4ce4045476403ecd69a7b862beaf6eadf15e1cfccf1b2",
+    "command": "/usr/bin/python3.12 .tools/host/gateway/module-reentry-probe.py",
+    "extension": ".tools/host/gateway/immutable-runtime/python/leancage/_host.abi3.so",
+    "extensionSha256": "a0b9afbecae860fda4c639ca7e2bdbec828825420fa2cf5570d00348eb961bd6",
+    "kind": "Bounded benign isolated CPython callback/loader probe; no engine invocation, VM or workload",
+    "result": {
+      "different_outcome_classes": true,
+      "events": [
+        "Path lookup",
+        "Path lookup",
+        "nested native init returned"
+      ],
+      "kind": "bounded isolated native initialization callback; no engine or VM",
+      "nested_modules": 1,
+      "outer_type": "<class 'leancage._host.Outcome'>"
+    }
+  },
+  "repair": {
+    "behavior": "The public initializer wraps the unchanged private body with an active guard and a permanent-success guard. Nested and later successful-image initializer calls fail before the body; failures permit later sequential retries. Ordinary cached imports remain usable.",
+    "currentC": "029c84c480f2805bff2e7e4bbd5f769cabfb24c7455d1ff2f8aa0b77a1c468d1",
+    "currentSourceSha256": "618aabda9c25cae755a16f49c305eb6141f89f902aecd8759ef1a4d06c975f95",
+    "evidenceScope": "The root-owned source guard structure/layout and actual source replay are checked; full actual callback-frame composition is still required. Tests alone are not a source guarantee.",
+    "record": ".tools/host/gateway/initialization-source/replay.json",
+    "sourceOwner": "root"
+  },
+  "schema": 1,
+  "specs": [
+    "FS-host-boundary.ownership",
+    "FS-host-boundary.caller",
+    "AR-host-boundary.interfaces.gateway",
+    "REQ-proof-integrity.statement"
+  ],
+  "status": "Concrete finding preserved; source guard implementation/current replay exists; complete module/callback and public-caller integration remains active."
+}

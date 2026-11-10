@@ -1,0 +1,121 @@
+{
+  "accepted_security_delivery": false,
+  "artifacts": {
+    "assurance/host-source-connections-audit.lean.gz": {
+      "sha256": "953c8dd0d2423c36cbe777756d1ce45b6f55a0aca8132057f9c98af6a752e2aa",
+      "source_sha256": "480072c3faa5c83b3825767ea5ab503915c099688ef5c20975de49cd7624ec12"
+    },
+    "assurance/host-source-connections-audit.log.gz": {
+      "sha256": "00ae32547c953dc3a0355acef672ef91f33fefe334d170eb0e111832840fcc3f",
+      "source_sha256": "129d690bbe77219f93921d1c3ff0bf443d195aba54889d16c0ca1d5b8c35869c"
+    },
+    "assurance/host-source-connections-audit.v.gz": {
+      "sha256": "e079ed2f29a2236caba2a2c3dea31191c3552e58afb1f959cad69d60dea4edec",
+      "source_sha256": "bbc584fdc821049b40f7bbbe7770f2270bbe67aa62a06524cf03ac4ad27fda73"
+    },
+    "assurance/host-source-connections-build.log.gz": {
+      "sha256": "329602b7027b9b59e561a0b66aaa7fd22d99561f516a5b5e6021081970d36d5d",
+      "source_sha256": "589188032c5ca661d37073f5346f872f78fce0326e9c89a3cde466d02a4b34b8"
+    },
+    "assurance/host-source-connections-ordinary.log.gz": {
+      "sha256": "ab955bed5a2049f4c827ecbca71995868e4106c7dbc358d2c3633aa44306ae06",
+      "source_sha256": "cfd45c9283bfe10931d53ba610da7a09fc5bf1c6a0132fc68ed38a5285475727"
+    }
+  },
+  "assumptions": {
+    "ordinary_lean": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "primitive_contracts": "Full inputs printed with the theorem types; individual Linux/SDK effects and actual memory/heap representations, never an enclosing helper safe-frame premise.",
+    "rocq_compcert": [
+      "ClassicalDedekindReals.sig_not_dec",
+      "ClassicalDedekindReals.sig_forall_dec",
+      "Events.inline_assembly_sem",
+      "FunctionalExtensionality.functional_extensionality_dep",
+      "Events.external_functions_sem",
+      "Classical_Prop.classic"
+    ]
+  },
+  "inputs": {
+    ".tools/host/gateway/GatewayBootstrapHistory.vo": "45e40d774fca4fa312cb34a79dc32392cbeeb6cb3143827b57a57b0a63ff2553",
+    ".tools/host/gateway/GatewayBootstrapReferenceScope.vo": "3b652b683f3db427a5f8110c9c91591ca2aa91cbd83f6356d031a39b8ede3cad",
+    ".tools/host/gateway/GatewayDictionaryCallReceipts.vo": "7df3cc9f4eb42ee60a3f784b093dcdbb568aa4f919d67019e3589b7bd9defa5f",
+    ".tools/host/gateway/GatewayDictionaryInsertReceipt.vo": "91ab9d3f2db812daa1b3d01a36d7a31dadd6a267e6ac9954ba8bfbdad4223a43",
+    ".tools/host/gateway/GatewayDictionaryInsertStatus.vo": "75344e59822eb96720740dc7f5e1f8bac42b844088d282b50f830a5682badad5",
+    ".tools/host/gateway/GatewayDictionaryReleaseReceipts.vo": "db07f4b6b6a26235a3001a505c07de344071eb805f1cfba24c12cdbc1f561a4d",
+    ".tools/host/gateway/GatewayDictionarySecondReceipt.vo": "b2025aba84a0756b1637c33ff771aafb469b5f48be8b1dea91ac26fcd5ffcae7",
+    ".tools/host/gateway/GatewayExchangeNativePrepared.vo": "35659e8aa2a7c1da6a45a3e96e7c598f4b1fe2fcafbc97476acdf4e5fb3f2bfe",
+    ".tools/host/gateway/GatewayInitializationHistory.vo": "0263766b1d3ae771a2751c5a546966eec95a53d1045360e2a45a16d8b3bb5a55",
+    ".tools/host/gateway/GatewayNativeChannels.vo": "dddcd068e62c91fd477a6744abde617ed6d34df7416339d4ab3a5fa082d17c41",
+    ".tools/host/gateway/GatewayNativeImport.vo": "43a4fe9e2feb3d11519ca5a7559a7d95bd59e513026898d29f55bbb7181011e3",
+    ".tools/host/gateway/GatewayNativeReferences.vo": "639af05b03f89618303a87d4c928b5bf7cf32c905d1fd8a51363b8a05f752c9a",
+    ".tools/host/gateway/GatewayNativeSourceBinding.vo": "b6a7a649df6e2c5b4f5ad61e11590e9fab0a90d4fbf4beef0101e92f463c5b6c",
+    ".tools/host/gateway/GatewayPendingNativeRows.vo": "d23597835b29c6ecf193e5a4d8dc9d345428ae4ce9ded5d19fd207243fc5b575",
+    ".tools/host/gateway/GatewayReferenceDictionaryChild.vo": "ac325560011e1b420b5c2767189a374a264f029ea11d709ebbddd0ccba209d69",
+    ".tools/host/gateway/GatewayReferenceDictionaryResume.vo": "db1f1656c0f339338c7934d6cfc8c80a7f666319460e9ce68de5f344588036de",
+    ".tools/host/gateway/GatewayReferenceHistoryThreads.vo": "823d76a3bf5b4312b594297dcf6664d2495247bb72c6fb12add5eaed233eca8e",
+    ".tools/host/gateway/GatewaySendNoReceive.vo": "cfe2a3320cb48ff2ba79b7a0897e52e5bb5602ea96d2b69f70e13b27108e70a3",
+    ".tools/host/gateway/GatewaySource.v": "2fce74e393b9211504531aa0cf31d10ac9bce73ef6c38dcd30bf720e10880eb5",
+    ".tools/host/gateway/GatewaySource.vo": "3a97870876c2627abf77351b40625a0a1b699a187c891ef5f7f116a22c0d9909",
+    ".tools/host/gateway/GatewaySourceBoundCalls.vo": "162c0289bd2104de2eed4c2483daedd45d2dac268f72c4ffb994161278871b6c",
+    ".tools/host/gateway/GatewaySourceConnectionsQuery.vo": "ab68831970d38f17678d564892b035d69175d93d5ca12198f231f554ca95bc7d",
+    ".tools/host/gateway/GatewaySourceIntegerReceipt.vo": "76567285cb0141f7a4debc9949594769bd63dfdb89a238fc4f6c2ec7f4dfa3af",
+    ".tools/host/gateway/native-channels-extension.json": "e9f59c54088c3343371f7d2ae58afed854cf9d97051dd4e70971ce1141725e11",
+    ".tools/host/gateway/native-code.ndjson": "f6bb9b8b88cd7e99d6438a3b8fba82a4eb6688e3d5825073f3a04f66a57f16d2",
+    "linux/host_python.c": "8dc2bdd9b0a454786d5525d0b97135c6d2ac2e02fceb5d07afdcb11406effd3d",
+    "verification/host/FilesystemNativeChannelRows.lean": "18a644255e81cb4ae121a13e41fba488f354c030a2f1411f4800faee0ffc1b76",
+    "verification/host/FilesystemNativeCodeRows.lean": "7bc5eb5ea303b4ffc2b38e240332fc0cd000c21f072ffe4ae852d503f3ff3d02",
+    "verification/host/FilesystemNativeExecRows.lean": "d9253872122b9992ffb69e09b9e4f09f7405dbd88bf50be3ff9e65ecd5689e9f",
+    "verification/host/FilesystemNativeForkRows.lean": "fffc48cbbd90caf9a9cf4565eddc53e4cfde109c03a12b42c77a6c13a807428b",
+    "verification/host/GatewayBootstrapHistory.v": "6cdf65648e1af706cdc6acf038ddcb2294a74dafb87f81ad44da4dcce9fbdd0c",
+    "verification/host/GatewayBootstrapReferenceScope.v": "88402cd39a5c75b2eae0bf6e19f052adb05aaf1d60081b22e7903e8aa98c1990",
+    "verification/host/GatewayDictionaryCallReceipts.v": "ca93aac6c44307a01d1eb93eed1e7f2fb69515ff1a63320dacf3efb69e38b375",
+    "verification/host/GatewayDictionaryInsertReceipt.v": "daab66fcfb71cc065153fecce4581e60ac5d8a58747f7f7efea25f0384de3bce",
+    "verification/host/GatewayDictionaryInsertStatus.v": "d830cccc44851cf58c5f7ae5158a118dcc4b52b0e3019389cf5e62e3b22914ae",
+    "verification/host/GatewayDictionaryReleaseReceipts.v": "4c1da36f7c4bb879e1e9387d32a646c6ced42edfe337043c9960e41a086ac03b",
+    "verification/host/GatewayDictionarySecondReceipt.v": "e491a8fe02e39beea4994174acecc5748c063e66e891b7a548bc14eae3c549ba",
+    "verification/host/GatewayExchangeNativePrepared.v": "cbb4ead4aab6a48f30a899635edbf9b193a6ea9472512c72594f98ad5b8e1c2c",
+    "verification/host/GatewayInitializationHistory.v": "c9723832cb90cc1ebdf70528c5977039c9215318b9ea0ac4e2545ddf2246cc5b",
+    "verification/host/GatewayNativeChannels.v": "4d150461f9a1e3ad1a2812656cfd2cadd5a32c66e92fdc6d94404091e04db39e",
+    "verification/host/GatewayNativeReferences.v": "731347822f2470cb81f703db379911cbed7864dc8dabb1d2934f8455cea1211c",
+    "verification/host/GatewayNativeSourceBinding.v": "e3384400f63b8d5401d5ac80fad9baf2ae933fe702369523227cec08da1f6d34",
+    "verification/host/GatewayPendingNativeRows.v": "eeeca28df4f621f38e2546bdef5c34b0b8ed19b1ff40d0b7cd3929cacacfe754",
+    "verification/host/GatewayReferenceDictionaryChild.v": "3c29d0c4118aa5486a4a7a040ca35791a34f22163ff8160c212819b8cdb3507d",
+    "verification/host/GatewayReferenceDictionaryResume.v": "91d59a4d2b26342b2e5394bb4bea3c9a65f11601ed616f7f81a8c9f7f11b73fb",
+    "verification/host/GatewayReferenceHistoryThreads.v": "c698d8a4c00c93de6053a99cca21c380ca0195efeba8d230d40029f4411a3f56",
+    "verification/host/GatewaySendNoReceive.v": "c2f788adda65381f9d110f81d74908859777b147e6e1c4d2df58fda38f0f790b",
+    "verification/host/GatewaySourceBoundCalls.v": "2292d1fa51137890703b04c6ca6c4cf2685650a3bb13c88edd36cc476c201b4c",
+    "verification/host/GatewaySourceConnectionsQuery.v": "bbc584fdc821049b40f7bbbe7770f2270bbe67aa62a06524cf03ac4ad27fda73",
+    "verification/host/GatewaySourceIntegerReceipt.v": "0b53f4cbc90a1cd8f326710266eed07f299fb8013591ef5800a814f589d88e2c",
+    "verification/host/NativeChannelCode.lean": "637b88ad846ea679c1176976e78f2169950dac69e2d6df50b6bbce9aed5eef1c",
+    "verification/host/NativeCode.lean": "2e29ec519029d540f7c436efa146e3d91e726ae804e63528e711555392d5410a"
+  },
+  "loss": "Original waiting, interference, source loss and committed-loss transitions remain. Return claims are partial correctness; pending native claims require no later SDK acknowledgement.",
+  "remaining": [
+    "Complete guarded initialization and active/global/retired reference accounting through public class/module consumers.",
+    "Recursive parser fold, public result provenance, complete EOF/reaping and same actual engine response queue.",
+    "Whole physical custody and exact source-bound birth/exec/handoff composition, final identified bundle acceptance and main integration."
+  ],
+  "result": [
+    "The actual bootstrap and initializer bootstrap guard retain the SAME aggregate active/retired reference scope and actual descriptors.",
+    "Actual entry-derived pending spawn arguments and all four live IPC leases select an already observed native spawn row without a future SDK return/reply premise.",
+    "The source-built child file actions derive shared channel evidence for the SAME full actual exec table; the ordinary consumer derives its actual engine binding.",
+    "The actual sender performs no receive on its data channel.",
+    "Actual dictionary key, duplicate, second recursion, insertion and key/child release cuts retain SAME execution prefixes, SDK operations and continuations; nonnull progress forces positive key, Contains0 and DictSet0."
+  ],
+  "schema": "leancage-host-source-connections-review-v1",
+  "shared_data": {
+    "declarations": 127,
+    "extension": "27 checked dependencies for pure channel observations; previous 100 fingerprints unchanged",
+    "preserved_native100": true
+  },
+  "specs": [
+    "FS-host-boundary.caller.initialization",
+    "FS-host-boundary.caller",
+    "AR-host-boundary.interfaces.gateway",
+    "REQ-proof-integrity.statement"
+  ],
+  "status": "supporting checked caller and primitive connections; complete M5.2 remains in progress"
+}

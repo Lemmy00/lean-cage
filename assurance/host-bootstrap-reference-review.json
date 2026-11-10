@@ -1,0 +1,39 @@
+{
+  "artifacts": {
+    ".tools/host/gateway/BootstrapReferenceAudit.vo": "043bf5ebee587d73a47fce76262bd7580407df4393bb73704332af4564f2fff7",
+    ".tools/host/gateway/GatewayBootstrapReference.vo": "97c3a54c2a013c29021403de009056780d2d25f20954c70e3097f7688daef27f",
+    "assurance/host-bootstrap-reference-audit.log.gz": "e526fbfb32df016491d2fbd5f68e918c9990b912c9f6c081c741eeb64bcd54ae",
+    "assurance/host-bootstrap-reference-audit.v.gz": "7946893f9dd859ea40ee9999f73718c554efad892f0e9a996768c29c192c6c43",
+    "assurance/host-bootstrap-reference-build.log.gz": "5271f6b875ccf3db5e165574d983ff93d879435ee5b6f630a8fa0802928c27be"
+  },
+  "declarations": [
+    "gateway_bootstrap_reference_runtime",
+    "Build_gateway_bootstrap_reference_runtime",
+    "gateway_bootstrap_reference_operation",
+    "gateway_bootstrap_reference_history",
+    "gateway_bootstrap_reference_readiness_view"
+  ],
+  "review": {
+    "callbacks": "The five individual libc/loader APIs execute no Python callbacks under this held-GIL normal mode. This is not a frame for Python SDK calls, module attributes, Outcome presentation, or other whole callees.",
+    "consumer": "Root actual bootstrap/initializer source composition.",
+    "history": "Both active references and archived still-unreleased overwritten globals remain counted. The operation changes neither ledger nor archive and grants no source ticket or release authority.",
+    "legacyView": "The empty-lease readiness projection carries no reference authority and assumes no gateway_root_lease_runtime.",
+    "loss": "The underlying primitive-operation law is independent of acknowledgement. Normal source return, failure, committed loss and same-run control remain the caller proof responsibilities.",
+    "platformLaw": "Each actual valid libc/loader operation with an explicitly Python-separated output preserves the held-GIL current source reference pool and object heap, plus CPython-owned memory; the actual source supplies the per-call arguments and footprint.",
+    "remaining": "Actual original helper/source trajectories and final initializer/public caller composition are separate producers owned by root."
+  },
+  "schema": "leancage-host-supporting-proof-review-v1",
+  "scope": [
+    "AR-host-boundary.primitives",
+    "FS-host-boundary.caller"
+  ],
+  "source": {
+    ".tools/host/gateway/GatewaySource.v": "2fce74e393b9211504531aa0cf31d10ac9bce73ef6c38dcd30bf720e10880eb5",
+    ".tools/host/gateway/gateway-code.ndjson": "e654b8c03d39600811fd50651b9b6aada9569f98d6e75bf136f6573bb4bb592e",
+    "linux/host_python.c": "8dc2bdd9b0a454786d5525d0b97135c6d2ac2e02fceb5d07afdcb11406effd3d",
+    "verification/host/GatewayBootstrapPython.v": "810fef30ce8c63b911cc26b783a0c4d93307bc8abe14769b441e269c3e83210f",
+    "verification/host/GatewayBootstrapReference.v": "0132ffb03d8628ad27ad2c891b218d3656c8d653a0335d5c5c5db84596d8729c",
+    "verification/host/GatewayBootstrapRuntime.v": "6c4eef0ee7c4048ca1c61ab0addb678fa3bc21175256c72b3a9c3a0763c21e37"
+  },
+  "status": "checked-supporting-primitive-interface-not-complete-host-boundary"
+}

@@ -1,0 +1,36 @@
+{
+  "artifacts": {
+    "assurance/host-initializer-timing-probe.log.gz": {
+      "sha256": "4a132d08374a210b66905c3d7cbe31078363d001ce8345bf3324eac0f0978de1",
+      "uncompressed_sha256": "bb950668fe7c040cbb3cf8560f0e4866ed113ee6f9632d525670d28cce651ce2"
+    },
+    "assurance/host-initializer-timing-probe.py.gz": {
+      "sha256": "d3c272e853f89b17e8e8f42334070b93cd67e2fafce2490c1147340f3d147960",
+      "uncompressed_sha256": "28178c15dc2a83a396f9c8f32fcb9a59ab32e767eaa9a400d6d5580a3ff9da2d"
+    }
+  },
+  "conclusion": "The original probe is insufficient for private/unpublished type claims in either direction. Actual leading readiness guards enforce their own source property independent of this timing experiment.",
+  "corrects": {
+    "path": "assurance/host-initializer-exposure-finding.json",
+    "sha256": "ac6ce55a9c802f7dc14324491e3877019c73c7369763d8bd15b325d12559aa42"
+  },
+  "preservation": "The original finding and its exact script/log remain byte-identical; no M5.2 completion follows.",
+  "schema": "leancage-host-finding-correction-v1",
+  "scope": "No object constructors, engine, VM, workload, GC object enumeration or private native storage access.",
+  "source_order": "The actual host_initialize looks up pathlib.Path before creating Workspace/Cancellation/Outcome. A synchronous GC probe inside that awaited lookup observes no current native types.",
+  "status": "append-only timing correction; original pre-PyInit interpretation withdrawn",
+  "supported_original_observation": "The three types are visible while module_from_spec has not returned. The original callback did not observe PyInit completion or its host_initialized flag.",
+  "synchronous_callback_probe": {
+    "causal_boundary": "gc callback ran synchronously inside the Path attribute callback awaited by actual host_initialize before that callback returned",
+    "events": [],
+    "extension": "/localhome/milikic/sandbox-formalization/.tools/host/gateway/initialization-runtime/python/leancage/_host.abi3.so",
+    "gc_callback_phases": [
+      "start",
+      "stop"
+    ],
+    "retained_classes_match_returned": {},
+    "scope": "read-only public weak subclass-registry probe in an initializer callback; no object constructors, engine, VM or workload",
+    "sha256": "fd8285d35b13fb39c9f31a0d64d5753bdef38c26374f16df8cc65ed8072901ef"
+  },
+  "unsupported_original_claim": "Type visibility before native PyInit returned was not established; module_from_spec can perform callback-capable work after PyInit completes."
+}
