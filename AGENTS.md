@@ -5,9 +5,10 @@
 Read [README](README.md), [§RM-roadmap.m5.next](docs/roadmap.md#m5next-current-assignment),
 [§FS-linux-product](docs/functional-spec/FS-linux-product.md#fs-linux-product-a-reusable-linux-workspace-with-an-explicit-trust-boundary), the assigned contract, and
 [§REQ-proof-integrity](docs/requirements/REQ-proof-integrity.md#req-proof-integrity-never-substitute-a-weaker-claim-for-an-unfinished-proof) before changing code.
-The current assignment is the host boundary guarantee in
-[§AR-application-verification.host](docs/architecture/AR-application-verification.md#host-safe-host-boundary-for-arbitrary-vm-output), followed automatically by the remaining M5
-deliveries. The accepted entry guarantee is recorded in [§FS-assurance.entry](docs/functional-spec/FS-assurance.md#entry-entry-worker-body-and-route-evidence) and
+The current assignment is the host engine guarantee in
+[§AR-host-boundary.acceptance.engine](docs/architecture/AR-host-boundary.md#acceptanceengine-m52-closes-on-the-engine-guarantee-and-both-callers), the first part of
+[§AR-application-verification.host](docs/architecture/AR-application-verification.md#host-safe-host-boundary-for-arbitrary-vm-output) under [§DA-host-delivery](docs/decisions/architectural/DA-host-delivery.md#da-host-delivery-deliver-the-host-boundary-in-two-parts-engine-first), followed automatically by
+the remaining M5 deliveries in the order of [§RM-roadmap.m5.next](docs/roadmap.md#m5next-current-assignment). The accepted entry guarantee is recorded in [§FS-assurance.entry](docs/functional-spec/FS-assurance.md#entry-entry-worker-body-and-route-evidence) and
 `assurance/entry-acceptance.json`. The reusable product at `92367a5` is the working
 baseline; [M4-CONTINUE.md](M4-CONTINUE.md) preserves that completed contract.
 The planning revision of 2026-11-03 separates the usable product, complete

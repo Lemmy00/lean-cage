@@ -320,6 +320,7 @@
     "assurance/host-transport-build.log.gz": "ae22730822c9d58a7b1f96e79dfa09c0c9d036fd3be4ce2c5070445000a52839",
     "assurance/host-transport-review.json": "5e2b629518b59dbee01828a112ea37df23458dcd0b7e86963b8bd7d8c6031efd",
     "assurance/host-update-20261115-host-build.gz": "89ff1cf44c79221c4ac201aa07a441c9f92546a322cf6b101a3b3cbb802a2da8",
+    "assurance/host-update-20261115-product-gate.gz": "ab3ca6cff0771b55f250eb352108a911249dab621f056cd7f9fb7ea6702c52a6",
     "assurance/host-validation-source-aggregate-kernel.gz": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
     "assurance/host-validation-source-evidence-before-eof.json.gz": "8d95e15757bf0fa506b845d589d1adf3d058afad090450bcec8d14fa218b4c0f",
     "assurance/host-validation-source-evidence.json": "0304efe08a71598c1307cdb346be0f3fd2a366fa790922970bc6e680b8955103",
@@ -386,10 +387,11 @@
     "sha256": "c1e32b3ba4ea3d59d1ba9a3291d636436d7f4fc7ba4d6089e9102a7a4cdbcd4c"
   },
   "remaining": [
-    "Compose actual transport source/SDK/child/foreign provenance and canonical C reader bytes.",
-    "Compose original initialization/reference history and the whole validation/copy/Path/public return.",
-    "Complete the cumulative filesystem custody and installed-content interval producers.",
-    "Instantiate surviving activation and corrected/source-restricted descriptor origins; integrate public callers and run final identified host acceptance."
+    "M5.2: write the final engine statement and one closing statement per open item; build one model of the contracts that statement depends on.",
+    "M5.2: complete ordinary open/allocation and child namespace custody, the cumulative custody execution and installed-content interval producers, and compose the whole-execution engine theorem.",
+    "M5.2: repair the gateway signal target, route both public callers through the engine and run the final identified host engine acceptance.",
+    "M5.2b, later delivery: transport provenance to the canonical C reader bytes, original initialization/reference history, the whole validation/copy/Path/public return, surviving activation and corrected or source-restricted descriptor origins.",
+    "M5.5, later delivery: publisher authentication of stored results."
   ],
   "reviewed_metadata_updates": {
     "assurance/host-ownership-status.json": {
@@ -420,10 +422,10 @@
   "source_eof_amendment": "assurance/host-source-eof-amendment.json",
   "sources": {
     ".github/workflows/check.yml": "a1ac31fc7b7f7591810105970f75836b7e622755dc7a6bd1a5ec28e3a550f90c",
-    "M5-CONTINUE.md": "b824379a3be1b6200c925f44bf790755379f0838aaff87ed85f39d6da5709394",
-    "docs/architecture/AR-host-boundary.md": "cbebe5206b5008d88de5f2e74c8a30f95f18f75ed36f7b0cf1656f8b0736b8f7",
+    "M5-CONTINUE.md": "fff682bd52a62d573d73bd78e24c3868c7a39757f777897c85e1366602e9ae5b",
+    "docs/architecture/AR-host-boundary.md": "056007a7f1ecb72d7e6912823b4a9a53529853098daec9bc1a9d494d6e64d5a9",
     "docs/decisions/architectural/DA-host-engine.md": "43a6d1e4b4a240af659ba221c662e6d589bb12d83a129c95325f601ea075b663",
-    "docs/functional-spec/FS-host-boundary.md": "ec03bc5c9559619a0be6132ed6b6145f3f0c275a9dce5c6f016c8e602992f4eb",
+    "docs/functional-spec/FS-host-boundary.md": "72dc53a328dd9129bf6358a879e37f7c8e49ba3156512dc6d320f10380a1005f",
     "docs/reviews/host-boundary-integration.md": "3bc1198ebf690977557df1b2ae28725f1e86afbca129857c081b34e8cea0b6e8",
     "host/HostMain.lean": "2953da4b59ad18f247d57f877779bfe35a8282e901ae05a74cecbb79c76f00ef",
     "host/LeanCageHost.lean": "7bfebd3c7babb49edd06559a4476e0a42c379673b0ce3f96c36db540c4603b15",
@@ -2452,7 +2454,7 @@
     "host_package": "lake build HostVerification passed (630 jobs) after correcting the stale root-list module name. All sources remained fixed; affected proof object refresh was followed by exact query comparison.",
     "public_product_and_foundation": "scripts/check_product.sh passed: foundation audits and 24+21+34+32 integration/product tests; archived VM evidence checked without replay.",
     "rocq_source": "Complete 1295-source replay, no exclusions/failures/drift, aggregate and independent kernel pass.",
-    "update_2026_11_15": "Working-tree update after the 2026-11-10 checkpoint: lake build HostVerification passed (651 jobs); incremental source replay source-replay-20261115T015222128095Z completed 1339 sources (1299 maintained, 1295 reused, 44 newly compiled) with no exclusions, failures or drift, aggregate and independent kernel check passed; the uncommitted obligation-record hash bindings were rechecked. The validation-loop, dictionary-iteration-load, workspace-outcome-null and channel exec-cut modules are kernel-checked by that build and replay but have no statement review record yet. The negative checkpoint fixtures of the previous checkpoint were not repeated; the checker is unchanged.",
+    "update_2026_11_15": "Working-tree update after the 2026-11-10 checkpoint: lake build HostVerification passed (651 jobs); incremental source replay source-replay-20261115T015222128095Z completed 1339 sources (1299 maintained, 1295 reused, 44 newly compiled) with no exclusions, failures or drift, aggregate and independent kernel check passed; the uncommitted obligation-record hash bindings were rechecked. The validation-loop, dictionary-iteration-load, workspace-outcome-null and channel exec-cut modules are kernel-checked by that build and replay but have no statement review record yet. The negative checkpoint fixtures of the previous checkpoint were not repeated; the checker is unchanged. scripts/check_product.sh passed on the final tree.",
     "validation_source": "114 declarations/11 interfaces, full types/transitive assumptions, independent kernel pass. Six accepted baseline foundations only; no UIP.",
     "vm_acceptance": "No final host-candidate VM acceptance; candidate remains optional and the documented baseline callers remain usable."
   },
@@ -2462,6 +2464,7 @@
     "assurance/host-active-checkpoint-negative-tests.gz": "416f1b6d0f7bb8b7e3a14217f7cc6a915368edcb1063306c3b6f2446061acebe",
     "assurance/host-active-checkpoint-product-gate.gz": "53c1b6335db5de9c3239059bfd1e6f400cc7c2e6700f1195c6a782c8d235695c",
     "assurance/host-active-checkpoint-product-input-reuse.gz": "a2e27759445a71de23112774173939ea5b69398a41cb00664e1ec572f26ca508",
-    "assurance/host-update-20261115-host-build.gz": "89ff1cf44c79221c4ac201aa07a441c9f92546a322cf6b101a3b3cbb802a2da8"
+    "assurance/host-update-20261115-host-build.gz": "89ff1cf44c79221c4ac201aa07a441c9f92546a322cf6b101a3b3cbb802a2da8",
+    "assurance/host-update-20261115-product-gate.gz": "ab3ca6cff0771b55f250eb352108a911249dab621f056cd7f9fb7ea6702c52a6"
   }
 }

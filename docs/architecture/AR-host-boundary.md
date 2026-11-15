@@ -731,3 +731,77 @@ archived evidence. A source replay additionally freezes its inventory and checks
 copied source and compiled object identities through the independent kernel
 check. Cache collisions and failed checks keep their diagnostics. Neither
 metadata validation nor a partial checkpoint establishes delivery acceptance.
+
+[§DA-host-delivery](../decisions/architectural/DA-host-delivery.md#da-host-delivery-deliver-the-host-boundary-in-two-parts-engine-first) divides this acceptance into two deliveries. The engine
+delivery closes first and is used by both callers. The gateway delivery then
+completes the caller part of [§FS-host-boundary.acceptance](../functional-spec/FS-host-boundary.md#acceptance-prove-and-consume-the-real-host-implementation).
+
+### acceptance.engine: M5.2 closes on the engine guarantee and both callers
+
+M5.2 is accepted when all of the following hold for `Entrypoint.run`, the
+program that the `leancage-host` executable interprets.
+
+1. **Final statement first.** One Lean proposition states the guarantee over
+   the existing journal types for returned, failed and lost executions, for
+   every request packet, VM byte stream and permitted interference:
+   - every create, write, unlink and attribute change by the engine targets an
+     object born in this request's own run, validator or staging directory;
+     the only other namespace change is the nonreplacing rename of that stage
+     to its final name under the retained results parent; no existing binding
+     is replaced or removed;
+   - inputs are read only through retained no-follow descriptors, the snapshot
+     identity describes the acknowledged bytes, and the copy budgets hold;
+   - a `complete` answer has the properties established by
+     `CallerProofs.actual_application_complete`;
+   - a failed or uncertain publication leaves the known report fields
+     unchanged and removes nothing after a rename attempt;
+   - retrieval returns stored content only after its binding, hierarchy,
+     bound, digest and marker checks;
+   - bytes committed to the response descriptor are a prefix of the canonical
+     encoding of the engine's answer.
+
+   Its premises are exactly those in [§DA-host-delivery.engine](../decisions/architectural/DA-host-delivery.md#engine-what-m52-proves-and-which-premises-it-names). Each open item
+   assigned to M5.2 has a named closing statement that this proposition uses.
+2. **Contracts have a model.** One concrete model satisfies every contract
+   structure the final statement depends on. That model exhibits a useful
+   complete request, a rejected request and an execution with a lost reply.
+3. **Proof and audit.** The proposition is kernel-checked. Its complete type
+   and transitive axioms are recorded under [§FS-assurance.evidence](../functional-spec/FS-assurance.md#evidence-required-claim-record).
+4. **Callers.** The public CLI and `Workspace` use the engine by default. The
+   earlier Python snapshot, decoder and publisher leave the public path. The
+   recorded gateway signal-target defect is repaired before this change.
+5. **Acceptance run.** The identified bundle passes the public acceptance
+   scenarios through the default path in the disposable VM. The run adds host
+   cases for private-input aliases, duplicate report keys, forged, truncated,
+   trailing and duplicate frames, rejected snapshot links and special files,
+   exceeded copy and export bounds, an existing publication target, storage
+   failure and channel loss.
+6. **Claim record.** The record advertises the engine guarantee with its
+   premises. It lists the gateway as a tested, unproved native adapter and
+   lists the gateway regions that are already checked separately.
+
+Items 1 and 2 precede further supporting proofs. M5.2 does not include the
+gateway source proof or publisher authentication of stored results.
+
+### acceptance.gateway: M5.2b proves the native caller and supplies the engine premises
+
+M5.2b is accepted when the gateway source proof establishes, for the actual
+public functions of `linux/host_python.c`:
+
+1. the caller's policy bytes, paths, optional stdin, output destination,
+   cancellation token and timeout reach the request packet unchanged, with the
+   specified type and size errors;
+2. the engine is started with the fixed arguments, environment and the three
+   private descriptors of the engine-start premise, and the gateway's own code
+   follows host-code profile 1;
+3. the bytes parsed by the gateway are the bytes the same engine invocation
+   committed, and the returned `Outcome`, observation and CLI output project
+   that response, including error, loss and cancellation paths;
+4. memory, descriptor and reference ownership hold on every path, on the
+   repaired source-owned reference ledger and with a model that satisfies the
+   CPython and libc contracts together.
+
+It starts from its written final statement and that model, uses the
+lifetime-safe signaling established by M5.4, and resolves the recorded
+runtime-activation and descriptor-origin obligations. Its claim record removes
+the gateway from the trusted adapter list.

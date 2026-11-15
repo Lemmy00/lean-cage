@@ -37,7 +37,7 @@ below and [§FS-assurance.product](functional-spec/FS-assurance.md#product-produ
 |---|---|---|
 | M0–M3, preserved | Existing specifications, filter/lifecycle proofs and offline VM workspace | Their accepted profile records remain inputs to the product |
 | M4 | Reusable Linux product with verified executable policy/reporting core | Caller-supplied shell/Python runs through root build/check/run/report, reusable library, functional layout, exact core proof inventory and trusted component manifest |
-| M5, planned | Complete application control-path verification in five named deliveries | Guest entry, host boundary, policy authority, owned lifetime and justified public observations compose under primitive platform contracts |
+| M5, planned | Complete application control-path verification in six named deliveries | Guest entry, host engine boundary, policy authority, owned lifetime, the proved Python gateway and justified public observations compose under primitive platform contracts |
 | M6 | Platform proofs, confidentiality and the seLe4n backend | Selected Linux/runtime assumptions are replaced by proofs; a named leakage property or a separate seLe4n execution profile is established |
 | M7, starts after M4 | Supported releases and maintenance | Installable identified bundle, supported environment, update/recovery procedure, proof and test evidence matching its advertised claims |
 
@@ -392,7 +392,9 @@ commits back into `main` and push. Preserve other active work and never force-pu
 
 ## m5: Verify the complete application control path
 
-**Status: M5.1 complete; M5.2 is the current delivery.** Establish
+**Status: M5.1 complete; M5.2 is the current delivery.** The planning revision
+of 2026-11-15 in [§DA-host-delivery](decisions/architectural/DA-host-delivery.md#da-host-delivery-deliver-the-host-boundary-in-two-parts-engine-first) reduces M5.2 to the host engine and assigns
+the gateway proof to its own delivery, M5.2b. Establish
 [§FS-linux-product.proofs.application](functional-spec/FS-linux-product.md#proofsapplication-the-complete-application-guarantee) across the host, VM init, Lean controller,
 native helper and returned artifacts. M5 is a verification stage with separate
 integrated deliveries. M4's elapsed time does not estimate this work:
@@ -401,10 +403,11 @@ M4 integrated a working implementation; M5 proves its application behavior.
 | Delivery | Concrete guarantee and consumer | Dependencies and acceptance |
 |---|---|---|
 | M5.1 — Proved guest entry | The actual launch path reaches exec only with the required credentials, handles, filter and arguments; failure prevents entry. Consumed by the full authority/lifetime argument. | Complete, 2026-11-09: same-source caller/worker proof, closed useful execution, audited strict connection and identified public acceptance. Prepared-run producers retain their assigned scopes. [§AR-application-verification.admission](architecture/AR-application-verification.md#admission-fail-closed-native-guest-admission) |
-| M5.2 — Safe host boundary | Host snapshots and publication stay within owned paths and bounds for arbitrary VM output; accepted transport has consistent request/artifact identities. Consumed by every caller and later composition. | Independent of inner-VM correctness. Prove the executable decisions and their effect adapter; cover malformed bytes, unsafe paths and storage loss. [§AR-application-verification.host](architecture/AR-application-verification.md#host-safe-host-boundary-for-arbitrary-vm-output) |
+| M5.2 — Safe host engine boundary | The host engine keeps snapshots and publication within its own freshly created paths and the stated bounds for arbitrary VM output; accepted transport has consistent request/artifact identities. Consumed by both public callers, which use the engine by default, and by later composition. | Independent of inner-VM correctness. Prove the whole-execution engine theorem from its written final statement and a model of its contracts; cover malformed bytes, unsafe paths and storage loss; switch the default callers; one affected public acceptance. Engine part of [§AR-application-verification.host](architecture/AR-application-verification.md#host-safe-host-boundary-for-arbitrary-vm-output), accepted under [§AR-host-boundary.acceptance.engine](architecture/AR-host-boundary.md#acceptanceengine-m52-closes-on-the-engine-guarantee-and-both-callers) |
 | M5.3 — Policy-authorized setup | Caller bytes determine the actual argv, limits, snapshots, objects and run authority established before entry. Supplies M5.1's preparation premises. | Uses M5.1/M5.2. Prove byte interpretation, controller/VM handoff, native workspace construction and real argument/ownership producers. [§AR-application-verification.authority](architecture/AR-application-verification.md#authority-policy-authorized-workspace-construction) |
 | M5.4 — Owned lifetime and limits | Supervision/cancellation targets only owned scopes, enforces the stated limits and justifies exit/cleanup observations across helper, VM and host. | Uses M5.3. Prove hostile interleavings and failure/loss safety; state progress assumptions separately. [§AR-application-verification.lifetime](architecture/AR-application-verification.md#lifetime-owned-descendants-limits-and-cancellation) |
-| M5.5 — Justified public results | Each report field, capture and export follows from this run's observations; the whole public request composes under the named platform contracts. | Uses M5.1–M5.4; proves remaining sender/export/controller publication paths and discharges application premises at actual callers. [§AR-application-verification.composition](architecture/AR-application-verification.md#composition-justified-observations-and-the-complete-public-request) |
+| M5.2b — Proved Python gateway | The native Python extension passes the caller's inputs to the engine unchanged, starts it with the fixed arguments and descriptors, and returns its response unchanged, with memory and reference safety. Supplies M5.2's engine-start and calling-process premises; consumed by M5.5. | Split from M5.2 on 2026-11-15; follows M5.4, whose lifetime-safe signaling it uses. Starts from the preserved checked components, its written final statement and a model of the CPython/libc contracts. Caller part of [§AR-application-verification.host](architecture/AR-application-verification.md#host-safe-host-boundary-for-arbitrary-vm-output), accepted under [§AR-host-boundary.acceptance.gateway](architecture/AR-host-boundary.md#acceptancegateway-m52b-proves-the-native-caller-and-supplies-the-engine-premises) |
+| M5.5 — Justified public results | Each report field, capture and export follows from this run's observations; the whole public request composes under the named platform contracts. | Uses M5.1–M5.4 and M5.2b; proves remaining sender/export/controller publication paths and publisher authentication of stored results, and discharges application premises at actual callers. [§AR-application-verification.composition](architecture/AR-application-verification.md#composition-justified-observations-and-the-complete-public-request) |
 
 The preferred implementation direction is shared executable Lean control and
 security decisions with small primitive adapters. The entry assignment must
@@ -425,30 +428,60 @@ transitive assumptions and bindings to the code in the identified bundle.
 Compiler/runtime, precise primitive Linux behavior and the declared platform
 remain assumptions. Their implementation proofs are M6 work. Estimate subsequent
 deliveries after M5.1 demonstrates the approach on actual effectful code; the plan
-does not promise that all five have equal difficulty or fit one session.
+does not promise that all deliveries have equal difficulty or fit one session.
 
 ### m5.next: Current assignment
 
-Deliver **M5.2 — safe host boundary**, using the complete contract in
-[§AR-application-verification.host](architecture/AR-application-verification.md#host-safe-host-boundary-for-arbitrary-vm-output). Preserve the public product and the accepted
+Deliver **M5.2 — safe host engine boundary**, accepted under
+[§AR-host-boundary.acceptance.engine](architecture/AR-host-boundary.md#acceptanceengine-m52-closes-on-the-engine-guarantee-and-both-callers) as divided by [§DA-host-delivery](decisions/architectural/DA-host-delivery.md#da-host-delivery-deliver-the-host-boundary-in-two-parts-engine-first). The
+complete host contract stays [§AR-application-verification.host](architecture/AR-application-verification.md#host-safe-host-boundary-for-arbitrary-vm-output); its caller
+part is the later delivery M5.2b. Preserve the public product and the accepted
 entry proof in [§FS-assurance.entry](functional-spec/FS-assurance.md#entry-entry-worker-body-and-route-evidence); reuse matching-input validation evidence.
 
-The current assignment extends through all five deliveries in order: complete,
-validate and integrate each, then continue to the next without another permission
-step. M5.1's accepted source/ordinary records and integrated checks are identified
+The current assignment extends through the deliveries in this order: M5.2,
+M5.3, M5.4, M5.2b, M5.5. Complete, validate and integrate each, then continue
+to the next without another permission step, subject to the effort limits
+below. M5.1's accepted source/ordinary records and integrated checks are identified
 in `assurance/entry-acceptance.json`. The final public bundle is
 `77298fb97001ec611c9941962725c0e118046b35558b48d58b8b2352944ccda6`.
 Its complete entry guarantee is conditional on the explicit prepared-run and
 primitive platform contracts; policy preparation, lifetime and public observation
 producers remain assigned to M5.3–M5.5. M5.2–M5.5 are not complete.
 
-The user resumed M5.2 after the explicit pause. The earlier implementation and
-checked supporting components are preserved in [the checkpoint](../M5-CONTINUE.md).
-M5.2 remains incomplete: the actual response/channel, initializer/Outcome,
-whole custody/authentication and public acceptance connections are still required.
-The working public product remains the accepted entry baseline. Resume from the
-checkpoint's exact source/consumer joins; the checkpoint does not change delivery
-acceptance or the M5.3–M5.5 assignment.
+At the checkpoint of 2026-11-10 the engine program had its checked functional
+theorem and custody results for individual operations. The gateway proof held
+most of the remaining work, and two successive checkpoints recorded the same
+eight open ownership items. The planning revision of 2026-11-15 therefore
+reduces M5.2 to the engine. [The checkpoint](../M5-CONTINUE.md) lists the preserved work, the items
+moved to M5.2b and M5.5, and the exact restart point. The working public
+product remains the accepted entry baseline until M5.2 switches its callers.
+
+The remaining M5.2 work, in order:
+
+1. Write the final engine statement and one closing statement for each open
+   item, before further supporting proofs. Limit: four working hours. This
+   step settles whether the statement can use the existing journal types with
+   the premises of [§DA-host-delivery.engine](decisions/architectural/DA-host-delivery.md#engine-what-m52-proves-and-which-premises-it-names). If it cannot, report the obstacle
+   and the options.
+2. Build one model that satisfies every contract the statement depends on,
+   with a useful, a rejected and a lost-reply execution. A contract law that
+   the model cannot satisfy is a finding; repair it before continuing.
+3. Finish custody for the remaining individual engine operations: ordinary
+   opens and allocation, and the namespace effects of the validator and VM
+   child processes.
+4. Combine the per-operation results into the whole-execution custody theorem
+   and compose it with `CallerProofs.actual_application_complete`.
+5. Repair the recorded gateway signal-target defect, route the CLI and
+   `Workspace` through the engine by default, and remove the earlier Python
+   host implementation from the public path.
+6. Run the acceptance of [§AR-host-boundary.acceptance.engine](architecture/AR-host-boundary.md#acceptanceengine-m52-closes-on-the-engine-guarantee-and-both-callers) on the identified
+   bundle, record the claim and continue with M5.3.
+
+Progress is the number of closing statements proved. Counts of supporting
+components, checked records or proof files do not measure it. After each eight
+working hours on steps 2–4 without a newly proved closing statement, stop and
+report the obstacle, the options and a recommendation to the user. Do not
+extend the gateway proof or the publisher-authentication proof inside M5.2.
 
 The entry route decision under [§DA-entry-worker](decisions/architectural/DA-entry-worker.md#da-entry-worker-use-a-fresh-single-threaded-lean-entry-image) was made within the first four
 working hours and carried through the complete entry acceptance. For the host,

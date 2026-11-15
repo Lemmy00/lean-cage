@@ -349,3 +349,16 @@ and hostile-frame/snapshot/export/storage acceptance. Kernel-check full theorem
 types and transitive assumptions; keep complete records under
 [§FS-assurance.evidence](FS-assurance.md#evidence-required-claim-record). VM reaping and truthful inner observations retain their
 assigned lifetime/composition producers until those deliveries establish them.
+
+This acceptance is reached in two deliveries recorded in [§RM-roadmap.m5](../roadmap.md#m5-verify-the-complete-application-control-path). The
+host engine delivery proves the engine program and its filesystem effects for
+whole executions and makes both public callers use that engine by default. It
+names the engine's start conditions and the calling process's host-code profile
+as premises. The gateway delivery proves native caller extraction, argument
+construction, sequencing, errors and result projection, and supplies those
+premises. Until it is accepted, the gateway is a tested native adapter listed
+under [§FS-linux-product.trust](FS-linux-product.md#trust-platform-assumptions-for-the-initial-product), and no claim describes the Python library or CLI
+wrapper as verified. The engine delivery proves that retrieval performs the
+checks of [§FS-host-boundary.publication](FS-host-boundary.md#publication-preserve-observations-through-storage-and-retrieval). That a stored result accepted by those
+checks was written by this installation's publisher is proved with retrieval
+provenance in the final composition delivery.

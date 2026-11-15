@@ -18,3 +18,4 @@
 | [§DA-entry-worker](DA-entry-worker.md#da-entry-worker-use-a-fresh-single-threaded-lean-entry-image) | Fresh single-threaded Lean worker, real VM route evidence and remaining caller proofs |
 | [§DA-metadata-handles](DA-metadata-handles.md#da-metadata-handles-make-the-bounded-readers-descriptor-lifetime-executable) | Explicit metadata open/read/close without finalizer ownership assumptions |
 | [§DA-host-engine](DA-host-engine.md#da-host-engine-use-a-small-native-python-gateway-and-a-separate-lean-host-image) | Native Python gateway to the proved Lean host application |
+| [§DA-host-delivery](DA-host-delivery.md#da-host-delivery-deliver-the-host-boundary-in-two-parts-engine-first) | Deliver the host boundary in two parts: the host engine first, the Python gateway proof as its own delivery |

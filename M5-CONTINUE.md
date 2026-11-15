@@ -1,14 +1,16 @@
-# M5 continuation — resumed M5.2 implementation
+# M5 continuation — M5.2 reduced to the host engine
 
 M5.1 is complete and integrated. M5.2 is **partial implementation with checked
-components**, resumed at the user's explicit request after the committed pause.
-M5.3, M5.4 and M5.5 remain
-assigned and incomplete. Resume M5.2 before advancing to those deliveries.
-The acceptance contract remains [§AR-application-verification.host](docs/architecture/AR-application-verification.md#host-safe-host-boundary-for-arbitrary-vm-output) and
+components**. The planning revision of 2026-11-15 in [§DA-host-delivery](docs/decisions/architectural/DA-host-delivery.md#da-host-delivery-deliver-the-host-boundary-in-two-parts-engine-first) reduces
+M5.2 to the host engine guarantee. It assigns the gateway proof to M5.2b and
+publisher authentication of stored results to M5.5. M5.3, M5.4, M5.2b and M5.5
+remain assigned and incomplete. Finish M5.2 before advancing to those
+deliveries. Its acceptance contract is [§AR-host-boundary.acceptance.engine](docs/architecture/AR-host-boundary.md#acceptanceengine-m52-closes-on-the-engine-guarantee-and-both-callers). The
+complete host contract remains [§AR-application-verification.host](docs/architecture/AR-application-verification.md#host-safe-host-boundary-for-arbitrary-vm-output) and
 [§FS-host-boundary.acceptance](docs/functional-spec/FS-host-boundary.md#acceptance-prove-and-consume-the-real-host-implementation); component checks are not delivery acceptance.
 
 The existing public CLI/library and accepted entry guarantee remain the working
-baseline. The new native Python gateway and separate executable Lean host engine
+baseline. The native Python gateway and separate executable Lean host engine
 are a candidate, reached through `leancage.native`; they have not replaced the
 default public caller. No complete safe-host/public-result guarantee is claimed.
 
@@ -24,7 +26,12 @@ The architecture, behavior and route decisions are in [§AR-host-boundary](docs/
 source connections and withdrawn historical assumptions.
 
 The following records identify checked current components and their remaining
-inputs, rather than independent completed deliveries:
+inputs, rather than independent completed deliveries. Under [§DA-host-delivery](docs/decisions/architectural/DA-host-delivery.md#da-host-delivery-deliver-the-host-boundary-in-two-parts-engine-first)
+the root-handle, response-source, inherited-channel, file-copy and
+cleanup-source records are inputs to M5.2. The parser, caller, initializer,
+Outcome, channel-invocation, observation, callback and validation records are
+inputs to M5.2b. The channel-source record divides: its engine source prefix
+stays with M5.2, and its native reader and C receive producers go to M5.2b.
 
 - `assurance/host-parser-source-review.json`: actual recursive C parser, all
   supported numeric/container branches, alias-aware aggregate ownership and
@@ -111,47 +118,81 @@ Detailed ownership and response obligations remain in
 original scope. The final checkpoint validation inventory belongs in
 `assurance/host-checkpoint.json`.
 
-## Remaining completion work
+## Remaining M5.2 work on the host engine
 
-1. **Connect the physical response to the same caller and decoded value.** Join
-   the actual pair birth, source leases, per-operation IPC/OFD lifetime/custody,
-   monotone partial writes and caller receives. Derive exclusive read/discard
-   authority from the actual source history, retaining other-reader/discard cases
-   until excluded. Canonical typed framing/prefix uniqueness is now checked in
-   `GatewayFraming` and `GatewayResponseFraming`; the actual writer view and parser
-   heap supply the tag restriction. `GatewayDecodedFraming` consumes the real
-   call72 parse result while preserving its source ticket, graph and descriptor.
-   Supply its actual common-byte-prefix input from the physical channel history;
-   broad `SourceEncoded` alone intentionally permits ambiguous scalar tags.
-2. **Finish initialization, public extraction and Outcome ownership.** Consume
-   the derived SDK callback source/global-write authority in the cumulative
-   current regions and reference histories. Join Outcome allocation with copy-credit adoption at
-   the actual older stack, derive the data-cell/result bindings, and compose the
-   real 14-field/dictionary-copy/Path/observation callers and getters. Do not
-   assume stable callback-writable globals or an empty retry state.
-3. **Close filesystem custody and authenticated publication.** The selected
-   `FilesystemCommitGuarantee.actual_authenticated_commit` consumer now joins
-   those actual source/current-root/custody inputs. Complete the whole actual
-   global custody/commit/key-origin history, including aliases, uncertain commit,
-   cancellation, hostile output, failed operations and lost acknowledgements.
-4. **Compose and accept the delivered host guarantee.** Join original argument
-   extraction, request/header/stream/ledger producers, EOF, closes,
-   Save/Reap/Restore, status/result/stack-free and Outcome projection on the same
-   run, with all error/loss cases. Integrate both documented public callers only
-   after the proof connections hold. Run the required final identified bundle
-   acceptance, including the affected hostile VM/snapshot/export/storage cases.
+Work in this order. [§RM-roadmap.m5.next](docs/roadmap.md#m5next-current-assignment) carries the same list and the effort
+limits.
 
-These are substantial end-to-end proof/integration obligations. No reliable
-percentage or completion-time estimate follows from the number of checked
-components. Final M5.2 acceptance has not passed or been claimed.
+1. **Write the final statement and the closing statements.** State the engine
+   proposition of [§AR-host-boundary.acceptance.engine](docs/architecture/AR-host-boundary.md#acceptanceengine-m52-closes-on-the-engine-guarantee-and-both-callers) over the existing journal
+   types, with the premises of [§DA-host-delivery.engine](docs/decisions/architectural/DA-host-delivery.md#engine-what-m52-proves-and-which-premises-it-names). The calling-process
+   premise already has the form of the `NativeAuthorityProfile` and
+   `NativeLookupProfile` parameters of
+   `FilesystemCommitGuarantee.actual_authenticated_commit`. For each item
+   assigned to M5.2 in the table below, write the proposition whose proof
+   closes it. Record them in `assurance/host-ownership-status.json`.
+2. **Build the model.** Instantiate `Kernel.Contract` and every other contract
+   structure the final statement takes as a parameter with one concrete
+   filesystem and process model. Exhibit a useful complete request, a rejected
+   request and a lost-reply execution in it. No such instance exists yet. The
+   present witness modules cover only the pure transport, snapshot, artifact,
+   publication and VM-read components.
+3. **Finish custody for individual operations.** Every Entrypoint unlink, mkdir
+   and exclusive file open now advances the same registered publication state.
+   Complete ordinary opens and allocation, and the namespace effects of the
+   validator and VM child processes.
+4. **Prove the whole-execution theorem.** Construct the
+   `RegisteredCustodyExecution` from the actual run instead of assuming it.
+   Fold the application, child and foreign families over it, add the
+   installed-file read interval producer, and compose the result with
+   `CallerProofs.actual_application_complete` and the checked response-writer
+   prefix results.
+5. **Switch the callers.** Repair the signal-target defect recorded in
+   `assurance/host-signal-target-obligation.json` in the gateway source, with a
+   regression test. Its proof stays with M5.4. Make the public CLI and
+   `Workspace` use the engine by default, and remove the earlier Python
+   snapshot, decoder and publisher from the public path.
+6. **Accept.** Run the acceptance of [§AR-host-boundary.acceptance.engine](docs/architecture/AR-host-boundary.md#acceptanceengine-m52-closes-on-the-engine-guarantee-and-both-callers) on the
+   identified bundle in the disposable VM. Record the engine claim, its
+   premises and the gateway as a tested, unproved native adapter.
+
+No reliable completion-time estimate follows from the number of checked
+components. Progress is the number of closing statements proved. The stop rule
+is in [§RM-roadmap.m5.next](docs/roadmap.md#m5next-current-assignment). Final M5.2 acceptance has not passed or been claimed.
+
+## Where each open item goes
+
+| Open item and record | Delivery |
+|---|---|
+| `global-source-family-fold`, `same-birth-directory-custody`, `public-path-and-cwd-custody`, `foreign-and-backend-interference` in `assurance/host-ownership-status.json` | M5.2, steps 3 and 4. Their fixed-key and exposure consumers go to M5.5 |
+| `joint-usefulness-and-acceptance` in the same record | M5.2, steps 2 and 6, for the engine contracts |
+| `native-handoff-coupling`, `native-callback-operation-coverage` in the same record | Named premises of M5.2; produced by M5.2b |
+| `key-and-marker-observation-origin` in the same record | M5.5. M5.2 proves only that retrieval performs its checks |
+| The four `remaining` entries of `assurance/host-response-obligations.json`: engine writer to native reads, `host_outcome_from` validation and copies, observation and getter dispatch, initialized class and reference authority | M5.2b. The engine half is checked and stays in M5.2: committed response bytes are a prefix of the canonical encoding |
+| Conversion from the contradictory root-lease contract in `assurance/host-reference-ownership-amendment.json` | M5.2b |
+| `assurance/host-runtime-activation-obligation.json`, `assurance/host-descriptor-origin-obligation.json` | M5.2b |
+| `assurance/host-signal-target-obligation.json` | Source repair in M5.2 step 5; proof in M5.4 |
+
+The two status records keep their recorded wording. Their next update adds the
+closing statements of step 1 and these delivery assignments.
 
 ## Exact restart point
 
-Start with the physical channel/canonical framing connection and selected-commit
-current root consumer above, while the Outcome/initializer lane composes its
-actual caller. `GatewayReferenceParserComplete.gateway_reference_actual_parser_complete`
+Start with step 1 above. The checked interfaces to reuse for M5.2 are
+`CallerProofs.actual_application_complete` for the functional result,
+`FilesystemCommitGuarantee.actual_authenticated_commit` for the selected commit,
+the joint unlink, mkdir and exclusive-open modules for individual operations,
+and `GatewayFraming.actual_response_prefix` for the response writer. Do not
+reopen their unchanged proofs. The proof step recorded before the revision is
+ordinary open/allocation and child namespace dispatch, followed by the
+cumulative same-journal custody execution.
+
+For M5.2b, `GatewayReferenceParserComplete.gateway_reference_actual_parser_complete`
 and `GatewayResponseDecoded.actual_exchange_decodes_response` are the checked
-parser/consumer interfaces to reuse. Do not reopen their unchanged numeric proofs.
+parser/consumer interfaces to reuse. Do not reopen their unchanged numeric
+proofs. That delivery starts with its final statement, the conversion from the
+contradictory root-lease contract and one model of the CPython and libc
+contract records.
 
 Historical unfinished proofs are preserved as non-acceptance text drafts in
 `verification/host/drafts/`. The framing draft has been superseded by the checked
@@ -220,3 +261,10 @@ boundaries passed. The previous exact records are preserved in
 fingerprints of the workspace theorem record changed, with every theorem,
 assumption, predecessor and scope field preserved. This is baseline product
 validation, not final host-candidate acceptance.
+
+On 2026-11-15 the modules for preparing and exclusive-open custody, descriptor
+origins, presentation and validation passed the integrated
+`lake build HostVerification` (651 jobs) and the incremental source replay
+`source-replay-20261115T015222128095Z`: 1339 sources, no exclusions or drift,
+aggregate and independent kernel check. This is component validation, not
+delivery acceptance.
