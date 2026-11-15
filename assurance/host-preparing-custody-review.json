@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "status": "checked-implementation",
+  "delivery": "M5.2",
+  "accepted_security_delivery": false,
+  "contract": [
+    "FS-host-boundary.ownership",
+    "FS-host-boundary.lookup",
+    "FS-host-boundary.publication",
+    "AR-host-boundary.primitives"
+  ],
+  "consumer": "The cumulative same-journal RegisteredPublicationState and JointPublicationPrefix fold; no public RequestGuarantee is claimed yet.",
+  "result": "Every actual Entrypoint mkdir internally derives its real run/validator, public traversal, fresh stage or interrupted-fill source. Interrupted fills derive the same original registered root/current binding, held references, stat/probe comparison and nested parent, without a future helper result.",
+  "declarations": [
+    {
+      "declaration": "LeanCage.Host.Kernel.actual_source_mkdir_publication_joint",
+      "full_type_sha256": "765fcd9235f5f88a2aa771dcf7379131d0e4fcbbd8e6aa19f117b5c3a575868c",
+      "transitive_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "LeanCage.Host.Kernel.actual_preparing_mkdir_joint",
+      "full_type_sha256": "38856f6b9e377eeedfd9badb66f6e9e181950be7f1922677697f808d637746a6",
+      "transitive_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "LeanCage.Host.Kernel.actual_preparing_root_from_resources",
+      "full_type_sha256": "3174bfca936bb219db6523808fc5fe93ab0e95b81539532e2d86ed56d0cb6383",
+      "transitive_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "declaration": "LeanCage.Host.Publication.preparing_mkdir_frontier",
+      "full_type_sha256": "3c6f1d615e0a7e7878c23298633dd320f7d50e7addd1eaded5efdf9a02bc551d",
+      "transitive_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "inputs_sha256": {
+    "verification/host/FilesystemPreparingSource.lean": "edb323ab5ed0f93a4d0c038f32b0a4b2d8881c2d333b688bc9b0a384f6a6d88b",
+    "host/.lake/build/lib/lean/FilesystemPreparingSource.olean": "8969d151d631cb177e4afd86e01f628bde3af62484b2670e035cf7358b636e5d",
+    "verification/host/FilesystemPreparingRoot.lean": "215a163810fd5349dd013b912d9fc97dfd11cd0aa0241c0309782f29fad1bff9",
+    "host/.lake/build/lib/lean/FilesystemPreparingRoot.olean": "a6ed54d22172117bfc4336a45bb7759ae9a607d00c779b47b6d78bb5774938c4",
+    "verification/host/FilesystemPreparingObservations.lean": "d65368a068f2e770380fc82fb62b72440cbe396c702487026fc1eb77bd8e7576",
+    "host/.lake/build/lib/lean/FilesystemPreparingObservations.olean": "9bd8ccbed29453a7c71846f3becc9a2a0eba83bd40ea06d1743ecd080f381ad0",
+    "verification/host/FilesystemPreparingSplits.lean": "aacc862ad617d66cc3f13e46765400a9a95b2eb4be8a60db0881604186d3395c",
+    "host/.lake/build/lib/lean/FilesystemPreparingSplits.olean": "a325baf74dc30c26692c255eeecd74249ea0f7d2c2b0f3073ee6c3b671077399",
+    "verification/host/FilesystemPreparingParents.lean": "e08ef61fae814b6e4c34699f850cedba2e56086ff68f1de4febe959ee1d4575e",
+    "host/.lake/build/lib/lean/FilesystemPreparingParents.olean": "b5209e2db06dc508d6d2f2a8d0aa2f3901cc209d0812bcc49c2ad1f29dff9066",
+    "verification/host/FilesystemPreparingMkdir.lean": "9d2084860a5503c26477bbf80697a2ee5020b9016403c7fb71f093135438e224",
+    "host/.lake/build/lib/lean/FilesystemPreparingMkdir.olean": "a2be1eb5ccbb9ca2cc37f9c5e9f3b9e9f67047f843c1107e627ebb88cf60d4dd",
+    "verification/host/FilesystemPreparingMkdirJoint.lean": "316258da55ebd7f668f96fe8de93363ae941b4b33d34f0509133fbf25af38c42",
+    "host/.lake/build/lib/lean/FilesystemPreparingMkdirJoint.olean": "14e0d2b07441aac2d3de469910e3626b959be5f995bc00df6b7cbc7938d8f50c",
+    "verification/host/FilesystemJointMkdirs.lean": "f88b2cb15d7c78042bd405c4e383df2ec3cd4843d4589a78e43842825ae6fb41",
+    "host/.lake/build/lib/lean/FilesystemJointMkdirs.olean": "242785043eee969e6868256ec0d00e6f0e77214d3373a49b05cfff365dabb37a",
+    "verification/host/PublicationProofs/MkdirFrontier.lean": "6e6e5e9420b2ade77ba57765f636bf984d1c86569d636675f89d81c920c534be",
+    "host/.lake/build/lib/lean/PublicationProofs/MkdirFrontier.olean": "778f7113fa46d9ef00016734907229b2a9cc899335d88901c3aadf913735c519"
+  },
+  "artifacts_sha256": {
+    "assurance/host-preparing-custody-preparing-review.lean.gz": "3c1ab690927270ddcfc7228d6c4699376f5c2810078cf9a5719e2cd43ebf4b20",
+    "assurance/host-preparing-custody-preparing-review.log.gz": "6189a79940200ddfb93e40003780b9957da0b3b16ba8f147ef34d3e8faf06758"
+  },
+  "validation": {
+    "focused_builds": "All nine ordinary source modules compiled with pinned lake env lean, autoImplicit=false and warningAsError=true. Logs .tools/host/recorded-backend/.",
+    "statement_review": "Four complete explicit/universe-qualified theorem types and transitive axiom closures queried successfully; no new axioms, sorry or native_decide.",
+    "runtime_changes": false,
+    "affected_aggregate": "Required once on final relevant cumulative inputs; scoped review is not integrated M5.2 acceptance."
+  },
+  "assumptions": [
+    "Prior constructed RegisteredPublicationState and JointPublicationPrefix are induction inputs, to be produced by the complete mutual application/native/foreign/child execution.",
+    "Exact ActorJournal and recording-indexed NativeExternalJournal, NativeAuthorityJournal, source ordinal snapshots, profile-1 authority/lookup restrictions and initialized system-anchor observations.",
+    "Named single-operation Linux/runtime descriptor, object lifetime, directory alias, metadata, lookup, namespace and mount contracts. Numeric FD/inode equality is not lifetime injectivity."
+  ],
+  "remaining": [
+    "Construct the complete mutual recording-indexed custody execution; NativeAuthorityJournal is not a platform or whole-helper premise.",
+    "Complete actual exclusive-file/open source dispatch, controller/VMM namespace effects and compatible useful joint histories.",
+    "Derive installed-file read-interval nonmutation and fixed-key lifetime nonexposure, then compose commit exposure/authentication/retrieval/public guarantees and integrated M5.2 acceptance."
+  ]
+}

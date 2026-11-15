@@ -306,6 +306,14 @@
     {
       "module": "FilesystemJointCreation/FilesystemJointDescendants",
       "result": "Named actual run/staging/public creation and private descendant local source receipts extend the same joint birth/catalogue/ownership state. Exhaustive in-progress publisher fill/open dispatch is still required."
+    },
+    {
+      "module": "FilesystemJointMkdirs / FilesystemPreparingMkdirJoint",
+      "result": "Every actual Entrypoint raw mkdir derives run/validator creation, public ancestor, fresh stage or in-progress fill internally, then advances the SAME RegisteredPublicationState and JointPublicationPrefix. Starting stage/root/name binding, retained FD/OFD, actual stat/current probes, nested parent, component/mode and owner are application conclusions; selected errors/loss and interrupted preparation remain."
+    },
+    {
+      "module": "FilesystemJointExclusives",
+      "result": "Every actual Entrypoint exclusive file open internally selects its validator policy, streamed request archive, publisher metadata or nested export source. The selected operation derives the same original registered birth/current root, retained checked parent, actual stat/OFD and current guarded comparison, including interrupted preparation and error/lost acknowledgements."
     }
   ],
   "remaining_producers": [
@@ -323,7 +331,7 @@
     },
     {
       "id": "same-birth-directory-custody",
-      "action": "Actual selected commit and all Entrypoint run/validator/publication unlink source cases now derive same-birth/current parent/root binding and advance the joint prefix, including failed preparation and arbitrary error/loss. Complete in-progress publisher fill mkdir/O_EXCL/private descendant/open source dispatch and all per-actor creation/alias cases; then feed the full constructed execution to fixed-key/exposure consumers."
+      "action": "Actual selected commit, every Entrypoint unlink and every Entrypoint mkdir derive same-birth/current parent/root binding and advance the joint prefix, including interrupted/failed preparation and arbitrary error/loss. Complete actual O_EXCL/private descendant/open dispatch and all per-actor alias cases; then feed the full constructed execution to installed-file interval, fixed-key and exposure consumers."
     },
     {
       "id": "public-path-and-cwd-custody",
@@ -343,7 +351,7 @@
     }
   ],
   "evidence": "Focused build logs under .tools/host/filesystem-*.log. These checks are supporting development evidence, not integrated M5.2 acceptance.",
-  "next_action": "Construct the exhaustive same-NativeExternalJournal joint custody execution. The actual Entrypoint unlink dispatcher is checked. Next derive in-progress publisher fill stage references/metadata from the actual completed Staged producer without future prepare success, dispatch source mkdir/O_EXCL/open cases, and incorporate actual controller/VMM per-operation deltas. Then close protected installation content/read intervals and fixed-key nonexposure/authentication/exposure on the complete same journal, compose public results and run integrated M5.2 acceptance. No supporting component is a completed delivery.",
+  "next_action": "Complete actual ordinary open/allocation and child namespace dispatch, then construct the cumulative same-journal custody/publication execution and installed-read interval producer.",
   "primitive_sources": [
     {
       "url": "https://github.com/torvalds/linux/blob/v6.8/fs/xattr.c#L104-L144",
@@ -535,5 +543,15 @@
     "native_fixture": "host-directory-close-result.json.gz",
     "predecessor": "host-directory-close-before.json.gz",
     "state": "Focused full-source borrowing and affected native/ordinary checks pass. Entry consumes the forward fd1 producer; integrated M5.2 remains active."
+  },
+  "reviewed_preparing_custody": {
+    "record": "assurance/host-preparing-custody-review.json",
+    "sha256": "d90c9d7ae2deb23906a9838a46cd6e67dfd06071de15dbeab31b24170376cd6b",
+    "accepted_security_delivery": false
+  },
+  "reviewed_exclusive_custody": {
+    "path": "assurance/host-exclusive-custody-review.json",
+    "sha256": "a78c7b0659016e67ce47587953032d1065fa170389da6fc3553da7541e344f1b",
+    "accepted_security_delivery": false
   }
 }

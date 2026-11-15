@@ -1,0 +1,87 @@
+{
+  "accepted_security_delivery": false,
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "compatibility": "The earlier NativeDescriptorOrigin / NativeDescriptorContract and their reviews are preserved as historical source-restricted interfaces; no universal bare-Linux instantiation is claimed for them.",
+  "compiled_object_at_query": "6902f5a70ecac85c53c891cf9fdd796f0e31d28ec3089655b606ee19fc4c0457",
+  "consumer": "LeanCage.Host.PrivateStreams.native_socket_alias_execution_after_pair / SocketAliasExecution.selected_before",
+  "declarations": [
+    "LeanCage.Host.PrivateStreams.DescriptorOFDOrigin.duplicated.inj",
+    "LeanCage.Host.PrivateStreams.DescriptorOFDOrigin.duplicated.injEq",
+    "LeanCage.Host.PrivateStreams.DescriptorOFDOrigin.duplicated.sizeOf_spec",
+    "LeanCage.Host.PrivateStreams.DescriptorOFDOrigin.flag.inj",
+    "LeanCage.Host.PrivateStreams.DescriptorOFDOrigin.flag.injEq",
+    "LeanCage.Host.PrivateStreams.DescriptorOFDOrigin.flag.sizeOf_spec",
+    "LeanCage.Host.PrivateStreams.DescriptorOFDOrigin.freshDescription.sizeOf_spec",
+    "LeanCage.Host.PrivateStreams.DescriptorOFDOrigin.retained.inj",
+    "LeanCage.Host.PrivateStreams.DescriptorOFDOrigin.retained.injEq",
+    "LeanCage.Host.PrivateStreams.DescriptorOFDOrigin.retained.sizeOf_spec",
+    "LeanCage.Host.PrivateStreams.NativeOFDOriginContract.output",
+    "LeanCage.Host.PrivateStreams.SocketAliasExecution.brecOn.eq",
+    "LeanCage.Host.PrivateStreams.SocketAliasExecution.cons.inj",
+    "LeanCage.Host.PrivateStreams.SocketAliasExecution.cons.injEq",
+    "LeanCage.Host.PrivateStreams.SocketAliasExecution.cons.sizeOf_spec",
+    "LeanCage.Host.PrivateStreams.SocketAliasExecution.nil.sizeOf_spec",
+    "LeanCage.Host.PrivateStreams.SocketAliasExecution.selected_before",
+    "LeanCage.Host.PrivateStreams.different_ofd_does_not_constrain_flags",
+    "LeanCage.Host.PrivateStreams.native_call_preserves_socket_aliases",
+    "LeanCage.Host.PrivateStreams.native_descriptions_live_of_snapshot",
+    "LeanCage.Host.PrivateStreams.native_row_socket_aliases",
+    "LeanCage.Host.PrivateStreams.native_socket_alias_execution",
+    "LeanCage.Host.PrivateStreams.native_socket_alias_execution_after_pair",
+    "LeanCage.Host.PrivateStreams.native_source_preserves_socket_cloexec",
+    "LeanCage.Host.PrivateStreams.old_object_origin_does_not_cover_new_open",
+    "LeanCage.Host.PrivateStreams.pair_initializes_original_ofd_cloexec",
+    "_private.GatewayChannelDescriptorOrigins.0.LeanCage.Host.PrivateStreams.old_socket_description",
+    "LeanCage.Host.PrivateStreams.DescriptorOFDOrigin",
+    "LeanCage.Host.PrivateStreams.DescriptorOFDOrigin.retained",
+    "LeanCage.Host.PrivateStreams.DescriptorOFDOrigin.duplicated",
+    "LeanCage.Host.PrivateStreams.DescriptorOFDOrigin.flag",
+    "LeanCage.Host.PrivateStreams.DescriptorOFDOrigin.freshDescription",
+    "LeanCage.Host.PrivateStreams.NativeOFDOriginContract",
+    "LeanCage.Host.PrivateStreams.NativeOFDOriginContract.mk",
+    "LeanCage.Host.PrivateStreams.SocketAliasExecution",
+    "LeanCage.Host.PrivateStreams.SocketAliasExecution.nil",
+    "LeanCage.Host.PrivateStreams.SocketAliasExecution.cons",
+    "LeanCage.Host.PrivateStreams.SocketAliasesCloseExec",
+    "LeanCage.Host.PrivateStreams.NativeSocketAliasesCloseExec",
+    "LeanCage.Host.PrivateStreams.NativeDescriptionsLive"
+  ],
+  "derived_inputs": "Actual selected pair creation and the same SocketReferenceRecording supply the initial original-OFD alias seed and prior reference validity; the fold begins after that fresh birth.",
+  "evidence": {
+    "assurance/host-channel-ofd-origin-audit-records.json.gz": "59b19e8a2b2bf1aa158d7d4b389d1c9229a397893ad5e3ffb07191c5fb2ae1de",
+    "assurance/host-channel-ofd-origin-audit.lean.gz": "b89ee3128becb87ee54372a8f43757cc3caad5ff356661b02f79ace0a8062fc6",
+    "assurance/host-channel-ofd-origin-audit.log.gz": "9091f289199a422edf4007c9e545d3f2467e65775d3b73b8c3f125c635957597",
+    "assurance/host-channel-ofd-origin-build.log.gz": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+  },
+  "predecessors": {
+    "assurance/host-channel-invocations-review.json": "caaa34f212d4b6ef2043485ee478f92ae47d809c5fbcd0edbfbc0af4972c2118",
+    "assurance/host-channel-source-review.json": "52fed860c07d757d6cd1cd9a54a783664347e24a24023d88820e77a3e23b798c",
+    "assurance/host-descriptor-origin-obligation.json": "3aa5d20f2a6cb44981b71f4f4c81c9387e3eeb6825b671f208319e6c73473614"
+  },
+  "primitive_contracts": [
+    {
+      "interface": "LeanCage.Host.PrivateStreams.NativeOFDOriginContract",
+      "scope": "One actual selected primitive output handle is retained, duplicated, flag-edited, or belongs to a freshly allocated OFD. Existing inode identities and unrelated effects remain admitted. No IPC kind, protected role, source authority or queue conclusion occurs."
+    },
+    {
+      "interface": "LeanCage.Host.Kernel.NativeCode.ForkReferences",
+      "scope": "The same actual created child copies its full before-table, including SDK/stderr slots."
+    }
+  ],
+  "query_record_count": 48,
+  "query_status": "passed",
+  "schema": "leancage-host-channel-ofd-origin-review-v1",
+  "scope": "Corrected individual descriptor-origin ABI and source-conditioned preservation of the original socket object+OFD CLOEXEC aliases over the same supplied native/actor history.",
+  "source": {
+    "verification/host/GatewayChannelDescriptorOrigins.lean": "1f15f7cde846b9bd16ec15ce7e3b4420a47d2008b576e8b8a43d15b639a47af4"
+  },
+  "source_obligations": [
+    "NativeFlagClassifications must still be produced by the actual maintained C/SDK/external-source operation classifiers.",
+    "The full actual inherited/exec table view requires the separate Linux signed-int FD-range representation input.",
+    "The final invocation/exec/channel and exclusive-read/ACK/received-byte consumer remains open; this result supplies only its alias-retention component."
+  ]
+}

@@ -1079,5 +1079,44 @@
       "result": "Ordinary Lean data definition is axiom-free and enough-fuel equality to actual encodeValue is checked. Strict probe fails at existing nested Value.casesOn motive translation. It is not a native-client executable input and the accepted SourceEncoded relation remains the shared route."
     },
     "writerRoute": "The actual bounded writer produces the existing shared SourceEncoded relation; the same owned peer/queue must supply native read provenance. Truncation, loss and EOF remain explicit."
+  },
+  "ownedPresentationIntegration": {
+    "status": "Whole actual tuple helper and original-constructor-selected callback return are checked; original public-return integration remains active.",
+    "consumer": "GatewayConstructorPresentation.gateway_actual_constructor_presentation",
+    "declarations": [
+      "GatewayOwnedPresentation.gateway_actual_owned_presentation",
+      "GatewayOutcomePresentation.gateway_actual_outcome_presentation",
+      "GatewayConstructorPresentation.gateway_actual_constructor_presentation",
+      "GatewayOutcomePathCapture.gateway_actual_outcome_path_capture",
+      "GatewayOutcomeCapturedPathReceipt.gateway_actual_captured_outcome_path_insert",
+      "GatewayOutcomeNoPresentationSource.gateway_outcome_output_none_source",
+      "GatewayInitializationClassRoles.gateway_actual_public_bootstrap_class_roles",
+      "GatewayInitializerAccess.gateway_initializer_sdk_with_native_roles"
+    ],
+    "evidence": {
+      "artifact": "assurance/host-presentation-source-review.json.gz",
+      "sha256": "c6531af9677d2f615f650656ef8e0bbae9e3b938d7801b27ab3aa944adf7fd21",
+      "audit": ".tools/host/gateway/presentation-consumer-final-audit.log",
+      "kernel": ".tools/host/gateway/presentation-consumer-final-kernel.log",
+      "result": "PASS; 9 full theorem types/assumptions and 4 interfaces/2 constructors; same accepted six foundations"
+    },
+    "review": [
+      "The whole helper theorem starts at the actual C Callstate with count1, and every New/IncRef/steal/CallObject/DecRef is selected from that same execution.",
+      "The IncRef credit is bound to the actual values[0] C cell; tuple cleanup consumes the actual saved arguments place. Actual return captures rehome SDK results only at their real source transitions.",
+      "The callback result may alias older objects or the tuple; it retains an independent credited owner. Every stage uses one aggregate reserved-plus-ledger count inequality.",
+      "The copy snapshot is an additional description of its existing ticket and does not mint another native reference. Its exact graph and original JSON subtree survive the observed Path callback.",
+      "The constructor consumer obtains helper nonNULL from the same original successful constructor and its actual NULL branch. It assumes neither a separate successful helper execution nor Path constructor semantics.",
+      "The source context frames only current protected caller storage and private held graphs. It imposes no presentation-field or whole SDK callback C-global frame.",
+      "The at-load role consumer derives the real class-cell allocation roles through actual PyInit/bootstrap. The additional initializer SDK supplement conserves only prior native allocation identity/representation, without a cell-value or C-global content frame.",
+      "The proofs retain ambient/wait/loss/committed-loss constructors. Completed-return claims are partial correctness; they do not assert termination or complete failure-path resource reclamation."
+    ],
+    "remaining": [
+      "Actual original validation/files/Copy/output-lookup/store prefix must provide the helper frontier and original optional-output acceptance. Root owns validation-to-Copy.",
+      "Join actual copied-result capture, Path/None route, insertion/release and GenericAlloc/data-cell return to the original Workspace caller and public CPython handoff.",
+      "Derive the captured Path/class roots, same source class-global load and immutable Outcome binding cumulatively from actual initializer history, including alias-aware active and retired roots.",
+      "Retain actual bootstrap buffers through initialization/callback/caller history and derive raw source executable path equality for the actual exec consumer.",
+      "Use a scoped destructor/storage adapter for arbitrary presentation finalizers; do not infer a whole callback-writable native-global frame from the older release component.",
+      "Complete the original public getter/observation/dispatch/IPC/ownership acceptance and useful joint runtime execution before M5.2 completion."
+    ]
   }
 }

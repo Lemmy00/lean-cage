@@ -1,0 +1,118 @@
+{
+  "schema": 1,
+  "status": "checked-implementation",
+  "delivery": "M5.2",
+  "accepted_security_delivery": false,
+  "contract": [
+    "FS-host-boundary.ownership",
+    "FS-host-boundary.lookup",
+    "FS-host-boundary.publication",
+    "AR-host-boundary.primitives"
+  ],
+  "consumer": "The cumulative same-journal RegisteredPublicationState and JointPublicationPrefix induction; no public RequestGuarantee is claimed yet.",
+  "result": "Every actual Entrypoint exclusive file open internally selects its validator policy, streamed request archive, publisher metadata or nested export source. The selected operation derives the same original registered birth/current root, retained checked parent, actual stat/OFD and current guarded comparison, including interrupted preparation and error/lost acknowledgements.",
+  "predecessors_sha256": {
+    "assurance/host-cleanup-source-review.json": "36bd36b7f5b2295e4bbbc8fb6778b9d76e65c259144490c517bd4ddd9099c445",
+    "assurance/host-preparing-custody-review.json": "d90c9d7ae2deb23906a9838a46cd6e67dfd06071de15dbeab31b24170376cd6b"
+  },
+  "inputs_sha256": {
+    "verification/host/FilesystemRunFiles.lean": "b426a4b5bce9845454a406324e500c3b8328a30fd185b3c6f4a246cb3141ec45",
+    "host/.lake/build/lib/lean/FilesystemRunFiles.olean": "921985f22abb490217d8b634ad15ee5b88341a3cfae9d4e8a3936f1f36344550",
+    "verification/host/FilesystemExclusiveSites.lean": "1e66daef3fb5139552dfbbb9b68a1e1adf985409dcb55735d92dce52eb4c1914",
+    "host/.lake/build/lib/lean/FilesystemExclusiveSites.olean": "7ace06cc623b9a0582423db67c9f8e127a83c4572b2db848c958907e714f9ad2",
+    "verification/host/FilesystemRunFileResources.lean": "471d2ba778ed4301b23690c0c6d2ca3f71e3dfd5d51411da4acd6bc235ffa5be",
+    "host/.lake/build/lib/lean/FilesystemRunFileResources.olean": "0042e54154a03d4c26dde1c0060aed889c9a2fed303b78e46185b31ae7064e20",
+    "verification/host/FilesystemRunFileRoot.lean": "9153ff2f37f40b06ebac319bb80f86fd0bc476c21e97cb17c326d199deab5500",
+    "host/.lake/build/lib/lean/FilesystemRunFileRoot.olean": "1dd95d7670b3803cbdda11a28b5535ffd6c8ed053d75d9e60e80d3939c888846",
+    "verification/host/FilesystemRunFileJoint.lean": "25dfc7a57fdac4dc1d82e6e62f1ac89c16c611f20127d537782a62031dcbe930",
+    "host/.lake/build/lib/lean/FilesystemRunFileJoint.olean": "2b4e3810d67f7dcf825b616333a5cdb2495096ab1d2d934134731b8982531081",
+    "verification/host/PublicationProofs/ExclusiveFrontier.lean": "af7b2dfd91a264333e01ede219ae9d8429e5927677b8cd0b99c815a7ca78df09",
+    "host/.lake/build/lib/lean/PublicationProofs/ExclusiveFrontier.olean": "c309a82e993919f60307bbaddc0b7af311dfb0061f59443b9e847a51f0185a90",
+    "verification/host/FilesystemPreparingExclusiveParents.lean": "dfbfbf4bef71d52987e550dfd569dd8b79d052c3d4caa618a5cd45c9036c351f",
+    "host/.lake/build/lib/lean/FilesystemPreparingExclusiveParents.olean": "f9a1106436f4aa7e5535f49528cbdf65d2c82babf98deaecab5555ea00ca4257",
+    "verification/host/FilesystemPreparingExclusive.lean": "62296813ec6aa44a554e49289c382e19d8b39c44c30262c1c026f3c55e4a4f05",
+    "host/.lake/build/lib/lean/FilesystemPreparingExclusive.olean": "a04fbd4278363ee3da9dcae614afcfe4f5fb2657907f816cb63c32a433197d73",
+    "verification/host/FilesystemPreparingExclusiveJoint.lean": "28bc13a607700b6f9a4246c9aca00d4c88059e5bbd7d7bc579382ea1c10d6a84",
+    "host/.lake/build/lib/lean/FilesystemPreparingExclusiveJoint.olean": "f710ef8a750a3876cc493b84d2b43e31042c5e55719ae912a9c622ea59c40ea9",
+    "verification/host/FilesystemPublicationExclusiveSource.lean": "0241f0f330201ca19f4d4a5dc3a864bfc5796cab0112012aaeb725c9ddebb1fe",
+    "host/.lake/build/lib/lean/FilesystemPublicationExclusiveSource.olean": "340fee19b707e30987769e2cb8cf242dd940e32989e1e05a0531b19a44fc8030",
+    "verification/host/FilesystemJointExclusives.lean": "2a6619c2698bb1218eb42b46a27c1f316ae5e753ab23d2d368e5ffcf057c5f2c",
+    "host/.lake/build/lib/lean/FilesystemJointExclusives.olean": "04bf9ee2985c2a2d243517d16bc8587c81d345847687d191206c94c637e6c4f8"
+  },
+  "artifacts_sha256": {
+    "assurance/host-exclusive-custody-review.lean.gz": "856825603851f16e10c34d675ba57f781c5b6dc0c5a998f047d505169c12d303",
+    "assurance/host-exclusive-custody-review.log.gz": "191f0a077843e116dd7a0f7ad581be3842a948f9592ca35966bf8d1091e6f1ef"
+  },
+  "declarations": [
+    {
+      "name": "LeanCage.Host.Kernel.actual_source_exclusive_publication_joint",
+      "full_type_sha256": "e954fd127c9914da71454551e5d874b674bfc17a219b649b167514c860b18b86",
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actual_run_file_publication_joint",
+      "full_type_sha256": "87baead8cd51939aa8087386426c03a9ce19e45d0a736e0edeb8fcd634648721",
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.actual_preparing_exclusive_joint",
+      "full_type_sha256": "7d4122b6b163a92dbc1e963a5fea4f11c6b47bbd685dee3556403163e39b1d48",
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.entrypoint_exclusive_site",
+      "full_type_sha256": "373ec8ddd407818ea5b43d12c5dcf9a4dcb13ba2fc7810011db56739c19ca0aa",
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Kernel.PublicationExclusive.preparing_of_exclusive",
+      "full_type_sha256": "32ce4d07813d0549ad77de1dc1d9a96bd73a5647bf18d4ef9fb51f55e84a8385",
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ]
+    },
+    {
+      "name": "LeanCage.Host.Publication.preparing_exclusive_frontier",
+      "full_type_sha256": "8f958c54639376d225579ba3fc470733eeff0bbda9b1d04818006d640917223f",
+      "transitive_axioms": [
+        "propext",
+        "Classical.choice.{u}",
+        "Quot.sound.{u}"
+      ]
+    }
+  ],
+  "validation": {
+    "focused_builds": "All eleven maintained source modules compiled with pinned lake env lean, autoImplicit=false and warningAsError=true. Exact current six new import leaves replayed after promotion; logs .tools/host/recorded-backend/.",
+    "statement_review": "Six complete explicit/universe-qualified theorem types and transitive axiom closures reviewed. Only Classical.choice, Quot.sound and propext.",
+    "runtime_changes": false,
+    "affected_aggregate": "Required once on final relevant cumulative inputs. Scoped source review is not integrated M5.2 acceptance."
+  },
+  "assumptions": [
+    "Prior constructed RegisteredPublicationState and JointPublicationPrefix are local induction inputs, to be produced from the complete same application/native/foreign/child recording.",
+    "Exact ActorJournal and recording-indexed NativeExternalJournal, source ordinal snapshots, profile-1 authority/lookup restrictions and initialized system-anchor observations. NativeAuthorityJournal remains an intermediate source result, not platform trust.",
+    "Named individual Linux/runtime descriptor, alias, object lifetime, metadata, byte-namespace, lookup and mount contracts. Numeric observations are not lifetime injectivity."
+  ],
+  "remaining": [
+    "Construct complete recording-indexed custody/publication execution from actual open/read/allocation/native/foreign/child cases; ordinary read/open dispatch and QEMU bind delta remain.",
+    "Derive installed-file per-read interval nonmutation and fixed-key lifetime nonexposure.",
+    "Compose real commit exposure/authentication/retrieval and public guarantee with compatible useful joint histories and integrated acceptance."
+  ]
+}

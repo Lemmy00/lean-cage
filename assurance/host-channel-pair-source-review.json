@@ -1,0 +1,230 @@
+{
+  "accepted_security_delivery": false,
+  "axioms": [
+    "ClassicalDedekindReals.sig_forall_dec",
+    "ClassicalDedekindReals.sig_not_dec",
+    "Classical_Prop.classic",
+    "Events.external_functions_sem",
+    "Events.inline_assembly_sem",
+    "FunctionalExtensionality.functional_extensionality_dep"
+  ],
+  "consumer": "GatewayExchangeChannelSources.actual_exchange_entry_channel_sources",
+  "critical_bodies": [
+    "GatewayChannelExecSource.gateway_actual_source_pair_exec_channels",
+    "GatewayChannelPairSlices.gateway_ordered_pair_slices_native_uses",
+    "GatewayExchangeChannelSources.actual_exchange_entry_channel_sources",
+    "GatewayExchangeOriginPrepared.actual_exchange_entry_pair_origins"
+  ],
+  "critical_interfaces": [
+    "GatewayChannelExecSource.gateway_native_channels_checked",
+    "GatewayExchangeOriginSetup.PairOriginEntry.gateway_exchange_entry_frontier",
+    "GatewayExchangeOriginSetup.PairOriginPrepared.gateway_exchange_spawn_frontier",
+    "GatewayPairCopyout.gateway_copyout_pair_birth",
+    "GatewayPairCopyout.gateway_copyout_pair_slice",
+    "GatewayPairCopyout.gateway_copyout_pairs_slice_ordered"
+  ],
+  "declarations": [
+    "GatewayPairCopyout.gateway_copyout_pair_birth",
+    "GatewayPairCopyout.gateway_copyout_pair_forget",
+    "GatewayPairCopyout.actual_exchange_pair_copyout",
+    "GatewayPairCopyout.gateway_copyout_pair_slice",
+    "GatewayPairCopyout.gateway_copyout_pair_slice_positioned",
+    "GatewayPairCopyout.gateway_copyout_pairs_slice_ordered",
+    "GatewayPairCopyout.gateway_copyout_pair_slice_append",
+    "GatewayPairCopyout.gateway_copyout_pairs_slice_ordered_append",
+    "GatewayPairCopyout.gateway_copyout_pair_slice_prepend",
+    "GatewayPairCopyout.gateway_copyout_pairs_slice_ordered_prepend",
+    "GatewayExchangePairOrigins.PairOriginFirst.actual_exchange_data_pair_before_control",
+    "GatewayExchangePairOrigins.PairOriginRetention.actual_exchange_second_pair_preserves_first_separate",
+    "GatewayExchangePairOrigins.PairOriginControl.actual_exchange_control_pair_before_flags_separate",
+    "GatewayExchangePairOrigins.PairOriginConnections.actual_exchange_connections_before_flags_distinct",
+    "GatewayExchangeOriginSetup.PairOriginBuilders.actual_exchange_empty_sdk_before_initializers_distinct",
+    "GatewayExchangeOriginSetup.PairOriginLaunch.actual_exchange_source_launch_distinct",
+    "GatewayExchangeOriginSetup.PairOriginPrepared.gateway_exchange_spawn_frontier",
+    "GatewayExchangeOriginSetup.PairOriginEntry.gateway_exchange_entry_frontier",
+    "GatewayExchangeOriginSetup.PairOriginEntry.actual_exchange_allocated_entry_spawn",
+    "GatewayExchangeOriginPrepared.actual_exchange_entry_pair_origins",
+    "GatewayChannelPairSlices.gateway_pair_slice_native_use",
+    "GatewayChannelPairSlices.gateway_ordered_pair_slices_native_uses",
+    "GatewayChannelExecSource.gateway_native_channels_checked",
+    "GatewayChannelExecSource.gateway_actual_source_pair_exec_channels",
+    "GatewayExchangeChannelSources.actual_exchange_entry_channel_sources"
+  ],
+  "definitional_uip": [
+    "Lean.eq"
+  ],
+  "dependency_closure": {
+    "path": "assurance/host-channel-pair-source-review.candidate.json.gz",
+    "sha256": "57defb69d4ed18556363b9288f1d08d21644966c38fe70638b34e6f326904c83",
+    "uncompressed_sha256": "e69ac75223e466e63d8ba4ccb9312aa2cc18b762b353d74daa22e51547b14c8c"
+  },
+  "evidence": {
+    "GatewayChannelOriginQuery.v": {
+      "path": "assurance/host-channel-pair-source-GatewayChannelOriginQuery.v.gz",
+      "sha256": "2f3b1794c1f92bf79d290d9e44a3b1e2a9ec016913fced779570bcf7a52863bb",
+      "uncompressed_sha256": "4c7bff5a326c12941ea614ebbb0762f6c0d2bfa73edc507ce331169b4951ffaa"
+    },
+    "kernel.log": {
+      "path": "assurance/host-channel-pair-source-kernel.log.gz",
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "query.log": {
+      "path": "assurance/host-channel-pair-source-query.log.gz",
+      "sha256": "23a2952aaac1d120ac508d5bc43317d2bb51cc9180201dfe1bb9be3c830c9ab3",
+      "uncompressed_sha256": "e5c534ee6f34ee6c1553100f5fb8c2573887489e96b013733ab8718fb168750c"
+    },
+    "review.candidate.json": {
+      "path": "assurance/host-channel-pair-source-review.candidate.json.gz",
+      "sha256": "57defb69d4ed18556363b9288f1d08d21644966c38fe70638b34e6f326904c83",
+      "uncompressed_sha256": "e69ac75223e466e63d8ba4ccb9312aa2cc18b762b353d74daa22e51547b14c8c"
+    },
+    "review.py": {
+      "path": "assurance/host-channel-pair-source-review.py.gz",
+      "sha256": "85047798265b467008155fae346006440a264a70c75113bc4a7376deb8a10b89",
+      "uncompressed_sha256": "1c9609d04534b137e3693feafdbc51da5339287e91572ef0de7906e3f2195540"
+    },
+    "summary.json": {
+      "path": "assurance/host-channel-pair-source-summary.json.gz",
+      "sha256": "89c9857233839bcc337e70c1c763b2572c5d2da3cee783ad8ac859bd9b6f67b5",
+      "uncompressed_sha256": "69032fc7b3627831fdec3bde3c5bda02fd82f41495a4a528624985cd0e8e3bc5"
+    }
+  },
+  "kernel_check": {
+    "command": [
+      "rocq",
+      "check",
+      "-silent",
+      "-Q",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/rocq-lean-import/src",
+      "LeanImport",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/lib",
+      "compcert.lib",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/common",
+      "compcert.common",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/x86_64",
+      "compcert.x86_64",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/x86",
+      "compcert.x86",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/backend",
+      "compcert.backend",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/cfrontend",
+      "compcert.cfrontend",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/driver",
+      "compcert.driver",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/cparser",
+      "compcert.cparser",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/export",
+      "compcert.export",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/flocq",
+      "Flocq",
+      "-R",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/CompCert/MenhirLib",
+      "MenhirLib",
+      "-Q",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/source",
+      "",
+      "-Q",
+      "/localhome/milikic/sandbox-formalization/.tools/m4/bridge/proofs",
+      "",
+      "-Q",
+      "/localhome/milikic/sandbox-formalization/.tools/host/gateway",
+      "HostGateway",
+      "-Q",
+      "/localhome/milikic/sandbox-formalization/.tools/host/channel-origin-audit",
+      "HostChannelAudit",
+      "HostChannelAudit.GatewayChannelOriginQuery"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "preserved_predecessors": {
+    "assurance/host-channel-invocations-review.json": "caaa34f212d4b6ef2043485ee478f92ae47d809c5fbcd0edbfbc0af4972c2118",
+    "assurance/host-channel-ofd-origin-review.json": "2a95aa80e4d8d173377484786b680800ade5d840c0a0421551360d6c0f5a7f0d",
+    "assurance/host-channel-source-review.json": "52fed860c07d757d6cd1cd9a54a783664347e24a24023d88820e77a3e23b798c",
+    "assurance/host-framing-review.json": "b2c938cf84a1264c49f559c40e6ad271f93912239d1fc5318c7b8068ada3fdc5"
+  },
+  "primitive_boundaries": [
+    "The existing explicit per-operation thread, descriptor, builder, SDK snapshot, callback/runtime and native-row contracts remain hypotheses; no whole extractor, pair helper or spawn-success predicate is added.",
+    "NativePairObservation binds actual copyout words and actual resource leases to the same selected native row; receipt existence alone cannot choose pair orientation.",
+    "Pending native spawn observation and same-call birth/exec snapshots retain actual source key/args/memory/world and inactive attribute samples; no SDK result or future acknowledgement is used.",
+    "Full inherited and exec tables are retained. This evidence identifies raw0/1/3; it does not erase SDK/stderr aliases or by itself establish their reader exclusion."
+  ],
+  "remaining": [
+    "Route each actual global engine handoff to this precise C source invocation and its same stored native rows.",
+    "Produce per-operation native source guards and SDK/pre-exec/foreign read/discard classifications, retaining all full-table/support references.",
+    "Construct the exact SourceChannelJournal pending commit/ACK/loss annotation and original terminal receive routing.",
+    "Instantiate the observed surviving-activation runtime domain; old-image continuations do not resume after callback exec/exit.",
+    "Compose actual engine writer, private reply queue, native parser/EOF/reap and public returned result; no whole-host acceptance follows from this source component."
+  ],
+  "result": "Real original Clight entry and setup derive both ordered copyout-bearing pair source slices ending at the same selected pending spawn, the exact shared invocation/header key and two PairUse values. The same SDK-internal created/executed observations then derive exact raw channel evidence on the full observed exec table, without SDK return/status0 or a future acknowledgement.",
+  "schema": "leancage-host-channel-pair-source-review-v1",
+  "scope": "Actual original exchange entry to ordered socketpair copyouts, the same pending spawn key/operands, and actual same-birth/exec channel evidence without a future spawn reply.",
+  "source_epoch": {
+    "c_sha256": "ed97460f47b86fee5970d9311f25caf51133d753f06aea222263198e1a794224",
+    "clight_sha256": "636015762585214458cf4ab68eef02df799e545f8c3b61d8c3b4226ad2708a9f",
+    "strict_data": {
+      "gateway-code.ndjson": "e654b8c03d39600811fd50651b9b6aada9569f98d6e75bf136f6573bb4bb592e",
+      "native-code.ndjson": "3883ba0609832a1483f2d46def3d3bc548c666644fc17ba315c3ed4f763e0a0d"
+    }
+  },
+  "source_objects": {
+    "GatewayChannelExecSource": {
+      "object": "513b8a9928ab126946eb6754196e17b693dfa7b621c4b8e6c4734eea0baa3c60",
+      "path": "verification/host/GatewayChannelExecSource.v",
+      "source": "04b059046fb09f22529733de4089ae7c738200d18bdc906692003cc861f24820"
+    },
+    "GatewayChannelPairSlices": {
+      "object": "5953d7929465ea62c262787a4bbfc600b2a852c7d8f97e51a90a521824f13f3e",
+      "path": "verification/host/GatewayChannelPairSlices.v",
+      "source": "64211a9442213a06c9a04f3c0f80d8133fac3d65804957a52fa5caba2df1fde1"
+    },
+    "GatewayExchangeChannelSources": {
+      "object": "7963dd1a14dfc0bdf52933ff6577789f52ca04329fedfbd968c8221b941e3675",
+      "path": "verification/host/GatewayExchangeChannelSources.v",
+      "source": "ec7da686c015ff0a396ab5b8f7cca9be4d8ff1f641c75da15f18d7aaab8ad23d"
+    },
+    "GatewayExchangeOriginPrepared": {
+      "object": "0e912d944ffccc77797d6307d7e975d8bc9950fd3159d55c46b2bb5b385bee7c",
+      "path": "verification/host/GatewayExchangeOriginPrepared.v",
+      "source": "2f273aa31c7ed7ecf530d220aa242a7675a7f29c2fe65d083b815324f9592650"
+    },
+    "GatewayExchangeOriginSetup": {
+      "object": "efd69e90995631e22a9d89f3a38b544a7a157cfbfbb7f6a3b3a23261f3c65676",
+      "path": "verification/host/GatewayExchangeOriginSetup.v",
+      "source": "7306da2ca29413f780a1344c3bb5ccba48b6a11f633104eeeb85346a6f40a29c"
+    },
+    "GatewayExchangePairOrigins": {
+      "object": "30add1f97020453a2e51f910353b18024f04efbe8d06590129c02b7f029ddcd3",
+      "path": "verification/host/GatewayExchangePairOrigins.v",
+      "source": "96c622f91cefd51e7b9bda84fe9840c0783223b7acaf36bd0cdbbb9480868e71"
+    },
+    "GatewayPairCopyout": {
+      "object": "b765e2cd00aa3b38ee497c0acb19f9f3706e94b4dc59b9101fffbb37fba388dd",
+      "path": "verification/host/GatewayPairCopyout.v",
+      "source": "619f960dc5b911a6a2aa90bd479219b2ad3ea8ed94f0a6e22c694e326c3a4966"
+    }
+  },
+  "specs": [
+    "FS-host-boundary.ownership",
+    "AR-host-boundary.interfaces.gateway",
+    "AR-host-boundary.primitives"
+  ],
+  "validation": {
+    "all_queried_declaration_types_bodies_axioms": "passed",
+    "focused_rocq_compiles": "passed",
+    "independent_pinned_rocq_check": "passed",
+    "runtime_change": false,
+    "source_object_drift": []
+  }
+}
