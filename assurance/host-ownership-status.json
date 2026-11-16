@@ -319,39 +319,47 @@
   "remaining_producers": [
     {
       "id": "native-handoff-coupling",
-      "action": "Instantiate the SAME global native birth/exec/launch transfer and checked NativeCode decoder from actual source-tagged socketpair, normalization/actions, spawn and exec rows; preserve all concurrent invocation births and actual SDK/unowned references. No independent safe initial table."
+      "action": "Instantiate the SAME global native birth/exec/launch transfer and checked NativeCode decoder from actual source-tagged socketpair, normalization/actions, spawn and exec rows; preserve all concurrent invocation births and actual SDK/unowned references. No independent safe initial table.",
+      "closing_statement": "premise: EngineGuarantee.StartJournal and EngineGuarantee.ExclusiveLaunches (produced by M5.2b)"
     },
     {
       "id": "native-callback-operation-coverage",
-      "action": "fchmodAt/fchownAt typed operands, decoder inverses and same-row target consumers are checked (host-native-path-metadata-review.json; NativeCode94 strict amendment). Root must still supply actual C/SDK operation binders and native-caller global rows; complete remaining public callback namespace/descriptor operations without a callback end-frame."
+      "action": "fchmodAt/fchownAt typed operands, decoder inverses and same-row target consumers are checked (host-native-path-metadata-review.json; NativeCode94 strict amendment). Root must still supply actual C/SDK operation binders and native-caller global rows; complete remaining public callback namespace/descriptor operations without a callback end-frame.",
+      "closing_statement": "premise: EngineGuarantee.CallingProcess (gateway part produced by M5.2b)"
     },
     {
       "id": "global-source-family-fold",
-      "action": "Actual run/staging/public traversal births, retained/read/close calls, native handoff and private descendant local cases are checked; the stronger run/staging receipts retain exact current birth tick/position/catalogue membership. Finish universal actual source classification and the full application/native/foreign/child mutual fold, constructing rather than assuming ScopeJournal and OwnershipJournal."
+      "action": "Actual run/staging/public traversal births, retained/read/close calls, native handoff and private descendant local cases are checked; the stronger run/staging receipts retain exact current birth tick/position/catalogue membership. Finish universal actual source classification and the full application/native/foreign/child mutual fold, constructing rather than assuming ScopeJournal and OwnershipJournal.",
+      "closing_statement": "EngineGuarantee.FoldClosing"
     },
     {
       "id": "same-birth-directory-custody",
-      "action": "Actual selected commit, every Entrypoint unlink and every Entrypoint mkdir derive same-birth/current parent/root binding and advance the joint prefix, including interrupted/failed preparation and arbitrary error/loss. Complete actual O_EXCL/private descendant/open dispatch and all per-actor alias cases; then feed the full constructed execution to installed-file interval, fixed-key and exposure consumers."
+      "action": "Actual selected commit, every Entrypoint unlink and every Entrypoint mkdir derive same-birth/current parent/root binding and advance the joint prefix, including interrupted/failed preparation and arbitrary error/loss. Complete actual O_EXCL/private descendant/open dispatch and all per-actor alias cases; then feed the full constructed execution to installed-file interval, fixed-key and exposure consumers.",
+      "closing_statement": "EngineGuarantee.EngineStepClosing"
     },
     {
       "id": "public-path-and-cwd-custody",
-      "action": "Completed raw SourcePaths.start and Directories.parent producers derive retained root/CWD and full public traversal on the same historical graph. Join selected prefix-only opens, including lost initial root/CWD and protected bootstrap opens, to complete per-actor raw-reference and CWD custody."
+      "action": "Completed raw SourcePaths.start and Directories.parent producers derive retained root/CWD and full public traversal on the same historical graph. Join selected prefix-only opens, including lost initial root/CWD and protected bootstrap opens, to complete per-actor raw-reference and CWD custody.",
+      "closing_statement": "EngineGuarantee.EngineStepClosing"
     },
     {
       "id": "foreign-and-backend-interference",
-      "action": "Ordinary-foreign single-step insertion/reference/DAC fold is checked. Integrate its same-tick pool recording with the complete application family fold and actual source-linked controller/QEMU namespace/descriptor effects, preserving permitted public-tree changes."
+      "action": "Ordinary-foreign single-step insertion/reference/DAC fold is checked. Integrate its same-tick pool recording with the complete application family fold and actual source-linked controller/QEMU namespace/descriptor effects, preserving permitted public-tree changes.",
+      "closing_statement": "EngineGuarantee.ExternalStepClosing"
     },
     {
       "id": "key-and-marker-observation-origin",
-      "action": "Actual committed-source exposure now derives SAME root/tag and every intervening raw/native marker frame from constructed per-position custody snapshots. Still construct the universal custody execution, derive actual bootstrap-key observations, and finish complete key-byte nonexposure over the entire key lifetime including persisted reports."
+      "action": "Actual committed-source exposure now derives SAME root/tag and every intervening raw/native marker frame from constructed per-position custody snapshots. Still construct the universal custody execution, derive actual bootstrap-key observations, and finish complete key-byte nonexposure over the entire key lifetime including persisted reports.",
+      "closing_statement": "moved to M5.5; not part of EngineGuarantee.Statement"
     },
     {
       "id": "joint-usefulness-and-acceptance",
-      "action": "Provide compatible useful same-world executions, review complete types/transitive axioms and explicit primitive contracts, then run affected final gate and integrate the complete M5.2 guarantee."
+      "action": "Provide compatible useful same-world executions, review complete types/transitive axioms and explicit primitive contracts, then run affected final gate and integrate the complete M5.2 guarantee.",
+      "closing_statement": "EngineGuarantee.ModelClosing"
     }
   ],
   "evidence": "Focused build logs under .tools/host/filesystem-*.log. These checks are supporting development evidence, not integrated M5.2 acceptance.",
-  "next_action": "Complete actual ordinary open/allocation and child namespace dispatch, then construct the cumulative same-journal custody/publication execution and installed-read interval producer.",
+  "next_action": "Prove EngineGuarantee.ModelClosing (step 2), then EngineStepClosing and ExternalStepClosing (step 3), then FoldClosing, InstallationClosing and ResponseClosing (step 4).",
   "primitive_sources": [
     {
       "url": "https://github.com/torvalds/linux/blob/v6.8/fs/xattr.c#L104-L144",
@@ -552,6 +560,46 @@
   "reviewed_exclusive_custody": {
     "path": "assurance/host-exclusive-custody-review.json",
     "sha256": "a78c7b0659016e67ce47587953032d1065fa170389da6fc3553da7541e344f1b",
+    "accepted_security_delivery": false
+  },
+  "final_statement": {
+    "date": "2026-11-15",
+    "module": "verification/host/EngineGuarantee.lean",
+    "module_sha256": "8742723757db9e1b26652fffcad168f3dbd04d16db74f18a832fa25164c9845d",
+    "statement": "EngineGuarantee.Statement",
+    "plumbing": "EngineGuarantee.statement_of_closings : FoldClosing -> InstallationClosing -> ResponseClosing -> Statement (kernel-checked; axioms propext, Classical.choice, Quot.sound)",
+    "premises": [
+      "EngineGuarantee.Platform",
+      "EngineGuarantee.Operator",
+      "EngineGuarantee.StartJournal",
+      "EngineGuarantee.ExclusiveLaunches",
+      "EngineGuarantee.CallingProcess",
+      "EngineGuarantee.Children",
+      "EngineGuarantee.InstallationProtected",
+      "caller-side native entries (hypothesis of EngineGuarantee.ResponseCommitted)"
+    ],
+    "conclusion": [
+      "EngineGuarantee.CustodyConstructed with OwnedAlong",
+      "EngineGuarantee.InstallationStable",
+      "EngineGuarantee.ResponseCommitted",
+      "EngineGuarantee.SourceFacets (checked by source_facets)",
+      "engine actors' events are prefixes of the lowered Entrypoint.run"
+    ],
+    "closing_statements": {
+      "EngineGuarantee.FoldClosing": "open; induction over the recording from initial_registered_publication and the two per-tick closings",
+      "EngineGuarantee.EngineStepClosing": "open; every engine step on its own selected row advances the joint publication state and certifies OwnedTick",
+      "EngineGuarantee.ExternalStepClosing": "open; every tick without an engine call advances the joint publication state",
+      "EngineGuarantee.InstallationClosing": "open; installed bootstrap contents are unchanged on every tick",
+      "EngineGuarantee.ResponseClosing": "open; engine part of ChannelWriteSources",
+      "EngineGuarantee.ModelClosing": "open; step 2 of RM-roadmap.m5.next"
+    },
+    "findings": [
+      "The statement uses the existing journal types: RegisteredCustodyExecution along NativeExternalJournal for the conclusion, RegisteredPublicationState and JointPublicationPrefix on the recording's own selected rows for the per-tick closings.",
+      "The engine creates missing public ancestors of the output path; owned effects therefore allow fresh nonreplacing bindings in public directories, and no change inside another request's private scope.",
+      "actual_response_written_prefix takes ChannelWriteSources as a hypothesis. Its engine part is the new ResponseClosing; proving it needs the added engine-start premise ExclusiveLaunches.",
+      "The contents conclusion permits writes on unnamed unlabelled objects (response and VM-control sockets); excluding unnamed files needs a socket/file distinction or descriptor origin in the world model.",
+      "ResponseCommitted quantifies over every channel history; ModelClosing includes ResponseWitness so the model must show the hypotheses are satisfiable."
+    ],
     "accepted_security_delivery": false
   }
 }

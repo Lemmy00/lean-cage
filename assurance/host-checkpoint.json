@@ -223,7 +223,7 @@
     "assurance/host-outcome-source-program.v.gz": "850b93a11d5b5b3fd87a9aae127fa74c9bb54a9da938da3f091eb4f6020b7e90",
     "assurance/host-outcome-source-replay-inputs.json.gz": "651ebd317645a2d3d74162955e26b6584b489c3b2c150e53dcdc8a70fc406b3a",
     "assurance/host-outcome-source-replay.json.gz": "572856a67fbe25b21bed4088f9c7ef89a73d5c3460d6f6ed33a7b078f28f7eba",
-    "assurance/host-ownership-status.json": "ae09def8591ebd35cf56d594b472d0203d02fc6d1072c9edf30f3634a773b975",
+    "assurance/host-ownership-status.json": "d30693f11405ec1f92cb3a61326159b12a6bd578d8719dd60722b1a5034401b9",
     "assurance/host-parser-source-audit-log0.log.gz": "fa66459ac2426ff3d4d37a6c18e9d2900b6c56f8bfaa15edc79d6227e4d332fe",
     "assurance/host-parser-source-audit-log1.log.gz": "1da1242a8435f8e060d04953f3ee3fb54988fe641748114843e06fe28f400581",
     "assurance/host-parser-source-audit-log2.log.gz": "c1fdf03e510b2a6e4fcd6b48205a14707067d66701f2ee67840e7e4bfea4aa1e",
@@ -321,6 +321,7 @@
     "assurance/host-transport-review.json": "5e2b629518b59dbee01828a112ea37df23458dcd0b7e86963b8bd7d8c6031efd",
     "assurance/host-update-20261115-host-build.gz": "89ff1cf44c79221c4ac201aa07a441c9f92546a322cf6b101a3b3cbb802a2da8",
     "assurance/host-update-20261115-product-gate.gz": "ab3ca6cff0771b55f250eb352108a911249dab621f056cd7f9fb7ea6702c52a6",
+    "assurance/host-update-20261115-statement-build.gz": "df153e9b510c0edc9001e04a60b3add18f52b79d8bb1559cc8b843a4e6ddd32a",
     "assurance/host-validation-source-aggregate-kernel.gz": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
     "assurance/host-validation-source-evidence-before-eof.json.gz": "8d95e15757bf0fa506b845d589d1adf3d058afad090450bcec8d14fa218b4c0f",
     "assurance/host-validation-source-evidence.json": "0304efe08a71598c1307cdb346be0f3fd2a366fa790922970bc6e680b8955103",
@@ -395,10 +396,10 @@
   ],
   "reviewed_metadata_updates": {
     "assurance/host-ownership-status.json": {
-      "after_sha256": "ae09def8591ebd35cf56d594b472d0203d02fc6d1072c9edf30f3634a773b975",
+      "after_sha256": "d30693f11405ec1f92cb3a61326159b12a6bd578d8719dd60722b1a5034401b9",
       "before_artifact": "assurance/host-checkpoint-before-host-ownership-status.json.gz",
       "before_sha256": "c9ebfad8a86c01b2275226c5a5c7e14ca1ec570b3585d439494c7a47cd8f46ed",
-      "review": "Explicit user resume; actual selected-commit/custody/key-origin components and remaining universal source/history producers reviewed; delivery remains incomplete. 2026-11-15 update: adds the Entrypoint mkdir and exclusive-open joint custody interfaces and binds the preparing and exclusive custody review records; their modules pass the integrated host build. Delivery remains incomplete."
+      "review": "Explicit user resume; actual selected-commit/custody/key-origin components and remaining universal source/history producers reviewed; delivery remains incomplete. 2026-11-15 update: adds the Entrypoint mkdir and exclusive-open joint custody interfaces and binds the preparing and exclusive custody review records; their modules pass the integrated host build. Delivery remains incomplete. 2026-11-15 step 1: records EngineGuarantee.Statement, its premises, the closing statement of each open item and the step 1 findings. Delivery remains incomplete."
     },
     "assurance/host-response-obligations.json": {
       "after_sha256": "56b733a9d5ff3fb981d764fee86c323bee7054f098181056032fe44d1b008490",
@@ -422,8 +423,8 @@
   "source_eof_amendment": "assurance/host-source-eof-amendment.json",
   "sources": {
     ".github/workflows/check.yml": "a1ac31fc7b7f7591810105970f75836b7e622755dc7a6bd1a5ec28e3a550f90c",
-    "M5-CONTINUE.md": "fff682bd52a62d573d73bd78e24c3868c7a39757f777897c85e1366602e9ae5b",
-    "docs/architecture/AR-host-boundary.md": "056007a7f1ecb72d7e6912823b4a9a53529853098daec9bc1a9d494d6e64d5a9",
+    "M5-CONTINUE.md": "b589d239f7f3ef025c4c2380766ac4ea18d5a973f8dbd3e11eed99336adb2dcd",
+    "docs/architecture/AR-host-boundary.md": "7a645844426fdb40eb3ed08e380cf9fc33b357a269870584ce1d76ee512dcb5a",
     "docs/decisions/architectural/DA-host-engine.md": "43a6d1e4b4a240af659ba221c662e6d589bb12d83a129c95325f601ea075b663",
     "docs/functional-spec/FS-host-boundary.md": "72dc53a328dd9129bf6358a879e37f7c8e49ba3156512dc6d320f10380a1005f",
     "docs/reviews/host-boundary-integration.md": "3bc1198ebf690977557df1b2ae28725f1e86afbca129857c081b34e8cea0b6e8",
@@ -475,7 +476,7 @@
     "host/LeanCageHost/VirtualMachine.lean": "3e0e6e0d133fd13b82900eb5726ac8dc6ce1608642d6e37344d478a7dcec9ded",
     "host/LeanCageHost/WireJson.lean": "f8387c9aeb2aaec3038eb81b47cd913ee25b928c5dad9c301f5af4aa99d09fe4",
     "host/lake-manifest.json": "85f91fca646056b3fa7cc5933aeb3c103d103b8d5112fc96c3a914d641a443dd",
-    "host/lakefile.lean": "1fe8cbb3f36d1083fc7ce9a4bb845696b5101cb8f91f3143bc7145b481a58bbe",
+    "host/lakefile.lean": "7200a88b1c8cb53fb16b0e9fbfda427387250876fb03ec3eeafd2ca87b01a729",
     "host/lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
     "linux/host_primitives.c": "a06c86463033665dcba8b50153e49bf55904c8f0d6b5662dc6488003bce9ae39",
     "linux/host_python.c": "ed97460f47b86fee5970d9311f25caf51133d753f06aea222263198e1a794224",
@@ -525,6 +526,7 @@
     "verification/host/CallerProofs.lean": "3f433a9173367c95716f06cf59193e18f3d4402f9cdc8e57b7ed9e7fc8ea877e",
     "verification/host/CommandProofs.lean": "0ff0521c2317eda657be601d7f3e8060142ae7a66bc46f9b01ca9075358750a9",
     "verification/host/DirectoryCloseNative.lean": "6d09714f33b70060a83ec8a504f350f84f6e82abbce11f557cc7813aa03dea19",
+    "verification/host/EngineGuarantee.lean": "8742723757db9e1b26652fffcad168f3dbd04d16db74f18a832fa25164c9845d",
     "verification/host/EngineIdentityProofs.lean": "ba5c235c04ed3b3dd6ef71324906fd9b7fbb2ea67fab0b5171804d667685072d",
     "verification/host/EntrypointChannelWriter.lean": "590d5c8974cb91f8b365b885950dda022a6e4906bcbe303e83f007ee52bb70b5",
     "verification/host/EntrypointExecutableProofs.lean": "8189170a19bc38888f42221b45cbb9ce110b83be8622d89a9afaea51368f3dbd",
@@ -2454,6 +2456,7 @@
     "host_package": "lake build HostVerification passed (630 jobs) after correcting the stale root-list module name. All sources remained fixed; affected proof object refresh was followed by exact query comparison.",
     "public_product_and_foundation": "scripts/check_product.sh passed: foundation audits and 24+21+34+32 integration/product tests; archived VM evidence checked without replay.",
     "rocq_source": "Complete 1295-source replay, no exclusions/failures/drift, aggregate and independent kernel pass.",
+    "statement_2026_11_15": "Step 1 statement module verification/host/EngineGuarantee.lean: lake build HostVerification passed (652 jobs) with the package's autoImplicit=false and warningAsError options; statement_of_closings, response_committed and source_facets depend only on propext, Classical.choice and Quot.sound. No Rocq source changed; the archived complete replay still applies.",
     "update_2026_11_15": "Working-tree update after the 2026-11-10 checkpoint: lake build HostVerification passed (651 jobs); incremental source replay source-replay-20261115T015222128095Z completed 1339 sources (1299 maintained, 1295 reused, 44 newly compiled) with no exclusions, failures or drift, aggregate and independent kernel check passed; the uncommitted obligation-record hash bindings were rechecked. The validation-loop, dictionary-iteration-load, workspace-outcome-null and channel exec-cut modules are kernel-checked by that build and replay but have no statement review record yet. The negative checkpoint fixtures of the previous checkpoint were not repeated; the checker is unchanged. scripts/check_product.sh passed on the final tree.",
     "validation_source": "114 declarations/11 interfaces, full types/transitive assumptions, independent kernel pass. Six accepted baseline foundations only; no UIP.",
     "vm_acceptance": "No final host-candidate VM acceptance; candidate remains optional and the documented baseline callers remain usable."
@@ -2465,6 +2468,7 @@
     "assurance/host-active-checkpoint-product-gate.gz": "53c1b6335db5de9c3239059bfd1e6f400cc7c2e6700f1195c6a782c8d235695c",
     "assurance/host-active-checkpoint-product-input-reuse.gz": "a2e27759445a71de23112774173939ea5b69398a41cb00664e1ec572f26ca508",
     "assurance/host-update-20261115-host-build.gz": "89ff1cf44c79221c4ac201aa07a441c9f92546a322cf6b101a3b3cbb802a2da8",
-    "assurance/host-update-20261115-product-gate.gz": "ab3ca6cff0771b55f250eb352108a911249dab621f056cd7f9fb7ea6702c52a6"
+    "assurance/host-update-20261115-product-gate.gz": "ab3ca6cff0771b55f250eb352108a911249dab621f056cd7f9fb7ea6702c52a6",
+    "assurance/host-update-20261115-statement-build.gz": "df153e9b510c0edc9001e04a60b3add18f52b79d8bb1559cc8b843a4e6ddd32a"
   }
 }

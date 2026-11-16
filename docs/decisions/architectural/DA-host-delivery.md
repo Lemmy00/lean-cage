@@ -64,8 +64,12 @@ The engine theorem has these named premises and no others:
 | Child processes | The policy validator and the VM process have their recorded individual process contracts; reaping is observed, never assumed | Existing contracts; owned lifetime by M5.4 |
 | Platform | The individual Linux, runtime and cryptographic operation contracts of [§AR-host-boundary.primitives](../../architecture/AR-host-boundary.md#primitives-enumerate-the-linux-and-runtime-effects) | [§FS-linux-product.trust](../../functional-spec/FS-linux-product.md#trust-platform-assumptions-for-the-initial-product) |
 
-The existing `NativeAuthorityProfile` and `NativeLookupProfile` parameters
-already express the calling-process premise for trusted parents. The open items
+In `verification/host/EngineGuarantee.lean` the engine-start premise is
+`StartJournal`, `ExclusiveLaunches` and the caller-side entry hypothesis of
+`ResponseCommitted`. The calling-process premise is `CallingProcess`, built
+from the existing `NativeAuthorityProfile`, `NativeLookupProfile` and
+`NativeAnchorProfile` parameters. The child premise is `Children`. The
+operator premise adds `Operator` and `InstallationProtected`. The open items
 `native-handoff-coupling` and `native-callback-operation-coverage` in
 `assurance/host-ownership-status.json` become the engine-start and
 calling-process premises.

@@ -744,24 +744,33 @@ program that the `leancage-host` executable interprets.
 1. **Final statement first.** One Lean proposition states the guarantee over
    the existing journal types for returned, failed and lost executions, for
    every request packet, VM byte stream and permitted interference:
-   - every create, write, unlink and attribute change by the engine targets an
-     object born in this request's own run, validator or staging directory;
-     the only other namespace change is the nonreplacing rename of that stage
-     to its final name under the retained results parent; no existing binding
-     is replaced or removed;
-   - inputs are read only through retained no-follow descriptors, the snapshot
+   - the custody history of the whole run is constructed, not assumed, and
+     certifies every engine step. Outside the request's own run, validator
+     and staging scopes, an engine step changes bindings only in public
+     directories. There it only adds bindings of fresh objects, such as
+     missing public ancestors of the output path, or commits its own stage
+     under an unused name in the same parent, and it removes only bindings of
+     its own objects. It changes contents only of its own or fresh objects or
+     of the unnamed object behind a write descriptor, and tracked attributes
+     only on its own objects;
+   - installed bootstrap files keep their contents throughout the run;
+   - the snapshot program reads inputs only through its input requests, its
      identity describes the acknowledged bytes, and the copy budgets hold;
    - a `complete` answer has the properties established by
      `CallerProofs.actual_application_complete`;
-   - a failed or uncertain publication leaves the known report fields
-     unchanged and removes nothing after a rename attempt;
-   - retrieval returns stored content only after its binding, hierarchy,
-     bound, digest and marker checks;
-   - bytes committed to the response descriptor are a prefix of the canonical
-     encoding of the engine's answer.
+   - publication keeps the known report and marks storage failure, and after
+     a rename attempt it performs no unlink, rename or write;
+   - retrieval writes nothing and returns stored content only with its
+     binding, hierarchy, bound, digest and marker evidence;
+   - for every channel history consistent with the run, the bytes queued
+     toward the caller are a prefix of the canonical encoding of the engine's
+     answer.
 
    Its premises are exactly those in [§DA-host-delivery.engine](../decisions/architectural/DA-host-delivery.md#engine-what-m52-proves-and-which-premises-it-names). Each open item
    assigned to M5.2 has a named closing statement that this proposition uses.
+   `EngineGuarantee.Statement` in `verification/host/EngineGuarantee.lean` is
+   this proposition; `statement_of_closings` derives it from the closing
+   statements.
 2. **Contracts have a model.** One concrete model satisfies every contract
    structure the final statement depends on. That model exhibits a useful
    complete request, a rejected request and an execution with a lost reply.

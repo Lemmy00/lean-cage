@@ -123,30 +123,34 @@ original scope. The final checkpoint validation inventory belongs in
 Work in this order. [§RM-roadmap.m5.next](docs/roadmap.md#m5next-current-assignment) carries the same list and the effort
 limits.
 
-1. **Write the final statement and the closing statements.** State the engine
-   proposition of [§AR-host-boundary.acceptance.engine](docs/architecture/AR-host-boundary.md#acceptanceengine-m52-closes-on-the-engine-guarantee-and-both-callers) over the existing journal
-   types, with the premises of [§DA-host-delivery.engine](docs/decisions/architectural/DA-host-delivery.md#engine-what-m52-proves-and-which-premises-it-names). The calling-process
-   premise already has the form of the `NativeAuthorityProfile` and
-   `NativeLookupProfile` parameters of
-   `FilesystemCommitGuarantee.actual_authenticated_commit`. For each item
-   assigned to M5.2 in the table below, write the proposition whose proof
-   closes it. Record them in `assurance/host-ownership-status.json`.
-2. **Build the model.** Instantiate `Kernel.Contract` and every other contract
-   structure the final statement takes as a parameter with one concrete
-   filesystem and process model. Exhibit a useful complete request, a rejected
-   request and a lost-reply execution in it. No such instance exists yet. The
-   present witness modules cover only the pure transport, snapshot, artifact,
-   publication and VM-read components.
-3. **Finish custody for individual operations.** Every Entrypoint unlink, mkdir
-   and exclusive file open now advances the same registered publication state.
-   Complete ordinary opens and allocation, and the namespace effects of the
-   validator and VM child processes.
-4. **Prove the whole-execution theorem.** Construct the
-   `RegisteredCustodyExecution` from the actual run instead of assuming it.
-   Fold the application, child and foreign families over it, add the
-   installed-file read interval producer, and compose the result with
-   `CallerProofs.actual_application_complete` and the checked response-writer
-   prefix results.
+1. **Final statement and closing statements: done on 2026-11-15.**
+   `verification/host/EngineGuarantee.lean` states `EngineGuarantee.Statement`
+   over the existing journal types with the premises of
+   [§DA-host-delivery.engine](docs/decisions/architectural/DA-host-delivery.md#engine-what-m52-proves-and-which-premises-it-names), and kernel-checks `statement_of_closings`: the
+   statement follows from `FoldClosing`, `InstallationClosing` and
+   `ResponseClosing` with the existing source and journal theorems. The fold's
+   per-tick inputs are `EngineStepClosing` and `ExternalStepClosing`; the model
+   statement is `ModelClosing`. No closing statement is proved yet.
+   `assurance/host-ownership-status.json` records the declarations and the
+   findings below.
+2. **Build the model.** Prove `ModelClosing`: one concrete filesystem,
+   process and channel model inhabits `Platform`, `Operator` and `Premises`,
+   with a useful complete request whose response channel satisfies
+   `ResponseWitness`, a rejected request and a lost-reply execution. No such
+   instance exists yet. The present witness modules cover only the pure
+   transport, snapshot, artifact, publication and VM-read components.
+3. **Finish custody for individual operations.** Prove `EngineStepClosing` and
+   `ExternalStepClosing`. Every Entrypoint unlink, mkdir and exclusive file open
+   already advances the same registered publication state; these steps must
+   also certify `OwnedTick`. Complete ordinary opens and allocation, the other
+   engine effects, and the namespace effects of the validator and VM child
+   processes. Derive the engine's anchor operands in this step; the children's
+   anchor operands are now the `Children` premise.
+4. **Prove the whole-execution theorem.** Prove `FoldClosing` by induction
+   over the recording from `initial_registered_publication` and the two
+   per-tick closing statements. Prove `InstallationClosing` from it and the
+   operator premise, and `ResponseClosing` from custody and
+   `ExclusiveLaunches`. `statement_of_closings` then gives the final theorem.
 5. **Switch the callers.** Repair the signal-target defect recorded in
    `assurance/host-signal-target-obligation.json` in the gateway source, with a
    regression test. Its proof stays with M5.4. Make the public CLI and
@@ -168,17 +172,38 @@ is in [§RM-roadmap.m5.next](docs/roadmap.md#m5next-current-assignment). Final M
 | `joint-usefulness-and-acceptance` in the same record | M5.2, steps 2 and 6, for the engine contracts |
 | `native-handoff-coupling`, `native-callback-operation-coverage` in the same record | Named premises of M5.2; produced by M5.2b |
 | `key-and-marker-observation-origin` in the same record | M5.5. M5.2 proves only that retrieval performs its checks |
-| The four `remaining` entries of `assurance/host-response-obligations.json`: engine writer to native reads, `host_outcome_from` validation and copies, observation and getter dispatch, initialized class and reference authority | M5.2b. The engine half is checked and stays in M5.2: committed response bytes are a prefix of the canonical encoding |
+| The four `remaining` entries of `assurance/host-response-obligations.json`: engine writer to native reads, `host_outcome_from` validation and copies, observation and getter dispatch, initialized class and reference authority | M5.2b, except the engine half of the first entry. That half stays in M5.2 as `ResponseClosing`: the checked writer-prefix theorem takes its write sources as a hypothesis, so only its conclusion is checked |
 | Conversion from the contradictory root-lease contract in `assurance/host-reference-ownership-amendment.json` | M5.2b |
 | `assurance/host-runtime-activation-obligation.json`, `assurance/host-descriptor-origin-obligation.json` | M5.2b |
 | `assurance/host-signal-target-obligation.json` | Source repair in M5.2 step 5; proof in M5.4 |
 
-The two status records keep their recorded wording. Their next update adds the
-closing statements of step 1 and these delivery assignments.
+`assurance/host-ownership-status.json` now records the closing statements.
+The response record keeps its wording; this table assigns its entries.
+
+### Step 1 findings
+
+- The final statement fits the existing journal types. Its custody conclusion
+  uses `RegisteredCustodyExecution` along the actual `NativeExternalJournal`;
+  the per-tick closings use `RegisteredPublicationState` and
+  `JointPublicationPrefix`, bound to the recording's own selected rows.
+- The engine also creates missing public ancestors of the output path, so the
+  owned-effects conclusion allows fresh, nonreplacing bindings in public
+  directories. It allows no change inside another request's private scope.
+  The acceptance text is corrected accordingly.
+- The response writer's engine half was not complete: proving
+  `ResponseClosing` needs a premise that no other engine actor inherits the
+  same endpoints. It is `ExclusiveLaunches`, part of the engine-start premise
+  that M5.2b must produce.
+- The contents conclusion still permits a write on an unnamed, unlabelled
+  object, which covers the response and VM-control sockets. Excluding unnamed
+  files would need a socket-versus-file distinction or the descriptor's origin
+  in the world model.
+- The response conclusion quantifies over every channel history of the run.
+  `ResponseWitness` in `ModelClosing` makes the model show it is not vacuous.
 
 ## Exact restart point
 
-Start with step 1 above. The checked interfaces to reuse for M5.2 are
+Start with step 2 above, `ModelClosing`. The checked interfaces to reuse for M5.2 are
 `CallerProofs.actual_application_complete` for the functional result,
 `FilesystemCommitGuarantee.actual_authenticated_commit` for the selected commit,
 the joint unlink, mkdir and exclusive-open modules for individual operations,

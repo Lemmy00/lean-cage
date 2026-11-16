@@ -232,7 +232,8 @@ lean_lib HostVerification where
     `FilesystemPublicationCreation,
     `FilesystemLoweredWrites,
     `FilesystemBoundaryAuthority,
-    `FilesystemVirtualMachineBorrowing, `GatewaySpawnChannels, `GatewayPrivateStreams, `GatewayStreamSources, `GatewayStreamWriter, `GatewayStreamKernel, `GatewayStreamJournal]
+    `FilesystemVirtualMachineBorrowing, `GatewaySpawnChannels, `GatewayPrivateStreams, `GatewayStreamSources, `GatewayStreamWriter, `GatewayStreamKernel, `GatewayStreamJournal,
+    `EngineGuarantee]
 
 -- §AR-host-boundary.interfaces: One-operation adapters expose the Linux/runtime boundary.
 extern_lib hostPrimitives pkg := do

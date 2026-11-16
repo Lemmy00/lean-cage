@@ -462,7 +462,9 @@ The remaining M5.2 work, in order:
    item, before further supporting proofs. Limit: four working hours. This
    step settles whether the statement can use the existing journal types with
    the premises of [§DA-host-delivery.engine](decisions/architectural/DA-host-delivery.md#engine-what-m52-proves-and-which-premises-it-names). If it cannot, report the obstacle
-   and the options.
+   and the options. Done on 2026-11-15 within the limit: the statement uses
+   the existing journal types, with one added engine-start premise; see
+   `verification/host/EngineGuarantee.lean` and [the checkpoint](../M5-CONTINUE.md).
 2. Build one model that satisfies every contract the statement depends on,
    with a useful, a rejected and a lost-reply execution. A contract law that
    the model cannot satisfy is a finding; repair it before continuing.
